@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Final UML Index — Diagram Lifecycle State</text>
+<rect x="120" y="180" width="320" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="280.0" y="220.0" text-anchor="middle" class="h">DIAGRAM_DRAFTED</text>
+<rect x="560" y="180" width="360" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="740.0" y="220.0" text-anchor="middle" class="h">REVIEWED_WITH_OWNER</text>
+<rect x="1040" y="180" width="380" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1230.0" y="220.0" text-anchor="middle" class="h">ACCEPTED_AS_BASELINE</text>
+<rect x="1540" y="180" width="320" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1700.0" y="220.0" text-anchor="middle" class="h">LINKED_TO_DOCS</text>
+<rect x="1960" y="180" width="360" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="2140.0" y="220.0" text-anchor="middle" class="h">IMPLEMENTED_IN_CODE</text>
+<rect x="1040" y="520" width="340" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1210.0" y="560.0" text-anchor="middle" class="h">CHANGE_REQUESTED</text>
+<rect x="1540" y="520" width="280" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1680.0" y="560.0" text-anchor="middle" class="h">SUPERSEDED</text>
+<rect x="1960" y="520" width="260" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="2090.0" y="560.0" text-anchor="middle" class="h">ARCHIVED</text>
+<polyline points="440,220 560,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="568" y="212" class="small">owner review</text>
+<polyline points="920,220 1040,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="212" class="small">approved</text>
+<polyline points="1420,220 1540,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1548" y="212" class="small">docs/ADR link</text>
+<polyline points="1860,220 1960,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1968" y="212" class="small">code trace</text>
+<polyline points="740,260 740,410 1210,410 1210,520" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1218" y="402" class="small">feedback</text>
+<polyline points="1040,560 440,560 440,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="448" y="552" class="small">update diagram</text>
+<polyline points="1230,260 1230,430 1680,430 1680,520" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1688" y="422" class="small">new decision</text>
+<polyline points="1820,560 1960,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1968" y="552" class="small">cleanup</text>
+<rect x="160" y="820" width="1700" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="844" class="t">Lifecycle rule:</text>
+<text x="176" y="862" class="t">UML diagrams are living architecture artifacts. When code or decisions change, diagrams move through change request and new baseline.</text>
+</svg>

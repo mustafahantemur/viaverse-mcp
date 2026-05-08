@@ -1,0 +1,27 @@
+@startuml
+title Viaverse Admin / Moderation Action — Activity Diagram
+start
+:Admin action request;
+:Admin MFA + session check;
+:Check RBAC/ABAC\nresource scope;
+if (Allowed?) then (yes)
+  :Open case/resource;
+  :Review evidence\nminimum necessary data;
+  :Choose action;
+  :Enter reason + notes;
+  :Validate action policy\nseverity / cooldown / limits;
+  :Apply domain action;
+  :Write immutable audit log;
+  :Notify affected user\nif policy allows;
+  :Create appeal path\nif eligible;
+  :Emit AdminActionApplied;
+else (no)
+  :Deny + audit attempt;
+endif
+stop
+
+note bottom
+Admin screens should reveal the minimum necessary data for the case.
+Private messages/media require explicit reason and scoped access.
+end note
+@enduml

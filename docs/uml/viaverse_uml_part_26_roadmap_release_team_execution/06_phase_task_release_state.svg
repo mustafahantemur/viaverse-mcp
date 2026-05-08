@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1650" viewBox="0 0 2400 1650">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2320" height="60" rx="14" fill="#022C22"/>
+<text x="1200.0" y="69" text-anchor="middle" class="title">Viaverse Phase / Task / Release State — State Diagram</text>
+
+<rect x="120" y="180" width="200" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="220.0" y="220.0" text-anchor="middle" class="h">IDEA</text>
+<rect x="460" y="180" width="240" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="580.0" y="220.0" text-anchor="middle" class="h">PLANNED</text>
+<rect x="840" y="180" width="220" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="950.0" y="220.0" text-anchor="middle" class="h">READY</text>
+<rect x="1200" y="180" width="300" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1350.0" y="220.0" text-anchor="middle" class="h">IN_PROGRESS</text>
+<rect x="1600" y="180" width="240" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1720.0" y="220.0" text-anchor="middle" class="h">BLOCKED</text>
+<rect x="1200" y="500" width="260" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1330.0" y="540.0" text-anchor="middle" class="h">IN_REVIEW</text>
+<rect x="840" y="500" width="200" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="940.0" y="540.0" text-anchor="middle" class="h">DONE</text>
+<rect x="460" y="500" width="240" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="580.0" y="540.0" text-anchor="middle" class="h">RELEASED</text>
+<rect x="120" y="500" width="260" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="250.0" y="540.0" text-anchor="middle" class="h">SUPERSEDED</text>
+<rect x="1600" y="500" width="340" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1770.0" y="540.0" text-anchor="middle" class="h">HOTFIX_REQUIRED</text>
+<polyline points="320,220 460,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="468" y="212" class="small">accepted</text>
+<polyline points="700,220 840,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="848" y="212" class="small">scope + acceptance</text>
+<polyline points="1060,220 1200,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1208" y="212" class="small">start</text>
+<polyline points="1500,220 1600,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1608" y="212" class="small">dependency/risk</text>
+<polyline points="1600,260 1500,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1508" y="252" class="small">unblocked</text>
+<polyline points="1350,260 1350,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1358" y="492" class="small">PR/test</text>
+<polyline points="1200,540 1110,540 1110,260 1200,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1118" y="252" class="small">changes</text>
+<polyline points="1200,540 1040,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="532" class="small">approved</text>
+<polyline points="840,540 700,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="708" y="532" class="small">release train</text>
+<polyline points="700,540 1600,540" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1608" y="532" class="small">incident/regression</text>
+<polyline points="1600,500 1450,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1458" y="252" class="small">fix branch</text>
+<polyline points="460,220 250,500" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="258" y="492" class="small">strategy changed</text>
+<rect x="160" y="1120" width="1700" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1144" class="t">State rule:</text>
+<text x="176" y="1162" class="t">A task cannot move to DONE without tests/docs where applicable. A phase cannot move to RELEASED without release gate signoff and rollback path.</text>
+</svg>

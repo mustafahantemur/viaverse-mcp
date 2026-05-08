@@ -1,0 +1,34 @@
+@startuml
+title Viaverse Media Upload / CDN / Moderation — Component Diagram
+
+component "KMP / Next.js Client\nImage/video picker\nUpload progress\nPreview" as Client
+component "API Gateway / App BFF\nMedia API facade" as BFF
+component "MediaController\nUploadSessionController" as Controller
+component "Media Use Cases\nCreateUploadSession\nConfirmUpload\nAttachMedia\nReportMedia" as UseCases
+component "Media Policies\ncontext permission\nmime/size limits\nvisibility\nmoderation status" as Policies
+component "Ports\nObjectStoragePort\nCdnUrlPort\nModerationPort\nMediaRepo\nOutboxPort" as Ports
+database "S3 / Object Storage\noriginals\nthumbnails\ntranscoded variants" as S3
+component "CloudFront CDN\npublic assets\nsigned URLs" as CDN
+component "moderation-service\nNSFW\nviolence\nabuse/spam" as Moderation
+database "PostgreSQL\nmedia_asset\nmedia_derivative\nmedia_report" as DB
+component "media-worker\nEXIF strip\nthumbnail\nvideo transcode" as Worker
+queue "Kafka / Outbox\nMediaUploaded\nMediaApproved\nMediaRejected" as Kafka
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> S3 : presign/read/write
+Ports --> CDN : delivery URL
+Ports --> Moderation : scan
+Ports --> DB : metadata
+UseCases --> Worker : async process
+Worker --> S3 : process objects
+Worker --> Kafka : result events
+
+note bottom
+Domain services reference media by mediaId only.
+They do not own object keys, binary processing, CDN policy or moderation state.
+end note
+@enduml

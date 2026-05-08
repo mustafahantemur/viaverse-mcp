@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="request-create-class" name="05 Request Creation Class">
+    <mxGraphModel dx="2000" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Request Creation — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1920" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ServiceRequest" value="ServiceRequest&#xa;--&#xa;id: RequestId&#xa;requesterAccountId: AccountId&#xa;status: RequestStatus&#xa;title: String&#xa;description: String&#xa;categoryId: CategoryId&#xa;budget: Budget&#xa;location: RequestLocation&#xa;timing: RequestTiming&#xa;createdAt: Instant&#xa;publishedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="340" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="Budget" value="Budget&#xa;--&#xa;mode: BudgetMode&#xa;minAmount: Money?&#xa;maxAmount: Money?&#xa;currency: Currency" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="290" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="Location" value="RequestLocation&#xa;--&#xa;approxAreaId: AreaId&#xa;exactAddress: Address?&#xa;geoPoint: GeoPoint?&#xa;visibility: LocationVisibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="920" y="160" width="320" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="Timing" value="RequestTiming&#xa;--&#xa;urgency: Urgency&#xa;preferredStart: Instant?&#xa;flexibility: TimeFlexibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="160" width="290" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="MediaRef" value="RequestMediaRef&#xa;--&#xa;requestId: RequestId&#xa;mediaId: MediaId&#xa;purpose: MediaPurpose&#xa;sortOrder: Int" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="320" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="Category" value="Category&#xa;--&#xa;id: CategoryId&#xa;parentId: CategoryId?&#xa;nameKey: String&#xa;status: CategoryStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="520" width="290" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="RequestPolicy&#xa;--&#xa;validateCanCreate()&#xa;validateRequiredFields()&#xa;validatePublishRules()&#xa;validatePrivacyRules()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="920" y="520" width="320" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Request Events&#xa;--&#xa;ServiceRequestDraftCreated&#xa;ServiceRequestUpdated&#xa;ServiceRequestPublished&#xa;MatchingRequested&#xa;MediaAttachedToRequest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="520" width="350" height="185" as="geometry"/>
+        </mxCell>
+        <mxCell id="Outbox" value="OutboxEvent&#xa;--&#xa;id: UUID&#xa;aggregateType&#xa;aggregateId&#xa;eventType&#xa;payload&#xa;correlationId&#xa;causationId" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="740" y="840" width="340" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="owns" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ServiceRequest" target="Budget">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="250" as="point"/><mxPoint x="520" y="235" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="owns" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ServiceRequest" target="Location">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="275" as="point"/><mxPoint x="920" y="245" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="owns" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ServiceRequest" target="Timing">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="300" as="point"/><mxPoint x="1350" y="235" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ServiceRequest" target="MediaRef">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="250" y="420" as="point"/><mxPoint x="250" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="belongs to" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ServiceRequest" target="Category">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="330" as="point"/><mxPoint x="665" y="330" as="point"/><mxPoint x="665" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="validates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="ServiceRequest">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="920" y="605" as="point"/><mxPoint x="760" y="605" as="point"/><mxPoint x="760" y="450" as="point"/><mxPoint x="250" y="450" as="point"/><mxPoint x="250" y="420" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ServiceRequest" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="390" as="point"/><mxPoint x="1525" y="390" as="point"/><mxPoint x="1525" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="serialized as" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Events" target="Outbox">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1525" y="705" as="point"/><mxPoint x="1525" y="780" as="point"/><mxPoint x="910" y="780" as="point"/><mxPoint x="910" y="840" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Status lifecycle for this part:&#xa;DRAFT → PUBLISHED. Later parts add quote/job conversion, cancellation, expiration and dispute-related states." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1120" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

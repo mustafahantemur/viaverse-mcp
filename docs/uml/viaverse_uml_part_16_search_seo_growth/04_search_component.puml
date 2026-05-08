@@ -1,0 +1,34 @@
+@startuml
+title Viaverse Search / SEO / Growth — Component Diagram
+
+component "KMP / Next.js Client\nSearch screen\nFeed\nSEO pages" as Client
+component "API Gateway / Web BFF\nSearch API\nSEO route API" as BFF
+component "SearchController\nSeoController\nGrowthController" as Controller
+component "Search Use Cases\nSearch\nIndexEntity\nGenerateSeoPage\nTrackSearchEvent" as UseCases
+component "Search Policies\nprivacy gates\nranking gates\nsponsored constraints\nlocalization" as Policies
+component "Ports\nSearchIndexPort\nTrustSignalPort\nAiIntentPort\nAnalyticsPort\nSeoRepo\nOutboxPort" as Ports
+database "OpenSearch\npublic projections\ngeo/full-text\nfacets" as OpenSearch
+component "AI intent/category service\nquery understanding\nsuggestions" as AI
+component "analytics-service\nimpressions\nclicks\nconversion funnel" as Analytics
+database "PostgreSQL\nseo_page\nsearch_config\nexperiment" as DB
+queue "Kafka / Outbox\nEntityPublished\nSearchPerformed\nSeoPageUpdated" as Kafka
+component "CDN / Next.js SSR\nSEO pages\nsitemap\nschema.org" as CDN
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST/SSR
+Controller --> UseCases : command/query
+UseCases --> Policies : validate/rank
+Policies --> Ports : ports
+Ports --> OpenSearch : query/index
+Ports --> AI : intent
+Ports --> Analytics : events
+Ports --> DB : SEO/config
+UseCases --> Kafka : events
+UseCases --> CDN : publish SEO/sitemap
+Kafka ..> UseCases : index events
+
+note bottom
+SEO pages are generated only from public/approved projections.
+Search-service must not leak private request details or exact addresses.
+end note
+@enduml

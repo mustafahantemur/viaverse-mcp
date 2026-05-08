@@ -1,0 +1,13 @@
+@startuml
+title Request-to-Job Master Flow
+User -> Client: create request
+Client -> Gateway
+Gateway -> Taxonomy
+Gateway -> Marketplace
+Marketplace -> Search
+Search -> Notification
+Provider -> Marketplace: offer
+Marketplace -> Payment
+Marketplace -> Chat
+Marketplace -> Trust
+@enduml

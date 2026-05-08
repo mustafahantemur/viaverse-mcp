@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Business Mode — Sequence Diagram</text>
+
+<rect x="80" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="165.0" y="170.0" text-anchor="middle" class="h">KMP / Web Client</text>
+<rect x="164" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="165.0" y="695.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="415.0" y="170.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="414" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="415.0" y="695.0" text-anchor="middle" class="h"></text>
+<rect x="580" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="665.0" y="170.0" text-anchor="middle" class="h">identity-service</text>
+<rect x="664" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="665.0" y="695.0" text-anchor="middle" class="h"></text>
+<rect x="830" y="140" width="170" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="915.0" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="914" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="915.0" y="695.0" text-anchor="middle" class="h"></text>
+<rect x="1080" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1165.0" y="161.0" text-anchor="middle" class="h">ads-monetization</text>
+<text x="1165.0" y="181.0" text-anchor="middle" class="t">/payment-service</text>
+<rect x="1164" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1165.0" y="695.0" text-anchor="middle" class="h"></text>
+<rect x="1330" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1415.0" y="170.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1414" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1415.0" y="695.0" text-anchor="middle" class="h"></text>
+<rect x="1580" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1665.0" y="170.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="1664" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1665.0" y="695.0" text-anchor="middle" class="h"></text>
+<rect x="1830" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1915.0" y="170.0" text-anchor="middle" class="h">search / SEO</text>
+<rect x="1914" y="220" width="2" height="950" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1915.0" y="695.0" text-anchor="middle" class="h"></text>
+<polyline points="250,260 330,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="252" class="small">POST /businesses</text>
+<polyline points="500,310 580,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="588" y="302" class="small">check OPERATE_BUSINESS eligibility</text>
+<polyline points="750,350 1330,350" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="342" class="small">load AccountCapability</text>
+<polyline points="500,430 830,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="422" class="small">createBusinessProfile</text>
+<polyline points="1000,470 1330,470" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="462" class="small">insert BusinessProfile DRAFT</text>
+<polyline points="250,590 330,590" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="582" class="small">PATCH business
+services/packages/hours/team</text>
+<polyline points="500,630 830,630" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="622" class="small">updateBusinessProfile</text>
+<polyline points="1000,670 1330,670" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="662" class="small">persist services/packages/team</text>
+<polyline points="250,790 330,790" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="782" class="small">POST /businesses/{id}/trial</text>
+<polyline points="500,830 1080,830" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="822" class="small">start trial/subscription state</text>
+<polyline points="1250,870 1330,870" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="862" class="small">insert BusinessSubscription TRIALING</text>
+<polyline points="250,1000 330,1000" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="992" class="small">POST /businesses/{id}/publish</text>
+<polyline points="500,1040 830,1040" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="1032" class="small">publishBusinessProfile</text>
+<polyline points="1000,1080 1330,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="1072" class="small">set PUBLIC + outbox</text>
+<polyline points="1000,1120 1580,1120" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="1112" class="small">BusinessProfilePublished</text>
+<polyline points="1750,1120 1830,1120" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1838" y="1112" class="small">index business public profile</text>
+<rect x="80" y="1240" width="1650" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1264" class="t">Sequence focus:</text>
+<text x="96" y="1282" class="t">Business profile source-of-truth is marketplace/business boundary. Subscription state is monetization/payment-owned. Search/SEO consumes published events.</text>
+</svg>

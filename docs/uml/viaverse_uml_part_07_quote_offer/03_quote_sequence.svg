@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Quote / Offer — Sequence Diagram</text>
+
+<rect x="80" y="140" width="180" height="58" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="170.0" y="169.0" text-anchor="middle" class="h">Worker Client</text>
+<rect x="169" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="170.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="80" y="250" width="180" height="58" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="170.0" y="279.0" text-anchor="middle" class="h">Requester Client</text>
+<rect x="169" y="330" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="170.0" y="800.0" text-anchor="middle" class="h"></text>
+<rect x="360" y="140" width="180" height="58" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="450.0" y="169.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="449" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="450.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="650" y="140" width="180" height="58" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="740.0" y="169.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="739" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="740.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="940" y="140" width="180" height="58" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1030.0" y="169.0" text-anchor="middle" class="h">identity-service</text>
+<rect x="1029" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1030.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="1230" y="140" width="180" height="58" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1320.0" y="169.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1319" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1320.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="1520" y="140" width="180" height="58" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1610.0" y="169.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="1609" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1610.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="1810" y="140" width="180" height="58" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1900.0" y="169.0" text-anchor="middle" class="h">notification-service</text>
+<rect x="1899" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1900.0" y="690.0" text-anchor="middle" class="h"></text>
+<polyline points="260,330 360,330" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="368" y="322" class="small">GET matched request</text>
+<polyline points="540,370 650,370" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="658" y="362" class="small">load request detail</text>
+<polyline points="260,500 360,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="368" y="492" class="small">POST /quotes</text>
+<polyline points="540,540 650,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="658" y="532" class="small">sendQuote(command)</text>
+<polyline points="830,580 940,580" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="948" y="572" class="small">check worker/business capability</text>
+<polyline points="830,640 1230,640" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1238" y="632" class="small">validate request + insert Quote(SENT)</text>
+<polyline points="830,700 1520,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="692" class="small">QuoteSent</text>
+<polyline points="1700,700 1810,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="692" class="small">NotificationCreated</text>
+<polyline points="1810,760 1700,760 1700,280 260,280" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1708" y="272" class="small">push/in-app quote received</text>
+<polyline points="260,860 360,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="368" y="852" class="small">GET /requests/{id}/quotes</text>
+<polyline points="540,900 650,900" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="658" y="892" class="small">load quotes for owner</text>
+<polyline points="260,1040 360,1040" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="368" y="1032" class="small">POST /quotes/{id}/accept</text>
+<polyline points="540,1080 650,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="658" y="1072" class="small">acceptQuote(command)</text>
+<polyline points="830,1120 1230,1120" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1238" y="1112" class="small">idempotent accept + create Job draft</text>
+<polyline points="830,1160 1520,1160" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="1152" class="small">QuoteAccepted / JobCreated</text>
+<rect x="80" y="1280" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1304" class="t">Sequence focus:</text>
+<text x="96" y="1322" class="t">Quote is sent by worker/business and accepted only by request owner. Acceptance creates the handoff toward payment/job lifecycle.</text>
+</svg>

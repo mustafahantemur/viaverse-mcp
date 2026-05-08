@@ -1,0 +1,55 @@
+@startuml
+title Viaverse AI Assistant / Support / Safety Intelligence — Use Case Diagram
+left to right direction
+
+actor User
+actor "Support Agent" as Agent
+actor "AI/Ops Admin" as Admin
+actor "Domain Services" as Domain
+actor "LLM Provider\nor Local Model" as LLM
+actor "Knowledge Base\nDocs / Policies / FAQs" as KB
+
+rectangle "AI Assistant / Support Boundary" {
+  usecase "Ask AI help\nin app" as Ask
+  usecase "Build scoped context\nscreen/job/account state" as Context
+  usecase "Apply safety/privacy guardrails" as Guard
+  usecase "Generate answer\nor guided action" as Answer
+  usecase "Retrieve knowledge\nRAG" as Search
+  usecase "Classify intent\nsupport/search/safety" as Intent
+  usecase "Suggest next action\nnot auto-execute risky action" as Action
+  usecase "Escalate to human support" as Escalate
+  usecase "Create support ticket" as Ticket
+  usecase "Summarize conversation\nfor support" as Summary
+  usecase "Agent replies\nwith AI assistance" as AgentAssist
+  usecase "Collect answer feedback" as Feedback
+  usecase "Run quality/safety evals" as Evals
+  usecase "Manage prompts/policies" as Config
+  usecase "Emit events\nAiAsked / Escalated / TicketResolved" as Events
+}
+
+User --> Ask
+Ask --> Context
+Context --> Guard
+Guard --> Answer
+Context ..> Search : needs knowledge
+Search --> Intent
+Intent --> Action
+Action ..> Escalate : risky/uncertain
+Escalate --> Ticket
+Ticket --> Summary
+Summary --> AgentAssist
+AgentAssist --> Feedback
+Feedback --> Events
+Admin --> Evals
+Admin --> Config
+Evals --> Events
+Domain --> Context
+LLM --> Answer
+KB --> Search
+
+note bottom
+AI can guide, summarize and recommend.
+It must not execute risky actions such as payment, refund,
+suspension or data deletion without explicit policy-controlled confirmation.
+end note
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+title Viaverse Chat / Messaging — Use Case Diagram
+left to right direction
+
+actor Requester
+actor "Worker / Business" as Worker
+actor "media-service" as Media
+actor "Safety / Moderation" as Safety
+actor "Support Admin" as Support
+
+rectangle "Job / Quote Linked Messaging Boundary" {
+  usecase "Create conversation\nfrom quote/job context" as Create
+  usecase "Open conversation" as Open
+  usecase "View context card\nrequest / quote / job" as Context
+  usecase "Send message" as Send
+  usecase "Detect contact/payment\nbypass attempt" as Detect
+  usecase "Show safety warning\nor block" as Warn
+  usecase "Attach media" as Attach
+  usecase "Read messages" as Read
+  usecase "Mark as read" as Mark
+  usecase "Report message" as Report
+  usecase "Block participant" as Block
+  usecase "Escalate to support" as Escalate
+  usecase "Audited support review" as AdminReview
+}
+
+Requester --> Open
+Worker --> Open
+Create --> Open
+Open --> Context
+Requester --> Send
+Worker --> Send
+Send ..> Detect : <<include>>
+Detect --> Warn : if unsafe
+Send ..> Attach : optional
+Requester --> Read
+Worker --> Read
+Read --> Mark
+Read --> Report
+Report --> Block : optional
+Report --> Escalate : if serious
+Escalate --> AdminReview
+Media --> Attach
+Safety --> Detect
+Support --> AdminReview
+
+note bottom
+Messaging is quote/job-linked, not generic social DM.
+Contact sharing before allowed state is detected.
+Support/admin review is scoped and audited.
+end note
+@enduml

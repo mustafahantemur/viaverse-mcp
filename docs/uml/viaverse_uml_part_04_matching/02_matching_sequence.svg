@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1450" viewBox="0 0 2100 1450">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2020" height="60" rx="14" fill="#022C22"/>
+<text x="1050.0" y="69" text-anchor="middle" class="title">Viaverse Matching — Sequence Diagram</text>
+
+<rect x="80" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="165.0" y="170.0" text-anchor="middle" class="h">Kafka / MSK</text>
+<rect x="164" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="165.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="170" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="415.0" y="161.0" text-anchor="middle" class="h">matching-consumer</text>
+<text x="415.0" y="181.0" text-anchor="middle" class="t">(search-service)</text>
+<rect x="414" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="415.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="580" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="665.0" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="664" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="665.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="830" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="915.0" y="170.0" text-anchor="middle" class="h">OpenSearch</text>
+<rect x="914" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="915.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1080" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1165.0" y="170.0" text-anchor="middle" class="h">identity-service</text>
+<rect x="1164" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1165.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1330" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1415.0" y="170.0" text-anchor="middle" class="h">trust-gamification</text>
+<rect x="1414" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1415.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1580" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1665.0" y="170.0" text-anchor="middle" class="h">Valkey / Redis</text>
+<rect x="1664" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1665.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1830" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1915.0" y="170.0" text-anchor="middle" class="h">notification-service</text>
+<rect x="1914" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1915.0" y="685.0" text-anchor="middle" class="h"></text>
+<polyline points="250,260 330,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="252" class="small">MatchingRequested</text>
+<polyline points="500,310 580,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="588" y="302" class="small">load request snapshot</text>
+<polyline points="500,390 830,390" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="382" class="small">geo/category candidates</text>
+<polyline points="500,470 1080,470" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="462" class="small">capability/status batch check</text>
+<polyline points="500,550 1330,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="542" class="small">trust/risk summaries</text>
+<polyline points="500,630 1580,630" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="622" class="small">availability / hot state</text>
+<polyline points="420,720 520,720 520,780 420,780 420,720" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="772" class="small">score + explain reasons</text>
+<polyline points="500,860 580,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="588" y="852" class="small">persist opportunities</text>
+<polyline points="500,940 1830,940" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1838" y="932" class="small">NotificationCreated</text>
+<polyline points="330,1020 250,1020" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="258" y="1012" class="small">MatchingCompleted</text>
+<rect x="80" y="1200" width="1650" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1224" class="t">Sequence focus:</text>
+<text x="96" y="1242" class="t">Matching consumes events and builds opportunities. It does not mutate ServiceRequest source-of-truth except through explicit marketplace API/port.</text>
+</svg>

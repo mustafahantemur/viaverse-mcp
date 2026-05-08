@@ -1,0 +1,9 @@
+@startuml
+title Viaverse API/Event Contract Ownership
+Developer -> Docs: propose API/event change
+Docs -> Backend: accepted ADR
+Backend -> Contracts: update OpenAPI/event schema
+Contracts -> CI: breaking change check
+CI -> Client: update stubs
+CI -> Release: contract green
+@enduml

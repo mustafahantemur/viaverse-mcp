@@ -1,0 +1,100 @@
+@startuml
+title Viaverse Dispute / Refund / Payout — Class Model
+
+class DisputeCase {
+  id: DisputeId
+  jobId: JobId
+  openedBy: AccountId
+  againstAccountId: AccountId?
+  status: DisputeStatus
+  reason: DisputeReason
+  summary: String
+  payoutBlocked: Boolean
+  openedAt: Instant
+  closedAt: Instant?
+}
+
+class DisputeEvidence {
+  id: UUID
+  disputeId: DisputeId
+  submittedBy: AccountId
+  type: MESSAGE | MEDIA | TEXT | SYSTEM
+  refId: UUID?
+  note: String?
+  createdAt: Instant
+}
+
+class DisputeResponse {
+  id: UUID
+  disputeId: DisputeId
+  accountId: AccountId
+  message: String
+  evidenceRefs: List<UUID>
+  createdAt: Instant
+}
+
+class DisputeResolution {
+  id: UUID
+  disputeId: DisputeId
+  type: REFUND | PAYOUT | SPLIT | NO_ACTION
+  refundAmount: Money?
+  payoutAmount: Money?
+  reason: String
+  resolvedBy: AccountId
+  resolvedAt: Instant
+}
+
+class DisputePolicy {
+  canOpenDispute()
+  canSubmitEvidence()
+  canResolve()
+  requiresPayoutBlock()
+  validateMoneyDecision()
+}
+
+class DisputeAuditLog {
+  id: UUID
+  disputeId: DisputeId
+  actorId: AccountId
+  action: String
+  reason: String?
+  beforeState: String?
+  afterState: String?
+  createdAt: Instant
+}
+
+class PaymentResolutionAction {
+  id: UUID
+  disputeId: DisputeId
+  paymentSessionId: UUID
+  action: REFUND | RELEASE_PAYOUT | SPLIT
+  amount: Money
+  status: ActionStatus
+  idempotencyKey: String
+}
+
+class DisputeEvents {
+  DisputeOpened
+  EvidenceSubmitted
+  PayoutBlocked
+  DisputeResolved
+  RefundIssued
+  PayoutReleased
+  RiskSignalUpdated
+}
+
+DisputeCase "1" o-- "*" DisputeEvidence
+DisputeCase "1" o-- "*" DisputeResponse
+DisputeCase "1" o-- "0..1" DisputeResolution
+DisputePolicy ..> DisputeCase : validates
+DisputeResolution --> PaymentResolutionAction : creates
+DisputeCase --> DisputeAuditLog : all changes
+DisputeResolution --> DisputeAuditLog : resolution audit
+PaymentResolutionAction ..> DisputeEvents : emits
+DisputeCase ..> DisputeEvents : emits
+
+note bottom
+Evidence should reference source records/media where possible.
+Copying private chat/media into dispute case must be minimized and access audited.
+end note
+@enduml

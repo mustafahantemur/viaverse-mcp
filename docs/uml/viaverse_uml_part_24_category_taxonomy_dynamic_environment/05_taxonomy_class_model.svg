@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Category / Taxonomy / Dynamic Environment — Class Model</text>
+
+<rect x="80" y="150" width="420" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="209.0" text-anchor="middle" class="h">Category</text>
+<text x="290.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="249.0" text-anchor="middle" class="t">id: CategoryId</text>
+<text x="290.0" y="269.0" text-anchor="middle" class="t">parentId: CategoryId?</text>
+<text x="290.0" y="289.0" text-anchor="middle" class="t">code: String</text>
+<text x="290.0" y="309.0" text-anchor="middle" class="t">level: Int</text>
+<text x="290.0" y="329.0" text-anchor="middle" class="t">status: CategoryStatus</text>
+<text x="290.0" y="349.0" text-anchor="middle" class="t">sortOrder: Int</text>
+<text x="290.0" y="369.0" text-anchor="middle" class="t">riskLevel: RiskLevel</text>
+<text x="290.0" y="389.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="600" y="150" width="390" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="200.0" text-anchor="middle" class="h">Tag</text>
+<text x="795.0" y="220.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="240.0" text-anchor="middle" class="t">id: TagId</text>
+<text x="795.0" y="260.0" text-anchor="middle" class="t">code: String</text>
+<text x="795.0" y="280.0" text-anchor="middle" class="t">tagType: INTENT | SKILL | STYLE | URGENCY</text>
+<text x="795.0" y="300.0" text-anchor="middle" class="t">status: TagStatus</text>
+<rect x="1090" y="150" width="420" height="270" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1300.0" y="222.0" text-anchor="middle" class="h">CategoryRule</text>
+<text x="1300.0" y="242.0" text-anchor="middle" class="t">--</text>
+<text x="1300.0" y="262.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<text x="1300.0" y="282.0" text-anchor="middle" class="t">requiredFields: Set&lt;FieldKey&gt;</text>
+<text x="1300.0" y="302.0" text-anchor="middle" class="t">allowedBudgetModes: Set&lt;BudgetMode&gt;</text>
+<text x="1300.0" y="322.0" text-anchor="middle" class="t">requiresModeration: Boolean</text>
+<text x="1300.0" y="342.0" text-anchor="middle" class="t">commissionRuleScope: String?</text>
+<text x="1300.0" y="362.0" text-anchor="middle" class="t">visibilityRule: String</text>
+<rect x="1600" y="150" width="410" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1805.0" y="202.0" text-anchor="middle" class="h">FormSchema</text>
+<text x="1805.0" y="222.0" text-anchor="middle" class="t">--</text>
+<text x="1805.0" y="242.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1805.0" y="262.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<text x="1805.0" y="282.0" text-anchor="middle" class="t">version: Int</text>
+<text x="1805.0" y="302.0" text-anchor="middle" class="t">fields: JsonSchema</text>
+<text x="1805.0" y="322.0" text-anchor="middle" class="t">uiHints: Json</text>
+<text x="1805.0" y="342.0" text-anchor="middle" class="t">status: SchemaStatus</text>
+<rect x="80" y="560" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="627.0" text-anchor="middle" class="h">DynamicEnvironment</text>
+<text x="290.0" y="647.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="667.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="290.0" y="687.0" text-anchor="middle" class="t">area: GeoArea</text>
+<text x="290.0" y="707.0" text-anchor="middle" class="t">interestCategoryIds: Set&lt;CategoryId&gt;</text>
+<text x="290.0" y="727.0" text-anchor="middle" class="t">intentTags: Set&lt;TagId&gt;</text>
+<text x="290.0" y="747.0" text-anchor="middle" class="t">radiusKm: Decimal?</text>
+<text x="290.0" y="767.0" text-anchor="middle" class="t">updatedAt: Instant</text>
+<rect x="600" y="560" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="810.0" y="627.0" text-anchor="middle" class="h">CategoryMapping</text>
+<text x="810.0" y="647.0" text-anchor="middle" class="t">--</text>
+<text x="810.0" y="667.0" text-anchor="middle" class="t">sourceType: REQUEST | PROVIDER | BUSINESS</text>
+<text x="810.0" y="687.0" text-anchor="middle" class="t">sourceId: UUID</text>
+<text x="810.0" y="707.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<text x="810.0" y="727.0" text-anchor="middle" class="t">tagIds: Set&lt;TagId&gt;</text>
+<text x="810.0" y="747.0" text-anchor="middle" class="t">confidence: Decimal</text>
+<text x="810.0" y="767.0" text-anchor="middle" class="t">mappedBy: USER | AI | ADMIN</text>
+<rect x="1120" y="560" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1315.0" y="621.0" text-anchor="middle" class="h">TaxonomyVersion</text>
+<text x="1315.0" y="641.0" text-anchor="middle" class="t">--</text>
+<text x="1315.0" y="661.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1315.0" y="681.0" text-anchor="middle" class="t">version: Int</text>
+<text x="1315.0" y="701.0" text-anchor="middle" class="t">status: DRAFT | PUBLISHED | RETIRED</text>
+<text x="1315.0" y="721.0" text-anchor="middle" class="t">publishedAt: Instant?</text>
+<text x="1315.0" y="741.0" text-anchor="middle" class="t">createdBy: AccountId</text>
+<rect x="1600" y="560" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1810.0" y="631.0" text-anchor="middle" class="h">Taxonomy Events</text>
+<text x="1810.0" y="651.0" text-anchor="middle" class="t">--</text>
+<text x="1810.0" y="671.0" text-anchor="middle" class="t">TaxonomyPublished</text>
+<text x="1810.0" y="691.0" text-anchor="middle" class="t">CategoryRuleChanged</text>
+<text x="1810.0" y="711.0" text-anchor="middle" class="t">DynamicEnvironmentUpdated</text>
+<text x="1810.0" y="731.0" text-anchor="middle" class="t">CategoryMapped</text>
+<text x="1810.0" y="751.0" text-anchor="middle" class="t">MissingCategoryDetected</text>
+<polyline points="290,150 290,115 120,115 120,290 80,290" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="128" y="107" class="small">parent/child</text>
+<polyline points="500,250 600,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="232" class="small">many-to-many</text>
+<polyline points="500,290 1090,280" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1098" y="272" class="small">1 -&gt; 1</text>
+<polyline points="500,330 1600,275" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="267" class="small">1 -&gt; many versions</text>
+<polyline points="290,560 290,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="298" y="422" class="small">interests</text>
+<polyline points="810,560 290,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="298" y="422" class="small">maps to</text>
+<polyline points="1120,650 1000,650 1000,470 290,470 290,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1008" y="462" class="small">contains snapshot</text>
+<polyline points="1510,675 1600,675" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="667" class="small">emits</text>
+<polyline points="1020,690 1600,690" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="682" class="small">emits</text>
+<polyline points="500,690 1600,690" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="682" class="small">emits</text>
+<rect x="80" y="1030" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Model rule:</text>
+<text x="96" y="1072" class="t">Category tree, tags, form schemas and category rules are separate. Do not hardcode category-specific fields in client screens or backend request DTOs.</text>
+</svg>

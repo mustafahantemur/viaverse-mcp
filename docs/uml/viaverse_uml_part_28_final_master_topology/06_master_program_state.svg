@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Master Program State — From Blueprint to Scale</text>
+<rect x="120" y="180" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="270.0" y="220.0" text-anchor="middle" class="h">IDEA / BLUEPRINT</text>
+<rect x="520" y="180" width="340" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="690.0" y="220.0" text-anchor="middle" class="h">FOUNDATION_READY</text>
+<rect x="960" y="180" width="360" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1140.0" y="220.0" text-anchor="middle" class="h">ALPHA_VERTICAL_SLICE</text>
+<rect x="1440" y="180" width="420" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1650.0" y="220.0" text-anchor="middle" class="h">BETA_MARKETPLACE_READY</text>
+<rect x="1960" y="180" width="380" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="2150.0" y="220.0" text-anchor="middle" class="h">PAYMENT_TRUST_PILOT</text>
+<rect x="1960" y="520" width="420" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2170.0" y="560.0" text-anchor="middle" class="h">BUSINESS_LAUNCH_READY</text>
+<rect x="1440" y="520" width="360" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="1620.0" y="560.0" text-anchor="middle" class="h">PUBLIC_TR_LAUNCHED</text>
+<rect x="960" y="520" width="260" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1090.0" y="560.0" text-anchor="middle" class="h">SCALE_READY</text>
+<rect x="520" y="520" width="260" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="650.0" y="560.0" text-anchor="middle" class="h">GLOBAL_READY</text>
+<rect x="120" y="520" width="340" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="290.0" y="560.0" text-anchor="middle" class="h">CONTINUOUS_EVOLUTION</text>
+<polyline points="420,220 520,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="212" class="small">docs + repo + architecture</text>
+<polyline points="860,220 960,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="968" y="212" class="small">identity/profile/taxonomy</text>
+<polyline points="1320,220 1440,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="212" class="small">marketplace/chat/search</text>
+<polyline points="1860,220 1960,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1968" y="212" class="small">payment/trust</text>
+<polyline points="2150,260 2150,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="2158" y="512" class="small">merchant ops</text>
+<polyline points="1960,560 1800,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="552" class="small">launch TR</text>
+<polyline points="1440,560 1220,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1228" y="552" class="small">stabilize</text>
+<polyline points="960,560 780,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="788" y="552" class="small">localization/global payments</text>
+<polyline points="520,560 460,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="468" y="552" class="small">growth/AI/optimization</text>
+<polyline points="290,520 290,360 690,360 690,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="698" y="352" class="small">new cycle ADRs</text>
+<rect x="160" y="860" width="1700" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="884" class="t">Program rule:</text>
+<text x="176" y="902" class="t">This is not a one-time MVP track. It is a controlled product system: blueprint → foundation → launch → scale → continuous evolution.</text>
+</svg>

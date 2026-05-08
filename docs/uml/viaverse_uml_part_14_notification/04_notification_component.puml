@@ -1,0 +1,35 @@
+@startuml
+title Viaverse Notification / Inbox / Channel Delivery — Component Diagram
+
+component "KMP / Next.js Client\nInbox\nBadge count\nNotification settings" as Client
+component "API Gateway / App BFF\nInbox API\nPreferences API" as BFF
+component "Notification Event Consumer" as Consumer
+component "NotificationController\nPreferenceController" as Controller
+component "Notification Use Cases\nCreateNotification\nDispatchNotification\nMarkRead\nSendBroadcast" as UseCases
+component "Notification Policies\npreference\nquiet hours\nrate limits\npriority/digest" as Policies
+component "Ports\nInboxRepo\nDeviceRepo\nTemplatePort\nPushPort\nEmailSmsPort\nOutboxPort" as Ports
+component "identity-service\npreferences\nlocale\ndevice tokens" as Identity
+component "Provider Adapters\nFCM\nAPNs\nNetgsm\nSMTP" as Providers
+database "PostgreSQL\nnotification\nnotification_attempt\ndevice_token\npreference" as DB
+queue "Kafka / Outbox\nDomain events\nNotificationSent\nNotificationFailed" as Kafka
+component "Scheduler / Retry Worker\nbackoff\ndigest\nquiet-hour release" as Scheduler
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Kafka ..> Consumer : consume
+Consumer --> UseCases : event command
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Policies --> Identity : prefs/locale/devices
+Ports --> Providers : send
+Ports --> DB : persist
+UseCases --> Kafka : delivery events
+Scheduler ..> UseCases : retry/digest command
+
+note bottom
+Domain services publish business events only.
+Notification service decides who receives what,
+through which channel, and when.
+end note
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+title Viaverse Job Lifecycle — State Diagram
+
+[*] --> CREATED : quote accepted
+CREATED --> WAITING_PAYMENT
+WAITING_PAYMENT --> READY_TO_START : PaymentAuthorized
+READY_TO_START --> IN_PROGRESS : worker starts
+IN_PROGRESS --> DELIVERED : deliver
+DELIVERED --> REVISION_REQUESTED : needs fix
+REVISION_REQUESTED --> IN_PROGRESS : redeliver work
+DELIVERED --> COMPLETED : approved
+COMPLETED --> PAYOUT_ELIGIBLE : payout eligible
+READY_TO_START --> CANCELLED : cancel allowed
+IN_PROGRESS --> DISPUTED : problem
+DELIVERED --> DISPUTED : dispute
+DISPUTED --> REFUNDED : resolved refund
+DISPUTED --> COMPLETED : resolved complete
+
+PAYOUT_ELIGIBLE --> [*]
+CANCELLED --> [*]
+REFUNDED --> [*]
+
+note bottom
+COMPLETED proceeds to review/payout.
+CANCELLED/REFUNDED close the job.
+DISPUTED blocks payout until resolved.
+end note
+@enduml

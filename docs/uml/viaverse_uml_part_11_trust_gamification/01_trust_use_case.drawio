@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="trust-use-case" name="01 Trust Gamification Use Case">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Review / Trust / Badge / Gamification — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Trust / Review / Gamification Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="135" width="1560" height="1130" as="geometry"/>
+        </mxCell>
+        <mxCell id="requester" value="«actor»&#xa;Requester" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="provider" value="«actor»&#xa;Worker / Business" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="job" value="«actor»&#xa;Job Lifecycle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="220" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="matching" value="«actor»&#xa;Matching / Search" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="560" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;Trust Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="900" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_prompt" value="Receive review prompt&#xa;after completed job" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_review_provider" value="Review worker/business" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_review_requester" value="Review requester" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_tags" value="Add review tags&#xa;quality / punctuality / clarity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_validate" value="Validate review eligibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_publish" value="Publish moderated review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_trust" value="Recalculate trust score" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_badge" value="Evaluate badge eligibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_award" value="Award / revoke badge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_points" value="Update gamification points" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_rank" value="Update search ranking signal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_report" value="Report abusive review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_admin" value="Admin review moderation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_events" value="Emit events&#xa;ReviewSubmitted&#xa;TrustScoreUpdated&#xa;BadgeAwarded" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="JobCompleted" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="job" target="uc_prompt">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="260" as="point"/><mxPoint x="1780" y="260" as="point"/><mxPoint x="1780" y="231" as="point"/><mxPoint x="625" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="requester" target="uc_review_provider">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="320" as="point"/><mxPoint x="270" y="320" as="point"/><mxPoint x="270" y="231" as="point"/><mxPoint x="700" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="provider" target="uc_review_requester">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="800" as="point"/><mxPoint x="295" y="800" as="point"/><mxPoint x="295" y="231" as="point"/><mxPoint x="1040" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_review_provider" target="uc_tags">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="231" as="point"/><mxPoint x="1380" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_review_requester" target="uc_tags">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="231" as="point"/><mxPoint x="1380" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="submit" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_tags" target="uc_validate">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1512" y="272" as="point"/><mxPoint x="1512" y="360" as="point"/><mxPoint x="492" y="360" as="point"/><mxPoint x="492" y="450" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="eligible" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_validate" target="uc_publish">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="491" as="point"/><mxPoint x="700" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_publish" target="uc_trust">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="491" as="point"/><mxPoint x="1040" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_trust" target="uc_badge">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="491" as="point"/><mxPoint x="1380" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="badge changes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_badge" target="uc_award">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1512" y="532" as="point"/><mxPoint x="1512" y="650" as="point"/><mxPoint x="832" y="650" as="point"/><mxPoint x="832" y="720" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_award" target="uc_points">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="761" as="point"/><mxPoint x="1040" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_points" target="uc_rank">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="761" as="point"/><mxPoint x="1380" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_rank" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1512" y="802" as="point"/><mxPoint x="1512" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="requester" target="uc_report">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="320" as="point"/><mxPoint x="310" y="320" as="point"/><mxPoint x="310" y="1021" as="point"/><mxPoint x="700" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="provider" target="uc_report">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="800" as="point"/><mxPoint x="310" y="800" as="point"/><mxPoint x="310" y="1021" as="point"/><mxPoint x="700" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_report" target="uc_admin">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="1021" as="point"/><mxPoint x="1040" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_admin" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="1021" as="point"/><mxPoint x="1380" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="ranking signal" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="matching" target="uc_rank">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="600" as="point"/><mxPoint x="1780" y="600" as="point"/><mxPoint x="1780" y="761" as="point"/><mxPoint x="1645" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e19" value="moderate" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_admin">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="940" as="point"/><mxPoint x="1780" y="940" as="point"/><mxPoint x="1780" y="1021" as="point"/><mxPoint x="1305" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Rules:&#xa;Reviews are job-bound and two-sided. Trust score affects matching/search but must not expose internal risk reasons. Badges can be awarded and revoked." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1210" width="1350" height="58" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,54 @@
+@startuml
+title Viaverse Search / SEO / Growth / AI Discovery — Use Case Diagram
+left to right direction
+
+actor User
+actor "Guest / Search Engine" as Guest
+actor "Domain Services" as Domain
+actor "Growth / Admin" as Admin
+actor "AI Assistant" as AI
+
+rectangle "Search / Discovery / SEO / Growth Boundary" {
+  usecase "Search dynamic environment" as Query
+  usecase "Filter by category\nlocation / budget / rating" as Filter
+  usecase "Rank results\nrelevance + trust + freshness" as Rank
+  usecase "AI-assisted search\nintent + category suggestion" as AiSearch
+  usecase "Index public entities\nrequest / worker / business" as Index
+  usecase "Apply visibility/privacy rules" as Privacy
+  usecase "Generate SEO pages\ncategory/city/service" as Seo
+  usecase "Generate sitemap\nschema.org metadata" as Sitemap
+  usecase "Track impression/click\nprivacy-safe analytics" as Click
+  usecase "Recommend relevant content\nfeed/search blend" as Recommend
+  usecase "Experiment / A-B test" as Experiment
+  usecase "Native sponsored placement\nnon-blocking" as Ads
+  usecase "Manage SEO/growth config" as AdminConfig
+  usecase "Monitor search quality" as Quality
+  usecase "Emit events\nSearchPerformed\nEntityIndexed\nSeoPageUpdated" as Events
+}
+
+User --> Query
+Query --> Filter
+Filter --> Rank
+Rank ..> AiSearch : optional
+Domain --> Index
+Index --> Privacy
+Privacy --> Seo : public only
+Seo --> Sitemap
+User --> Click
+Click --> Recommend
+Recommend --> Experiment
+Experiment --> Ads
+Guest --> Seo
+Guest --> Sitemap
+Admin --> AdminConfig
+Admin --> Quality
+Quality --> Events
+Sitemap --> Events
+AI --> AiSearch
+AI --> Recommend
+
+note bottom
+Search can use relevance/trust/freshness/availability.
+Sponsored placement cannot bypass safety, privacy or relevance gates.
+end note
+@enduml

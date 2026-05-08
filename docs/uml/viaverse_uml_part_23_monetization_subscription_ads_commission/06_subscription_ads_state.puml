@@ -1,0 +1,27 @@
+@startuml
+title Viaverse Subscription / Sponsored Placement — State Diagram
+
+[*] --> TRIALING
+TRIALING --> ACTIVE : trial ends / paid
+ACTIVE --> PAST_DUE : charge failed
+PAST_DUE --> GRACE_PERIOD : dunning
+GRACE_PERIOD --> ACTIVE : payment recovered
+GRACE_PERIOD --> LIMITED : grace expired
+LIMITED --> ACTIVE : paid
+ACTIVE --> CANCELLED : cancel
+
+[*] --> AD_DRAFT
+AD_DRAFT --> AD_REVIEW : submit
+AD_REVIEW --> AD_LIVE : approved + budget
+AD_LIVE --> AD_PAUSED : budget cap/manual
+AD_PAUSED --> AD_LIVE : resume
+AD_LIVE --> AD_ENDED : budget/date ended
+
+CANCELLED --> [*]
+AD_ENDED --> [*]
+
+note bottom
+Subscription state gates business features; ad state gates sponsored visibility.
+Ad approval never overrides business suspension or search safety/relevance gates.
+end note
+@enduml

@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="matching-class" name="05 Matching Class Model">
+    <mxGraphModel dx="2100" dy="1450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1450" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Matching — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2020" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Snapshot" value="RequestSnapshot&#xa;--&#xa;requestId: RequestId&#xa;categoryId: CategoryId&#xa;budget: Budget&#xa;areaId: AreaId&#xa;urgency: Urgency&#xa;publishedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="330" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="Candidate" value="CandidateProvider&#xa;--&#xa;targetType: WORKER | BUSINESS&#xa;targetId: UUID&#xa;accountId: AccountId?&#xa;businessId: BusinessId?&#xa;serviceArea: AreaId&#xa;categories: Set&lt;CategoryId&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="150" width="360" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Eligibility" value="EligibilityResult&#xa;--&#xa;eligible: Boolean&#xa;reasons: List&lt;ReasonCode&gt;&#xa;capabilityStatus&#xa;accountStatus&#xa;businessStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="990" y="150" width="330" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Trust" value="TrustSummary&#xa;--&#xa;subjectId: UUID&#xa;rating: Decimal&#xa;completedJobs: Int&#xa;badges: List&lt;BadgeCode&gt;&#xa;riskLevel: RiskLevel&#xa;disputeRate: Decimal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="150" width="360" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Score" value="MatchScore&#xa;--&#xa;score: Decimal&#xa;categoryFit: Decimal&#xa;distanceScore: Decimal&#xa;budgetFit: Decimal&#xa;trustScore: Decimal&#xa;availabilityScore: Decimal&#xa;boostSignal: Decimal&#xa;riskPenalty: Decimal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="350" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="Explanation" value="MatchExplanation&#xa;--&#xa;reasonCodes: List&lt;ReasonCode&gt;&#xa;visibleReasons: List&lt;String&gt;&#xa;internalReasons: List&lt;String&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="540" width="340" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="Opportunity" value="WorkerOpportunity&#xa;--&#xa;id: UUID&#xa;requestId: RequestId&#xa;targetType: TargetType&#xa;targetId: UUID&#xa;score: Decimal&#xa;status: OpportunityStatus&#xa;expiresAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="520" width="350" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="MatchingPolicy&#xa;--&#xa;applyEligibility()&#xa;applySafetyGates()&#xa;applyFairnessWindow()&#xa;applyBoostAfterGates()&#xa;explain()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="520" width="330" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="Event" value="Matching Events&#xa;--&#xa;MatchingRequested&#xa;MatchingCompleted&#xa;WorkerOpportunityCreated&#xa;WorkerOpportunityExpired" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="800" y="900" width="400" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1" value="candidate query" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Snapshot" target="Candidate">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="410" y="250" as="point"/><mxPoint x="520" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="checked as" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Candidate" target="Eligibility">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="880" y="250" as="point"/><mxPoint x="990" y="245" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="has summary" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Candidate" target="Trust">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="880" y="210" as="point"/><mxPoint x="1430" y="210" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="features" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Snapshot" target="Score">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="350" as="point"/><mxPoint x="245" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="features" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Candidate" target="Score">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="700" y="370" as="point"/><mxPoint x="700" y="470" as="point"/><mxPoint x="255" y="470" as="point"/><mxPoint x="255" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="gates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Eligibility" target="Policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1160" y="340" as="point"/><mxPoint x="1160" y="470" as="point"/><mxPoint x="1655" y="470" as="point"/><mxPoint x="1655" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="risk/trust" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Trust" target="Policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1610" y="370" as="point"/><mxPoint x="1610" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="reason codes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Score" target="Explanation">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="430" y="650" as="point"/><mxPoint x="550" y="625" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="stored with" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Explanation" target="Opportunity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="890" y="625" as="point"/><mxPoint x="1030" y="635" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="decides eligibility" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Opportunity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1490" y="620" as="point"/><mxPoint x="1380" y="620" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Opportunity" target="Event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1205" y="750" as="point"/><mxPoint x="1205" y="860" as="point"/><mxPoint x="1000" y="860" as="point"/><mxPoint x="1000" y="900" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Class rule:&#xa;Visible reasons are safe user-facing explanations. Internal reasons may include risk/fraud signals and must not be exposed to normal users." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1160" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Privacy / KVKK Data Subject Request — Sequence Diagram
+
+actor User
+participant "Client" as Client
+participant "API Gateway / BFF" as BFF
+participant "privacy-service" as Privacy
+participant "identity-service" as Identity
+participant "Domain Services" as Domains
+participant "audit-service" as Audit
+queue "Outbox / Kafka" as Kafka
+
+User -> Client : request export/delete/correction
+Client -> BFF : POST /privacy/requests
+BFF -> Privacy : createDSAR(command)
+Privacy -> Identity : verify account ownership
+Identity --> Privacy : verified
+Privacy -> Domains : collect/export or delete/anonymize commands
+Domains --> Privacy : completion receipts
+Privacy -> Audit : write DSAR audit log
+Privacy -> Kafka : DataExportReady / DataDeleted / ConsentChanged
+Privacy --> BFF : request status/result
+BFF --> Client : show result / download link
+
+note bottom
+privacy-service coordinates user rights.
+Domain services execute their own export/delete/anonymize logic and return receipts.
+end note
+@enduml

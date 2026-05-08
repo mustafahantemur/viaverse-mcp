@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="request-create-component" name="04 Request Creation Component">
+    <mxGraphModel dx="2000" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Request Creation — Component Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1920" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="KMP / Next.js Client&#xa;--&#xa;Create sheet&#xa;Request wizard&#xa;Draft state" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="270" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="API Gateway / App BFF&#xa;--&#xa;Request API&#xa;AI facade&#xa;Media facade" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="450" y="180" width="300" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="controller" value="RequestController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="850" y="140" width="250" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="usecase" value="Request Use Cases&#xa;--&#xa;CreateDraft&#xa;UpdateDraft&#xa;PublishRequest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="850" y="260" width="290" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="policy" value="Request Policies&#xa;--&#xa;capability&#xa;required fields&#xa;privacy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="850" y="440" width="290" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="repo" value="RequestRepositoryPort&#xa;CategoryPort&#xa;OutboxPort" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="850" y="620" width="290" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="pg" value="PostgreSQL&#xa;--&#xa;service_request&#xa;request_media&#xa;outbox_event" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="250" width="310" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="media" value="media-service&#xa;--&#xa;UploadSession&#xa;MediaAsset" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="450" width="310" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="search" value="search/matching consumers&#xa;--&#xa;OpenSearch projection&#xa;Worker opportunity queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="650" width="340" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="ai" value="AI Provider Adapter&#xa;--&#xa;category suggestion&#xa;budget guidance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#4B5563;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="180" width="270" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="maps" value="MapProvider&#xa;--&#xa;geocode&#xa;area normalize" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#4B5563;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="380" width="270" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Kafka / Spring Cloud Stream&#xa;--&#xa;ServiceRequestPublished&#xa;MatchingRequested" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="650" width="270" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="REST" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="client" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="350" y="240" as="point"/><mxPoint x="450" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="REST" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="controller">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="750" y="240" as="point"/><mxPoint x="800" y="240" as="point"/><mxPoint x="800" y="175" as="point"/><mxPoint x="850" y="175" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="command" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="controller" target="usecase">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="975" y="210" as="point"/><mxPoint x="975" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="validate" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="usecase" target="policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="995" y="380" as="point"/><mxPoint x="995" y="440" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="ports" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="policy" target="repo">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="995" y="560" as="point"/><mxPoint x="995" y="620" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="JPA adapter" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="repo" target="pg">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="675" as="point"/><mxPoint x="1190" y="675" as="point"/><mxPoint x="1190" y="315" as="point"/><mxPoint x="1250" y="315" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="suggestions" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="ai">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="750" y="220" as="point"/><mxPoint x="1650" y="220" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="upload session" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="media">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="750" y="260" as="point"/><mxPoint x="800" y="260" as="point"/><mxPoint x="800" y="505" as="point"/><mxPoint x="1250" y="505" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c9" value="normalize location" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="usecase" target="maps">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="320" as="point"/><mxPoint x="1580" y="320" as="point"/><mxPoint x="1580" y="435" as="point"/><mxPoint x="1650" y="435" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c10" value="outbox publish" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="usecase" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="330" as="point"/><mxPoint x="1600" y="330" as="point"/><mxPoint x="1600" y="715" as="point"/><mxPoint x="1650" y="715" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c11" value="consume" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="kafka" target="search">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1650" y="715" as="point"/><mxPoint x="1590" y="715" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Boundary rule:&#xa;marketplace-service owns ServiceRequest source-of-truth. AI, Media and Maps are adapters/integrations, not owners of the request." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="880" width="1500" height="65" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

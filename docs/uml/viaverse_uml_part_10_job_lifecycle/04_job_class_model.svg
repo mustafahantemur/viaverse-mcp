@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Job Lifecycle / Delivery Approval — Class Model</text>
+
+<rect x="80" y="150" width="420" height="300" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="192.0" text-anchor="middle" class="h">Job</text>
+<text x="290.0" y="212.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="232.0" text-anchor="middle" class="t">id: JobId</text>
+<text x="290.0" y="252.0" text-anchor="middle" class="t">requestId: RequestId</text>
+<text x="290.0" y="272.0" text-anchor="middle" class="t">acceptedQuoteId: QuoteId</text>
+<text x="290.0" y="292.0" text-anchor="middle" class="t">requesterAccountId: AccountId</text>
+<text x="290.0" y="312.0" text-anchor="middle" class="t">providerType: WORKER | BUSINESS</text>
+<text x="290.0" y="332.0" text-anchor="middle" class="t">providerId: UUID</text>
+<text x="290.0" y="352.0" text-anchor="middle" class="t">status: JobStatus</text>
+<text x="290.0" y="372.0" text-anchor="middle" class="t">scheduledStart: Instant?</text>
+<text x="290.0" y="392.0" text-anchor="middle" class="t">startedAt: Instant?</text>
+<text x="290.0" y="412.0" text-anchor="middle" class="t">deliveredAt: Instant?</text>
+<text x="290.0" y="432.0" text-anchor="middle" class="t">completedAt: Instant?</text>
+<rect x="600" y="150" width="360" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="780.0" y="188.0" text-anchor="middle" class="h">JobDelivery</text>
+<text x="780.0" y="208.0" text-anchor="middle" class="t">--</text>
+<text x="780.0" y="228.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="780.0" y="248.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="780.0" y="268.0" text-anchor="middle" class="t">message: String?</text>
+<text x="780.0" y="288.0" text-anchor="middle" class="t">mediaRefs: List&lt;MediaId&gt;</text>
+<text x="780.0" y="308.0" text-anchor="middle" class="t">status: DeliveryStatus</text>
+<text x="780.0" y="328.0" text-anchor="middle" class="t">submittedAt: Instant</text>
+<text x="780.0" y="348.0" text-anchor="middle" class="t">reviewedAt: Instant?</text>
+<rect x="1060" y="150" width="350" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1235.0" y="187.0" text-anchor="middle" class="h">JobUpdate</text>
+<text x="1235.0" y="207.0" text-anchor="middle" class="t">--</text>
+<text x="1235.0" y="227.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1235.0" y="247.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="1235.0" y="267.0" text-anchor="middle" class="t">actorAccountId: AccountId</text>
+<text x="1235.0" y="287.0" text-anchor="middle" class="t">type: UpdateType</text>
+<text x="1235.0" y="307.0" text-anchor="middle" class="t">message: String?</text>
+<text x="1235.0" y="327.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1510" y="150" width="360" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1690.0" y="197.0" text-anchor="middle" class="h">JobPolicy</text>
+<text x="1690.0" y="217.0" text-anchor="middle" class="t">--</text>
+<text x="1690.0" y="237.0" text-anchor="middle" class="t">canStartJob()</text>
+<text x="1690.0" y="257.0" text-anchor="middle" class="t">canDeliver()</text>
+<text x="1690.0" y="277.0" text-anchor="middle" class="t">canApproveDelivery()</text>
+<text x="1690.0" y="297.0" text-anchor="middle" class="t">canCancel()</text>
+<text x="1690.0" y="317.0" text-anchor="middle" class="t">canOpenDispute()</text>
+<text x="1690.0" y="337.0" text-anchor="middle" class="t">canRevealExactAddress()</text>
+<rect x="80" y="550" width="400" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="280.0" y="601.0" text-anchor="middle" class="h">JobPaymentState</text>
+<text x="280.0" y="621.0" text-anchor="middle" class="t">--</text>
+<text x="280.0" y="641.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="280.0" y="661.0" text-anchor="middle" class="t">paymentSessionId: UUID</text>
+<text x="280.0" y="681.0" text-anchor="middle" class="t">paymentStatus: PaymentStatus</text>
+<text x="280.0" y="701.0" text-anchor="middle" class="t">payoutStatus: PayoutStatus</text>
+<text x="280.0" y="721.0" text-anchor="middle" class="t">payoutEligibleAt: Instant?</text>
+<rect x="600" y="550" width="360" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="780.0" y="592.0" text-anchor="middle" class="h">ReviewPrompt</text>
+<text x="780.0" y="612.0" text-anchor="middle" class="t">--</text>
+<text x="780.0" y="632.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="780.0" y="652.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="780.0" y="672.0" text-anchor="middle" class="t">reviewerAccountId: AccountId</text>
+<text x="780.0" y="692.0" text-anchor="middle" class="t">revieweeId: UUID</text>
+<text x="780.0" y="712.0" text-anchor="middle" class="t">status: PromptStatus</text>
+<text x="780.0" y="732.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1060" y="550" width="350" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1235.0" y="591.0" text-anchor="middle" class="h">JobDisputeRef</text>
+<text x="1235.0" y="611.0" text-anchor="middle" class="t">--</text>
+<text x="1235.0" y="631.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="1235.0" y="651.0" text-anchor="middle" class="t">disputeId: UUID</text>
+<text x="1235.0" y="671.0" text-anchor="middle" class="t">status: DisputeStatus</text>
+<text x="1235.0" y="691.0" text-anchor="middle" class="t">payoutBlocked: Boolean</text>
+<text x="1235.0" y="711.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1510" y="550" width="380" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1700.0" y="593.0" text-anchor="middle" class="h">Job Events</text>
+<text x="1700.0" y="613.0" text-anchor="middle" class="t">--</text>
+<text x="1700.0" y="633.0" text-anchor="middle" class="t">JobCreated</text>
+<text x="1700.0" y="653.0" text-anchor="middle" class="t">JobPaymentAuthorized</text>
+<text x="1700.0" y="673.0" text-anchor="middle" class="t">JobStarted</text>
+<text x="1700.0" y="693.0" text-anchor="middle" class="t">JobDelivered</text>
+<text x="1700.0" y="713.0" text-anchor="middle" class="t">DeliveryApproved</text>
+<text x="1700.0" y="733.0" text-anchor="middle" class="t">JobCompleted</text>
+<text x="1700.0" y="753.0" text-anchor="middle" class="t">PayoutEligible</text>
+<polyline points="500,260 600,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="242" class="small">1 -&gt; many</text>
+<polyline points="500,300 1060,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1068" y="242" class="small">1 -&gt; many</text>
+<polyline points="1510,250 500,250" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="508" y="242" class="small">validates</text>
+<polyline points="290,450 290,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="298" y="542" class="small">1 -&gt; one</text>
+<polyline points="500,380 780,380 780,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="788" y="372" class="small">completion creates</text>
+<polyline points="500,420 1235,420 1235,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1243" y="412" class="small">may have</text>
+<polyline points="500,430 1700,430 1700,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1708" y="422" class="small">emits</text>
+<polyline points="960,250 1510,650" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1518" y="642" class="small">emits</text>
+<polyline points="480,650 1510,650" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1518" y="642" class="small">payout eligible</text>
+<rect x="80" y="1010" width="1580" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1034" class="t">Domain rule:</text>
+<text x="96" y="1052" class="t">Job lifecycle owns work status; payment-service owns money movement. Job stores payment/payout state references, not provider payment logic.</text>
+</svg>

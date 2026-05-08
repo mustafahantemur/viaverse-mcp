@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Security / Privacy / KVKK — Use Case Diagram</text>
+
+<rect x="270" y="135" width="1560" height="1130" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="286" y="160" class="h">Security / Privacy / KVKK Boundary</text>
+<rect x="60" y="260" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="291.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="311.0" text-anchor="middle" class="t">User</text>
+<rect x="60" y="620" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="651.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="671.0" text-anchor="middle" class="t">Admin / DPO</text>
+<rect x="60" y="980" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="1011.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="1031.0" text-anchor="middle" class="t">Backend Services</text>
+<rect x="1900" y="230" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="261.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="281.0" text-anchor="middle" class="t">identity-service</text>
+<rect x="1900" y="560" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="591.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="611.0" text-anchor="middle" class="t">Secrets / KMS</text>
+<rect x="1900" y="900" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="931.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="951.0" text-anchor="middle" class="t">Audit / Compliance</text>
+<rect x="360" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="222.0" text-anchor="middle" class="h">Secure login</text>
+<text x="492.5" y="242.0" text-anchor="middle" class="t">OTP / social / passkey later</text>
+<rect x="700" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="231.0" text-anchor="middle" class="h">Issue JWT / refresh token</text>
+<rect x="1040" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="222.0" text-anchor="middle" class="h">Authorize capability</text>
+<text x="1172.5" y="242.0" text-anchor="middle" class="t">RBAC / ABAC / ownership</text>
+<rect x="1380" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="231.0" text-anchor="middle" class="h">Rate limit / abuse guard</text>
+<rect x="360" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="482.0" text-anchor="middle" class="h">Manage consent</text>
+<text x="492.5" y="502.0" text-anchor="middle" class="t">KVKK/privacy/cookies</text>
+<rect x="700" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="482.0" text-anchor="middle" class="h">Data subject request</text>
+<text x="832.5" y="502.0" text-anchor="middle" class="t">export/delete/correct</text>
+<rect x="1040" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="482.0" text-anchor="middle" class="h">Data minimization</text>
+<text x="1172.5" y="502.0" text-anchor="middle" class="t">purpose limitation</text>
+<rect x="1380" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="491.0" text-anchor="middle" class="h">Retention / deletion policy</text>
+<rect x="360" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="752.0" text-anchor="middle" class="h">Encrypt sensitive data</text>
+<text x="492.5" y="772.0" text-anchor="middle" class="t">at rest + in transit</text>
+<rect x="700" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="752.0" text-anchor="middle" class="h">Access secrets</text>
+<text x="832.5" y="772.0" text-anchor="middle" class="t">External Secrets + KMS</text>
+<rect x="1040" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="761.0" text-anchor="middle" class="h">Audit sensitive access</text>
+<rect x="1380" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="761.0" text-anchor="middle" class="h">Security incident response</text>
+<rect x="700" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="1021.0" text-anchor="middle" class="h">Manage privacy/security policy</text>
+<rect x="1040" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="1021.0" text-anchor="middle" class="h">Review risk/compliance</text>
+<rect x="1380" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="994.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1512.5" y="1014.0" text-anchor="middle" class="t">ConsentChanged</text>
+<text x="1512.5" y="1034.0" text-anchor="middle" class="t">DataDeleted</text>
+<text x="1512.5" y="1054.0" text-anchor="middle" class="t">IncidentRaised</text>
+<polyline points="245,300 270,300 270,231 360,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="625,231 700,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,231 1040,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,231 1380,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,300 300,300 300,491 360,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,300 310,300 310,491 700,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,491 1040,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,491 1380,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1020 300,1020 300,761 360,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1020 310,1020 310,761 700,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="625,761 1040,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,761 1040,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,761 1380,761" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1388" y="753" class="small">if suspicious</text>
+<polyline points="245,660 320,660 320,1021 700,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,660 330,660 330,1021 1040,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,1021 1380,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,532 1512,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,270 1780,270 1780,231 965,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="223" class="small">tokens</text>
+<polyline points="1900,270 1780,270 1780,231 1305,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="223" class="small">claims/policies</text>
+<polyline points="1900,600 1780,600 1780,761 965,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="753" class="small">secret material</text>
+<polyline points="1900,940 1780,940 1780,761 1305,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="753" class="small">immutable log</text>
+<rect x="360" y="1210" width="1400" height="58" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="376" y="1234" class="t">Rules:</text>
+<text x="376" y="1252" class="t">Authentication, authorization, consent, retention and audit are platform-level controls. Domain services must not bypass security policy or direct secret access.</text>
+</svg>

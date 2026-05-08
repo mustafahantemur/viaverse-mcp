@@ -1,0 +1,139 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="taxonomy-use-case" name="01 Taxonomy Use Case">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Category / Taxonomy / Dynamic Environment — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Taxonomy / Dynamic Environment Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="135" width="1560" height="1130" as="geometry"/>
+        </mxCell>
+        <mxCell id="user" value="«actor»&#xa;User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="worker" value="«actor»&#xa;Worker / Business" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="610" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;Admin / Content Ops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="970" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="search" value="«actor»&#xa;Search / Matching" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="230" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="localization" value="«actor»&#xa;Localization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="560" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="analytics" value="«actor»&#xa;Analytics / AI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="900" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_env" value="Configure dynamic environment&#xa;area + interests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_category" value="Browse category tree" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_tags" value="Select tags / intents" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_feed" value="Personalized feed filters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_post" value="Create request with category&#xa;budget + urgency" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_offer" value="Map provider capabilities&#xa;categories + service area" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_match" value="Match request to providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_rank" value="Rank by relevance&#xa;trust + distance + availability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_admin" value="Manage taxonomy&#xa;category/tag/forms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_rules" value="Manage category rules&#xa;fields/fees/risk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_local" value="Localize category labels&#xa;TR/EN slugs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_publish" value="Publish taxonomy version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_quality" value="Analyze taxonomy quality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ai" value="AI category suggestion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_events" value="Emit events&#xa;TaxonomyPublished&#xa;CategoryMapped" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_env">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="300" as="point"/><mxPoint x="270" y="300" as="point"/><mxPoint x="270" y="232" as="point"/><mxPoint x="360" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_env" target="uc_category">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="232" as="point"/><mxPoint x="700" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_category" target="uc_tags">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="232" as="point"/><mxPoint x="1040" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_tags" target="uc_feed">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="232" as="point"/><mxPoint x="1380" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_post">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="300" as="point"/><mxPoint x="300" y="300" as="point"/><mxPoint x="300" y="492" as="point"/><mxPoint x="360" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="worker" target="uc_offer">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="650" as="point"/><mxPoint x="300" y="650" as="point"/><mxPoint x="300" y="492" as="point"/><mxPoint x="700" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_post" target="uc_match">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="492" as="point"/><mxPoint x="1040" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_offer" target="uc_match">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="492" as="point"/><mxPoint x="1040" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_match" target="uc_rank">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="492" as="point"/><mxPoint x="1380" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_admin">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="1010" as="point"/><mxPoint x="300" y="1010" as="point"/><mxPoint x="300" y="762" as="point"/><mxPoint x="360" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_admin" target="uc_rules">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="762" as="point"/><mxPoint x="700" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_rules" target="uc_local">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="762" as="point"/><mxPoint x="1040" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_local" target="uc_publish">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="762" as="point"/><mxPoint x="1380" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_publish" target="uc_quality">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1520" y="804" as="point"/><mxPoint x="1520" y="900" as="point"/><mxPoint x="840" y="900" as="point"/><mxPoint x="840" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_quality" target="uc_ai">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="1022" as="point"/><mxPoint x="1040" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_ai" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="1022" as="point"/><mxPoint x="1380" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="query/index" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="search" target="uc_match">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="270" as="point"/><mxPoint x="1780" y="270" as="point"/><mxPoint x="1780" y="492" as="point"/><mxPoint x="1320" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="labels/slugs" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="localization" target="uc_local">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="600" as="point"/><mxPoint x="1780" y="600" as="point"/><mxPoint x="1780" y="762" as="point"/><mxPoint x="1320" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e19" value="suggestion/quality" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="analytics" target="uc_ai">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="940" as="point"/><mxPoint x="1780" y="940" as="point"/><mxPoint x="1780" y="1022" as="point"/><mxPoint x="1320" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Rules:&#xa;'Dinamik çevre' fixed neighborhood değildir. Kullanıcı kendi area, interest, category ve intent sinyallerine göre feed/search/matching kapsamını belirler." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1210" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

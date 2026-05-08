@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Payment / Wallet — State Diagram</text>
+
+<rect x="120" y="190" width="220" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="230.0" y="230.0" text-anchor="middle" class="h">CREATED</text>
+<rect x="500" y="190" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="610.0" y="230.0" text-anchor="middle" class="h">PENDING</text>
+<rect x="880" y="190" width="250" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1005.0" y="230.0" text-anchor="middle" class="h">AUTHORIZED</text>
+<rect x="1280" y="190" width="240" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1400.0" y="230.0" text-anchor="middle" class="h">CAPTURED</text>
+<rect x="500" y="500" width="220" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="610.0" y="540.0" text-anchor="middle" class="h">FAILED</text>
+<rect x="120" y="500" width="250" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="245.0" y="540.0" text-anchor="middle" class="h">CANCELLED</text>
+<rect x="880" y="500" width="320" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1040.0" y="540.0" text-anchor="middle" class="h">REFUND_REQUESTED</text>
+<rect x="1280" y="500" width="240" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1400.0" y="540.0" text-anchor="middle" class="h">REFUNDED</text>
+<rect x="120" y="820" width="260" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="250.0" y="860.0" text-anchor="middle" class="h">PAYOUT_HELD</text>
+<rect x="500" y="820" width="300" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="650.0" y="860.0" text-anchor="middle" class="h">PAYOUT_ELIGIBLE</text>
+<rect x="880" y="820" width="320" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1040.0" y="860.0" text-anchor="middle" class="h">PAYOUT_RELEASED</text>
+<rect x="1280" y="820" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1430.0" y="860.0" text-anchor="middle" class="h">PAYOUT_BLOCKED</text>
+<polyline points="340,230 500,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="222" class="small">provider session created</text>
+<polyline points="720,230 880,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="222" class="small">provider success</text>
+<polyline points="1130,230 1280,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="222" class="small">capture/settle</text>
+<polyline points="610,270 610,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="618" y="492" class="small">provider failure</text>
+<polyline points="500,230 245,230 245,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="253" y="222" class="small">expired/cancelled</text>
+<polyline points="1400,270 1400,410 1040,410 1040,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="402" class="small">refund requested</text>
+<polyline points="1200,540 1280,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="532" class="small">approved + provider refund</text>
+<polyline points="1280,230 250,230 250,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="258" y="222" class="small">job not completed yet</text>
+<polyline points="380,860 500,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="852" class="small">job completed/no dispute</text>
+<polyline points="800,860 880,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="852" class="small">admin/system release</text>
+<polyline points="800,860 1280,860" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1288" y="852" class="small">dispute/risk</text>
+<polyline points="1280,900 1220,940 650,940 650,900" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="658" y="932" class="small">resolved</text>
+<rect x="160" y="1120" width="1420" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1144" class="t">State separation:</text>
+<text x="176" y="1162" class="t">Payment status and payout status are related but separate. Disputes block payout without necessarily changing captured payment state.</text>
+</svg>

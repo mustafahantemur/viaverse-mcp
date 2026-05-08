@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="worker-onboarding-use-case" name="01 Worker Onboarding Use Case">
+    <mxGraphModel dx="2100" dy="1450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1450" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Worker Onboarding — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2020" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Work Mode / Individual Worker Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="135" width="1480" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="account" value="«actor»&#xa;Authenticated Account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="170" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="worker" value="«actor»&#xa;Worker&#xa;DO_WORK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="690" width="170" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="«actor»&#xa;identity-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="230" width="170" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="media" value="«actor»&#xa;media-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="520" width="170" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="matching" value="«actor»&#xa;Matching Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="820" width="170" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_enable" value="Enable Work Mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="190" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_eligibility" value="Check account eligibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="190" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_profile" value="Create worker profile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="190" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_categories" value="Select categories&#xa;and skills" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="390" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_area" value="Set service area" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="390" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_availability" value="Set availability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="390" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_price" value="Set price preferences&#xa;optional" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="390" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_portfolio" value="Add portfolio media" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="610" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_verify" value="Submit verification&#xa;if required" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="610" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_publish" value="Publish worker profile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="610" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_opportunities" value="View opportunity queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="610" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_offer" value="Open matched request&#xa;and send free offer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="840" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_pause" value="Pause / resume work mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="840" width="250" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="account" target="uc_enable">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="230" y="360" as="point"/><mxPoint x="250" y="360" as="point"/><mxPoint x="250" y="229" as="point"/><mxPoint x="340" y="229" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_enable" target="uc_eligibility">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="590" y="229" as="point"/><mxPoint x="660" y="229" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="allowed" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_eligibility" target="uc_profile">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="910" y="229" as="point"/><mxPoint x="980" y="229" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="next" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_profile" target="uc_categories">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1105" y="268" as="point"/><mxPoint x="1105" y="320" as="point"/><mxPoint x="465" y="320" as="point"/><mxPoint x="465" y="390" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_categories" target="uc_area">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="590" y="429" as="point"/><mxPoint x="660" y="429" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_area" target="uc_availability">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="910" y="429" as="point"/><mxPoint x="980" y="429" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="optional" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_availability" target="uc_price">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1230" y="429" as="point"/><mxPoint x="1300" y="429" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="next" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_price" target="uc_portfolio">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1425" y="468" as="point"/><mxPoint x="1425" y="540" as="point"/><mxPoint x="465" y="540" as="point"/><mxPoint x="465" y="610" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_portfolio" target="uc_verify">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="590" y="649" as="point"/><mxPoint x="660" y="649" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="approved/not required" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_verify" target="uc_publish">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="910" y="649" as="point"/><mxPoint x="980" y="649" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_publish" target="uc_opportunities">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1230" y="649" as="point"/><mxPoint x="1300" y="649" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="worker" target="uc_opportunities">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="230" y="730" as="point"/><mxPoint x="250" y="730" as="point"/><mxPoint x="250" y="649" as="point"/><mxPoint x="1300" y="649" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_opportunities" target="uc_offer">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1425" y="688" as="point"/><mxPoint x="1425" y="780" as="point"/><mxPoint x="1105" y="780" as="point"/><mxPoint x="1105" y="840" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="worker" target="uc_pause">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="230" y="730" as="point"/><mxPoint x="250" y="730" as="point"/><mxPoint x="250" y="879" as="point"/><mxPoint x="1300" y="879" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="capability/status" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="uc_eligibility">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1810" y="269" as="point"/><mxPoint x="1660" y="269" as="point"/><mxPoint x="1660" y="229" as="point"/><mxPoint x="910" y="229" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="media refs" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="media" target="uc_portfolio">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1810" y="559" as="point"/><mxPoint x="1630" y="559" as="point"/><mxPoint x="1630" y="649" as="point"/><mxPoint x="590" y="649" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="matched requests" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="matching" target="uc_opportunities">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1810" y="859" as="point"/><mxPoint x="1660" y="859" as="point"/><mxPoint x="1660" y="649" as="point"/><mxPoint x="1550" y="649" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Rules:&#xa;Work Mode is a capability over the same Account. Sending offers is free. Worker visibility depends on eligibility, trust, area, category and availability." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1060" width="1280" height="58" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

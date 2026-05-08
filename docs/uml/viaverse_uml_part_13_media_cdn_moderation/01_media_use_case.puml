@@ -1,0 +1,55 @@
+@startuml
+title Viaverse Media Upload / CDN / Moderation — Use Case Diagram
+left to right direction
+
+actor "User\nRequester / Worker / Business" as User
+actor "Moderation Admin" as Admin
+actor "S3 / Object Storage" as Storage
+actor "CloudFront CDN" as CDN
+actor "AI / Moderation Service" as Moderation
+
+rectangle "Media Upload / CDN / Moderation Boundary" {
+  usecase "Request upload session" as Session
+  usecase "Validate media policy\ncontext + size + type" as Policy
+  usecase "Generate presigned URL" as Presign
+  usecase "Client direct upload" as Upload
+  usecase "Confirm upload" as Confirm
+  usecase "Strip EXIF / metadata" as Strip
+  usecase "Create thumbnail" as Thumb
+  usecase "Transcode video\nif needed" as Transcode
+  usecase "Moderation scan\nNSFW / violence / abuse" as Scan
+  usecase "Approve / reject media" as Status
+  usecase "Attach media to context\nrequest / profile / chat / delivery" as Attach
+  usecase "Deliver via CDN\nsigned/public URL policy" as Deliver
+  usecase "Report media" as Report
+  usecase "Admin moderation review" as AdminReview
+  usecase "Emit events\nMediaUploaded\nMediaApproved\nMediaRejected" as Events
+}
+
+User --> Session
+Session --> Policy
+Policy --> Presign
+Presign --> Upload
+Upload --> Confirm
+Confirm --> Strip
+Strip --> Thumb
+Thumb --> Transcode
+Transcode --> Scan
+Scan --> Status
+Status --> Attach
+Attach --> Deliver
+User --> Report
+Admin --> AdminReview
+Report --> AdminReview
+AdminReview ..> Status : override
+Status --> Events
+Storage --> Upload
+Storage --> Strip
+CDN --> Deliver
+Moderation --> Scan
+
+note bottom
+Media is uploaded directly to object storage via presigned URL.
+App stores references and moderation state, not binary blobs.
+end note
+@enduml

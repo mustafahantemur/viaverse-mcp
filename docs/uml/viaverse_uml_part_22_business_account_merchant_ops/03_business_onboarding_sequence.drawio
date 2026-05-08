@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="business-sequence" name="03 Business Onboarding Sequence">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Business Account Onboarding — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="Client / Business UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="179" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="API Gateway / BFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="449" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="biz" value="business-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="biz_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="719" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="identity-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="989" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="media" value="media-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="media_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1259" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="billing" value="billing/payment-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="billing_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1529" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="search" value="search-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="search_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1799" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Outbox / Kafka" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2069" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="POST /businesses" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="client" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="280" y="260" as="point"/><mxPoint x="350" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="createBusiness(command)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="biz">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="310" as="point"/><mxPoint x="620" y="310" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="grant/check OPERATE_BUSINESS capability" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="biz" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="390" as="point"/><mxPoint x="890" y="390" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="attach logo/photos mediaIds" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="biz" target="media">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="480" as="point"/><mxPoint x="1160" y="480" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="create trial/subscription profile" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="biz" target="billing">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="570" as="point"/><mxPoint x="1430" y="570" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="publish-ready policy" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="biz" target="biz">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="720" y="660" as="point"/><mxPoint x="820" y="660" as="point"/><mxPoint x="820" y="720" as="point"/><mxPoint x="720" y="720" as="point"/><mxPoint x="720" y="660" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="index public business projection" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="biz" target="search">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="810" as="point"/><mxPoint x="1700" y="810" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="BusinessCreated/BusinessPublished" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="biz" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="910" as="point"/><mxPoint x="1970" y="910" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="business status DTO" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="biz" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="620" y="1030" as="point"/><mxPoint x="550" y="1030" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="render onboarding progress" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="client">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="350" y="1110" as="point"/><mxPoint x="280" y="1110" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Sequence focus:&#xa;business-service owns business profile/branches/catalog. Identity owns account/capability. Billing owns plan/subscription. Search owns public projection." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1320" width="1780" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

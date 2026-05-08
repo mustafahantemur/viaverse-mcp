@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Domain Ownership / Source-of-Truth Matrix</text>
+<rect x="60" y="130" width="2480" height="1320" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">Domain Ownership / Source-of-Truth Matrix</text>
+<rect x="120" y="220" width="430" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="335.0" y="274.0" text-anchor="middle" class="h">identity-service</text>
+<text x="335.0" y="292.0" text-anchor="middle" class="t">Owns:</text>
+<text x="335.0" y="310.0" text-anchor="middle" class="t">Account / session / auth methods / capabilities</text>
+<text x="335.0" y="328.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="335.0" y="346.0" text-anchor="middle" class="t">AccountCreated / CapabilityGranted</text>
+<rect x="620" y="220" width="430" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="835.0" y="274.0" text-anchor="middle" class="h">profile-service</text>
+<text x="835.0" y="292.0" text-anchor="middle" class="t">Owns:</text>
+<text x="835.0" y="310.0" text-anchor="middle" class="t">public/private profile / locale / settings</text>
+<text x="835.0" y="328.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="835.0" y="346.0" text-anchor="middle" class="t">ProfileUpdated / LocaleChanged</text>
+<rect x="1120" y="220" width="430" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1335.0" y="274.0" text-anchor="middle" class="h">taxonomy-service</text>
+<text x="1335.0" y="292.0" text-anchor="middle" class="t">Owns:</text>
+<text x="1335.0" y="310.0" text-anchor="middle" class="t">category tree / tags / form schemas</text>
+<text x="1335.0" y="328.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="1335.0" y="346.0" text-anchor="middle" class="t">TaxonomyPublished / CategoryMapped</text>
+<rect x="1620" y="220" width="430" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1835.0" y="274.0" text-anchor="middle" class="h">marketplace-service</text>
+<text x="1835.0" y="292.0" text-anchor="middle" class="t">Owns:</text>
+<text x="1835.0" y="310.0" text-anchor="middle" class="t">request / offer / job lifecycle</text>
+<text x="1835.0" y="328.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="1835.0" y="346.0" text-anchor="middle" class="t">RequestCreated / OfferAccepted / JobCompleted</text>
+<rect x="120" y="500" width="430" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="335.0" y="554.0" text-anchor="middle" class="h">business-service</text>
+<text x="335.0" y="572.0" text-anchor="middle" class="t">Owns:</text>
+<text x="335.0" y="590.0" text-anchor="middle" class="t">business account / branch / staff / catalog</text>
+<text x="335.0" y="608.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="335.0" y="626.0" text-anchor="middle" class="t">BusinessPublished / CatalogUpdated</text>
+<rect x="620" y="500" width="430" height="180" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="835.0" y="554.0" text-anchor="middle" class="h">payment-service</text>
+<text x="835.0" y="572.0" text-anchor="middle" class="t">Owns:</text>
+<text x="835.0" y="590.0" text-anchor="middle" class="t">payment intent / provider state / payout instruction</text>
+<text x="835.0" y="608.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="835.0" y="626.0" text-anchor="middle" class="t">PaymentCaptured / PayoutCalculated</text>
+<rect x="1120" y="500" width="430" height="180" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1335.0" y="554.0" text-anchor="middle" class="h">monetization-service</text>
+<text x="1335.0" y="572.0" text-anchor="middle" class="t">Owns:</text>
+<text x="1335.0" y="590.0" text-anchor="middle" class="t">subscription / commission rules / sponsored placement</text>
+<text x="1335.0" y="608.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="1335.0" y="626.0" text-anchor="middle" class="t">SubscriptionStarted / CommissionCharged</text>
+<rect x="1620" y="500" width="430" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1835.0" y="554.0" text-anchor="middle" class="h">chat-service</text>
+<text x="1835.0" y="572.0" text-anchor="middle" class="t">Owns:</text>
+<text x="1835.0" y="590.0" text-anchor="middle" class="t">conversation / message / receipt / report</text>
+<text x="1835.0" y="608.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="1835.0" y="626.0" text-anchor="middle" class="t">MessageSent / ChatReported</text>
+<rect x="120" y="780" width="430" height="180" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="335.0" y="843.0" text-anchor="middle" class="h">search-service</text>
+<text x="335.0" y="861.0" text-anchor="middle" class="t">Owns:</text>
+<text x="335.0" y="879.0" text-anchor="middle" class="t">search projection / ranking config / SEO feed</text>
+<text x="335.0" y="897.0" text-anchor="middle" class="t">Consumes projections, not authority</text>
+<rect x="620" y="780" width="430" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="835.0" y="834.0" text-anchor="middle" class="h">trust-service</text>
+<text x="835.0" y="852.0" text-anchor="middle" class="t">Owns:</text>
+<text x="835.0" y="870.0" text-anchor="middle" class="t">reviews / ratings / badges / trust score</text>
+<text x="835.0" y="888.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="835.0" y="906.0" text-anchor="middle" class="t">ReviewSubmitted / BadgeAwarded</text>
+<rect x="1120" y="780" width="430" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1335.0" y="834.0" text-anchor="middle" class="h">media-service</text>
+<text x="1335.0" y="852.0" text-anchor="middle" class="t">Owns:</text>
+<text x="1335.0" y="870.0" text-anchor="middle" class="t">media metadata / processing / signed URLs</text>
+<text x="1335.0" y="888.0" text-anchor="middle" class="t">Publishes:</text>
+<text x="1335.0" y="906.0" text-anchor="middle" class="t">MediaUploaded / MediaModerated</text>
+<rect x="1620" y="780" width="430" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1835.0" y="843.0" text-anchor="middle" class="h">ai-assistant-service</text>
+<text x="1835.0" y="861.0" text-anchor="middle" class="t">Owns:</text>
+<text x="1835.0" y="879.0" text-anchor="middle" class="t">AI sessions / feedback / support summary</text>
+<text x="1835.0" y="897.0" text-anchor="middle" class="t">Consumes scoped context only</text>
+<polyline points="550,310 620,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="628" y="302" class="small">account refs</text>
+<polyline points="1050,310 1620,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="302" class="small">actor profile</text>
+<polyline points="1550,310 1620,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="302" class="small">category rules</text>
+<polyline points="550,590 1620,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="302" class="small">business offers</text>
+<polyline points="1620,310 1050,590" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1058" y="582" class="small">payment request</text>
+<polyline points="1835,400 1835,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1843" y="492" class="small">job chat context</text>
+<polyline points="1620,310 835,780" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="843" y="772" class="small">completion/review</text>
+<polyline points="335,680 335,780" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="343" y="772" class="small">public projection</text>
+<polyline points="1620,310 335,780" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="343" y="772" class="small">request/job projection</text>
+<polyline points="1120,870 1835,400" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1843" y="392" class="small">media refs</text>
+<polyline points="1620,870 1835,680" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1843" y="672" class="small">support summary/context</text>
+<rect x="120" y="1190" width="1700" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1214" class="t">Ownership rule:</text>
+<text x="136" y="1232" class="t">A service may read another service&#x27;s IDs/projections, but it must not own or mutate another bounded context&#x27;s aggregate.</text>
+</svg>

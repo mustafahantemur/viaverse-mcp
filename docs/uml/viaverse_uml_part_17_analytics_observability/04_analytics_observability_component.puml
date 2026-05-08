@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Analytics / Observability — Component Diagram
+
+component "KMP / Next.js Client\nproduct events\ncrash/session\nweb vitals" as Client
+component "API Gateway\ncorrelationId\ntraceparent\nrate limit" as Gateway
+component "Spring Boot Services\nMicrometer\nOpenTelemetry\nstructured logs" as Services
+component "analytics-service\nevent ingestion\nschema validation\nfunnel/cohort" as Analytics
+component "OpenTelemetry Collector\ntraces\nmetrics\nlogs routing" as Collector
+database "Prometheus + Perses\nmetrics\nSLO dashboards\nalerts" as Prom
+database "Jaeger\ndistributed traces" as Jaeger
+database "OpenSearch\nstructured logs\nanalytics index" as Logs
+database "Analytics Warehouse\nprivacy-safe events\nfunnels/cohorts" as Warehouse
+component "Alertmanager / Ops\nSLO breach\nerror budget\nanomaly" as Alerts
+queue "Kafka / Outbox\nProductEvent\nDataQualityFailed\nAlertRaised" as Kafka
+
+Client --> Gateway : HTTPS + trace context
+Gateway --> Services : service calls
+Client --> Analytics : product events
+Services --> Collector : OTel export
+Collector --> Prom : metrics
+Collector --> Jaeger : traces
+Collector --> Logs : logs
+Analytics --> Warehouse : privacy-safe events
+Analytics --> Kafka : quality/events
+Prom --> Alerts : SLO alerts
+Logs --> Alerts : error anomalies
+
+note bottom
+Operational observability and product analytics are related but separated.
+Product analytics requires consent/governance;
+observability requires redaction and secret filtering.
+end note
+@enduml

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Conversation / Message State — State Diagram</text>
+
+<rect x="120" y="180" width="340" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="220.0" text-anchor="middle" class="h">CONVERSATION_OPEN</text>
+<rect x="560" y="180" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="670.0" y="220.0" text-anchor="middle" class="h">ACTIVE</text>
+<rect x="900" y="180" width="220" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1010.0" y="220.0" text-anchor="middle" class="h">LOCKED</text>
+<rect x="1260" y="180" width="260" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1390.0" y="220.0" text-anchor="middle" class="h">ARCHIVED</text>
+<rect x="120" y="560" width="300" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="270.0" y="600.0" text-anchor="middle" class="h">MESSAGE_DRAFT</text>
+<rect x="520" y="560" width="240" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="640.0" y="600.0" text-anchor="middle" class="h">SCANNING</text>
+<rect x="860" y="560" width="200" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="960.0" y="600.0" text-anchor="middle" class="h">SENT</text>
+<rect x="1200" y="560" width="340" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1370.0" y="600.0" text-anchor="middle" class="h">HELD_FOR_REVIEW</text>
+<rect x="1640" y="560" width="220" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1750.0" y="600.0" text-anchor="middle" class="h">BLOCKED</text>
+<rect x="860" y="900" width="250" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="985.0" y="940.0" text-anchor="middle" class="h">DELIVERED</text>
+<rect x="1200" y="900" width="200" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="1300.0" y="940.0" text-anchor="middle" class="h">READ</text>
+<polyline points="460,220 560,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="568" y="212" class="small">participants valid</text>
+<polyline points="780,220 900,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="908" y="212" class="small">job closed/dispute</text>
+<polyline points="900,260 780,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="788" y="252" class="small">reopened</text>
+<polyline points="1120,220 1260,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="212" class="small">retention/archive</text>
+<polyline points="420,600 520,600" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="592" class="small">send</text>
+<polyline points="760,600 860,600" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="868" y="592" class="small">safe</text>
+<polyline points="760,600 1200,600" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1208" y="592" class="small">needs review</text>
+<polyline points="1200,640 1060,640" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1068" y="632" class="small">approved</text>
+<polyline points="1540,600 1640,600" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1648" y="592" class="small">rejected</text>
+<polyline points="960,640 960,900" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="968" y="892" class="small">recipient reached</text>
+<polyline points="1110,940 1200,940" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1208" y="932" class="small">opened</text>
+<rect x="160" y="1120" width="1700" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1144" class="t">State rule:</text>
+<text x="176" y="1162" class="t">Conversation state and message state are separate. A locked conversation may remain readable but not writable; dispute/support export can still be policy-controlled.</text>
+</svg>

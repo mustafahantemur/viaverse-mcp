@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="chat-state" name="06 Chat State">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Conversation / Message State — State Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="open" value="CONVERSATION_OPEN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="180" width="340" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="active" value="ACTIVE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="locked" value="LOCKED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="180" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="archived" value="ARCHIVED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#4B5563;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="180" width="260" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="draft" value="MESSAGE_DRAFT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="560" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="scanning" value="SCANNING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="560" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="sent" value="SENT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="560" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="held" value="HELD_FOR_REVIEW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="560" width="340" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="blocked" value="BLOCKED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#4B5563;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="560" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="delivered" value="DELIVERED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="900" width="250" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="read" value="READ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="900" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="st1" value="participants valid" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="open" target="active">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="460" y="220" as="point"/><mxPoint x="560" y="220" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st2" value="job closed/dispute" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="active" target="locked">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="780" y="220" as="point"/><mxPoint x="900" y="220" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st3" value="reopened" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="locked" target="active">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="900" y="260" as="point"/><mxPoint x="780" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st4" value="retention/archive" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="locked" target="archived">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1120" y="220" as="point"/><mxPoint x="1260" y="220" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st5" value="send" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="draft" target="scanning">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="600" as="point"/><mxPoint x="520" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st6" value="safe" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="scanning" target="sent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="760" y="600" as="point"/><mxPoint x="860" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st7" value="needs review" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="scanning" target="held">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="760" y="600" as="point"/><mxPoint x="1200" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st8" value="approved" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="held" target="sent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1200" y="640" as="point"/><mxPoint x="1060" y="640" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st9" value="rejected" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="held" target="blocked">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1540" y="600" as="point"/><mxPoint x="1640" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st10" value="recipient reached" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="sent" target="delivered">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="960" y="640" as="point"/><mxPoint x="960" y="900" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st11" value="opened" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="delivered" target="read">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1110" y="940" as="point"/><mxPoint x="1200" y="940" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="State rule:&#xa;Conversation state and message state are separate. A locked conversation may remain readable but not writable; dispute/support export can still be policy-controlled." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="1120" width="1700" height="70" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

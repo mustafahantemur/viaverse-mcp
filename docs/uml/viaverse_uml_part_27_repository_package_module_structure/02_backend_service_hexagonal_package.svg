@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2450" height="1700" viewBox="0 0 2450 1700">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2370" height="60" rx="14" fill="#022C22"/><text x="1225.0" y="69" text-anchor="middle" class="title">Viaverse Spring Boot Service — Hexagonal Package Structure</text>
+<rect x="60" y="130" width="2320" height="1320" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">backend/services/{bounded-context}-service/</text>
+<rect x="120" y="220" width="420" height="230" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="330.0" y="299.0" text-anchor="middle" class="h">application/</text>
+<text x="330.0" y="317.0" text-anchor="middle" class="t">commands / queries</text>
+<text x="330.0" y="335.0" text-anchor="middle" class="t">usecases</text>
+<text x="330.0" y="353.0" text-anchor="middle" class="t">ports/in / ports/out</text>
+<text x="330.0" y="371.0" text-anchor="middle" class="t">transaction boundaries</text>
+<rect x="640" y="220" width="420" height="230" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="850.0" y="299.0" text-anchor="middle" class="h">domain/</text>
+<text x="850.0" y="317.0" text-anchor="middle" class="t">model / valueobjects</text>
+<text x="850.0" y="335.0" text-anchor="middle" class="t">policies / events</text>
+<text x="850.0" y="353.0" text-anchor="middle" class="t">repository interfaces</text>
+<text x="850.0" y="371.0" text-anchor="middle" class="t">NO Spring/JPA</text>
+<rect x="1160" y="220" width="420" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1370.0" y="299.0" text-anchor="middle" class="h">adapter/in/web/</text>
+<text x="1370.0" y="317.0" text-anchor="middle" class="t">controllers</text>
+<text x="1370.0" y="335.0" text-anchor="middle" class="t">request/response DTOs</text>
+<text x="1370.0" y="353.0" text-anchor="middle" class="t">mappers</text>
+<text x="1370.0" y="371.0" text-anchor="middle" class="t">validation</text>
+<rect x="1680" y="220" width="420" height="230" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1890.0" y="299.0" text-anchor="middle" class="h">adapter/out/persistence/</text>
+<text x="1890.0" y="317.0" text-anchor="middle" class="t">JPA entities</text>
+<text x="1890.0" y="335.0" text-anchor="middle" class="t">Spring Data repos</text>
+<text x="1890.0" y="353.0" text-anchor="middle" class="t">mappers</text>
+<text x="1890.0" y="371.0" text-anchor="middle" class="t">Flyway migrations</text>
+<rect x="120" y="560" width="420" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="330.0" y="648.0" text-anchor="middle" class="h">adapter/out/events/</text>
+<text x="330.0" y="666.0" text-anchor="middle" class="t">outbox writer</text>
+<text x="330.0" y="684.0" text-anchor="middle" class="t">Kafka publisher</text>
+<text x="330.0" y="702.0" text-anchor="middle" class="t">Spring Cloud Stream</text>
+<rect x="640" y="560" width="420" height="220" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="850.0" y="643.0" text-anchor="middle" class="h">adapter/in/security/</text>
+<text x="850.0" y="661.0" text-anchor="middle" class="t">method policy</text>
+<text x="850.0" y="679.0" text-anchor="middle" class="t">current actor</text>
+<text x="850.0" y="697.0" text-anchor="middle" class="t">permission annotations</text>
+<rect x="1160" y="560" width="420" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1370.0" y="634.0" text-anchor="middle" class="h">config/</text>
+<text x="1370.0" y="652.0" text-anchor="middle" class="t">Spring configuration</text>
+<text x="1370.0" y="670.0" text-anchor="middle" class="t">beans</text>
+<text x="1370.0" y="688.0" text-anchor="middle" class="t">properties</text>
+<text x="1370.0" y="706.0" text-anchor="middle" class="t">observability</text>
+<rect x="1680" y="560" width="420" height="230" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1890.0" y="648.0" text-anchor="middle" class="h">src/test/</text>
+<text x="1890.0" y="666.0" text-anchor="middle" class="t">unit / slice</text>
+<text x="1890.0" y="684.0" text-anchor="middle" class="t">integration / contract</text>
+<text x="1890.0" y="702.0" text-anchor="middle" class="t">arch tests</text>
+<rect x="640" y="910" width="420" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="850.0" y="988.0" text-anchor="middle" class="h">resources/</text>
+<text x="850.0" y="1006.0" text-anchor="middle" class="t">application.yml</text>
+<text x="850.0" y="1024.0" text-anchor="middle" class="t">db/migration</text>
+<text x="850.0" y="1042.0" text-anchor="middle" class="t">messages</text>
+<rect x="1160" y="910" width="420" height="210" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1370.0" y="988.0" text-anchor="middle" class="h">api/</text>
+<text x="1370.0" y="1006.0" text-anchor="middle" class="t">openapi.yaml</text>
+<text x="1370.0" y="1024.0" text-anchor="middle" class="t">events.schema.json</text>
+<text x="1370.0" y="1042.0" text-anchor="middle" class="t">examples</text>
+<polyline points="1160,335 540,335" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="548" y="327" class="small">calls use cases</text>
+<polyline points="540,335 640,335" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="648" y="327" class="small">uses domain</text>
+<polyline points="540,380 1680,380" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1688" y="372" class="small">out port impl</text>
+<polyline points="330,450 330,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="552" class="small">outbox/event port</text>
+<polyline points="850,560 330,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="442" class="small">actor/policy</text>
+<polyline points="1370,560 330,450" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="338" y="442" class="small">wires beans</text>
+<polyline points="1680,675 540,390" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="548" y="382" class="small">tests</text>
+<polyline points="850,910 1890,450" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1898" y="442" class="small">migrations</text>
+<polyline points="1370,910 1370,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1378" y="442" class="small">contracts</text>
+<rect x="120" y="1260" width="1600" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1284" class="t">Backend rule:</text>
+<text x="136" y="1302" class="t">Controller does not talk to repository directly. Application use cases orchestrate. Domain has no Spring/JPA dependency.</text>
+</svg>

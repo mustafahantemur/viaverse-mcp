@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Auth — Component Diagram
+
+component "KMP / Next.js Client" as Client
+component "API Gateway / App BFF" as BFF
+component "AuthController" as AuthApi
+component "Auth Use Cases" as UseCases
+component "Auth / Capability Policies" as Policies
+component "Application Ports\nOtpSender / TokenService / AccountRepo" as Ports
+database "PostgreSQL\nAccount / Session / Consent" as DB
+database "Valkey / Redis\nOTP / rate limit / revocation" as Redis
+component "Netgsm / SES / OAuth Providers" as Providers
+queue "Outbox + Kafka\nOtpVerified / SessionCreated" as Kafka
+component "Admin BFF / Security Admin" as Admin
+
+Client --> BFF : HTTPS
+BFF --> AuthApi : REST
+AuthApi --> UseCases : command/query
+UseCases --> Policies : validate / authorize
+Policies --> Ports : use ports
+Ports --> DB : JPA adapter
+Ports --> Redis : cache / rate limit
+Ports --> Providers : provider adapters
+UseCases --> Kafka : outbox events
+Admin --> AuthApi : admin security actions
+
+note bottom
+Boundary rule:
+Domain/application logic never imports provider SDKs.
+Providers are infrastructure adapters behind ports.
+end note
+@enduml

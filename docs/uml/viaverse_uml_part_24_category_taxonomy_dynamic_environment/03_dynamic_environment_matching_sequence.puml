@@ -1,0 +1,28 @@
+@startuml
+title Viaverse Dynamic Environment / Matching — Sequence Diagram
+
+actor Client
+participant "API Gateway / BFF" as BFF
+participant "taxonomy-service" as Taxonomy
+participant "profile/preferences" as Profile
+participant "search-service" as Search
+participant "trust-service" as Trust
+participant "analytics/AI" as Analytics
+queue "Outbox / Kafka" as Kafka
+
+Client -> BFF : GET /feed or /matches
+BFF -> Taxonomy : resolve categories/tags/forms
+Taxonomy -> Profile : load dynamic environment\narea/interests
+Taxonomy -> Search : build search filters\ncategory + geo + intent
+Search -> Trust : trust/risk/availability signals
+Search -> Analytics : ranking feedback / AI suggestion
+Taxonomy -> Kafka : CategoryMapped / DynamicEnvUsed
+Taxonomy --> BFF : filter schema + result hints
+BFF --> Client : render feed/search
+
+note bottom
+Dynamic environment combines area, interests, category intent,
+provider capability and trust signals.
+It is not a fixed neighborhood/community boundary.
+end note
+@enduml

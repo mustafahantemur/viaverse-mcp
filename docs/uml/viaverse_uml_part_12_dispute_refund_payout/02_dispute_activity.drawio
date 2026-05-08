@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="dispute-activity" name="02 Dispute Activity">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Dispute / Refund / Payout — Activity Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="start" value="START&#xa;problem before payout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="open" value="Open dispute" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="150" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="validate" value="Validate job/payment state&#xa;and participant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="140" width="330" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="valid" value="Valid dispute?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="140" width="230" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="reject" value="Reject / route to support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="150" width="290" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="block" value="Block payout&#xa;create hold" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="330" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="evidence" value="Collect evidence&#xa;messages / media / notes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="330" width="330" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="notify" value="Notify other party" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="340" width="270" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="response" value="Wait for response&#xa;or timeout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="550" width="270" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="review" value="Admin reviews evidence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="550" width="310" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="decision" value="Resolution decision" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="540" width="270" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="refund" value="Refund full/partial" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="540" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="payout" value="Release payout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="760" width="260" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="split" value="Partial refund&#xa;partial payout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="760" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit" value="Write audit log&#xa;reason + actor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="760" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="close" value="Close dispute" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="980" width="250" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="risk" value="Update trust/risk&#xa;and job/payment refs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="970" width="330" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="events" value="Emit resolution events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="980" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="a1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="start" target="open">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="320" y="190" as="point"/><mxPoint x="430" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="open" target="validate">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="670" y="185" as="point"/><mxPoint x="800" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="validate" target="valid">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1130" y="185" as="point"/><mxPoint x="1240" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a4" value="no" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="valid" target="reject">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1470" y="185" as="point"/><mxPoint x="1580" y="188" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a5" value="yes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="valid" target="block">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1355" y="230" as="point"/><mxPoint x="1355" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="block" target="evidence">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1240" y="370" as="point"/><mxPoint x="1130" y="375" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="evidence" target="notify">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="800" y="375" as="point"/><mxPoint x="700" y="375" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notify" target="response">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="565" y="410" as="point"/><mxPoint x="565" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="response" target="review">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="700" y="590" as="point"/><mxPoint x="800" y="590" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="review" target="decision">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1110" y="590" as="point"/><mxPoint x="1240" y="585" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a11" value="refund" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="decision" target="refund">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1510" y="585" as="point"/><mxPoint x="1580" y="580" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a12" value="payout" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="decision" target="payout">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1375" y="630" as="point"/><mxPoint x="1375" y="760" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a13" value="split" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="decision" target="split">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1240" y="585" as="point"/><mxPoint x="1180" y="585" as="point"/><mxPoint x="1180" y="800" as="point"/><mxPoint x="1100" y="800" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="refund" target="audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1580" y="580" as="point"/><mxPoint x="1540" y="580" as="point"/><mxPoint x="1540" y="900" as="point"/><mxPoint x="580" y="900" as="point"/><mxPoint x="580" y="840" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="payout" target="audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1240" y="800" as="point"/><mxPoint x="730" y="800" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="split" target="audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="800" y="800" as="point"/><mxPoint x="730" y="800" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a17" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="audit" target="close">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="730" y="800" as="point"/><mxPoint x="760" y="800" as="point"/><mxPoint x="760" y="1018" as="point"/><mxPoint x="800" y="1018" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a18" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="close" target="risk">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1050" y="1018" as="point"/><mxPoint x="1240" y="1015" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a19" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="risk" target="events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1570" y="1015" as="point"/><mxPoint x="1580" y="1020" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Operational rule:&#xa;Dispute SLAs and timeouts should be configurable. Timeout can auto-escalate, but money movement still requires policy decision and audit." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="1190" width="1450" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

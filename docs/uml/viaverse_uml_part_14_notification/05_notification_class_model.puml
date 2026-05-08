@@ -1,0 +1,98 @@
+@startuml
+title Viaverse Notification / Inbox / Delivery — Class Model
+
+class Notification {
+  id: NotificationId
+  accountId: AccountId
+  type: NotificationType
+  priority: Priority
+  title: String
+  body: String
+  deepLink: String?
+  status: NotificationStatus
+  deduplicationKey: String
+  createdAt: Instant
+}
+
+class NotificationAttempt {
+  id: UUID
+  notificationId: NotificationId
+  channel: PUSH | EMAIL | SMS
+  provider: String
+  status: AttemptStatus
+  attemptNo: Int
+  errorCode: String?
+  sentAt: Instant?
+}
+
+class NotificationPreference {
+  accountId: AccountId
+  notificationType: String
+  pushEnabled: Boolean
+  emailEnabled: Boolean
+  smsEnabled: Boolean
+  quietHours: QuietHours?
+  digestMode: DigestMode
+}
+
+class DeviceToken {
+  id: UUID
+  accountId: AccountId
+  platform: IOS | ANDROID | WEB
+  tokenHash: String
+  status: DeviceStatus
+  lastSeenAt: Instant
+}
+
+class NotificationTemplate {
+  type: NotificationType
+  locale: Locale
+  titleTemplate: String
+  bodyTemplate: String
+  channelOverrides: Json
+  version: Int
+}
+
+class NotificationPolicy {
+  shouldNotify()
+  selectChannels()
+  respectQuietHours()
+  rateLimit()
+  shouldDigest()
+  shouldRetry()
+}
+
+class AdminCampaign {
+  id: UUID
+  segmentRule: String
+  templateId: String
+  status: CampaignStatus
+  rateLimitPerMinute: Int
+  createdBy: AccountId
+}
+
+class NotificationEvents {
+  NotificationCreated
+  NotificationSent
+  NotificationFailed
+  NotificationRead
+  CampaignStarted
+  CampaignCompleted
+}
+
+Notification "1" o-- "*" NotificationAttempt
+NotificationPreference ..> Notification : controls
+DeviceToken ..> NotificationAttempt : used for push
+NotificationTemplate ..> Notification : renders
+NotificationPolicy --> NotificationPreference : uses
+NotificationPolicy ..> Notification : validates
+AdminCampaign ..> Notification : creates many
+Notification ..> NotificationEvents : emits
+NotificationAttempt ..> NotificationEvents : emits
+AdminCampaign ..> NotificationEvents : emits
+
+note bottom
+Store tokenHash/display metadata, not raw device tokens in broad read models.
+Raw provider token access should be restricted/encrypted.
+end note
+@enduml

@@ -1,0 +1,130 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="job-activity" name="02 Job Lifecycle Activity">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Job Lifecycle / Delivery Approval — Activity Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="start" value="START&#xa;QuoteAccepted" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="job" value="Create Job draft" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="150" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="pay" value="Wait for&#xa;PaymentAuthorized" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="140" width="280" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="payok" value="Payment ok?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="140" width="220" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="blocked" value="Block start&#xa;payment failed/retry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="150" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ready" value="Set READY_TO_START" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="330" width="280" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="startwork" value="Worker starts work" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="330" width="280" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="workspace" value="Job workspace&#xa;chat / media / updates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="330" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="deliver" value="Worker delivers work" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="560" width="290" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="review" value="Requester reviews delivery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="560" width="320" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="accept" value="Approve delivery?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="550" width="240" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="revision" value="Request fix / revision" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="560" width="280" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="dispute" value="Open dispute?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="760" width="230" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="case" value="Create dispute case&#xa;payout blocked" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="770" width="300" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="complete" value="Set COMPLETED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="780" width="270" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="payout" value="Mark payout eligible" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="780" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="reviewPrompt" value="Trigger review prompt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="990" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="events" value="Emit JobCompleted&#xa;PayoutEligible" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="990" width="300" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="end" value="END" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="1010" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="a1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="start" target="job">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="300" y="190" as="point"/><mxPoint x="400" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="job" target="pay">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="660" y="185" as="point"/><mxPoint x="780" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="pay" target="payok">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1060" y="185" as="point"/><mxPoint x="1180" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a4" value="no" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="payok" target="blocked">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1400" y="185" as="point"/><mxPoint x="1510" y="190" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a5" value="yes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="payok" target="ready">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1290" y="230" as="point"/><mxPoint x="1290" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ready" target="startwork">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1180" y="367" as="point"/><mxPoint x="1060" y="367" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="startwork" target="workspace">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="780" y="367" as="point"/><mxPoint x="700" y="375" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="workspace" target="deliver">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="420" as="point"/><mxPoint x="550" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="deliver" target="review">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="690" y="598" as="point"/><mxPoint x="780" y="598" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="review" target="accept">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1100" y="598" as="point"/><mxPoint x="1180" y="595" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a11" value="needs fix" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="accept" target="revision">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1420" y="595" as="point"/><mxPoint x="1510" y="598" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a12" value="redeliver" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="revision" target="deliver">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1510" y="598" as="point"/><mxPoint x="1460" y="598" as="point"/><mxPoint x="1460" y="700" as="point"/><mxPoint x="545" y="700" as="point"/><mxPoint x="545" y="635" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a13" value="approved" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="accept" target="complete">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1290" y="640" as="point"/><mxPoint x="1290" y="715" as="point"/><mxPoint x="915" y="715" as="point"/><mxPoint x="915" y="780" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a14" value="problem" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="accept" target="dispute">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1290" y="640" as="point"/><mxPoint x="1290" y="760" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a15" value="yes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="case">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1410" y="805" as="point"/><mxPoint x="1510" y="812" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="complete" target="payout">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="780" y="817" as="point"/><mxPoint x="700" y="817" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a17" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="payout" target="reviewPrompt">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="855" as="point"/><mxPoint x="550" y="990" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a18" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="reviewPrompt" target="events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="700" y="1028" as="point"/><mxPoint x="780" y="1032" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a19" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="events" target="end">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1080" y="1032" as="point"/><mxPoint x="1180" y="1037" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Approval rule:&#xa;Auto-approval after timeout can be added later as configurable policy, but dispute/report path must always be available before payout release." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1170" width="1450" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

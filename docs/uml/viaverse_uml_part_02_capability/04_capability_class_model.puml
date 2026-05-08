@@ -1,0 +1,81 @@
+@startuml
+title Viaverse Capability — Class Model
+
+class Account {
+  id: AccountId
+  status: AccountStatus
+  locale: Locale
+  activeMode: AppMode?
+  createdAt: Instant
+}
+
+class AccountCapability {
+  accountId: AccountId
+  type: CapabilityType
+  status: CapabilityStatus
+  reason: String?
+  enabledAt: Instant?
+  suspendedAt: Instant?
+}
+
+class BusinessProfile {
+  id: BusinessId
+  ownerAccountId: AccountId
+  status: BusinessStatus
+  verificationStatus: VerificationStatus
+  publicSlug: String?
+}
+
+class BusinessTeamMember {
+  businessId: BusinessId
+  accountId: AccountId
+  role: BusinessRole
+  status: MemberStatus
+}
+
+enum AppMode {
+  PERSONAL
+  WORK
+  BUSINESS
+}
+
+class CapabilityPolicy {
+  canEnterMode()
+  canEnableCapability()
+  canSuspendCapability()
+  requiresVerification()
+}
+
+class CapabilityAuditLog {
+  id: UUID
+  accountId: AccountId
+  capabilityType: CapabilityType
+  action: String
+  reason: String?
+  actorId: AccountId?
+  createdAt: Instant
+}
+
+class CapabilityEvents {
+  AccountCapabilityEnabled
+  AccountCapabilitySuspended
+  AccountCapabilityRevoked
+  ActiveModeChanged
+  BusinessProfileCreated
+}
+
+Account "1" o-- "*" AccountCapability
+Account "1" o-- "*" BusinessProfile : owner
+BusinessProfile "1" o-- "*" BusinessTeamMember
+Account --> AppMode : activeMode
+CapabilityPolicy ..> AccountCapability : checks
+CapabilityPolicy ..> BusinessProfile : checks
+AccountCapability --> CapabilityAuditLog : changes audited
+CapabilityAuditLog ..> CapabilityEvents : emits
+
+note bottom
+Domain rule:
+Capability is not a role label in UI only.
+It is a persisted authorization input used by backend policies.
+end note
+@enduml

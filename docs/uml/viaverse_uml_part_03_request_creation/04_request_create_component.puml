@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Request Creation — Component Diagram
+
+component "KMP / Next.js Client\nCreate sheet\nRequest wizard\nDraft state" as Client
+component "API Gateway / App BFF\nRequest API\nAI facade\nMedia facade" as BFF
+component "RequestController" as Controller
+component "Request Use Cases\nCreateDraft\nUpdateDraft\nPublishRequest" as UseCases
+component "Request Policies\ncapability\nrequired fields\nprivacy" as Policies
+component "RequestRepositoryPort\nCategoryPort\nOutboxPort" as Ports
+database "PostgreSQL\nservice_request\nrequest_media\noutbox_event" as DB
+component "media-service\nUploadSession\nMediaAsset" as Media
+component "AI Provider Adapter\ncategory suggestion\nbudget guidance" as AI
+component "MapProvider\ngeocode\narea normalize" as Maps
+queue "Kafka / Spring Cloud Stream\nServiceRequestPublished\nMatchingRequested" as Kafka
+component "search/matching consumers\nOpenSearch projection\nWorker opportunity queue" as Search
+
+Client --> BFF : REST
+BFF --> Controller : REST
+Controller --> UseCases : command
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> DB : JPA adapter
+BFF --> AI : suggestions
+BFF --> Media : upload session
+UseCases --> Maps : normalize location
+UseCases --> Kafka : outbox publish
+Kafka --> Search : consume
+
+note bottom
+marketplace-service owns ServiceRequest source-of-truth.
+AI, Media and Maps are adapters/integrations, not owners of the request.
+end note
+@enduml

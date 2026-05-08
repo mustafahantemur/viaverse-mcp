@@ -1,0 +1,57 @@
+@startuml
+title Viaverse Monetization / Subscription / Ads / Commission — Use Case Diagram
+left to right direction
+
+actor "Business Owner" as Business
+actor "Individual Worker" as Worker
+actor "Admin / Growth Ops" as Admin
+actor "Payment Providers\nIyzico / Stripe / Masterpass" as Payment
+actor "Search / Ads" as Search
+actor "Accounting / Reporting" as Accounting
+
+rectangle "Monetization Boundary" {
+  usecase "Choose subscription plan\nfirst month free" as Plan
+  usecase "Start trial\nbusiness account" as Trial
+  usecase "Create billing profile\ninvoice/payment method" as Billing
+  usecase "Renew / cancel / downgrade" as Renew
+  usecase "Calculate commission\n%5 default configurable" as Commission
+  usecase "Calculate platform fee\nper job/order" as Fee
+  usecase "Net payout calculation" as Payout
+  usecase "Refund / dispute adjustment" as Refund
+  usecase "Create sponsored placement\nnon-blocking ads" as Ads
+  usecase "Manage ad budget\ncaps / pacing" as Budget
+  usecase "Apply ad relevance gates" as Rank
+  usecase "Revenue reporting\nMRR / GMV / take rate" as Report
+  usecase "Admin monetization config\nplans/fees/free rights" as Config
+  usecase "Promotions / coupons\nfree credits" as Campaign
+  usecase "Emit events\nSubscriptionStarted\nCommissionCharged" as Events
+}
+
+Business --> Plan
+Plan --> Trial
+Trial --> Billing
+Billing --> Renew
+Worker --> Commission
+Business --> Commission
+Commission --> Fee
+Fee --> Payout
+Payout --> Refund
+Business --> Ads
+Ads --> Budget
+Budget --> Rank
+Rank --> Report
+Admin --> Config
+Config --> Campaign
+Campaign --> Events
+Payment --> Billing
+Payment --> Payout
+Search --> Rank
+Accounting --> Report
+
+note bottom
+Normal users are free by default.
+Monetization starts with business subscriptions,
+configurable commission, and non-blocking sponsored placements
+that cannot bypass relevance/safety gates.
+end note
+@enduml

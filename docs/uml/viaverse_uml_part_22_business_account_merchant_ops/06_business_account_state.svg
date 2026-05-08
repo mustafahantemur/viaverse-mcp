@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Business Account / Merchant State — State Diagram</text>
+
+<rect x="120" y="180" width="220" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="230.0" y="220.0" text-anchor="middle" class="h">DRAFT</text>
+<rect x="480" y="180" width="340" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="650.0" y="220.0" text-anchor="middle" class="h">PROFILE_INCOMPLETE</text>
+<rect x="940" y="180" width="360" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1120.0" y="220.0" text-anchor="middle" class="h">PENDING_VERIFICATION</text>
+<rect x="1420" y="180" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1530.0" y="220.0" text-anchor="middle" class="h">VERIFIED</text>
+<rect x="1420" y="500" width="300" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1570.0" y="540.0" text-anchor="middle" class="h">PUBLISH_READY</text>
+<rect x="940" y="500" width="240" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="1060.0" y="540.0" text-anchor="middle" class="h">PUBLISHED</text>
+<rect x="480" y="500" width="260" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="610.0" y="540.0" text-anchor="middle" class="h">SUSPENDED</text>
+<rect x="120" y="500" width="360" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="300.0" y="540.0" text-anchor="middle" class="h">VERIFICATION_REJECTED</text>
+<rect x="940" y="820" width="240" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1060.0" y="860.0" text-anchor="middle" class="h">ARCHIVED</text>
+<polyline points="340,220 480,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="488" y="212" class="small">missing fields</text>
+<polyline points="820,220 940,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="948" y="212" class="small">profile complete</text>
+<polyline points="1300,220 1420,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1428" y="212" class="small">approved</text>
+<polyline points="1120,260 1120,380 300,380 300,500" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="308" y="372" class="small">rejected</text>
+<polyline points="300,500 300,330 650,330 650,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="658" y="322" class="small">fix</text>
+<polyline points="1530,260 1530,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1538" y="492" class="small">catalog/billing/branch ready</text>
+<polyline points="1420,540 1180,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1188" y="532" class="small">publish</text>
+<polyline points="940,540 740,540" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="748" y="532" class="small">policy/admin</text>
+<polyline points="480,540 420,640 1060,640 1060,580" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1068" y="632" class="small">appeal/restored</text>
+<polyline points="1060,580 1060,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1068" y="812" class="small">owner closes</text>
+<polyline points="610,580 1060,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1068" y="812" class="small">terminal closure</text>
+<rect x="160" y="1080" width="1550" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1104" class="t">State rule:</text>
+<text x="176" y="1122" class="t">PUBLISHED means visible/lead-routable. VERIFIED alone is not enough; catalog, branch/service area and billing/subscription gates must also pass.</text>
+</svg>

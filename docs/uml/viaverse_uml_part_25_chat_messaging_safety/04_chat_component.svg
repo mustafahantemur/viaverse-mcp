@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Chat / Messaging / Safety — Component Diagram</text>
+
+<rect x="80" y="170" width="340" height="140" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="250.0" y="204.0" text-anchor="middle" class="h">KMP Client</text>
+<text x="250.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="250.0" y="244.0" text-anchor="middle" class="t">chat UI</text>
+<text x="250.0" y="264.0" text-anchor="middle" class="t">attachments</text>
+<text x="250.0" y="284.0" text-anchor="middle" class="t">receipts</text>
+<rect x="520" y="170" width="360" height="140" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="700.0" y="213.0" text-anchor="middle" class="h">Realtime BFF</text>
+<text x="700.0" y="233.0" text-anchor="middle" class="t">--</text>
+<text x="700.0" y="253.0" text-anchor="middle" class="t">WebSocket/SSE/polling</text>
+<text x="700.0" y="273.0" text-anchor="middle" class="t">session binding</text>
+<rect x="980" y="140" width="390" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1175.0" y="182.0" text-anchor="middle" class="h">ChatController</text>
+<text x="1175.0" y="202.0" text-anchor="middle" class="t">ConversationController</text>
+<text x="1175.0" y="222.0" text-anchor="middle" class="t">ReceiptController</text>
+<rect x="980" y="340" width="410" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1185.0" y="391.0" text-anchor="middle" class="h">Chat Use Cases</text>
+<text x="1185.0" y="411.0" text-anchor="middle" class="t">--</text>
+<text x="1185.0" y="431.0" text-anchor="middle" class="t">OpenConversation</text>
+<text x="1185.0" y="451.0" text-anchor="middle" class="t">SendMessage</text>
+<text x="1185.0" y="471.0" text-anchor="middle" class="t">UpdateReceipt</text>
+<text x="1185.0" y="491.0" text-anchor="middle" class="t">ReportMessage</text>
+<text x="1185.0" y="511.0" text-anchor="middle" class="t">ExportForDispute</text>
+<rect x="980" y="660" width="410" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1185.0" y="710.0" text-anchor="middle" class="h">Chat Policies</text>
+<text x="1185.0" y="730.0" text-anchor="middle" class="t">--</text>
+<text x="1185.0" y="750.0" text-anchor="middle" class="t">participant access</text>
+<text x="1185.0" y="770.0" text-anchor="middle" class="t">job state</text>
+<text x="1185.0" y="790.0" text-anchor="middle" class="t">PII/off-platform safety</text>
+<text x="1185.0" y="810.0" text-anchor="middle" class="t">retention</text>
+<rect x="980" y="940" width="410" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1185.0" y="981.0" text-anchor="middle" class="h">Ports</text>
+<text x="1185.0" y="1001.0" text-anchor="middle" class="t">MessageRepo</text>
+<text x="1185.0" y="1021.0" text-anchor="middle" class="t">MarketplacePort</text>
+<text x="1185.0" y="1041.0" text-anchor="middle" class="t">SafetyPort</text>
+<text x="1185.0" y="1061.0" text-anchor="middle" class="t">MediaPort</text>
+<text x="1185.0" y="1081.0" text-anchor="middle" class="t">NotificationPort</text>
+<text x="1185.0" y="1101.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1460" y="210" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="258.0" text-anchor="middle" class="h">marketplace-service</text>
+<text x="1640.0" y="278.0" text-anchor="middle" class="t">--</text>
+<text x="1640.0" y="298.0" text-anchor="middle" class="t">job/order context</text>
+<text x="1640.0" y="318.0" text-anchor="middle" class="t">participants</text>
+<rect x="1460" y="490" width="360" height="160" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1640.0" y="543.0" text-anchor="middle" class="h">safety/moderation-service</text>
+<text x="1640.0" y="563.0" text-anchor="middle" class="t">--</text>
+<text x="1640.0" y="583.0" text-anchor="middle" class="t">text/media scan</text>
+<text x="1640.0" y="603.0" text-anchor="middle" class="t">report queue</text>
+<rect x="1460" y="790" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="838.0" text-anchor="middle" class="h">media-service</text>
+<text x="1640.0" y="858.0" text-anchor="middle" class="t">--</text>
+<text x="1640.0" y="878.0" text-anchor="middle" class="t">attachments</text>
+<text x="1640.0" y="898.0" text-anchor="middle" class="t">signed access</text>
+<rect x="1840" y="210" width="380" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2030.0" y="264.0" text-anchor="middle" class="h">Cassandra</text>
+<text x="2030.0" y="284.0" text-anchor="middle" class="t">--</text>
+<text x="2030.0" y="304.0" text-anchor="middle" class="t">messages</text>
+<text x="2030.0" y="324.0" text-anchor="middle" class="t">receipts</text>
+<text x="2030.0" y="344.0" text-anchor="middle" class="t">conversation timeline</text>
+<rect x="1840" y="520" width="380" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2030.0" y="569.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="2030.0" y="589.0" text-anchor="middle" class="t">--</text>
+<text x="2030.0" y="609.0" text-anchor="middle" class="t">conversation metadata</text>
+<text x="2030.0" y="629.0" text-anchor="middle" class="t">reports</text>
+<text x="2030.0" y="649.0" text-anchor="middle" class="t">policy state</text>
+<rect x="1840" y="830" width="380" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2030.0" y="879.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="2030.0" y="899.0" text-anchor="middle" class="t">--</text>
+<text x="2030.0" y="919.0" text-anchor="middle" class="t">MessageSent</text>
+<text x="2030.0" y="939.0" text-anchor="middle" class="t">MessageReported</text>
+<text x="2030.0" y="959.0" text-anchor="middle" class="t">ConversationArchived</text>
+<polyline points="420,240 520,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="232" class="small">realtime/HTTPS</text>
+<polyline points="880,240 930,240 930,200 980,200" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="938" y="192" class="small">command/query</text>
+<polyline points="1175,260 1175,340" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1183" y="332" class="small">command/query</text>
+<polyline points="1185,550 1185,660" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1193" y="652" class="small">validate</text>
+<polyline points="1185,850 1185,940" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1193" y="932" class="small">ports</text>
+<polyline points="1390,1035 1420,1035 1420,285 1460,285" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1428" y="277" class="small">participant/job state</text>
+<polyline points="1390,1035 1420,1035 1420,570 1460,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1428" y="562" class="small">scan/report</text>
+<polyline points="1390,1035 1460,865" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1468" y="857" class="small">attachment refs</text>
+<polyline points="1390,1035 1780,1035 1780,300 1840,300" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="292" class="small">message timeline</text>
+<polyline points="1390,1035 1780,1035 1780,605 1840,605" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="597" class="small">metadata/reports</text>
+<polyline points="1390,445 1840,915" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1848" y="907" class="small">events</text>
+<rect x="80" y="1240" width="1780" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1264" class="t">Component rule:</text>
+<text x="96" y="1282" class="t">Use Cassandra for high-volume message timeline/read receipts, PostgreSQL for conversation metadata/reports/policies. Keep attachments as mediaId refs, not binary in chat DB.</text>
+</svg>

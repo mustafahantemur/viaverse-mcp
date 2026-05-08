@@ -1,0 +1,50 @@
+@startuml
+title Viaverse Request Creation — Sequence Diagram
+
+actor Requester
+participant "KMP / Web Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "marketplace-service" as Marketplace
+participant "AI Provider Adapter" as AI
+participant "media-service" as Media
+participant "MapProvider" as Maps
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+
+Requester -> Client : open Create / request service
+Client -> BFF : POST /service-requests draft
+BFF -> Marketplace : createDraft(command)
+Marketplace -> DB : insert ServiceRequest(DRAFT)
+
+Client -> BFF : POST /ai/request-suggestions
+BFF -> AI : suggest category/budget
+AI --> BFF : suggestions
+BFF --> Client : editable suggestions
+
+Client -> BFF : POST /media/upload-sessions
+BFF -> Media : createUploadSession
+Media -> DB : store MediaAsset(PENDING)
+Media --> BFF : presigned URL + mediaId
+BFF --> Client : upload info
+
+Client -> BFF : PATCH draft with fields/media refs
+BFF -> Marketplace : updateDraft(command)
+Marketplace -> Maps : geocode / area normalize
+Marketplace -> DB : update draft
+
+Client -> BFF : POST /service-requests/{id}/publish
+BFF -> Marketplace : publishRequest(command)
+Marketplace -> DB : validate + set PUBLISHED + insert outbox
+Marketplace -> Kafka : ServiceRequestPublished
+Marketplace -> Kafka : MatchingRequested
+Marketplace --> BFF : published request
+BFF --> Client : success
+
+note over Marketplace
+Publish transaction:
+- validate REQUEST_WORK capability
+- validate required fields
+- set status PUBLISHED
+- write outbox events
+end note
+@enduml

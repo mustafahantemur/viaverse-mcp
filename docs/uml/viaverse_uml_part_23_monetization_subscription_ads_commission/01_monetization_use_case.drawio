@@ -1,0 +1,142 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="monetization-use-case" name="01 Monetization Use Case">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Monetization / Subscription / Ads / Commission — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Monetization Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="135" width="1560" height="1130" as="geometry"/>
+        </mxCell>
+        <mxCell id="business" value="«actor»&#xa;Business Owner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="250" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="worker" value="«actor»&#xa;Individual Worker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="610" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;Admin / Growth Ops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="970" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="payment" value="«actor»&#xa;Payment Providers&#xa;Iyzico / Stripe / Masterpass" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="230" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="search" value="«actor»&#xa;Search / Ads" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="560" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="accounting" value="«actor»&#xa;Accounting / Reporting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="900" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_plan" value="Choose subscription plan&#xa;first month free" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_trial" value="Start trial&#xa;business account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_billing" value="Create billing profile&#xa;invoice/payment method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_renew" value="Renew / cancel / downgrade" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_commission" value="Calculate commission&#xa;%5 default configurable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_fee" value="Calculate platform fee&#xa;per job/order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_payout" value="Net payout calculation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_refund" value="Refund / dispute adjustment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ads" value="Create sponsored placement&#xa;non-blocking ads" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_budget" value="Manage ad budget&#xa;caps / pacing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_rank" value="Apply ad relevance gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_report" value="Revenue reporting&#xa;MRR / GMV / take rate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_config" value="Admin monetization config&#xa;plans/fees/free rights" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_campaign" value="Promotions / coupons&#xa;free credits" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_events" value="Emit events&#xa;SubscriptionStarted&#xa;CommissionCharged" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="business" target="uc_plan">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="290" as="point"/><mxPoint x="270" y="290" as="point"/><mxPoint x="270" y="232" as="point"/><mxPoint x="360" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_plan" target="uc_trial">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="232" as="point"/><mxPoint x="700" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_trial" target="uc_billing">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="232" as="point"/><mxPoint x="1040" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_billing" target="uc_renew">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="232" as="point"/><mxPoint x="1380" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="job completion" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="worker" target="uc_commission">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="650" as="point"/><mxPoint x="300" y="650" as="point"/><mxPoint x="300" y="492" as="point"/><mxPoint x="360" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="business order" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="business" target="uc_commission">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="290" as="point"/><mxPoint x="310" y="290" as="point"/><mxPoint x="310" y="492" as="point"/><mxPoint x="360" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_commission" target="uc_fee">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="492" as="point"/><mxPoint x="700" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_fee" target="uc_payout">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="492" as="point"/><mxPoint x="1040" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="adjustment" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_payout" target="uc_refund">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="492" as="point"/><mxPoint x="1380" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="business" target="uc_ads">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="290" as="point"/><mxPoint x="320" y="290" as="point"/><mxPoint x="320" y="762" as="point"/><mxPoint x="360" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_ads" target="uc_budget">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="762" as="point"/><mxPoint x="700" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_budget" target="uc_rank">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="762" as="point"/><mxPoint x="1040" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_rank" target="uc_report">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="762" as="point"/><mxPoint x="1380" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_config">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="1010" as="point"/><mxPoint x="320" y="1010" as="point"/><mxPoint x="320" y="1022" as="point"/><mxPoint x="700" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_config" target="uc_campaign">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="1022" as="point"/><mxPoint x="1040" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_campaign" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="1022" as="point"/><mxPoint x="1380" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="payment" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="payment" target="uc_billing">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="270" as="point"/><mxPoint x="1780" y="270" as="point"/><mxPoint x="1780" y="232" as="point"/><mxPoint x="1320" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="payout" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="payment" target="uc_payout">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="270" as="point"/><mxPoint x="1780" y="270" as="point"/><mxPoint x="1780" y="492" as="point"/><mxPoint x="1320" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e19" value="ad ranking" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="search" target="uc_rank">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="600" as="point"/><mxPoint x="1780" y="600" as="point"/><mxPoint x="1780" y="762" as="point"/><mxPoint x="1320" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e20" value="financial reports" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="accounting" target="uc_report">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="940" as="point"/><mxPoint x="1780" y="940" as="point"/><mxPoint x="1780" y="762" as="point"/><mxPoint x="1660" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Rules:&#xa;Normal users are free by default. Monetization starts with business subscriptions, configurable commission, and non-blocking sponsored placements that cannot bypass relevance/safety gates." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1210" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

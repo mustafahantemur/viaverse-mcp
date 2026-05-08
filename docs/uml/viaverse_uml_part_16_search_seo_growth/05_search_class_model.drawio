@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="search-class" name="05 Search Class Model">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Search / SEO / Growth — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="SearchDoc" value="SearchDocument&#xa;--&#xa;id: UUID&#xa;entityType: REQUEST | WORKER | BUSINESS | SEO_PAGE&#xa;entityId: UUID&#xa;title: String&#xa;summary: String&#xa;categoryIds: Set&lt;CategoryId&gt;&#xa;geo: ApproxGeo&#xa;visibility: Visibility&#xa;trustSignal: Decimal&#xa;updatedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="420" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="Query" value="SearchQuery&#xa;--&#xa;text: String?&#xa;categoryId: CategoryId?&#xa;area: AreaFilter?&#xa;budget: BudgetFilter?&#xa;locale: Locale&#xa;sort: SortMode&#xa;page: PageRequest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="370" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="Score" value="RankingScore&#xa;--&#xa;relevance: Decimal&#xa;trust: Decimal&#xa;freshness: Decimal&#xa;distance: Decimal&#xa;availability: Decimal&#xa;sponsoredBoost: Decimal&#xa;finalScore: Decimal&#xa;reasonCodes: List&lt;String&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="150" width="390" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="SeoPage" value="SeoPage&#xa;--&#xa;id: UUID&#xa;slug: String&#xa;locale: Locale&#xa;pageType: CATEGORY_CITY | SERVICE&#xa;canonicalUrl: String&#xa;schemaJson: Json&#xa;status: SeoPageStatus&#xa;updatedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="150" width="400" height="270" as="geometry"/>
+        </mxCell>
+        <mxCell id="Analytics" value="SearchAnalyticsEvent&#xa;--&#xa;id: UUID&#xa;accountId: AccountId?&#xa;sessionId: String&#xa;queryHash: String&#xa;resultIds: List&lt;UUID&gt;&#xa;eventType: IMPRESSION | CLICK | CONVERSION&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="420" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="Experiment" value="GrowthExperiment&#xa;--&#xa;id: UUID&#xa;key: String&#xa;variant: String&#xa;segmentRule: String&#xa;status: ExperimentStatus&#xa;startedAt: Instant&#xa;endedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="560" width="370" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="SearchPolicy&#xa;--&#xa;canIndexEntity()&#xa;canExposePublicly()&#xa;applyRankingGates()&#xa;applySponsoredConstraints()&#xa;localizeResult()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="560" width="390" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Search Events&#xa;--&#xa;EntityIndexed&#xa;EntityRemovedFromIndex&#xa;SearchPerformed&#xa;SearchClicked&#xa;SeoPageUpdated&#xa;ExperimentAssigned" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="560" width="400" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="matches" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Query" target="SearchDoc">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="970" y="260" as="point"/><mxPoint x="1080" y="260" as="point"/><mxPoint x="1080" y="420" as="point"/><mxPoint x="290" y="420" as="point"/><mxPoint x="290" y="450" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="scored as" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="SearchDoc" target="Score">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="300" as="point"/><mxPoint x="1080" y="290" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="can feed SEO ranking" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Score" target="SeoPage">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1470" y="290" as="point"/><mxPoint x="1580" y="285" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="gates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="SearchDoc">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1080" y="650" as="point"/><mxPoint x="1000" y="650" as="point"/><mxPoint x="1000" y="470" as="point"/><mxPoint x="290" y="470" as="point"/><mxPoint x="290" y="450" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="ranking policy" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Score">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1275" y="560" as="point"/><mxPoint x="1275" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="measures" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Analytics" target="Experiment">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="690" as="point"/><mxPoint x="600" y="675" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="variant affects" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Experiment" target="Score">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="560" as="point"/><mxPoint x="785" y="485" as="point"/><mxPoint x="1275" y="485" as="point"/><mxPoint x="1275" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="SearchDoc" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="420" as="point"/><mxPoint x="1780" y="420" as="point"/><mxPoint x="1780" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Analytics" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="690" as="point"/><mxPoint x="1580" y="690" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl10" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="SeoPage" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1780" y="420" as="point"/><mxPoint x="1780" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Data rule:&#xa;SearchDocument is a projection, not source-of-truth. It can be rebuilt from domain events and public approved entities." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1030" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,40 @@
+@startuml
+title Viaverse Payment / Wallet — Sequence Diagram
+
+actor Requester
+participant "Requester Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "marketplace-service" as Marketplace
+participant "payment-service" as Payment
+participant "iyzico / Stripe Adapter" as Provider
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+participant "notification-service" as Notification
+
+Requester -> Client : accept quote
+Client -> BFF : POST /quotes/{id}/accept
+BFF -> Marketplace : acceptQuote
+Marketplace -> DB : QuoteAccepted + JobCreated draft
+Marketplace -> Kafka : QuoteAccepted / JobCreated
+
+Client -> BFF : POST /payment-sessions
+BFF -> Payment : createPaymentSession
+Payment -> Marketplace : validate job/amount
+Marketplace --> Payment : valid
+Payment -> Provider : create checkout / authorize token
+Payment -> DB : store PaymentSession
+Provider --> Client : checkout redirect/result
+
+Provider -> Payment : provider callback
+Payment -> Provider : verify provider reference
+Payment -> Payment : verify signature/amount/currency/idempotency
+Payment -> DB : idempotent state update
+Payment -> Kafka : PaymentAuthorized / PaymentFailed
+Kafka -> Marketplace : payment state update event
+Kafka -> Notification : notify participants
+
+note bottom
+Provider callback is the source for final payment state,
+but only after signature/reference/amount/currency verification and idempotency check.
+end note
+@enduml

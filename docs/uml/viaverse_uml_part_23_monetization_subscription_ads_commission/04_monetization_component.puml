@@ -1,0 +1,35 @@
+@startuml
+title Viaverse Monetization / Billing / Ads — Component Diagram
+
+component "KMP / Business UI\nplans\nbilling\nads dashboard" as Client
+component "Admin UI\nplans/fees/coupons\ncampaign config" as Admin
+component "API Gateway / BFF\nMonetization API" as BFF
+component "MonetizationController\nSubscriptionController\nAdCampaignController" as Controller
+component "Monetization Use Cases\nStartSubscription\nCalculateCommission\nCreateSponsoredPlacement\nApplyPromotion" as UseCases
+component "Monetization Policies\nplan gates\ncommission rules\nad safety/relevance\nrefund adjustment" as Policies
+component "Ports\nBillingRepo\nPaymentPort\nLedgerPort\nSearchAdsPort\nConfigPort\nOutboxPort" as Ports
+component "payment-service\nIyzico/Stripe/Masterpass\ncharge/refund/payout" as Payment
+database "ledger/accounting\nfee records\ninvoices\nrevenue reports" as Ledger
+component "search/ads-service\nsponsored placement\nrelevance gates" as SearchAds
+database "PostgreSQL\nplan\nsubscription\ncommission_rule\nad_campaign" as DB
+queue "Kafka / Outbox\nSubscriptionStarted\nCommissionCharged\nAdBudgetSpent" as Kafka
+component "analytics/reporting\nMRR\nGMV\ntake rate\nLTV/CAC" as Analytics
+
+Client --> BFF : HTTPS
+Admin --> BFF : HTTPS admin
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> Payment : money ops
+Ports --> Ledger : financial records
+Ports --> SearchAds : ads placement
+Ports --> DB : config/state
+UseCases --> Kafka : events
+Ledger --> Analytics : reports
+
+note bottom
+Payments, billing rules, ledger, and ads ranking stay separated.
+Monetization orchestrates rules but payment-service owns provider integrations and money movement.
+end note
+@enduml

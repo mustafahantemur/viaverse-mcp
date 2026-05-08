@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="quote-class" name="04 Quote Class Model">
+    <mxGraphModel dx="2150" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2150" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Quote / Offer — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2070" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Quote" value="Quote&#xa;--&#xa;id: QuoteId&#xa;requestId: RequestId&#xa;senderType: WORKER | BUSINESS&#xa;workerProfileId: UUID?&#xa;businessId: UUID?&#xa;status: QuoteStatus&#xa;price: Money&#xa;message: String&#xa;estimatedStart: Instant?&#xa;estimatedDuration: Duration?&#xa;expiresAt: Instant&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="380" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="Revision" value="QuoteRevision&#xa;--&#xa;id: UUID&#xa;quoteId: QuoteId&#xa;price: Money?&#xa;message: String?&#xa;reason: String?&#xa;createdBy: AccountId&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="150" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="QuotePolicy&#xa;--&#xa;canSendQuote()&#xa;canReviseQuote()&#xa;canWithdrawQuote()&#xa;canAcceptQuote()&#xa;validateQuoteNotExpired()&#xa;validateRequestOwner()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="150" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Request" value="ServiceRequest&#xa;--&#xa;id: RequestId&#xa;requesterAccountId: AccountId&#xa;status: RequestStatus&#xa;budget: Budget&#xa;categoryId: CategoryId" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="150" width="330" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Job" value="Job&#xa;--&#xa;id: JobId&#xa;requestId: RequestId&#xa;acceptedQuoteId: QuoteId&#xa;status: JobStatus&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="570" width="340" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Quote Events&#xa;--&#xa;QuoteSent&#xa;QuoteRevised&#xa;QuoteWithdrawn&#xa;QuoteRejected&#xa;QuoteAccepted&#xa;JobCreated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="570" width="340" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Outbox" value="OutboxEvent&#xa;--&#xa;id: UUID&#xa;aggregateType&#xa;aggregateId&#xa;eventType&#xa;payload&#xa;correlationId&#xa;causationId" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="570" width="340" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Visibility" value="QuoteVisibilityRule&#xa;--&#xa;requester can view all own quotes&#xa;sender can view own quote&#xa;competitors cannot view each other&#xa;admin requires audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="570" width="360" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Quote" target="Revision">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="460" y="260" as="point"/><mxPoint x="560" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="validates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Quote">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1020" y="240" as="point"/><mxPoint x="460" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="checks owner/state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Request">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1360" y="240" as="point"/><mxPoint x="1460" y="245" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="belongs to" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Quote" target="Request">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="460" y="200" as="point"/><mxPoint x="1460" y="200" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="accepted creates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Quote" target="Job">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="270" y="450" as="point"/><mxPoint x="270" y="570" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Quote" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="460" y="380" as="point"/><mxPoint x="730" y="380" as="point"/><mxPoint x="730" y="570" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="serialized as" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Events" target="Outbox">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="900" y="665" as="point"/><mxPoint x="1020" y="675" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="protects" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Visibility" target="Quote">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1460" y="675" as="point"/><mxPoint x="1370" y="675" as="point"/><mxPoint x="1370" y="500" as="point"/><mxPoint x="270" y="500" as="point"/><mxPoint x="270" y="450" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Domain rule:&#xa;Quote acceptance must be atomic: one accepted quote per request, competing quotes transition out of selectable state, and Job draft is created." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1060" width="1540" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

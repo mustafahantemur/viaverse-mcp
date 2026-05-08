@@ -1,0 +1,97 @@
+@startuml
+title Viaverse Matching — Class Model
+
+class RequestSnapshot {
+  requestId: RequestId
+  categoryId: CategoryId
+  budget: Budget
+  areaId: AreaId
+  urgency: Urgency
+  publishedAt: Instant
+}
+
+class CandidateProvider {
+  targetType: WORKER | BUSINESS
+  targetId: UUID
+  accountId: AccountId?
+  businessId: BusinessId?
+  serviceArea: AreaId
+  categories: Set<CategoryId>
+}
+
+class EligibilityResult {
+  eligible: Boolean
+  reasons: List<ReasonCode>
+  capabilityStatus
+  accountStatus
+  businessStatus
+}
+
+class TrustSummary {
+  subjectId: UUID
+  rating: Decimal
+  completedJobs: Int
+  badges: List<BadgeCode>
+  riskLevel: RiskLevel
+  disputeRate: Decimal
+}
+
+class MatchScore {
+  score: Decimal
+  categoryFit: Decimal
+  distanceScore: Decimal
+  budgetFit: Decimal
+  trustScore: Decimal
+  availabilityScore: Decimal
+  boostSignal: Decimal
+  riskPenalty: Decimal
+}
+
+class MatchExplanation {
+  reasonCodes: List<ReasonCode>
+  visibleReasons: List<String>
+  internalReasons: List<String>
+}
+
+class WorkerOpportunity {
+  id: UUID
+  requestId: RequestId
+  targetType: TargetType
+  targetId: UUID
+  score: Decimal
+  status: OpportunityStatus
+  expiresAt: Instant
+}
+
+class MatchingPolicy {
+  applyEligibility()
+  applySafetyGates()
+  applyFairnessWindow()
+  applyBoostAfterGates()
+  explain()
+}
+
+class MatchingEvents {
+  MatchingRequested
+  MatchingCompleted
+  WorkerOpportunityCreated
+  WorkerOpportunityExpired
+}
+
+RequestSnapshot --> CandidateProvider : candidate query
+CandidateProvider --> EligibilityResult : checked as
+CandidateProvider --> TrustSummary : has summary
+RequestSnapshot --> MatchScore : features
+CandidateProvider --> MatchScore : features
+EligibilityResult --> MatchingPolicy : gates
+TrustSummary --> MatchingPolicy : risk/trust
+MatchScore --> MatchExplanation : reason codes
+MatchExplanation --> WorkerOpportunity : stored with
+MatchingPolicy --> WorkerOpportunity : decides eligibility
+WorkerOpportunity --> MatchingEvents : emits
+
+note bottom
+Visible reasons are safe user-facing explanations.
+Internal reasons may include risk/fraud signals and must not be exposed to normal users.
+end note
+@enduml

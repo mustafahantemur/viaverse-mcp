@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Quote / Offer — Class Model</text>
+
+<rect x="80" y="150" width="380" height="300" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="270.0" y="183.0" text-anchor="middle" class="h">Quote</text>
+<text x="270.0" y="203.0" text-anchor="middle" class="t">--</text>
+<text x="270.0" y="223.0" text-anchor="middle" class="t">id: QuoteId</text>
+<text x="270.0" y="243.0" text-anchor="middle" class="t">requestId: RequestId</text>
+<text x="270.0" y="263.0" text-anchor="middle" class="t">senderType: WORKER | BUSINESS</text>
+<text x="270.0" y="283.0" text-anchor="middle" class="t">workerProfileId: UUID?</text>
+<text x="270.0" y="303.0" text-anchor="middle" class="t">businessId: UUID?</text>
+<text x="270.0" y="323.0" text-anchor="middle" class="t">status: QuoteStatus</text>
+<text x="270.0" y="343.0" text-anchor="middle" class="t">price: Money</text>
+<text x="270.0" y="363.0" text-anchor="middle" class="t">message: String</text>
+<text x="270.0" y="383.0" text-anchor="middle" class="t">estimatedStart: Instant?</text>
+<text x="270.0" y="403.0" text-anchor="middle" class="t">estimatedDuration: Duration?</text>
+<text x="270.0" y="423.0" text-anchor="middle" class="t">expiresAt: Instant</text>
+<text x="270.0" y="443.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="560" y="150" width="340" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="730.0" y="188.0" text-anchor="middle" class="h">QuoteRevision</text>
+<text x="730.0" y="208.0" text-anchor="middle" class="t">--</text>
+<text x="730.0" y="228.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="730.0" y="248.0" text-anchor="middle" class="t">quoteId: QuoteId</text>
+<text x="730.0" y="268.0" text-anchor="middle" class="t">price: Money?</text>
+<text x="730.0" y="288.0" text-anchor="middle" class="t">message: String?</text>
+<text x="730.0" y="308.0" text-anchor="middle" class="t">reason: String?</text>
+<text x="730.0" y="328.0" text-anchor="middle" class="t">createdBy: AccountId</text>
+<text x="730.0" y="348.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1020" y="150" width="340" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1190.0" y="197.0" text-anchor="middle" class="h">QuotePolicy</text>
+<text x="1190.0" y="217.0" text-anchor="middle" class="t">--</text>
+<text x="1190.0" y="237.0" text-anchor="middle" class="t">canSendQuote()</text>
+<text x="1190.0" y="257.0" text-anchor="middle" class="t">canReviseQuote()</text>
+<text x="1190.0" y="277.0" text-anchor="middle" class="t">canWithdrawQuote()</text>
+<text x="1190.0" y="297.0" text-anchor="middle" class="t">canAcceptQuote()</text>
+<text x="1190.0" y="317.0" text-anchor="middle" class="t">validateQuoteNotExpired()</text>
+<text x="1190.0" y="337.0" text-anchor="middle" class="t">validateRequestOwner()</text>
+<rect x="1460" y="150" width="330" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1625.0" y="191.0" text-anchor="middle" class="h">ServiceRequest</text>
+<text x="1625.0" y="211.0" text-anchor="middle" class="t">--</text>
+<text x="1625.0" y="231.0" text-anchor="middle" class="t">id: RequestId</text>
+<text x="1625.0" y="251.0" text-anchor="middle" class="t">requesterAccountId: AccountId</text>
+<text x="1625.0" y="271.0" text-anchor="middle" class="t">status: RequestStatus</text>
+<text x="1625.0" y="291.0" text-anchor="middle" class="t">budget: Budget</text>
+<text x="1625.0" y="311.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<rect x="80" y="570" width="340" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="250.0" y="606.0" text-anchor="middle" class="h">Job</text>
+<text x="250.0" y="626.0" text-anchor="middle" class="t">--</text>
+<text x="250.0" y="646.0" text-anchor="middle" class="t">id: JobId</text>
+<text x="250.0" y="666.0" text-anchor="middle" class="t">requestId: RequestId</text>
+<text x="250.0" y="686.0" text-anchor="middle" class="t">acceptedQuoteId: QuoteId</text>
+<text x="250.0" y="706.0" text-anchor="middle" class="t">status: JobStatus</text>
+<text x="250.0" y="726.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="560" y="570" width="340" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="730.0" y="602.0" text-anchor="middle" class="h">Quote Events</text>
+<text x="730.0" y="622.0" text-anchor="middle" class="t">--</text>
+<text x="730.0" y="642.0" text-anchor="middle" class="t">QuoteSent</text>
+<text x="730.0" y="662.0" text-anchor="middle" class="t">QuoteRevised</text>
+<text x="730.0" y="682.0" text-anchor="middle" class="t">QuoteWithdrawn</text>
+<text x="730.0" y="702.0" text-anchor="middle" class="t">QuoteRejected</text>
+<text x="730.0" y="722.0" text-anchor="middle" class="t">QuoteAccepted</text>
+<text x="730.0" y="742.0" text-anchor="middle" class="t">JobCreated</text>
+<rect x="1020" y="570" width="340" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1190.0" y="603.0" text-anchor="middle" class="h">OutboxEvent</text>
+<text x="1190.0" y="623.0" text-anchor="middle" class="t">--</text>
+<text x="1190.0" y="643.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1190.0" y="663.0" text-anchor="middle" class="t">aggregateType</text>
+<text x="1190.0" y="683.0" text-anchor="middle" class="t">aggregateId</text>
+<text x="1190.0" y="703.0" text-anchor="middle" class="t">eventType</text>
+<text x="1190.0" y="723.0" text-anchor="middle" class="t">payload</text>
+<text x="1190.0" y="743.0" text-anchor="middle" class="t">correlationId</text>
+<text x="1190.0" y="763.0" text-anchor="middle" class="t">causationId</text>
+<rect x="1460" y="570" width="360" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="630.0" text-anchor="middle" class="h">QuoteVisibilityRule</text>
+<text x="1640.0" y="650.0" text-anchor="middle" class="t">--</text>
+<text x="1640.0" y="670.0" text-anchor="middle" class="t">requester can view all own quotes</text>
+<text x="1640.0" y="690.0" text-anchor="middle" class="t">sender can view own quote</text>
+<text x="1640.0" y="710.0" text-anchor="middle" class="t">competitors cannot view each other</text>
+<text x="1640.0" y="730.0" text-anchor="middle" class="t">admin requires audit</text>
+<polyline points="460,260 560,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="568" y="242" class="small">1 -&gt; many</text>
+<polyline points="1020,240 460,240" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="468" y="232" class="small">validates</text>
+<polyline points="1360,240 1460,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1468" y="237" class="small">checks owner/state</text>
+<polyline points="460,200 1460,200" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1468" y="192" class="small">belongs to</text>
+<polyline points="270,450 270,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="278" y="562" class="small">accepted creates</text>
+<polyline points="460,380 730,380 730,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="738" y="372" class="small">emits</text>
+<polyline points="900,665 1020,675" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1028" y="667" class="small">serialized as</text>
+<polyline points="1460,675 1370,675 1370,500 270,500 270,450" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1378" y="492" class="small">protects</text>
+<rect x="80" y="1060" width="1540" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1084" class="t">Domain rule:</text>
+<text x="96" y="1102" class="t">Quote acceptance must be atomic: one accepted quote per request, competing quotes transition out of selectable state, and Job draft is created.</text>
+</svg>

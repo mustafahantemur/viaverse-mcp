@@ -1,0 +1,59 @@
+@startuml
+title Viaverse Chat / Messaging / Safety — Use Case Diagram
+left to right direction
+
+actor "Requester / Customer" as Customer
+actor "Worker / Business" as Worker
+actor "Moderator / Support" as Moderator
+actor "Marketplace / Job" as Market
+actor "Media / CDN" as Media
+actor "Safety / Moderation" as Safety
+
+rectangle "Chat / Messaging / Safety Boundary" {
+  usecase "Open job conversation\ncontext-scoped" as Open
+  usecase "Validate participants\njob/order permissions" as Participants
+  usecase "Send message" as Send
+  usecase "Deliver/read receipts" as Deliver
+  usecase "Send attachment\nimage/video/file refs" as Attach
+  usecase "Detect unsafe content\nPII/off-platform/payment" as Filter
+  usecase "Block/warn/rate-limit" as Block
+  usecase "Notify participants" as Notify
+  usecase "Report conversation/message" as Report
+  usecase "Moderator review\nscoped access" as Review
+  usecase "Moderation action\nhide/delete/suspend" as Action
+  usecase "Export chat for dispute\npolicy controlled" as Export
+  usecase "Manage chat safety policy" as Policy
+  usecase "Retention/deletion\nKVKK-aware" as Retention
+  usecase "Emit events\nMessageSent\nChatReported" as Events
+}
+
+Customer --> Open
+Worker --> Open
+Open --> Participants
+Participants --> Send
+Send --> Deliver
+Customer --> Attach
+Worker --> Attach
+Attach --> Filter
+Send ..> Filter : text check
+Filter ..> Block : if unsafe
+Block --> Notify
+Customer --> Report
+Worker --> Report
+Report --> Review
+Moderator --> Review
+Review --> Action
+Action ..> Export : dispute/legal
+Moderator --> Policy
+Policy --> Retention
+Retention --> Events
+Market --> Open
+Media --> Attach
+Safety --> Filter
+
+note bottom
+Chat is job/order-context scoped.
+Kişisel bilgi, off-platform payment, harassment, scam ve unsafe media için safety policy çalışır.
+Matrix-like federation is not needed at launch; keep internal messaging modular.
+end note
+@enduml

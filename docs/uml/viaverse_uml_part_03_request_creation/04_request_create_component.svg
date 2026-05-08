@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1400" viewBox="0 0 2000 1400">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1920" height="60" rx="14" fill="#022C22"/>
+<text x="1000.0" y="69" text-anchor="middle" class="title">Viaverse Request Creation — Component Diagram</text>
+
+<rect x="80" y="180" width="270" height="120" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="215.0" y="204.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<text x="215.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="215.0" y="244.0" text-anchor="middle" class="t">Create sheet</text>
+<text x="215.0" y="264.0" text-anchor="middle" class="t">Request wizard</text>
+<text x="215.0" y="284.0" text-anchor="middle" class="t">Draft state</text>
+<rect x="450" y="180" width="300" height="120" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="600.0" y="204.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<text x="600.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="600.0" y="244.0" text-anchor="middle" class="t">Request API</text>
+<text x="600.0" y="264.0" text-anchor="middle" class="t">AI facade</text>
+<text x="600.0" y="284.0" text-anchor="middle" class="t">Media facade</text>
+<rect x="850" y="140" width="250" height="70" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="975.0" y="175.0" text-anchor="middle" class="h">RequestController</text>
+<rect x="850" y="260" width="290" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="995.0" y="284.0" text-anchor="middle" class="h">Request Use Cases</text>
+<text x="995.0" y="304.0" text-anchor="middle" class="t">--</text>
+<text x="995.0" y="324.0" text-anchor="middle" class="t">CreateDraft</text>
+<text x="995.0" y="344.0" text-anchor="middle" class="t">UpdateDraft</text>
+<text x="995.0" y="364.0" text-anchor="middle" class="t">PublishRequest</text>
+<rect x="850" y="440" width="290" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="995.0" y="464.0" text-anchor="middle" class="h">Request Policies</text>
+<text x="995.0" y="484.0" text-anchor="middle" class="t">--</text>
+<text x="995.0" y="504.0" text-anchor="middle" class="t">capability</text>
+<text x="995.0" y="524.0" text-anchor="middle" class="t">required fields</text>
+<text x="995.0" y="544.0" text-anchor="middle" class="t">privacy</text>
+<rect x="850" y="620" width="290" height="110" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="995.0" y="657.0" text-anchor="middle" class="h">RequestRepositoryPort</text>
+<text x="995.0" y="677.0" text-anchor="middle" class="t">CategoryPort</text>
+<text x="995.0" y="697.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1250" y="250" width="310" height="130" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1405.0" y="279.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1405.0" y="299.0" text-anchor="middle" class="t">--</text>
+<text x="1405.0" y="319.0" text-anchor="middle" class="t">service_request</text>
+<text x="1405.0" y="339.0" text-anchor="middle" class="t">request_media</text>
+<text x="1405.0" y="359.0" text-anchor="middle" class="t">outbox_event</text>
+<rect x="1250" y="450" width="310" height="110" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1405.0" y="478.0" text-anchor="middle" class="h">media-service</text>
+<text x="1405.0" y="498.0" text-anchor="middle" class="t">--</text>
+<text x="1405.0" y="518.0" text-anchor="middle" class="t">UploadSession</text>
+<text x="1405.0" y="538.0" text-anchor="middle" class="t">MediaAsset</text>
+<rect x="1250" y="650" width="340" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1420.0" y="688.0" text-anchor="middle" class="h">search/matching consumers</text>
+<text x="1420.0" y="708.0" text-anchor="middle" class="t">--</text>
+<text x="1420.0" y="728.0" text-anchor="middle" class="t">OpenSearch projection</text>
+<text x="1420.0" y="748.0" text-anchor="middle" class="t">Worker opportunity queue</text>
+<rect x="1650" y="180" width="270" height="120" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1785.0" y="213.0" text-anchor="middle" class="h">AI Provider Adapter</text>
+<text x="1785.0" y="233.0" text-anchor="middle" class="t">--</text>
+<text x="1785.0" y="253.0" text-anchor="middle" class="t">category suggestion</text>
+<text x="1785.0" y="273.0" text-anchor="middle" class="t">budget guidance</text>
+<rect x="1650" y="380" width="270" height="110" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1785.0" y="408.0" text-anchor="middle" class="h">MapProvider</text>
+<text x="1785.0" y="428.0" text-anchor="middle" class="t">--</text>
+<text x="1785.0" y="448.0" text-anchor="middle" class="t">geocode</text>
+<text x="1785.0" y="468.0" text-anchor="middle" class="t">area normalize</text>
+<rect x="1650" y="650" width="270" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1785.0" y="688.0" text-anchor="middle" class="h">Kafka / Spring Cloud Stream</text>
+<text x="1785.0" y="708.0" text-anchor="middle" class="t">--</text>
+<text x="1785.0" y="728.0" text-anchor="middle" class="t">ServiceRequestPublished</text>
+<text x="1785.0" y="748.0" text-anchor="middle" class="t">MatchingRequested</text>
+<polyline points="350,240 450,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="458" y="232" class="small">REST</text>
+<polyline points="750,240 800,240 800,175 850,175" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="808" y="167" class="small">REST</text>
+<polyline points="975,210 975,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="983" y="252" class="small">command</text>
+<polyline points="995,380 995,440" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1003" y="432" class="small">validate</text>
+<polyline points="995,560 995,620" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1003" y="612" class="small">ports</text>
+<polyline points="1140,675 1190,675 1190,315 1250,315" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1198" y="307" class="small">JPA adapter</text>
+<polyline points="750,220 1650,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1658" y="212" class="small">suggestions</text>
+<polyline points="750,260 800,260 800,505 1250,505" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="808" y="497" class="small">upload session</text>
+<polyline points="1140,320 1580,320 1580,435 1650,435" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="427" class="small">normalize location</text>
+<polyline points="1140,330 1600,330 1600,715 1650,715" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="707" class="small">outbox publish</text>
+<polyline points="1650,715 1590,715" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1598" y="707" class="small">consume</text>
+<rect x="80" y="880" width="1500" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="904" class="t">Boundary rule:</text>
+<text x="96" y="922" class="t">marketplace-service owns ServiceRequest source-of-truth. AI, Media and Maps are adapters/integrations, not owners of the request.</text>
+</svg>

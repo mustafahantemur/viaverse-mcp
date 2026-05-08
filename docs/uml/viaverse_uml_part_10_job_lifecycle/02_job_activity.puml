@@ -1,0 +1,36 @@
+@startuml
+title Viaverse Job Lifecycle / Delivery Approval — Activity Diagram
+start
+:QuoteAccepted;
+:Create Job draft;
+:Wait for PaymentAuthorized;
+if (Payment ok?) then (yes)
+  :Set READY_TO_START;
+  :Worker starts work;
+  :Job workspace\nchat / media / updates;
+  :Worker delivers work;
+  :Requester reviews delivery;
+  if (Approve delivery?) then (approved)
+    :Set COMPLETED;
+    :Mark payout eligible;
+    :Trigger review prompt;
+    :Emit JobCompleted;
+    :Emit PayoutEligible;
+  else (needs fix)
+    :Request fix / revision;
+    :Worker redelivers;
+  endif
+  if (Open dispute?) then (yes)
+    :Create dispute case;
+    :Block payout;
+  endif
+else (no)
+  :Block start\npayment failed/retry;
+endif
+stop
+
+note bottom
+Auto-approval after timeout can be added later as configurable policy,
+but dispute/report path must always be available before payout release.
+end note
+@enduml

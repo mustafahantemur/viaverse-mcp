@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1650" viewBox="0 0 2400 1650">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2320" height="60" rx="14" fill="#022C22"/>
+<text x="1200.0" y="69" text-anchor="middle" class="title">Viaverse Team Ownership / Workstream Boundaries — Component Diagram</text>
+
+<rect x="80" y="170" width="330" height="140" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="245.0" y="204.0" text-anchor="middle" class="h">Product / Domain</text>
+<text x="245.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="245.0" y="244.0" text-anchor="middle" class="t">use cases</text>
+<text x="245.0" y="264.0" text-anchor="middle" class="t">acceptance</text>
+<text x="245.0" y="284.0" text-anchor="middle" class="t">roadmap priority</text>
+<rect x="500" y="170" width="330" height="140" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="665.0" y="204.0" text-anchor="middle" class="h">Design / UX</text>
+<text x="665.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="665.0" y="244.0" text-anchor="middle" class="t">KMP screens</text>
+<text x="665.0" y="264.0" text-anchor="middle" class="t">design system</text>
+<text x="665.0" y="284.0" text-anchor="middle" class="t">flows/prototypes</text>
+<rect x="920" y="170" width="350" height="150" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1095.0" y="209.0" text-anchor="middle" class="h">Client Team</text>
+<text x="1095.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="1095.0" y="249.0" text-anchor="middle" class="t">KMP Compose</text>
+<text x="1095.0" y="269.0" text-anchor="middle" class="t">mobile/web shared UI</text>
+<text x="1095.0" y="289.0" text-anchor="middle" class="t">API integration</text>
+<rect x="1350" y="170" width="350" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1525.0" y="209.0" text-anchor="middle" class="h">Backend Team</text>
+<text x="1525.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="1525.0" y="249.0" text-anchor="middle" class="t">Spring Boot</text>
+<text x="1525.0" y="269.0" text-anchor="middle" class="t">bounded contexts</text>
+<text x="1525.0" y="289.0" text-anchor="middle" class="t">ports/adapters</text>
+<rect x="1780" y="170" width="350" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1955.0" y="209.0" text-anchor="middle" class="h">Platform/DevOps</text>
+<text x="1955.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="1955.0" y="249.0" text-anchor="middle" class="t">AWS/EKS/CI/CD</text>
+<text x="1955.0" y="269.0" text-anchor="middle" class="t">observability</text>
+<text x="1955.0" y="289.0" text-anchor="middle" class="t">secrets</text>
+<rect x="80" y="520" width="330" height="140" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="245.0" y="554.0" text-anchor="middle" class="h">QA / Test</text>
+<text x="245.0" y="574.0" text-anchor="middle" class="t">--</text>
+<text x="245.0" y="594.0" text-anchor="middle" class="t">manual QA</text>
+<text x="245.0" y="614.0" text-anchor="middle" class="t">automated tests</text>
+<text x="245.0" y="634.0" text-anchor="middle" class="t">release gates</text>
+<rect x="500" y="520" width="330" height="140" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="665.0" y="554.0" text-anchor="middle" class="h">Security/Privacy</text>
+<text x="665.0" y="574.0" text-anchor="middle" class="t">--</text>
+<text x="665.0" y="594.0" text-anchor="middle" class="t">KVKK</text>
+<text x="665.0" y="614.0" text-anchor="middle" class="t">threat model</text>
+<text x="665.0" y="634.0" text-anchor="middle" class="t">policy review</text>
+<rect x="920" y="520" width="350" height="150" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1095.0" y="559.0" text-anchor="middle" class="h">Data/Search/AI</text>
+<text x="1095.0" y="579.0" text-anchor="middle" class="t">--</text>
+<text x="1095.0" y="599.0" text-anchor="middle" class="t">OpenSearch</text>
+<text x="1095.0" y="619.0" text-anchor="middle" class="t">analytics</text>
+<text x="1095.0" y="639.0" text-anchor="middle" class="t">matching/AI</text>
+<rect x="1350" y="520" width="350" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1525.0" y="559.0" text-anchor="middle" class="h">Ops/Support/Admin</text>
+<text x="1525.0" y="579.0" text-anchor="middle" class="t">--</text>
+<text x="1525.0" y="599.0" text-anchor="middle" class="t">moderation</text>
+<text x="1525.0" y="619.0" text-anchor="middle" class="t">support workflows</text>
+<text x="1525.0" y="639.0" text-anchor="middle" class="t">runbooks</text>
+<rect x="1780" y="520" width="350" height="150" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1955.0" y="550.0" text-anchor="middle" class="h">Docs / Architecture</text>
+<text x="1955.0" y="570.0" text-anchor="middle" class="t">--</text>
+<text x="1955.0" y="590.0" text-anchor="middle" class="t">ADRs</text>
+<text x="1955.0" y="610.0" text-anchor="middle" class="t">UML</text>
+<text x="1955.0" y="630.0" text-anchor="middle" class="t">AGENTS.md</text>
+<text x="1955.0" y="650.0" text-anchor="middle" class="t">coding rules</text>
+<polyline points="410,240 500,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="232" class="small">flow requirements</text>
+<polyline points="830,240 920,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="928" y="237" class="small">UI contracts</text>
+<polyline points="1270,245 1350,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1358" y="237" class="small">API contracts</text>
+<polyline points="1700,245 1780,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="237" class="small">deploy/runtime</text>
+<polyline points="245,310 245,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="253" y="512" class="small">acceptance</text>
+<polyline points="1525,320 1095,520" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1103" y="512" class="small">events/indexes</text>
+<polyline points="1350,245 665,520" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="673" y="512" class="small">auth/privacy</text>
+<polyline points="1955,320 665,520" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="673" y="512" class="small">secrets/IAM</text>
+<polyline points="410,590 1780,595" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="587" class="small">test evidence</text>
+<polyline points="1700,595 1780,595" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="587" class="small">runbooks</text>
+<polyline points="1095,520 1095,430 245,430 245,310" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="253" y="422" class="small">quality insights</text>
+<rect x="120" y="840" width="1700" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="864" class="t">Ownership rule:</text>
+<text x="136" y="882" class="t">Teams are workstreams, not silos. Every vertical slice needs product, UX, client, backend, data/security, QA and docs coordination.</text>
+</svg>

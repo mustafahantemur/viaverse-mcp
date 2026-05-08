@@ -1,0 +1,98 @@
+@startuml
+title Viaverse Media Upload / CDN / Moderation — Class Model
+
+class MediaAsset {
+  id: MediaId
+  ownerAccountId: AccountId
+  contextType: ContextType
+  contextId: UUID?
+  status: MediaStatus
+  mimeType: String
+  sizeBytes: Long
+  originalObjectKey: String
+  visibility: MediaVisibility
+  createdAt: Instant
+}
+
+class UploadSession {
+  id: UUID
+  mediaId: MediaId
+  uploadUrlExpiresAt: Instant
+  maxSizeBytes: Long
+  allowedMimeTypes: List<String>
+  status: UploadSessionStatus
+}
+
+class MediaDerivative {
+  id: UUID
+  mediaId: MediaId
+  type: THUMBNAIL | PREVIEW | TRANSCODED
+  objectKey: String
+  width: Int?
+  height: Int?
+  durationMs: Long?
+  createdAt: Instant
+}
+
+class MediaModerationResult {
+  id: UUID
+  mediaId: MediaId
+  provider: String
+  status: APPROVED | REJECTED | REVIEW
+  labels: List<String>
+  confidence: Decimal
+  reasonCode: String?
+  createdAt: Instant
+}
+
+class MediaAttachment {
+  id: UUID
+  mediaId: MediaId
+  contextType: REQUEST | PROFILE | CHAT | JOB_DELIVERY
+  contextId: UUID
+  attachedBy: AccountId
+  createdAt: Instant
+}
+
+class MediaReport {
+  id: UUID
+  mediaId: MediaId
+  reporterAccountId: AccountId
+  reason: ReportReason
+  status: ReportStatus
+  createdAt: Instant
+}
+
+class MediaPolicy {
+  canCreateUploadSession()
+  canAttachMedia()
+  canViewMedia()
+  requiresSignedUrl()
+  validateModerationState()
+}
+
+class MediaEvents {
+  UploadSessionCreated
+  MediaUploaded
+  MediaProcessingCompleted
+  MediaApproved
+  MediaRejected
+  MediaReported
+}
+
+MediaAsset "1" o-- "*" UploadSession
+MediaAsset "1" o-- "*" MediaDerivative
+MediaAsset "1" o-- "*" MediaModerationResult
+MediaAsset "1" o-- "*" MediaAttachment
+MediaAsset "1" o-- "*" MediaReport
+MediaPolicy ..> MediaAsset : validates
+MediaModerationResult ..> MediaEvents : emits
+MediaAsset ..> MediaEvents : emits
+MediaReport ..> MediaEvents : emits
+
+note bottom
+Object keys are internal.
+Clients receive short-lived upload URLs or delivery URLs.
+Public profile images can be CDN cached; private job/chat media must use signed access.
+end note
+@enduml

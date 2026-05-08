@@ -1,0 +1,30 @@
+@startuml
+title Viaverse CI/CD Deployment — Activity Diagram
+start
+:Merge to protected branch;
+:GitHub Actions\ncheckout + cache;
+:Run tests\nunit/integration/contract;
+:Quality gates\nlint/SAST/dependency scan;
+if (Gates pass?) then (yes)
+  :Build Docker image;
+  :Push to ECR\nimmutable tag;
+  :Run Flyway migration\npre-deploy gate;
+  :Deploy to EKS\nHelm/Kustomize/GitOps;
+  :Smoke tests\nhealth/readiness;
+  :Observe metrics/logs\nerror budget;
+  if (Healthy?) then (yes)
+    :Promote release\nmark version;
+  else (no)
+    :Rollback\nprevious image/config;
+    :Verify rollback health;
+  endif
+else (no)
+  :Fail pipeline\nno deploy;
+endif
+stop
+
+note bottom
+Database migration must be backward-compatible for rolling deploy.
+No manual production change without pipeline/audit.
+end note
+@enduml

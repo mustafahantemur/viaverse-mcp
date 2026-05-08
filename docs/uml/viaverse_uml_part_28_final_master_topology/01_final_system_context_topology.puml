@@ -1,0 +1,12 @@
+@startuml
+title Viaverse Final End-to-End System Context / Master Topology
+actor User
+rectangle Edge
+rectangle Gateway
+rectangle CoreServices
+rectangle DataEventObservability
+User --> Edge
+Edge --> Gateway
+Gateway --> CoreServices
+CoreServices --> DataEventObservability
+@enduml

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Release / Rollback / Migration — State Diagram</text>
+
+<rect x="120" y="180" width="220" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="230.0" y="220.0" text-anchor="middle" class="h">DRAFT</text>
+<rect x="500" y="180" width="260" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="630.0" y="220.0" text-anchor="middle" class="h">CI_RUNNING</text>
+<rect x="900" y="180" width="220" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1010.0" y="220.0" text-anchor="middle" class="h">BLOCKED</text>
+<rect x="1260" y="180" width="320" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1420.0" y="220.0" text-anchor="middle" class="h">READY_TO_DEPLOY</text>
+<rect x="1260" y="500" width="260" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1390.0" y="540.0" text-anchor="middle" class="h">MIGRATING</text>
+<rect x="900" y="500" width="260" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1030.0" y="540.0" text-anchor="middle" class="h">DEPLOYING</text>
+<rect x="500" y="500" width="260" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="630.0" y="540.0" text-anchor="middle" class="h">VERIFYING</text>
+<rect x="500" y="820" width="240" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="620.0" y="860.0" text-anchor="middle" class="h">RELEASED</text>
+<rect x="900" y="820" width="340" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1070.0" y="860.0" text-anchor="middle" class="h">ROLLBACK_REQUIRED</text>
+<rect x="1260" y="820" width="280" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1400.0" y="860.0" text-anchor="middle" class="h">ROLLED_BACK</text>
+<polyline points="340,220 500,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="212" class="small">PR merge/tag</text>
+<polyline points="760,220 900,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="908" y="212" class="small">gate failed</text>
+<polyline points="760,220 1260,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="212" class="small">gates passed</text>
+<polyline points="1420,260 1420,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1428" y="492" class="small">predeploy migration</text>
+<polyline points="1260,540 1160,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="532" class="small">migration ok</text>
+<polyline points="900,540 760,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="768" y="532" class="small">rollout done</text>
+<polyline points="630,580 630,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="638" y="812" class="small">healthy</text>
+<polyline points="760,540 1070,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1078" y="812" class="small">bad health/SLO</text>
+<polyline points="1240,860 1260,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="852" class="small">previous version</text>
+<polyline points="900,180 760,180" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="768" y="172" class="small">fix + rerun</text>
+<rect x="160" y="1060" width="1450" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1084" class="t">Release rule:</text>
+<text x="176" y="1102" class="t">Rollback must be tested, but DB migrations may not be trivially reversible. Prefer expand-contract migrations for safety.</text>
+</svg>

@@ -1,0 +1,97 @@
+@startuml
+title Viaverse Monetization / Subscription / Ads — Class Model
+
+class SubscriptionPlan {
+  code: String
+  name: String
+  monthlyPrice: Money
+  trialDays: Int
+  features: Set<FeatureCode>
+  leadQuota: Int?
+  status: PlanStatus
+}
+
+class BusinessSubscription {
+  id: UUID
+  businessId: BusinessId
+  planCode: String
+  status: SubscriptionStatus
+  trialEndsAt: Instant?
+  currentPeriodEnd: Instant
+  cancelAtPeriodEnd: Boolean
+}
+
+class CommissionRule {
+  id: UUID
+  scope: GLOBAL | CATEGORY | REGION | BUSINESS
+  ratePercent: Decimal
+  minFee: Money?
+  maxFee: Money?
+  effectiveFrom: Instant
+  status: RuleStatus
+}
+
+class PlatformFee {
+  id: UUID
+  jobId: JobId
+  payerAccountId: AccountId
+  earnerAccountId: AccountId
+  grossAmount: Money
+  feeAmount: Money
+  netPayout: Money
+  ruleId: UUID
+}
+
+class SponsoredPlacement {
+  id: UUID
+  businessId: BusinessId
+  campaignName: String
+  budget: Money
+  spent: Money
+  status: AdStatus
+  startsAt: Instant
+  endsAt: Instant?
+}
+
+class Promotion {
+  id: UUID
+  code: String
+  discountType: PERCENT | FIXED | FREE_TRIAL
+  value: Decimal
+  eligibilityRule: String
+  expiresAt: Instant?
+}
+
+class MonetizationPolicy {
+  canStartTrial()
+  canUseFeature()
+  calculateCommission()
+  applyPromotion()
+  canShowSponsoredResult()
+  adRelevanceGate()
+}
+
+class MonetizationEvents {
+  SubscriptionStarted
+  SubscriptionRenewed
+  SubscriptionPastDue
+  CommissionCharged
+  PayoutCalculated
+  AdBudgetSpent
+}
+
+SubscriptionPlan "1" o-- "*" BusinessSubscription
+CommissionRule --> PlatformFee : creates
+BusinessSubscription ..> MonetizationPolicy : feature gate
+Promotion ..> BusinessSubscription : discounts
+MonetizationPolicy --> CommissionRule : uses
+MonetizationPolicy ..> SponsoredPlacement : gates ads
+BusinessSubscription ..> MonetizationEvents : emits
+PlatformFee ..> MonetizationEvents : emits
+SponsoredPlacement ..> MonetizationEvents : emits
+
+note bottom
+All monetization values are versioned/effective-dated.
+Historic invoices and fee records must preserve the rule snapshot used at the time.
+end note
+@enduml

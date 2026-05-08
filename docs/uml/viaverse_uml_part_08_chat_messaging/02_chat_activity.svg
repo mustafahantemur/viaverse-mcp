@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Chat / Messaging — Activity Diagram</text>
+
+<rect x="80" y="160" width="230" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="195.0" y="181.0" text-anchor="middle" class="h">START</text>
+<text x="195.0" y="201.0" text-anchor="middle" class="t">quote/job context</text>
+<rect x="420" y="150" width="260" height="70" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="550.0" y="185.0" text-anchor="middle" class="h">Open conversation</text>
+<rect x="800" y="140" width="330" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="965.0" y="176.0" text-anchor="middle" class="h">Authorize participant</text>
+<text x="965.0" y="196.0" text-anchor="middle" class="t">requester / worker / business</text>
+<rect x="1250" y="140" width="210" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1355.0" y="185.0" text-anchor="middle" class="h">Allowed?</text>
+<rect x="1590" y="150" width="220" height="70" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1700.0" y="185.0" text-anchor="middle" class="h">Deny access</text>
+<rect x="1250" y="320" width="250" height="70" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1375.0" y="355.0" text-anchor="middle" class="h">Compose message</text>
+<rect x="800" y="320" width="230" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="915.0" y="360.0" text-anchor="middle" class="h">Attach media?</text>
+<rect x="420" y="310" width="310" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="575.0" y="346.0" text-anchor="middle" class="h">Create media upload</text>
+<text x="575.0" y="366.0" text-anchor="middle" class="t">and attach reference</text>
+<rect x="420" y="530" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="585.0" y="566.0" text-anchor="middle" class="h">Run safety scan</text>
+<text x="585.0" y="586.0" text-anchor="middle" class="t">contact/payment bypass</text>
+<rect x="860" y="530" width="210" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="965.0" y="575.0" text-anchor="middle" class="h">Unsafe?</text>
+<rect x="1200" y="530" width="330" height="90" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1365.0" y="575.0" text-anchor="middle" class="h">Warn / block / create risk signal</text>
+<rect x="860" y="740" width="260" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="990.0" y="777.5" text-anchor="middle" class="h">Persist message</text>
+<rect x="1200" y="740" width="260" height="75" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1330.0" y="777.5" text-anchor="middle" class="h">Emit MessageSent</text>
+<rect x="1540" y="740" width="240" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1660.0" y="777.5" text-anchor="middle" class="h">Notify recipient</text>
+<rect x="1200" y="940" width="240" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1320.0" y="977.5" text-anchor="middle" class="h">Recipient reads</text>
+<rect x="860" y="940" width="240" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="980.0" y="977.5" text-anchor="middle" class="h">Mark as read</text>
+<rect x="520" y="940" width="210" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="625.0" y="980.0" text-anchor="middle" class="h">Report?</text>
+<rect x="180" y="940" width="300" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="330.0" y="980.0" text-anchor="middle" class="h">Create moderation/support case</text>
+<polyline points="310,190 420,190" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="680,185 800,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1130,185 1250,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1460,185 1590,185" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1598" y="177" class="small">no</text>
+<polyline points="1355,230 1355,320" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1363" y="312" class="small">yes</text>
+<polyline points="1250,355 1030,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="800,360 730,355" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="738" y="347" class="small">yes</text>
+<polyline points="915,400 915,470 585,470 585,530" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="593" y="462" class="small">no</text>
+<polyline points="575,400 575,530" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="750,575 860,575" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1070,575 1200,575" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1208" y="567" class="small">yes</text>
+<polyline points="965,620 965,740" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="973" y="732" class="small">no</text>
+<polyline points="1120,778 1200,778" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1460,778 1540,778" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1660,815 1660,890 1320,890 1320,940" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1200,978 1100,978" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="860,978 730,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="520,980 480,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="488" y="972" class="small">yes</text>
+<rect x="260" y="1180" width="1420" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="276" y="1204" class="t">Policy note:</text>
+<text x="276" y="1222" class="t">Before accepted job/payment state, phone/email/address/off-platform payment sharing can warn, soft-block, hard-block or create a risk signal.</text>
+</svg>

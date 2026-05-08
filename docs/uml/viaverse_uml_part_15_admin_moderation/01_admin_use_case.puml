@@ -1,0 +1,59 @@
+@startuml
+title Viaverse Admin / Moderation / Operations — Use Case Diagram
+left to right direction
+
+actor "Ops Admin" as Ops
+actor Moderator
+actor "Support Agent" as Support
+actor "Identity / RBAC" as Identity
+actor "Audit / Compliance" as Audit
+actor "Domain Services" as Domains
+
+rectangle "Admin / Moderation / Operations Boundary" {
+  usecase "Admin login\nMFA required" as Login
+  usecase "Check admin role\nand permission" as RBAC
+  usecase "View moderation queues" as Queue
+  usecase "Open admin case" as Case
+  usecase "Inspect user/account\nminimal scoped view" as UserInspect
+  usecase "Review reported content\nmedia/chat/review/profile" as ContentReview
+  usecase "Take moderation action\nwarn / hide / suspend" as Action
+  usecase "Require reason\nand evidence" as Reason
+  usecase "Handle support/dispute case" as Dispute
+  usecase "Approve refund/payout\nwith policy" as Payment
+  usecase "Manage platform config\ncategories / fees / limits" as Config
+  usecase "Manage admin broadcast" as Campaign
+  usecase "Write immutable audit log" as AuditLog
+  usecase "Review appeal" as Appeal
+  usecase "Emit admin events\nActionApplied / AppealResolved" as Events
+}
+
+Ops --> Login
+Moderator --> Login
+Support --> Login
+Login --> RBAC
+RBAC --> Queue
+Queue --> Case
+Case --> UserInspect
+Case --> ContentReview
+ContentReview --> Action
+Action --> Reason
+Support --> Dispute
+Support --> Payment
+Ops --> Config
+Ops --> Campaign
+Reason --> AuditLog
+Dispute --> AuditLog
+Payment --> AuditLog
+AuditLog --> Appeal
+Appeal --> Events
+Identity --> RBAC
+Audit --> AuditLog
+Domains --> Action
+Domains --> Config
+
+note bottom
+Admin access is role-scoped, MFA-protected and audited.
+Every destructive or money-related action requires reason,
+permission and immutable audit trail.
+end note
+@enduml

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1300" viewBox="0 0 1900 1300">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1820" height="60" rx="14" fill="#022C22"/>
+<text x="950.0" y="69" text-anchor="middle" class="title">Viaverse Auth — Use Case Diagram</text>
+
+<rect x="260" y="135" width="1320" height="890" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="276" y="160" class="h">Authentication / Onboarding Boundary</text>
+<rect x="60" y="250" width="150" height="72" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="135.0" y="277.0" text-anchor="middle" class="h">«actor»</text>
+<text x="135.0" y="297.0" text-anchor="middle" class="t">Guest User</text>
+<rect x="60" y="570" width="150" height="72" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="135.0" y="597.0" text-anchor="middle" class="h">«actor»</text>
+<text x="135.0" y="617.0" text-anchor="middle" class="t">Authenticated Account</text>
+<rect x="1660" y="210" width="150" height="72" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1735.0" y="237.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1735.0" y="257.0" text-anchor="middle" class="t">Google / Apple / Meta</text>
+<rect x="1660" y="460" width="150" height="72" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1735.0" y="487.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1735.0" y="507.0" text-anchor="middle" class="t">Netgsm / Amazon SES</text>
+<rect x="1660" y="760" width="150" height="72" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1735.0" y="787.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1735.0" y="807.0" text-anchor="middle" class="t">Support / Security Admin</text>
+<rect x="340" y="190" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="450.0" y="226.0" text-anchor="middle" class="h">Select language</text>
+<rect x="620" y="190" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="730.0" y="226.0" text-anchor="middle" class="h">Choose login method</text>
+<rect x="900" y="160" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1010.0" y="196.0" text-anchor="middle" class="h">Phone OTP login</text>
+<rect x="900" y="250" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1010.0" y="286.0" text-anchor="middle" class="h">Email OTP login</text>
+<rect x="1180" y="190" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1290.0" y="217.0" text-anchor="middle" class="h">Social login</text>
+<text x="1290.0" y="237.0" text-anchor="middle" class="t">Google / Apple / Meta</text>
+<rect x="620" y="370" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="730.0" y="406.0" text-anchor="middle" class="h">Request OTP challenge</text>
+<rect x="900" y="370" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1010.0" y="406.0" text-anchor="middle" class="h">Verify OTP challenge</text>
+<rect x="620" y="520" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="730.0" y="556.0" text-anchor="middle" class="h">Create or find account</text>
+<rect x="900" y="520" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1010.0" y="556.0" text-anchor="middle" class="h">Accept Terms / Privacy / KVKK</text>
+<rect x="1180" y="520" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1290.0" y="547.0" text-anchor="middle" class="h">Choose first intent</text>
+<text x="1290.0" y="567.0" text-anchor="middle" class="t">Request / Work / Business</text>
+<rect x="620" y="700" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="730.0" y="727.0" text-anchor="middle" class="h">Create session</text>
+<text x="730.0" y="747.0" text-anchor="middle" class="t">Access + refresh token</text>
+<rect x="900" y="700" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1010.0" y="736.0" text-anchor="middle" class="h">Refresh token rotation</text>
+<rect x="1180" y="700" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1290.0" y="736.0" text-anchor="middle" class="h">Revoke session / logout</text>
+<rect x="1180" y="850" width="220" height="72" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1290.0" y="886.0" text-anchor="middle" class="h">Suspend account/capability</text>
+<polyline points="210,286 260,286 260,226 340,226" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="210,286 280,286 280,226 620,226" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="840,226 870,226 870,196 900,196" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="878" y="188" class="small">«extend»</text>
+<polyline points="840,226 870,226 870,286 900,286" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="878" y="278" class="small">«extend»</text>
+<polyline points="840,226 1180,226" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1188" y="218" class="small">«extend»</text>
+<polyline points="1010,232 1010,330 730,330 730,370" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="738" y="322" class="small">«include»</text>
+<polyline points="1010,322 1010,350 730,350 730,370" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="738" y="342" class="small">«include»</text>
+<polyline points="840,406 900,406" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="908" y="398" class="small">OTP code</text>
+<polyline points="1010,442 1010,480 730,480 730,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="738" y="472" class="small">valid</text>
+<polyline points="1290,262 1290,480 730,480 730,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="738" y="472" class="small">provider verified</text>
+<polyline points="840,556 900,556" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1120,556 1180,556" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1290,592 1290,660 730,660 730,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="210,606 280,606 280,736 900,736" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="210,606 280,606 280,736 1180,736" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1660,246 1540,246 1540,226 1400,226" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1548" y="218" class="small">OAuth callback</text>
+<polyline points="1660,496 1500,496 1500,406 840,406" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1508" y="398" class="small">SMS / email</text>
+<polyline points="1660,796 1500,796 1500,886 1400,886" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1508" y="878" class="small">admin action</text>
+<rect x="340" y="950" width="1120" height="55" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="356" y="974" class="t">Security rules:</text>
+<text x="356" y="992" class="t">JWT sub = persisted Account.id • OTP hash only • refresh token rotation/reuse detection • consent version stored • account status checked</text>
+</svg>

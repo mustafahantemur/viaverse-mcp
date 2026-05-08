@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="runtime-sequence" name="03 Runtime Request Sequence">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Runtime Request / Service Communication — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="174" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge" value="CloudFront/WAF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="424" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="alb" value="ALB/Ingress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="alb_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="694" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="gateway" value="API Gateway / BFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="gateway_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="964" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc" value="Domain Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1234" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL/Redis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1504" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Kafka/Outbox" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1774" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="otel" value="OTel/Logs/Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1950" y="140" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="otel_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2044" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="HTTPS request" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="client" target="edge">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="270" y="260" as="point"/><mxPoint x="330" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="WAF passed" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="edge" target="alb">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="520" y="310" as="point"/><mxPoint x="600" y="310" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="route to BFF" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="alb" target="gateway">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="790" y="360" as="point"/><mxPoint x="870" y="360" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="authorized command/query" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="gateway" target="svc">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1060" y="430" as="point"/><mxPoint x="1140" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="transaction + outbox insert" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="svc" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1330" y="520" as="point"/><mxPoint x="1410" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="publish via outbox relay" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="svc" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1330" y="620" as="point"/><mxPoint x="1680" y="620" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="trace/log/metric" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="svc" target="otel">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1330" y="720" as="point"/><mxPoint x="1950" y="720" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="response DTO" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="svc" target="gateway">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="850" as="point"/><mxPoint x="1060" y="850" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="redacted response" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="gateway" target="client">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="870" y="930" as="point"/><mxPoint x="760" y="930" as="point"/><mxPoint x="760" y="1220" as="point"/><mxPoint x="174" y="1220" as="point"/><mxPoint x="174" y="930" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="async consumer in other service" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="kafka" target="svc">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1680" y="1010" as="point"/><mxPoint x="1140" y="1010" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Runtime rule:&#xa;Synchronous calls go through gateway/BFF for external clients. Domain-to-domain consistency uses events/outbox where possible; avoid distributed transactions." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1340" width="1780" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

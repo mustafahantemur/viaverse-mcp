@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Dispute / Refund / Payout — Sequence Diagram</text>
+
+<rect x="80" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="172.5" y="170.0" text-anchor="middle" class="h">Client</text>
+<rect x="171" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="172.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="422.5" y="170.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="421" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="422.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="600" y="140" width="185" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="692.5" y="170.0" text-anchor="middle" class="h">dispute-service</text>
+<rect x="691" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="692.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="870" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="962.5" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="961" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="962.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1140" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1232.5" y="170.0" text-anchor="middle" class="h">payment-service</text>
+<rect x="1231" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1232.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1410" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1502.5" y="170.0" text-anchor="middle" class="h">messaging-service</text>
+<rect x="1501" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1502.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1680" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1772.5" y="170.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1771" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1772.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1940" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2032.5" y="170.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="2031" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="2032.0" y="725.0" text-anchor="middle" class="h"></text>
+<polyline points="265,260 330,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="252" class="small">POST /disputes</text>
+<polyline points="515,310 600,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="302" class="small">openDispute(command)</text>
+<polyline points="785,360 870,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="352" class="small">validate job participant/state</text>
+<polyline points="785,430 1140,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1148" y="422" class="small">block payout hold</text>
+<polyline points="785,500 1410,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1418" y="492" class="small">collect conversation refs</text>
+<polyline points="785,570 1680,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="562" class="small">insert DisputeCase + Evidence</text>
+<polyline points="785,650 1940,650" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1948" y="642" class="small">DisputeOpened</text>
+<polyline points="265,820 330,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="812" class="small">POST /admin/disputes/{id}/resolve</text>
+<polyline points="515,860 600,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="852" class="small">resolveDispute(command)</text>
+<polyline points="785,920 1140,920" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1148" y="912" class="small">refund/release/split command</text>
+<polyline points="1325,960 1680,960" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="952" class="small">idempotent money movement state</text>
+<polyline points="785,1020 1680,1020" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="1012" class="small">close dispute + audit log</text>
+<polyline points="785,1080 870,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="1072" class="small">update job dispute ref/status</text>
+<polyline points="785,1140 1940,1140" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1948" y="1132" class="small">DisputeResolved / RefundIssued / PayoutReleased</text>
+<rect x="80" y="1320" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1344" class="t">Sequence focus:</text>
+<text x="96" y="1362" class="t">Dispute service owns the case and resolution audit. Payment service owns actual refund/payout movement and idempotency.</text>
+</svg>

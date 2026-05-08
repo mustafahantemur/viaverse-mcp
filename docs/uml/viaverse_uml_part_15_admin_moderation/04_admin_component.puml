@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Admin / Moderation / Ops — Component Diagram
+
+component "React Admin UI\nQueues\nCases\nConfig\nAudit views" as AdminUI
+component "Admin BFF\nAdmin API\nMFA/session enforcement" as BFF
+component "AdminController\nModerationController\nConfigController" as Controller
+component "Admin Use Cases\nApplyModerationAction\nResolveAppeal\nManageConfig\nBroadcastCampaign" as UseCases
+component "Admin Policies\nRBAC/ABAC\nreason required\nleast privilege\nmoney-action safeguards" as Policies
+component "Ports\nAdminCaseRepo\nAuditPort\nIdentityPort\nDomainActionPort\nOutboxPort" as Ports
+component "identity-service\nadmin users\nroles\nMFA\npermissions" as Identity
+component "Domain Services\nidentity\nmarketplace\nmedia\npayment\ndispute" as Domains
+component "audit-service\nimmutable log\nreason/evidence\naccess records" as Audit
+database "PostgreSQL\nadmin_case\nadmin_action\nplatform_config\nappeal" as DB
+queue "Kafka / Outbox\nAdminActionApplied\nAppealResolved\nConfigChanged" as Kafka
+component "Monitoring / SIEM\nadmin anomaly\nsecurity alerts" as Monitor
+
+AdminUI --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Policies --> Identity : RBAC/ABAC
+Ports --> Domains : domain actions
+Ports --> Audit : audit records
+Ports --> DB : persist cases/config
+UseCases --> Kafka : events
+Audit --> Monitor : admin risk signals
+
+note bottom
+Admin UI never talks directly to domain services.
+All admin actions flow through Admin BFF + policy + audit.
+end note
+@enduml

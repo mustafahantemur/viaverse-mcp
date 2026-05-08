@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Category / Taxonomy / Dynamic Environment — Component Diagram
+
+component "KMP / Next.js Client\ncategory picker\nfilters\nrequest forms" as Client
+component "Admin UI\ntaxonomy editor\nicons/forms/rules" as Admin
+component "API Gateway / BFF\nTaxonomy API facade" as BFF
+component "TaxonomyController\nDynamicEnvironmentController\nAdminTaxonomyController" as Controller
+component "Taxonomy Use Cases\nResolveCategoryTree\nPublishTaxonomy\nMapRequestCategory\nConfigureDynamicEnvironment" as UseCases
+component "Taxonomy Policies\nversion compatibility\ncategory visibility\nform validation\nmigration mapping" as Policies
+component "Ports\nTaxonomyRepo\nLocalizationPort\nSearchIndexPort\nAnalyticsPort\nOutboxPort" as Ports
+database "PostgreSQL\ncategory\ntag\ncategory_rule\nform_schema\nversion" as DB
+component "localization-service\nlabels\nslugs\nicons metadata" as Loc
+component "search-service\nfacets\nfilters\nmatching projection" as Search
+component "analytics/AI\nno-result quality\ncategory suggestion" as Analytics
+queue "Kafka / Outbox\nTaxonomyPublished\nCategoryRuleChanged\nDynamicEnvUpdated" as Kafka
+
+Client --> BFF : HTTPS
+Admin --> BFF : HTTPS admin
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> DB : persist/read
+Ports --> Loc : localized labels
+Ports --> Search : facets/index
+UseCases --> Analytics : quality/suggestions
+UseCases --> Kafka : events
+
+note bottom
+Taxonomy service owns canonical category/tag/rule/form-schema model.
+Search, localization and clients consume published taxonomy versions.
+end note
+@enduml

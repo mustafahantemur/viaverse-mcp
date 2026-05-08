@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Quote / Offer — Activity Diagram</text>
+
+<rect x="80" y="160" width="210" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="185.0" y="181.0" text-anchor="middle" class="h">START</text>
+<text x="185.0" y="201.0" text-anchor="middle" class="t">matched opportunity</text>
+<rect x="390" y="150" width="300" height="75" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="540.0" y="187.5" text-anchor="middle" class="h">Worker opens request detail</text>
+<rect x="800" y="140" width="340" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="970.0" y="176.0" text-anchor="middle" class="h">Validate eligibility</text>
+<text x="970.0" y="196.0" text-anchor="middle" class="t">capability / risk / request status</text>
+<rect x="1260" y="140" width="240" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1380.0" y="185.0" text-anchor="middle" class="h">Allowed to quote?</text>
+<rect x="1620" y="150" width="260" height="75" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1750.0" y="187.5" text-anchor="middle" class="h">Show blocked reason</text>
+<rect x="1260" y="330" width="260" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1390.0" y="367.5" text-anchor="middle" class="h">Create quote draft</text>
+<rect x="800" y="330" width="300" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="950.0" y="367.5" text-anchor="middle" class="h">Set price and currency</text>
+<rect x="390" y="330" width="300" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="540.0" y="367.5" text-anchor="middle" class="h">Set schedule / duration</text>
+<rect x="390" y="540" width="300" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="540.0" y="577.5" text-anchor="middle" class="h">Write offer message</text>
+<rect x="800" y="540" width="300" height="75" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="950.0" y="577.5" text-anchor="middle" class="h">Confirm quote summary</text>
+<rect x="1260" y="530" width="320" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1420.0" y="566.0" text-anchor="middle" class="h">Persist SENT quote</text>
+<text x="1420.0" y="586.0" text-anchor="middle" class="t">and outbox event</text>
+<rect x="1620" y="540" width="260" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1750.0" y="577.5" text-anchor="middle" class="h">Notify requester</text>
+<rect x="1260" y="740" width="320" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1420.0" y="777.5" text-anchor="middle" class="h">Requester compares offers</text>
+<rect x="1260" y="900" width="250" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1385.0" y="945.0" text-anchor="middle" class="h">Requester accepts?</text>
+<rect x="1620" y="910" width="270" height="75" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1755.0" y="947.5" text-anchor="middle" class="h">Quote rejected / ignored</text>
+<rect x="800" y="900" width="330" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="965.0" y="936.0" text-anchor="middle" class="h">Set quote ACCEPTED</text>
+<text x="965.0" y="956.0" text-anchor="middle" class="t">create Job draft</text>
+<rect x="390" y="920" width="260" height="70" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="520.0" y="946.0" text-anchor="middle" class="h">Next part:</text>
+<text x="520.0" y="966.0" text-anchor="middle" class="t">Payment session</text>
+<polyline points="290,190 390,190" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="690,188 800,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1140,185 1260,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1500,185 1620,188" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1628" y="180" class="small">no</text>
+<polyline points="1380,230 1380,330" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1388" y="322" class="small">yes</text>
+<polyline points="1260,368 1100,368" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="800,368 690,368" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="540,405 540,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="690,578 800,578" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1100,578 1260,575" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1580,575 1620,578" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="570" class="small">QuoteSent</text>
+<polyline points="1750,615 1750,700 1420,700 1420,740" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1420,815 1420,900" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1510,945 1620,948" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1628" y="940" class="small">no</text>
+<polyline points="1260,945 1130,945" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1138" y="937" class="small">yes</text>
+<polyline points="800,945 650,955" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="390" y="1100" width="1260" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="406" y="1124" class="t">State rule:</text>
+<text x="406" y="1142" class="t">Accepting a quote is the boundary between offer flow and payment/job flow. Quote acceptance must be idempotent.</text>
+</svg>

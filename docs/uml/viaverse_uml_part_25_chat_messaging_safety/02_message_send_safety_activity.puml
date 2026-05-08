@@ -1,0 +1,26 @@
+@startuml
+title Viaverse Message Send / Safety Check — Activity Diagram
+start
+:User sends message;
+:Validate session and participant;
+:Validate conversation\njob/order state;
+:Rate limit\nspam/abuse guard;
+:Classify content\ntext/media/ref;
+if (Unsafe?) then (yes)
+  :Warn/block/message hold;
+  :Queue moderation if needed;
+else (no)
+endif
+:Persist message\nCassandra + metadata;
+:Create delivery receipts;
+:Notify participants;
+:Emit MessageSent;
+:Update conversation list\nlast message preview;
+stop
+
+note bottom
+Unsafe message may be blocked, warned, held for review,
+or allowed with event/audit depending on policy severity.
+Never silently drop without user-visible state.
+end note
+@enduml

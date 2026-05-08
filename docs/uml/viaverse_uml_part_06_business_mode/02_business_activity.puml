@@ -1,0 +1,31 @@
+@startuml
+title Viaverse Business Mode — Activity Diagram
+start
+:Tap Start Business Mode;
+:Check OPERATE_BUSINESS capability eligibility;
+if (Allowed?) then (yes)
+  :Create business profile\nname / legal type / intro;
+  :Add services/categories;
+  :Add packages/pricing optional;
+  :Set hours + service area;
+  if (Add team members?) then (yes)
+    :Assign team roles;
+  endif
+  if (Verification required?) then (yes)
+    :Submit business docs;
+    :Wait for approval;
+  endif
+  :Start 1-month trial\nsubscription state;
+  :Publish public profile;
+  :Index SEO/search profile;
+  :Business ready;
+else (no)
+  :Show reason\nsupport / appeal;
+endif
+stop
+
+note bottom
+Business subscription trial starts as configurable monetization state.
+It must not block basic ability to send offers if marketplace policy says free offers.
+end note
+@enduml

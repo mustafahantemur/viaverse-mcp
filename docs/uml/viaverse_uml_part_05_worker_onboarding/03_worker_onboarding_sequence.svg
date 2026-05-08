@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1450" viewBox="0 0 2100 1450">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2020" height="60" rx="14" fill="#022C22"/>
+<text x="1050.0" y="69" text-anchor="middle" class="title">Viaverse Worker Onboarding — Sequence Diagram</text>
+
+<rect x="80" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="165.0" y="170.0" text-anchor="middle" class="h">KMP / Web Client</text>
+<rect x="164" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="165.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="415.0" y="170.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="414" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="415.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="580" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="665.0" y="170.0" text-anchor="middle" class="h">identity-service</text>
+<rect x="664" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="665.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="830" y="140" width="170" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="915.0" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="914" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="915.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1080" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1165.0" y="170.0" text-anchor="middle" class="h">media-service</text>
+<rect x="1164" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1165.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1330" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1415.0" y="170.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1414" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1415.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1580" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1665.0" y="170.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="1664" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1665.0" y="685.0" text-anchor="middle" class="h"></text>
+<rect x="1830" y="140" width="170" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1915.0" y="170.0" text-anchor="middle" class="h">search-service</text>
+<rect x="1914" y="220" width="2" height="930" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1915.0" y="685.0" text-anchor="middle" class="h"></text>
+<polyline points="250,260 330,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="252" class="small">POST /work/onboarding/start</text>
+<polyline points="500,310 580,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="588" y="302" class="small">check capability eligibility</text>
+<polyline points="750,350 1330,350" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="342" class="small">load AccountCapability</text>
+<polyline points="500,430 830,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="422" class="small">create WorkerProfile draft</text>
+<polyline points="1000,470 1330,470" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="462" class="small">insert WorkerProfile DRAFT</text>
+<polyline points="250,580 330,580" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="572" class="small">PATCH worker profile
+categories/area/availability</text>
+<polyline points="500,620 830,620" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="612" class="small">updateWorkerProfile</text>
+<polyline points="1000,660 1330,660" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="652" class="small">persist categories/area/availability</text>
+<polyline points="250,760 330,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="752" class="small">POST /media/upload-sessions
+optional portfolio</text>
+<polyline points="500,800 1080,800" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="792" class="small">createUploadSession</text>
+<polyline points="1250,840 1330,840" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="832" class="small">store MediaAsset</text>
+<polyline points="250,960 330,960" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="952" class="small">POST /work/profile/publish</text>
+<polyline points="500,1000 830,1000" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="992" class="small">publishWorkerProfile</text>
+<polyline points="1000,1040 1330,1040" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="1032" class="small">set ACTIVE + outbox</text>
+<polyline points="1000,1080 1580,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="1072" class="small">WorkerProfileActivated</text>
+<polyline points="1750,1080 1830,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1838" y="1072" class="small">index public worker profile</text>
+<rect x="80" y="1200" width="1650" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1224" class="t">Sequence focus:</text>
+<text x="96" y="1242" class="t">Worker profile activation publishes search/matching projections. Profile source-of-truth remains marketplace-service/PostgreSQL.</text>
+</svg>

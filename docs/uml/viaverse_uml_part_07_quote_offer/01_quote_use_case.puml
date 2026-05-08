@@ -1,0 +1,53 @@
+@startuml
+title Viaverse Quote / Offer — Use Case Diagram
+left to right direction
+
+actor "Worker / Business" as Worker
+actor Requester
+actor "marketplace-service" as Marketplace
+actor "notification-service" as Notification
+
+rectangle "Quote / Offer Boundary" {
+  usecase "View matched request" as View
+  usecase "Open request detail" as Open
+  usecase "Ask clarification\noptional" as Ask
+  usecase "Create quote draft" as Draft
+  usecase "Set price / estimate" as Price
+  usecase "Write offer message" as Message
+  usecase "Set start time / duration" as Schedule
+  usecase "Send quote" as Send
+  usecase "Revise quote" as Revise
+  usecase "Withdraw quote" as Withdraw
+  usecase "Receive quote" as Receive
+  usecase "Compare offers" as Compare
+  usecase "Accept quote" as Accept
+  usecase "Reject quote" as Reject
+  usecase "Emit events\nQuoteSent / QuoteAccepted" as Events
+}
+
+Worker --> View
+View --> Open
+Open --> Ask : optional
+Open --> Draft
+Draft --> Price
+Price --> Message
+Message --> Schedule
+Schedule --> Send
+Send ..> Revise : revision flow
+Revise ..> Send : resend
+Worker --> Withdraw
+Requester --> Receive
+Receive --> Compare
+Compare --> Accept
+Compare --> Reject
+Accept --> Events
+Marketplace --> Send : persist
+Marketplace --> Accept : state change
+Notification --> Receive : notify requester
+
+note bottom
+Sending quotes/offers is free.
+Requester sees quotes for own request only.
+Competitor quote details are not visible to other workers/businesses.
+end note
+@enduml

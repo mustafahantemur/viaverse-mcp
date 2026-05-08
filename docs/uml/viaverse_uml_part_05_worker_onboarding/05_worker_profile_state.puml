@@ -1,0 +1,23 @@
+@startuml
+title Viaverse Worker Profile — State Diagram
+
+[*] --> NOT_CREATED
+NOT_CREATED --> DRAFT : start onboarding
+DRAFT --> PENDING_VERIFICATION : submit verification
+DRAFT --> ACTIVE : verification not required
+PENDING_VERIFICATION --> ACTIVE : approved
+PENDING_VERIFICATION --> VERIFICATION_REJECTED : rejected
+VERIFICATION_REJECTED --> DRAFT : fix and resubmit
+ACTIVE --> PAUSED : worker pauses
+PAUSED --> ACTIVE : resume
+ACTIVE --> SUSPENDED : risk/admin
+SUSPENDED --> ACTIVE : appeal/fix
+DRAFT --> DELETED : delete
+ACTIVE --> DELETED : account deletion
+DELETED --> [*]
+
+note bottom
+PAUSED is worker-controlled and reversible.
+SUSPENDED is policy/admin-controlled and blocks opportunities until resolved.
+end note
+@enduml

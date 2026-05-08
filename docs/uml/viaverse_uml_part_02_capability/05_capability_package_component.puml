@@ -1,0 +1,30 @@
+@startuml
+title Viaverse Capability — Package / Component Diagram
+
+package "apps/mobile-kmp" {
+  component "ModeSwitcher UI" as ModeUi
+  component "Profile screen" as ProfileUi
+}
+
+component "API Gateway / App BFF\nAccount summary\nMode switch request" as BFF
+component "identity-service\nAccountCapability\nSession mode claim\nCapability policy" as Identity
+component "business-service / marketplace boundary\nBusinessProfile\nBusinessTeamMember\nBusiness verification" as Business
+component "admin-bff\nCapability operations\nSuspension/revoke\nAudit reason" as Admin
+database "PostgreSQL\naccounts\naccount_capabilities\nbusiness_profiles\nteam_members" as DB
+queue "Kafka / Outbox\nCapabilityEnabled\nCapabilitySuspended\nActiveModeChanged" as Kafka
+
+ModeUi --> BFF : REST
+ProfileUi --> BFF : REST
+BFF --> Identity : REST/gRPC
+Identity --> Business : business checks
+Admin --> Identity : admin commands
+Identity --> DB : JPA
+Business --> DB : JPA
+Identity --> Kafka : outbox
+Kafka ..> BFF : projection / refresh summary
+
+note bottom
+Mode switching is a client UX action,
+but eligibility is always decided by backend capability policies.
+end note
+@enduml

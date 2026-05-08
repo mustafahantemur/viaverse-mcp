@@ -1,0 +1,26 @@
+@startuml
+title Viaverse Roadmap / Release Phases — Master Flow
+left to right direction
+
+rectangle "P0 — Foundation\nArchitecture docs\nMonorepo setup\nCI/CD skeleton\nDesign system baseline\nDomain language" as P0
+rectangle "P1 — Core Platform Alpha\nIdentity/OTP/social login\nAccount capabilities\nProfiles\nTaxonomy\nRequest creation" as P1
+rectangle "P2 — Marketplace Beta\nOffer/quote flow\nJob lifecycle\nChat scoped to job\nNotification inbox\nSearch basics" as P2
+rectangle "P3 — Trust + Payment Pilot\nIyzico/TR payment\nEscrow-like flow\nReviews/ratings\nDisputes\nModeration" as P3
+rectangle "P4 — Business Launch\nBusiness account\nCatalog/branches/staff\nSubscription trial\nAdmin config\nInsights" as P4
+rectangle "P5 — Public Launch TR\nSEO landing\nAds/sponsored\nAnalytics\nSupport/AI helper\nApp store release" as P5
+rectangle "P6 — Scale Readiness\nKubernetes hardening\nObservability/SLO\nSecurity/KVKK audit\nLoad tests\nCost controls" as P6
+rectangle "P7 — Growth / Global Prep\nLocalization expansion\nStripe/global payments\nRegional config\nAdvanced matching\nML/AI quality" as P7
+
+P0 --> P1 : foundation ready
+P1 --> P2 : core flows
+P2 --> P3 : transactions
+P3 --> P4 : merchant ops
+P4 --> P5 : launch pack
+P5 --> P6 : stabilize
+P6 --> P7 : scale/growth
+
+note bottom
+No throwaway MVP. Build a narrow but production-shaped slice first.
+Each phase exits with working product, tests, observability, rollback path and updated docs.
+end note
+@enduml

@@ -1,0 +1,95 @@
+@startuml
+title Viaverse Job Lifecycle / Delivery Approval — Class Model
+
+class Job {
+  id: JobId
+  requestId: RequestId
+  acceptedQuoteId: QuoteId
+  requesterAccountId: AccountId
+  providerType: WORKER | BUSINESS
+  providerId: UUID
+  status: JobStatus
+  scheduledStart: Instant?
+  startedAt: Instant?
+  deliveredAt: Instant?
+  completedAt: Instant?
+}
+
+class JobDelivery {
+  id: UUID
+  jobId: JobId
+  message: String?
+  mediaRefs: List<MediaId>
+  status: DeliveryStatus
+  submittedAt: Instant
+  reviewedAt: Instant?
+}
+
+class JobUpdate {
+  id: UUID
+  jobId: JobId
+  actorAccountId: AccountId
+  type: UpdateType
+  message: String?
+  createdAt: Instant
+}
+
+class JobPolicy {
+  canStartJob()
+  canDeliver()
+  canApproveDelivery()
+  canCancel()
+  canOpenDispute()
+  canRevealExactAddress()
+}
+
+class JobPaymentState {
+  jobId: JobId
+  paymentSessionId: UUID
+  paymentStatus: PaymentStatus
+  payoutStatus: PayoutStatus
+  payoutEligibleAt: Instant?
+}
+
+class ReviewPrompt {
+  id: UUID
+  jobId: JobId
+  reviewerAccountId: AccountId
+  revieweeId: UUID
+  status: PromptStatus
+  createdAt: Instant
+}
+
+class JobDisputeRef {
+  jobId: JobId
+  disputeId: UUID
+  status: DisputeStatus
+  payoutBlocked: Boolean
+  createdAt: Instant
+}
+
+class JobEvents {
+  JobCreated
+  JobPaymentAuthorized
+  JobStarted
+  JobDelivered
+  DeliveryApproved
+  JobCompleted
+  PayoutEligible
+}
+
+Job "1" o-- "*" JobDelivery
+Job "1" o-- "*" JobUpdate
+JobPolicy ..> Job : validates
+Job "1" o-- "1" JobPaymentState
+Job --> ReviewPrompt : completion creates
+Job --> JobDisputeRef : may have
+Job ..> JobEvents : emits
+JobDelivery ..> JobEvents : emits
+JobPaymentState ..> JobEvents : payout eligible
+
+note bottom
+Job lifecycle owns work status; payment-service owns money movement.
+Job stores payment/payout state references, not provider payment logic.
+end note
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+title Viaverse Badge / Review Prompt — State Diagram
+
+[*] --> PROMPT_CREATED
+PROMPT_CREATED --> PROMPT_SENT : notify
+PROMPT_SENT --> REVIEW_SUBMITTED : user submits
+PROMPT_SENT --> PROMPT_EXPIRED : timeout
+REVIEW_SUBMITTED --> QUEUED_FOR_MODERATION : needs moderation
+REVIEW_SUBMITTED --> REVIEW_PUBLISHED : auto safe
+QUEUED_FOR_MODERATION --> REVIEW_PUBLISHED : approved
+QUEUED_FOR_MODERATION --> REVIEW_REJECTED : rejected
+REVIEW_PUBLISHED --> BADGE_ELIGIBLE : score/rule update
+BADGE_ELIGIBLE --> BADGE_ACTIVE : award
+BADGE_ACTIVE --> BADGE_REVOKED : criteria no longer met / admin
+BADGE_REVOKED --> BADGE_ELIGIBLE : re-evaluate
+
+PROMPT_EXPIRED --> [*]
+REVIEW_REJECTED --> [*]
+
+note bottom
+Badges are not permanent trophies.
+Trust/risk changes can revoke or downgrade them if criteria are no longer met.
+end note
+@enduml

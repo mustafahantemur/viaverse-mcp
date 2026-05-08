@@ -1,0 +1,139 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="search-use-case" name="01 Search SEO Growth Use Case">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Search / SEO / Growth / AI Discovery — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Search / Discovery / SEO / Growth Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="135" width="1560" height="1130" as="geometry"/>
+        </mxCell>
+        <mxCell id="user" value="«actor»&#xa;User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="guest" value="«actor»&#xa;Guest / Search Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="820" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="domain" value="«actor»&#xa;Domain Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="230" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;Growth / Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="560" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ai" value="«actor»&#xa;AI Assistant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="900" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_query" value="Search dynamic environment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_filter" value="Filter by category&#xa;location / budget / rating" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_rank" value="Rank results&#xa;relevance + trust + freshness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ai" value="AI-assisted search&#xa;intent + category suggestion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_index" value="Index public entities&#xa;request / worker / business" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_privacy" value="Apply visibility/privacy rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_seo" value="Generate SEO pages&#xa;category/city/service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_sitemap" value="Generate sitemap&#xa;schema.org metadata" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_click" value="Track impression/click&#xa;privacy-safe analytics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_recommend" value="Recommend relevant content&#xa;feed/search blend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ab" value="Experiment / A-B test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ads" value="Native sponsored placement&#xa;non-blocking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_admin" value="Manage SEO/growth config" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_quality" value="Monitor search quality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_events" value="Emit events&#xa;SearchPerformed&#xa;EntityIndexed&#xa;SeoPageUpdated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_query">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="340" as="point"/><mxPoint x="270" y="340" as="point"/><mxPoint x="270" y="231" as="point"/><mxPoint x="360" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_query" target="uc_filter">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="231" as="point"/><mxPoint x="700" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_filter" target="uc_rank">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="231" as="point"/><mxPoint x="1040" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="optional" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_rank" target="uc_ai">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="231" as="point"/><mxPoint x="1380" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="publish events" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="domain" target="uc_index">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="270" as="point"/><mxPoint x="1780" y="270" as="point"/><mxPoint x="1780" y="491" as="point"/><mxPoint x="625" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_index" target="uc_privacy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="491" as="point"/><mxPoint x="700" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="public only" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_privacy" target="uc_seo">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="491" as="point"/><mxPoint x="1040" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_seo" target="uc_sitemap">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="491" as="point"/><mxPoint x="1380" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_click">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="340" as="point"/><mxPoint x="300" y="340" as="point"/><mxPoint x="300" y="761" as="point"/><mxPoint x="360" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_click" target="uc_recommend">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="761" as="point"/><mxPoint x="700" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_recommend" target="uc_ab">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="761" as="point"/><mxPoint x="1040" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="eligible inventory" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_ab" target="uc_ads">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="761" as="point"/><mxPoint x="1380" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="SEO landing" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="guest" target="uc_seo">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="860" as="point"/><mxPoint x="320" y="860" as="point"/><mxPoint x="320" y="491" as="point"/><mxPoint x="1040" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="crawl" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="guest" target="uc_sitemap">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="860" as="point"/><mxPoint x="330" y="860" as="point"/><mxPoint x="330" y="491" as="point"/><mxPoint x="1380" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_admin">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="600" as="point"/><mxPoint x="1780" y="600" as="point"/><mxPoint x="1780" y="1021" as="point"/><mxPoint x="965" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_quality">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="600" as="point"/><mxPoint x="1770" y="600" as="point"/><mxPoint x="1770" y="1021" as="point"/><mxPoint x="1305" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_quality" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="1021" as="point"/><mxPoint x="1380" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_sitemap" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1512" y="532" as="point"/><mxPoint x="1512" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e19" value="intent/category" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ai" target="uc_ai">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="940" as="point"/><mxPoint x="1780" y="940" as="point"/><mxPoint x="1780" y="231" as="point"/><mxPoint x="1645" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e20" value="personalization guardrails" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ai" target="uc_recommend">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="940" as="point"/><mxPoint x="1770" y="940" as="point"/><mxPoint x="1770" y="761" as="point"/><mxPoint x="965" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Rules:&#xa;Search can use relevance/trust/freshness/availability. Sponsored placement cannot bypass safety, privacy or relevance gates." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1210" width="1360" height="58" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,29 @@
+part,title,primary_audience,scope,formats
+1,Account / Identity / Capability,"Identity, backend, security","Account, auth, OTP/social login, capabilities, session",drawio;svg;puml
+2,Profile / Settings / Privacy,"Client, profile, privacy","Public/private profile, settings, privacy surfaces",drawio;svg;puml
+3,Request / Job Posting,"Marketplace, client","Create request, budget, category, media",drawio;svg;puml
+4,Offer / Quote / Job Lifecycle,"Marketplace, payment, chat, trust","Offer, quote, accept, job completion",drawio;svg;puml
+5,Search / Discovery / Matching,"Search, data, client","OpenSearch, ranking, matching, filters",drawio;svg;puml
+6,Notification,"Platform, backend, client","Push, email, SMS, templates",drawio;svg;puml
+7,Media / CDN,"Media, platform, safety","Image/video upload, processing, signed URLs",drawio;svg;puml
+8,Payment,"Payment, backend, security","Iyzico, Stripe-ready, intent, refund",drawio;svg;puml
+9,Review / Rating / Trust,"Trust, marketplace","Two-sided review, badges, trust score",drawio;svg;puml
+10,Moderation / Safety,"Safety, support, security","Reports, NSFW/scam/off-platform, queues",drawio;svg;puml
+11,Admin / Backoffice,"Admin, ops, support","Admin workflows, config, review, audit",drawio;svg;puml
+12,Data Architecture,"Backend, data, platform","PostgreSQL, Cassandra, Redis, OpenSearch, S3",drawio;svg;puml
+13,Event Architecture,"Backend, platform","Kafka, outbox, schema versioning, DLQ",drawio;svg;puml
+14,Security Model,"Security, backend, platform","RBAC/ABAC, rate limit, secrets, audit",drawio;svg;puml
+15,Payment Provider Abstraction,"Payment, backend","Provider ports, Iyzico/Stripe/Masterpass",drawio;svg;puml
+16,SEO / Growth,"Growth, web, data","Landing, localized SEO, analytics",drawio;svg;puml
+17,Analytics / Observability,"Platform, data, product","Product analytics, OTel, SLO dashboards",drawio;svg;puml
+18,Security / Privacy / KVKK,"Security, privacy, backend","Consent, DSAR, retention, encryption",drawio;svg;puml
+19,Infrastructure / Deployment,Platform / DevOps,"AWS, EKS, CI/CD, release, rollback",drawio;svg;puml
+20,AI Assistant / Support,"AI, support, backend","RAG, support helper, guardrails",drawio;svg;puml
+21,Localization / Regionalization,"Localization, client, growth","TR/EN, locale, regional config",drawio;svg;puml
+22,Business Account / Merchant Ops,"Business, backend, client","Merchant account, branches, staff, catalog",drawio;svg;puml
+23,Monetization / Ads / Commission,"Growth, payment, business","Subscription, trial, commission, ads",drawio;svg;puml
+24,Category / Taxonomy / Dynamic Environment,"Taxonomy, search, client","Categories, tags, form schema, dynamic environment",drawio;svg;puml
+25,Chat / Messaging / Safety,"Chat, safety, client","Job chat, receipts, Cassandra, moderation",drawio;svg;puml
+26,Roadmap / Team Execution,"Product, engineering leadership","Phases, workstreams, release gates",drawio;svg;puml
+27,Repository / Package / Module Structure,All engineering,"Monorepo, backend packages, KMP modules",drawio;svg;puml
+28,Final Master Topology,All stakeholders,"End-to-end topology, ownership, governance",drawio;svg;puml

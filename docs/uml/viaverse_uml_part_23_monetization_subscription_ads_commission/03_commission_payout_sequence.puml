@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Job Completion / Commission / Payout — Sequence Diagram
+
+participant "marketplace-service" as Marketplace
+participant "monetization-service" as Monetization
+participant "pricing/config-service" as Config
+participant "payment-service" as Payment
+database "ledger/accounting" as Ledger
+participant "payout provider" as Payout
+participant "trust/reporting" as Trust
+queue "Outbox / Kafka" as Kafka
+
+Marketplace -> Monetization : JobCompleted event
+Monetization -> Config : load fee rules\ncommission %5 default
+Monetization -> Payment : read captured amount
+Monetization -> Monetization : calculate platform fee + net payout
+Monetization -> Ledger : record fee/receivable/payable
+Monetization -> Payment : create payout instruction
+Payment -> Payout : execute payout
+Monetization -> Trust : monetization signals\nnon-ranking sensitive summary
+Monetization -> Kafka : CommissionCharged / PayoutCalculated
+
+note bottom
+monetization-service calculates business rules;
+payment-service moves money;
+ledger/accounting records financial truth.
+Avoid calculating fees inside marketplace-service.
+end note
+@enduml

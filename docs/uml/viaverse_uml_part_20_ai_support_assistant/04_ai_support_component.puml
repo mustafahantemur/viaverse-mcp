@@ -1,0 +1,34 @@
+@startuml
+title Viaverse AI Assistant / Support — Component Diagram
+
+component "KMP / Next.js Client\nAI help entry\nsupport widget\nfeedback" as Client
+component "API Gateway / BFF\nAI API\nSupport API" as BFF
+component "AiAssistantController\nSupportController" as Controller
+component "AI Use Cases\nAskAssistant\nSummarizeCase\nEscalateToSupport\nCollectFeedback" as UseCases
+component "AI Policies\nprivacy guard\nprompt boundary\ntool allowlist\nhuman escalation" as Policies
+component "Ports\nLlmPort\nKnowledgeRetrievalPort\nDomainContextPort\nSupportPort\nOutboxPort" as Ports
+database "Knowledge Base\nFAQ\npolicies\nproduct docs\nsupport macros" as KB
+component "LLM Adapter\nprovider switch\nbudget/timeout\ncontent filter" as LLM
+component "support-service\ntickets\nagent workspace\ncase timeline" as Support
+component "Domain Context Adapters\nidentity\njobs\npayments\nmedia\ntrust" as Domain
+database "PostgreSQL\nai_session\nai_message\nsupport_ticket\nfeedback" as DB
+queue "Kafka / Outbox\nAiAsked\nAiEscalated\nTicketResolved" as Kafka
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> KB : retrieve
+Ports --> LLM : generate
+Ports --> Support : ticket/escalate
+Ports --> Domain : scoped context
+Ports --> DB : persist
+UseCases --> Kafka : events
+
+note bottom
+AI layer is an orchestration boundary, not a domain source-of-truth.
+It reads scoped context and creates support/AI records;
+business state changes stay in domain services.
+end note
+@enduml

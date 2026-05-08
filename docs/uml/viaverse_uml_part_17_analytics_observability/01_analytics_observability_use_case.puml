@@ -1,0 +1,56 @@
+@startuml
+title Viaverse Analytics / Observability / Product Intelligence — Use Case Diagram
+left to right direction
+
+actor "Client Apps" as Client
+actor "Backend Services" as Services
+actor "Product / Engineering" as Team
+actor OpenTelemetry as Otel
+actor "Prometheus / Perses" as Metrics
+actor "OpenSearch / Jaeger" as Logs
+
+rectangle "Analytics / Observability Boundary" {
+  usecase "Track product event" as Track
+  usecase "Apply consent/privacy\nPII minimization" as Consent
+  usecase "Create anonymous/session ID" as Session
+  usecase "Ingest analytics event" as Ingest
+  usecase "Collect distributed trace" as Trace
+  usecase "Collect metrics\nRED/USE/SLO" as Metric
+  usecase "Collect structured logs" as Log
+  usecase "Correlate trace/log/event\ncorrelationId" as Correlate
+  usecase "View dashboards" as Dashboard
+  usecase "Alert on SLO/error/anomaly" as Alert
+  usecase "Analyze funnel\nactivation/conversion" as Funnel
+  usecase "Analyze experiment impact" as Experiment
+  usecase "Monitor data quality" as Quality
+  usecase "Apply retention / deletion" as Retention
+  usecase "Emit analytics events\nDataQualityFailed / AlertRaised" as Events
+}
+
+Client --> Track
+Track --> Consent
+Consent --> Session
+Session --> Ingest
+Services --> Trace
+Services --> Metric
+Services --> Log
+Trace --> Correlate
+Metric --> Correlate
+Log --> Correlate
+Team --> Dashboard
+Team --> Alert
+Team --> Funnel
+Funnel --> Experiment
+Ingest --> Quality
+Quality --> Retention
+Retention --> Events
+Otel --> Trace
+Metrics --> Metric
+Logs --> Log
+
+note bottom
+Product analytics must be privacy-safe.
+Observability data must be correlated with traceId/correlationId
+but must not leak secrets or raw personal data.
+end note
+@enduml

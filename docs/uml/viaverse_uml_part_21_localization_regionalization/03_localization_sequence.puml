@@ -1,0 +1,28 @@
+@startuml
+title Viaverse Localized Page / Notification — Sequence Diagram
+
+actor "Client / Web SSR" as Client
+participant "API Gateway / BFF" as BFF
+participant "localization-service" as Loc
+participant "identity/profile" as Profile
+participant "taxonomy-service" as Catalog
+participant "pricing/payment config" as Pricing
+database "Translation Store" as DB
+queue "Outbox / Kafka" as Kafka
+
+Client -> BFF : GET page / notification render
+BFF -> Loc : resolveLocale(context)
+Loc -> Profile : profile locale/preferences
+Loc -> Catalog : localized category names
+Loc -> Pricing : currency/tax/fee formatting
+Loc -> DB : load translations + fallback
+Loc ..> Kafka : MissingTranslationDetected if any
+Loc --> BFF : localized DTO/template
+BFF --> Client : render localized response
+
+note bottom
+localization-service coordinates language, regional config,
+category labels and price formatting.
+Domain services keep canonical IDs/values.
+end note
+@enduml

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Infrastructure Components — Component Diagram</text>
+
+<rect x="80" y="170" width="340" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="250.0" y="217.0" text-anchor="middle" class="h">Client Apps</text>
+<text x="250.0" y="237.0" text-anchor="middle" class="t">KMP mobile/web</text>
+<text x="250.0" y="257.0" text-anchor="middle" class="t">Next.js landing/admin</text>
+<rect x="520" y="170" width="340" height="120" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="690.0" y="221.0" text-anchor="middle" class="h">Edge Layer</text>
+<text x="690.0" y="241.0" text-anchor="middle" class="t">Route53 / CloudFront / WAF</text>
+<rect x="960" y="170" width="360" height="140" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1140.0" y="222.0" text-anchor="middle" class="h">Gateway Layer</text>
+<text x="1140.0" y="242.0" text-anchor="middle" class="t">API Gateway / BFFs</text>
+<text x="1140.0" y="262.0" text-anchor="middle" class="t">Ingress / ALB</text>
+<rect x="960" y="460" width="380" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1150.0" y="527.0" text-anchor="middle" class="h">Service Layer</text>
+<text x="1150.0" y="547.0" text-anchor="middle" class="t">Spring Boot bounded contexts</text>
+<text x="1150.0" y="567.0" text-anchor="middle" class="t">Hexagonal ports/adapters</text>
+<rect x="960" y="760" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1150.0" y="808.0" text-anchor="middle" class="h">Worker Layer</text>
+<text x="1150.0" y="828.0" text-anchor="middle" class="t">Outbox relay</text>
+<text x="1150.0" y="848.0" text-anchor="middle" class="t">Media processing</text>
+<text x="1150.0" y="868.0" text-anchor="middle" class="t">Schedulers</text>
+<rect x="1440" y="360" width="380" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1630.0" y="432.0" text-anchor="middle" class="h">Data Layer</text>
+<text x="1630.0" y="452.0" text-anchor="middle" class="t">PostgreSQL / Redis / Kafka</text>
+<text x="1630.0" y="472.0" text-anchor="middle" class="t">S3 / OpenSearch</text>
+<rect x="1440" y="650" width="380" height="160" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1630.0" y="703.0" text-anchor="middle" class="h">Security Layer</text>
+<text x="1630.0" y="723.0" text-anchor="middle" class="t">KMS / Secrets Manager</text>
+<text x="1630.0" y="743.0" text-anchor="middle" class="t">External Secrets</text>
+<text x="1630.0" y="763.0" text-anchor="middle" class="t">IAM</text>
+<rect x="1440" y="930" width="380" height="170" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1630.0" y="997.0" text-anchor="middle" class="h">Observability Layer</text>
+<text x="1630.0" y="1017.0" text-anchor="middle" class="t">OTel / Prometheus / Perses</text>
+<text x="1630.0" y="1037.0" text-anchor="middle" class="t">Jaeger / OpenSearch logs</text>
+<rect x="80" y="520" width="340" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="250.0" y="568.0" text-anchor="middle" class="h">Delivery Layer</text>
+<text x="250.0" y="588.0" text-anchor="middle" class="t">GitHub Actions</text>
+<text x="250.0" y="608.0" text-anchor="middle" class="t">ECR</text>
+<text x="250.0" y="628.0" text-anchor="middle" class="t">IaC / Helm</text>
+<rect x="80" y="820" width="340" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="250.0" y="868.0" text-anchor="middle" class="h">Ops Layer</text>
+<text x="250.0" y="888.0" text-anchor="middle" class="t">Runbooks</text>
+<text x="250.0" y="908.0" text-anchor="middle" class="t">Alerts</text>
+<text x="250.0" y="928.0" text-anchor="middle" class="t">Backups / DR</text>
+<polyline points="420,235 520,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="222" class="small">HTTPS</text>
+<polyline points="860,230 960,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1140,310 1140,460" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1148" y="452" class="small">REST/gRPC internal</text>
+<polyline points="1150,630 1150,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1158" y="752" class="small">events/jobs</text>
+<polyline points="1340,545 1440,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="442" class="small">adapters</text>
+<polyline points="1340,835 1440,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="442" class="small">adapters</text>
+<polyline points="1340,545 1440,730" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="722" class="small">secret/key usage</text>
+<polyline points="1340,545 1440,1015" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="1007" class="small">telemetry</text>
+<polyline points="1340,835 1440,1015" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="1007" class="small">telemetry</text>
+<polyline points="420,595 900,595 900,240 960,240" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="908" y="232" class="small">deploy</text>
+<polyline points="420,595 960,545" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="968" y="537" class="small">deploy</text>
+<polyline points="420,895 1440,1015" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="1007" class="small">alerts/runbooks</text>
+<rect x="80" y="1150" width="1650" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1174" class="t">Architecture rule:</text>
+<text x="96" y="1192" class="t">Infrastructure should support modular monolith-to-microservice evolution. Services expose stable contracts; infra is replaceable behind adapters/IaC.</text>
+</svg>

@@ -1,0 +1,7 @@
+@startuml
+title Viaverse KMP Client Module Structure
+package mobile-kmp { package composeApp; package shared_core; package shared_design_system; package shared_domain; package shared_data; package features; package platforms; package testing }
+composeApp --> shared_design_system
+composeApp --> shared_domain
+shared_data --> shared_domain
+@enduml

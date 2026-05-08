@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="job-class" name="04 Job Class Model">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Job Lifecycle / Delivery Approval — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Job" value="Job&#xa;--&#xa;id: JobId&#xa;requestId: RequestId&#xa;acceptedQuoteId: QuoteId&#xa;requesterAccountId: AccountId&#xa;providerType: WORKER | BUSINESS&#xa;providerId: UUID&#xa;status: JobStatus&#xa;scheduledStart: Instant?&#xa;startedAt: Instant?&#xa;deliveredAt: Instant?&#xa;completedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="420" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="Delivery" value="JobDelivery&#xa;--&#xa;id: UUID&#xa;jobId: JobId&#xa;message: String?&#xa;mediaRefs: List&lt;MediaId&gt;&#xa;status: DeliveryStatus&#xa;submittedAt: Instant&#xa;reviewedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="360" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Update" value="JobUpdate&#xa;--&#xa;id: UUID&#xa;jobId: JobId&#xa;actorAccountId: AccountId&#xa;type: UpdateType&#xa;message: String?&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="150" width="350" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="JobPolicy&#xa;--&#xa;canStartJob()&#xa;canDeliver()&#xa;canApproveDelivery()&#xa;canCancel()&#xa;canOpenDispute()&#xa;canRevealExactAddress()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="150" width="360" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="PaymentRef" value="JobPaymentState&#xa;--&#xa;jobId: JobId&#xa;paymentSessionId: UUID&#xa;paymentStatus: PaymentStatus&#xa;payoutStatus: PayoutStatus&#xa;payoutEligibleAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="550" width="400" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="ReviewPrompt" value="ReviewPrompt&#xa;--&#xa;id: UUID&#xa;jobId: JobId&#xa;reviewerAccountId: AccountId&#xa;revieweeId: UUID&#xa;status: PromptStatus&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="550" width="360" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="DisputeRef" value="JobDisputeRef&#xa;--&#xa;jobId: JobId&#xa;disputeId: UUID&#xa;status: DisputeStatus&#xa;payoutBlocked: Boolean&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="550" width="350" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Job Events&#xa;--&#xa;JobCreated&#xa;JobPaymentAuthorized&#xa;JobStarted&#xa;JobDelivered&#xa;DeliveryApproved&#xa;JobCompleted&#xa;PayoutEligible" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="550" width="380" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Job" target="Delivery">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="260" as="point"/><mxPoint x="600" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Job" target="Update">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="300" as="point"/><mxPoint x="1060" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="validates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Job">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1510" y="250" as="point"/><mxPoint x="500" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="1 -&gt; one" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Job" target="PaymentRef">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="290" y="450" as="point"/><mxPoint x="290" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="completion creates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Job" target="ReviewPrompt">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="380" as="point"/><mxPoint x="780" y="380" as="point"/><mxPoint x="780" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="may have" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Job" target="DisputeRef">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="420" as="point"/><mxPoint x="1235" y="420" as="point"/><mxPoint x="1235" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Job" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="430" as="point"/><mxPoint x="1700" y="430" as="point"/><mxPoint x="1700" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Delivery" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="960" y="250" as="point"/><mxPoint x="1510" y="650" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="payout eligible" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentRef" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="480" y="650" as="point"/><mxPoint x="1510" y="650" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Domain rule:&#xa;Job lifecycle owns work status; payment-service owns money movement. Job stores payment/payout state references, not provider payment logic." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1010" width="1580" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

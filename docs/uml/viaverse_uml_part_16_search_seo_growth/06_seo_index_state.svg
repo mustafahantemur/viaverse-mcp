@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Search Index / SEO Page — State Diagram</text>
+
+<rect x="120" y="180" width="280" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="260.0" y="220.0" text-anchor="middle" class="h">PENDING_INDEX</text>
+<rect x="520" y="180" width="300" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="670.0" y="220.0" text-anchor="middle" class="h">INDEXED_VISIBLE</text>
+<rect x="920" y="180" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1070.0" y="220.0" text-anchor="middle" class="h">INDEXED_HIDDEN</text>
+<rect x="1360" y="180" width="360" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1540.0" y="220.0" text-anchor="middle" class="h">STALE_REBUILD_NEEDED</text>
+<rect x="520" y="500" width="240" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="640.0" y="540.0" text-anchor="middle" class="h">REMOVED</text>
+<rect x="920" y="500" width="240" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1040.0" y="540.0" text-anchor="middle" class="h">SEO_DRAFT</text>
+<rect x="1280" y="500" width="300" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1430.0" y="540.0" text-anchor="middle" class="h">SEO_PUBLISHED</text>
+<rect x="920" y="820" width="280" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1060.0" y="860.0" text-anchor="middle" class="h">SEO_NOINDEX</text>
+<polyline points="400,220 520,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="212" class="small">public + approved</text>
+<polyline points="400,220 920,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="928" y="212" class="small">private/not approved</text>
+<polyline points="820,220 1360,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="212" class="small">entity updated</text>
+<polyline points="1360,260 1280,320 670,320 670,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="678" y="312" class="small">rebuilt</text>
+<polyline points="670,260 670,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="678" y="492" class="small">deleted/suspended</text>
+<polyline points="920,220 820,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="828" y="212" class="small">visibility restored</text>
+<polyline points="670,260 670,400 1040,400 1040,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="392" class="small">SEO candidate</text>
+<polyline points="1160,540 1280,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="532" class="small">quality ok</text>
+<polyline points="1040,580 1040,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1048" y="812" class="small">thin/duplicate</text>
+<polyline points="1280,540 1200,540 1200,860" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1208" y="532" class="small">quality drop</text>
+<rect x="160" y="1060" width="1550" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1084" class="t">SEO rule:</text>
+<text x="176" y="1102" class="t">Noindex is safer than publishing thin/duplicate/private pages. Canonical and schema.org metadata belong to SEO projection, not domain entities.</text>
+</svg>

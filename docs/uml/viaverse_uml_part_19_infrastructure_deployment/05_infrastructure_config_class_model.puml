@@ -1,0 +1,90 @@
+@startuml
+title Viaverse Infrastructure / Deployment Config — Class Model
+
+class ServiceConfig {
+  serviceName: String
+  imageTag: String
+  replicas: Int
+  resourceRequests: CpuMem
+  resourceLimits: CpuMem
+  healthCheckPath: String
+  env: Environment
+}
+
+class SecretRef {
+  name: String
+  provider: SecretsManager | KMS
+  externalSecretName: String
+  rotationPolicy: RotationPolicy
+  mountedAs: ENV | FILE
+}
+
+class Release {
+  id: UUID
+  version: String
+  gitSha: String
+  imageDigest: String
+  environment: DEV | STAGE | PROD
+  status: ReleaseStatus
+  deployedAt: Instant
+}
+
+class DbMigration {
+  version: String
+  serviceName: String
+  scriptName: String
+  backwardCompatible: Boolean
+  status: MigrationStatus
+  appliedAt: Instant?
+}
+
+class DeploymentPolicy {
+  requiresApproval()
+  allowsRollback()
+  checksMigrationSafety()
+  checksErrorBudget()
+  checksSecurityScan()
+}
+
+class ServiceSLO {
+  serviceName: String
+  availabilityTarget: Decimal
+  latencyTargetMs: Int
+  errorBudgetPolicy: String
+  alertRuleIds: List<UUID>
+}
+
+class BackupPlan {
+  resourceType: DB | BUCKET | INDEX
+  schedule: String
+  retentionDays: Int
+  rpoMinutes: Int
+  rtoMinutes: Int
+  restoreTestedAt: Instant?
+}
+
+class InfraEvents {
+  ReleaseStarted
+  ReleaseSucceeded
+  ReleaseRolledBack
+  MigrationApplied
+  SecretRotated
+  BackupFailed
+  SloBreached
+}
+
+ServiceConfig --> SecretRef : uses
+Release ..> ServiceConfig : deploys
+Release --> DbMigration : includes
+DeploymentPolicy ..> Release : validates
+DeploymentPolicy ..> DbMigration : checks
+ServiceSLO --> DeploymentPolicy : gates
+BackupPlan ..> InfraEvents : emits
+Release ..> InfraEvents : emits
+SecretRef ..> InfraEvents : rotation emits
+
+note bottom
+Environment differences must be declarative and versioned.
+Secrets are references, never committed values.
+end note
+@enduml

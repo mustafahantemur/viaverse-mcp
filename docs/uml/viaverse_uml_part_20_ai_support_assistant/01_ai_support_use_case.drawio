@@ -1,0 +1,139 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="ai-support-use-case" name="01 AI Support Use Case">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse AI Assistant / Support / Safety Intelligence — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="AI Assistant / Support Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="135" width="1560" height="1130" as="geometry"/>
+        </mxCell>
+        <mxCell id="user" value="«actor»&#xa;User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="agent" value="«actor»&#xa;Support Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;AI/Ops Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1080" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="domain" value="«actor»&#xa;Domain Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="240" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="llm" value="«actor»&#xa;LLM Provider&#xa;or Local Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="560" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="kb" value="«actor»&#xa;Knowledge Base&#xa;Docs / Policies / FAQs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="900" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ask" value="Ask AI help&#xa;in app" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_context" value="Build scoped context&#xa;screen/job/account state" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_guard" value="Apply safety/privacy guardrails" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_answer" value="Generate answer&#xa;or guided action" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="190" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_search" value="Retrieve knowledge&#xa;RAG" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_intent" value="Classify intent&#xa;support/search/safety" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_action" value="Suggest next action&#xa;not auto-execute risky action" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_escalate" value="Escalate to human support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="450" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ticket" value="Create support ticket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_summary" value="Summarize conversation&#xa;for support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_agent" value="Agent replies&#xa;with AI assistance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_feedback" value="Collect answer feedback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="720" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_eval" value="Run quality/safety evals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_config" value="Manage prompts/policies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_events" value="Emit events&#xa;AiAsked / Escalated / TicketResolved" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="980" width="280" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_ask">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="320" as="point"/><mxPoint x="270" y="320" as="point"/><mxPoint x="270" y="232" as="point"/><mxPoint x="360" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_ask" target="uc_context">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="232" as="point"/><mxPoint x="700" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_context" target="uc_guard">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="232" as="point"/><mxPoint x="1040" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_guard" target="uc_answer">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="232" as="point"/><mxPoint x="1380" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="needs knowledge" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_context" target="uc_search">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="274" as="point"/><mxPoint x="840" y="360" as="point"/><mxPoint x="500" y="360" as="point"/><mxPoint x="500" y="450" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_search" target="uc_intent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="492" as="point"/><mxPoint x="700" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_intent" target="uc_action">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="492" as="point"/><mxPoint x="1040" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="risky/uncertain" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_action" target="uc_escalate">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="492" as="point"/><mxPoint x="1380" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_escalate" target="uc_ticket">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1520" y="534" as="point"/><mxPoint x="1520" y="650" as="point"/><mxPoint x="500" y="650" as="point"/><mxPoint x="500" y="720" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_ticket" target="uc_summary">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="640" y="762" as="point"/><mxPoint x="700" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_summary" target="uc_agent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="762" as="point"/><mxPoint x="1040" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_agent" target="uc_feedback">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1320" y="762" as="point"/><mxPoint x="1380" y="762" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_feedback" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1520" y="804" as="point"/><mxPoint x="1520" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_eval">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="1120" as="point"/><mxPoint x="320" y="1120" as="point"/><mxPoint x="320" y="1022" as="point"/><mxPoint x="700" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_config">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="1120" as="point"/><mxPoint x="330" y="1120" as="point"/><mxPoint x="330" y="1022" as="point"/><mxPoint x="1040" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_eval" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="980" y="1022" as="point"/><mxPoint x="1380" y="1022" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="scoped context" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="domain" target="uc_context">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="280" as="point"/><mxPoint x="1780" y="280" as="point"/><mxPoint x="1780" y="232" as="point"/><mxPoint x="980" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="generation" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="llm" target="uc_answer">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="600" as="point"/><mxPoint x="1780" y="600" as="point"/><mxPoint x="1780" y="232" as="point"/><mxPoint x="1660" y="232" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e19" value="retrieval" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="kb" target="uc_search">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="940" as="point"/><mxPoint x="1780" y="940" as="point"/><mxPoint x="1780" y="492" as="point"/><mxPoint x="640" y="492" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Rules:&#xa;AI can guide, summarize and recommend. It must not execute risky actions such as payment, refund, suspension or data deletion without explicit policy-controlled user/admin confirmation." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1210" width="1450" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

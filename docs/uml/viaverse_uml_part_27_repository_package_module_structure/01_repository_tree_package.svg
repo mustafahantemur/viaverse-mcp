@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2450" height="1700" viewBox="0 0 2450 1700">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2370" height="60" rx="14" fill="#022C22"/><text x="1225.0" y="69" text-anchor="middle" class="title">Viaverse Repository / Monorepo Structure — Package Diagram</text>
+<rect x="60" y="130" width="2320" height="1320" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">viaverse-platform/</text>
+<rect x="120" y="220" width="360" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="300.0" y="278.0" text-anchor="middle" class="h">apps/</text>
+<text x="300.0" y="296.0" text-anchor="middle" class="t">mobile-kmp / web-kmp</text>
+<text x="300.0" y="314.0" text-anchor="middle" class="t">landing-next / admin-next</text>
+<text x="300.0" y="332.0" text-anchor="middle" class="t">business-console</text>
+<rect x="560" y="220" width="360" height="170" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="740.0" y="287.0" text-anchor="middle" class="h">backend/</text>
+<text x="740.0" y="305.0" text-anchor="middle" class="t">services / libs</text>
+<text x="740.0" y="323.0" text-anchor="middle" class="t">contracts / gateway</text>
+<rect x="1000" y="220" width="360" height="170" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1180.0" y="287.0" text-anchor="middle" class="h">infra/</text>
+<text x="1180.0" y="305.0" text-anchor="middle" class="t">terraform / helm</text>
+<text x="1180.0" y="323.0" text-anchor="middle" class="t">k8s / docker-compose</text>
+<rect x="1440" y="220" width="360" height="170" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1620.0" y="287.0" text-anchor="middle" class="h">docs/</text>
+<text x="1620.0" y="305.0" text-anchor="middle" class="t">blueprint / adr</text>
+<text x="1620.0" y="323.0" text-anchor="middle" class="t">uml / api / decisions</text>
+<rect x="1880" y="220" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2060.0" y="287.0" text-anchor="middle" class="h">tools/</text>
+<text x="2060.0" y="305.0" text-anchor="middle" class="t">scripts / generators</text>
+<text x="2060.0" y="323.0" text-anchor="middle" class="t">local-dev / quality gates</text>
+<rect x="120" y="500" width="360" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="300.0" y="568.0" text-anchor="middle" class="h">apps/mobile-kmp/</text>
+<text x="300.0" y="586.0" text-anchor="middle" class="t">composeApp / shared</text>
+<text x="300.0" y="604.0" text-anchor="middle" class="t">androidMain / iosMain placeholder</text>
+<text x="300.0" y="622.0" text-anchor="middle" class="t">webMain</text>
+<rect x="560" y="500" width="420" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="770.0" y="588.0" text-anchor="middle" class="h">backend/services/</text>
+<text x="770.0" y="606.0" text-anchor="middle" class="t">identity / marketplace / business</text>
+<text x="770.0" y="624.0" text-anchor="middle" class="t">payment / chat / search</text>
+<text x="770.0" y="642.0" text-anchor="middle" class="t">notification / media / admin</text>
+<rect x="1060" y="500" width="420" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1270.0" y="583.0" text-anchor="middle" class="h">backend/libs/</text>
+<text x="1270.0" y="601.0" text-anchor="middle" class="t">common-domain / common-web</text>
+<text x="1270.0" y="619.0" text-anchor="middle" class="t">common-security / common-events</text>
+<text x="1270.0" y="637.0" text-anchor="middle" class="t">common-observability</text>
+<rect x="1560" y="500" width="360" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1740.0" y="577.0" text-anchor="middle" class="h">backend/contracts/</text>
+<text x="1740.0" y="595.0" text-anchor="middle" class="t">openapi / events</text>
+<text x="1740.0" y="613.0" text-anchor="middle" class="t">protobuf optional / schemas</text>
+<rect x="120" y="840" width="360" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="300.0" y="922.0" text-anchor="middle" class="h">quality/</text>
+<text x="300.0" y="940.0" text-anchor="middle" class="t">spotless / ktlint / detekt</text>
+<text x="300.0" y="958.0" text-anchor="middle" class="t">archunit / contract-tests</text>
+<rect x="560" y="860" width="420" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="770.0" y="914.0" text-anchor="middle" class="h">AGENTS.md</text>
+<text x="770.0" y="932.0" text-anchor="middle" class="t">README.md</text>
+<text x="770.0" y="950.0" text-anchor="middle" class="t">CODING_RULES.md</text>
+<text x="770.0" y="968.0" text-anchor="middle" class="t">ARCHITECTURE.md</text>
+<text x="770.0" y="986.0" text-anchor="middle" class="t">ROADMAP.md</text>
+<rect x="1060" y="860" width="420" height="200" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1270.0" y="933.0" text-anchor="middle" class="h">.github/workflows/</text>
+<text x="1270.0" y="951.0" text-anchor="middle" class="t">ci.yml / backend.yml</text>
+<text x="1270.0" y="969.0" text-anchor="middle" class="t">client.yml / infra.yml</text>
+<text x="1270.0" y="987.0" text-anchor="middle" class="t">release.yml</text>
+<rect x="1560" y="860" width="360" height="180" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1740.0" y="923.0" text-anchor="middle" class="h">env/</text>
+<text x="1740.0" y="941.0" text-anchor="middle" class="t">.env.example</text>
+<text x="1740.0" y="959.0" text-anchor="middle" class="t">compose profiles</text>
+<text x="1740.0" y="977.0" text-anchor="middle" class="t">sample data</text>
+<polyline points="300,390 300,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="308" y="492" class="small">contains</text>
+<polyline points="740,390 740,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="748" y="492" class="small">services</text>
+<polyline points="920,300 1060,600" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1068" y="592" class="small">shared libs</text>
+<polyline points="920,300 1560,595" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1568" y="587" class="small">contracts</text>
+<polyline points="2060,390 2060,780 300,780 300,840" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="308" y="772" class="small">quality scripts</text>
+<polyline points="1620,390 770,860" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="778" y="852" class="small">docs rules</text>
+<polyline points="1180,390 1270,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1278" y="852" class="small">deploy pipelines</text>
+<polyline points="1740,860 1740,760 1180,760 1180,390" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1188" y="752" class="small">local/prod config</text>
+<rect x="120" y="1240" width="1750" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1264" class="t">Repo rule:</text>
+<text x="136" y="1282" class="t">Monorepo is allowed, but boundaries must stay visible. Shared libs cannot become a dumping ground; domain logic lives inside bounded contexts.</text>
+</svg>

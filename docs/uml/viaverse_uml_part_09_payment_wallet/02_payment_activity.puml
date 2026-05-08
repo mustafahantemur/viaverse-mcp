@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Payment / Wallet — Activity Diagram
+start
+:QuoteAccepted;
+:Validate accepted quote\nrequest owner / amount / state;
+:Create PaymentSession\nidempotency key;
+if (Saved card or checkout?) then (checkout)
+  :Create provider checkout;
+  :Receive provider callback;
+else (saved token)
+  :Use stored provider token;
+endif
+:Verify signature\namount / currency / state;
+if (Valid + not duplicate?) then (yes)
+  :Set PaymentAuthorized or Captured;
+  :Calculate commission\n5% initial;
+  :Create payout hold;
+  :Emit PaymentAuthorized;
+  :Emit CommissionCalculated;
+  :Notify marketplace payment state update;
+  :Job can continue;
+else (no)
+  :Mark payment failed;
+  :Show retry path;
+endif
+stop
+
+note bottom
+Create session, provider callback, capture, refund and payout release must be idempotent.
+Duplicate callbacks must not duplicate state changes.
+end note
+@enduml

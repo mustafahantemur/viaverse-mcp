@@ -1,0 +1,310 @@
+[
+  {
+    "part": 1,
+    "title": "Account / Identity / Capability",
+    "primaryAudience": "Identity, backend, security",
+    "scope": "Account, auth, OTP/social login, capabilities, session",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 2,
+    "title": "Profile / Settings / Privacy",
+    "primaryAudience": "Client, profile, privacy",
+    "scope": "Public/private profile, settings, privacy surfaces",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 3,
+    "title": "Request / Job Posting",
+    "primaryAudience": "Marketplace, client",
+    "scope": "Create request, budget, category, media",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 4,
+    "title": "Offer / Quote / Job Lifecycle",
+    "primaryAudience": "Marketplace, payment, chat, trust",
+    "scope": "Offer, quote, accept, job completion",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 5,
+    "title": "Search / Discovery / Matching",
+    "primaryAudience": "Search, data, client",
+    "scope": "OpenSearch, ranking, matching, filters",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 6,
+    "title": "Notification",
+    "primaryAudience": "Platform, backend, client",
+    "scope": "Push, email, SMS, templates",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 7,
+    "title": "Media / CDN",
+    "primaryAudience": "Media, platform, safety",
+    "scope": "Image/video upload, processing, signed URLs",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 8,
+    "title": "Payment",
+    "primaryAudience": "Payment, backend, security",
+    "scope": "Iyzico, Stripe-ready, intent, refund",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 9,
+    "title": "Review / Rating / Trust",
+    "primaryAudience": "Trust, marketplace",
+    "scope": "Two-sided review, badges, trust score",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 10,
+    "title": "Moderation / Safety",
+    "primaryAudience": "Safety, support, security",
+    "scope": "Reports, NSFW/scam/off-platform, queues",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 11,
+    "title": "Admin / Backoffice",
+    "primaryAudience": "Admin, ops, support",
+    "scope": "Admin workflows, config, review, audit",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 12,
+    "title": "Data Architecture",
+    "primaryAudience": "Backend, data, platform",
+    "scope": "PostgreSQL, Cassandra, Redis, OpenSearch, S3",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 13,
+    "title": "Event Architecture",
+    "primaryAudience": "Backend, platform",
+    "scope": "Kafka, outbox, schema versioning, DLQ",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 14,
+    "title": "Security Model",
+    "primaryAudience": "Security, backend, platform",
+    "scope": "RBAC/ABAC, rate limit, secrets, audit",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 15,
+    "title": "Payment Provider Abstraction",
+    "primaryAudience": "Payment, backend",
+    "scope": "Provider ports, Iyzico/Stripe/Masterpass",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 16,
+    "title": "SEO / Growth",
+    "primaryAudience": "Growth, web, data",
+    "scope": "Landing, localized SEO, analytics",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 17,
+    "title": "Analytics / Observability",
+    "primaryAudience": "Platform, data, product",
+    "scope": "Product analytics, OTel, SLO dashboards",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 18,
+    "title": "Security / Privacy / KVKK",
+    "primaryAudience": "Security, privacy, backend",
+    "scope": "Consent, DSAR, retention, encryption",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 19,
+    "title": "Infrastructure / Deployment",
+    "primaryAudience": "Platform / DevOps",
+    "scope": "AWS, EKS, CI/CD, release, rollback",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 20,
+    "title": "AI Assistant / Support",
+    "primaryAudience": "AI, support, backend",
+    "scope": "RAG, support helper, guardrails",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 21,
+    "title": "Localization / Regionalization",
+    "primaryAudience": "Localization, client, growth",
+    "scope": "TR/EN, locale, regional config",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 22,
+    "title": "Business Account / Merchant Ops",
+    "primaryAudience": "Business, backend, client",
+    "scope": "Merchant account, branches, staff, catalog",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 23,
+    "title": "Monetization / Ads / Commission",
+    "primaryAudience": "Growth, payment, business",
+    "scope": "Subscription, trial, commission, ads",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 24,
+    "title": "Category / Taxonomy / Dynamic Environment",
+    "primaryAudience": "Taxonomy, search, client",
+    "scope": "Categories, tags, form schema, dynamic environment",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 25,
+    "title": "Chat / Messaging / Safety",
+    "primaryAudience": "Chat, safety, client",
+    "scope": "Job chat, receipts, Cassandra, moderation",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 26,
+    "title": "Roadmap / Team Execution",
+    "primaryAudience": "Product, engineering leadership",
+    "scope": "Phases, workstreams, release gates",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 27,
+    "title": "Repository / Package / Module Structure",
+    "primaryAudience": "All engineering",
+    "scope": "Monorepo, backend packages, KMP modules",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  },
+  {
+    "part": 28,
+    "title": "Final Master Topology",
+    "primaryAudience": "All stakeholders",
+    "scope": "End-to-end topology, ownership, governance",
+    "formats": [
+      "drawio",
+      "svg",
+      "puml"
+    ]
+  }
+]

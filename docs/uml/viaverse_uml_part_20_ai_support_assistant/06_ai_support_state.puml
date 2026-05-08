@@ -1,0 +1,24 @@
+@startuml
+title Viaverse AI Session / Support Ticket — State Diagram
+
+[*] --> AI_SESSION_STARTED
+AI_SESSION_STARTED --> CONTEXT_READY : build context
+CONTEXT_READY --> GENERATING : safe
+GENERATING --> ANSWERED : safe/confident
+GENERATING --> FALLBACK : unsafe/low confidence
+GENERATING --> ESCALATED_TO_SUPPORT : risky intent
+FALLBACK --> ESCALATED_TO_SUPPORT : handoff
+ESCALATED_TO_SUPPORT --> TICKET_OPENED : create
+TICKET_OPENED --> AGENT_ASSIGNED : assign
+AGENT_ASSIGNED --> RESOLVED : agent resolves
+ANSWERED --> FEEDBACK_RECEIVED : user feedback
+RESOLVED --> FEEDBACK_RECEIVED : support feedback
+
+FEEDBACK_RECEIVED --> [*]
+
+note bottom
+AI answered does not mean action completed.
+It means guidance was delivered.
+Risky/business actions require separate confirmed domain workflow.
+end note
+@enduml

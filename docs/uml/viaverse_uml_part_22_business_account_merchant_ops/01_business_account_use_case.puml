@@ -1,0 +1,56 @@
+@startuml
+title Viaverse Business Account / Merchant Operations — Use Case Diagram
+left to right direction
+
+actor "Business Owner" as Owner
+actor "Business Staff" as Staff
+actor Customer
+actor "Identity / Capability" as Identity
+actor "Payment / Billing" as Payment
+actor "Search / Trust" as Search
+
+rectangle "Business Account / Merchant Operations Boundary" {
+  usecase "Create business account" as Create
+  usecase "Verify business\nKYC/KYB documents" as Verify
+  usecase "Manage business profile\nlogo/photos/about" as Profile
+  usecase "Manage branches\nservice areas" as Branch
+  usecase "Invite staff\nroles/permissions" as StaffMgmt
+  usecase "Manage service catalog\nprices/duration/options" as Catalog
+  usecase "Manage availability\nworking hours/capacity" as Availability
+  usecase "Receive leads/requests" as Leads
+  usecase "Send quote/proposal\nas business" as Quote
+  usecase "Manage jobs/orders" as Orders
+  usecase "Manage subscription\ntrial/plan/billing" as Subscription
+  usecase "View business insights\nleads/conversion/revenue" as Insights
+  usecase "Manage reviews/reputation" as Review
+  usecase "Publish business to search" as Publish
+  usecase "Emit events\nBusinessVerified\nCatalogUpdated" as Events
+}
+
+Owner --> Create
+Create --> Verify
+Verify --> Profile
+Profile --> Branch
+Owner --> StaffMgmt
+Staff --> StaffMgmt
+StaffMgmt --> Catalog
+Catalog --> Availability
+Availability --> Leads
+Customer --> Leads
+Staff --> Quote
+Quote --> Orders
+Orders --> Subscription
+Subscription --> Insights
+Orders --> Review
+Review --> Publish
+Publish --> Events
+Identity --> Verify
+Payment --> Subscription
+Search --> Publish
+
+note bottom
+A business account is a capability under the same Account model,
+not a separate identity island. Separate business app/store listing can exist later,
+but backend model remains unified.
+end note
+@enduml

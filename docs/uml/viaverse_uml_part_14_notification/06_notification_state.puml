@@ -1,0 +1,25 @@
+@startuml
+title Viaverse Notification / Delivery State — State Diagram
+
+[*] --> CREATED
+CREATED --> SUPPRESSED : policy/no consent
+CREATED --> QUEUED : notify
+QUEUED --> SCHEDULED : quiet hours/digest
+SCHEDULED --> QUEUED : time reached
+QUEUED --> DISPATCHING : send attempt
+DISPATCHING --> SENT : provider success
+DISPATCHING --> FAILED : provider failure
+FAILED --> SCHEDULED : retry/backoff
+SENT --> READ : user opens
+SENT --> ARCHIVED : user archives
+READ --> ARCHIVED : archive
+
+SUPPRESSED --> [*]
+ARCHIVED --> [*]
+
+note bottom
+Inbox item and delivery attempts can have separate states.
+SENT means at least one selected delivery channel succeeded,
+not necessarily read.
+end note
+@enduml

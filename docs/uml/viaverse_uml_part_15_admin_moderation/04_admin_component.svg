@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Admin / Moderation / Ops — Component Diagram</text>
+
+<rect x="80" y="170" width="320" height="140" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="240.0" y="195.0" text-anchor="middle" class="h">React Admin UI</text>
+<text x="240.0" y="215.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="235.0" text-anchor="middle" class="t">Queues</text>
+<text x="240.0" y="255.0" text-anchor="middle" class="t">Cases</text>
+<text x="240.0" y="275.0" text-anchor="middle" class="t">Config</text>
+<text x="240.0" y="295.0" text-anchor="middle" class="t">Audit views</text>
+<rect x="500" y="170" width="330" height="130" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="665.0" y="208.0" text-anchor="middle" class="h">Admin BFF</text>
+<text x="665.0" y="228.0" text-anchor="middle" class="t">--</text>
+<text x="665.0" y="248.0" text-anchor="middle" class="t">Admin API</text>
+<text x="665.0" y="268.0" text-anchor="middle" class="t">MFA/session enforcement</text>
+<rect x="930" y="140" width="350" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1105.0" y="172.0" text-anchor="middle" class="h">AdminController</text>
+<text x="1105.0" y="192.0" text-anchor="middle" class="t">ModerationController</text>
+<text x="1105.0" y="212.0" text-anchor="middle" class="t">ConfigController</text>
+<rect x="930" y="320" width="380" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1120.0" y="360.0" text-anchor="middle" class="h">Admin Use Cases</text>
+<text x="1120.0" y="380.0" text-anchor="middle" class="t">--</text>
+<text x="1120.0" y="400.0" text-anchor="middle" class="t">ApplyModerationAction</text>
+<text x="1120.0" y="420.0" text-anchor="middle" class="t">ResolveAppeal</text>
+<text x="1120.0" y="440.0" text-anchor="middle" class="t">ManageConfig</text>
+<text x="1120.0" y="460.0" text-anchor="middle" class="t">BroadcastCampaign</text>
+<rect x="930" y="570" width="380" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1120.0" y="615.0" text-anchor="middle" class="h">Admin Policies</text>
+<text x="1120.0" y="635.0" text-anchor="middle" class="t">--</text>
+<text x="1120.0" y="655.0" text-anchor="middle" class="t">RBAC/ABAC</text>
+<text x="1120.0" y="675.0" text-anchor="middle" class="t">reason required</text>
+<text x="1120.0" y="695.0" text-anchor="middle" class="t">least privilege</text>
+<text x="1120.0" y="715.0" text-anchor="middle" class="t">money-action safeguards</text>
+<rect x="930" y="850" width="380" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1120.0" y="895.0" text-anchor="middle" class="h">Ports</text>
+<text x="1120.0" y="915.0" text-anchor="middle" class="t">AdminCaseRepo</text>
+<text x="1120.0" y="935.0" text-anchor="middle" class="t">AuditPort</text>
+<text x="1120.0" y="955.0" text-anchor="middle" class="t">IdentityPort</text>
+<text x="1120.0" y="975.0" text-anchor="middle" class="t">DomainActionPort</text>
+<text x="1120.0" y="995.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1400" y="210" width="360" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1580.0" y="245.0" text-anchor="middle" class="h">identity-service</text>
+<text x="1580.0" y="265.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="285.0" text-anchor="middle" class="t">admin users</text>
+<text x="1580.0" y="305.0" text-anchor="middle" class="t">roles</text>
+<text x="1580.0" y="325.0" text-anchor="middle" class="t">MFA</text>
+<text x="1580.0" y="345.0" text-anchor="middle" class="t">permissions</text>
+<rect x="1400" y="500" width="360" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1580.0" y="536.0" text-anchor="middle" class="h">Domain Services</text>
+<text x="1580.0" y="556.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="576.0" text-anchor="middle" class="t">identity</text>
+<text x="1580.0" y="596.0" text-anchor="middle" class="t">marketplace</text>
+<text x="1580.0" y="616.0" text-anchor="middle" class="t">media</text>
+<text x="1580.0" y="636.0" text-anchor="middle" class="t">payment</text>
+<text x="1580.0" y="656.0" text-anchor="middle" class="t">dispute</text>
+<rect x="1400" y="820" width="360" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1580.0" y="859.0" text-anchor="middle" class="h">audit-service</text>
+<text x="1580.0" y="879.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="899.0" text-anchor="middle" class="t">immutable log</text>
+<text x="1580.0" y="919.0" text-anchor="middle" class="t">reason/evidence</text>
+<text x="1580.0" y="939.0" text-anchor="middle" class="t">access records</text>
+<rect x="1800" y="210" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1980.0" y="250.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1980.0" y="270.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="290.0" text-anchor="middle" class="t">admin_case</text>
+<text x="1980.0" y="310.0" text-anchor="middle" class="t">admin_action</text>
+<text x="1980.0" y="330.0" text-anchor="middle" class="t">platform_config</text>
+<text x="1980.0" y="350.0" text-anchor="middle" class="t">appeal</text>
+<rect x="1800" y="520" width="360" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1980.0" y="569.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1980.0" y="589.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="609.0" text-anchor="middle" class="t">AdminActionApplied</text>
+<text x="1980.0" y="629.0" text-anchor="middle" class="t">AppealResolved</text>
+<text x="1980.0" y="649.0" text-anchor="middle" class="t">ConfigChanged</text>
+<rect x="1800" y="840" width="360" height="140" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1980.0" y="883.0" text-anchor="middle" class="h">Monitoring / SIEM</text>
+<text x="1980.0" y="903.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="923.0" text-anchor="middle" class="t">admin anomaly</text>
+<text x="1980.0" y="943.0" text-anchor="middle" class="t">security alerts</text>
+<polyline points="400,240 500,235" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="227" class="small">HTTPS</text>
+<polyline points="830,235 880,235 880,190 930,190" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="182" class="small">REST</text>
+<polyline points="1105,240 1105,320" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1113" y="312" class="small">command/query</text>
+<polyline points="1120,490 1120,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="562" class="small">validate</text>
+<polyline points="1120,750 1120,850" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="842" class="small">ports</text>
+<polyline points="1310,660 1360,660 1360,290 1400,290" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="282" class="small">RBAC/ABAC</text>
+<polyline points="1310,940 1360,940 1360,590 1400,590" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="582" class="small">domain actions</text>
+<polyline points="1310,940 1400,895" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1408" y="887" class="small">audit records</text>
+<polyline points="1310,940 1740,940 1740,295 1800,295" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1748" y="287" class="small">persist cases/config</text>
+<polyline points="1310,405 1800,605" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="597" class="small">events</text>
+<polyline points="1760,895 1800,910" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="902" class="small">admin risk signals</text>
+<rect x="80" y="1210" width="1500" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1234" class="t">Component rule:</text>
+<text x="96" y="1252" class="t">Admin UI never talks directly to domain services. All admin actions flow through Admin BFF + policy + audit.</text>
+</svg>

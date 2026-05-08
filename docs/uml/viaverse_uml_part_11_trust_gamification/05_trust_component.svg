@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Review / Trust / Badge / Gamification — Component Diagram</text>
+
+<rect x="80" y="170" width="320" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="240.0" y="199.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<text x="240.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="239.0" text-anchor="middle" class="t">Review prompt</text>
+<text x="240.0" y="259.0" text-anchor="middle" class="t">Profile trust view</text>
+<text x="240.0" y="279.0" text-anchor="middle" class="t">Badge UI</text>
+<rect x="500" y="170" width="300" height="120" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="650.0" y="203.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<text x="650.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="650.0" y="243.0" text-anchor="middle" class="t">Review API</text>
+<text x="650.0" y="263.0" text-anchor="middle" class="t">Trust profile API</text>
+<rect x="900" y="140" width="300" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1050.0" y="171.0" text-anchor="middle" class="h">TrustController</text>
+<text x="1050.0" y="191.0" text-anchor="middle" class="t">ReviewController</text>
+<rect x="900" y="280" width="340" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1070.0" y="310.0" text-anchor="middle" class="h">Trust Use Cases</text>
+<text x="1070.0" y="330.0" text-anchor="middle" class="t">--</text>
+<text x="1070.0" y="350.0" text-anchor="middle" class="t">SubmitReview</text>
+<text x="1070.0" y="370.0" text-anchor="middle" class="t">CalculateTrust</text>
+<text x="1070.0" y="390.0" text-anchor="middle" class="t">EvaluateBadges</text>
+<text x="1070.0" y="410.0" text-anchor="middle" class="t">ModerateReview</text>
+<rect x="900" y="500" width="340" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1070.0" y="540.0" text-anchor="middle" class="h">Trust Policies</text>
+<text x="1070.0" y="560.0" text-anchor="middle" class="t">--</text>
+<text x="1070.0" y="580.0" text-anchor="middle" class="t">eligibility</text>
+<text x="1070.0" y="600.0" text-anchor="middle" class="t">duplicate prevention</text>
+<text x="1070.0" y="620.0" text-anchor="middle" class="t">abuse checks</text>
+<text x="1070.0" y="640.0" text-anchor="middle" class="t">score/badge rules</text>
+<rect x="900" y="760" width="340" height="140" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1070.0" y="794.0" text-anchor="middle" class="h">Ports</text>
+<text x="1070.0" y="814.0" text-anchor="middle" class="t">ReviewRepo</text>
+<text x="1070.0" y="834.0" text-anchor="middle" class="t">TrustScoreRepo</text>
+<text x="1070.0" y="854.0" text-anchor="middle" class="t">BadgeRepo</text>
+<text x="1070.0" y="874.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1340" y="210" width="360" height="130" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="248.0" text-anchor="middle" class="h">marketplace-service</text>
+<text x="1520.0" y="268.0" text-anchor="middle" class="t">--</text>
+<text x="1520.0" y="288.0" text-anchor="middle" class="t">job participant validation</text>
+<text x="1520.0" y="308.0" text-anchor="middle" class="t">job completion signal</text>
+<rect x="1340" y="440" width="360" height="130" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1520.0" y="478.0" text-anchor="middle" class="h">moderation-service</text>
+<text x="1520.0" y="498.0" text-anchor="middle" class="t">--</text>
+<text x="1520.0" y="518.0" text-anchor="middle" class="t">text abuse</text>
+<text x="1520.0" y="538.0" text-anchor="middle" class="t">PII/spam/hate scan</text>
+<rect x="1340" y="700" width="380" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1530.0" y="735.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1530.0" y="755.0" text-anchor="middle" class="t">--</text>
+<text x="1530.0" y="775.0" text-anchor="middle" class="t">reviews</text>
+<text x="1530.0" y="795.0" text-anchor="middle" class="t">trust_score</text>
+<text x="1530.0" y="815.0" text-anchor="middle" class="t">badge_awards</text>
+<text x="1530.0" y="835.0" text-anchor="middle" class="t">gamification_account</text>
+<rect x="1780" y="330" width="330" height="160" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1945.0" y="374.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1945.0" y="394.0" text-anchor="middle" class="t">--</text>
+<text x="1945.0" y="414.0" text-anchor="middle" class="t">ReviewSubmitted</text>
+<text x="1945.0" y="434.0" text-anchor="middle" class="t">TrustScoreUpdated</text>
+<text x="1945.0" y="454.0" text-anchor="middle" class="t">BadgeAwarded</text>
+<rect x="1780" y="650" width="330" height="130" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1945.0" y="688.0" text-anchor="middle" class="h">search/matching</text>
+<text x="1945.0" y="708.0" text-anchor="middle" class="t">--</text>
+<text x="1945.0" y="728.0" text-anchor="middle" class="t">ranking projection</text>
+<text x="1945.0" y="748.0" text-anchor="middle" class="t">profile badges</text>
+<polyline points="400,235 500,235" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="227" class="small">HTTPS</text>
+<polyline points="800,235 850,235 850,180 900,180" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="858" y="172" class="small">REST</text>
+<polyline points="1050,220 1050,280" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1058" y="272" class="small">command/query</text>
+<polyline points="1070,430 1070,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1078" y="492" class="small">validate/calculate</text>
+<polyline points="1070,670 1070,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1078" y="752" class="small">ports</text>
+<polyline points="1240,585 1290,585 1290,275 1340,275" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1298" y="267" class="small">job validation</text>
+<polyline points="1240,355 1290,355 1290,505 1340,505" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1298" y="497" class="small">scan review</text>
+<polyline points="1240,830 1340,780" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1348" y="772" class="small">persist</text>
+<polyline points="1240,355 1780,410" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="402" class="small">outbox events</text>
+<polyline points="1945,490 1945,650" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1953" y="642" class="small">projection update</text>
+<rect x="80" y="1040" width="1600" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1064" class="t">Component rule:</text>
+<text x="96" y="1082" class="t">Matching consumes trust signals; matching must not own trust calculations. Trust score is produced by trust-gamification-service.</text>
+</svg>

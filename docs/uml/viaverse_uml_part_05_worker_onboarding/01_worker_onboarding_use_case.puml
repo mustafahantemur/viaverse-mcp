@@ -1,0 +1,50 @@
+@startuml
+title Viaverse Worker Onboarding — Use Case Diagram
+left to right direction
+
+actor "Authenticated Account" as Account
+actor "Worker\nDO_WORK" as Worker
+actor "identity-service" as Identity
+actor "media-service" as Media
+actor "Matching Engine" as Matching
+
+rectangle "Work Mode / Individual Worker Boundary" {
+  usecase "Enable Work Mode" as Enable
+  usecase "Check account eligibility" as Eligibility
+  usecase "Create worker profile" as Profile
+  usecase "Select categories\nand skills" as Categories
+  usecase "Set service area" as Area
+  usecase "Set availability" as Availability
+  usecase "Set price preferences\noptional" as Price
+  usecase "Add portfolio media" as Portfolio
+  usecase "Submit verification\nif required" as Verify
+  usecase "Publish worker profile" as Publish
+  usecase "View opportunity queue" as Queue
+  usecase "Open matched request\nand send free offer" as Offer
+  usecase "Pause / resume work mode" as Pause
+}
+
+Account --> Enable
+Enable --> Eligibility
+Eligibility --> Profile
+Profile --> Categories
+Categories --> Area
+Area --> Availability
+Availability --> Price
+Price --> Portfolio
+Portfolio --> Verify
+Verify --> Publish
+Publish --> Queue
+Worker --> Queue
+Queue --> Offer
+Worker --> Pause
+Identity --> Eligibility
+Media --> Portfolio
+Matching --> Queue
+
+note bottom
+Work Mode is a capability over the same Account.
+Sending offers is free.
+Worker visibility depends on eligibility, trust, area, category and availability.
+end note
+@enduml

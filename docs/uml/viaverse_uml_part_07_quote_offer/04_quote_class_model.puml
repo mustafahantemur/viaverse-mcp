@@ -1,0 +1,95 @@
+@startuml
+title Viaverse Quote / Offer — Class Model
+
+class Quote {
+  id: QuoteId
+  requestId: RequestId
+  senderType: WORKER | BUSINESS
+  workerProfileId: UUID?
+  businessId: UUID?
+  status: QuoteStatus
+  price: Money
+  message: String
+  estimatedStart: Instant?
+  estimatedDuration: Duration?
+  expiresAt: Instant
+  createdAt: Instant
+}
+
+class QuoteRevision {
+  id: UUID
+  quoteId: QuoteId
+  price: Money?
+  message: String?
+  reason: String?
+  createdBy: AccountId
+  createdAt: Instant
+}
+
+class QuotePolicy {
+  canSendQuote()
+  canReviseQuote()
+  canWithdrawQuote()
+  canAcceptQuote()
+  validateQuoteNotExpired()
+  validateRequestOwner()
+}
+
+class ServiceRequest {
+  id: RequestId
+  requesterAccountId: AccountId
+  status: RequestStatus
+  budget: Budget
+  categoryId: CategoryId
+}
+
+class Job {
+  id: JobId
+  requestId: RequestId
+  acceptedQuoteId: QuoteId
+  status: JobStatus
+  createdAt: Instant
+}
+
+class QuoteEvents {
+  QuoteSent
+  QuoteRevised
+  QuoteWithdrawn
+  QuoteRejected
+  QuoteAccepted
+  JobCreated
+}
+
+class OutboxEvent {
+  id: UUID
+  aggregateType
+  aggregateId
+  eventType
+  payload
+  correlationId
+  causationId
+}
+
+class QuoteVisibilityRule {
+  requester can view all own quotes
+  sender can view own quote
+  competitors cannot view each other
+  admin requires audit
+}
+
+Quote "1" o-- "*" QuoteRevision
+Quote --> ServiceRequest : belongs to
+QuotePolicy ..> Quote : validates
+QuotePolicy ..> ServiceRequest : checks owner/state
+Quote --> Job : accepted creates
+Quote ..> QuoteEvents : emits
+QuoteEvents --> OutboxEvent : serialized as
+QuoteVisibilityRule ..> Quote : protects
+
+note bottom
+Quote acceptance must be atomic:
+one accepted quote per request,
+competing quotes transition out of selectable state,
+and Job draft is created.
+end note
+@enduml

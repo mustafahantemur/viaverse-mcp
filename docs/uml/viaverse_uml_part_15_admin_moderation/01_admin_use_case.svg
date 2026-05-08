@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Admin / Moderation / Operations — Use Case Diagram</text>
+
+<rect x="270" y="135" width="1560" height="1130" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="286" y="160" class="h">Admin / Moderation / Operations Boundary</text>
+<rect x="60" y="260" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="291.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="311.0" text-anchor="middle" class="t">Ops Admin</text>
+<rect x="60" y="610" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="641.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="661.0" text-anchor="middle" class="t">Moderator</text>
+<rect x="60" y="960" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="991.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="1011.0" text-anchor="middle" class="t">Support Agent</text>
+<rect x="1900" y="250" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="281.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="301.0" text-anchor="middle" class="t">Identity / RBAC</text>
+<rect x="1900" y="590" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="621.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="641.0" text-anchor="middle" class="t">Audit / Compliance</text>
+<rect x="1900" y="930" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="961.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="981.0" text-anchor="middle" class="t">Domain Services</text>
+<rect x="360" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="222.0" text-anchor="middle" class="h">Admin login</text>
+<text x="492.5" y="242.0" text-anchor="middle" class="t">MFA required</text>
+<rect x="700" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="222.0" text-anchor="middle" class="h">Check admin role</text>
+<text x="832.5" y="242.0" text-anchor="middle" class="t">and permission</text>
+<rect x="1040" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="231.0" text-anchor="middle" class="h">View moderation queues</text>
+<rect x="1380" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="231.0" text-anchor="middle" class="h">Open admin case</text>
+<rect x="360" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="482.0" text-anchor="middle" class="h">Inspect user/account</text>
+<text x="492.5" y="502.0" text-anchor="middle" class="t">minimal scoped view</text>
+<rect x="700" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="482.0" text-anchor="middle" class="h">Review reported content</text>
+<text x="832.5" y="502.0" text-anchor="middle" class="t">media/chat/review/profile</text>
+<rect x="1040" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="482.0" text-anchor="middle" class="h">Take moderation action</text>
+<text x="1172.5" y="502.0" text-anchor="middle" class="t">warn / hide / suspend</text>
+<rect x="1380" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="482.0" text-anchor="middle" class="h">Require reason</text>
+<text x="1512.5" y="502.0" text-anchor="middle" class="t">and evidence</text>
+<rect x="360" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="761.0" text-anchor="middle" class="h">Handle support/dispute case</text>
+<rect x="700" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="752.0" text-anchor="middle" class="h">Approve refund/payout</text>
+<text x="832.5" y="772.0" text-anchor="middle" class="t">with policy</text>
+<rect x="1040" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="752.0" text-anchor="middle" class="h">Manage platform config</text>
+<text x="1172.5" y="772.0" text-anchor="middle" class="t">categories / fees / limits</text>
+<rect x="1380" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="761.0" text-anchor="middle" class="h">Manage admin broadcast</text>
+<rect x="700" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="1021.0" text-anchor="middle" class="h">Write immutable audit log</text>
+<rect x="1040" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="1021.0" text-anchor="middle" class="h">Review appeal</text>
+<rect x="1380" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="1012.0" text-anchor="middle" class="h">Emit admin events</text>
+<text x="1512.5" y="1032.0" text-anchor="middle" class="t">ActionApplied / AppealResolved</text>
+<polyline points="245,300 270,300 270,231 360,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,650 295,650 295,231 360,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1000 310,1000 310,231 360,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="625,231 700,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,231 1040,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,231 1380,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,272 1512,360 492,360 492,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="500" y="352" class="small">scoped</text>
+<polyline points="1512,272 1512,360 832,360 832,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,491 1040,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,491 1380,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1000 320,1000 320,761 360,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,300 320,300 320,761 1040,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,300 330,300 330,761 1380,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1000 320,1000 320,761 700,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,532 1512,900 832,900 832,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="625,761 832,900 832,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="832,802 832,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,1021 1040,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,1021 1380,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,290 1780,290 1780,231 965,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="223" class="small">roles</text>
+<polyline points="1900,630 1780,630 1780,1021 965,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="1013" class="small">immutable log</text>
+<polyline points="1900,970 1780,970 1780,491 1305,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="483" class="small">apply action</text>
+<polyline points="1900,970 1760,970 1760,761 1305,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1768" y="753" class="small">config publish</text>
+<rect x="360" y="1210" width="1400" height="58" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="376" y="1234" class="t">Rules:</text>
+<text x="376" y="1252" class="t">Admin access is role-scoped, MFA-protected and audited. Every destructive or money-related action requires reason, permission and immutable audit trail.</text>
+</svg>

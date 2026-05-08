@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Infrastructure Components — Component Diagram
+
+component "Client Apps\nKMP mobile/web\nNext.js landing/admin" as Apps
+component "Edge Layer\nRoute53 / CloudFront / WAF" as Edge
+component "Gateway Layer\nAPI Gateway / BFFs\nIngress / ALB" as Gateway
+component "Service Layer\nSpring Boot bounded contexts\nHexagonal ports/adapters" as Services
+component "Worker Layer\nOutbox relay\nMedia processing\nSchedulers" as Workers
+database "Data Layer\nPostgreSQL / Redis / Kafka\nS3 / OpenSearch" as Data
+component "Security Layer\nKMS / Secrets Manager\nExternal Secrets\nIAM" as Security
+component "Observability Layer\nOTel / Prometheus / Perses\nJaeger / OpenSearch logs" as Obs
+component "Delivery Layer\nGitHub Actions\nECR\nIaC / Helm" as CICD
+component "Ops Layer\nRunbooks\nAlerts\nBackups / DR" as Ops
+
+Apps --> Edge : HTTPS
+Edge --> Gateway
+Gateway --> Services : REST/gRPC internal
+Services --> Workers : events/jobs
+Services --> Data : adapters
+Workers --> Data : adapters
+Services --> Security : secret/key usage
+Services --> Obs : telemetry
+Workers --> Obs : telemetry
+CICD ..> Gateway : deploy
+CICD ..> Services : deploy
+Ops --> Obs : alerts/runbooks
+
+note bottom
+Infrastructure should support modular monolith-to-microservice evolution.
+Services expose stable contracts; infra is replaceable behind adapters/IaC.
+end note
+@enduml

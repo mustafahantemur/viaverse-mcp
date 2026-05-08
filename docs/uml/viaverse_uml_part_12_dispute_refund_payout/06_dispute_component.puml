@@ -1,0 +1,36 @@
+@startuml
+title Viaverse Dispute / Refund / Payout — Component Diagram
+
+component "KMP / Next.js Client\nOpen dispute\nEvidence upload\nCase status" as Client
+component "Admin UI\nCase review\nResolution\nAudit reason" as Admin
+component "API Gateway / App BFF\nDispute API\nAdmin Dispute API" as BFF
+component "DisputeController\nAdminDisputeController" as Controller
+component "Dispute Use Cases\nOpenDispute\nSubmitEvidence\nResolveDispute\nCloseDispute" as UseCases
+component "Dispute Policies\nparticipant/state\nSLA/timeout\nmoney decision\naudit requirement" as Policies
+component "Ports\nDisputeRepo\nPaymentPort\nJobPort\nMessagingPort\nOutboxPort" as Ports
+component "marketplace-service\njob state\nparticipant validation" as Marketplace
+component "payment-service\nblock payout\nrefund\nrelease payout" as Payment
+component "messaging-service\nmessage refs\nevidence refs" as Messaging
+database "PostgreSQL\ndispute_case\nevidence\nresolution\naudit_log" as DB
+queue "Kafka / Outbox\nDisputeOpened\nRefundIssued\nPayoutReleased\nRiskSignalUpdated" as Kafka
+component "trust/risk-service\nrisk score update\nbadge impacts" as Trust
+
+Client --> BFF : HTTPS
+Admin --> BFF : HTTPS admin
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Policies --> Marketplace : job validation
+Ports --> Payment : block/refund/release
+Ports --> Messaging : evidence refs
+Ports --> DB : persist/audit
+UseCases --> Kafka : events
+Kafka --> Trust : risk update
+
+note bottom
+Dispute service decides case outcome and audit;
+payment-service executes money movement.
+Both sides must use idempotency/correlation IDs.
+end note
+@enduml

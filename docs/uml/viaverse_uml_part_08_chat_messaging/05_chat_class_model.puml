@@ -1,0 +1,87 @@
+@startuml
+title Viaverse Chat / Messaging — Class Model
+
+class Conversation {
+  id: ConversationId
+  contextType: QUOTE | JOB | SUPPORT
+  contextId: UUID
+  status: ConversationStatus
+  createdAt: Instant
+  lastMessageAt: Instant?
+}
+
+class ConversationParticipant {
+  conversationId: ConversationId
+  accountId: AccountId
+  role: REQUESTER | WORKER | BUSINESS | SUPPORT
+  status: ParticipantStatus
+  lastReadMessageId: MessageId?
+}
+
+class Message {
+  id: MessageId
+  conversationId: ConversationId
+  senderAccountId: AccountId
+  type: TEXT | MEDIA | SYSTEM
+  body: String?
+  status: MessageStatus
+  createdAt: Instant
+}
+
+class MessageAttachment {
+  messageId: MessageId
+  mediaId: MediaId
+  kind: IMAGE | VIDEO | FILE
+  moderationStatus: MediaModerationStatus
+}
+
+class MessagingPolicy {
+  canOpenConversation()
+  canSendMessage()
+  canAttachMedia()
+  canShareContactInfo()
+  canReport()
+}
+
+class SafetyDetection {
+  id: UUID
+  messageId: MessageId?
+  detectionType: PHONE | EMAIL | ADDRESS | PAYMENT_BYPASS
+  severity: Severity
+  action: WARN | BLOCK | RISK_SIGNAL
+}
+
+class MessageReport {
+  id: UUID
+  messageId: MessageId
+  reporterAccountId: AccountId
+  reason: ReportReason
+  status: ReportStatus
+  createdAt: Instant
+}
+
+class MessagingEvents {
+  ConversationCreated
+  MessageSent
+  MessageRead
+  ContactSharingDetected
+  MessageReported
+  SupportEscalationRequested
+}
+
+Conversation "1" o-- "*" ConversationParticipant
+Conversation "1" o-- "*" Message
+Message "1" o-- "*" MessageAttachment
+MessagingPolicy ..> Conversation : checks
+MessagingPolicy ..> ConversationParticipant : checks
+SafetyDetection ..> Message : scans
+MessageReport ..> Message : reports
+Message ..> MessagingEvents : emits
+SafetyDetection ..> MessagingEvents : emits risk/safety
+MessageReport ..> MessagingEvents : emits report
+
+note bottom
+Private chat content must not be used for ad targeting.
+Admin/support access is scoped, reasoned and audited.
+end note
+@enduml

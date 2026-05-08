@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Matching — Sequence Diagram
+
+queue "Kafka / MSK" as Kafka
+participant "matching-consumer\n(search-service)" as Matcher
+participant "marketplace-service" as Marketplace
+database "OpenSearch" as OpenSearch
+participant "identity-service" as Identity
+participant "trust-gamification" as Trust
+database "Valkey / Redis" as Redis
+participant "notification-service" as Notification
+
+Kafka -> Matcher : MatchingRequested
+Matcher -> Marketplace : load request snapshot
+Marketplace --> Matcher : category/budget/area/urgency
+Matcher -> OpenSearch : geo/category candidates
+OpenSearch --> Matcher : candidate provider/business ids
+Matcher -> Identity : capability/status batch check
+Identity --> Matcher : eligible accounts/businesses
+Matcher -> Trust : trust/risk summaries
+Trust --> Matcher : score components / risk
+Matcher -> Redis : availability / hot state
+Redis --> Matcher : availability map
+Matcher -> Matcher : score + explain reasons
+Matcher -> Marketplace : persist WorkerOpportunity
+Matcher -> Notification : NotificationCreated
+Matcher -> Kafka : MatchingCompleted
+
+note bottom
+Matching consumes events and builds opportunities.
+It does not mutate ServiceRequest source-of-truth except through explicit marketplace API/port.
+end note
+@enduml

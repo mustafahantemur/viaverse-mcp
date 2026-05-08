@@ -1,0 +1,45 @@
+@startuml
+title Viaverse Worker Onboarding — Sequence Diagram
+
+actor Worker
+participant "KMP / Web Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "identity-service" as Identity
+participant "marketplace-service" as Marketplace
+participant "media-service" as Media
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+participant "search-service" as Search
+
+Worker -> Client : enable Work Mode
+Client -> BFF : POST /work/onboarding/start
+BFF -> Identity : check capability eligibility
+Identity -> DB : load AccountCapability
+Identity --> BFF : allowed / blocked
+
+BFF -> Marketplace : create WorkerProfile draft
+Marketplace -> DB : insert WorkerProfile(DRAFT)
+
+Worker -> Client : categories / area / availability
+Client -> BFF : PATCH worker profile
+BFF -> Marketplace : updateWorkerProfile
+Marketplace -> DB : persist categories/area/availability
+
+Worker -> Client : optional portfolio media
+Client -> BFF : POST /media/upload-sessions
+BFF -> Media : createUploadSession
+Media -> DB : store MediaAsset
+Media --> Client : presigned upload URL
+
+Worker -> Client : publish profile
+Client -> BFF : POST /work/profile/publish
+BFF -> Marketplace : publishWorkerProfile
+Marketplace -> DB : set ACTIVE + insert outbox
+Marketplace -> Kafka : WorkerProfileActivated
+Kafka -> Search : index public worker profile
+
+note bottom
+Worker profile activation publishes search/matching projections.
+Profile source-of-truth remains marketplace-service/PostgreSQL.
+end note
+@enduml

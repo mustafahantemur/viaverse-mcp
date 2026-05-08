@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Security / Privacy / Compliance — Component Diagram
+
+component "KMP / Next.js Client\nsecure storage\nconsent UI\nprivacy center" as Client
+component "AWS Edge\nWAF\nTLS\nrate limit\nCDN rules" as Edge
+component "API Gateway\nJWT validation\ncorrelationId\nrequest policy" as Gateway
+component "identity-service\nOTP/social login\nJWT/refresh\ncapabilities\nadmin MFA" as Identity
+component "privacy-service\nconsent\nDSAR\nretention\ndata map" as Privacy
+component "Domain Services\npolicy enforcement\nownership checks\nredaction" as Services
+component "External Secrets + KMS\nsecret sync\nencryption keys\nrotation" as Secrets
+component "audit-service\nsensitive access\nadmin actions\nDSAR receipts" as Audit
+database "PostgreSQL / Cassandra\nrow ownership\nretention tags\nencrypted fields" as DB
+queue "Kafka / Outbox\nConsentChanged\nDataDeleted\nSecurityIncidentRaised" as Kafka
+component "Security Monitoring\nanomaly\nincident queue\nalerts" as Monitor
+
+Client --> Edge : HTTPS
+Edge --> Gateway : forward
+Gateway --> Identity : token/introspection
+Gateway --> Services : authorized request
+Services --> DB : persist/read
+Services --> Secrets : secret/key usage
+Services --> Audit : sensitive audit
+Privacy --> Services : DSAR/retention commands
+Privacy --> Kafka : privacy events
+Audit --> Monitor : risk signals
+Identity --> Kafka : auth/security events
+
+note bottom
+Security is not one service.
+Edge, gateway, identity, domain policies, secrets, audit,
+privacy and monitoring work as layered controls.
+end note
+@enduml

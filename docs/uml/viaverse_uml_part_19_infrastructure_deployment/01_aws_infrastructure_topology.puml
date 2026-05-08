@@ -1,0 +1,56 @@
+@startuml
+title Viaverse Infrastructure / Deployment — AWS Topology Diagram
+
+node "Users\nMobile / Web / Admin" as Users
+cloud "Route 53\nDNS" as R53
+cloud "CloudFront\nCDN + TLS edge" as CF
+cloud "AWS WAF\nrate rules / bot guard" as WAF
+node "ALB / Ingress\npublic entry" as ALB
+
+rectangle "AWS VPC — Multi-AZ" {
+  rectangle "Public Subnets" {
+    node "NAT Gateways\nper AZ" as NAT
+  }
+  rectangle "Private App Subnets" {
+    node "EKS Cluster\nSpring Boot microservices\nKMP Web BFF / Admin BFF" as EKS
+    node "Service Discovery / Ingress\ninternal service routing" as Mesh
+    node "Workers\nmedia / outbox / scheduler" as Workers
+    node "OTel Collector\nsidecars/daemonset" as OTel
+  }
+  rectangle "Private Data Subnets" {
+    database "RDS PostgreSQL\nMulti-AZ" as RDS
+    database "ElastiCache Redis\nsessions/cache/rate" as Redis
+    queue "MSK Kafka\nor managed Kafka" as Kafka
+    database "S3 Buckets\nmedia/backups/log archive" as S3
+    database "OpenSearch\nsearch + logs" as OpenSearch
+  }
+  node "KMS + Secrets Manager\nExternal Secrets sync" as KMS
+  node "Prometheus / Perses / Jaeger\nobservability" as Obs
+}
+
+node "GitHub Actions\nCI/CD + IaC" as CI
+node "ECR\ncontainer registry" as ECR
+
+Users --> R53
+R53 --> CF
+CF --> WAF
+WAF --> ALB
+ALB --> EKS : HTTPS
+EKS --> Mesh : internal
+Mesh --> Workers : events/jobs
+EKS --> OTel : telemetry
+EKS --> RDS : SQL
+EKS --> Redis : cache
+EKS --> Kafka : events
+Workers --> S3 : media/jobs
+Workers --> OpenSearch : index/logs
+KMS ..> EKS : secrets
+CI --> ECR : push images
+ECR ..> EKS : deploy image
+OTel --> Obs : export
+
+note bottom
+Start managed and boring: AWS edge + EKS + RDS + Redis + Kafka + S3 + OpenSearch.
+Keep all replaceable through ports/adapters, but do not run duplicate broker stacks.
+end note
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+title Viaverse Taxonomy Version / Category Mapping — State Diagram
+
+[*] --> VERSION_DRAFT
+VERSION_DRAFT --> VERSION_IN_REVIEW : submit
+VERSION_IN_REVIEW --> VERSION_PUBLISHED : approve
+VERSION_IN_REVIEW --> VERSION_DRAFT : changes
+VERSION_PUBLISHED --> VERSION_RETIRED : new version
+
+[*] --> UNMAPPED
+UNMAPPED --> AI_SUGGESTED : AI suggestion
+AI_SUGGESTED --> MAPPED : user/admin confirms
+UNMAPPED --> MAPPED : manual select
+MAPPED --> REMAP_REQUIRED : taxonomy changed
+REMAP_REQUIRED --> MAPPED : migration mapping
+MAPPED --> MAPPING_ARCHIVED : source deleted
+
+VERSION_RETIRED --> [*]
+MAPPING_ARCHIVED --> [*]
+
+note bottom
+Existing requests/providers must not break when taxonomy changes.
+Remap-required state and migration mapping protect old data and search continuity.
+end note
+@enduml

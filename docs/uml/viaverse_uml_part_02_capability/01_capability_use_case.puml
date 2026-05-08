@@ -1,0 +1,43 @@
+@startuml
+title Viaverse Capability — Use Case Diagram
+left to right direction
+
+actor "Authenticated Account" as Account
+actor "Business Owner" as BusinessOwner
+actor "Admin / Trust Ops" as Admin
+
+rectangle "Account Capability / Mode Boundary" {
+  usecase "View available modes" as ViewModes
+  usecase "Use Personal Mode" as Personal
+  usecase "Enable Work Mode" as Work
+  usecase "Complete worker onboarding" as WorkerOnboarding
+  usecase "Start Business Mode" as StartBusiness
+  usecase "Create business profile" as CreateBusiness
+  usecase "Manage business team roles" as TeamRoles
+  usecase "Switch active mode" as SwitchMode
+  usecase "Check capability eligibility" as Eligibility
+  usecase "Suspend capability" as Suspend
+  usecase "Revoke capability" as Revoke
+}
+
+Account --> ViewModes
+ViewModes --> Personal
+Account --> Work
+Work ..> WorkerOnboarding : <<include>>
+Account --> StartBusiness
+StartBusiness ..> CreateBusiness : <<include>>
+BusinessOwner --> TeamRoles
+Personal --> SwitchMode
+WorkerOnboarding --> SwitchMode
+CreateBusiness --> SwitchMode
+SwitchMode --> Eligibility
+Admin --> Suspend
+Admin --> Revoke
+Suspend ..> Eligibility : affects
+
+note bottom
+Core rule:
+One Account can have multiple capabilities.
+Personal / Work / Business are modes over capabilities, not separate user identities.
+end note
+@enduml

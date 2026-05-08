@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2450" height="1700" viewBox="0 0 2450 1700">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2370" height="60" rx="14" fill="#022C22"/><text x="1225.0" y="69" text-anchor="middle" class="title">Viaverse Module Dependency Rules — Class/Package Model</text>
+<rect x="80" y="160" width="420" height="250" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="290.0" y="258.0" text-anchor="middle" class="h">Domain Module</text>
+<text x="290.0" y="276.0" text-anchor="middle" class="t">entities / value objects</text>
+<text x="290.0" y="294.0" text-anchor="middle" class="t">policies / domain events</text>
+<text x="290.0" y="312.0" text-anchor="middle" class="t">NO Spring/JPA/Ktor</text>
+<rect x="600" y="160" width="420" height="230" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="810.0" y="239.0" text-anchor="middle" class="h">Application Module</text>
+<text x="810.0" y="257.0" text-anchor="middle" class="t">use cases</text>
+<text x="810.0" y="275.0" text-anchor="middle" class="t">commands/queries</text>
+<text x="810.0" y="293.0" text-anchor="middle" class="t">ports</text>
+<text x="810.0" y="311.0" text-anchor="middle" class="t">transaction boundary</text>
+<rect x="1120" y="160" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1330.0" y="249.0" text-anchor="middle" class="h">Inbound Adapter</text>
+<text x="1330.0" y="267.0" text-anchor="middle" class="t">REST controllers</text>
+<text x="1330.0" y="285.0" text-anchor="middle" class="t">BFF resolvers</text>
+<text x="1330.0" y="303.0" text-anchor="middle" class="t">message consumers</text>
+<text x="1330.0" y="321.0" text-anchor="middle" class="t">security actor mapping</text>
+<rect x="1640" y="160" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1850.0" y="249.0" text-anchor="middle" class="h">Outbound Adapter</text>
+<text x="1850.0" y="267.0" text-anchor="middle" class="t">persistence</text>
+<text x="1850.0" y="285.0" text-anchor="middle" class="t">external APIs</text>
+<text x="1850.0" y="303.0" text-anchor="middle" class="t">Kafka publisher</text>
+<text x="1850.0" y="321.0" text-anchor="middle" class="t">cache/search</text>
+<rect x="80" y="560" width="420" height="260" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="290.0" y="645.0" text-anchor="middle" class="h">Common Libraries</text>
+<text x="290.0" y="663.0" text-anchor="middle" class="t">common-domain</text>
+<text x="290.0" y="681.0" text-anchor="middle" class="t">common-web</text>
+<text x="290.0" y="699.0" text-anchor="middle" class="t">common-security</text>
+<text x="290.0" y="717.0" text-anchor="middle" class="t">common-events</text>
+<text x="290.0" y="735.0" text-anchor="middle" class="t">common-observability</text>
+<rect x="600" y="560" width="420" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="810.0" y="639.0" text-anchor="middle" class="h">Contract Artifacts</text>
+<text x="810.0" y="657.0" text-anchor="middle" class="t">OpenAPI</text>
+<text x="810.0" y="675.0" text-anchor="middle" class="t">event schemas</text>
+<text x="810.0" y="693.0" text-anchor="middle" class="t">protobuf optional</text>
+<text x="810.0" y="711.0" text-anchor="middle" class="t">JSON schema</text>
+<rect x="1120" y="560" width="420" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1330.0" y="634.0" text-anchor="middle" class="h">Test Modules</text>
+<text x="1330.0" y="652.0" text-anchor="middle" class="t">unit</text>
+<text x="1330.0" y="670.0" text-anchor="middle" class="t">integration</text>
+<text x="1330.0" y="688.0" text-anchor="middle" class="t">contract</text>
+<text x="1330.0" y="706.0" text-anchor="middle" class="t">architecture</text>
+<rect x="1640" y="560" width="420" height="240" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1850.0" y="644.0" text-anchor="middle" class="h">Forbidden Coupling</text>
+<text x="1850.0" y="662.0" text-anchor="middle" class="t">controller→repository</text>
+<text x="1850.0" y="680.0" text-anchor="middle" class="t">domain→spring</text>
+<text x="1850.0" y="698.0" text-anchor="middle" class="t">domain→jpa</text>
+<text x="1850.0" y="716.0" text-anchor="middle" class="t">client screen→api dto</text>
+<polyline points="1120,285 1020,285" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1028" y="277" class="small">calls</text>
+<polyline points="600,275 500,275" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="267" class="small">uses</text>
+<polyline points="1020,320 1640,320" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1648" y="312" class="small">ports implemented by</text>
+<polyline points="1330,410 810,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="818" y="552" class="small">conforms</text>
+<polyline points="1850,410 810,560" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="818" y="552" class="small">publishes/consumes</text>
+<polyline points="1120,670 500,300" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="508" y="292" class="small">unit</text>
+<polyline points="1120,670 810,390" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="818" y="382" class="small">use case</text>
+<polyline points="500,690 290,410" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="298" y="402" class="small">allowed primitives only</text>
+<polyline points="1640,680 1540,285" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1548" y="277" class="small">must fail arch test</text>
+<rect x="80" y="1030" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Dependency rule:</text>
+<text x="96" y="1072" class="t">Dependencies point inward. Domain is pure. Adapters depend on application ports; application does not depend on adapter implementation.</text>
+</svg>

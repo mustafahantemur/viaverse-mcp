@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Final UML Index — Part Map</text>
+<rect x="60" y="130" width="2480" height="1320" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">UML Part Index — 01 to 28</text>
+<rect x="120" y="210" width="560" height="125" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="400.0" y="254.5" text-anchor="middle" class="h">Part 01 — Account / Identity / Capability</text>
+<text x="400.0" y="272.5" text-anchor="middle" class="t">Owner: Identity, backend, security</text>
+<text x="400.0" y="290.5" text-anchor="middle" class="t">Scope: Account, auth, OTP/social login, capabilities, session</text>
+<rect x="740" y="210" width="560" height="125" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1020.0" y="254.5" text-anchor="middle" class="h">Part 02 — Profile / Settings / Privacy</text>
+<text x="1020.0" y="272.5" text-anchor="middle" class="t">Owner: Client, profile, privacy</text>
+<text x="1020.0" y="290.5" text-anchor="middle" class="t">Scope: Public/private profile, settings, privacy surfaces</text>
+<rect x="1360" y="210" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="254.5" text-anchor="middle" class="h">Part 03 — Request / Job Posting</text>
+<text x="1640.0" y="272.5" text-anchor="middle" class="t">Owner: Marketplace, client</text>
+<text x="1640.0" y="290.5" text-anchor="middle" class="t">Scope: Create request, budget, category, media</text>
+<rect x="1980" y="210" width="560" height="125" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2260.0" y="254.5" text-anchor="middle" class="h">Part 04 — Offer / Quote / Job Lifecycle</text>
+<text x="2260.0" y="272.5" text-anchor="middle" class="t">Owner: Marketplace, payment, chat, trust</text>
+<text x="2260.0" y="290.5" text-anchor="middle" class="t">Scope: Offer, quote, accept, job completion</text>
+<rect x="120" y="380" width="560" height="125" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="400.0" y="424.5" text-anchor="middle" class="h">Part 05 — Search / Discovery / Matching</text>
+<text x="400.0" y="442.5" text-anchor="middle" class="t">Owner: Search, data, client</text>
+<text x="400.0" y="460.5" text-anchor="middle" class="t">Scope: OpenSearch, ranking, matching, filters</text>
+<rect x="740" y="380" width="560" height="125" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1020.0" y="424.5" text-anchor="middle" class="h">Part 06 — Notification</text>
+<text x="1020.0" y="442.5" text-anchor="middle" class="t">Owner: Platform, backend, client</text>
+<text x="1020.0" y="460.5" text-anchor="middle" class="t">Scope: Push, email, SMS, templates</text>
+<rect x="1360" y="380" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="424.5" text-anchor="middle" class="h">Part 07 — Media / CDN</text>
+<text x="1640.0" y="442.5" text-anchor="middle" class="t">Owner: Media, platform, safety</text>
+<text x="1640.0" y="460.5" text-anchor="middle" class="t">Scope: Image/video upload, processing, signed URLs</text>
+<rect x="1980" y="380" width="560" height="125" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2260.0" y="424.5" text-anchor="middle" class="h">Part 08 — Payment</text>
+<text x="2260.0" y="442.5" text-anchor="middle" class="t">Owner: Payment, backend, security</text>
+<text x="2260.0" y="460.5" text-anchor="middle" class="t">Scope: Iyzico, Stripe-ready, intent, refund</text>
+<rect x="120" y="550" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="400.0" y="594.5" text-anchor="middle" class="h">Part 09 — Review / Rating / Trust</text>
+<text x="400.0" y="612.5" text-anchor="middle" class="t">Owner: Trust, marketplace</text>
+<text x="400.0" y="630.5" text-anchor="middle" class="t">Scope: Two-sided review, badges, trust score</text>
+<rect x="740" y="550" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1020.0" y="594.5" text-anchor="middle" class="h">Part 10 — Moderation / Safety</text>
+<text x="1020.0" y="612.5" text-anchor="middle" class="t">Owner: Safety, support, security</text>
+<text x="1020.0" y="630.5" text-anchor="middle" class="t">Scope: Reports, NSFW/scam/off-platform, queues</text>
+<rect x="1360" y="550" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="594.5" text-anchor="middle" class="h">Part 11 — Admin / Backoffice</text>
+<text x="1640.0" y="612.5" text-anchor="middle" class="t">Owner: Admin, ops, support</text>
+<text x="1640.0" y="630.5" text-anchor="middle" class="t">Scope: Admin workflows, config, review, audit</text>
+<rect x="1980" y="550" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2260.0" y="594.5" text-anchor="middle" class="h">Part 12 — Data Architecture</text>
+<text x="2260.0" y="612.5" text-anchor="middle" class="t">Owner: Backend, data, platform</text>
+<text x="2260.0" y="630.5" text-anchor="middle" class="t">Scope: PostgreSQL, Cassandra, Redis, OpenSearch, S3</text>
+<rect x="120" y="720" width="560" height="125" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="400.0" y="764.5" text-anchor="middle" class="h">Part 13 — Event Architecture</text>
+<text x="400.0" y="782.5" text-anchor="middle" class="t">Owner: Backend, platform</text>
+<text x="400.0" y="800.5" text-anchor="middle" class="t">Scope: Kafka, outbox, schema versioning, DLQ</text>
+<rect x="740" y="720" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1020.0" y="764.5" text-anchor="middle" class="h">Part 14 — Security Model</text>
+<text x="1020.0" y="782.5" text-anchor="middle" class="t">Owner: Security, backend, platform</text>
+<text x="1020.0" y="800.5" text-anchor="middle" class="t">Scope: RBAC/ABAC, rate limit, secrets, audit</text>
+<rect x="1360" y="720" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="764.5" text-anchor="middle" class="h">Part 15 — Payment Provider Abstraction</text>
+<text x="1640.0" y="782.5" text-anchor="middle" class="t">Owner: Payment, backend</text>
+<text x="1640.0" y="800.5" text-anchor="middle" class="t">Scope: Provider ports, Iyzico/Stripe/Masterpass</text>
+<rect x="1980" y="720" width="560" height="125" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="2260.0" y="764.5" text-anchor="middle" class="h">Part 16 — SEO / Growth</text>
+<text x="2260.0" y="782.5" text-anchor="middle" class="t">Owner: Growth, web, data</text>
+<text x="2260.0" y="800.5" text-anchor="middle" class="t">Scope: Landing, localized SEO, analytics</text>
+<rect x="120" y="890" width="560" height="125" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="400.0" y="934.5" text-anchor="middle" class="h">Part 17 — Analytics / Observability</text>
+<text x="400.0" y="952.5" text-anchor="middle" class="t">Owner: Platform, data, product</text>
+<text x="400.0" y="970.5" text-anchor="middle" class="t">Scope: Product analytics, OTel, SLO dashboards</text>
+<rect x="740" y="890" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1020.0" y="934.5" text-anchor="middle" class="h">Part 18 — Security / Privacy / KVKK</text>
+<text x="1020.0" y="952.5" text-anchor="middle" class="t">Owner: Security, privacy, backend</text>
+<text x="1020.0" y="970.5" text-anchor="middle" class="t">Scope: Consent, DSAR, retention, encryption</text>
+<rect x="1360" y="890" width="560" height="125" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="934.5" text-anchor="middle" class="h">Part 19 — Infrastructure / Deployment</text>
+<text x="1640.0" y="952.5" text-anchor="middle" class="t">Owner: Platform / DevOps</text>
+<text x="1640.0" y="970.5" text-anchor="middle" class="t">Scope: AWS, EKS, CI/CD, release, rollback</text>
+<rect x="1980" y="890" width="560" height="125" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="2260.0" y="934.5" text-anchor="middle" class="h">Part 20 — AI Assistant / Support</text>
+<text x="2260.0" y="952.5" text-anchor="middle" class="t">Owner: AI, support, backend</text>
+<text x="2260.0" y="970.5" text-anchor="middle" class="t">Scope: RAG, support helper, guardrails</text>
+<rect x="120" y="1060" width="560" height="125" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="400.0" y="1104.5" text-anchor="middle" class="h">Part 21 — Localization / Regionalization</text>
+<text x="400.0" y="1122.5" text-anchor="middle" class="t">Owner: Localization, client, growth</text>
+<text x="400.0" y="1140.5" text-anchor="middle" class="t">Scope: TR/EN, locale, regional config</text>
+<rect x="740" y="1060" width="560" height="125" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1020.0" y="1104.5" text-anchor="middle" class="h">Part 22 — Business Account / Merchant Ops</text>
+<text x="1020.0" y="1122.5" text-anchor="middle" class="t">Owner: Business, backend, client</text>
+<text x="1020.0" y="1140.5" text-anchor="middle" class="t">Scope: Merchant account, branches, staff, catalog</text>
+<rect x="1360" y="1060" width="560" height="125" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1640.0" y="1104.5" text-anchor="middle" class="h">Part 23 — Monetization / Ads / Commission</text>
+<text x="1640.0" y="1122.5" text-anchor="middle" class="t">Owner: Growth, payment, business</text>
+<text x="1640.0" y="1140.5" text-anchor="middle" class="t">Scope: Subscription, trial, commission, ads</text>
+<rect x="1980" y="1060" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2260.0" y="1104.5" text-anchor="middle" class="h">Part 24 — Category / Taxonomy / Dynamic Environment</text>
+<text x="2260.0" y="1122.5" text-anchor="middle" class="t">Owner: Taxonomy, search, client</text>
+<text x="2260.0" y="1140.5" text-anchor="middle" class="t">Scope: Categories, tags, form schema, dynamic environment</text>
+<rect x="120" y="1230" width="560" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="400.0" y="1274.5" text-anchor="middle" class="h">Part 25 — Chat / Messaging / Safety</text>
+<text x="400.0" y="1292.5" text-anchor="middle" class="t">Owner: Chat, safety, client</text>
+<text x="400.0" y="1310.5" text-anchor="middle" class="t">Scope: Job chat, receipts, Cassandra, moderation</text>
+<rect x="740" y="1230" width="560" height="125" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1020.0" y="1274.5" text-anchor="middle" class="h">Part 26 — Roadmap / Team Execution</text>
+<text x="1020.0" y="1292.5" text-anchor="middle" class="t">Owner: Product, engineering leadership</text>
+<text x="1020.0" y="1310.5" text-anchor="middle" class="t">Scope: Phases, workstreams, release gates</text>
+<rect x="1360" y="1230" width="560" height="125" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1640.0" y="1274.5" text-anchor="middle" class="h">Part 27 — Repository / Package / Module Structure</text>
+<text x="1640.0" y="1292.5" text-anchor="middle" class="t">Owner: All engineering</text>
+<text x="1640.0" y="1310.5" text-anchor="middle" class="t">Scope: Monorepo, backend packages, KMP modules</text>
+<rect x="1980" y="1230" width="560" height="125" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2260.0" y="1274.5" text-anchor="middle" class="h">Part 28 — Final Master Topology</text>
+<text x="2260.0" y="1292.5" text-anchor="middle" class="t">Owner: All stakeholders</text>
+<text x="2260.0" y="1310.5" text-anchor="middle" class="t">Scope: End-to-end topology, ownership, governance</text>
+<rect x="120" y="1430" width="1480" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1454" class="t">Usage:</text>
+<text x="136" y="1472" class="t">Use this diagram as the navigation map. Each Part ZIP contains .drawio, .svg and .puml diagram files.</text>
+</svg>

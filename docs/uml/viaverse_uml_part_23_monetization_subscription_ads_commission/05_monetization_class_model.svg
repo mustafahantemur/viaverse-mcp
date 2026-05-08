@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Monetization / Subscription / Ads — Class Model</text>
+
+<rect x="80" y="150" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="203.0" text-anchor="middle" class="h">SubscriptionPlan</text>
+<text x="290.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="243.0" text-anchor="middle" class="t">code: String</text>
+<text x="290.0" y="263.0" text-anchor="middle" class="t">name: String</text>
+<text x="290.0" y="283.0" text-anchor="middle" class="t">monthlyPrice: Money</text>
+<text x="290.0" y="303.0" text-anchor="middle" class="t">trialDays: Int</text>
+<text x="290.0" y="323.0" text-anchor="middle" class="t">features: Set&lt;FeatureCode&gt;</text>
+<text x="290.0" y="343.0" text-anchor="middle" class="t">leadQuota: Int?</text>
+<text x="290.0" y="363.0" text-anchor="middle" class="t">status: PlanStatus</text>
+<rect x="600" y="150" width="420" height="270" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="810.0" y="213.0" text-anchor="middle" class="h">BusinessSubscription</text>
+<text x="810.0" y="233.0" text-anchor="middle" class="t">--</text>
+<text x="810.0" y="253.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="810.0" y="273.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="810.0" y="293.0" text-anchor="middle" class="t">planCode: String</text>
+<text x="810.0" y="313.0" text-anchor="middle" class="t">status: SubscriptionStatus</text>
+<text x="810.0" y="333.0" text-anchor="middle" class="t">trialEndsAt: Instant?</text>
+<text x="810.0" y="353.0" text-anchor="middle" class="t">currentPeriodEnd: Instant</text>
+<text x="810.0" y="373.0" text-anchor="middle" class="t">cancelAtPeriodEnd: Boolean</text>
+<rect x="1120" y="150" width="420" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1330.0" y="218.0" text-anchor="middle" class="h">CommissionRule</text>
+<text x="1330.0" y="238.0" text-anchor="middle" class="t">--</text>
+<text x="1330.0" y="258.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1330.0" y="278.0" text-anchor="middle" class="t">scope: GLOBAL | CATEGORY | REGION | BUSINESS</text>
+<text x="1330.0" y="298.0" text-anchor="middle" class="t">ratePercent: Decimal</text>
+<text x="1330.0" y="318.0" text-anchor="middle" class="t">minFee: Money?</text>
+<text x="1330.0" y="338.0" text-anchor="middle" class="t">maxFee: Money?</text>
+<text x="1330.0" y="358.0" text-anchor="middle" class="t">effectiveFrom: Instant</text>
+<text x="1330.0" y="378.0" text-anchor="middle" class="t">status: RuleStatus</text>
+<rect x="1640" y="150" width="420" height="290" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1850.0" y="214.0" text-anchor="middle" class="h">PlatformFee</text>
+<text x="1850.0" y="234.0" text-anchor="middle" class="t">--</text>
+<text x="1850.0" y="254.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1850.0" y="274.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="1850.0" y="294.0" text-anchor="middle" class="t">payerAccountId: AccountId</text>
+<text x="1850.0" y="314.0" text-anchor="middle" class="t">earnerAccountId: AccountId</text>
+<text x="1850.0" y="334.0" text-anchor="middle" class="t">grossAmount: Money</text>
+<text x="1850.0" y="354.0" text-anchor="middle" class="t">feeAmount: Money</text>
+<text x="1850.0" y="374.0" text-anchor="middle" class="t">netPayout: Money</text>
+<text x="1850.0" y="394.0" text-anchor="middle" class="t">ruleId: UUID</text>
+<rect x="80" y="560" width="420" height="270" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="614.0" text-anchor="middle" class="h">SponsoredPlacement</text>
+<text x="290.0" y="634.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="654.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="290.0" y="674.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="290.0" y="694.0" text-anchor="middle" class="t">campaignName: String</text>
+<text x="290.0" y="714.0" text-anchor="middle" class="t">budget: Money</text>
+<text x="290.0" y="734.0" text-anchor="middle" class="t">spent: Money</text>
+<text x="290.0" y="754.0" text-anchor="middle" class="t">status: AdStatus</text>
+<text x="290.0" y="774.0" text-anchor="middle" class="t">startsAt: Instant</text>
+<text x="290.0" y="794.0" text-anchor="middle" class="t">endsAt: Instant?</text>
+<rect x="600" y="560" width="420" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="810.0" y="617.0" text-anchor="middle" class="h">Promotion</text>
+<text x="810.0" y="637.0" text-anchor="middle" class="t">--</text>
+<text x="810.0" y="657.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="810.0" y="677.0" text-anchor="middle" class="t">code: String</text>
+<text x="810.0" y="697.0" text-anchor="middle" class="t">discountType: PERCENT | FIXED | FREE_TRIAL</text>
+<text x="810.0" y="717.0" text-anchor="middle" class="t">value: Decimal</text>
+<text x="810.0" y="737.0" text-anchor="middle" class="t">eligibilityRule: String</text>
+<text x="810.0" y="757.0" text-anchor="middle" class="t">expiresAt: Instant?</text>
+<rect x="1120" y="560" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1330.0" y="627.0" text-anchor="middle" class="h">MonetizationPolicy</text>
+<text x="1330.0" y="647.0" text-anchor="middle" class="t">--</text>
+<text x="1330.0" y="667.0" text-anchor="middle" class="t">canStartTrial()</text>
+<text x="1330.0" y="687.0" text-anchor="middle" class="t">canUseFeature()</text>
+<text x="1330.0" y="707.0" text-anchor="middle" class="t">calculateCommission()</text>
+<text x="1330.0" y="727.0" text-anchor="middle" class="t">applyPromotion()</text>
+<text x="1330.0" y="747.0" text-anchor="middle" class="t">canShowSponsoredResult()</text>
+<text x="1330.0" y="767.0" text-anchor="middle" class="t">adRelevanceGate()</text>
+<rect x="1640" y="560" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1850.0" y="627.0" text-anchor="middle" class="h">Monetization Events</text>
+<text x="1850.0" y="647.0" text-anchor="middle" class="t">--</text>
+<text x="1850.0" y="667.0" text-anchor="middle" class="t">SubscriptionStarted</text>
+<text x="1850.0" y="687.0" text-anchor="middle" class="t">SubscriptionRenewed</text>
+<text x="1850.0" y="707.0" text-anchor="middle" class="t">SubscriptionPastDue</text>
+<text x="1850.0" y="727.0" text-anchor="middle" class="t">CommissionCharged</text>
+<text x="1850.0" y="747.0" text-anchor="middle" class="t">PayoutCalculated</text>
+<text x="1850.0" y="767.0" text-anchor="middle" class="t">AdBudgetSpent</text>
+<polyline points="500,260 600,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="252" class="small">1 -&gt; many</text>
+<polyline points="1540,290 1640,290" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1648" y="282" class="small">creates</text>
+<polyline points="810,420 1330,560" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1338" y="552" class="small">feature gate</text>
+<polyline points="810,560 810,420" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="818" y="412" class="small">discounts</text>
+<polyline points="1330,560 1330,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1338" y="422" class="small">uses</text>
+<polyline points="1120,690 500,690" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="682" class="small">gates ads</text>
+<polyline points="1020,410 1850,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1858" y="552" class="small">emits</text>
+<polyline points="1850,440 1850,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1858" y="552" class="small">emits</text>
+<polyline points="500,700 1640,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1648" y="692" class="small">emits</text>
+<rect x="80" y="1030" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Model rule:</text>
+<text x="96" y="1072" class="t">All monetization values are versioned/effective-dated. Historic invoices and fee records must preserve the rule snapshot used at the time.</text>
+</svg>

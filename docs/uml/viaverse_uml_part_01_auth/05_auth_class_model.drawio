@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="auth-class" name="05 Auth Class Model">
+    <mxGraphModel dx="1900" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Auth — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1820" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Account" value="Account&#xa;--&#xa;id: AccountId&#xa;status: AccountStatus&#xa;displayName: String?&#xa;primaryEmail: Email?&#xa;primaryPhone: Phone?&#xa;locale: Locale&#xa;tokenVersion: Int&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="260" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Capability" value="AccountCapability&#xa;--&#xa;accountId: AccountId&#xa;capability: CapabilityType&#xa;status: CapabilityStatus&#xa;enabledAt: Instant&#xa;suspendedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="170" width="260" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="Linked" value="LinkedIdentity&#xa;--&#xa;accountId: AccountId&#xa;provider: OAuthProvider&#xa;providerSubject: String&#xa;email: Email?&#xa;linkedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="170" width="260" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="Consent" value="ConsentRecord&#xa;--&#xa;accountId: AccountId&#xa;consentType: ConsentType&#xa;version: String&#xa;granted: Boolean&#xa;grantedAt: Instant&#xa;revokedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="170" width="270" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="Otp" value="OtpChallenge&#xa;--&#xa;id: OtpChallengeId&#xa;channel: OtpChannel&#xa;targetHash: String&#xa;codeHash: String&#xa;purpose: OtpPurpose&#xa;expiresAt: Instant&#xa;attemptCount: Int&#xa;status: OtpStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="470" width="290" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Session" value="Session&#xa;--&#xa;id: SessionId&#xa;accountId: AccountId&#xa;deviceId: String?&#xa;createdAt: Instant&#xa;lastSeenAt: Instant&#xa;revokedAt: Instant?&#xa;platform: Platform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="470" width="270" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="Refresh" value="RefreshTokenFamily&#xa;--&#xa;id: RefreshTokenFamilyId&#xa;sessionId: SessionId&#xa;currentTokenHash: String&#xa;status: TokenFamilyStatus&#xa;rotatedAt: Instant&#xa;reusedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="470" width="300" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="AuthPolicy&#xa;--&#xa;validateAccountActive()&#xa;validateCapabilityEnabled()&#xa;validateConsentRequired()&#xa;validateRefreshReuse()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="470" width="300" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="Event" value="Auth Events&#xa;--&#xa;AccountCreated&#xa;OtpRequested&#xa;OtpVerified&#xa;SessionCreated&#xa;SessionRevoked&#xa;ConsentGranted" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="820" width="350" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Account" target="Capability">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="340" y="250" as="point"/><mxPoint x="420" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Account" target="Linked">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="340" y="220" as="point"/><mxPoint x="760" y="220" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Account" target="Consent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="340" y="290" as="point"/><mxPoint x="1100" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Account" target="Session">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="210" y="360" as="point"/><mxPoint x="210" y="570" as="point"/><mxPoint x="470" y="570" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="1 -&gt; 1 family" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Session" target="Refresh">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="740" y="570" as="point"/><mxPoint x="820" y="570" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="verified creates/finds" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Otp" target="Account">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="225" y="470" as="point"/><mxPoint x="225" y="360" as="point"/><mxPoint x="210" y="360" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="checks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Account">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1220" y="540" as="point"/><mxPoint x="340" y="265" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="checks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Capability">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1220" y="565" as="point"/><mxPoint x="680" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Session" target="Event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="605" y="670" as="point"/><mxPoint x="605" y="820" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl10" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Consent" target="Event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1235" y="350" as="point"/><mxPoint x="1235" y="780" as="point"/><mxPoint x="960" y="900" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl11" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Otp" target="Event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="225" y="690" as="point"/><mxPoint x="225" y="900" as="point"/><mxPoint x="610" y="900" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Implementation rule: these are domain/application models. JPA entities live separately under infrastructure.persistence.entity and must be mapped explicitly." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1060" width="1420" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

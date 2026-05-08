@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Search / SEO / Growth — Class Model</text>
+
+<rect x="80" y="150" width="420" height="300" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="201.0" text-anchor="middle" class="h">SearchDocument</text>
+<text x="290.0" y="221.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="241.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="290.0" y="261.0" text-anchor="middle" class="t">entityType: REQUEST | WORKER | BUSINESS | SEO_PAGE</text>
+<text x="290.0" y="281.0" text-anchor="middle" class="t">entityId: UUID</text>
+<text x="290.0" y="301.0" text-anchor="middle" class="t">title: String</text>
+<text x="290.0" y="321.0" text-anchor="middle" class="t">summary: String</text>
+<text x="290.0" y="341.0" text-anchor="middle" class="t">categoryIds: Set&lt;CategoryId&gt;</text>
+<text x="290.0" y="361.0" text-anchor="middle" class="t">geo: ApproxGeo</text>
+<text x="290.0" y="381.0" text-anchor="middle" class="t">visibility: Visibility</text>
+<text x="290.0" y="401.0" text-anchor="middle" class="t">trustSignal: Decimal</text>
+<text x="290.0" y="421.0" text-anchor="middle" class="t">updatedAt: Instant</text>
+<rect x="600" y="150" width="370" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="785.0" y="198.0" text-anchor="middle" class="h">SearchQuery</text>
+<text x="785.0" y="218.0" text-anchor="middle" class="t">--</text>
+<text x="785.0" y="238.0" text-anchor="middle" class="t">text: String?</text>
+<text x="785.0" y="258.0" text-anchor="middle" class="t">categoryId: CategoryId?</text>
+<text x="785.0" y="278.0" text-anchor="middle" class="t">area: AreaFilter?</text>
+<text x="785.0" y="298.0" text-anchor="middle" class="t">budget: BudgetFilter?</text>
+<text x="785.0" y="318.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="785.0" y="338.0" text-anchor="middle" class="t">sort: SortMode</text>
+<text x="785.0" y="358.0" text-anchor="middle" class="t">page: PageRequest</text>
+<rect x="1080" y="150" width="390" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1275.0" y="209.0" text-anchor="middle" class="h">RankingScore</text>
+<text x="1275.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="1275.0" y="249.0" text-anchor="middle" class="t">relevance: Decimal</text>
+<text x="1275.0" y="269.0" text-anchor="middle" class="t">trust: Decimal</text>
+<text x="1275.0" y="289.0" text-anchor="middle" class="t">freshness: Decimal</text>
+<text x="1275.0" y="309.0" text-anchor="middle" class="t">distance: Decimal</text>
+<text x="1275.0" y="329.0" text-anchor="middle" class="t">availability: Decimal</text>
+<text x="1275.0" y="349.0" text-anchor="middle" class="t">sponsoredBoost: Decimal</text>
+<text x="1275.0" y="369.0" text-anchor="middle" class="t">finalScore: Decimal</text>
+<text x="1275.0" y="389.0" text-anchor="middle" class="t">reasonCodes: List&lt;String&gt;</text>
+<rect x="1580" y="150" width="400" height="270" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1780.0" y="204.0" text-anchor="middle" class="h">SeoPage</text>
+<text x="1780.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="1780.0" y="244.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1780.0" y="264.0" text-anchor="middle" class="t">slug: String</text>
+<text x="1780.0" y="284.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="1780.0" y="304.0" text-anchor="middle" class="t">pageType: CATEGORY_CITY | SERVICE</text>
+<text x="1780.0" y="324.0" text-anchor="middle" class="t">canonicalUrl: String</text>
+<text x="1780.0" y="344.0" text-anchor="middle" class="t">schemaJson: Json</text>
+<text x="1780.0" y="364.0" text-anchor="middle" class="t">status: SeoPageStatus</text>
+<text x="1780.0" y="384.0" text-anchor="middle" class="t">updatedAt: Instant</text>
+<rect x="80" y="560" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="618.0" text-anchor="middle" class="h">SearchAnalyticsEvent</text>
+<text x="290.0" y="638.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="658.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="290.0" y="678.0" text-anchor="middle" class="t">accountId: AccountId?</text>
+<text x="290.0" y="698.0" text-anchor="middle" class="t">sessionId: String</text>
+<text x="290.0" y="718.0" text-anchor="middle" class="t">queryHash: String</text>
+<text x="290.0" y="738.0" text-anchor="middle" class="t">resultIds: List&lt;UUID&gt;</text>
+<text x="290.0" y="758.0" text-anchor="middle" class="t">eventType: IMPRESSION | CLICK | CONVERSION</text>
+<text x="290.0" y="778.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="600" y="560" width="370" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="785.0" y="603.0" text-anchor="middle" class="h">GrowthExperiment</text>
+<text x="785.0" y="623.0" text-anchor="middle" class="t">--</text>
+<text x="785.0" y="643.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="785.0" y="663.0" text-anchor="middle" class="t">key: String</text>
+<text x="785.0" y="683.0" text-anchor="middle" class="t">variant: String</text>
+<text x="785.0" y="703.0" text-anchor="middle" class="t">segmentRule: String</text>
+<text x="785.0" y="723.0" text-anchor="middle" class="t">status: ExperimentStatus</text>
+<text x="785.0" y="743.0" text-anchor="middle" class="t">startedAt: Instant</text>
+<text x="785.0" y="763.0" text-anchor="middle" class="t">endedAt: Instant?</text>
+<rect x="1080" y="560" width="390" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1275.0" y="616.0" text-anchor="middle" class="h">SearchPolicy</text>
+<text x="1275.0" y="636.0" text-anchor="middle" class="t">--</text>
+<text x="1275.0" y="656.0" text-anchor="middle" class="t">canIndexEntity()</text>
+<text x="1275.0" y="676.0" text-anchor="middle" class="t">canExposePublicly()</text>
+<text x="1275.0" y="696.0" text-anchor="middle" class="t">applyRankingGates()</text>
+<text x="1275.0" y="716.0" text-anchor="middle" class="t">applySponsoredConstraints()</text>
+<text x="1275.0" y="736.0" text-anchor="middle" class="t">localizeResult()</text>
+<rect x="1580" y="560" width="400" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1780.0" y="612.0" text-anchor="middle" class="h">Search Events</text>
+<text x="1780.0" y="632.0" text-anchor="middle" class="t">--</text>
+<text x="1780.0" y="652.0" text-anchor="middle" class="t">EntityIndexed</text>
+<text x="1780.0" y="672.0" text-anchor="middle" class="t">EntityRemovedFromIndex</text>
+<text x="1780.0" y="692.0" text-anchor="middle" class="t">SearchPerformed</text>
+<text x="1780.0" y="712.0" text-anchor="middle" class="t">SearchClicked</text>
+<text x="1780.0" y="732.0" text-anchor="middle" class="t">SeoPageUpdated</text>
+<text x="1780.0" y="752.0" text-anchor="middle" class="t">ExperimentAssigned</text>
+<polyline points="970,260 1080,260 1080,420 290,420 290,450" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1088" y="412" class="small">matches</text>
+<polyline points="500,300 1080,290" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="282" class="small">scored as</text>
+<polyline points="1470,290 1580,285" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="277" class="small">can feed SEO ranking</text>
+<polyline points="1080,650 1000,650 1000,470 290,470 290,450" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1008" y="462" class="small">gates</text>
+<polyline points="1275,560 1275,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1283" y="422" class="small">ranking policy</text>
+<polyline points="500,690 600,675" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="667" class="small">measures</text>
+<polyline points="785,560 785,485 1275,485 1275,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1283" y="477" class="small">variant affects</text>
+<polyline points="500,420 1780,420 1780,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="412" class="small">emits</text>
+<polyline points="500,690 1580,690" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="682" class="small">emits</text>
+<polyline points="1780,420 1780,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="552" class="small">emits</text>
+<rect x="80" y="1030" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Data rule:</text>
+<text x="96" y="1072" class="t">SearchDocument is a projection, not source-of-truth. It can be rebuilt from domain events and public approved entities.</text>
+</svg>

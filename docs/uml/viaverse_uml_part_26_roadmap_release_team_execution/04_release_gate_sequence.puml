@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Release Gate / Go-Live Decision — Sequence Diagram
+
+participant "Product Lead" as PM
+participant "GitHub / CI" as Repo
+participant "QA" as QA
+participant "Security/Privacy" as Sec
+participant "Platform/Ops" as Ops
+participant "Observability" as Obs
+participant "Admin/Support" as Admin
+participant "Release Owner" as Release
+
+PM -> Repo : tag release candidate
+Repo -> QA : build + test artifacts
+Repo -> Sec : SAST/dependency/IaC scan
+Repo -> Ops : deploy to staging
+Ops -> Obs : smoke + metrics
+QA -> Release : QA signoff
+Sec -> Release : security/privacy signoff
+Obs -> Release : SLO/error budget signoff
+Admin -> Release : support/admin readiness
+Release ..> Repo : promote or block
+
+note bottom
+Go-live requires product acceptance, QA evidence,
+security/privacy review, operational readiness,
+observability and rollback plan.
+end note
+@enduml

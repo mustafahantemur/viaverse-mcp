@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Team Execution / Delivery Loop — Activity Diagram
+start
+:Roadmap item selected;
+:Define bounded scope\nuse case + acceptance;
+:Design domain model\nAPI/event contracts;
+:Break into tasks\nbackend/client/infra/docs;
+:Create feature branch\nfrom main/develop;
+:Implement vertical slice;
+:Unit/integration/contract tests;
+:Code review\narchitecture rules;
+:Manual QA / UX pass;
+:Update docs/UML/ADRs;
+:Merge with CI green;
+:Deploy to env\nsmoke test;
+:Observe metrics/logs\nfeedback;
+if (Definition of Done?) then (yes)
+  :Phase increment complete;
+else (no)
+  :Return to backlog\nfix gaps;
+  :Re-scope;
+endif
+stop
+
+note bottom
+Every task must connect to a use case, bounded context, contract, test, and documentation update.
+Avoid random screen/API coding without domain traceability.
+end note
+@enduml

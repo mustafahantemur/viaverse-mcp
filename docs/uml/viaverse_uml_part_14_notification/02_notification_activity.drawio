@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="notification-activity" name="02 Notification Activity">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Notification / Delivery — Activity Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="start" value="START&#xa;domain event" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="consume" value="Consume event&#xa;and deduplicate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="policy" value="Evaluate policy&#xa;priority / type / audience" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="140" width="330" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="eligible" value="Notify?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="140" width="230" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="drop" value="Drop / record suppressed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="150" width="290" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="prefs" value="Load preferences&#xa;quiet hours / channel opt-in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="330" width="350" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="template" value="Render localized template" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="330" width="330" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="inbox" value="Create inbox item" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="340" width="270" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="channels" value="Select channels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="550" width="270" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="push" value="Push delivery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="550" width="260" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="email" value="Email/SMS delivery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="550" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="result" value="Record delivery result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="760" width="320" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="retry" value="Retry/backoff needed?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="760" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="schedule" value="Schedule retry / digest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="760" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="event" value="Emit delivery events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="980" width="300" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="end" value="END" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1000" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="a1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="start" target="consume">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="300" y="190" as="point"/><mxPoint x="400" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="consume" target="policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="700" y="185" as="point"/><mxPoint x="820" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="policy" target="eligible">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1150" y="185" as="point"/><mxPoint x="1260" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a4" value="no" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="eligible" target="drop">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1490" y="185" as="point"/><mxPoint x="1600" y="188" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a5" value="yes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="eligible" target="prefs">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1375" y="230" as="point"/><mxPoint x="1375" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="prefs" target="template">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="375" as="point"/><mxPoint x="1150" y="370" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="template" target="inbox">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="370" as="point"/><mxPoint x="670" y="375" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="inbox" target="channels">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="410" as="point"/><mxPoint x="535" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a9" value="push" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="channels" target="push">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="670" y="587" as="point"/><mxPoint x="820" y="587" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a10" value="email/sms" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="channels" target="email">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="670" y="587" as="point"/><mxPoint x="1260" y="587" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="push" target="result">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1080" y="587" as="point"/><mxPoint x="1260" y="798" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="email" target="result">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1410" y="625" as="point"/><mxPoint x="1410" y="760" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a13" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="result" target="retry">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="798" as="point"/><mxPoint x="1120" y="805" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a14" value="yes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="retry" target="schedule">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="805" as="point"/><mxPoint x="700" y="800" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a15" value="no/final" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="retry" target="event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="970" y="850" as="point"/><mxPoint x="970" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a16" value="retry scheduled" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="schedule" target="event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="840" as="point"/><mxPoint x="550" y="930" as="point"/><mxPoint x="970" y="930" as="point"/><mxPoint x="970" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="a17" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="event" target="end">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1120" y="1022" as="point"/><mxPoint x="1260" y="1028" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Reliability rule:&#xa;Every notification has deduplication key, delivery attempts and final state. High-priority transactional events should not be batched into digest." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="1160" width="1520" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

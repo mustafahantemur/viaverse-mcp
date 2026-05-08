@@ -1,0 +1,28 @@
+@startuml
+title Viaverse Observability / Trace / Log / Metric — Sequence Diagram
+
+actor Client
+participant "API Gateway" as Gateway
+participant "Domain Service" as Service
+participant "OpenTelemetry SDK/Collector" as Otel
+database "Prometheus" as Prometheus
+database "Jaeger" as Jaeger
+database "OpenSearch Logs" as Logs
+participant "Alerting / Ops" as Alert
+
+Client -> Gateway : request + traceparent
+Gateway -> Service : forward with correlationId
+Service -> Otel : create span + attributes
+Service -> Otel : record metric/log context
+Otel -> Prometheus : export metrics
+Otel -> Jaeger : export traces
+Otel -> Logs : export structured logs
+Prometheus -> Alert : SLO/error threshold
+Logs -> Alert : error pattern/anomaly
+Jaeger -> Alert : latency regression
+
+note bottom
+CorrelationId and traceparent travel from gateway to every service.
+Logs, traces and metrics must be joinable without exposing secrets.
+end note
+@enduml

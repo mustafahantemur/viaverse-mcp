@@ -1,0 +1,101 @@
+@startuml
+title Viaverse Search / SEO / Growth — Class Model
+
+class SearchDocument {
+  id: UUID
+  entityType: REQUEST | WORKER | BUSINESS | SEO_PAGE
+  entityId: UUID
+  title: String
+  summary: String
+  categoryIds: Set<CategoryId>
+  geo: ApproxGeo
+  visibility: Visibility
+  trustSignal: Decimal
+  updatedAt: Instant
+}
+
+class SearchQuery {
+  text: String?
+  categoryId: CategoryId?
+  area: AreaFilter?
+  budget: BudgetFilter?
+  locale: Locale
+  sort: SortMode
+  page: PageRequest
+}
+
+class RankingScore {
+  relevance: Decimal
+  trust: Decimal
+  freshness: Decimal
+  distance: Decimal
+  availability: Decimal
+  sponsoredBoost: Decimal
+  finalScore: Decimal
+  reasonCodes: List<String>
+}
+
+class SeoPage {
+  id: UUID
+  slug: String
+  locale: Locale
+  pageType: CATEGORY_CITY | SERVICE
+  canonicalUrl: String
+  schemaJson: Json
+  status: SeoPageStatus
+  updatedAt: Instant
+}
+
+class SearchAnalyticsEvent {
+  id: UUID
+  accountId: AccountId?
+  sessionId: String
+  queryHash: String
+  resultIds: List<UUID>
+  eventType: IMPRESSION | CLICK | CONVERSION
+  createdAt: Instant
+}
+
+class GrowthExperiment {
+  id: UUID
+  key: String
+  variant: String
+  segmentRule: String
+  status: ExperimentStatus
+  startedAt: Instant
+  endedAt: Instant?
+}
+
+class SearchPolicy {
+  canIndexEntity()
+  canExposePublicly()
+  applyRankingGates()
+  applySponsoredConstraints()
+  localizeResult()
+}
+
+class SearchEvents {
+  EntityIndexed
+  EntityRemovedFromIndex
+  SearchPerformed
+  SearchClicked
+  SeoPageUpdated
+  ExperimentAssigned
+}
+
+SearchQuery ..> SearchDocument : matches
+SearchDocument --> RankingScore : scored as
+RankingScore --> SeoPage : can feed SEO ranking
+SearchPolicy ..> SearchDocument : gates
+SearchPolicy ..> RankingScore : ranking policy
+SearchAnalyticsEvent --> GrowthExperiment : measures
+GrowthExperiment ..> RankingScore : variant affects
+SearchDocument ..> SearchEvents : emits
+SearchAnalyticsEvent ..> SearchEvents : emits
+SeoPage ..> SearchEvents : emits
+
+note bottom
+SearchDocument is a projection, not source-of-truth.
+It can be rebuilt from domain events and public approved entities.
+end note
+@enduml

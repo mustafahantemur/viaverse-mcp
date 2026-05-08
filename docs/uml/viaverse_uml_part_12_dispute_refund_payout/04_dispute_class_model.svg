@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Dispute / Refund / Payout — Class Model</text>
+
+<rect x="80" y="150" width="420" height="290" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="196.0" text-anchor="middle" class="h">DisputeCase</text>
+<text x="290.0" y="216.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="236.0" text-anchor="middle" class="t">id: DisputeId</text>
+<text x="290.0" y="256.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="290.0" y="276.0" text-anchor="middle" class="t">openedBy: AccountId</text>
+<text x="290.0" y="296.0" text-anchor="middle" class="t">againstAccountId: AccountId?</text>
+<text x="290.0" y="316.0" text-anchor="middle" class="t">status: DisputeStatus</text>
+<text x="290.0" y="336.0" text-anchor="middle" class="t">reason: DisputeReason</text>
+<text x="290.0" y="356.0" text-anchor="middle" class="t">summary: String</text>
+<text x="290.0" y="376.0" text-anchor="middle" class="t">payoutBlocked: Boolean</text>
+<text x="290.0" y="396.0" text-anchor="middle" class="t">openedAt: Instant</text>
+<text x="290.0" y="416.0" text-anchor="middle" class="t">closedAt: Instant?</text>
+<rect x="600" y="150" width="410" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="805.0" y="203.0" text-anchor="middle" class="h">DisputeEvidence</text>
+<text x="805.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="805.0" y="243.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="805.0" y="263.0" text-anchor="middle" class="t">disputeId: DisputeId</text>
+<text x="805.0" y="283.0" text-anchor="middle" class="t">submittedBy: AccountId</text>
+<text x="805.0" y="303.0" text-anchor="middle" class="t">type: MESSAGE | MEDIA | TEXT | SYSTEM</text>
+<text x="805.0" y="323.0" text-anchor="middle" class="t">refId: UUID?</text>
+<text x="805.0" y="343.0" text-anchor="middle" class="t">note: String?</text>
+<text x="805.0" y="363.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1110" y="150" width="380" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1300.0" y="192.0" text-anchor="middle" class="h">DisputeResponse</text>
+<text x="1300.0" y="212.0" text-anchor="middle" class="t">--</text>
+<text x="1300.0" y="232.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1300.0" y="252.0" text-anchor="middle" class="t">disputeId: DisputeId</text>
+<text x="1300.0" y="272.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1300.0" y="292.0" text-anchor="middle" class="t">message: String</text>
+<text x="1300.0" y="312.0" text-anchor="middle" class="t">evidenceRefs: List&lt;UUID&gt;</text>
+<text x="1300.0" y="332.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1580" y="150" width="420" height="300" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1790.0" y="219.0" text-anchor="middle" class="h">DisputeResolution</text>
+<text x="1790.0" y="239.0" text-anchor="middle" class="t">--</text>
+<text x="1790.0" y="259.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1790.0" y="279.0" text-anchor="middle" class="t">disputeId: DisputeId</text>
+<text x="1790.0" y="299.0" text-anchor="middle" class="t">type: REFUND | PAYOUT | SPLIT | NO_ACTION</text>
+<text x="1790.0" y="319.0" text-anchor="middle" class="t">refundAmount: Money?</text>
+<text x="1790.0" y="339.0" text-anchor="middle" class="t">payoutAmount: Money?</text>
+<text x="1790.0" y="359.0" text-anchor="middle" class="t">reason: String</text>
+<text x="1790.0" y="379.0" text-anchor="middle" class="t">resolvedBy: AccountId</text>
+<text x="1790.0" y="399.0" text-anchor="middle" class="t">resolvedAt: Instant</text>
+<rect x="80" y="560" width="390" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="275.0" y="611.0" text-anchor="middle" class="h">DisputePolicy</text>
+<text x="275.0" y="631.0" text-anchor="middle" class="t">--</text>
+<text x="275.0" y="651.0" text-anchor="middle" class="t">canOpenDispute()</text>
+<text x="275.0" y="671.0" text-anchor="middle" class="t">canSubmitEvidence()</text>
+<text x="275.0" y="691.0" text-anchor="middle" class="t">canResolve()</text>
+<text x="275.0" y="711.0" text-anchor="middle" class="t">requiresPayoutBlock()</text>
+<text x="275.0" y="731.0" text-anchor="middle" class="t">validateMoneyDecision()</text>
+<rect x="580" y="560" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="790.0" y="609.0" text-anchor="middle" class="h">DisputeAuditLog</text>
+<text x="790.0" y="629.0" text-anchor="middle" class="t">--</text>
+<text x="790.0" y="649.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="790.0" y="669.0" text-anchor="middle" class="t">disputeId: DisputeId</text>
+<text x="790.0" y="689.0" text-anchor="middle" class="t">actorId: AccountId</text>
+<text x="790.0" y="709.0" text-anchor="middle" class="t">action: String</text>
+<text x="790.0" y="729.0" text-anchor="middle" class="t">reason: String?</text>
+<text x="790.0" y="749.0" text-anchor="middle" class="t">beforeState: String?</text>
+<text x="790.0" y="769.0" text-anchor="middle" class="t">afterState: String?</text>
+<text x="790.0" y="789.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1100" y="560" width="430" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1315.0" y="608.0" text-anchor="middle" class="h">PaymentResolutionAction</text>
+<text x="1315.0" y="628.0" text-anchor="middle" class="t">--</text>
+<text x="1315.0" y="648.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1315.0" y="668.0" text-anchor="middle" class="t">disputeId: DisputeId</text>
+<text x="1315.0" y="688.0" text-anchor="middle" class="t">paymentSessionId: UUID</text>
+<text x="1315.0" y="708.0" text-anchor="middle" class="t">action: REFUND | RELEASE_PAYOUT | SPLIT</text>
+<text x="1315.0" y="728.0" text-anchor="middle" class="t">amount: Money</text>
+<text x="1315.0" y="748.0" text-anchor="middle" class="t">status: ActionStatus</text>
+<text x="1315.0" y="768.0" text-anchor="middle" class="t">idempotencyKey: String</text>
+<rect x="1620" y="560" width="390" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1815.0" y="613.0" text-anchor="middle" class="h">Dispute Events</text>
+<text x="1815.0" y="633.0" text-anchor="middle" class="t">--</text>
+<text x="1815.0" y="653.0" text-anchor="middle" class="t">DisputeOpened</text>
+<text x="1815.0" y="673.0" text-anchor="middle" class="t">EvidenceSubmitted</text>
+<text x="1815.0" y="693.0" text-anchor="middle" class="t">PayoutBlocked</text>
+<text x="1815.0" y="713.0" text-anchor="middle" class="t">DisputeResolved</text>
+<text x="1815.0" y="733.0" text-anchor="middle" class="t">RefundIssued</text>
+<text x="1815.0" y="753.0" text-anchor="middle" class="t">PayoutReleased</text>
+<text x="1815.0" y="773.0" text-anchor="middle" class="t">RiskSignalUpdated</text>
+<polyline points="500,260 600,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="237" class="small">1 -&gt; many</text>
+<polyline points="500,300 1110,255" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1118" y="247" class="small">1 -&gt; many</text>
+<polyline points="500,350 1580,280" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="272" class="small">1 -&gt; optional/final</text>
+<polyline points="275,560 275,440" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="283" y="432" class="small">validates</text>
+<polyline points="1790,450 1790,500 1315,500 1315,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1323" y="492" class="small">creates</text>
+<polyline points="290,440 290,500 790,500 790,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="798" y="492" class="small">all changes</text>
+<polyline points="1580,300 1000,650" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1008" y="642" class="small">resolution audit</text>
+<polyline points="1530,680 1620,685" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="677" class="small">emits</text>
+<polyline points="500,410 1820,410 1820,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1828" y="402" class="small">emits</text>
+<rect x="80" y="1050" width="1600" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1074" class="t">Data rule:</text>
+<text x="96" y="1092" class="t">Evidence should reference source records/media where possible. Copying private chat/media into dispute case must be minimized and access audited.</text>
+</svg>

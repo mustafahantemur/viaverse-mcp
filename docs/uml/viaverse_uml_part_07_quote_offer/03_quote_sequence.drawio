@@ -1,0 +1,109 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="quote-sequence" name="03 Quote Offer Sequence">
+    <mxGraphModel dx="2150" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2150" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Quote / Offer — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2070" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="workerClient" value="Worker Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="workerClient_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="169" y="220" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="requesterClient" value="Requester Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="250" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="requesterClient_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="169" y="330" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="API Gateway / App BFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="140" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="449" y="220" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="market" value="marketplace-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="140" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="market_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="739" y="220" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="identity-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="140" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1029" y="220" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="140" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1319" y="220" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Outbox / Kafka" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="140" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1609" y="220" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="notify" value="notification-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="140" width="180" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="notify_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1899" y="220" width="2" height="940" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="GET matched request" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="workerClient" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="330" as="point"/><mxPoint x="360" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="load request detail" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="540" y="370" as="point"/><mxPoint x="650" y="370" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="POST /quotes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="workerClient" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="500" as="point"/><mxPoint x="360" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="sendQuote(command)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="540" y="540" as="point"/><mxPoint x="650" y="540" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="check worker/business capability" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="market" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="830" y="580" as="point"/><mxPoint x="940" y="580" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="validate request + insert Quote(SENT)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="market" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="830" y="640" as="point"/><mxPoint x="1230" y="640" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="QuoteSent" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="market" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="830" y="700" as="point"/><mxPoint x="1520" y="700" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="NotificationCreated" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="kafka" target="notify">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1700" y="700" as="point"/><mxPoint x="1810" y="700" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="push/in-app quote received" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notify" target="requesterClient">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1810" y="760" as="point"/><mxPoint x="1700" y="760" as="point"/><mxPoint x="1700" y="280" as="point"/><mxPoint x="260" y="280" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="GET /requests/{id}/quotes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="requesterClient" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="860" as="point"/><mxPoint x="360" y="860" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="load quotes for owner" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="540" y="900" as="point"/><mxPoint x="650" y="900" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s12" value="POST /quotes/{id}/accept" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="requesterClient" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="1040" as="point"/><mxPoint x="360" y="1040" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s13" value="acceptQuote(command)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="540" y="1080" as="point"/><mxPoint x="650" y="1080" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s14" value="idempotent accept + create Job draft" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="market" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="830" y="1120" as="point"/><mxPoint x="1230" y="1120" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s15" value="QuoteAccepted / JobCreated" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="market" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="830" y="1160" as="point"/><mxPoint x="1520" y="1160" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Sequence focus:&#xa;Quote is sent by worker/business and accepted only by request owner. Acceptance creates the handoff toward payment/job lifecycle." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1280" width="1700" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Auth / Authorization / Rate Limit — Activity Diagram
+start
+:API request;
+:TLS + WAF / edge checks;
+:Rate limit\nIP/device/account;
+:Validate token\nsignature/expiry/audience;
+if (Valid token?) then (yes)
+  :Load claims/capabilities;
+  :Evaluate RBAC/ABAC\nownership + capability;
+  if (Allowed?) then (yes)
+    :Create security context\ncorrelationId;
+    :Execute use case;
+    :Audit if sensitive;
+    :Return response\nredacted fields only;
+  else (no)
+    :Reject 403\nno data leak;
+  endif
+else (no)
+  :Reject 401/429\nsafe error;
+endif
+stop
+
+note bottom
+Never trust only UI state.
+Every backend use case checks capability, ownership,
+resource state and policy before changing data.
+end note
+@enduml

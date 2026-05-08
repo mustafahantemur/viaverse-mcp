@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="worker-profile-state" name="05 Worker Profile State">
+    <mxGraphModel dx="2100" dy="1450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1450" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Worker Profile — State Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2020" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="none" value="NOT_CREATED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="110" y="200" width="230" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="draft" value="DRAFT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="480" y="200" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="review" value="PENDING_VERIFICATION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="200" width="290" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="active" value="ACTIVE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="200" width="230" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="paused" value="PAUSED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="500" width="230" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="suspended" value="SUSPENDED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="500" width="270" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="rejected" value="VERIFICATION_REJECTED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#4B5563;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="480" y="500" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="deleted" value="DELETED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#4B5563;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="110" y="500" width="230" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="st1" value="start onboarding" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="none" target="draft">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="340" y="240" as="point"/><mxPoint x="480" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st2" value="submit verification" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="draft" target="review">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="700" y="240" as="point"/><mxPoint x="840" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st3" value="verification not required" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="draft" target="active">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="590" y="280" as="point"/><mxPoint x="590" y="380" as="point"/><mxPoint x="1395" y="380" as="point"/><mxPoint x="1395" y="280" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st4" value="approved" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="review" target="active">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1130" y="240" as="point"/><mxPoint x="1280" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st5" value="rejected" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="review" target="rejected">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="985" y="280" as="point"/><mxPoint x="985" y="420" as="point"/><mxPoint x="630" y="420" as="point"/><mxPoint x="630" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st6" value="fix and resubmit" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="rejected" target="draft">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="630" y="500" as="point"/><mxPoint x="630" y="280" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st7" value="worker pauses" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="active" target="paused">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1395" y="280" as="point"/><mxPoint x="1395" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st8" value="resume" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="paused" target="active">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1280" y="540" as="point"/><mxPoint x="1210" y="540" as="point"/><mxPoint x="1210" y="280" as="point"/><mxPoint x="1280" y="280" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st9" value="risk/admin" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="active" target="suspended">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1280" y="240" as="point"/><mxPoint x="1110" y="240" as="point"/><mxPoint x="1110" y="540" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st10" value="appeal/fix" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="suspended" target="active">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="540" as="point"/><mxPoint x="760" y="540" as="point"/><mxPoint x="760" y="320" as="point"/><mxPoint x="1280" y="320" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st11" value="delete" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="draft" target="deleted">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="480" y="240" as="point"/><mxPoint x="225" y="240" as="point"/><mxPoint x="225" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="st12" value="account deletion" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="active" target="deleted">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1280" y="240" as="point"/><mxPoint x="225" y="240" as="point"/><mxPoint x="225" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="State distinction:&#xa;PAUSED is worker-controlled and reversible. SUSPENDED is policy/admin-controlled and blocks opportunities until resolved." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="760" width="1250" height="70" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

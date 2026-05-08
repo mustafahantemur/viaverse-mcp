@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="dispute-sequence" name="03 Dispute Sequence">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Dispute / Refund / Payout — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="171" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="API Gateway / App BFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="421" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="dispute" value="dispute-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="dispute_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="691" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="market" value="marketplace-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="market_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="961" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="payment" value="payment-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="payment_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1231" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg" value="messaging-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1501" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1771" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Outbox / Kafka" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1940" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2031" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="POST /disputes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="client" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="265" y="260" as="point"/><mxPoint x="330" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="openDispute(command)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="dispute">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="515" y="310" as="point"/><mxPoint x="600" y="310" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="validate job participant/state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="360" as="point"/><mxPoint x="870" y="360" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="block payout hold" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="payment">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="430" as="point"/><mxPoint x="1140" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="collect conversation refs" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="msg">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="500" as="point"/><mxPoint x="1410" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="insert DisputeCase + Evidence" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="570" as="point"/><mxPoint x="1680" y="570" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="DisputeOpened" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="650" as="point"/><mxPoint x="1940" y="650" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="POST /admin/disputes/{id}/resolve" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="client" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="265" y="820" as="point"/><mxPoint x="330" y="820" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="resolveDispute(command)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="dispute">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="515" y="860" as="point"/><mxPoint x="600" y="860" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="refund/release/split command" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="payment">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="920" as="point"/><mxPoint x="1140" y="920" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="idempotent money movement state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="payment" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1325" y="960" as="point"/><mxPoint x="1680" y="960" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s12" value="close dispute + audit log" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="1020" as="point"/><mxPoint x="1680" y="1020" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s13" value="update job dispute ref/status" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="1080" as="point"/><mxPoint x="870" y="1080" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s14" value="DisputeResolved / RefundIssued / PayoutReleased" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="dispute" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="785" y="1140" as="point"/><mxPoint x="1940" y="1140" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Sequence focus:&#xa;Dispute service owns the case and resolution audit. Payment service owns actual refund/payout movement and idempotency." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1320" width="1700" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

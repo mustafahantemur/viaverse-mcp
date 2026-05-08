@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Media Upload / CDN / Moderation — Class Model</text>
+
+<rect x="80" y="150" width="410" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="285.0" y="191.0" text-anchor="middle" class="h">MediaAsset</text>
+<text x="285.0" y="211.0" text-anchor="middle" class="t">--</text>
+<text x="285.0" y="231.0" text-anchor="middle" class="t">id: MediaId</text>
+<text x="285.0" y="251.0" text-anchor="middle" class="t">ownerAccountId: AccountId</text>
+<text x="285.0" y="271.0" text-anchor="middle" class="t">contextType: ContextType</text>
+<text x="285.0" y="291.0" text-anchor="middle" class="t">contextId: UUID?</text>
+<text x="285.0" y="311.0" text-anchor="middle" class="t">status: MediaStatus</text>
+<text x="285.0" y="331.0" text-anchor="middle" class="t">mimeType: String</text>
+<text x="285.0" y="351.0" text-anchor="middle" class="t">sizeBytes: Long</text>
+<text x="285.0" y="371.0" text-anchor="middle" class="t">originalObjectKey: String</text>
+<text x="285.0" y="391.0" text-anchor="middle" class="t">visibility: MediaVisibility</text>
+<text x="285.0" y="411.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="590" y="150" width="380" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="780.0" y="197.0" text-anchor="middle" class="h">UploadSession</text>
+<text x="780.0" y="217.0" text-anchor="middle" class="t">--</text>
+<text x="780.0" y="237.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="780.0" y="257.0" text-anchor="middle" class="t">mediaId: MediaId</text>
+<text x="780.0" y="277.0" text-anchor="middle" class="t">uploadUrlExpiresAt: Instant</text>
+<text x="780.0" y="297.0" text-anchor="middle" class="t">maxSizeBytes: Long</text>
+<text x="780.0" y="317.0" text-anchor="middle" class="t">allowedMimeTypes: List&lt;String&gt;</text>
+<text x="780.0" y="337.0" text-anchor="middle" class="t">status: UploadSessionStatus</text>
+<rect x="1080" y="150" width="410" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1285.0" y="199.0" text-anchor="middle" class="h">MediaDerivative</text>
+<text x="1285.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="1285.0" y="239.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1285.0" y="259.0" text-anchor="middle" class="t">mediaId: MediaId</text>
+<text x="1285.0" y="279.0" text-anchor="middle" class="t">type: THUMBNAIL | PREVIEW | TRANSCODED</text>
+<text x="1285.0" y="299.0" text-anchor="middle" class="t">objectKey: String</text>
+<text x="1285.0" y="319.0" text-anchor="middle" class="t">width: Int?</text>
+<text x="1285.0" y="339.0" text-anchor="middle" class="t">height: Int?</text>
+<text x="1285.0" y="359.0" text-anchor="middle" class="t">durationMs: Long?</text>
+<text x="1285.0" y="379.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1580" y="150" width="420" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1790.0" y="209.0" text-anchor="middle" class="h">MediaModerationResult</text>
+<text x="1790.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="1790.0" y="249.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1790.0" y="269.0" text-anchor="middle" class="t">mediaId: MediaId</text>
+<text x="1790.0" y="289.0" text-anchor="middle" class="t">provider: String</text>
+<text x="1790.0" y="309.0" text-anchor="middle" class="t">status: APPROVED | REJECTED | REVIEW</text>
+<text x="1790.0" y="329.0" text-anchor="middle" class="t">labels: List&lt;String&gt;</text>
+<text x="1790.0" y="349.0" text-anchor="middle" class="t">confidence: Decimal</text>
+<text x="1790.0" y="369.0" text-anchor="middle" class="t">reasonCode: String?</text>
+<text x="1790.0" y="389.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="80" y="560" width="410" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="285.0" y="607.0" text-anchor="middle" class="h">MediaAttachment</text>
+<text x="285.0" y="627.0" text-anchor="middle" class="t">--</text>
+<text x="285.0" y="647.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="285.0" y="667.0" text-anchor="middle" class="t">mediaId: MediaId</text>
+<text x="285.0" y="687.0" text-anchor="middle" class="t">contextType: REQUEST | PROFILE | CHAT | JOB_DELIVERY</text>
+<text x="285.0" y="707.0" text-anchor="middle" class="t">contextId: UUID</text>
+<text x="285.0" y="727.0" text-anchor="middle" class="t">attachedBy: AccountId</text>
+<text x="285.0" y="747.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="590" y="560" width="380" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="780.0" y="602.0" text-anchor="middle" class="h">MediaReport</text>
+<text x="780.0" y="622.0" text-anchor="middle" class="t">--</text>
+<text x="780.0" y="642.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="780.0" y="662.0" text-anchor="middle" class="t">mediaId: MediaId</text>
+<text x="780.0" y="682.0" text-anchor="middle" class="t">reporterAccountId: AccountId</text>
+<text x="780.0" y="702.0" text-anchor="middle" class="t">reason: ReportReason</text>
+<text x="780.0" y="722.0" text-anchor="middle" class="t">status: ReportStatus</text>
+<text x="780.0" y="742.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1080" y="560" width="390" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1275.0" y="611.0" text-anchor="middle" class="h">MediaPolicy</text>
+<text x="1275.0" y="631.0" text-anchor="middle" class="t">--</text>
+<text x="1275.0" y="651.0" text-anchor="middle" class="t">canCreateUploadSession()</text>
+<text x="1275.0" y="671.0" text-anchor="middle" class="t">canAttachMedia()</text>
+<text x="1275.0" y="691.0" text-anchor="middle" class="t">canViewMedia()</text>
+<text x="1275.0" y="711.0" text-anchor="middle" class="t">requiresSignedUrl()</text>
+<text x="1275.0" y="731.0" text-anchor="middle" class="t">validateModerationState()</text>
+<rect x="1580" y="560" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1775.0" y="612.0" text-anchor="middle" class="h">Media Events</text>
+<text x="1775.0" y="632.0" text-anchor="middle" class="t">--</text>
+<text x="1775.0" y="652.0" text-anchor="middle" class="t">UploadSessionCreated</text>
+<text x="1775.0" y="672.0" text-anchor="middle" class="t">MediaUploaded</text>
+<text x="1775.0" y="692.0" text-anchor="middle" class="t">MediaProcessingCompleted</text>
+<text x="1775.0" y="712.0" text-anchor="middle" class="t">MediaApproved</text>
+<text x="1775.0" y="732.0" text-anchor="middle" class="t">MediaRejected</text>
+<text x="1775.0" y="752.0" text-anchor="middle" class="t">MediaReported</text>
+<polyline points="490,260 590,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="598" y="237" class="small">1 -&gt; many</text>
+<polyline points="490,310 1080,280" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="272" class="small">1 -&gt; many</text>
+<polyline points="490,340 1580,290" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="282" class="small">1 -&gt; many</text>
+<polyline points="285,430 285,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="293" y="552" class="small">1 -&gt; many</text>
+<polyline points="490,390 780,390 780,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="788" y="382" class="small">1 -&gt; many</text>
+<polyline points="1080,650 1000,650 1000,470 285,470 285,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1008" y="462" class="small">validates</text>
+<polyline points="1790,430 1790,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1798" y="552" class="small">emits</text>
+<polyline points="490,410 1775,410 1775,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1783" y="402" class="small">emits</text>
+<polyline points="970,665 1580,665" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="657" class="small">emits</text>
+<rect x="80" y="1030" width="1680" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Data rule:</text>
+<text x="96" y="1072" class="t">Object keys are internal; clients receive short-lived upload URLs or delivery URLs. Public profile images can be CDN cached, private job/chat media must use signed access.</text>
+</svg>

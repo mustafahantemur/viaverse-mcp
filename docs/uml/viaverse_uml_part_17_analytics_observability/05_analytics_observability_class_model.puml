@@ -1,0 +1,93 @@
+@startuml
+title Viaverse Analytics / Observability — Class Model
+
+class ProductEvent {
+  id: UUID
+  eventName: String
+  schemaVersion: Int
+  anonymousId: String?
+  accountIdHash: String?
+  sessionId: String
+  properties: Json
+  sensitivity: Sensitivity
+  occurredAt: Instant
+}
+
+class EventSchema {
+  eventName: String
+  version: Int
+  ownerTeam: String
+  requiredFields: Set<String>
+  retentionClass: RetentionClass
+  status: ACTIVE | DEPRECATED
+}
+
+class AnalyticsConsent {
+  accountId: AccountId?
+  anonymousId: String
+  analyticsEnabled: Boolean
+  marketingEnabled: Boolean
+  updatedAt: Instant
+}
+
+class ServiceMetric {
+  name: String
+  service: String
+  tags: Map<String,String>
+  value: Decimal
+  timestamp: Instant
+  sloName: String?
+}
+
+class TraceContext {
+  traceId: String
+  spanId: String
+  correlationId: String
+  serviceName: String
+  operationName: String
+  sampled: Boolean
+}
+
+class StructuredLog {
+  timestamp: Instant
+  level: LogLevel
+  service: String
+  message: String
+  traceId: String?
+  correlationId: String?
+  redactionStatus: RedactionStatus
+}
+
+class AlertRule {
+  id: UUID
+  name: String
+  source: METRIC | LOG | TRACE
+  condition: String
+  severity: Severity
+  runbookUrl: String
+  enabled: Boolean
+}
+
+class ObservabilityEvents {
+  ProductEventIngested
+  SchemaValidationFailed
+  SloBreached
+  AlertRaised
+  RetentionApplied
+}
+
+ProductEvent --> EventSchema : validated by
+AnalyticsConsent ..> ProductEvent : controls
+ServiceMetric --> AlertRule : triggers
+TraceContext --> StructuredLog : correlates
+TraceContext ..> ServiceMetric : exemplars
+StructuredLog --> AlertRule : triggers
+ProductEvent ..> ObservabilityEvents : emits
+EventSchema ..> ObservabilityEvents : validation failures
+AlertRule ..> ObservabilityEvents : emits
+
+note bottom
+Analytics properties must be allowlisted by schema.
+Free-form client payloads are not accepted into trusted metrics.
+end note
+@enduml

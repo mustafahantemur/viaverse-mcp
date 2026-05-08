@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1300" viewBox="0 0 1900 1300">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1820" height="60" rx="14" fill="#022C22"/>
+<text x="950.0" y="69" text-anchor="middle" class="title">Viaverse Capability — Class Model</text>
+
+<rect x="90" y="160" width="280" height="165" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="230.0" y="188.5" text-anchor="middle" class="h">Account</text>
+<text x="230.0" y="208.5" text-anchor="middle" class="t">--</text>
+<text x="230.0" y="228.5" text-anchor="middle" class="t">id: AccountId</text>
+<text x="230.0" y="248.5" text-anchor="middle" class="t">status: AccountStatus</text>
+<text x="230.0" y="268.5" text-anchor="middle" class="t">locale: Locale</text>
+<text x="230.0" y="288.5" text-anchor="middle" class="t">activeMode: AppMode?</text>
+<text x="230.0" y="308.5" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="470" y="160" width="310" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="625.0" y="192.0" text-anchor="middle" class="h">AccountCapability</text>
+<text x="625.0" y="212.0" text-anchor="middle" class="t">--</text>
+<text x="625.0" y="232.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="625.0" y="252.0" text-anchor="middle" class="t">type: CapabilityType</text>
+<text x="625.0" y="272.0" text-anchor="middle" class="t">status: CapabilityStatus</text>
+<text x="625.0" y="292.0" text-anchor="middle" class="t">reason: String?</text>
+<text x="625.0" y="312.0" text-anchor="middle" class="t">enabledAt: Instant?</text>
+<text x="625.0" y="332.0" text-anchor="middle" class="t">suspendedAt: Instant?</text>
+<rect x="900" y="160" width="320" height="175" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1060.0" y="193.5" text-anchor="middle" class="h">BusinessProfile</text>
+<text x="1060.0" y="213.5" text-anchor="middle" class="t">--</text>
+<text x="1060.0" y="233.5" text-anchor="middle" class="t">id: BusinessId</text>
+<text x="1060.0" y="253.5" text-anchor="middle" class="t">ownerAccountId: AccountId</text>
+<text x="1060.0" y="273.5" text-anchor="middle" class="t">status: BusinessStatus</text>
+<text x="1060.0" y="293.5" text-anchor="middle" class="t">verificationStatus: VerificationStatus</text>
+<text x="1060.0" y="313.5" text-anchor="middle" class="t">publicSlug: String?</text>
+<rect x="1340" y="160" width="320" height="155" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1500.0" y="192.5" text-anchor="middle" class="h">BusinessTeamMember</text>
+<text x="1500.0" y="212.5" text-anchor="middle" class="t">--</text>
+<text x="1500.0" y="232.5" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="1500.0" y="252.5" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1500.0" y="272.5" text-anchor="middle" class="t">role: BusinessRole</text>
+<text x="1500.0" y="292.5" text-anchor="middle" class="t">status: MemberStatus</text>
+<rect x="90" y="500" width="240" height="125" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="210.0" y="526.5" text-anchor="middle" class="h">AppMode</text>
+<text x="210.0" y="546.5" text-anchor="middle" class="t">--</text>
+<text x="210.0" y="566.5" text-anchor="middle" class="t">PERSONAL</text>
+<text x="210.0" y="586.5" text-anchor="middle" class="t">WORK</text>
+<text x="210.0" y="606.5" text-anchor="middle" class="t">BUSINESS</text>
+<rect x="470" y="500" width="310" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="625.0" y="535.0" text-anchor="middle" class="h">CapabilityPolicy</text>
+<text x="625.0" y="555.0" text-anchor="middle" class="t">--</text>
+<text x="625.0" y="575.0" text-anchor="middle" class="t">canEnterMode()</text>
+<text x="625.0" y="595.0" text-anchor="middle" class="t">canEnableCapability()</text>
+<text x="625.0" y="615.0" text-anchor="middle" class="t">canSuspendCapability()</text>
+<text x="625.0" y="635.0" text-anchor="middle" class="t">requiresVerification()</text>
+<rect x="900" y="500" width="330" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1065.0" y="528.0" text-anchor="middle" class="h">CapabilityAuditLog</text>
+<text x="1065.0" y="548.0" text-anchor="middle" class="t">--</text>
+<text x="1065.0" y="568.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1065.0" y="588.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1065.0" y="608.0" text-anchor="middle" class="t">capabilityType: CapabilityType</text>
+<text x="1065.0" y="628.0" text-anchor="middle" class="t">action: String</text>
+<text x="1065.0" y="648.0" text-anchor="middle" class="t">reason: String?</text>
+<text x="1065.0" y="668.0" text-anchor="middle" class="t">actorId: AccountId?</text>
+<text x="1065.0" y="688.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1340" y="500" width="340" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1510.0" y="536.0" text-anchor="middle" class="h">Capability Events</text>
+<text x="1510.0" y="556.0" text-anchor="middle" class="t">--</text>
+<text x="1510.0" y="576.0" text-anchor="middle" class="t">AccountCapabilityEnabled</text>
+<text x="1510.0" y="596.0" text-anchor="middle" class="t">AccountCapabilitySuspended</text>
+<text x="1510.0" y="616.0" text-anchor="middle" class="t">AccountCapabilityRevoked</text>
+<text x="1510.0" y="636.0" text-anchor="middle" class="t">ActiveModeChanged</text>
+<text x="1510.0" y="656.0" text-anchor="middle" class="t">BusinessProfileCreated</text>
+<polyline points="370,240 470,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="478" y="232" class="small">1 -&gt; many</text>
+<polyline points="370,205 900,205" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="908" y="197" class="small">owner</text>
+<polyline points="1220,240 1340,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1348" y="232" class="small">1 -&gt; many</text>
+<polyline points="230,325 230,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="238" y="492" class="small">activeMode</text>
+<polyline points="625,500 625,350" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="633" y="342" class="small">checks</text>
+<polyline points="780,560 1050,560 1050,335" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1058" y="552" class="small">checks</text>
+<polyline points="625,350 625,450 1065,450 1065,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1073" y="442" class="small">changes audited</text>
+<polyline points="1230,600 1340,590" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1348" y="582" class="small">emits</text>
+<rect x="90" y="870" width="1450" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="106" y="894" class="t">Domain rule: Capability is not a role label in UI only. It is a persisted authorization input used by backend policies.</text>
+</svg>

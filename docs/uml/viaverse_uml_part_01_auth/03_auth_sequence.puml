@@ -1,0 +1,39 @@
+@startuml
+title Viaverse Auth — Sequence Diagram — OTP Login
+
+actor User
+participant "KMP / Web Client" as Client
+participant "API Gateway / BFF" as BFF
+participant "identity-service" as Identity
+database "Valkey / Redis" as Redis
+participant "Netgsm / SES" as Provider
+database "PostgreSQL" as DB
+queue "Kafka / Outbox" as Kafka
+
+User -> Client : enter phone/email
+Client -> BFF : POST /auth/otp/request
+BFF -> Identity : requestOtp(channel, target, purpose)
+Identity -> Redis : rate limit target/ip/device
+Identity -> Identity : generate OTP + hash
+Identity -> DB : store OtpChallenge hash/ref
+Identity -> Provider : send OTP
+Identity -> Kafka : OtpRequested
+Identity --> BFF : challengeId
+BFF --> Client : OTP challenge created
+
+User -> Client : enter OTP
+Client -> BFF : POST /auth/otp/verify
+BFF -> Identity : verifyOtp(challengeId, code)
+Identity -> Redis : check attempts/ttl
+Identity -> DB : verify hash + find/create Account
+Identity -> DB : create Session + RefreshTokenFamily
+Identity -> Kafka : OtpVerified
+Identity -> Kafka : SessionCreated
+Identity --> BFF : access JWT + refresh token
+BFF --> Client : authenticated session
+
+note over Identity
+JWT sub = persisted Account.id
+Refresh token is opaque, hashed and rotated
+end note
+@enduml

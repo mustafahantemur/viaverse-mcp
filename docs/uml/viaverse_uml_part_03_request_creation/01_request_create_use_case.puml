@@ -1,0 +1,54 @@
+@startuml
+title Viaverse Request Creation — Use Case Diagram
+left to right direction
+
+actor "Requester\nREQUEST_WORK" as Requester
+actor "AI Assistant" as AI
+actor "Media Service" as Media
+actor "Map Provider" as Maps
+
+rectangle "Service Request Creation Boundary" {
+  usecase "Open Create sheet" as Open
+  usecase "Select\nRequest a service" as Select
+  usecase "Describe need" as Describe
+  usecase "Get AI category suggestion" as AiCategory
+  usecase "Confirm category\nand subcategory" as ConfirmCategory
+  usecase "Choose budget mode\nand range" as Budget
+  usecase "Set location\nand service area" as Location
+  usecase "Set preferred time\nand urgency" as Time
+  usecase "Attach images/videos" as AttachMedia
+  usecase "Set visibility\nand matching rules" as Visibility
+  usecase "Save draft" as Draft
+  usecase "Preview request" as Preview
+  usecase "Publish request" as Publish
+  usecase "Emit events\nServiceRequestPublished\nMatchingRequested" as Events
+}
+
+Requester --> Open
+Open --> Select
+Select --> Describe
+Describe ..> AiCategory : <<include>>
+AiCategory --> ConfirmCategory : editable suggestion
+ConfirmCategory --> Budget
+Budget --> Location
+Location --> Time
+Time --> AttachMedia
+AttachMedia --> Visibility
+Visibility --> Draft : draft path
+Visibility --> Preview : publish path
+Preview --> Publish
+Publish --> Events : outbox
+
+AI --> AiCategory : category + text hints
+AI --> Budget : budget guidance
+Media --> AttachMedia : upload refs
+Maps --> Location : geocode / area
+
+note bottom
+Rules:
+- Request can stay DRAFT until publish
+- AI suggestions are editable
+- Exact address is private
+- Publish writes source-of-truth + outbox events
+end note
+@enduml

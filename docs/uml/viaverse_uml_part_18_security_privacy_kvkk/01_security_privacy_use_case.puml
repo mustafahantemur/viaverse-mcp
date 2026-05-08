@@ -1,0 +1,56 @@
+@startuml
+title Viaverse Security / Privacy / KVKK — Use Case Diagram
+left to right direction
+
+actor User
+actor "Admin / DPO" as Admin
+actor "Backend Services" as Service
+actor "identity-service" as Identity
+actor "Secrets / KMS" as Secrets
+actor "Audit / Compliance" as Audit
+
+rectangle "Security / Privacy / KVKK Boundary" {
+  usecase "Secure login\nOTP / social / passkey later" as Login
+  usecase "Issue JWT / refresh token" as Token
+  usecase "Authorize capability\nRBAC / ABAC / ownership" as Authz
+  usecase "Rate limit / abuse guard" as Rate
+  usecase "Manage consent\nKVKK/privacy/cookies" as Consent
+  usecase "Data subject request\nexport/delete/correct" as DSAR
+  usecase "Data minimization\npurpose limitation" as Min
+  usecase "Retention / deletion policy" as Retention
+  usecase "Encrypt sensitive data\nat rest + in transit" as Encrypt
+  usecase "Access secrets\nExternal Secrets + KMS" as Secret
+  usecase "Audit sensitive access" as AuditAccess
+  usecase "Security incident response" as Incident
+  usecase "Manage privacy/security policy" as Policy
+  usecase "Review risk/compliance" as Review
+  usecase "Emit events\nConsentChanged\nDataDeleted\nIncidentRaised" as Events
+}
+
+User --> Login
+Login --> Token
+Token --> Authz
+Authz --> Rate
+User --> Consent
+User --> DSAR
+DSAR --> Min
+Min --> Retention
+Service --> Encrypt
+Service --> Secret
+Encrypt --> AuditAccess
+Secret --> AuditAccess
+AuditAccess ..> Incident : if suspicious
+Admin --> Policy
+Admin --> Review
+Review --> Events
+Retention --> Events
+Identity --> Token
+Identity --> Authz
+Secrets --> Secret
+Audit --> AuditAccess
+
+note bottom
+Authentication, authorization, consent, retention and audit are platform-level controls.
+Domain services must not bypass security policy or direct secret access.
+end note
+@enduml

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Notification / Inbox / Push / Email / SMS — Use Case Diagram</text>
+
+<rect x="270" y="135" width="1560" height="1130" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="286" y="160" class="h">Notification Boundary</text>
+<rect x="60" y="300" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="331.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="351.0" text-anchor="middle" class="t">User</text>
+<rect x="60" y="820" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="851.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="871.0" text-anchor="middle" class="t">Admin / Ops</text>
+<rect x="1900" y="220" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="251.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="271.0" text-anchor="middle" class="t">Domain Services</text>
+<rect x="1900" y="510" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="532.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="552.0" text-anchor="middle" class="t">Push Provider</text>
+<text x="1992.5" y="572.0" text-anchor="middle" class="t">FCM/APNs</text>
+<rect x="1900" y="860" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="882.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="902.0" text-anchor="middle" class="t">SMS / Email Provider</text>
+<text x="1992.5" y="922.0" text-anchor="middle" class="t">Netgsm / SMTP</text>
+<rect x="360" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="231.0" text-anchor="middle" class="h">Consume domain event</text>
+<rect x="700" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="231.0" text-anchor="middle" class="h">Evaluate notification policy</text>
+<rect x="1040" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="222.0" text-anchor="middle" class="h">Apply user preferences</text>
+<text x="1172.5" y="242.0" text-anchor="middle" class="t">channel + quiet hours</text>
+<rect x="1380" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="231.0" text-anchor="middle" class="h">Render localized template</text>
+<rect x="360" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="491.0" text-anchor="middle" class="h">Create in-app inbox item</text>
+<rect x="700" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="491.0" text-anchor="middle" class="h">Send push notification</text>
+<rect x="1040" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="491.0" text-anchor="middle" class="h">Send email</text>
+<rect x="1380" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="491.0" text-anchor="middle" class="h">Send SMS / OTP-related alert</text>
+<rect x="360" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="761.0" text-anchor="middle" class="h">Read notification</text>
+<rect x="700" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="761.0" text-anchor="middle" class="h">Mark as read / archive</text>
+<rect x="1040" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="761.0" text-anchor="middle" class="h">Create digest / summary</text>
+<rect x="1380" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="761.0" text-anchor="middle" class="h">Retry failed delivery</text>
+<rect x="700" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="1012.0" text-anchor="middle" class="h">Admin broadcast</text>
+<text x="832.5" y="1032.0" text-anchor="middle" class="t">segmented + rate limited</text>
+<rect x="1040" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="1021.0" text-anchor="middle" class="h">Audit campaign/send result</text>
+<rect x="1380" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="1012.0" text-anchor="middle" class="h">Emit delivery events</text>
+<text x="1512.5" y="1032.0" text-anchor="middle" class="t">NotificationSent / Failed</text>
+<polyline points="1900,260 1780,260 1780,231 625,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="223" class="small">events</text>
+<polyline points="625,231 700,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,231 1040,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,231 1380,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,272 1512,360 492,360 492,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="500" y="352" class="small">always/eligible</text>
+<polyline points="1512,272 1512,360 832,360 832,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="840" y="352" class="small">push eligible</text>
+<polyline points="1512,272 1512,360 1172,360 1172,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1180" y="352" class="small">email eligible</text>
+<polyline points="1512,272 1512,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1520" y="442" class="small">sms eligible</text>
+<polyline points="245,340 300,340 300,761 360,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="625,761 700,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="832,272 832,650 1172,650 1172,720" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1180" y="642" class="small">low priority</text>
+<polyline points="832,532 832,650 1512,650 1512,720" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1520" y="642" class="small">failure</text>
+<polyline points="1172,532 1172,650 1512,650 1512,720" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1520" y="642" class="small">failure</text>
+<polyline points="1512,532 1512,720" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1520" y="712" class="small">failure</text>
+<polyline points="245,860 300,860 300,1021 700,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,1021 1040,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,802 1512,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,1021 1380,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,550 1780,550 1780,491 965,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="483" class="small">send</text>
+<polyline points="1900,900 1780,900 1780,491 1645,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="483" class="small">send</text>
+<polyline points="1900,900 1760,900 1760,491 1305,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1768" y="483" class="small">send</text>
+<rect x="360" y="1210" width="1370" height="58" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="376" y="1234" class="t">Rules:</text>
+<text x="376" y="1252" class="t">In-app notification is the source user-visible log. Push/email/SMS are delivery channels with preference, consent, rate limit and retry policies.</text>
+</svg>

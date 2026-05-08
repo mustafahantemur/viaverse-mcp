@@ -1,0 +1,104 @@
+@startuml
+title Viaverse Review / Trust / Badge / Gamification — Class Model
+
+class Review {
+  id: ReviewId
+  jobId: JobId
+  reviewerAccountId: AccountId
+  revieweeType: WORKER | BUSINESS | REQUESTER
+  revieweeId: UUID
+  rating: Int
+  comment: String?
+  status: ReviewStatus
+  createdAt: Instant
+}
+
+class ReviewTag {
+  reviewId: ReviewId
+  tagCode: String
+  sentiment: POSITIVE | NEGATIVE | NEUTRAL
+}
+
+class ReviewPrompt {
+  id: UUID
+  jobId: JobId
+  reviewerAccountId: AccountId
+  revieweeId: UUID
+  status: PromptStatus
+  expiresAt: Instant
+}
+
+class TrustScore {
+  subjectType: WORKER | BUSINESS | REQUESTER
+  subjectId: UUID
+  score: Decimal
+  ratingAverage: Decimal
+  completedJobs: Int
+  disputePenalty: Decimal
+  updatedAt: Instant
+}
+
+class BadgeAward {
+  id: UUID
+  subjectType
+  subjectId
+  badgeCode
+  level: BadgeLevel
+  status: ACTIVE | REVOKED
+  awardedAt: Instant
+  revokedAt: Instant?
+}
+
+class GamificationAccount {
+  subjectType
+  subjectId
+  points: Long
+  level: Int
+  streakCount: Int
+  lastActivityAt: Instant
+}
+
+class BadgeRule {
+  badgeCode
+  criteriaExpression
+  minCompletedJobs
+  minRating
+  maxDisputeRate
+  active: Boolean
+}
+
+class TrustPolicy {
+  canReview()
+  preventDuplicate()
+  calculateTrustScore()
+  evaluateBadges()
+  moderateReview()
+}
+
+class TrustEvents {
+  ReviewSubmitted
+  ReviewPublished
+  TrustScoreUpdated
+  BadgeAwarded
+  BadgeRevoked
+  GamificationPointsUpdated
+}
+
+Review "1" o-- "*" ReviewTag
+ReviewPrompt ..> Review : creates/guards
+Review --> TrustScore : updates
+TrustScore --> BadgeAward : eligibility input
+BadgeAward --> GamificationAccount : award affects
+BadgeRule ..> BadgeAward : evaluates
+TrustPolicy ..> Review : validates
+TrustPolicy ..> TrustScore : calculates
+TrustPolicy ..> BadgeAward : awards/revokes
+Review ..> TrustEvents : emits
+TrustScore ..> TrustEvents : emits
+BadgeAward ..> TrustEvents : emits
+
+note bottom
+TrustScore is a derived aggregate.
+Never update it manually outside TrustPolicy/calculation use case.
+end note
+@enduml

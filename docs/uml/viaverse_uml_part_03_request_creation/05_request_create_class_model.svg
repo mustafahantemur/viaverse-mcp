@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1400" viewBox="0 0 2000 1400">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1920" height="60" rx="14" fill="#022C22"/>
+<text x="1000.0" y="69" text-anchor="middle" class="title">Viaverse Request Creation — Class Model</text>
+
+<rect x="80" y="160" width="340" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="250.0" y="182.0" text-anchor="middle" class="h">ServiceRequest</text>
+<text x="250.0" y="202.0" text-anchor="middle" class="t">--</text>
+<text x="250.0" y="222.0" text-anchor="middle" class="t">id: RequestId</text>
+<text x="250.0" y="242.0" text-anchor="middle" class="t">requesterAccountId: AccountId</text>
+<text x="250.0" y="262.0" text-anchor="middle" class="t">status: RequestStatus</text>
+<text x="250.0" y="282.0" text-anchor="middle" class="t">title: String</text>
+<text x="250.0" y="302.0" text-anchor="middle" class="t">description: String</text>
+<text x="250.0" y="322.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<text x="250.0" y="342.0" text-anchor="middle" class="t">budget: Budget</text>
+<text x="250.0" y="362.0" text-anchor="middle" class="t">location: RequestLocation</text>
+<text x="250.0" y="382.0" text-anchor="middle" class="t">timing: RequestTiming</text>
+<text x="250.0" y="402.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<text x="250.0" y="422.0" text-anchor="middle" class="t">publishedAt: Instant?</text>
+<rect x="520" y="160" width="290" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="665.0" y="190.0" text-anchor="middle" class="h">Budget</text>
+<text x="665.0" y="210.0" text-anchor="middle" class="t">--</text>
+<text x="665.0" y="230.0" text-anchor="middle" class="t">mode: BudgetMode</text>
+<text x="665.0" y="250.0" text-anchor="middle" class="t">minAmount: Money?</text>
+<text x="665.0" y="270.0" text-anchor="middle" class="t">maxAmount: Money?</text>
+<text x="665.0" y="290.0" text-anchor="middle" class="t">currency: Currency</text>
+<rect x="920" y="160" width="320" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="200.0" text-anchor="middle" class="h">RequestLocation</text>
+<text x="1080.0" y="220.0" text-anchor="middle" class="t">--</text>
+<text x="1080.0" y="240.0" text-anchor="middle" class="t">approxAreaId: AreaId</text>
+<text x="1080.0" y="260.0" text-anchor="middle" class="t">exactAddress: Address?</text>
+<text x="1080.0" y="280.0" text-anchor="middle" class="t">geoPoint: GeoPoint?</text>
+<text x="1080.0" y="300.0" text-anchor="middle" class="t">visibility: LocationVisibility</text>
+<rect x="1350" y="160" width="290" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1495.0" y="199.0" text-anchor="middle" class="h">RequestTiming</text>
+<text x="1495.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="1495.0" y="239.0" text-anchor="middle" class="t">urgency: Urgency</text>
+<text x="1495.0" y="259.0" text-anchor="middle" class="t">preferredStart: Instant?</text>
+<text x="1495.0" y="279.0" text-anchor="middle" class="t">flexibility: TimeFlexibility</text>
+<rect x="80" y="520" width="320" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="240.0" y="555.0" text-anchor="middle" class="h">RequestMediaRef</text>
+<text x="240.0" y="575.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="595.0" text-anchor="middle" class="t">requestId: RequestId</text>
+<text x="240.0" y="615.0" text-anchor="middle" class="t">mediaId: MediaId</text>
+<text x="240.0" y="635.0" text-anchor="middle" class="t">purpose: MediaPurpose</text>
+<text x="240.0" y="655.0" text-anchor="middle" class="t">sortOrder: Int</text>
+<rect x="520" y="520" width="290" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="665.0" y="555.0" text-anchor="middle" class="h">Category</text>
+<text x="665.0" y="575.0" text-anchor="middle" class="t">--</text>
+<text x="665.0" y="595.0" text-anchor="middle" class="t">id: CategoryId</text>
+<text x="665.0" y="615.0" text-anchor="middle" class="t">parentId: CategoryId?</text>
+<text x="665.0" y="635.0" text-anchor="middle" class="t">nameKey: String</text>
+<text x="665.0" y="655.0" text-anchor="middle" class="t">status: CategoryStatus</text>
+<rect x="920" y="520" width="320" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="560.0" text-anchor="middle" class="h">RequestPolicy</text>
+<text x="1080.0" y="580.0" text-anchor="middle" class="t">--</text>
+<text x="1080.0" y="600.0" text-anchor="middle" class="t">validateCanCreate()</text>
+<text x="1080.0" y="620.0" text-anchor="middle" class="t">validateRequiredFields()</text>
+<text x="1080.0" y="640.0" text-anchor="middle" class="t">validatePublishRules()</text>
+<text x="1080.0" y="660.0" text-anchor="middle" class="t">validatePrivacyRules()</text>
+<rect x="1350" y="520" width="350" height="185" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1525.0" y="558.5" text-anchor="middle" class="h">Request Events</text>
+<text x="1525.0" y="578.5" text-anchor="middle" class="t">--</text>
+<text x="1525.0" y="598.5" text-anchor="middle" class="t">ServiceRequestDraftCreated</text>
+<text x="1525.0" y="618.5" text-anchor="middle" class="t">ServiceRequestUpdated</text>
+<text x="1525.0" y="638.5" text-anchor="middle" class="t">ServiceRequestPublished</text>
+<text x="1525.0" y="658.5" text-anchor="middle" class="t">MatchingRequested</text>
+<text x="1525.0" y="678.5" text-anchor="middle" class="t">MediaAttachedToRequest</text>
+<rect x="740" y="840" width="340" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="910.0" y="868.0" text-anchor="middle" class="h">OutboxEvent</text>
+<text x="910.0" y="888.0" text-anchor="middle" class="t">--</text>
+<text x="910.0" y="908.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="910.0" y="928.0" text-anchor="middle" class="t">aggregateType</text>
+<text x="910.0" y="948.0" text-anchor="middle" class="t">aggregateId</text>
+<text x="910.0" y="968.0" text-anchor="middle" class="t">eventType</text>
+<text x="910.0" y="988.0" text-anchor="middle" class="t">payload</text>
+<text x="910.0" y="1008.0" text-anchor="middle" class="t">correlationId</text>
+<text x="910.0" y="1028.0" text-anchor="middle" class="t">causationId</text>
+<polyline points="420,250 520,235" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="227" class="small">owns</text>
+<polyline points="420,275 920,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="928" y="237" class="small">owns</text>
+<polyline points="420,300 1350,235" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1358" y="227" class="small">owns</text>
+<polyline points="250,420 250,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="258" y="512" class="small">1 -&gt; many</text>
+<polyline points="420,330 665,330 665,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="673" y="322" class="small">belongs to</text>
+<polyline points="920,605 760,605 760,450 250,450 250,420" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="768" y="442" class="small">validates</text>
+<polyline points="420,390 1525,390 1525,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1533" y="382" class="small">emits</text>
+<polyline points="1525,705 1525,780 910,780 910,840" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="918" y="772" class="small">serialized as</text>
+<rect x="80" y="1120" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1144" class="t">Status lifecycle for this part:</text>
+<text x="96" y="1162" class="t">DRAFT → PUBLISHED. Later parts add quote/job conversion, cancellation, expiration and dispute-related states.</text>
+</svg>

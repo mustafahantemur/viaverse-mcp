@@ -1,0 +1,15 @@
+[
+  "AI_CODING_PROMPT.md",
+  "MCP_SETUP_AND_USAGE.md",
+  "docs/api/README.md",
+  "docs/api/bff-guidelines.md",
+  "docs/api/rest-conventions.md",
+  "tools/viaverse-docs-mcp/package.json",
+  "tools/viaverse-docs-mcp/src/build-index.ts",
+  "tools/viaverse-docs-mcp/src/check.ts",
+  "tools/viaverse-docs-mcp/src/config.ts",
+  "tools/viaverse-docs-mcp/src/context.ts",
+  "tools/viaverse-docs-mcp/src/docs.ts",
+  "tools/viaverse-docs-mcp/src/forbidden.ts",
+  "tools/viaverse-docs-mcp/src/index.ts"
+]

@@ -1,0 +1,31 @@
+@startuml
+title Viaverse Quote / Offer — Activity Diagram
+start
+:Worker opens matched request detail;
+:Validate eligibility\ncapability / risk / request status;
+if (Allowed to quote?) then (yes)
+  :Create quote draft;
+  :Set price and currency;
+  :Set schedule / duration;
+  :Write offer message;
+  :Confirm quote summary;
+  :Persist SENT quote and outbox event;
+  :Notify requester;
+  :Requester compares offers;
+  if (Requester accepts?) then (yes)
+    :Set quote ACCEPTED;
+    :Create Job draft;
+    :Next part: Payment session;
+  else (no)
+    :Quote rejected / ignored;
+  endif
+else (no)
+  :Show blocked reason;
+endif
+stop
+
+note bottom
+Accepting a quote is the boundary between offer flow and payment/job flow.
+Quote acceptance must be idempotent.
+end note
+@enduml

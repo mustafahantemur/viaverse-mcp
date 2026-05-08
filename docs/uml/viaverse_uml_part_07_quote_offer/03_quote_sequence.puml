@@ -1,0 +1,45 @@
+@startuml
+title Viaverse Quote / Offer — Sequence Diagram
+
+actor "Worker / Business" as Worker
+actor Requester
+participant "Worker Client" as WorkerClient
+participant "Requester Client" as RequesterClient
+participant "API Gateway / App BFF" as BFF
+participant "marketplace-service" as Marketplace
+participant "identity-service" as Identity
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+participant "notification-service" as Notification
+
+Worker -> WorkerClient : open matched request
+WorkerClient -> BFF : GET matched request
+BFF -> Marketplace : load request detail
+Marketplace --> BFF : request detail
+
+Worker -> WorkerClient : submit offer
+WorkerClient -> BFF : POST /quotes
+BFF -> Marketplace : sendQuote(command)
+Marketplace -> Identity : check worker/business capability
+Marketplace -> DB : validate request + insert Quote(SENT)
+Marketplace -> Kafka : QuoteSent
+Kafka -> Notification : NotificationCreated
+Notification -> RequesterClient : push/in-app quote received
+
+Requester -> RequesterClient : compare quotes
+RequesterClient -> BFF : GET /requests/{id}/quotes
+BFF -> Marketplace : load quotes for owner
+Marketplace --> BFF : quote list
+
+Requester -> RequesterClient : accept quote
+RequesterClient -> BFF : POST /quotes/{id}/accept
+BFF -> Marketplace : acceptQuote(command)
+Marketplace -> DB : idempotent accept + create Job draft
+Marketplace -> Kafka : QuoteAccepted
+Marketplace -> Kafka : JobCreated
+
+note bottom
+Quote is sent by worker/business and accepted only by request owner.
+Acceptance creates the handoff toward payment/job lifecycle.
+end note
+@enduml

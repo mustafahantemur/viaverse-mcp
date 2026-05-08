@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Team Ownership / Workstream Boundaries — Component Diagram
+
+component "Product / Domain\nuse cases\nacceptance\nroadmap priority" as Product
+component "Design / UX\nKMP screens\ndesign system\nflows/prototypes" as Design
+component "Client Team\nKMP Compose\nmobile/web shared UI\nAPI integration" as Client
+component "Backend Team\nSpring Boot\nbounded contexts\nports/adapters" as Backend
+component "Platform/DevOps\nAWS/EKS/CI/CD\nobservability\nsecrets" as Platform
+component "QA / Test\nmanual QA\nautomated tests\nrelease gates" as QA
+component "Security/Privacy\nKVKK\nthreat model\npolicy review" as Security
+component "Data/Search/AI\nOpenSearch\nanalytics\nmatching/AI" as Data
+component "Ops/Support/Admin\nmoderation\nsupport workflows\nrunbooks" as Support
+component "Docs / Architecture\nADRs\nUML\nAGENTS.md\ncoding rules" as Docs
+
+Product --> Design : flow requirements
+Design --> Client : UI contracts
+Client --> Backend : API contracts
+Backend --> Platform : deploy/runtime
+Product --> QA : acceptance
+Backend ..> Data : events/indexes
+Backend ..> Security : auth/privacy
+Platform ..> Security : secrets/IAM
+QA --> Docs : test evidence
+Support --> Docs : runbooks
+Data ..> Product : quality insights
+
+note bottom
+Teams are workstreams, not silos.
+Every vertical slice needs product, UX, client, backend,
+data/security, QA and docs coordination.
+end note
+@enduml

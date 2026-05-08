@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Business Mode — Class Model</text>
+
+<rect x="80" y="150" width="360" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="260.0" y="181.0" text-anchor="middle" class="h">BusinessProfile</text>
+<text x="260.0" y="201.0" text-anchor="middle" class="t">--</text>
+<text x="260.0" y="221.0" text-anchor="middle" class="t">id: BusinessId</text>
+<text x="260.0" y="241.0" text-anchor="middle" class="t">ownerAccountId: AccountId</text>
+<text x="260.0" y="261.0" text-anchor="middle" class="t">status: BusinessStatus</text>
+<text x="260.0" y="281.0" text-anchor="middle" class="t">name: String</text>
+<text x="260.0" y="301.0" text-anchor="middle" class="t">legalName: String?</text>
+<text x="260.0" y="321.0" text-anchor="middle" class="t">publicSlug: String</text>
+<text x="260.0" y="341.0" text-anchor="middle" class="t">intro: String?</text>
+<text x="260.0" y="361.0" text-anchor="middle" class="t">verificationStatus: VerificationStatus</text>
+<text x="260.0" y="381.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<text x="260.0" y="401.0" text-anchor="middle" class="t">publishedAt: Instant?</text>
+<rect x="540" y="150" width="330" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="705.0" y="182.0" text-anchor="middle" class="h">BusinessService</text>
+<text x="705.0" y="202.0" text-anchor="middle" class="t">--</text>
+<text x="705.0" y="222.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="705.0" y="242.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="705.0" y="262.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<text x="705.0" y="282.0" text-anchor="middle" class="t">name: String</text>
+<text x="705.0" y="302.0" text-anchor="middle" class="t">description: String?</text>
+<text x="705.0" y="322.0" text-anchor="middle" class="t">active: Boolean</text>
+<rect x="980" y="150" width="340" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1150.0" y="188.0" text-anchor="middle" class="h">BusinessPackage</text>
+<text x="1150.0" y="208.0" text-anchor="middle" class="t">--</text>
+<text x="1150.0" y="228.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1150.0" y="248.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="1150.0" y="268.0" text-anchor="middle" class="t">serviceId: UUID?</text>
+<text x="1150.0" y="288.0" text-anchor="middle" class="t">title: String</text>
+<text x="1150.0" y="308.0" text-anchor="middle" class="t">priceFrom: Money?</text>
+<text x="1150.0" y="328.0" text-anchor="middle" class="t">durationEstimate: Duration?</text>
+<text x="1150.0" y="348.0" text-anchor="middle" class="t">active: Boolean</text>
+<rect x="1430" y="150" width="340" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1600.0" y="190.0" text-anchor="middle" class="h">BusinessHours</text>
+<text x="1600.0" y="210.0" text-anchor="middle" class="t">--</text>
+<text x="1600.0" y="230.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="1600.0" y="250.0" text-anchor="middle" class="t">timezone: String</text>
+<text x="1600.0" y="270.0" text-anchor="middle" class="t">weeklySchedule: List&lt;TimeSlot&gt;</text>
+<text x="1600.0" y="290.0" text-anchor="middle" class="t">holidayOverrides: List&lt;Override&gt;</text>
+<rect x="80" y="520" width="350" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="255.0" y="561.0" text-anchor="middle" class="h">BusinessTeamMember</text>
+<text x="255.0" y="581.0" text-anchor="middle" class="t">--</text>
+<text x="255.0" y="601.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="255.0" y="621.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="255.0" y="641.0" text-anchor="middle" class="t">role: BusinessRole</text>
+<text x="255.0" y="661.0" text-anchor="middle" class="t">status: MemberStatus</text>
+<text x="255.0" y="681.0" text-anchor="middle" class="t">invitedAt: Instant?</text>
+<rect x="540" y="520" width="340" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="710.0" y="566.0" text-anchor="middle" class="h">BusinessServiceArea</text>
+<text x="710.0" y="586.0" text-anchor="middle" class="t">--</text>
+<text x="710.0" y="606.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="710.0" y="626.0" text-anchor="middle" class="t">areaType: RADIUS | DISTRICT</text>
+<text x="710.0" y="646.0" text-anchor="middle" class="t">centerPoint: GeoPoint?</text>
+<text x="710.0" y="666.0" text-anchor="middle" class="t">radiusKm: Decimal?</text>
+<text x="710.0" y="686.0" text-anchor="middle" class="t">districtIds: Set&lt;AreaId&gt;</text>
+<rect x="980" y="520" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1175.0" y="572.0" text-anchor="middle" class="h">BusinessSubscription</text>
+<text x="1175.0" y="592.0" text-anchor="middle" class="t">--</text>
+<text x="1175.0" y="612.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1175.0" y="632.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="1175.0" y="652.0" text-anchor="middle" class="t">planId: PlanId</text>
+<text x="1175.0" y="672.0" text-anchor="middle" class="t">status: TRIALING | ACTIVE | PAST_DUE | CANCELLED</text>
+<text x="1175.0" y="692.0" text-anchor="middle" class="t">trialEndsAt: Instant?</text>
+<text x="1175.0" y="712.0" text-anchor="middle" class="t">currentPeriodEndsAt: Instant?</text>
+<rect x="1490" y="520" width="340" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1660.0" y="561.0" text-anchor="middle" class="h">BusinessPolicy</text>
+<text x="1660.0" y="581.0" text-anchor="middle" class="t">--</text>
+<text x="1660.0" y="601.0" text-anchor="middle" class="t">canCreateBusiness()</text>
+<text x="1660.0" y="621.0" text-anchor="middle" class="t">canEditBusiness()</text>
+<text x="1660.0" y="641.0" text-anchor="middle" class="t">canManageTeam()</text>
+<text x="1660.0" y="661.0" text-anchor="middle" class="t">canPublishProfile()</text>
+<text x="1660.0" y="681.0" text-anchor="middle" class="t">canSendBusinessOffer()</text>
+<rect x="760" y="910" width="520" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1020.0" y="946.0" text-anchor="middle" class="h">Business Events</text>
+<text x="1020.0" y="966.0" text-anchor="middle" class="t">--</text>
+<text x="1020.0" y="986.0" text-anchor="middle" class="t">BusinessProfileCreated</text>
+<text x="1020.0" y="1006.0" text-anchor="middle" class="t">BusinessVerificationSubmitted</text>
+<text x="1020.0" y="1026.0" text-anchor="middle" class="t">BusinessProfilePublished</text>
+<text x="1020.0" y="1046.0" text-anchor="middle" class="t">BusinessSubscriptionTrialStarted</text>
+<text x="1020.0" y="1066.0" text-anchor="middle" class="t">BusinessTeamMemberAdded</text>
+<polyline points="440,250 540,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="548" y="237" class="small">1 -&gt; many</text>
+<polyline points="870,245 980,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="988" y="252" class="small">1 -&gt; many/optional</text>
+<polyline points="440,220 1430,235" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1438" y="227" class="small">1 -&gt; one</text>
+<polyline points="260,410 260,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="268" y="512" class="small">1 -&gt; many</text>
+<polyline points="440,330 710,330 710,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="718" y="322" class="small">1 -&gt; many/one</text>
+<polyline points="440,365 1175,365 1175,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1183" y="357" class="small">1 -&gt; optional/current</text>
+<polyline points="1490,600 1390,600 1390,450 260,450 260,410" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1398" y="442" class="small">validates</text>
+<polyline points="1490,640 1320,640 1320,770 255,770 255,710" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1328" y="762" class="small">role checks</text>
+<polyline points="260,410 260,860 1020,860 1020,910" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1028" y="852" class="small">emits</text>
+<polyline points="1175,750 1175,910" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1183" y="902" class="small">emits</text>
+<rect x="80" y="1190" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1214" class="t">Ownership rule:</text>
+<text x="96" y="1232" class="t">BusinessProfile is not a separate login identity. It is operated by Account(s) through BusinessTeamMember roles.</text>
+</svg>

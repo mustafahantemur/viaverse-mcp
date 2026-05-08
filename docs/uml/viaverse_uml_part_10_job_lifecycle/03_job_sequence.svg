@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Job Lifecycle / Delivery Approval — Sequence Diagram</text>
+
+<rect x="80" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="170.0" y="170.0" text-anchor="middle" class="h">Requester Client</text>
+<rect x="169" y="220" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="170.0" y="720.0" text-anchor="middle" class="h"></text>
+<rect x="80" y="245" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="170.0" y="275.0" text-anchor="middle" class="h">Worker Client</text>
+<rect x="169" y="325" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="170.0" y="825.0" text-anchor="middle" class="h"></text>
+<rect x="360" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="450.0" y="170.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="449" y="220" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="450.0" y="720.0" text-anchor="middle" class="h"></text>
+<rect x="650" y="140" width="180" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="740.0" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="739" y="220" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="740.0" y="720.0" text-anchor="middle" class="h"></text>
+<rect x="940" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1030.0" y="170.0" text-anchor="middle" class="h">payment-service</text>
+<rect x="1029" y="220" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1030.0" y="720.0" text-anchor="middle" class="h"></text>
+<rect x="1230" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1320.0" y="170.0" text-anchor="middle" class="h">messaging-service</text>
+<rect x="1319" y="220" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1320.0" y="720.0" text-anchor="middle" class="h"></text>
+<rect x="1520" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1610.0" y="170.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1609" y="220" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1610.0" y="720.0" text-anchor="middle" class="h"></text>
+<rect x="1810" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1900.0" y="170.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="1899" y="220" width="2" height="1000" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1900.0" y="720.0" text-anchor="middle" class="h"></text>
+<polyline points="1810,300 830,300" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="292" class="small">QuoteAccepted</text>
+<polyline points="830,350 1520,350" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="342" class="small">create Job(DRAFT/WAITING_PAYMENT)</text>
+<polyline points="940,430 830,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="838" y="422" class="small">PaymentAuthorized event</text>
+<polyline points="830,470 1520,470" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="462" class="small">set READY_TO_START</text>
+<polyline points="830,520 1230,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1238" y="512" class="small">create job conversation/context</text>
+<polyline points="260,620 360,620" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="368" y="612" class="small">POST /jobs/{id}/start</text>
+<polyline points="540,660 650,660" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="658" y="652" class="small">startJob(command)</text>
+<polyline points="830,700 1520,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="692" class="small">set IN_PROGRESS</text>
+<polyline points="260,810 360,810" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="368" y="802" class="small">POST /jobs/{id}/deliver</text>
+<polyline points="540,850 650,850" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="658" y="842" class="small">deliverJob(command)</text>
+<polyline points="830,890 1520,890" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="882" class="small">set DELIVERED + delivery refs</text>
+<polyline points="830,930 1810,930" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="922" class="small">JobDelivered</text>
+<polyline points="260,1040 360,1040" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="368" y="1032" class="small">POST /jobs/{id}/approve-delivery</text>
+<polyline points="540,1080 650,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="658" y="1072" class="small">approveDelivery(command)</text>
+<polyline points="830,1120 1520,1120" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="1112" class="small">set COMPLETED + payout eligible</text>
+<polyline points="830,1160 1810,1160" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="1152" class="small">JobCompleted / PayoutEligible</text>
+<rect x="80" y="1310" width="1780" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1334" class="t">Sequence focus:</text>
+<text x="96" y="1352" class="t">Payment authorization unlocks job start. Delivery approval completes job and marks payout eligible; actual release belongs to payment/dispute policy.</text>
+</svg>

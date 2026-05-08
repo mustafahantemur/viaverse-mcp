@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="ai-class" name="05 AI Support Class Model">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse AI Assistant / Support — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="AiSession" value="AiSession&#xa;--&#xa;id: UUID&#xa;accountId: AccountId?&#xa;anonymousId: String?&#xa;entryPoint: String&#xa;locale: Locale&#xa;status: AiSessionStatus&#xa;createdAt: Instant&#xa;closedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="420" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="AiMessage" value="AiMessage&#xa;--&#xa;id: UUID&#xa;sessionId: UUID&#xa;role: USER | ASSISTANT | SYSTEM&#xa;type: TEXT | TOOL_RESULT | ESCALATION&#xa;contentRedacted: String&#xa;safetyLabels: List&lt;String&gt;&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="420" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="Retrieval" value="RetrievalCitation&#xa;--&#xa;id: UUID&#xa;messageId: UUID&#xa;sourceType: FAQ | POLICY | DOC | DOMAIN&#xa;sourceId: String&#xa;score: Decimal&#xa;snippetHash: String" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="150" width="390" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Ticket" value="SupportTicket&#xa;--&#xa;id: UUID&#xa;accountId: AccountId?&#xa;sourceAiSessionId: UUID?&#xa;category: TicketCategory&#xa;priority: Priority&#xa;status: TicketStatus&#xa;assignedTo: AccountId?&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="150" width="420" height="270" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="AiPolicy&#xa;--&#xa;canUseContext()&#xa;redactInput()&#xa;allowTool()&#xa;requiresHumanHandoff()&#xa;validateOutput()&#xa;maxTokenBudget()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="420" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="Feedback" value="AiFeedback&#xa;--&#xa;id: UUID&#xa;messageId: UUID&#xa;accountId: AccountId?&#xa;rating: GOOD | BAD | UNSAFE&#xa;comment: String?&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="560" width="420" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Prompt" value="PromptConfig&#xa;--&#xa;id: UUID&#xa;name: String&#xa;version: Int&#xa;locale: Locale&#xa;modelProfile: String&#xa;status: ACTIVE | DRAFT | RETIRED&#xa;updatedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="560" width="390" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="AI / Support Events&#xa;--&#xa;AiSessionStarted&#xa;AiAnswered&#xa;AiEscalated&#xa;SupportTicketCreated&#xa;TicketResolved&#xa;AiFeedbackSubmitted" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="560" width="420" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="AiSession" target="AiMessage">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="260" as="point"/><mxPoint x="600" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="0..many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="AiMessage" target="Retrieval">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1020" y="260" as="point"/><mxPoint x="1120" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="may escalate" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="AiSession" target="Ticket">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="380" as="point"/><mxPoint x="1810" y="380" as="point"/><mxPoint x="1810" y="420" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="validates/redacts" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="AiMessage">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="290" y="560" as="point"/><mxPoint x="290" y="480" as="point"/><mxPoint x="810" y="480" as="point"/><mxPoint x="810" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="shapes answer" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Prompt" target="AiMessage">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1315" y="560" as="point"/><mxPoint x="1315" y="470" as="point"/><mxPoint x="810" y="470" as="point"/><mxPoint x="810" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="rated by" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="AiMessage" target="Feedback">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="810" y="430" as="point"/><mxPoint x="810" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="AiSession" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="410" as="point"/><mxPoint x="1810" y="410" as="point"/><mxPoint x="1810" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Ticket" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1810" y="420" as="point"/><mxPoint x="1810" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Feedback" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1020" y="670" as="point"/><mxPoint x="1600" y="670" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Data rule:&#xa;Store redacted AI content and metadata. Raw prompt/context retention must be short, controlled and disabled for sensitive flows unless explicitly required." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1030" width="1680" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

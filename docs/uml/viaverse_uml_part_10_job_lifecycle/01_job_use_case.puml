@@ -1,0 +1,51 @@
+@startuml
+title Viaverse Job Lifecycle / Delivery Approval — Use Case Diagram
+left to right direction
+
+actor Requester
+actor "Worker / Business" as Worker
+actor "payment-service" as Payment
+actor "Support / Dispute Admin" as Support
+
+rectangle "Job Lifecycle Boundary" {
+  usecase "Create Job\nfrom accepted quote" as Create
+  usecase "Wait for payment\nauthorization" as WaitPay
+  usecase "Confirm schedule\nand exact address rules" as Schedule
+  usecase "Start work" as StartWork
+  usecase "Use job workspace\nchat / attachments" as Workspace
+  usecase "Send job updates" as Updates
+  usecase "Deliver work" as Deliver
+  usecase "Review delivery" as ReviewDelivery
+  usecase "Approve delivery" as Approve
+  usecase "Complete job" as Complete
+  usecase "Mark payout eligible" as PayoutEligible
+  usecase "Open dispute" as Dispute
+  usecase "Cancel job" as Cancel
+  usecase "Emit events\nJobStarted / Delivered / Completed" as Events
+}
+
+Requester --> Create
+Create --> WaitPay
+WaitPay --> Schedule : PaymentAuthorized
+Schedule --> StartWork
+Worker --> StartWork
+Requester --> Workspace
+Worker --> Workspace
+StartWork --> Updates
+Updates --> Deliver
+Deliver --> ReviewDelivery
+ReviewDelivery --> Approve : approved
+Approve --> Complete
+Complete --> PayoutEligible
+ReviewDelivery ..> Dispute : problem
+StartWork ..> Cancel : allowed states
+Complete --> Events
+PayoutEligible --> Events
+Payment --> WaitPay
+Support --> Dispute
+
+note bottom
+Job becomes workable only after payment authorization.
+Exact address/unsafe contact details become available only in allowed job/payment state.
+end note
+@enduml

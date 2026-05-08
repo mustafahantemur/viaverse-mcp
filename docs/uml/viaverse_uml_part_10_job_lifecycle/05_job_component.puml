@@ -1,0 +1,31 @@
+@startuml
+title Viaverse Job Lifecycle / Delivery Approval — Component Diagram
+
+component "KMP / Next.js Client\nJob workspace\nDelivery review\nStatus timeline" as Client
+component "API Gateway / App BFF\nJob API\nWorkspace API" as BFF
+component "JobController" as Controller
+component "Job Use Cases\nStartJob\nDeliverJob\nApproveDelivery\nCancelJob" as UseCases
+component "Job Policies\nparticipant authorization\npayment gate\ndelivery approval\naddress visibility" as Policies
+component "Ports\nJobRepo\nOutboxPort\nPaymentStatePort\nMessagingPort" as Ports
+component "payment-service\npayment authorized\npayout hold/eligible" as Payment
+component "messaging-service\njob conversation\nattachments" as Messaging
+database "PostgreSQL\njob\njob_delivery\njob_update\noutbox_event" as DB
+queue "Kafka / Outbox\nJobStarted\nJobDelivered\nJobCompleted\nPayoutEligible" as Kafka
+component "trust/review-service\nreview prompt\ntrust update later" as Trust
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Policies --> Payment : payment gate
+Ports --> Messaging : conversation/context
+Ports --> DB : persist
+UseCases --> Kafka : events
+Kafka --> Trust : review prompt
+
+note bottom
+Job use cases orchestrate work state only.
+Payment capture/refund/release and dispute decisions stay in payment/dispute flows.
+end note
+@enduml

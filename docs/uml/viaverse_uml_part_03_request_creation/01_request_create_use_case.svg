@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1400" viewBox="0 0 2000 1400">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1920" height="60" rx="14" fill="#022C22"/>
+<text x="1000.0" y="69" text-anchor="middle" class="title">Viaverse Request Creation — Use Case Diagram</text>
+
+<rect x="250" y="135" width="1450" height="960" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="266" y="160" class="h">Service Request Creation Boundary</text>
+<rect x="60" y="340" width="155" height="76" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="137.5" y="360.0" text-anchor="middle" class="h">«actor»</text>
+<text x="137.5" y="380.0" text-anchor="middle" class="t">Requester</text>
+<text x="137.5" y="400.0" text-anchor="middle" class="t">REQUEST_WORK</text>
+<rect x="1780" y="220" width="155" height="76" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1857.5" y="249.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1857.5" y="269.0" text-anchor="middle" class="t">AI Assistant</text>
+<rect x="1780" y="520" width="155" height="76" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1857.5" y="549.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1857.5" y="569.0" text-anchor="middle" class="t">Media Service</text>
+<rect x="1780" y="760" width="155" height="76" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1857.5" y="789.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1857.5" y="809.0" text-anchor="middle" class="t">Map Provider</text>
+<rect x="330" y="190" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="450.0" y="228.0" text-anchor="middle" class="h">Open Create sheet</text>
+<rect x="640" y="190" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="760.0" y="219.0" text-anchor="middle" class="h">Select</text>
+<text x="760.0" y="239.0" text-anchor="middle" class="t">Request a service</text>
+<rect x="330" y="360" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="450.0" y="398.0" text-anchor="middle" class="h">Describe need</text>
+<rect x="640" y="330" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="760.0" y="368.0" text-anchor="middle" class="h">Get AI category suggestion</text>
+<rect x="960" y="330" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="359.0" text-anchor="middle" class="h">Confirm category</text>
+<text x="1080.0" y="379.0" text-anchor="middle" class="t">and subcategory</text>
+<rect x="1280" y="330" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1400.0" y="359.0" text-anchor="middle" class="h">Choose budget mode</text>
+<text x="1400.0" y="379.0" text-anchor="middle" class="t">and range</text>
+<rect x="330" y="550" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="450.0" y="579.0" text-anchor="middle" class="h">Set location</text>
+<text x="450.0" y="599.0" text-anchor="middle" class="t">and service area</text>
+<rect x="640" y="550" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="760.0" y="579.0" text-anchor="middle" class="h">Set preferred time</text>
+<text x="760.0" y="599.0" text-anchor="middle" class="t">and urgency</text>
+<rect x="960" y="550" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="588.0" text-anchor="middle" class="h">Attach images/videos</text>
+<rect x="1280" y="550" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1400.0" y="579.0" text-anchor="middle" class="h">Set visibility</text>
+<text x="1400.0" y="599.0" text-anchor="middle" class="t">and matching rules</text>
+<rect x="640" y="740" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="760.0" y="778.0" text-anchor="middle" class="h">Save draft</text>
+<rect x="960" y="740" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="778.0" text-anchor="middle" class="h">Preview request</text>
+<rect x="1280" y="740" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1400.0" y="778.0" text-anchor="middle" class="h">Publish request</text>
+<rect x="1280" y="920" width="240" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1400.0" y="940.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1400.0" y="960.0" text-anchor="middle" class="t">ServiceRequestPublished</text>
+<text x="1400.0" y="980.0" text-anchor="middle" class="t">MatchingRequested</text>
+<polyline points="215,378 250,378 250,228 330,228" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="570,228 640,228" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="760,266 760,305 450,305 450,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="458" y="297" class="small">next</text>
+<polyline points="570,398 640,368" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="648" y="360" class="small">«include»</text>
+<polyline points="880,368 960,368" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="968" y="360" class="small">editable suggestion</text>
+<polyline points="1200,368 1280,368" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1400,406 1400,470 450,470 450,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="458" y="462" class="small">next</text>
+<polyline points="570,588 640,588" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="880,588 960,588" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1200,588 1280,588" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1400,626 1400,690 760,690 760,740" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="768" y="682" class="small">draft path</text>
+<polyline points="1400,626 1400,690 1080,690 1080,740" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="682" class="small">publish path</text>
+<polyline points="1200,778 1280,778" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="770" class="small">confirm</text>
+<polyline points="1400,816 1400,920" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1408" y="912" class="small">outbox</text>
+<polyline points="1780,258 1620,258 1620,368 880,368" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="360" class="small">category + budget hints</text>
+<polyline points="1780,258 1640,258 1640,368 1520,368" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1648" y="360" class="small">budget guidance</text>
+<polyline points="1780,558 1640,558 1640,588 1200,588" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1648" y="580" class="small">upload refs</text>
+<polyline points="1780,798 1610,798 1610,588 570,588" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1618" y="580" class="small">geocode / area</text>
+<rect x="330" y="1030" width="1230" height="55" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="346" y="1054" class="t">Rules:</text>
+<text x="346" y="1072" class="t">Request can stay DRAFT until publish. AI suggestions are editable. Exact address is private. Publish writes source-of-truth + outbox events.</text>
+</svg>

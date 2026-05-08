@@ -1,0 +1,24 @@
+@startuml
+title Viaverse Translation / Regional Config — State Diagram
+
+[*] --> MISSING
+MISSING --> DRAFT : create
+DRAFT --> IN_REVIEW : submit
+IN_REVIEW --> PUBLISHED : approve
+IN_REVIEW --> DRAFT : changes requested
+PUBLISHED --> FALLBACK_ACTIVE : target locale missing
+FALLBACK_ACTIVE --> PUBLISHED : translation available
+PUBLISHED --> DEPRECATED : key retired
+DEPRECATED --> ARCHIVED : cleanup
+
+[*] --> REGIONAL_CONFIG_DRAFT
+REGIONAL_CONFIG_DRAFT --> REGIONAL_CONFIG_PUBLISHED : approve config
+REGIONAL_CONFIG_PUBLISHED --> REGIONAL_CONFIG_DRAFT : new version
+
+ARCHIVED --> [*]
+
+note bottom
+Publishing translation/regional config should be versioned and rollbackable.
+SEO localized slugs need canonical/hreflang consistency before publish.
+end note
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+title Viaverse Chat Message Delivery — Sequence Diagram
+
+actor "Sender Client" as A
+participant "API Gateway / Realtime BFF" as BFF
+participant "chat-service" as Chat
+participant "marketplace-service" as Marketplace
+participant "safety-service" as Safety
+database "Cassandra / Message Store" as DB
+participant "notification-service" as Notification
+actor "Recipient Client" as B
+
+A -> BFF : send message / websocket or HTTPS
+BFF -> Chat : SendMessage(command)
+Chat -> Marketplace : validate job participants/state
+Chat -> Safety : scan text/media refs
+Safety --> Chat : allow / warn / hold / block
+Chat -> DB : persist message + receipt state
+Chat -> Notification : notify if offline
+Chat --> BFF : delivery event
+BFF --> B : realtime delivery
+B -> BFF : read receipt
+BFF -> Chat : UpdateReceipt
+
+note bottom
+Realtime transport is adapter-level.
+Core chat-service should work with WebSocket, SSE or polling.
+Message persistence and safety policy stay independent from transport.
+end note
+@enduml

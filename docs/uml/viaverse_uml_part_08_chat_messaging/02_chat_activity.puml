@@ -1,0 +1,35 @@
+@startuml
+title Viaverse Chat / Messaging — Activity Diagram
+start
+:Open conversation from quote/job context;
+:Authorize participant\nrequester / worker / business;
+if (Allowed?) then (yes)
+  :Compose message;
+  if (Attach media?) then (yes)
+    :Create media upload;
+    :Attach media reference;
+  endif
+  :Run safety scan\ncontact/payment bypass;
+  if (Unsafe?) then (yes)
+    :Warn / block / create risk signal;
+  else (no)
+    :Persist message;
+    :Emit MessageSent;
+    :Notify recipient;
+    :Recipient reads;
+    :Mark as read;
+    if (Report?) then (yes)
+      :Create moderation/support case;
+    endif
+  endif
+else (no)
+  :Deny access;
+endif
+stop
+
+note bottom
+Before accepted job/payment state,
+phone/email/address/off-platform payment sharing can warn,
+soft-block, hard-block or create a risk signal.
+end note
+@enduml

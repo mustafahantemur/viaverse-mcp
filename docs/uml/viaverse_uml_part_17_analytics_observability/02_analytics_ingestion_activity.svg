@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Analytics Event Ingestion — Activity Diagram</text>
+
+<rect x="80" y="160" width="250" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="205.0" y="181.0" text-anchor="middle" class="h">START</text>
+<text x="205.0" y="201.0" text-anchor="middle" class="t">client/domain event</text>
+<rect x="430" y="140" width="310" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="585.0" y="176.0" text-anchor="middle" class="h">Capture event</text>
+<text x="585.0" y="196.0" text-anchor="middle" class="t">with schema version</text>
+<rect x="850" y="140" width="310" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1005.0" y="176.0" text-anchor="middle" class="h">Check consent</text>
+<text x="1005.0" y="196.0" text-anchor="middle" class="t">and legal basis</text>
+<rect x="1280" y="140" width="220" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1390.0" y="185.0" text-anchor="middle" class="h">Allowed?</text>
+<rect x="1620" y="150" width="290" height="75" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1765.0" y="187.5" text-anchor="middle" class="h">Drop or aggregate only</text>
+<rect x="1280" y="340" width="330" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1445.0" y="376.0" text-anchor="middle" class="h">Sanitize payload</text>
+<text x="1445.0" y="396.0" text-anchor="middle" class="t">remove PII/secrets</text>
+<rect x="850" y="340" width="260" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="980.0" y="377.5" text-anchor="middle" class="h">Validate schema</text>
+<rect x="430" y="340" width="240" height="75" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="550.0" y="377.5" text-anchor="middle" class="h">Bad schema?</text>
+<rect x="430" y="550" width="280" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="570.0" y="581.0" text-anchor="middle" class="h">Send to DLQ</text>
+<text x="570.0" y="601.0" text-anchor="middle" class="t">quality alert</text>
+<rect x="850" y="550" width="360" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1030.0" y="586.0" text-anchor="middle" class="h">Persist raw-safe event</text>
+<text x="1030.0" y="606.0" text-anchor="middle" class="t">or stream to warehouse</text>
+<rect x="1280" y="550" width="340" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1450.0" y="586.0" text-anchor="middle" class="h">Update aggregates</text>
+<text x="1450.0" y="606.0" text-anchor="middle" class="t">funnel/cohort/kpi</text>
+<rect x="1280" y="780" width="320" height="75" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1440.0" y="817.5" text-anchor="middle" class="h">Refresh dashboard dataset</text>
+<rect x="850" y="780" width="310" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1005.0" y="817.5" text-anchor="middle" class="h">Apply retention policy</text>
+<rect x="430" y="780" width="320" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="590.0" y="820.0" text-anchor="middle" class="h">Emit quality/alert events</text>
+<rect x="850" y="1010" width="150" height="55" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="925.0" y="1037.5" text-anchor="middle" class="h">END</text>
+<polyline points="330,190 430,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="740,185 850,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1160,185 1280,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1500,185 1620,188" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1628" y="180" class="small">no</text>
+<polyline points="1390,230 1390,340" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1398" y="332" class="small">yes</text>
+<polyline points="1280,385 1110,377" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="850,377 670,377" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="550,415 550,550" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="558" y="542" class="small">yes</text>
+<polyline points="670,377 780,377 780,595 850,595" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="788" y="587" class="small">no</text>
+<polyline points="1210,595 1280,595" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1450,640 1450,780" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1280,595 1220,595 1220,817 1160,817" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="850,817 750,817" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="570,630 570,780" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="750,820 925,820 925,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="330" y="1160" width="1520" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="346" y="1184" class="t">Data governance rule:</text>
+<text x="346" y="1202" class="t">Every event has owner, schema version, retention class and sensitivity classification. Unknown schemas go to DLQ, not silent production metrics.</text>
+</svg>

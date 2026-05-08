@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Notification / Inbox / Delivery — Class Model</text>
+
+<rect x="80" y="150" width="410" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="285.0" y="191.0" text-anchor="middle" class="h">Notification</text>
+<text x="285.0" y="211.0" text-anchor="middle" class="t">--</text>
+<text x="285.0" y="231.0" text-anchor="middle" class="t">id: NotificationId</text>
+<text x="285.0" y="251.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="285.0" y="271.0" text-anchor="middle" class="t">type: NotificationType</text>
+<text x="285.0" y="291.0" text-anchor="middle" class="t">priority: Priority</text>
+<text x="285.0" y="311.0" text-anchor="middle" class="t">title: String</text>
+<text x="285.0" y="331.0" text-anchor="middle" class="t">body: String</text>
+<text x="285.0" y="351.0" text-anchor="middle" class="t">deepLink: String?</text>
+<text x="285.0" y="371.0" text-anchor="middle" class="t">status: NotificationStatus</text>
+<text x="285.0" y="391.0" text-anchor="middle" class="t">deduplicationKey: String</text>
+<text x="285.0" y="411.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="590" y="150" width="380" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="780.0" y="194.0" text-anchor="middle" class="h">NotificationAttempt</text>
+<text x="780.0" y="214.0" text-anchor="middle" class="t">--</text>
+<text x="780.0" y="234.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="780.0" y="254.0" text-anchor="middle" class="t">notificationId: NotificationId</text>
+<text x="780.0" y="274.0" text-anchor="middle" class="t">channel: PUSH | EMAIL | SMS</text>
+<text x="780.0" y="294.0" text-anchor="middle" class="t">provider: String</text>
+<text x="780.0" y="314.0" text-anchor="middle" class="t">status: AttemptStatus</text>
+<text x="780.0" y="334.0" text-anchor="middle" class="t">attemptNo: Int</text>
+<text x="780.0" y="354.0" text-anchor="middle" class="t">errorCode: String?</text>
+<text x="780.0" y="374.0" text-anchor="middle" class="t">sentAt: Instant?</text>
+<rect x="1070" y="150" width="400" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1270.0" y="198.0" text-anchor="middle" class="h">NotificationPreference</text>
+<text x="1270.0" y="218.0" text-anchor="middle" class="t">--</text>
+<text x="1270.0" y="238.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1270.0" y="258.0" text-anchor="middle" class="t">notificationType: String</text>
+<text x="1270.0" y="278.0" text-anchor="middle" class="t">pushEnabled: Boolean</text>
+<text x="1270.0" y="298.0" text-anchor="middle" class="t">emailEnabled: Boolean</text>
+<text x="1270.0" y="318.0" text-anchor="middle" class="t">smsEnabled: Boolean</text>
+<text x="1270.0" y="338.0" text-anchor="middle" class="t">quietHours: QuietHours?</text>
+<text x="1270.0" y="358.0" text-anchor="middle" class="t">digestMode: DigestMode</text>
+<rect x="1580" y="150" width="380" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1770.0" y="192.0" text-anchor="middle" class="h">DeviceToken</text>
+<text x="1770.0" y="212.0" text-anchor="middle" class="t">--</text>
+<text x="1770.0" y="232.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1770.0" y="252.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1770.0" y="272.0" text-anchor="middle" class="t">platform: IOS | ANDROID | WEB</text>
+<text x="1770.0" y="292.0" text-anchor="middle" class="t">tokenHash: String</text>
+<text x="1770.0" y="312.0" text-anchor="middle" class="t">status: DeviceStatus</text>
+<text x="1770.0" y="332.0" text-anchor="middle" class="t">lastSeenAt: Instant</text>
+<rect x="80" y="560" width="410" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="285.0" y="612.0" text-anchor="middle" class="h">NotificationTemplate</text>
+<text x="285.0" y="632.0" text-anchor="middle" class="t">--</text>
+<text x="285.0" y="652.0" text-anchor="middle" class="t">type: NotificationType</text>
+<text x="285.0" y="672.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="285.0" y="692.0" text-anchor="middle" class="t">titleTemplate: String</text>
+<text x="285.0" y="712.0" text-anchor="middle" class="t">bodyTemplate: String</text>
+<text x="285.0" y="732.0" text-anchor="middle" class="t">channelOverrides: Json</text>
+<text x="285.0" y="752.0" text-anchor="middle" class="t">version: Int</text>
+<rect x="590" y="560" width="380" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="780.0" y="612.0" text-anchor="middle" class="h">NotificationPolicy</text>
+<text x="780.0" y="632.0" text-anchor="middle" class="t">--</text>
+<text x="780.0" y="652.0" text-anchor="middle" class="t">shouldNotify()</text>
+<text x="780.0" y="672.0" text-anchor="middle" class="t">selectChannels()</text>
+<text x="780.0" y="692.0" text-anchor="middle" class="t">respectQuietHours()</text>
+<text x="780.0" y="712.0" text-anchor="middle" class="t">rateLimit()</text>
+<text x="780.0" y="732.0" text-anchor="middle" class="t">shouldDigest()</text>
+<text x="780.0" y="752.0" text-anchor="middle" class="t">shouldRetry()</text>
+<rect x="1070" y="560" width="400" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1270.0" y="612.0" text-anchor="middle" class="h">AdminCampaign</text>
+<text x="1270.0" y="632.0" text-anchor="middle" class="t">--</text>
+<text x="1270.0" y="652.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1270.0" y="672.0" text-anchor="middle" class="t">segmentRule: String</text>
+<text x="1270.0" y="692.0" text-anchor="middle" class="t">templateId: String</text>
+<text x="1270.0" y="712.0" text-anchor="middle" class="t">status: CampaignStatus</text>
+<text x="1270.0" y="732.0" text-anchor="middle" class="t">rateLimitPerMinute: Int</text>
+<text x="1270.0" y="752.0" text-anchor="middle" class="t">createdBy: AccountId</text>
+<rect x="1580" y="560" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1775.0" y="612.0" text-anchor="middle" class="h">Notification Events</text>
+<text x="1775.0" y="632.0" text-anchor="middle" class="t">--</text>
+<text x="1775.0" y="652.0" text-anchor="middle" class="t">NotificationCreated</text>
+<text x="1775.0" y="672.0" text-anchor="middle" class="t">NotificationSent</text>
+<text x="1775.0" y="692.0" text-anchor="middle" class="t">NotificationFailed</text>
+<text x="1775.0" y="712.0" text-anchor="middle" class="t">NotificationRead</text>
+<text x="1775.0" y="732.0" text-anchor="middle" class="t">CampaignStarted</text>
+<text x="1775.0" y="752.0" text-anchor="middle" class="t">CampaignCompleted</text>
+<polyline points="490,260 590,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="598" y="242" class="small">1 -&gt; many</text>
+<polyline points="1070,250 490,250" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="498" y="242" class="small">controls</text>
+<polyline points="1580,250 970,250" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="978" y="242" class="small">used for push</text>
+<polyline points="285,560 285,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="293" y="422" class="small">renders</text>
+<polyline points="970,650 1070,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1078" y="252" class="small">uses</text>
+<polyline points="590,650 490,300" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="498" y="292" class="small">validates</text>
+<polyline points="1070,650 490,300" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="498" y="292" class="small">creates many</text>
+<polyline points="490,410 1775,410 1775,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1783" y="402" class="small">emits</text>
+<polyline points="970,275 1775,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1783" y="552" class="small">emits</text>
+<polyline points="1470,675 1580,675" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="667" class="small">emits</text>
+<rect x="80" y="1030" width="1580" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Data rule:</text>
+<text x="96" y="1072" class="t">Store tokenHash/display metadata, not raw device tokens in broad read models. Raw provider token access should be restricted/encrypted.</text>
+</svg>

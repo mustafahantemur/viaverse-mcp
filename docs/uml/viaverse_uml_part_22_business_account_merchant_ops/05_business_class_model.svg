@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Business Account / Merchant Ops — Class Model</text>
+
+<rect x="80" y="150" width="420" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="209.0" text-anchor="middle" class="h">BusinessAccount</text>
+<text x="290.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="249.0" text-anchor="middle" class="t">id: BusinessId</text>
+<text x="290.0" y="269.0" text-anchor="middle" class="t">ownerAccountId: AccountId</text>
+<text x="290.0" y="289.0" text-anchor="middle" class="t">legalName: String?</text>
+<text x="290.0" y="309.0" text-anchor="middle" class="t">displayName: String</text>
+<text x="290.0" y="329.0" text-anchor="middle" class="t">status: BusinessStatus</text>
+<text x="290.0" y="349.0" text-anchor="middle" class="t">verificationStatus: VerificationStatus</text>
+<text x="290.0" y="369.0" text-anchor="middle" class="t">primaryCategoryId: CategoryId</text>
+<text x="290.0" y="389.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="600" y="150" width="390" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="203.0" text-anchor="middle" class="h">BusinessBranch</text>
+<text x="795.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="243.0" text-anchor="middle" class="t">id: BranchId</text>
+<text x="795.0" y="263.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="795.0" y="283.0" text-anchor="middle" class="t">name: String</text>
+<text x="795.0" y="303.0" text-anchor="middle" class="t">serviceArea: GeoArea</text>
+<text x="795.0" y="323.0" text-anchor="middle" class="t">addressRef: AddressRef?</text>
+<text x="795.0" y="343.0" text-anchor="middle" class="t">workingHours: WeeklySchedule</text>
+<text x="795.0" y="363.0" text-anchor="middle" class="t">status: BranchStatus</text>
+<rect x="1090" y="150" width="420" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1300.0" y="207.0" text-anchor="middle" class="h">BusinessStaffMember</text>
+<text x="1300.0" y="227.0" text-anchor="middle" class="t">--</text>
+<text x="1300.0" y="247.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="1300.0" y="267.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1300.0" y="287.0" text-anchor="middle" class="t">role: OWNER | MANAGER | STAFF</text>
+<text x="1300.0" y="307.0" text-anchor="middle" class="t">permissions: Set&lt;Permission&gt;</text>
+<text x="1300.0" y="327.0" text-anchor="middle" class="t">status: StaffStatus</text>
+<text x="1300.0" y="347.0" text-anchor="middle" class="t">invitedAt: Instant?</text>
+<rect x="1600" y="150" width="410" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1805.0" y="203.0" text-anchor="middle" class="h">ServiceCatalogItem</text>
+<text x="1805.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="1805.0" y="243.0" text-anchor="middle" class="t">id: CatalogItemId</text>
+<text x="1805.0" y="263.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="1805.0" y="283.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<text x="1805.0" y="303.0" text-anchor="middle" class="t">title: String</text>
+<text x="1805.0" y="323.0" text-anchor="middle" class="t">basePrice: Money?</text>
+<text x="1805.0" y="343.0" text-anchor="middle" class="t">durationMinutes: Int?</text>
+<text x="1805.0" y="363.0" text-anchor="middle" class="t">status: CatalogStatus</text>
+<rect x="80" y="560" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="618.0" text-anchor="middle" class="h">BusinessVerification</text>
+<text x="290.0" y="638.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="658.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="290.0" y="678.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="290.0" y="698.0" text-anchor="middle" class="t">documentMediaIds: List&lt;MediaId&gt;</text>
+<text x="290.0" y="718.0" text-anchor="middle" class="t">region: CountryCode</text>
+<text x="290.0" y="738.0" text-anchor="middle" class="t">status: VerificationStatus</text>
+<text x="290.0" y="758.0" text-anchor="middle" class="t">reviewedBy: AccountId?</text>
+<text x="290.0" y="778.0" text-anchor="middle" class="t">reviewedAt: Instant?</text>
+<rect x="600" y="560" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="612.0" text-anchor="middle" class="h">BusinessSubscription</text>
+<text x="795.0" y="632.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="652.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="795.0" y="672.0" text-anchor="middle" class="t">businessId: BusinessId</text>
+<text x="795.0" y="692.0" text-anchor="middle" class="t">planCode: String</text>
+<text x="795.0" y="712.0" text-anchor="middle" class="t">trialEndsAt: Instant?</text>
+<text x="795.0" y="732.0" text-anchor="middle" class="t">status: SubscriptionStatus</text>
+<text x="795.0" y="752.0" text-anchor="middle" class="t">billingAccountId: UUID?</text>
+<rect x="1090" y="560" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1300.0" y="622.0" text-anchor="middle" class="h">BusinessPolicy</text>
+<text x="1300.0" y="642.0" text-anchor="middle" class="t">--</text>
+<text x="1300.0" y="662.0" text-anchor="middle" class="t">canManageBusiness()</text>
+<text x="1300.0" y="682.0" text-anchor="middle" class="t">canPublish()</text>
+<text x="1300.0" y="702.0" text-anchor="middle" class="t">requiresVerification()</text>
+<text x="1300.0" y="722.0" text-anchor="middle" class="t">canReceiveLead()</text>
+<text x="1300.0" y="742.0" text-anchor="middle" class="t">canQuoteAsBusiness()</text>
+<text x="1300.0" y="762.0" text-anchor="middle" class="t">subscriptionAllowsFeature()</text>
+<rect x="1600" y="560" width="410" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1805.0" y="622.0" text-anchor="middle" class="h">Business Events</text>
+<text x="1805.0" y="642.0" text-anchor="middle" class="t">--</text>
+<text x="1805.0" y="662.0" text-anchor="middle" class="t">BusinessCreated</text>
+<text x="1805.0" y="682.0" text-anchor="middle" class="t">BusinessVerified</text>
+<text x="1805.0" y="702.0" text-anchor="middle" class="t">BusinessPublished</text>
+<text x="1805.0" y="722.0" text-anchor="middle" class="t">CatalogUpdated</text>
+<text x="1805.0" y="742.0" text-anchor="middle" class="t">StaffInvited</text>
+<text x="1805.0" y="762.0" text-anchor="middle" class="t">LeadReceived</text>
+<polyline points="500,260 600,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="242" class="small">1 -&gt; many</text>
+<polyline points="500,300 1090,270" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1098" y="262" class="small">1 -&gt; many</text>
+<polyline points="500,340 1600,280" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="272" class="small">1 -&gt; many</text>
+<polyline points="290,430 290,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="298" y="552" class="small">1 -&gt; many</text>
+<polyline points="500,390 795,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="803" y="552" class="small">1 -&gt; optional</text>
+<polyline points="1090,660 1000,660 1000,470 290,470 290,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1008" y="462" class="small">validates</text>
+<polyline points="1090,690 990,690" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="998" y="682" class="small">checks gates</text>
+<polyline points="500,690 1600,690" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="682" class="small">emits</text>
+<polyline points="500,410 1805,410 1805,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1813" y="402" class="small">emits</text>
+<polyline points="1805,400 1805,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1813" y="552" class="small">emits</text>
+<rect x="80" y="1030" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Model rule:</text>
+<text x="96" y="1072" class="t">BusinessAccount is not the same as Account. Account owns identity/login. BusinessAccount owns merchant profile, branches, catalog, staff and publish state.</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Cross-Cutting Governance Map</text>
+<rect x="60" y="130" width="2480" height="1320" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">Cross-Cutting Governance</text>
+<rect x="120" y="220" width="360" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="300.0" y="277.0" text-anchor="middle" class="h">Security</text>
+<text x="300.0" y="295.0" text-anchor="middle" class="t">JWT / RBAC / ABAC</text>
+<text x="300.0" y="313.0" text-anchor="middle" class="t">ownership / rate limit</text>
+<rect x="560" y="220" width="360" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="740.0" y="277.0" text-anchor="middle" class="h">Privacy / KVKK</text>
+<text x="740.0" y="295.0" text-anchor="middle" class="t">consent / DSAR</text>
+<text x="740.0" y="313.0" text-anchor="middle" class="t">retention / minimization</text>
+<rect x="1000" y="220" width="360" height="150" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1180.0" y="277.0" text-anchor="middle" class="h">Observability</text>
+<text x="1180.0" y="295.0" text-anchor="middle" class="t">logs / traces / metrics</text>
+<text x="1180.0" y="313.0" text-anchor="middle" class="t">SLO / alerts</text>
+<rect x="1440" y="220" width="360" height="150" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1620.0" y="277.0" text-anchor="middle" class="h">Eventing</text>
+<text x="1620.0" y="295.0" text-anchor="middle" class="t">outbox / Kafka</text>
+<text x="1620.0" y="313.0" text-anchor="middle" class="t">schema versioning</text>
+<rect x="1880" y="220" width="360" height="150" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="2060.0" y="277.0" text-anchor="middle" class="h">Contracts</text>
+<text x="2060.0" y="295.0" text-anchor="middle" class="t">OpenAPI / event schema</text>
+<text x="2060.0" y="313.0" text-anchor="middle" class="t">BFF / client sync</text>
+<rect x="120" y="520" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="300.0" y="577.0" text-anchor="middle" class="h">Localization</text>
+<text x="300.0" y="595.0" text-anchor="middle" class="t">TR/EN / regional config</text>
+<text x="300.0" y="613.0" text-anchor="middle" class="t">SEO hreflang</text>
+<rect x="560" y="520" width="360" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="740.0" y="577.0" text-anchor="middle" class="h">Safety / Moderation</text>
+<text x="740.0" y="595.0" text-anchor="middle" class="t">chat / media / content</text>
+<text x="740.0" y="613.0" text-anchor="middle" class="t">reports / appeals</text>
+<rect x="1000" y="520" width="360" height="150" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1180.0" y="577.0" text-anchor="middle" class="h">Money Governance</text>
+<text x="1180.0" y="595.0" text-anchor="middle" class="t">payment / ledger</text>
+<text x="1180.0" y="613.0" text-anchor="middle" class="t">commission / invoice</text>
+<rect x="1440" y="520" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1620.0" y="568.0" text-anchor="middle" class="h">Data Governance</text>
+<text x="1620.0" y="586.0" text-anchor="middle" class="t">source-of-truth</text>
+<text x="1620.0" y="604.0" text-anchor="middle" class="t">projection / retention</text>
+<text x="1620.0" y="622.0" text-anchor="middle" class="t">migration</text>
+<rect x="1880" y="520" width="360" height="150" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="2060.0" y="577.0" text-anchor="middle" class="h">Quality Gates</text>
+<text x="2060.0" y="595.0" text-anchor="middle" class="t">unit / integration</text>
+<text x="2060.0" y="613.0" text-anchor="middle" class="t">contract / arch tests</text>
+<rect x="560" y="860" width="1240" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1180.0" y="941.0" text-anchor="middle" class="h">Every Bounded Context</text>
+<text x="1180.0" y="959.0" text-anchor="middle" class="t">identity / marketplace / business / payment / chat / taxonomy / search / trust / media / AI</text>
+<polyline points="1180,860 300,370" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="308" y="362" class="small">policy enforced</text>
+<polyline points="1180,860 740,370" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="748" y="362" class="small">data policy</text>
+<polyline points="1180,860 1180,370" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1188" y="362" class="small">telemetry</text>
+<polyline points="1180,860 1620,370" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1628" y="362" class="small">outbox</text>
+<polyline points="1180,860 2060,370" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="2068" y="362" class="small">API/event contracts</text>
+<polyline points="1180,860 300,670" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="308" y="662" class="small">localized surfaces</text>
+<polyline points="1180,860 740,670" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="748" y="662" class="small">safety hooks</text>
+<polyline points="1180,860 1180,670" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1188" y="662" class="small">financial rules</text>
+<polyline points="1180,860 1620,670" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1628" y="662" class="small">data ownership</text>
+<polyline points="1180,860 2060,670" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="2068" y="662" class="small">CI gates</text>
+<rect x="120" y="1200" width="1900" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1224" class="t">Governance rule:</text>
+<text x="136" y="1242" class="t">Cross-cutting concerns are not optional decorations. Every bounded context must declare security, privacy, event, data, observability and test behavior.</text>
+</svg>

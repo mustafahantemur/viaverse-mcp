@@ -1,0 +1,55 @@
+@startuml
+title Viaverse Auth — Use Case Diagram
+left to right direction
+
+actor "Guest User" as Guest
+actor "Authenticated Account" as Account
+actor "Google / Apple / Meta" as OAuth
+actor "Netgsm / Amazon SES" as OtpProvider
+actor "Support / Security Admin" as Admin
+
+rectangle "Authentication / Onboarding Boundary" {
+  usecase "Select language" as SelectLanguage
+  usecase "Choose login method" as ChooseMethod
+  usecase "Phone OTP login" as PhoneOtp
+  usecase "Email OTP login" as EmailOtp
+  usecase "Social login\nGoogle / Apple / Meta" as SocialLogin
+  usecase "Request OTP challenge" as RequestOtp
+  usecase "Verify OTP challenge" as VerifyOtp
+  usecase "Create or find account" as FindAccount
+  usecase "Accept Terms / Privacy / KVKK" as Consent
+  usecase "Choose first intent\nRequest / Work / Business" as Intent
+  usecase "Create session\nAccess + refresh token" as CreateSession
+  usecase "Refresh token rotation" as Refresh
+  usecase "Revoke session / logout" as Revoke
+  usecase "Suspend account/capability" as Suspend
+}
+
+Guest --> SelectLanguage
+Guest --> ChooseMethod
+ChooseMethod ..> PhoneOtp : <<extend>>
+ChooseMethod ..> EmailOtp : <<extend>>
+ChooseMethod ..> SocialLogin : <<extend>>
+PhoneOtp ..> RequestOtp : <<include>>
+EmailOtp ..> RequestOtp : <<include>>
+RequestOtp --> VerifyOtp
+VerifyOtp --> FindAccount
+SocialLogin --> FindAccount
+FindAccount --> Consent
+Consent --> Intent
+Intent --> CreateSession
+Account --> Refresh
+Account --> Revoke
+OAuth --> SocialLogin
+OtpProvider --> RequestOtp
+Admin --> Suspend
+
+note bottom
+Security rules:
+- JWT sub = persisted Account.id
+- OTP hash only
+- Refresh token rotation/reuse detection
+- Consent version stored
+- Account status checked on every protected request
+end note
+@enduml

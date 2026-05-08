@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2450" height="1700" viewBox="0 0 2450 1700">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2370" height="60" rx="14" fill="#022C22"/><text x="1225.0" y="69" text-anchor="middle" class="title">Viaverse KMP / Compose Multiplatform Client — Module Structure</text>
+<rect x="60" y="130" width="2320" height="1320" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">apps/mobile-kmp/</text>
+<rect x="120" y="220" width="360" height="190" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="300.0" y="279.0" text-anchor="middle" class="h">composeApp/</text>
+<text x="300.0" y="297.0" text-anchor="middle" class="t">shared Compose UI</text>
+<text x="300.0" y="315.0" text-anchor="middle" class="t">navigation</text>
+<text x="300.0" y="333.0" text-anchor="middle" class="t">screens</text>
+<text x="300.0" y="351.0" text-anchor="middle" class="t">viewmodels</text>
+<rect x="560" y="220" width="360" height="190" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="740.0" y="279.0" text-anchor="middle" class="h">shared/core/</text>
+<text x="740.0" y="297.0" text-anchor="middle" class="t">primitives</text>
+<text x="740.0" y="315.0" text-anchor="middle" class="t">result/error</text>
+<text x="740.0" y="333.0" text-anchor="middle" class="t">time/money</text>
+<text x="740.0" y="351.0" text-anchor="middle" class="t">logging</text>
+<rect x="1000" y="220" width="360" height="190" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1180.0" y="270.0" text-anchor="middle" class="h">shared/design-system/</text>
+<text x="1180.0" y="288.0" text-anchor="middle" class="t">tokens</text>
+<text x="1180.0" y="306.0" text-anchor="middle" class="t">theme</text>
+<text x="1180.0" y="324.0" text-anchor="middle" class="t">components</text>
+<text x="1180.0" y="342.0" text-anchor="middle" class="t">icons</text>
+<text x="1180.0" y="360.0" text-anchor="middle" class="t">motion</text>
+<rect x="1440" y="220" width="360" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1620.0" y="279.0" text-anchor="middle" class="h">shared/domain/</text>
+<text x="1620.0" y="297.0" text-anchor="middle" class="t">models</text>
+<text x="1620.0" y="315.0" text-anchor="middle" class="t">use case facades</text>
+<text x="1620.0" y="333.0" text-anchor="middle" class="t">validation</text>
+<text x="1620.0" y="351.0" text-anchor="middle" class="t">state models</text>
+<rect x="1880" y="220" width="360" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2060.0" y="279.0" text-anchor="middle" class="h">shared/data/</text>
+<text x="2060.0" y="297.0" text-anchor="middle" class="t">repositories</text>
+<text x="2060.0" y="315.0" text-anchor="middle" class="t">API clients</text>
+<text x="2060.0" y="333.0" text-anchor="middle" class="t">DTO mappers</text>
+<text x="2060.0" y="351.0" text-anchor="middle" class="t">cache</text>
+<rect x="120" y="540" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="300.0" y="598.0" text-anchor="middle" class="h">features/home/</text>
+<text x="300.0" y="616.0" text-anchor="middle" class="t">feed</text>
+<text x="300.0" y="634.0" text-anchor="middle" class="t">search entry</text>
+<text x="300.0" y="652.0" text-anchor="middle" class="t">dynamic environment</text>
+<rect x="560" y="540" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="740.0" y="598.0" text-anchor="middle" class="h">features/request/</text>
+<text x="740.0" y="616.0" text-anchor="middle" class="t">create request</text>
+<text x="740.0" y="634.0" text-anchor="middle" class="t">budget/category forms</text>
+<text x="740.0" y="652.0" text-anchor="middle" class="t">attachments</text>
+<rect x="1000" y="540" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="589.0" text-anchor="middle" class="h">features/work/</text>
+<text x="1180.0" y="607.0" text-anchor="middle" class="t">do work</text>
+<text x="1180.0" y="625.0" text-anchor="middle" class="t">quotes</text>
+<text x="1180.0" y="643.0" text-anchor="middle" class="t">jobs</text>
+<text x="1180.0" y="661.0" text-anchor="middle" class="t">provider profile</text>
+<rect x="1440" y="540" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1620.0" y="589.0" text-anchor="middle" class="h">features/business/</text>
+<text x="1620.0" y="607.0" text-anchor="middle" class="t">business profile</text>
+<text x="1620.0" y="625.0" text-anchor="middle" class="t">catalog</text>
+<text x="1620.0" y="643.0" text-anchor="middle" class="t">leads</text>
+<text x="1620.0" y="661.0" text-anchor="middle" class="t">subscription</text>
+<rect x="1880" y="540" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2060.0" y="589.0" text-anchor="middle" class="h">features/profile/</text>
+<text x="2060.0" y="607.0" text-anchor="middle" class="t">account</text>
+<text x="2060.0" y="625.0" text-anchor="middle" class="t">settings</text>
+<text x="2060.0" y="643.0" text-anchor="middle" class="t">privacy</text>
+<text x="2060.0" y="661.0" text-anchor="middle" class="t">trust</text>
+<rect x="560" y="860" width="360" height="180" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="740.0" y="914.0" text-anchor="middle" class="h">platforms/</text>
+<text x="740.0" y="932.0" text-anchor="middle" class="t">androidMain</text>
+<text x="740.0" y="950.0" text-anchor="middle" class="t">iosMain placeholder</text>
+<text x="740.0" y="968.0" text-anchor="middle" class="t">webMain</text>
+<text x="740.0" y="986.0" text-anchor="middle" class="t">desktop optional</text>
+<rect x="1000" y="860" width="360" height="180" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="914.0" text-anchor="middle" class="h">shared/network/</text>
+<text x="1180.0" y="932.0" text-anchor="middle" class="t">Ktor client</text>
+<text x="1180.0" y="950.0" text-anchor="middle" class="t">auth interceptor</text>
+<text x="1180.0" y="968.0" text-anchor="middle" class="t">retry</text>
+<text x="1180.0" y="986.0" text-anchor="middle" class="t">serialization</text>
+<rect x="1440" y="860" width="360" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1620.0" y="914.0" text-anchor="middle" class="h">testing/</text>
+<text x="1620.0" y="932.0" text-anchor="middle" class="t">preview data</text>
+<text x="1620.0" y="950.0" text-anchor="middle" class="t">fake repos</text>
+<text x="1620.0" y="968.0" text-anchor="middle" class="t">screenshot tests</text>
+<text x="1620.0" y="986.0" text-anchor="middle" class="t">contract stubs</text>
+<polyline points="480,315 1000,315" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1008" y="307" class="small">uses UI</text>
+<polyline points="480,315 1440,315" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="307" class="small">state/models</text>
+<polyline points="480,315 1880,315" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1888" y="307" class="small">repos</text>
+<polyline points="2060,410 1180,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1188" y="852" class="small">HTTP</text>
+<polyline points="1880,315 1800,315" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="307" class="small">maps</text>
+<polyline points="300,540 300,410" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="308" y="402" class="small">screens</text>
+<polyline points="740,540 300,410" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="308" y="402" class="small">screens</text>
+<polyline points="1620,540 300,410" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="308" y="402" class="small">screens</text>
+<polyline points="740,860 300,410" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="308" y="402" class="small">targets</text>
+<polyline points="1620,860 2060,410" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="2068" y="402" class="small">fakes</text>
+<rect x="120" y="1240" width="1700" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1264" class="t">Client rule:</text>
+<text x="136" y="1282" class="t">UI uses feature state/viewmodels and repositories through interfaces. API DTOs do not leak into Compose screens. Design tokens are centralized.</text>
+</svg>

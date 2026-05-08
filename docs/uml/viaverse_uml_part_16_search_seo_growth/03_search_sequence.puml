@@ -1,0 +1,30 @@
+@startuml
+title Viaverse Search / SEO / Indexing — Sequence Diagram
+
+actor "Client / Guest" as Client
+participant "API Gateway / Web BFF" as BFF
+participant "search-service" as Search
+participant "AI intent service" as AI
+database "OpenSearch" as OpenSearch
+participant "trust-gamification" as Trust
+participant "analytics-service" as Analytics
+queue "Kafka / Outbox" as Kafka
+
+Client -> BFF : GET /search?q=...
+BFF -> Search : search(command)
+Search -> AI : optional intent/category
+Search -> OpenSearch : geo/category/full-text query
+Search -> Trust : trust/risk summaries
+Search -> Search : rank + privacy gates + sponsored after gates
+Search -> Analytics : impression event
+Search --> BFF : result cards + reason hints
+BFF --> Client : render results
+
+Kafka -> Search : EntityPublished / Updated / Removed
+Search -> OpenSearch : update search projection
+
+note bottom
+Search-service owns projections and ranking.
+It consumes public entity events; source-of-truth remains domain services.
+end note
+@enduml

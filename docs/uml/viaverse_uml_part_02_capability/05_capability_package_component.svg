@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1300" viewBox="0 0 1900 1300">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1820" height="60" rx="14" fill="#022C22"/>
+<text x="950.0" y="69" text-anchor="middle" class="title">Viaverse Capability — Package / Component Diagram</text>
+
+<rect x="80" y="180" width="300" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="230.0" y="209.0" text-anchor="middle" class="h">apps/mobile-kmp</text>
+<text x="230.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="230.0" y="249.0" text-anchor="middle" class="t">ModeSwitcher UI</text>
+<text x="230.0" y="269.0" text-anchor="middle" class="t">Profile screen</text>
+<text x="230.0" y="289.0" text-anchor="middle" class="t">Business/work entrypoints</text>
+<rect x="480" y="180" width="320" height="130" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="640.0" y="209.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<text x="640.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="640.0" y="249.0" text-anchor="middle" class="t">Account summary</text>
+<text x="640.0" y="269.0" text-anchor="middle" class="t">Mode switch request</text>
+<text x="640.0" y="289.0" text-anchor="middle" class="t">Aggregated capability view</text>
+<rect x="900" y="160" width="330" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1065.0" y="204.0" text-anchor="middle" class="h">identity-service</text>
+<text x="1065.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="1065.0" y="244.0" text-anchor="middle" class="t">AccountCapability</text>
+<text x="1065.0" y="264.0" text-anchor="middle" class="t">Session mode claim</text>
+<text x="1065.0" y="284.0" text-anchor="middle" class="t">Capability policy</text>
+<rect x="1320" y="160" width="360" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1500.0" y="204.0" text-anchor="middle" class="h">business-service / marketplace boundary</text>
+<text x="1500.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="1500.0" y="244.0" text-anchor="middle" class="t">BusinessProfile</text>
+<text x="1500.0" y="264.0" text-anchor="middle" class="t">BusinessTeamMember</text>
+<text x="1500.0" y="284.0" text-anchor="middle" class="t">Business verification</text>
+<rect x="480" y="500" width="320" height="140" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="640.0" y="534.0" text-anchor="middle" class="h">admin-bff</text>
+<text x="640.0" y="554.0" text-anchor="middle" class="t">--</text>
+<text x="640.0" y="574.0" text-anchor="middle" class="t">Capability operations</text>
+<text x="640.0" y="594.0" text-anchor="middle" class="t">Suspension/revoke</text>
+<text x="640.0" y="614.0" text-anchor="middle" class="t">Audit reason</text>
+<rect x="900" y="500" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1065.0" y="530.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1065.0" y="550.0" text-anchor="middle" class="t">--</text>
+<text x="1065.0" y="570.0" text-anchor="middle" class="t">accounts</text>
+<text x="1065.0" y="590.0" text-anchor="middle" class="t">account_capabilities</text>
+<text x="1065.0" y="610.0" text-anchor="middle" class="t">business_profiles</text>
+<text x="1065.0" y="630.0" text-anchor="middle" class="t">team_members</text>
+<rect x="1320" y="500" width="360" height="140" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1500.0" y="534.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1500.0" y="554.0" text-anchor="middle" class="t">--</text>
+<text x="1500.0" y="574.0" text-anchor="middle" class="t">CapabilityEnabled</text>
+<text x="1500.0" y="594.0" text-anchor="middle" class="t">CapabilitySuspended</text>
+<text x="1500.0" y="614.0" text-anchor="middle" class="t">ActiveModeChanged</text>
+<polyline points="380,245 480,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="488" y="237" class="small">REST</text>
+<polyline points="800,245 900,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="908" y="237" class="small">REST/gRPC</text>
+<polyline points="1230,240 1320,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="232" class="small">business checks</text>
+<polyline points="800,570 850,570 850,245 900,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="858" y="237" class="small">admin commands</text>
+<polyline points="1065,320 1065,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1073" y="492" class="small">JPA</text>
+<polyline points="1500,320 1500,430 1065,430 1065,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1073" y="422" class="small">JPA</text>
+<polyline points="1230,290 1280,290 1280,570 1320,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="562" class="small">outbox</text>
+<polyline points="1320,610 430,610 430,245 380,245" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="438" y="237" class="small">projection / refresh summary</text>
+<rect x="80" y="760" width="1500" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="784" class="t">Implementation note:</text>
+<text x="96" y="802" class="t">Mode switching is a client UX action, but eligibility is always decided by backend capability policies.</text>
+</svg>

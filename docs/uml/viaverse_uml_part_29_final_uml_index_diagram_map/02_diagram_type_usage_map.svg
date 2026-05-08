@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Final UML Index — Diagram Type Usage Map</text>
+<rect x="60" y="130" width="2480" height="1180" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">Diagram Type Usage Map</text>
+<rect x="120" y="240" width="420" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="330.0" y="307.0" text-anchor="middle" class="h">Use Case Diagrams</text>
+<text x="330.0" y="325.0" text-anchor="middle" class="t">Who does what?</text>
+<text x="330.0" y="343.0" text-anchor="middle" class="t">Actors, capabilities, external systems</text>
+<rect x="640" y="240" width="420" height="170" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="850.0" y="307.0" text-anchor="middle" class="h">Activity Diagrams</text>
+<text x="850.0" y="325.0" text-anchor="middle" class="t">How does the flow branch?</text>
+<text x="850.0" y="343.0" text-anchor="middle" class="t">Validation, policies, decisions</text>
+<rect x="1160" y="240" width="420" height="170" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1370.0" y="307.0" text-anchor="middle" class="h">Sequence Diagrams</text>
+<text x="1370.0" y="325.0" text-anchor="middle" class="t">Who calls whom?</text>
+<text x="1370.0" y="343.0" text-anchor="middle" class="t">API/service/event interaction</text>
+<rect x="1680" y="240" width="420" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1890.0" y="307.0" text-anchor="middle" class="h">Component Diagrams</text>
+<text x="1890.0" y="325.0" text-anchor="middle" class="t">Who owns what?</text>
+<text x="1890.0" y="343.0" text-anchor="middle" class="t">Services, adapters, stores</text>
+<rect x="380" y="620" width="420" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="590.0" y="687.0" text-anchor="middle" class="h">Class / Domain Models</text>
+<text x="590.0" y="705.0" text-anchor="middle" class="t">What model exists?</text>
+<text x="590.0" y="723.0" text-anchor="middle" class="t">Aggregates, entities, policies</text>
+<rect x="900" y="620" width="420" height="170" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1110.0" y="687.0" text-anchor="middle" class="h">State Diagrams</text>
+<text x="1110.0" y="705.0" text-anchor="middle" class="t">Which transitions are valid?</text>
+<text x="1110.0" y="723.0" text-anchor="middle" class="t">Lifecycle and invariants</text>
+<rect x="1420" y="620" width="420" height="170" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1630.0" y="687.0" text-anchor="middle" class="h">Master Topology</text>
+<text x="1630.0" y="705.0" text-anchor="middle" class="t">How does all connect?</text>
+<text x="1630.0" y="723.0" text-anchor="middle" class="t">Context and ownership</text>
+<polyline points="540,325 640,325" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="648" y="317" class="small">refines</text>
+<polyline points="1060,325 1160,325" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="317" class="small">drives calls</text>
+<polyline points="1580,325 1680,325" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="317" class="small">validates boundaries</text>
+<polyline points="1890,410 1890,540 590,540 590,620" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="598" y="532" class="small">owns model</text>
+<polyline points="800,705 900,705" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="908" y="697" class="small">state rules</text>
+<polyline points="1320,705 1420,705" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1428" y="697" class="small">rolls up</text>
+<rect x="120" y="1120" width="1800" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1144" class="t">Rule:</text>
+<text x="136" y="1162" class="t">Do not treat one UML type as enough. Use case explains intent, sequence explains integration, component explains ownership, class/state explain implementation invariants.</text>
+</svg>

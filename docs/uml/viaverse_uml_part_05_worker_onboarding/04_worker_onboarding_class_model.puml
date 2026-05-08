@@ -1,0 +1,96 @@
+@startuml
+title Viaverse Worker Onboarding — Class Model
+
+class WorkerProfile {
+  id: WorkerProfileId
+  accountId: AccountId
+  status: WorkerProfileStatus
+  displayName: String
+  bio: String?
+  intro: String?
+  verificationStatus: VerificationStatus
+  createdAt: Instant
+  publishedAt: Instant?
+}
+
+class WorkerCategory {
+  workerProfileId
+  categoryId
+  skillLevel: SkillLevel
+  active: Boolean
+}
+
+class ServiceArea {
+  workerProfileId
+  areaType: RADIUS | DISTRICT
+  centerPoint: GeoPoint?
+  radiusKm: Decimal?
+  districtIds: Set<AreaId>
+}
+
+class WorkerAvailability {
+  workerProfileId
+  timezone: String
+  weeklySlots: List<TimeSlot>
+  pausedUntil: Instant?
+}
+
+class PortfolioItem {
+  id: UUID
+  workerProfileId
+  mediaId: MediaId
+  title: String?
+  description: String?
+  status: PortfolioStatus
+}
+
+class WorkerVerification {
+  id: UUID
+  workerProfileId
+  required: Boolean
+  status: VerificationStatus
+  submittedAt: Instant?
+  reviewedAt: Instant?
+}
+
+class WorkerOpportunity {
+  id: UUID
+  workerProfileId
+  requestId: RequestId
+  score: Decimal
+  reasonCodes: List<ReasonCode>
+  status: OpportunityStatus
+}
+
+class WorkerProfilePolicy {
+  canEnableWorkMode()
+  canPublishProfile()
+  canReceiveOpportunity()
+  requiresVerification()
+}
+
+class WorkerEvents {
+  WorkerProfileDraftCreated
+  WorkerProfileUpdated
+  WorkerProfileActivated
+  WorkerAvailabilityChanged
+  WorkerProfilePaused
+}
+
+WorkerProfile "1" o-- "*" WorkerCategory
+WorkerProfile "1" o-- "*" ServiceArea
+WorkerProfile "1" o-- "1" WorkerAvailability
+WorkerProfile "1" o-- "*" PortfolioItem
+WorkerProfile "1" o-- "0..1" WorkerVerification
+WorkerProfile "1" o-- "*" WorkerOpportunity
+WorkerProfilePolicy ..> WorkerProfile : validates
+WorkerProfilePolicy ..> WorkerOpportunity : eligibility
+WorkerProfile ..> WorkerEvents : emits
+WorkerAvailability ..> WorkerEvents : emits
+
+note bottom
+WorkerProfile belongs to Account,
+but Account remains identity owner.
+WorkerProfile is marketplace/work capability data.
+end note
+@enduml

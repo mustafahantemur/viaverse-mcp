@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="payment-class" name="05 Payment Class Model">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Payment / Wallet — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="PaymentSession" value="PaymentSession&#xa;--&#xa;id: PaymentSessionId&#xa;jobId: JobId&#xa;requesterAccountId: AccountId&#xa;provider: PaymentProviderType&#xa;providerSessionId: String?&#xa;amount: Money&#xa;commissionAmount: Money&#xa;status: PaymentStatus&#xa;idempotencyKey: String&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="390" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="StoredMethod" value="StoredPaymentMethod&#xa;--&#xa;id: UUID&#xa;accountId: AccountId&#xa;provider: PaymentProviderType&#xa;providerToken: String&#xa;cardBrand: String?&#xa;last4: String?&#xa;expiryMonth: Int?&#xa;expiryYear: Int?&#xa;status: MethodStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="570" y="150" width="390" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="Callback" value="ProviderCallbackRecord&#xa;--&#xa;id: UUID&#xa;provider: PaymentProviderType&#xa;providerEventId: String?&#xa;paymentSessionId: UUID?&#xa;status: CallbackStatus&#xa;idempotencyKey: String&#xa;safePayloadHash: String?&#xa;receivedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="150" width="410" height="270" as="geometry"/>
+        </mxCell>
+        <mxCell id="Commission" value="CommissionLedger&#xa;--&#xa;id: UUID&#xa;jobId: JobId&#xa;paymentSessionId: UUID&#xa;rate: Decimal&#xa;amount: Money&#xa;status: CommissionStatus&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="150" width="360" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Refund" value="RefundRequest&#xa;--&#xa;id: UUID&#xa;paymentSessionId: UUID&#xa;amount: Money&#xa;reason: String&#xa;status: RefundStatus&#xa;requestedBy: AccountId&#xa;reviewedBy: AccountId?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="550" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Payout" value="PayoutHold&#xa;--&#xa;id: UUID&#xa;jobId: JobId&#xa;receiverType: WORKER | BUSINESS&#xa;receiverId: UUID&#xa;amount: Money&#xa;status: PayoutStatus&#xa;blockedReason: String?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="570" y="550" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="PaymentPolicy&#xa;--&#xa;canCreateSession()&#xa;verifyCallback()&#xa;calculateCommission()&#xa;canRefund()&#xa;canReleasePayout()&#xa;validateNoDuplicate()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="550" width="380" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Payment Events&#xa;--&#xa;PaymentSessionCreated&#xa;PaymentAuthorized&#xa;PaymentFailed&#xa;CommissionCalculated&#xa;RefundIssued&#xa;PayoutReleased" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="550" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="uses optional" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentSession" target="StoredMethod">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="470" y="260" as="point"/><mxPoint x="570" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="has callbacks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentSession" target="Callback">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="470" y="300" as="point"/><mxPoint x="1060" y="285" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="calculates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentSession" target="Commission">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="470" y="345" as="point"/><mxPoint x="1570" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="may refund" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentSession" target="Refund">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="275" y="430" as="point"/><mxPoint x="275" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="creates hold" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentSession" target="Payout">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="470" y="390" as="point"/><mxPoint x="765" y="390" as="point"/><mxPoint x="765" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="validates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="PaymentSession">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1060" y="620" as="point"/><mxPoint x="900" y="620" as="point"/><mxPoint x="900" y="450" as="point"/><mxPoint x="275" y="450" as="point"/><mxPoint x="275" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="verifies" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Callback">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1250" y="550" as="point"/><mxPoint x="1250" y="420" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="authorizes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Refund">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1060" y="650" as="point"/><mxPoint x="470" y="650" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="authorizes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Payout">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1060" y="700" as="point"/><mxPoint x="960" y="685" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl10" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentSession" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="470" y="410" as="point"/><mxPoint x="1765" y="410" as="point"/><mxPoint x="1765" y="550" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl11" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Refund" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="470" y="665" as="point"/><mxPoint x="1570" y="665" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl12" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Payout" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="960" y="665" as="point"/><mxPoint x="1570" y="665" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Data rule:&#xa;providerToken is not PAN. Only safe display fields such as brand/last4 are stored. Callback payload storage must avoid sensitive secrets." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1000" width="1540" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,53 @@
+@startuml
+title Viaverse Review / Trust / Badge / Gamification — Use Case Diagram
+left to right direction
+
+actor Requester
+actor "Worker / Business" as Provider
+actor "Job Lifecycle" as Job
+actor "Matching / Search" as Matching
+actor "Trust Admin" as Admin
+
+rectangle "Trust / Review / Gamification Boundary" {
+  usecase "Receive review prompt\nafter completed job" as Prompt
+  usecase "Review worker/business" as ReviewProvider
+  usecase "Review requester" as ReviewRequester
+  usecase "Add review tags\nquality / punctuality / clarity" as Tags
+  usecase "Validate review eligibility" as Validate
+  usecase "Publish moderated review" as Publish
+  usecase "Recalculate trust score" as Trust
+  usecase "Evaluate badge eligibility" as BadgeCheck
+  usecase "Award / revoke badge" as BadgeAward
+  usecase "Update gamification points" as Points
+  usecase "Update search ranking signal" as Rank
+  usecase "Report abusive review" as Report
+  usecase "Admin review moderation" as AdminReview
+  usecase "Emit events\nReviewSubmitted\nTrustScoreUpdated\nBadgeAwarded" as Events
+}
+
+Job --> Prompt : JobCompleted
+Requester --> ReviewProvider
+Provider --> ReviewRequester
+ReviewProvider --> Tags
+ReviewRequester --> Tags
+Tags --> Validate
+Validate --> Publish
+Publish --> Trust
+Trust --> BadgeCheck
+BadgeCheck --> BadgeAward
+BadgeAward --> Points
+Points --> Rank
+Rank --> Events
+Requester --> Report
+Provider --> Report
+Report --> AdminReview
+AdminReview --> Events
+Matching --> Rank : ranking signal
+Admin --> AdminReview
+
+note bottom
+Reviews are job-bound and two-sided.
+Trust score affects matching/search but must not expose internal risk reasons.
+Badges can be awarded and revoked.
+end note
+@enduml

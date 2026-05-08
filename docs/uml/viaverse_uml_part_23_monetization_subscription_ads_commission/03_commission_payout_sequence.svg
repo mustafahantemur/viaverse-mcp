@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Job Completion / Commission / Payout — Sequence Diagram</text>
+
+<rect x="80" y="140" width="200" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="180.0" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="179" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="180.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="350" y="140" width="200" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="450.0" y="170.0" text-anchor="middle" class="h">monetization-service</text>
+<rect x="449" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="450.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="620" y="140" width="200" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="720.0" y="170.0" text-anchor="middle" class="h">pricing/config-service</text>
+<rect x="719" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="720.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="890" y="140" width="200" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="990.0" y="170.0" text-anchor="middle" class="h">payment-service</text>
+<rect x="989" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="990.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1160" y="140" width="200" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1260.0" y="170.0" text-anchor="middle" class="h">ledger/accounting</text>
+<rect x="1259" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1260.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1430" y="140" width="200" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1530.0" y="170.0" text-anchor="middle" class="h">payout provider</text>
+<rect x="1529" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1530.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1700" y="140" width="200" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1800.0" y="170.0" text-anchor="middle" class="h">trust/reporting</text>
+<rect x="1799" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1800.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1970" y="140" width="200" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2070.0" y="170.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="2069" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="2070.0" y="735.0" text-anchor="middle" class="h"></text>
+<polyline points="280,260 350,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="358" y="252" class="small">JobCompleted event</text>
+<polyline points="550,330 620,330" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="628" y="322" class="small">load fee rules
+commission %5 default</text>
+<polyline points="550,430 890,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="898" y="422" class="small">read captured amount</text>
+<polyline points="450,520 550,520 550,580 450,580 450,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="558" y="572" class="small">calculate platform fee + net payout</text>
+<polyline points="550,670 1160,670" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="662" class="small">record fee/receivable/payable</text>
+<polyline points="550,760 890,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="898" y="752" class="small">create payout instruction</text>
+<polyline points="1090,840 1430,840" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1438" y="832" class="small">execute payout</text>
+<polyline points="550,940 1700,940" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1708" y="932" class="small">send monetization signals
+non-ranking sensitive summary</text>
+<polyline points="550,1030 1970,1030" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1978" y="1022" class="small">CommissionCharged / PayoutCalculated</text>
+<rect x="80" y="1320" width="1780" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1344" class="t">Sequence focus:</text>
+<text x="96" y="1362" class="t">monetization-service calculates business rules; payment-service moves money; ledger/accounting records financial truth. Avoid calculating fees inside marketplace-service.</text>
+</svg>

@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="notification-class" name="05 Notification Class Model">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Notification / Inbox / Delivery — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Notification" value="Notification&#xa;--&#xa;id: NotificationId&#xa;accountId: AccountId&#xa;type: NotificationType&#xa;priority: Priority&#xa;title: String&#xa;body: String&#xa;deepLink: String?&#xa;status: NotificationStatus&#xa;deduplicationKey: String&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="410" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="Attempt" value="NotificationAttempt&#xa;--&#xa;id: UUID&#xa;notificationId: NotificationId&#xa;channel: PUSH | EMAIL | SMS&#xa;provider: String&#xa;status: AttemptStatus&#xa;attemptNo: Int&#xa;errorCode: String?&#xa;sentAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="150" width="380" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="Preference" value="NotificationPreference&#xa;--&#xa;accountId: AccountId&#xa;notificationType: String&#xa;pushEnabled: Boolean&#xa;emailEnabled: Boolean&#xa;smsEnabled: Boolean&#xa;quietHours: QuietHours?&#xa;digestMode: DigestMode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="150" width="400" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="Device" value="DeviceToken&#xa;--&#xa;id: UUID&#xa;accountId: AccountId&#xa;platform: IOS | ANDROID | WEB&#xa;tokenHash: String&#xa;status: DeviceStatus&#xa;lastSeenAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="150" width="380" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Template" value="NotificationTemplate&#xa;--&#xa;type: NotificationType&#xa;locale: Locale&#xa;titleTemplate: String&#xa;bodyTemplate: String&#xa;channelOverrides: Json&#xa;version: Int" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="410" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="NotificationPolicy&#xa;--&#xa;shouldNotify()&#xa;selectChannels()&#xa;respectQuietHours()&#xa;rateLimit()&#xa;shouldDigest()&#xa;shouldRetry()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="560" width="380" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Campaign" value="AdminCampaign&#xa;--&#xa;id: UUID&#xa;segmentRule: String&#xa;templateId: String&#xa;status: CampaignStatus&#xa;rateLimitPerMinute: Int&#xa;createdBy: AccountId" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="560" width="400" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Notification Events&#xa;--&#xa;NotificationCreated&#xa;NotificationSent&#xa;NotificationFailed&#xa;NotificationRead&#xa;CampaignStarted&#xa;CampaignCompleted" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="560" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Notification" target="Attempt">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="490" y="260" as="point"/><mxPoint x="590" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="controls" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Preference" target="Notification">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1070" y="250" as="point"/><mxPoint x="490" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="used for push" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Device" target="Attempt">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1580" y="250" as="point"/><mxPoint x="970" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="renders" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Template" target="Notification">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="285" y="560" as="point"/><mxPoint x="285" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="uses" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Preference">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="970" y="650" as="point"/><mxPoint x="1070" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="validates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Notification">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="590" y="650" as="point"/><mxPoint x="490" y="300" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="creates many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Campaign" target="Notification">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1070" y="650" as="point"/><mxPoint x="490" y="300" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Notification" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="490" y="410" as="point"/><mxPoint x="1775" y="410" as="point"/><mxPoint x="1775" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Attempt" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="970" y="275" as="point"/><mxPoint x="1775" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl10" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Campaign" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1470" y="675" as="point"/><mxPoint x="1580" y="675" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Data rule:&#xa;Store tokenHash/display metadata, not raw device tokens in broad read models. Raw provider token access should be restricted/encrypted." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1030" width="1580" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

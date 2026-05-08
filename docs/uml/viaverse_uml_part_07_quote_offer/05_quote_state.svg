@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Quote / Offer — State Diagram</text>
+
+<rect x="120" y="190" width="220" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="230.0" y="230.0" text-anchor="middle" class="h">DRAFT</text>
+<rect x="500" y="190" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="610.0" y="230.0" text-anchor="middle" class="h">SENT</text>
+<rect x="860" y="190" width="250" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="985.0" y="230.0" text-anchor="middle" class="h">QUESTIONED</text>
+<rect x="1260" y="190" width="330" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1425.0" y="230.0" text-anchor="middle" class="h">REVISION_REQUESTED</text>
+<rect x="1260" y="480" width="230" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1375.0" y="520.0" text-anchor="middle" class="h">REVISED</text>
+<rect x="860" y="480" width="250" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="985.0" y="520.0" text-anchor="middle" class="h">ACCEPTED</text>
+<rect x="500" y="480" width="240" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="620.0" y="520.0" text-anchor="middle" class="h">REJECTED</text>
+<rect x="120" y="480" width="250" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="245.0" y="520.0" text-anchor="middle" class="h">WITHDRAWN</text>
+<rect x="500" y="760" width="230" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="615.0" y="800.0" text-anchor="middle" class="h">EXPIRED</text>
+<polyline points="340,230 500,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="222" class="small">send</text>
+<polyline points="720,230 860,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="868" y="222" class="small">requester asks</text>
+<polyline points="1110,230 1260,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="222" class="small">needs change</text>
+<polyline points="1425,270 1425,480" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1433" y="472" class="small">worker revises</text>
+<polyline points="1260,520 1180,520 1180,340 610,340 610,270" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1188" y="332" class="small">resend</text>
+<polyline points="610,270 610,420 985,420 985,480" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="993" y="412" class="small">requester accepts</text>
+<polyline points="1260,520 1110,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1118" y="512" class="small">requester accepts</text>
+<polyline points="610,270 610,480" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="618" y="472" class="small">requester rejects</text>
+<polyline points="500,230 245,230 245,480" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="253" y="222" class="small">sender withdraws</text>
+<polyline points="610,270 610,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="618" y="752" class="small">expiresAt</text>
+<polyline points="985,270 985,710 615,710 615,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="623" y="702" class="small">expiresAt</text>
+<rect x="180" y="980" width="1300" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="196" y="1004" class="t">Terminal states:</text>
+<text x="196" y="1022" class="t">ACCEPTED, REJECTED, WITHDRAWN, EXPIRED. ACCEPTED triggers JobCreated and payment flow in the next part.</text>
+</svg>

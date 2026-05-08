@@ -1,0 +1,14 @@
+@startuml
+title Domain Ownership Matrix
+rectangle Identity
+rectangle Marketplace
+rectangle Business
+rectangle Payment
+rectangle Chat
+rectangle Search
+Identity --> Marketplace
+Business --> Marketplace
+Marketplace --> Payment
+Marketplace --> Chat
+Marketplace ..> Search
+@enduml

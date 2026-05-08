@@ -1,0 +1,34 @@
+@startuml
+title Viaverse Chat / Messaging / Safety — Component Diagram
+
+component "KMP Client\nchat UI\nattachments\nreceipts" as Client
+component "Realtime BFF\nWebSocket/SSE/polling\nsession binding" as BFF
+component "ChatController\nConversationController\nReceiptController" as Controller
+component "Chat Use Cases\nOpenConversation\nSendMessage\nUpdateReceipt\nReportMessage\nExportForDispute" as UseCases
+component "Chat Policies\nparticipant access\njob state\nPII/off-platform safety\nretention" as Policies
+component "Ports\nMessageRepo\nMarketplacePort\nSafetyPort\nMediaPort\nNotificationPort\nOutboxPort" as Ports
+component "marketplace-service\njob/order context\nparticipants" as Market
+component "safety/moderation-service\ntext/media scan\nreport queue" as Safety
+component "media-service\nattachments\nsigned access" as Media
+database "Cassandra\nmessages\nreceipts\nconversation timeline" as Cassandra
+database "PostgreSQL\nconversation metadata\nreports\npolicy state" as PG
+queue "Kafka / Outbox\nMessageSent\nMessageReported\nConversationArchived" as Kafka
+
+Client --> BFF : realtime/HTTPS
+BFF --> Controller : command/query
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> Market : participant/job state
+Ports --> Safety : scan/report
+Ports --> Media : attachment refs
+Ports --> Cassandra : message timeline
+Ports --> PG : metadata/reports
+UseCases --> Kafka : events
+
+note bottom
+Use Cassandra for high-volume message timeline/read receipts,
+PostgreSQL for conversation metadata/reports/policies.
+Keep attachments as mediaId refs, not binary in chat DB.
+end note
+@enduml

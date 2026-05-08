@@ -1,0 +1,54 @@
+@startuml
+title Viaverse Localization / Multi-language / Regionalization — Use Case Diagram
+left to right direction
+
+actor User
+actor "Guest / SEO Visitor" as Guest
+actor "Content / Ops Admin" as Admin
+actor "Client Apps" as Client
+actor "SEO / Search" as SEO
+actor "Domain Services" as Domain
+
+rectangle "Localization / Regionalization Boundary" {
+  usecase "Detect locale\napp/device/profile" as Detect
+  usecase "Select language\nTR / EN first" as Select
+  usecase "Format dates, numbers\ncurrency, units" as Format
+  usecase "Render localized UI/content" as Content
+  usecase "Localize categories\nservice names/tags" as Catalog
+  usecase "Apply regional rules\ncountry/city/legal" as Region
+  usecase "Localize pricing\ncurrency/tax/fees" as Price
+  usecase "Localize notifications\nemail/SMS/push" as Comm
+  usecase "Generate localized SEO pages" as SeoPages
+  usecase "Manage slugs/canonicals\nhreflang" as Slug
+  usecase "Manage translations\nreview/publish" as Translate
+  usecase "Apply fallback chain\ntr-TR → tr → en" as Fallback
+  usecase "Admin localization config" as AdminConfig
+  usecase "Check translation quality" as Quality
+  usecase "Emit events\nLocaleChanged\nTranslationPublished" as Events
+}
+
+User --> Detect
+Detect --> Select
+Select --> Format
+Format --> Content
+Domain --> Catalog
+Catalog --> Region
+Region --> Price
+Price --> Comm
+Guest --> SeoPages
+SeoPages --> Slug
+Slug --> Translate
+Translate --> Fallback
+Admin --> AdminConfig
+AdminConfig --> Quality
+Quality --> Events
+Client --> Content
+SEO --> SeoPages
+Domain --> Region
+
+note bottom
+Localization is not only text translation.
+Locale affects UI, category names, search, SEO, notification templates,
+currency/tax formatting and legal/policy surfaces.
+end note
+@enduml

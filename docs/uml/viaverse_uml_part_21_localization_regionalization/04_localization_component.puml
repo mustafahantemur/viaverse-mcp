@@ -1,0 +1,34 @@
+@startuml
+title Viaverse Localization / Regionalization — Component Diagram
+
+component "KMP / Next.js Client\nresource bundles\nlocale selector\nRTL-ready layout" as Client
+component "API Gateway / BFF\nlocale headers\nlocalized DTO facade" as BFF
+component "LocalizationController\nTranslationAdminController" as Controller
+component "Localization Use Cases\nResolveLocale\nRenderTemplate\nPublishTranslation\nGenerateSeoLocalePage" as UseCases
+component "Localization Policies\nfallback chain\nregional availability\nlegal/currency rules\nquality gates" as Policies
+component "Ports\nTranslationRepo\nRegionalConfigRepo\nCatalogLocalePort\nPricingLocalePort\nOutboxPort" as Ports
+database "Translation Store\nkeys\nmessages\ntemplates\nversions" as Store
+component "taxonomy-service\ncanonical category IDs\nlocalized names/tags" as Taxonomy
+component "pricing/config-service\ncurrency\ntax/fees\ncountry rules" as Pricing
+component "SEO / Search\nlocalized slugs\nhreflang\nschema.org" as SEO
+component "notification-service\nlocalized templates\nquiet hour timezone" as Notification
+queue "Kafka / Outbox\nLocaleChanged\nTranslationPublished\nMissingKeyDetected" as Kafka
+
+Client --> BFF : locale header
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> Store : translations
+Ports --> Taxonomy : localized catalog
+Ports --> Pricing : regional pricing
+UseCases --> SEO : SEO publish
+UseCases --> Notification : template publish
+UseCases --> Kafka : events
+
+note bottom
+Canonical domain values stay language-neutral.
+Localization layer converts IDs/values into locale-specific labels,
+slugs, templates and formats.
+end note
+@enduml

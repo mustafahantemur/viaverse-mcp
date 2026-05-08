@@ -1,0 +1,37 @@
+@startuml
+title Viaverse Review / Trust / Badge / Gamification — Sequence Diagram
+
+actor User
+participant "Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "trust-gamification-service" as Trust
+participant "marketplace-service" as Marketplace
+participant "moderation-service" as Moderation
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+participant "search/matching" as Search
+
+Kafka -> Trust : JobCompleted
+Trust -> DB : create ReviewPrompt x2
+
+User -> Client : submit review
+Client -> BFF : POST /reviews
+BFF -> Trust : submitReview(command)
+Trust -> Marketplace : validate job participant
+Marketplace --> Trust : valid job/participant
+Trust -> Moderation : scan text/tags
+Moderation --> Trust : safe / queued / rejected
+Trust -> DB : insert Review + ReviewTag
+Trust -> Trust : calculate TrustScore + BadgeEligibility
+Trust -> DB : persist score/badge/points
+Trust -> Kafka : ReviewSubmitted
+Trust -> Kafka : TrustScoreUpdated
+Trust -> Kafka : BadgeAwarded
+Kafka -> Search : update ranking projection
+Kafka --> Client : notification / refresh profile
+
+note bottom
+Trust service validates job context but owns reviews,
+trust score, badge state and gamification points.
+end note
+@enduml

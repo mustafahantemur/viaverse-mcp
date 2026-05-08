@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Dispute / Refund / Payout — Use Case Diagram</text>
+
+<rect x="270" y="135" width="1560" height="1130" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="286" y="160" class="h">Dispute / Refund / Payout Boundary</text>
+<rect x="60" y="300" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="331.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="351.0" text-anchor="middle" class="t">Requester</text>
+<rect x="60" y="820" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="851.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="871.0" text-anchor="middle" class="t">Worker / Business</text>
+<rect x="1900" y="250" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="281.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="301.0" text-anchor="middle" class="t">payment-service</text>
+<rect x="1900" y="600" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="631.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="651.0" text-anchor="middle" class="t">Support / Dispute Admin</text>
+<rect x="1900" y="930" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="961.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="981.0" text-anchor="middle" class="t">Trust / Risk</text>
+<rect x="360" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="231.0" text-anchor="middle" class="h">Open dispute</text>
+<rect x="700" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="231.0" text-anchor="middle" class="h">Select dispute reason</text>
+<rect x="1040" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="222.0" text-anchor="middle" class="h">Submit evidence</text>
+<text x="1172.5" y="242.0" text-anchor="middle" class="t">messages / media / notes</text>
+<rect x="1380" y="190" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="231.0" text-anchor="middle" class="h">Block payout</text>
+<rect x="360" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="491.0" text-anchor="middle" class="h">Notify parties</text>
+<rect x="700" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="491.0" text-anchor="middle" class="h">Provider/requester response</text>
+<rect x="1040" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="491.0" text-anchor="middle" class="h">Admin reviews case</text>
+<rect x="1380" y="450" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="491.0" text-anchor="middle" class="h">Make resolution decision</text>
+<rect x="360" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="492.5" y="752.0" text-anchor="middle" class="h">Issue refund</text>
+<text x="492.5" y="772.0" text-anchor="middle" class="t">full / partial</text>
+<rect x="700" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="761.0" text-anchor="middle" class="h">Release payout</text>
+<rect x="1040" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="752.0" text-anchor="middle" class="h">Split resolution</text>
+<text x="1172.5" y="772.0" text-anchor="middle" class="t">partial refund + partial payout</text>
+<rect x="1380" y="720" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="752.0" text-anchor="middle" class="h">Record audit trail</text>
+<text x="1512.5" y="772.0" text-anchor="middle" class="t">reason required</text>
+<rect x="700" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="832.5" y="1021.0" text-anchor="middle" class="h">Close dispute</text>
+<rect x="1040" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1172.5" y="1021.0" text-anchor="middle" class="h">Update trust/risk signals</text>
+<rect x="1380" y="980" width="265" height="82" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1512.5" y="994.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1512.5" y="1014.0" text-anchor="middle" class="t">DisputeOpened</text>
+<text x="1512.5" y="1034.0" text-anchor="middle" class="t">RefundIssued</text>
+<text x="1512.5" y="1054.0" text-anchor="middle" class="t">PayoutReleased</text>
+<polyline points="245,340 270,340 270,231 360,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,860 300,860 300,231 360,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="625,231 700,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,231 1040,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,231 1380,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,272 1512,360 492,360 492,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="625,491 700,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,491 1040,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,491 1380,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,532 1512,650 492,650 492,720" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="500" y="642" class="small">refund outcome</text>
+<polyline points="1512,532 1512,650 832,650 832,720" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="840" y="642" class="small">payout outcome</text>
+<polyline points="1512,532 1512,650 1172,650 1172,720" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1180" y="642" class="small">split outcome</text>
+<polyline points="625,761 1380,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,761 1380,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,761 1380,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1512,802 1512,900 832,900 832,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="965,1021 1040,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1305,1021 1380,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,290 1780,290 1780,231 1645,231" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="223" class="small">payout hold</text>
+<polyline points="1900,290 1770,290 1770,761 625,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1778" y="753" class="small">refund command</text>
+<polyline points="1900,290 1770,290 1770,761 965,761" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1778" y="753" class="small">payout command</text>
+<polyline points="1900,640 1760,640 1760,491 1305,491" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1768" y="483" class="small">case owner</text>
+<polyline points="1900,970 1780,970 1780,1021 1305,1021" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="1013" class="small">risk signal</text>
+<rect x="360" y="1210" width="1370" height="58" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="376" y="1234" class="t">Rules:</text>
+<text x="376" y="1252" class="t">Dispute opens before payout release and blocks payout. Every refund/payout decision requires reason + audit. Trust/risk updates are side effects of resolution.</text>
+</svg>

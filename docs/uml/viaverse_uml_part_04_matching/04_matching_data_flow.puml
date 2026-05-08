@@ -1,0 +1,25 @@
+@startuml
+title Viaverse Matching — Data Flow Diagram
+
+rectangle "ServiceRequest Snapshot\ncategory / budget / area / urgency" as Request
+database "OpenSearch Provider/Business Index\ncategory / geo / services / public profile" as Index
+database "Identity Eligibility\naccount status / capabilities / business team" as Identity
+database "Trust Data\nrating / badges / risk / disputes / reports" as Trust
+database "Valkey Hot State\navailability / rate limit / frequency cap" as HotState
+component "Matching Ranker\ncandidate scoring + explanation" as Ranker
+database "WorkerOpportunity Projection\nrequestId / targetId / score / reason codes" as Opportunity
+component "Notification Inbox / Push\nnew matching opportunity" as Notification
+
+Request --> Ranker : request features
+Index --> Ranker : candidate docs
+Identity --> Ranker : eligibility
+Trust --> Ranker : trust/risk
+HotState --> Ranker : availability
+Ranker --> Opportunity : ranked opportunities
+Opportunity --> Notification : notify
+
+note bottom
+OpenSearch, trust summaries and hot availability are read inputs.
+The request source-of-truth remains marketplace-service/PostgreSQL.
+end note
+@enduml

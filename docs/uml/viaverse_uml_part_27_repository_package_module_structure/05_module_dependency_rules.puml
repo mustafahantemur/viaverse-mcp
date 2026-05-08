@@ -1,0 +1,10 @@
+@startuml
+title Viaverse Module Dependency Rules
+package Domain
+package Application
+package Inbound
+package Outbound
+Inbound --> Application
+Application --> Domain
+Application ..> Outbound
+@enduml

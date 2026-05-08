@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="dispute-class" name="04 Dispute Class Model">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Dispute / Refund / Payout — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="DisputeCase" value="DisputeCase&#xa;--&#xa;id: DisputeId&#xa;jobId: JobId&#xa;openedBy: AccountId&#xa;againstAccountId: AccountId?&#xa;status: DisputeStatus&#xa;reason: DisputeReason&#xa;summary: String&#xa;payoutBlocked: Boolean&#xa;openedAt: Instant&#xa;closedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="420" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="Evidence" value="DisputeEvidence&#xa;--&#xa;id: UUID&#xa;disputeId: DisputeId&#xa;submittedBy: AccountId&#xa;type: MESSAGE | MEDIA | TEXT | SYSTEM&#xa;refId: UUID?&#xa;note: String?&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="410" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="Response" value="DisputeResponse&#xa;--&#xa;id: UUID&#xa;disputeId: DisputeId&#xa;accountId: AccountId&#xa;message: String&#xa;evidenceRefs: List&lt;UUID&gt;&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="150" width="380" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Resolution" value="DisputeResolution&#xa;--&#xa;id: UUID&#xa;disputeId: DisputeId&#xa;type: REFUND | PAYOUT | SPLIT | NO_ACTION&#xa;refundAmount: Money?&#xa;payoutAmount: Money?&#xa;reason: String&#xa;resolvedBy: AccountId&#xa;resolvedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="150" width="420" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="DisputePolicy&#xa;--&#xa;canOpenDispute()&#xa;canSubmitEvidence()&#xa;canResolve()&#xa;requiresPayoutBlock()&#xa;validateMoneyDecision()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="390" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Audit" value="DisputeAuditLog&#xa;--&#xa;id: UUID&#xa;disputeId: DisputeId&#xa;actorId: AccountId&#xa;action: String&#xa;reason: String?&#xa;beforeState: String?&#xa;afterState: String?&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="580" y="560" width="420" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="PaymentAction" value="PaymentResolutionAction&#xa;--&#xa;id: UUID&#xa;disputeId: DisputeId&#xa;paymentSessionId: UUID&#xa;action: REFUND | RELEASE_PAYOUT | SPLIT&#xa;amount: Money&#xa;status: ActionStatus&#xa;idempotencyKey: String" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="560" width="430" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Dispute Events&#xa;--&#xa;DisputeOpened&#xa;EvidenceSubmitted&#xa;PayoutBlocked&#xa;DisputeResolved&#xa;RefundIssued&#xa;PayoutReleased&#xa;RiskSignalUpdated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="560" width="390" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="DisputeCase" target="Evidence">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="260" as="point"/><mxPoint x="600" y="245" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="DisputeCase" target="Response">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="300" as="point"/><mxPoint x="1110" y="255" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="1 -&gt; optional/final" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="DisputeCase" target="Resolution">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="350" as="point"/><mxPoint x="1580" y="280" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="validates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="DisputeCase">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="275" y="560" as="point"/><mxPoint x="275" y="440" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="creates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Resolution" target="PaymentAction">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1790" y="450" as="point"/><mxPoint x="1790" y="500" as="point"/><mxPoint x="1315" y="500" as="point"/><mxPoint x="1315" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="all changes" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="DisputeCase" target="Audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="290" y="440" as="point"/><mxPoint x="290" y="500" as="point"/><mxPoint x="790" y="500" as="point"/><mxPoint x="790" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="resolution audit" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Resolution" target="Audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1580" y="300" as="point"/><mxPoint x="1000" y="650" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="PaymentAction" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1530" y="680" as="point"/><mxPoint x="1620" y="685" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="DisputeCase" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="410" as="point"/><mxPoint x="1820" y="410" as="point"/><mxPoint x="1820" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Data rule:&#xa;Evidence should reference source records/media where possible. Copying private chat/media into dispute case must be minimized and access audited." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1050" width="1600" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

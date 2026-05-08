@@ -1,0 +1,89 @@
+@startuml
+title Viaverse Category / Taxonomy / Dynamic Environment — Class Model
+
+class Category {
+  id: CategoryId
+  parentId: CategoryId?
+  code: String
+  level: Int
+  status: CategoryStatus
+  sortOrder: Int
+  riskLevel: RiskLevel
+  createdAt: Instant
+}
+
+class Tag {
+  id: TagId
+  code: String
+  tagType: INTENT | SKILL | STYLE | URGENCY
+  status: TagStatus
+}
+
+class CategoryRule {
+  categoryId: CategoryId
+  requiredFields: Set<FieldKey>
+  allowedBudgetModes: Set<BudgetMode>
+  requiresModeration: Boolean
+  commissionRuleScope: String?
+  visibilityRule: String
+}
+
+class FormSchema {
+  id: UUID
+  categoryId: CategoryId
+  version: Int
+  fields: JsonSchema
+  uiHints: Json
+  status: SchemaStatus
+}
+
+class DynamicEnvironment {
+  accountId: AccountId
+  area: GeoArea
+  interestCategoryIds: Set<CategoryId>
+  intentTags: Set<TagId>
+  radiusKm: Decimal?
+  updatedAt: Instant
+}
+
+class CategoryMapping {
+  sourceType: REQUEST | PROVIDER | BUSINESS
+  sourceId: UUID
+  categoryId: CategoryId
+  tagIds: Set<TagId>
+  confidence: Decimal
+  mappedBy: USER | AI | ADMIN
+}
+
+class TaxonomyVersion {
+  id: UUID
+  version: Int
+  status: DRAFT | PUBLISHED | RETIRED
+  publishedAt: Instant?
+  createdBy: AccountId
+}
+
+class TaxonomyEvents {
+  TaxonomyPublished
+  CategoryRuleChanged
+  DynamicEnvironmentUpdated
+  CategoryMapped
+  MissingCategoryDetected
+}
+
+Category "1" o-- "*" Category : parent/child
+Category "*" -- "*" Tag
+Category "1" o-- "1" CategoryRule
+Category "1" o-- "*" FormSchema
+DynamicEnvironment ..> Category : interests
+CategoryMapping ..> Category : maps to
+TaxonomyVersion ..> Category : contains snapshot
+TaxonomyVersion ..> TaxonomyEvents : emits
+CategoryMapping ..> TaxonomyEvents : emits
+DynamicEnvironment ..> TaxonomyEvents : emits
+
+note bottom
+Category tree, tags, form schemas and category rules are separate.
+Do not hardcode category-specific fields in client screens or backend request DTOs.
+end note
+@enduml

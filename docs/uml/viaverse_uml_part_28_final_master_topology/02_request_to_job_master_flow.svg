@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Request-to-Job End-to-End Flow</text>
+<rect x="80" y="180" width="260" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="210.0" y="211.0" text-anchor="middle" class="h">User</text>
+<text x="210.0" y="229.0" text-anchor="middle" class="t">request work</text>
+<rect x="420" y="180" width="300" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="570.0" y="216.0" text-anchor="middle" class="h">KMP Client</text>
+<text x="570.0" y="234.0" text-anchor="middle" class="t">create request flow</text>
+<rect x="820" y="180" width="300" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="970.0" y="216.0" text-anchor="middle" class="h">BFF / API Gateway</text>
+<text x="970.0" y="234.0" text-anchor="middle" class="t">auth + validation</text>
+<rect x="1220" y="120" width="300" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1370.0" y="156.0" text-anchor="middle" class="h">taxonomy-service</text>
+<text x="1370.0" y="174.0" text-anchor="middle" class="t">category + form schema</text>
+<rect x="1220" y="300" width="300" height="100" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1370.0" y="341.0" text-anchor="middle" class="h">marketplace-service</text>
+<text x="1370.0" y="359.0" text-anchor="middle" class="t">request / offer / job</text>
+<rect x="1620" y="120" width="300" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1770.0" y="156.0" text-anchor="middle" class="h">search-service</text>
+<text x="1770.0" y="174.0" text-anchor="middle" class="t">matching candidates</text>
+<rect x="1620" y="300" width="300" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1770.0" y="336.0" text-anchor="middle" class="h">notification-service</text>
+<text x="1770.0" y="354.0" text-anchor="middle" class="t">provider alerts</text>
+<rect x="2020" y="180" width="300" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2170.0" y="216.0" text-anchor="middle" class="h">Provider / Business</text>
+<text x="2170.0" y="234.0" text-anchor="middle" class="t">quote / accept</text>
+<rect x="1220" y="520" width="300" height="100" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1370.0" y="561.0" text-anchor="middle" class="h">payment-service</text>
+<text x="1370.0" y="579.0" text-anchor="middle" class="t">payment intent / capture</text>
+<rect x="1620" y="520" width="300" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1770.0" y="561.0" text-anchor="middle" class="h">chat-service</text>
+<text x="1770.0" y="579.0" text-anchor="middle" class="t">job conversation</text>
+<rect x="2020" y="520" width="300" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2170.0" y="561.0" text-anchor="middle" class="h">trust-service</text>
+<text x="2170.0" y="579.0" text-anchor="middle" class="t">completion / review / rating</text>
+<rect x="1220" y="760" width="700" height="100" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1570.0" y="801.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1570.0" y="819.0" text-anchor="middle" class="t">RequestCreated / OfferSubmitted / JobCompleted</text>
+<rect x="1220" y="960" width="700" height="100" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1570.0" y="1001.0" text-anchor="middle" class="h">Observability</text>
+<text x="1570.0" y="1019.0" text-anchor="middle" class="t">trace + logs + product analytics</text>
+<polyline points="340,220 420,225" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="428" y="217" class="small">create</text>
+<polyline points="720,225 820,225" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="828" y="217" class="small">POST request</text>
+<polyline points="1120,225 1220,165" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1228" y="157" class="small">resolve form/category</text>
+<polyline points="1120,225 1220,350" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1228" y="342" class="small">create request</text>
+<polyline points="1520,350 1620,165" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="157" class="small">publish projection</text>
+<polyline points="1770,210 1770,300" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1778" y="292" class="small">matched candidates</text>
+<polyline points="1920,345 2020,225" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="2028" y="217" class="small">push/SMS/email</text>
+<polyline points="2020,225 1520,350" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="342" class="small">quote/offer</text>
+<polyline points="1370,400 1370,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1378" y="512" class="small">accepted job/payment</text>
+<polyline points="1520,350 1620,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="562" class="small">open job chat</text>
+<polyline points="1220,570 1120,570 1120,350 1220,350" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1128" y="342" class="small">paid/captured</text>
+<polyline points="1520,350 2170,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="2178" y="512" class="small">complete/review</text>
+<polyline points="1370,400 1370,760" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1378" y="752" class="small">events</text>
+<polyline points="1370,620 1370,760" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1378" y="752" class="small">payment events</text>
+<polyline points="1770,620 1770,760" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1778" y="752" class="small">chat events</text>
+<polyline points="1570,860 1570,960" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1578" y="952" class="small">analytics/alerts</text>
+<rect x="120" y="1180" width="1850" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1204" class="t">Flow rule:</text>
+<text x="136" y="1222" class="t">Request creation is not just a form submit: taxonomy, matching, notification, offer, payment, chat, completion and trust events are connected vertical slice.</text>
+</svg>

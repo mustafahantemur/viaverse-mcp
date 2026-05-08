@@ -1,0 +1,90 @@
+@startuml
+title Viaverse Roadmap / Deliverable / Definition of Done — Class Model
+
+class RoadmapPhase {
+  code: String
+  name: String
+  goal: String
+  entryCriteria: List<String>
+  exitCriteria: List<String>
+  status: PhaseStatus
+}
+
+class Epic {
+  id: UUID
+  phaseCode: String
+  boundedContext: String
+  businessOutcome: String
+  priority: Int
+  status: EpicStatus
+}
+
+class EngineeringTask {
+  id: UUID
+  epicId: UUID
+  type: BACKEND | CLIENT | INFRA | DOCS | QA
+  owner: String
+  acceptanceCriteria: List<String>
+  status: TaskStatus
+}
+
+class ContractArtifact {
+  id: UUID
+  type: REST | EVENT | DB | UI | ADR
+  path: String
+  version: String
+  owner: String
+  reviewed: Boolean
+}
+
+class DefinitionOfDone {
+  code: String
+  requiresTests: Boolean
+  requiresDocs: Boolean
+  requiresObservability: Boolean
+  requiresSecurityReview: Boolean
+  requiresRollbackPlan: Boolean
+}
+
+class DeliveryRisk {
+  id: UUID
+  scope: PHASE | EPIC | TASK
+  riskType: TECH | PRODUCT | LEGAL | COST
+  severity: Severity
+  mitigation: String
+  status: RiskStatus
+}
+
+class ADR {
+  id: String
+  title: String
+  status: PROPOSED | ACCEPTED | SUPERSEDED
+  context: String
+  decision: String
+  consequences: String
+}
+
+class DeliveryEvents {
+  PhaseStarted
+  EpicReady
+  TaskBlocked
+  ContractChanged
+  ReleaseCandidateCreated
+  GoLiveApproved
+}
+
+RoadmapPhase "1" o-- "*" Epic
+Epic "1" o-- "*" EngineeringTask
+EngineeringTask --> ContractArtifact : produces/updates
+DefinitionOfDone ..> EngineeringTask : validates
+DeliveryRisk ..> Epic : risks
+ADR --> ContractArtifact : governs
+RoadmapPhase ..> DeliveryEvents : emits
+EngineeringTask ..> DeliveryEvents : emits
+ADR ..> DeliveryEvents : emits
+
+note bottom
+Roadmap items are traceable: Phase → Epic → Task → Contract/Code/Test/Docs.
+Decisions live as ADRs, not hidden in chat messages.
+end note
+@enduml

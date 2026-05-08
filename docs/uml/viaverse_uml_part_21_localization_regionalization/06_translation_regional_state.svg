@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Translation / Regional Config — State Diagram</text>
+
+<rect x="120" y="180" width="220" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="230.0" y="220.0" text-anchor="middle" class="h">MISSING</text>
+<rect x="500" y="180" width="220" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="610.0" y="220.0" text-anchor="middle" class="h">DRAFT</text>
+<rect x="880" y="180" width="240" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1000.0" y="220.0" text-anchor="middle" class="h">IN_REVIEW</text>
+<rect x="1260" y="180" width="260" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1390.0" y="220.0" text-anchor="middle" class="h">PUBLISHED</text>
+<rect x="1260" y="500" width="320" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1420.0" y="540.0" text-anchor="middle" class="h">FALLBACK_ACTIVE</text>
+<rect x="880" y="500" width="280" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1020.0" y="540.0" text-anchor="middle" class="h">DEPRECATED</text>
+<rect x="500" y="500" width="240" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="620.0" y="540.0" text-anchor="middle" class="h">ARCHIVED</text>
+<rect x="500" y="820" width="360" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="680.0" y="860.0" text-anchor="middle" class="h">REGIONAL_CONFIG_DRAFT</text>
+<rect x="960" y="820" width="420" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1170.0" y="860.0" text-anchor="middle" class="h">REGIONAL_CONFIG_PUBLISHED</text>
+<polyline points="340,220 500,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="212" class="small">create</text>
+<polyline points="720,220 880,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="212" class="small">submit</text>
+<polyline points="1120,220 1260,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="212" class="small">approve</text>
+<polyline points="880,260 720,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="728" y="252" class="small">changes requested</text>
+<polyline points="1390,260 1390,500" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1398" y="492" class="small">target locale missing</text>
+<polyline points="1260,540 1190,540 1190,260 1260,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1198" y="252" class="small">translation available</text>
+<polyline points="1260,220 1160,220 1160,540" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1168" y="212" class="small">key retired</text>
+<polyline points="880,540 740,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="748" y="532" class="small">cleanup</text>
+<polyline points="860,860 960,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="968" y="852" class="small">approve config</text>
+<polyline points="960,900 860,900" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="868" y="892" class="small">new version</text>
+<rect x="160" y="1080" width="1600" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1104" class="t">State rule:</text>
+<text x="176" y="1122" class="t">Publishing translation/regional config should be versioned and rollbackable. SEO localized slugs need canonical/hreflang consistency before publish.</text>
+</svg>

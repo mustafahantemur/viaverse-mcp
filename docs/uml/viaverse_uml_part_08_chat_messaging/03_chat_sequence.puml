@@ -1,0 +1,37 @@
+@startuml
+title Viaverse Chat / Messaging — Sequence Diagram
+
+actor Sender
+participant "Sender Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "messaging-service" as Messaging
+participant "marketplace-service" as Marketplace
+participant "Safety Policy" as Safety
+participant "media-service" as Media
+database "PostgreSQL / Cassandra" as DB
+participant "notification-service" as Notification
+
+Sender -> Client : compose message
+Client -> BFF : POST /conversations/{id}/messages
+BFF -> Messaging : sendMessage(command)
+Messaging -> Marketplace : validate quote/job context
+Marketplace --> Messaging : context + allowed policy state
+Messaging -> Safety : scan text + policy state
+Safety --> Messaging : allow / warn / block / risk signal
+Messaging -> Media : attach media refs optional
+Messaging -> DB : persist message + participant state
+Messaging -> DB : append read model / inbox row
+Messaging -> Notification : NotificationCreated
+Notification --> Client : recipient push/in-app update
+
+Sender -> Client : open/read
+Client -> BFF : POST /messages/{id}/read
+BFF -> Messaging : markRead
+Messaging -> DB : update read receipt
+
+note bottom
+Message send validates participant + quote/job context,
+then safety policy, then persistence and notification.
+Media is attached by reference.
+end note
+@enduml

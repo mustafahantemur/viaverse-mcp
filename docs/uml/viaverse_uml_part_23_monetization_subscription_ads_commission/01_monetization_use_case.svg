@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Monetization / Subscription / Ads / Commission — Use Case Diagram</text>
+
+<rect x="270" y="135" width="1560" height="1130" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="286" y="160" class="h">Monetization Boundary</text>
+<rect x="60" y="250" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="281.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="301.0" text-anchor="middle" class="t">Business Owner</text>
+<rect x="60" y="610" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="641.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="661.0" text-anchor="middle" class="t">Individual Worker</text>
+<rect x="60" y="970" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="1001.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="1021.0" text-anchor="middle" class="t">Admin / Growth Ops</text>
+<rect x="1900" y="230" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="252.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="272.0" text-anchor="middle" class="t">Payment Providers</text>
+<text x="1992.5" y="292.0" text-anchor="middle" class="t">Iyzico / Stripe / Masterpass</text>
+<rect x="1900" y="560" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="591.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="611.0" text-anchor="middle" class="t">Search / Ads</text>
+<rect x="1900" y="900" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="931.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="951.0" text-anchor="middle" class="t">Accounting / Reporting</text>
+<rect x="360" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="223.0" text-anchor="middle" class="h">Choose subscription plan</text>
+<text x="500.0" y="243.0" text-anchor="middle" class="t">first month free</text>
+<rect x="700" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="223.0" text-anchor="middle" class="h">Start trial</text>
+<text x="840.0" y="243.0" text-anchor="middle" class="t">business account</text>
+<rect x="1040" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="223.0" text-anchor="middle" class="h">Create billing profile</text>
+<text x="1180.0" y="243.0" text-anchor="middle" class="t">invoice/payment method</text>
+<rect x="1380" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="232.0" text-anchor="middle" class="h">Renew / cancel / downgrade</text>
+<rect x="360" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="483.0" text-anchor="middle" class="h">Calculate commission</text>
+<text x="500.0" y="503.0" text-anchor="middle" class="t">%5 default configurable</text>
+<rect x="700" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="483.0" text-anchor="middle" class="h">Calculate platform fee</text>
+<text x="840.0" y="503.0" text-anchor="middle" class="t">per job/order</text>
+<rect x="1040" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="492.0" text-anchor="middle" class="h">Net payout calculation</text>
+<rect x="1380" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="492.0" text-anchor="middle" class="h">Refund / dispute adjustment</text>
+<rect x="360" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="753.0" text-anchor="middle" class="h">Create sponsored placement</text>
+<text x="500.0" y="773.0" text-anchor="middle" class="t">non-blocking ads</text>
+<rect x="700" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="753.0" text-anchor="middle" class="h">Manage ad budget</text>
+<text x="840.0" y="773.0" text-anchor="middle" class="t">caps / pacing</text>
+<rect x="1040" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="762.0" text-anchor="middle" class="h">Apply ad relevance gates</text>
+<rect x="1380" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="753.0" text-anchor="middle" class="h">Revenue reporting</text>
+<text x="1520.0" y="773.0" text-anchor="middle" class="t">MRR / GMV / take rate</text>
+<rect x="700" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="1013.0" text-anchor="middle" class="h">Admin monetization config</text>
+<text x="840.0" y="1033.0" text-anchor="middle" class="t">plans/fees/free rights</text>
+<rect x="1040" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="1013.0" text-anchor="middle" class="h">Promotions / coupons</text>
+<text x="1180.0" y="1033.0" text-anchor="middle" class="t">free credits</text>
+<rect x="1380" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="1004.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1520.0" y="1024.0" text-anchor="middle" class="t">SubscriptionStarted</text>
+<text x="1520.0" y="1044.0" text-anchor="middle" class="t">CommissionCharged</text>
+<polyline points="245,290 270,290 270,232 360,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="640,232 700,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,232 1040,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,232 1380,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,650 300,650 300,492 360,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="308" y="484" class="small">job completion</text>
+<polyline points="245,290 310,290 310,492 360,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="318" y="484" class="small">business order</text>
+<polyline points="640,492 700,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,492 1040,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,492 1380,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1388" y="484" class="small">adjustment</text>
+<polyline points="245,290 320,290 320,762 360,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="640,762 700,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,762 1040,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,762 1380,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1010 320,1010 320,1022 700,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,1022 1040,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,1022 1380,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,270 1780,270 1780,232 1320,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="224" class="small">payment</text>
+<polyline points="1900,270 1780,270 1780,492 1320,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="484" class="small">payout</text>
+<polyline points="1900,600 1780,600 1780,762 1320,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="754" class="small">ad ranking</text>
+<polyline points="1900,940 1780,940 1780,762 1660,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="754" class="small">financial reports</text>
+<rect x="360" y="1210" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="376" y="1234" class="t">Rules:</text>
+<text x="376" y="1252" class="t">Normal users are free by default. Monetization starts with business subscriptions, configurable commission, and non-blocking sponsored placements that cannot bypass relevance/safety gates.</text>
+</svg>

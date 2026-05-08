@@ -1,0 +1,97 @@
+@startuml
+title Viaverse Security / Privacy / KVKK — Class Model
+
+class AccountSession {
+  id: UUID
+  accountId: AccountId
+  deviceId: UUID?
+  refreshTokenHash: String
+  ipHash: String
+  userAgentHash: String
+  status: SessionStatus
+  expiresAt: Instant
+  createdAt: Instant
+}
+
+class CapabilityGrant {
+  accountId: AccountId
+  capability: REQUEST_WORK | DO_WORK | OPERATE_BUSINESS
+  status: GrantStatus
+  verifiedAt: Instant?
+  revokedAt: Instant?
+}
+
+class ConsentRecord {
+  id: UUID
+  accountId: AccountId
+  purpose: ConsentPurpose
+  status: GRANTED | DENIED | WITHDRAWN
+  version: String
+  source: String
+  changedAt: Instant
+}
+
+class DataSubjectRequest {
+  id: UUID
+  accountId: AccountId
+  requestType: EXPORT | DELETE | CORRECT
+  status: DSARStatus
+  verifiedAt: Instant?
+  completedAt: Instant?
+}
+
+class SecurityPolicy {
+  canAccessResource()
+  canUseCapability()
+  requiresAudit()
+  requiresMfa()
+  shouldRedactField()
+  retentionForDataClass()
+}
+
+class DataClassification {
+  dataClass: PUBLIC | INTERNAL | PERSONAL | SENSITIVE
+  retentionClass: String
+  encryptionRequired: Boolean
+  auditRequired: Boolean
+  exportable: Boolean
+  deletable: Boolean
+}
+
+class SensitiveAccessAudit {
+  id: UUID
+  actorAccountId: AccountId
+  resourceType: String
+  resourceId: UUID
+  action: String
+  reason: String?
+  correlationId: String
+  createdAt: Instant
+}
+
+class SecurityPrivacyEvents {
+  LoginSucceeded
+  LoginFailed
+  ConsentChanged
+  DataExportReady
+  DataDeleted
+  SensitiveAccessLogged
+  SecurityIncidentRaised
+}
+
+AccountSession --> CapabilityGrant : uses account
+ConsentRecord --> DataSubjectRequest : affects
+SecurityPolicy ..> CapabilityGrant : checks
+SecurityPolicy --> DataClassification : uses
+SecurityPolicy --> SensitiveAccessAudit : requires
+DataSubjectRequest --> SensitiveAccessAudit : audits
+ConsentRecord ..> SecurityPrivacyEvents : emits
+DataSubjectRequest ..> SecurityPrivacyEvents : emits
+SensitiveAccessAudit ..> SecurityPrivacyEvents : emits
+AccountSession ..> SecurityPrivacyEvents : emits
+
+note bottom
+Account identity, capability grants and consent records are separate concepts.
+Do not encode product capabilities as only string roles in JWT.
+end note
+@enduml

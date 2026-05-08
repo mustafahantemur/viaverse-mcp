@@ -1,0 +1,28 @@
+@startuml
+title Viaverse Conversation / Message State — State Diagram
+
+[*] --> CONVERSATION_OPEN
+CONVERSATION_OPEN --> ACTIVE : participants valid
+ACTIVE --> LOCKED : job closed/dispute
+LOCKED --> ACTIVE : reopened
+LOCKED --> ARCHIVED : retention/archive
+
+[*] --> MESSAGE_DRAFT
+MESSAGE_DRAFT --> SCANNING : send
+SCANNING --> SENT : safe
+SCANNING --> HELD_FOR_REVIEW : needs review
+HELD_FOR_REVIEW --> SENT : approved
+HELD_FOR_REVIEW --> BLOCKED : rejected
+SENT --> DELIVERED : recipient reached
+DELIVERED --> READ : opened
+
+ARCHIVED --> [*]
+READ --> [*]
+BLOCKED --> [*]
+
+note bottom
+Conversation state and message state are separate.
+A locked conversation may remain readable but not writable;
+dispute/support export can still be policy-controlled.
+end note
+@enduml

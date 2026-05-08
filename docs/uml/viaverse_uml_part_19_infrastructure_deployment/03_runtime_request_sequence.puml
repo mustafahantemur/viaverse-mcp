@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Runtime Request / Service Communication — Sequence Diagram
+
+actor Client
+participant "CloudFront/WAF" as Edge
+participant "ALB/Ingress" as ALB
+participant "API Gateway / BFF" as Gateway
+participant "Domain Service" as Service
+database "PostgreSQL/Redis" as DB
+queue "Kafka/Outbox" as Kafka
+participant "OTel/Logs/Metrics" as OTel
+
+Client -> Edge : HTTPS request
+Edge -> ALB : WAF passed
+ALB -> Gateway : route to BFF
+Gateway -> Service : authorized command/query
+Service -> DB : transaction + outbox insert
+Service -> Kafka : publish via outbox relay
+Service -> OTel : trace/log/metric
+Service --> Gateway : response DTO
+Gateway --> Client : redacted response
+Kafka ..> Service : async consumer in other service
+
+note bottom
+Synchronous calls go through gateway/BFF for external clients.
+Domain-to-domain consistency uses events/outbox where possible;
+avoid distributed transactions.
+end note
+@enduml

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1650" viewBox="0 0 2400 1650">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2320" height="60" rx="14" fill="#022C22"/>
+<text x="1200.0" y="69" text-anchor="middle" class="title">Viaverse Roadmap / Release Phases — Master Flow</text>
+
+<rect x="80" y="180" width="340" height="170" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="250.0" y="211.0" text-anchor="middle" class="h">P0 — Foundation</text>
+<text x="250.0" y="231.0" text-anchor="middle" class="t">--</text>
+<text x="250.0" y="251.0" text-anchor="middle" class="t">Architecture docs</text>
+<text x="250.0" y="271.0" text-anchor="middle" class="t">Monorepo setup</text>
+<text x="250.0" y="291.0" text-anchor="middle" class="t">CI/CD skeleton</text>
+<text x="250.0" y="311.0" text-anchor="middle" class="t">Design system baseline</text>
+<text x="250.0" y="331.0" text-anchor="middle" class="t">Domain language</text>
+<rect x="500" y="180" width="350" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="675.0" y="211.0" text-anchor="middle" class="h">P1 — Core Platform Alpha</text>
+<text x="675.0" y="231.0" text-anchor="middle" class="t">--</text>
+<text x="675.0" y="251.0" text-anchor="middle" class="t">Identity/OTP/social login</text>
+<text x="675.0" y="271.0" text-anchor="middle" class="t">Account capabilities</text>
+<text x="675.0" y="291.0" text-anchor="middle" class="t">Profiles</text>
+<text x="675.0" y="311.0" text-anchor="middle" class="t">Taxonomy</text>
+<text x="675.0" y="331.0" text-anchor="middle" class="t">Request creation</text>
+<rect x="930" y="180" width="350" height="170" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1105.0" y="211.0" text-anchor="middle" class="h">P2 — Marketplace Beta</text>
+<text x="1105.0" y="231.0" text-anchor="middle" class="t">--</text>
+<text x="1105.0" y="251.0" text-anchor="middle" class="t">Offer/quote flow</text>
+<text x="1105.0" y="271.0" text-anchor="middle" class="t">Job lifecycle</text>
+<text x="1105.0" y="291.0" text-anchor="middle" class="t">Chat scoped to job</text>
+<text x="1105.0" y="311.0" text-anchor="middle" class="t">Notification inbox</text>
+<text x="1105.0" y="331.0" text-anchor="middle" class="t">Search basics</text>
+<rect x="1360" y="180" width="350" height="170" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1535.0" y="211.0" text-anchor="middle" class="h">P3 — Trust + Payment Pilot</text>
+<text x="1535.0" y="231.0" text-anchor="middle" class="t">--</text>
+<text x="1535.0" y="251.0" text-anchor="middle" class="t">Iyzico/TR payment</text>
+<text x="1535.0" y="271.0" text-anchor="middle" class="t">Escrow-like flow</text>
+<text x="1535.0" y="291.0" text-anchor="middle" class="t">Reviews/ratings</text>
+<text x="1535.0" y="311.0" text-anchor="middle" class="t">Disputes</text>
+<text x="1535.0" y="331.0" text-anchor="middle" class="t">Moderation</text>
+<rect x="1790" y="180" width="350" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1965.0" y="211.0" text-anchor="middle" class="h">P4 — Business Launch</text>
+<text x="1965.0" y="231.0" text-anchor="middle" class="t">--</text>
+<text x="1965.0" y="251.0" text-anchor="middle" class="t">Business account</text>
+<text x="1965.0" y="271.0" text-anchor="middle" class="t">Catalog/branches/staff</text>
+<text x="1965.0" y="291.0" text-anchor="middle" class="t">Subscription trial</text>
+<text x="1965.0" y="311.0" text-anchor="middle" class="t">Admin config</text>
+<text x="1965.0" y="331.0" text-anchor="middle" class="t">Insights</text>
+<rect x="80" y="520" width="340" height="170" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="250.0" y="551.0" text-anchor="middle" class="h">P5 — Public Launch TR</text>
+<text x="250.0" y="571.0" text-anchor="middle" class="t">--</text>
+<text x="250.0" y="591.0" text-anchor="middle" class="t">SEO landing</text>
+<text x="250.0" y="611.0" text-anchor="middle" class="t">Ads/sponsored</text>
+<text x="250.0" y="631.0" text-anchor="middle" class="t">Analytics</text>
+<text x="250.0" y="651.0" text-anchor="middle" class="t">Support/AI helper</text>
+<text x="250.0" y="671.0" text-anchor="middle" class="t">App store release</text>
+<rect x="500" y="520" width="350" height="170" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="675.0" y="551.0" text-anchor="middle" class="h">P6 — Scale Readiness</text>
+<text x="675.0" y="571.0" text-anchor="middle" class="t">--</text>
+<text x="675.0" y="591.0" text-anchor="middle" class="t">Kubernetes hardening</text>
+<text x="675.0" y="611.0" text-anchor="middle" class="t">Observability/SLO</text>
+<text x="675.0" y="631.0" text-anchor="middle" class="t">Security/KVKK audit</text>
+<text x="675.0" y="651.0" text-anchor="middle" class="t">Load tests</text>
+<text x="675.0" y="671.0" text-anchor="middle" class="t">Cost controls</text>
+<rect x="930" y="520" width="350" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1105.0" y="551.0" text-anchor="middle" class="h">P7 — Growth / Global Prep</text>
+<text x="1105.0" y="571.0" text-anchor="middle" class="t">--</text>
+<text x="1105.0" y="591.0" text-anchor="middle" class="t">Localization expansion</text>
+<text x="1105.0" y="611.0" text-anchor="middle" class="t">Stripe/global payments</text>
+<text x="1105.0" y="631.0" text-anchor="middle" class="t">Regional config</text>
+<text x="1105.0" y="651.0" text-anchor="middle" class="t">Advanced matching</text>
+<text x="1105.0" y="671.0" text-anchor="middle" class="t">ML/AI quality</text>
+<polyline points="420,265 500,265" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="257" class="small">foundation ready</text>
+<polyline points="850,265 930,265" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="938" y="257" class="small">core flows</text>
+<polyline points="1280,265 1360,265" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="257" class="small">transactions</text>
+<polyline points="1710,265 1790,265" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1798" y="257" class="small">merchant ops</text>
+<polyline points="1965,350 1965,430 250,430 250,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="258" y="422" class="small">launch pack</text>
+<polyline points="420,605 500,605" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="597" class="small">stabilize</text>
+<polyline points="850,605 930,605" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="938" y="597" class="small">scale/growth</text>
+<rect x="80" y="840" width="760" height="75" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="864" class="t">Principle:</text>
+<text x="96" y="882" class="t">No throwaway MVP. Build a narrow but production-shaped slice first, then expand capabilities.</text>
+<rect x="900" y="840" width="760" height="75" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="916" y="864" class="t">Gate rule:</text>
+<text x="916" y="882" class="t">Each phase exits with working product, tests, observability, rollback path and updated docs.</text>
+<rect x="1720" y="840" width="560" height="75" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1736" y="864" class="t">Product rule:</text>
+<text x="1736" y="882" class="t">Normal users remain free by default; business monetization and commission are configurable later.</text>
+</svg>

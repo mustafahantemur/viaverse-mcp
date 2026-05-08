@@ -1,0 +1,36 @@
+@startuml
+title Viaverse Admin / Moderation Action — Sequence Diagram
+
+actor Admin
+participant "Admin UI" as AdminUI
+participant "Admin BFF" as BFF
+participant "identity-service" as Identity
+participant "admin-ops-service" as AdminOps
+participant "Domain Service" as Domain
+participant "audit-service" as Audit
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+
+Admin -> AdminUI : submit moderation action
+AdminUI -> BFF : POST /admin/actions
+BFF -> Identity : validate admin session + MFA
+Identity --> BFF : valid
+BFF -> AdminOps : performAction(command)
+AdminOps -> Identity : check permission/resource scope
+Identity --> AdminOps : allowed
+AdminOps -> Domain : apply moderation/domain action
+Domain -> DB : update target state
+Domain --> AdminOps : applied
+AdminOps -> Audit : write audit log
+Audit -> DB : append immutable audit record
+AdminOps -> DB : store admin case/action
+AdminOps -> Kafka : AdminActionApplied
+Kafka --> AdminUI : case update / notification
+
+note bottom
+Admin BFF authenticates admin session.
+admin-ops-service orchestrates action.
+Domain service owns target state.
+Audit is mandatory.
+end note
+@enduml

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1300" viewBox="0 0 1900 1300">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1820" height="60" rx="14" fill="#022C22"/>
+<text x="950.0" y="69" text-anchor="middle" class="title">Viaverse Auth — Class Model</text>
+
+<rect x="80" y="170" width="260" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="210.0" y="184.0" text-anchor="middle" class="h">Account</text>
+<text x="210.0" y="204.0" text-anchor="middle" class="t">--</text>
+<text x="210.0" y="224.0" text-anchor="middle" class="t">id: AccountId</text>
+<text x="210.0" y="244.0" text-anchor="middle" class="t">status: AccountStatus</text>
+<text x="210.0" y="264.0" text-anchor="middle" class="t">displayName: String?</text>
+<text x="210.0" y="284.0" text-anchor="middle" class="t">primaryEmail: Email?</text>
+<text x="210.0" y="304.0" text-anchor="middle" class="t">primaryPhone: Phone?</text>
+<text x="210.0" y="324.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="210.0" y="344.0" text-anchor="middle" class="t">tokenVersion: Int</text>
+<text x="210.0" y="364.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="420" y="170" width="260" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="550.0" y="196.0" text-anchor="middle" class="h">AccountCapability</text>
+<text x="550.0" y="216.0" text-anchor="middle" class="t">--</text>
+<text x="550.0" y="236.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="550.0" y="256.0" text-anchor="middle" class="t">capability: CapabilityType</text>
+<text x="550.0" y="276.0" text-anchor="middle" class="t">status: CapabilityStatus</text>
+<text x="550.0" y="296.0" text-anchor="middle" class="t">enabledAt: Instant</text>
+<text x="550.0" y="316.0" text-anchor="middle" class="t">suspendedAt: Instant?</text>
+<rect x="760" y="170" width="260" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="890.0" y="196.0" text-anchor="middle" class="h">LinkedIdentity</text>
+<text x="890.0" y="216.0" text-anchor="middle" class="t">--</text>
+<text x="890.0" y="236.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="890.0" y="256.0" text-anchor="middle" class="t">provider: OAuthProvider</text>
+<text x="890.0" y="276.0" text-anchor="middle" class="t">providerSubject: String</text>
+<text x="890.0" y="296.0" text-anchor="middle" class="t">email: Email?</text>
+<text x="890.0" y="316.0" text-anchor="middle" class="t">linkedAt: Instant</text>
+<rect x="1100" y="170" width="270" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1235.0" y="197.0" text-anchor="middle" class="h">ConsentRecord</text>
+<text x="1235.0" y="217.0" text-anchor="middle" class="t">--</text>
+<text x="1235.0" y="237.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1235.0" y="257.0" text-anchor="middle" class="t">consentType: ConsentType</text>
+<text x="1235.0" y="277.0" text-anchor="middle" class="t">version: String</text>
+<text x="1235.0" y="297.0" text-anchor="middle" class="t">granted: Boolean</text>
+<text x="1235.0" y="317.0" text-anchor="middle" class="t">grantedAt: Instant</text>
+<text x="1235.0" y="337.0" text-anchor="middle" class="t">revokedAt: Instant?</text>
+<rect x="80" y="470" width="290" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="225.0" y="499.0" text-anchor="middle" class="h">OtpChallenge</text>
+<text x="225.0" y="519.0" text-anchor="middle" class="t">--</text>
+<text x="225.0" y="539.0" text-anchor="middle" class="t">id: OtpChallengeId</text>
+<text x="225.0" y="559.0" text-anchor="middle" class="t">channel: OtpChannel</text>
+<text x="225.0" y="579.0" text-anchor="middle" class="t">targetHash: String</text>
+<text x="225.0" y="599.0" text-anchor="middle" class="t">codeHash: String</text>
+<text x="225.0" y="619.0" text-anchor="middle" class="t">purpose: OtpPurpose</text>
+<text x="225.0" y="639.0" text-anchor="middle" class="t">expiresAt: Instant</text>
+<text x="225.0" y="659.0" text-anchor="middle" class="t">attemptCount: Int</text>
+<text x="225.0" y="679.0" text-anchor="middle" class="t">status: OtpStatus</text>
+<rect x="470" y="470" width="270" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="605.0" y="498.0" text-anchor="middle" class="h">Session</text>
+<text x="605.0" y="518.0" text-anchor="middle" class="t">--</text>
+<text x="605.0" y="538.0" text-anchor="middle" class="t">id: SessionId</text>
+<text x="605.0" y="558.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="605.0" y="578.0" text-anchor="middle" class="t">deviceId: String?</text>
+<text x="605.0" y="598.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<text x="605.0" y="618.0" text-anchor="middle" class="t">lastSeenAt: Instant</text>
+<text x="605.0" y="638.0" text-anchor="middle" class="t">revokedAt: Instant?</text>
+<text x="605.0" y="658.0" text-anchor="middle" class="t">platform: Platform</text>
+<rect x="820" y="470" width="300" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="970.0" y="507.0" text-anchor="middle" class="h">RefreshTokenFamily</text>
+<text x="970.0" y="527.0" text-anchor="middle" class="t">--</text>
+<text x="970.0" y="547.0" text-anchor="middle" class="t">id: RefreshTokenFamilyId</text>
+<text x="970.0" y="567.0" text-anchor="middle" class="t">sessionId: SessionId</text>
+<text x="970.0" y="587.0" text-anchor="middle" class="t">currentTokenHash: String</text>
+<text x="970.0" y="607.0" text-anchor="middle" class="t">status: TokenFamilyStatus</text>
+<text x="970.0" y="627.0" text-anchor="middle" class="t">rotatedAt: Instant</text>
+<text x="970.0" y="647.0" text-anchor="middle" class="t">reusedAt: Instant?</text>
+<rect x="1220" y="470" width="300" height="175" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1370.0" y="512.5" text-anchor="middle" class="h">AuthPolicy</text>
+<text x="1370.0" y="532.5" text-anchor="middle" class="t">--</text>
+<text x="1370.0" y="552.5" text-anchor="middle" class="t">validateAccountActive()</text>
+<text x="1370.0" y="572.5" text-anchor="middle" class="t">validateCapabilityEnabled()</text>
+<text x="1370.0" y="592.5" text-anchor="middle" class="t">validateConsentRequired()</text>
+<text x="1370.0" y="612.5" text-anchor="middle" class="t">validateRefreshReuse()</text>
+<rect x="610" y="820" width="350" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="785.0" y="837.0" text-anchor="middle" class="h">Auth Events</text>
+<text x="785.0" y="857.0" text-anchor="middle" class="t">--</text>
+<text x="785.0" y="877.0" text-anchor="middle" class="t">AccountCreated</text>
+<text x="785.0" y="897.0" text-anchor="middle" class="t">OtpRequested</text>
+<text x="785.0" y="917.0" text-anchor="middle" class="t">OtpVerified</text>
+<text x="785.0" y="937.0" text-anchor="middle" class="t">SessionCreated</text>
+<text x="785.0" y="957.0" text-anchor="middle" class="t">SessionRevoked</text>
+<text x="785.0" y="977.0" text-anchor="middle" class="t">ConsentGranted</text>
+<polyline points="340,250 420,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="428" y="242" class="small">1 -&gt; many</text>
+<polyline points="340,220 760,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="768" y="212" class="small">1 -&gt; many</text>
+<polyline points="340,290 1100,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1108" y="252" class="small">1 -&gt; many</text>
+<polyline points="210,360 210,570 470,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="218" y="562" class="small">1 -&gt; many</text>
+<polyline points="740,570 820,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="828" y="562" class="small">1 -&gt; 1 family</text>
+<polyline points="225,470 225,360 210,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="233" y="352" class="small">verified creates/finds</text>
+<polyline points="1220,540 340,265" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="348" y="257" class="small">checks</text>
+<polyline points="1220,565 680,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="688" y="242" class="small">checks</text>
+<polyline points="605,670 605,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="613" y="812" class="small">emits</text>
+<polyline points="1235,350 1235,780 960,900" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1243" y="772" class="small">emits</text>
+<polyline points="225,690 225,900 610,900" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="233" y="892" class="small">emits</text>
+<rect x="80" y="1060" width="1420" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1084" class="t">Implementation rule: these are domain/application models. JPA entities live separately under infrastructure.persistence.entity and must be mapped explicitly.</text>
+</svg>

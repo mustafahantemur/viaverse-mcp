@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Review / Trust / Badge / Gamification — Activity Diagram
+start
+:JobCompleted;
+:Create two-sided review prompts;
+:User submits review\nrating + tags + comment;
+:Validate eligibility\njob participant + one review;
+if (Valid?) then (yes)
+  :Moderation scan\nabuse / PII / hate / spam;
+  if (Safe to publish?) then (yes)
+    :Publish review;
+  else (no)
+    :Queue for admin review;
+    :Admin approves or rejects;
+  endif
+  :Recalculate trust score;
+  :Evaluate badge rules;
+  :Award/revoke badges;
+  :Update points/streaks;
+  :Update ranking/search signal;
+  :Emit trust events;
+else (no)
+  :Reject duplicate / invalid;
+endif
+stop
+
+note bottom
+Trust/ranking updates must be resistant to abuse:
+one review per side per job, duplicate prevention,
+suspicious review detection and admin moderation.
+end note
+@enduml

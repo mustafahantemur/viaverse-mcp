@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Business Account Onboarding — Sequence Diagram
+
+actor Owner
+participant "Client / Business UI" as Client
+participant "API Gateway / BFF" as BFF
+participant "business-service" as Business
+participant "identity-service" as Identity
+participant "media-service" as Media
+participant "billing/payment-service" as Billing
+participant "search-service" as Search
+queue "Outbox / Kafka" as Kafka
+
+Owner -> Client : create business
+Client -> BFF : POST /businesses
+BFF -> Business : createBusiness(command)
+Business -> Identity : grant/check OPERATE_BUSINESS capability
+Business -> Media : attach logo/photos mediaIds
+Business -> Billing : create trial/subscription profile
+Business -> Business : publish-ready policy
+Business -> Search : index public business projection
+Business -> Kafka : BusinessCreated / BusinessPublished
+Business --> BFF : business status DTO
+BFF --> Client : render onboarding progress
+
+note bottom
+business-service owns business profile/branches/catalog.
+Identity owns account/capability.
+Billing owns plan/subscription.
+Search owns public projection.
+end note
+@enduml

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Search / SEO / Growth — Component Diagram</text>
+
+<rect x="80" y="170" width="320" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="240.0" y="199.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<text x="240.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="239.0" text-anchor="middle" class="t">Search screen</text>
+<text x="240.0" y="259.0" text-anchor="middle" class="t">Feed</text>
+<text x="240.0" y="279.0" text-anchor="middle" class="t">SEO pages</text>
+<rect x="500" y="170" width="320" height="120" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="660.0" y="203.0" text-anchor="middle" class="h">API Gateway / Web BFF</text>
+<text x="660.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="660.0" y="243.0" text-anchor="middle" class="t">Search API</text>
+<text x="660.0" y="263.0" text-anchor="middle" class="t">SEO route API</text>
+<rect x="930" y="140" width="350" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1105.0" y="172.0" text-anchor="middle" class="h">SearchController</text>
+<text x="1105.0" y="192.0" text-anchor="middle" class="t">SeoController</text>
+<text x="1105.0" y="212.0" text-anchor="middle" class="t">GrowthController</text>
+<rect x="930" y="320" width="380" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1120.0" y="360.0" text-anchor="middle" class="h">Search Use Cases</text>
+<text x="1120.0" y="380.0" text-anchor="middle" class="t">--</text>
+<text x="1120.0" y="400.0" text-anchor="middle" class="t">Search</text>
+<text x="1120.0" y="420.0" text-anchor="middle" class="t">IndexEntity</text>
+<text x="1120.0" y="440.0" text-anchor="middle" class="t">GenerateSeoPage</text>
+<text x="1120.0" y="460.0" text-anchor="middle" class="t">TrackSearchEvent</text>
+<rect x="930" y="570" width="380" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1120.0" y="615.0" text-anchor="middle" class="h">Search Policies</text>
+<text x="1120.0" y="635.0" text-anchor="middle" class="t">--</text>
+<text x="1120.0" y="655.0" text-anchor="middle" class="t">privacy gates</text>
+<text x="1120.0" y="675.0" text-anchor="middle" class="t">ranking gates</text>
+<text x="1120.0" y="695.0" text-anchor="middle" class="t">sponsored constraints</text>
+<text x="1120.0" y="715.0" text-anchor="middle" class="t">localization</text>
+<rect x="930" y="850" width="380" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1120.0" y="891.0" text-anchor="middle" class="h">Ports</text>
+<text x="1120.0" y="911.0" text-anchor="middle" class="t">SearchIndexPort</text>
+<text x="1120.0" y="931.0" text-anchor="middle" class="t">TrustSignalPort</text>
+<text x="1120.0" y="951.0" text-anchor="middle" class="t">AiIntentPort</text>
+<text x="1120.0" y="971.0" text-anchor="middle" class="t">AnalyticsPort</text>
+<text x="1120.0" y="991.0" text-anchor="middle" class="t">SeoRepo</text>
+<text x="1120.0" y="1011.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1400" y="190" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1580.0" y="229.0" text-anchor="middle" class="h">OpenSearch</text>
+<text x="1580.0" y="249.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="269.0" text-anchor="middle" class="t">public projections</text>
+<text x="1580.0" y="289.0" text-anchor="middle" class="t">geo/full-text</text>
+<text x="1580.0" y="309.0" text-anchor="middle" class="t">facets</text>
+<rect x="1400" y="460" width="360" height="130" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1580.0" y="498.0" text-anchor="middle" class="h">AI intent/category service</text>
+<text x="1580.0" y="518.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="538.0" text-anchor="middle" class="t">query understanding</text>
+<text x="1580.0" y="558.0" text-anchor="middle" class="t">suggestions</text>
+<rect x="1400" y="710" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1580.0" y="749.0" text-anchor="middle" class="h">analytics-service</text>
+<text x="1580.0" y="769.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="789.0" text-anchor="middle" class="t">impressions</text>
+<text x="1580.0" y="809.0" text-anchor="middle" class="t">clicks</text>
+<text x="1580.0" y="829.0" text-anchor="middle" class="t">conversion funnel</text>
+<rect x="1800" y="210" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1980.0" y="249.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1980.0" y="269.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="289.0" text-anchor="middle" class="t">seo_page</text>
+<text x="1980.0" y="309.0" text-anchor="middle" class="t">search_config</text>
+<text x="1980.0" y="329.0" text-anchor="middle" class="t">experiment</text>
+<rect x="1800" y="520" width="360" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1980.0" y="569.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1980.0" y="589.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="609.0" text-anchor="middle" class="t">EntityPublished</text>
+<text x="1980.0" y="629.0" text-anchor="middle" class="t">SearchPerformed</text>
+<text x="1980.0" y="649.0" text-anchor="middle" class="t">SeoPageUpdated</text>
+<rect x="1800" y="850" width="360" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1980.0" y="889.0" text-anchor="middle" class="h">CDN / Next.js SSR</text>
+<text x="1980.0" y="909.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="929.0" text-anchor="middle" class="t">SEO pages</text>
+<text x="1980.0" y="949.0" text-anchor="middle" class="t">sitemap</text>
+<text x="1980.0" y="969.0" text-anchor="middle" class="t">schema.org</text>
+<polyline points="400,235 500,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="222" class="small">HTTPS</text>
+<polyline points="820,230 880,230 880,190 930,190" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="182" class="small">REST/SSR</text>
+<polyline points="1105,240 1105,320" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1113" y="312" class="small">command/query</text>
+<polyline points="1120,490 1120,570" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="562" class="small">validate/rank</text>
+<polyline points="1120,750 1120,850" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="842" class="small">ports</text>
+<polyline points="1310,940 1360,940 1360,265 1400,265" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="257" class="small">query/index</text>
+<polyline points="1310,940 1360,940 1360,525 1400,525" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="517" class="small">intent</text>
+<polyline points="1310,940 1400,785" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1408" y="777" class="small">events</text>
+<polyline points="1310,940 1740,940 1740,285 1800,285" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1748" y="277" class="small">SEO/config</text>
+<polyline points="1310,405 1800,605" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="597" class="small">events</text>
+<polyline points="1310,405 1740,405 1740,925 1800,925" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1748" y="917" class="small">publish SEO/sitemap</text>
+<polyline points="1800,605 1710,605 1710,405 1310,405" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1718" y="397" class="small">index events</text>
+<rect x="80" y="1230" width="1600" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1254" class="t">Component rule:</text>
+<text x="96" y="1272" class="t">SEO pages are generated only from public/approved projections. Search-service must not leak private request details or exact addresses.</text>
+</svg>

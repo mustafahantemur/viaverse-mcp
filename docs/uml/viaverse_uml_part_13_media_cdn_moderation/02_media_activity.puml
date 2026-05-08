@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Media Upload / CDN / Moderation — Activity Diagram
+start
+:User selects media;
+:Request upload session;
+:Validate context/type/size and user permission;
+if (Allowed?) then (yes)
+  :Generate presigned URL;
+  :Create MediaAsset(PENDING);
+  :Client uploads directly to S3;
+  :Confirm upload;
+  :Processing job\nEXIF strip / thumbnail / transcode;
+  :Moderation scan;
+  if (Safe?) then (yes)
+    :Set APPROVED;
+    :Attach to domain context;
+    :Generate delivery URL\npublic/signed policy;
+    :Emit MediaApproved;
+  else (no)
+    :Set REJECTED;
+    :Emit MediaRejected;
+  endif
+else (no)
+  :Reject upload request;
+endif
+stop
+
+note bottom
+Original objects stay private.
+Public profile assets may be public/CDN,
+private chat/job assets use signed access.
+end note
+@enduml

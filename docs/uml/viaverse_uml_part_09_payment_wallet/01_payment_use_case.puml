@@ -1,0 +1,56 @@
+@startuml
+title Viaverse Payment / Wallet — Use Case Diagram
+left to right direction
+
+actor Requester
+actor "Worker / Business" as Worker
+actor "Payment Provider\niyzico / Stripe" as Provider
+actor "Masterpass / Wallet" as Masterpass
+actor "Payment Admin" as Admin
+
+rectangle "Payment / Wallet Boundary" {
+  usecase "Accept quote" as Accept
+  usecase "Create payment session" as Session
+  usecase "Choose payment method" as Method
+  usecase "Open provider checkout" as Checkout
+  usecase "Pay with saved card\ntokenized" as Saved
+  usecase "Add card token\nwithout PAN/CVV storage" as AddCard
+  usecase "Verify provider callback" as Callback
+  usecase "Authorize / capture payment" as Capture
+  usecase "Handle payment failure" as Failure
+  usecase "Calculate commission\n5% initial" as Commission
+  usecase "Hold payout until completion" as Hold
+  usecase "Show payment status" as Status
+  usecase "Refund / partial refund" as Refund
+  usecase "Release payout" as Payout
+  usecase "Audit payment admin action" as Audit
+}
+
+Requester --> Accept
+Accept --> Session
+Session --> Method
+Method --> Checkout : new payment
+Method ..> Saved : saved method
+Method ..> AddCard : add card
+Checkout --> Callback
+Callback --> Capture
+Saved --> Capture
+Capture --> Commission : success
+Capture ..> Failure : failure
+Commission --> Hold
+Hold --> Status
+Worker --> Status
+Admin --> Refund
+Admin --> Payout
+Refund --> Audit
+Payout --> Audit
+Provider --> Checkout
+Provider --> Callback
+Masterpass --> AddCard
+
+note bottom
+Viaverse never stores PAN/CVV.
+Stored cards are provider tokens only.
+Callback verification + idempotency are mandatory.
+end note
+@enduml

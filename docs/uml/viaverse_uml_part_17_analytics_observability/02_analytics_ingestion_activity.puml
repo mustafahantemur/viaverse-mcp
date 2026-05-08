@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Analytics Event Ingestion — Activity Diagram
+start
+:Client/domain event;
+:Capture event with schema version;
+:Check consent and legal basis;
+if (Allowed?) then (yes)
+  :Sanitize payload\nremove PII/secrets;
+  :Validate schema;
+  if (Bad schema?) then (yes)
+    :Send to DLQ;
+    :Create quality alert;
+  else (no)
+    :Persist raw-safe event\nor stream to warehouse;
+    :Update aggregates\nfunnel/cohort/kpi;
+    :Refresh dashboard dataset;
+    :Apply retention policy;
+  endif
+  :Emit quality/alert events;
+else (no)
+  :Drop or aggregate only;
+endif
+stop
+
+note bottom
+Every event has owner, schema version, retention class and sensitivity classification.
+Unknown schemas go to DLQ, not silent production metrics.
+end note
+@enduml

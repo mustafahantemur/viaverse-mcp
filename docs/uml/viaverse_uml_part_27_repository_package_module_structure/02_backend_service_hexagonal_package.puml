@@ -1,0 +1,7 @@
+@startuml
+title Viaverse Spring Boot Service — Hexagonal Package Structure
+package service { package application; package domain; package adapter_in_web; package adapter_out_persistence; package adapter_out_events; package config; package test }
+adapter_in_web --> application
+application --> domain
+application ..> adapter_out_persistence
+@enduml

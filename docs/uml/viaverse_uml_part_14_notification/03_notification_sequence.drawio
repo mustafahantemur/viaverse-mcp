@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="notification-sequence" name="03 Notification Sequence">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Notification / Delivery — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Kafka / Event Bus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="171" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="notif" value="notification-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="notif_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="441" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="pref" value="identity/preferences" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pref_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="711" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="template" value="template/i18n" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="template_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="981" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1251" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="push" value="FCM / APNs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="push_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1521" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="email" value="SMTP / Netgsm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="email_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1791" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2061" y="220" width="2" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="DomainEvent" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="kafka" target="notif">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="265" y="260" as="point"/><mxPoint x="350" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="dedup check" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="320" as="point"/><mxPoint x="1160" y="320" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="load preferences/devices" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="pref">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="390" as="point"/><mxPoint x="620" y="390" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="render localized content" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="template">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="460" as="point"/><mxPoint x="890" y="460" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="create Notification + Attempts" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="540" as="point"/><mxPoint x="1160" y="540" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="send push" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="push">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="640" as="point"/><mxPoint x="1430" y="640" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="delivery result" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="push" target="notif">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1430" y="710" as="point"/><mxPoint x="535" y="710" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="send email/SMS if selected" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="email">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="810" as="point"/><mxPoint x="1700" y="810" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="delivery result" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="email" target="notif">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1700" y="880" as="point"/><mxPoint x="535" y="880" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="update final/attempt state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="960" as="point"/><mxPoint x="1160" y="960" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="NotificationSent/Failed" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="350" y="1040" as="point"/><mxPoint x="265" y="1040" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s12" value="in-app inbox sync / badge count" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="notif" target="client">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="535" y="1120" as="point"/><mxPoint x="1970" y="1120" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Sequence focus:&#xa;Notification service consumes domain events and owns inbox + channel attempts. Domain services do not call push/SMS/email providers directly." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1340" width="1740" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

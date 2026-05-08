@@ -1,0 +1,7 @@
+[mcp_servers.viaverse-docs]
+enabled = true
+command = "node"
+args = ["C:\\Projects\\Viaverse\\viaverse-platform\\tools\\viaverse-docs-mcp\\dist\\index.js"]
+
+[mcp_servers.viaverse-docs.env]
+VIAVERSE_REPO_ROOT = "C:\\Projects\\Viaverse\\viaverse-platform"

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Admin Case / Appeal — State Diagram</text>
+
+<rect x="120" y="180" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="230.0" y="220.0" text-anchor="middle" class="h">OPENED</text>
+<rect x="500" y="180" width="220" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="610.0" y="220.0" text-anchor="middle" class="h">TRIAGE</text>
+<rect x="880" y="180" width="240" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1000.0" y="220.0" text-anchor="middle" class="h">ASSIGNED</text>
+<rect x="1260" y="180" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1410.0" y="220.0" text-anchor="middle" class="h">UNDER_REVIEW</text>
+<rect x="1260" y="500" width="300" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1410.0" y="540.0" text-anchor="middle" class="h">ACTION_APPLIED</text>
+<rect x="880" y="500" width="220" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="990.0" y="540.0" text-anchor="middle" class="h">CLOSED</text>
+<rect x="500" y="500" width="250" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="625.0" y="540.0" text-anchor="middle" class="h">ESCALATED</text>
+<rect x="500" y="820" width="300" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="650.0" y="860.0" text-anchor="middle" class="h">APPEAL_OPENED</text>
+<rect x="880" y="820" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1030.0" y="860.0" text-anchor="middle" class="h">APPEAL_REVIEW</text>
+<rect x="1260" y="820" width="320" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1420.0" y="860.0" text-anchor="middle" class="h">APPEAL_RESOLVED</text>
+<polyline points="340,220 500,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="212" class="small">create</text>
+<polyline points="720,220 880,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="212" class="small">assign</text>
+<polyline points="1120,220 1260,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="212" class="small">start review</text>
+<polyline points="1410,260 1410,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1418" y="492" class="small">apply action</text>
+<polyline points="1260,540 1100,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1108" y="532" class="small">audit + notify</text>
+<polyline points="1260,220 625,220 625,500" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="633" y="212" class="small">complex</text>
+<polyline points="500,540 430,540 430,300 1410,300 1410,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="438" y="292" class="small">return</text>
+<polyline points="990,580 990,700 650,700 650,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="658" y="692" class="small">appeal submitted</text>
+<polyline points="800,860 880,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="852" class="small">assign appeal</text>
+<polyline points="1180,860 1260,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="852" class="small">resolve</text>
+<polyline points="1260,860 1180,760 990,760 990,580" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="998" y="752" class="small">final close</text>
+<rect x="160" y="1080" width="1450" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1104" class="t">Appeal rule:</text>
+<text x="176" y="1122" class="t">Appeal resolution must not be performed by the same admin when policy requires separation of duties.</text>
+</svg>

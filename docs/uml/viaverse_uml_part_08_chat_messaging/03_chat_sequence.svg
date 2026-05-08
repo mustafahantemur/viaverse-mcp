@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Chat / Messaging — Sequence Diagram</text>
+
+<rect x="80" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="170.0" y="170.0" text-anchor="middle" class="h">Sender Client</text>
+<rect x="169" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="170.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="420.0" y="170.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="419" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="420.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="590" y="140" width="180" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="680.0" y="170.0" text-anchor="middle" class="h">messaging-service</text>
+<rect x="679" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="680.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="850" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="940.0" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="939" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="940.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="1110" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1200.0" y="170.0" text-anchor="middle" class="h">Safety Policy</text>
+<rect x="1199" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1200.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="1370" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1460.0" y="170.0" text-anchor="middle" class="h">media-service</text>
+<rect x="1459" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1460.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="1630" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1720.0" y="170.0" text-anchor="middle" class="h">PostgreSQL / Cassandra</text>
+<rect x="1719" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1720.0" y="690.0" text-anchor="middle" class="h"></text>
+<rect x="1880" y="140" width="180" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1970.0" y="170.0" text-anchor="middle" class="h">notification-service</text>
+<rect x="1969" y="220" width="2" height="940" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1970.0" y="690.0" text-anchor="middle" class="h"></text>
+<polyline points="260,260 330,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="252" class="small">POST /conversations/{id}/messages</text>
+<polyline points="510,310 590,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="598" y="302" class="small">sendMessage(command)</text>
+<polyline points="770,360 850,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="858" y="352" class="small">validate quote/job context</text>
+<polyline points="770,440 1110,440" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1118" y="432" class="small">scan text + policy state</text>
+<polyline points="770,520 1370,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1378" y="512" class="small">attach media refs optional</text>
+<polyline points="770,640 1630,640" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1638" y="632" class="small">persist message + participant state</text>
+<polyline points="770,700 1630,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1638" y="692" class="small">append read model / inbox row</text>
+<polyline points="770,780 1880,780" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1888" y="772" class="small">NotificationCreated</text>
+<polyline points="1880,840 1780,840 1780,1180 170,1180 170,840" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="1172" class="small">recipient push/in-app update</text>
+<polyline points="260,1000 330,1000" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="992" class="small">POST /messages/{id}/read</text>
+<polyline points="510,1040 590,1040" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="598" y="1032" class="small">markRead</text>
+<polyline points="770,1080 1630,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1638" y="1072" class="small">update read receipt</text>
+<rect x="80" y="1250" width="1720" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1274" class="t">Sequence focus:</text>
+<text x="96" y="1292" class="t">Message send validates participant + quote/job context, then safety policy, then persistence and notification. Media is attached by reference.</text>
+</svg>

@@ -1,0 +1,30 @@
+@startuml
+title Viaverse Locale Resolution / Rendering — Activity Diagram
+start
+:Screen/page/request;
+:Read profile locale;
+:Read device/browser locale;
+:Read route/country SEO locale;
+:Resolve effective locale;
+if (Supported?) then (yes)
+else (no)
+  :Apply fallback chain\ntr-TR → tr → en;
+endif
+:Load translation bundle\nand regional config;
+:Format money/date/unit;
+:Render UI/content;
+if (SEO page?) then (yes)
+  :Canonical/hreflang/schema;
+endif
+if (Notification?) then (yes)
+  :Localized template;
+endif
+:Track missing keys\nquality event if needed;
+:Cache locale assets;
+stop
+
+note bottom
+Missing translation must not break the app.
+It falls back visibly in logs/quality metrics, not silently forever.
+end note
+@enduml

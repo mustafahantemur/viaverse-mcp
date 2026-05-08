@@ -1,0 +1,55 @@
+@startuml
+title Viaverse Category / Taxonomy / Dynamic Environment — Use Case Diagram
+left to right direction
+
+actor User
+actor "Worker / Business" as Worker
+actor "Admin / Content Ops" as Admin
+actor "Search / Matching" as Search
+actor Localization
+actor "Analytics / AI" as Analytics
+
+rectangle "Taxonomy / Dynamic Environment Boundary" {
+  usecase "Configure dynamic environment\narea + interests" as Env
+  usecase "Browse category tree" as Category
+  usecase "Select tags / intents" as Tags
+  usecase "Personalized feed filters" as Feed
+  usecase "Create request with category\nbudget + urgency" as Post
+  usecase "Map provider capabilities\ncategories + service area" as Offer
+  usecase "Match request to providers" as Match
+  usecase "Rank by relevance\ntrust + distance + availability" as Rank
+  usecase "Manage taxonomy\ncategory/tag/forms" as AdminTax
+  usecase "Manage category rules\nfields/fees/risk" as Rules
+  usecase "Localize category labels\nTR/EN slugs" as Local
+  usecase "Publish taxonomy version" as Publish
+  usecase "Analyze taxonomy quality" as Quality
+  usecase "AI category suggestion" as AI
+  usecase "Emit events\nTaxonomyPublished\nCategoryMapped" as Events
+}
+
+User --> Env
+Env --> Category
+Category --> Tags
+Tags --> Feed
+User --> Post
+Worker --> Offer
+Post --> Match
+Offer --> Match
+Match --> Rank
+Admin --> AdminTax
+AdminTax --> Rules
+Rules --> Local
+Local --> Publish
+Publish --> Quality
+Quality --> AI
+AI --> Events
+Search --> Match
+Localization --> Local
+Analytics --> AI
+
+note bottom
+"Dinamik çevre" fixed neighborhood değildir.
+Kullanıcı kendi area, interest, category ve intent sinyallerine göre
+feed/search/matching kapsamını belirler.
+end note
+@enduml

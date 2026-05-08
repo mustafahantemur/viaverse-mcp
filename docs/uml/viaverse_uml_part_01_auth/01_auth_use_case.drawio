@@ -1,0 +1,130 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="auth-use-case" name="01 Auth Use Case">
+    <mxGraphModel dx="1900" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Auth — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1820" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Authentication / Onboarding Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="135" width="1320" height="890" as="geometry"/>
+        </mxCell>
+        <mxCell id="guest" value="«actor»&#xa;Guest User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="250" width="150" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="account" value="«actor»&#xa;Authenticated Account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="570" width="150" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="oauth" value="«actor»&#xa;Google / Apple / Meta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="210" width="150" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="otpProvider" value="«actor»&#xa;Netgsm / Amazon SES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="460" width="150" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;Support / Security Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="760" width="150" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_language" value="Select language" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="190" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_method" value="Choose login method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="190" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_phone" value="Phone OTP login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="160" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_email" value="Email OTP login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="250" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_oauth" value="Social login&#xa;Google / Apple / Meta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="190" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_req_otp" value="Request OTP challenge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="370" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_verify_otp" value="Verify OTP challenge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="370" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_find_account" value="Create or find account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="520" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_consent" value="Accept Terms / Privacy / KVKK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="520" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_intent" value="Choose first intent&#xa;Request / Work / Business" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="520" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_session" value="Create session&#xa;Access + refresh token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="700" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_refresh" value="Refresh token rotation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="700" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_revoke" value="Revoke session / logout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="700" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_suspend" value="Suspend account/capability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="850" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="guest" target="uc_language">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="210" y="286" as="point"/><mxPoint x="260" y="286" as="point"/><mxPoint x="260" y="226" as="point"/><mxPoint x="340" y="226" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="guest" target="uc_method">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="210" y="286" as="point"/><mxPoint x="280" y="286" as="point"/><mxPoint x="280" y="226" as="point"/><mxPoint x="620" y="226" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="«extend»" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_method" target="uc_phone">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="226" as="point"/><mxPoint x="870" y="226" as="point"/><mxPoint x="870" y="196" as="point"/><mxPoint x="900" y="196" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="«extend»" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_method" target="uc_email">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="226" as="point"/><mxPoint x="870" y="226" as="point"/><mxPoint x="870" y="286" as="point"/><mxPoint x="900" y="286" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="«extend»" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_method" target="uc_oauth">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="226" as="point"/><mxPoint x="1180" y="226" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="«include»" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_phone" target="uc_req_otp">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1010" y="232" as="point"/><mxPoint x="1010" y="330" as="point"/><mxPoint x="730" y="330" as="point"/><mxPoint x="730" y="370" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="«include»" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_email" target="uc_req_otp">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1010" y="322" as="point"/><mxPoint x="1010" y="350" as="point"/><mxPoint x="730" y="350" as="point"/><mxPoint x="730" y="370" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="OTP code" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_req_otp" target="uc_verify_otp">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="406" as="point"/><mxPoint x="900" y="406" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="valid" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_verify_otp" target="uc_find_account">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1010" y="442" as="point"/><mxPoint x="1010" y="480" as="point"/><mxPoint x="730" y="480" as="point"/><mxPoint x="730" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="provider verified" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_oauth" target="uc_find_account">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1290" y="262" as="point"/><mxPoint x="1290" y="480" as="point"/><mxPoint x="730" y="480" as="point"/><mxPoint x="730" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_find_account" target="uc_consent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="556" as="point"/><mxPoint x="900" y="556" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_consent" target="uc_intent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1120" y="556" as="point"/><mxPoint x="1180" y="556" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_intent" target="uc_session">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1290" y="592" as="point"/><mxPoint x="1290" y="660" as="point"/><mxPoint x="730" y="660" as="point"/><mxPoint x="730" y="700" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="account" target="uc_refresh">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="210" y="606" as="point"/><mxPoint x="280" y="606" as="point"/><mxPoint x="280" y="736" as="point"/><mxPoint x="900" y="736" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="account" target="uc_revoke">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="210" y="606" as="point"/><mxPoint x="280" y="606" as="point"/><mxPoint x="280" y="736" as="point"/><mxPoint x="1180" y="736" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="OAuth callback" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="oauth" target="uc_oauth">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1660" y="246" as="point"/><mxPoint x="1540" y="246" as="point"/><mxPoint x="1540" y="226" as="point"/><mxPoint x="1400" y="226" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="SMS / email" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="otpProvider" target="uc_req_otp">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1660" y="496" as="point"/><mxPoint x="1500" y="496" as="point"/><mxPoint x="1500" y="406" as="point"/><mxPoint x="840" y="406" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="admin action" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_suspend">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1660" y="796" as="point"/><mxPoint x="1500" y="796" as="point"/><mxPoint x="1500" y="886" as="point"/><mxPoint x="1400" y="886" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Security rules:&#xa;JWT sub = persisted Account.id • OTP hash only • refresh token rotation/reuse detection • consent version stored • account status checked on every protected request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="950" width="1120" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

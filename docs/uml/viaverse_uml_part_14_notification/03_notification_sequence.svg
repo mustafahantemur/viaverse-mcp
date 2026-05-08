@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Notification / Delivery — Sequence Diagram</text>
+
+<rect x="80" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="172.5" y="170.0" text-anchor="middle" class="h">Kafka / Event Bus</text>
+<rect x="171" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="172.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="350" y="140" width="185" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="442.5" y="170.0" text-anchor="middle" class="h">notification-service</text>
+<rect x="441" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="442.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="620" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="712.5" y="170.0" text-anchor="middle" class="h">identity/preferences</text>
+<rect x="711" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="712.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="890" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="982.5" y="170.0" text-anchor="middle" class="h">template/i18n</text>
+<rect x="981" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="982.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1160" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1252.5" y="170.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1251" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1252.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1430" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1522.5" y="170.0" text-anchor="middle" class="h">FCM / APNs</text>
+<rect x="1521" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1522.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1700" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1792.5" y="170.0" text-anchor="middle" class="h">SMTP / Netgsm</text>
+<rect x="1791" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1792.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1970" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2062.5" y="170.0" text-anchor="middle" class="h">Client</text>
+<rect x="2061" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="2062.0" y="725.0" text-anchor="middle" class="h"></text>
+<polyline points="265,260 350,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="358" y="252" class="small">DomainEvent</text>
+<polyline points="535,320 1160,320" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="312" class="small">dedup check</text>
+<polyline points="535,390 620,390" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="628" y="382" class="small">load preferences/devices</text>
+<polyline points="535,460 890,460" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="898" y="452" class="small">render localized content</text>
+<polyline points="535,540 1160,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="532" class="small">create Notification + Attempts</text>
+<polyline points="535,640 1430,640" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1438" y="632" class="small">send push</text>
+<polyline points="1430,710 535,710" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="543" y="702" class="small">delivery result</text>
+<polyline points="535,810 1700,810" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1708" y="802" class="small">send email/SMS if selected</text>
+<polyline points="1700,880 535,880" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="543" y="872" class="small">delivery result</text>
+<polyline points="535,960 1160,960" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="952" class="small">update final/attempt state</text>
+<polyline points="350,1040 265,1040" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="273" y="1032" class="small">NotificationSent/Failed</text>
+<polyline points="535,1120 1970,1120" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1978" y="1112" class="small">in-app inbox sync / badge count</text>
+<rect x="80" y="1340" width="1740" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1364" class="t">Sequence focus:</text>
+<text x="96" y="1382" class="t">Notification service consumes domain events and owns inbox + channel attempts. Domain services do not call push/SMS/email providers directly.</text>
+</svg>

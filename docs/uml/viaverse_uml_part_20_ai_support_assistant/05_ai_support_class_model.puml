@@ -1,0 +1,97 @@
+@startuml
+title Viaverse AI Assistant / Support — Class Model
+
+class AiSession {
+  id: UUID
+  accountId: AccountId?
+  anonymousId: String?
+  entryPoint: String
+  locale: Locale
+  status: AiSessionStatus
+  createdAt: Instant
+  closedAt: Instant?
+}
+
+class AiMessage {
+  id: UUID
+  sessionId: UUID
+  role: USER | ASSISTANT | SYSTEM
+  type: TEXT | TOOL_RESULT | ESCALATION
+  contentRedacted: String
+  safetyLabels: List<String>
+  createdAt: Instant
+}
+
+class RetrievalCitation {
+  id: UUID
+  messageId: UUID
+  sourceType: FAQ | POLICY | DOC | DOMAIN
+  sourceId: String
+  score: Decimal
+  snippetHash: String
+}
+
+class SupportTicket {
+  id: UUID
+  accountId: AccountId?
+  sourceAiSessionId: UUID?
+  category: TicketCategory
+  priority: Priority
+  status: TicketStatus
+  assignedTo: AccountId?
+  createdAt: Instant
+}
+
+class AiPolicy {
+  canUseContext()
+  redactInput()
+  allowTool()
+  requiresHumanHandoff()
+  validateOutput()
+  maxTokenBudget()
+}
+
+class AiFeedback {
+  id: UUID
+  messageId: UUID
+  accountId: AccountId?
+  rating: GOOD | BAD | UNSAFE
+  comment: String?
+  createdAt: Instant
+}
+
+class PromptConfig {
+  id: UUID
+  name: String
+  version: Int
+  locale: Locale
+  modelProfile: String
+  status: ACTIVE | DRAFT | RETIRED
+  updatedAt: Instant
+}
+
+class AiSupportEvents {
+  AiSessionStarted
+  AiAnswered
+  AiEscalated
+  SupportTicketCreated
+  TicketResolved
+  AiFeedbackSubmitted
+}
+
+AiSession "1" o-- "*" AiMessage
+AiMessage "1" o-- "*" RetrievalCitation
+AiSession ..> SupportTicket : may escalate
+AiPolicy ..> AiMessage : validates/redacts
+PromptConfig --> AiMessage : shapes answer
+AiMessage --> AiFeedback : rated by
+AiSession ..> AiSupportEvents : emits
+SupportTicket ..> AiSupportEvents : emits
+AiFeedback ..> AiSupportEvents : emits
+
+note bottom
+Store redacted AI content and metadata.
+Raw prompt/context retention must be short, controlled
+and disabled for sensitive flows unless explicitly required.
+end note
+@enduml

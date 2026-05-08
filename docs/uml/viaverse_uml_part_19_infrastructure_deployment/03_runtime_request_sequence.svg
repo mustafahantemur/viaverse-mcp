@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Runtime Request / Service Communication — Sequence Diagram</text>
+
+<rect x="80" y="140" width="190" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="175.0" y="170.0" text-anchor="middle" class="h">Client</text>
+<rect x="174" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="175.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="190" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="425.0" y="170.0" text-anchor="middle" class="h">CloudFront/WAF</text>
+<rect x="424" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="425.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="600" y="140" width="190" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="695.0" y="170.0" text-anchor="middle" class="h">ALB/Ingress</text>
+<rect x="694" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="695.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="870" y="140" width="190" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="965.0" y="170.0" text-anchor="middle" class="h">API Gateway / BFF</text>
+<rect x="964" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="965.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1140" y="140" width="190" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1235.0" y="170.0" text-anchor="middle" class="h">Domain Service</text>
+<rect x="1234" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1235.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1410" y="140" width="190" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1505.0" y="170.0" text-anchor="middle" class="h">PostgreSQL/Redis</text>
+<rect x="1504" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1505.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1680" y="140" width="190" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1775.0" y="170.0" text-anchor="middle" class="h">Kafka/Outbox</text>
+<rect x="1774" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1775.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1950" y="140" width="190" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2045.0" y="170.0" text-anchor="middle" class="h">OTel/Logs/Metrics</text>
+<rect x="2044" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="2045.0" y="735.0" text-anchor="middle" class="h"></text>
+<polyline points="270,260 330,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="252" class="small">HTTPS request</text>
+<polyline points="520,310 600,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="302" class="small">WAF passed</text>
+<polyline points="790,360 870,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="352" class="small">route to BFF</text>
+<polyline points="1060,430 1140,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1148" y="422" class="small">authorized command/query</text>
+<polyline points="1330,520 1410,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1418" y="512" class="small">transaction + outbox insert</text>
+<polyline points="1330,620 1680,620" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="612" class="small">publish via outbox relay</text>
+<polyline points="1330,720 1950,720" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1958" y="712" class="small">trace/log/metric</text>
+<polyline points="1140,850 1060,850" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1068" y="842" class="small">response DTO</text>
+<polyline points="870,930 760,930 760,1220 174,1220 174,930" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="768" y="1212" class="small">redacted response</text>
+<polyline points="1680,1010 1140,1010" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1148" y="1002" class="small">async consumer in other service</text>
+<rect x="80" y="1340" width="1780" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1364" class="t">Runtime rule:</text>
+<text x="96" y="1382" class="t">Synchronous calls go through gateway/BFF for external clients. Domain-to-domain consistency uses events/outbox where possible; avoid distributed transactions.</text>
+</svg>

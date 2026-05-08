@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1300" viewBox="0 0 1900 1300">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1820" height="60" rx="14" fill="#022C22"/>
+<text x="950.0" y="69" text-anchor="middle" class="title">Viaverse Auth — Component Diagram</text>
+
+<rect x="90" y="180" width="230" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="205.0" y="225.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<rect x="420" y="180" width="240" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="540.0" y="225.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="780" y="140" width="230" height="70" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="895.0" y="175.0" text-anchor="middle" class="h">AuthController</text>
+<rect x="780" y="250" width="230" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="895.0" y="295.0" text-anchor="middle" class="h">Auth Use Cases</text>
+<rect x="780" y="390" width="230" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="895.0" y="435.0" text-anchor="middle" class="h">Auth / Capability Policies</text>
+<rect x="780" y="530" width="260" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="910.0" y="571.0" text-anchor="middle" class="h">Application Ports</text>
+<text x="910.0" y="591.0" text-anchor="middle" class="t">OtpSender / TokenService / AccountRepo</text>
+<rect x="1160" y="180" width="250" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1285.0" y="216.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1285.0" y="236.0" text-anchor="middle" class="t">Account / Session / Consent</text>
+<rect x="1160" y="320" width="250" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1285.0" y="356.0" text-anchor="middle" class="h">Valkey / Redis</text>
+<text x="1285.0" y="376.0" text-anchor="middle" class="t">OTP / rate limit / revocation</text>
+<rect x="1160" y="460" width="250" height="90" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1285.0" y="505.0" text-anchor="middle" class="h">Netgsm / SES / OAuth Providers</text>
+<rect x="1160" y="600" width="250" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1285.0" y="636.0" text-anchor="middle" class="h">Outbox + Kafka</text>
+<text x="1285.0" y="656.0" text-anchor="middle" class="t">OtpVerified / SessionCreated</text>
+<rect x="420" y="420" width="240" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="540.0" y="465.0" text-anchor="middle" class="h">Admin BFF / Security Admin</text>
+<polyline points="320,225 420,225" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="428" y="217" class="small">HTTPS</text>
+<polyline points="660,225 720,225 720,175 780,175" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="728" y="167" class="small">REST</text>
+<polyline points="895,210 895,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="903" y="242" class="small">command/query</text>
+<polyline points="895,340 895,390" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="903" y="382" class="small">authorize / validate</text>
+<polyline points="895,480 895,530" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="903" y="522" class="small">use ports</text>
+<polyline points="1040,570 1090,570 1090,225 1160,225" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1098" y="217" class="small">JPA adapter</text>
+<polyline points="1040,570 1100,570 1100,365 1160,365" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1108" y="357" class="small">cache/rate limit</text>
+<polyline points="1040,570 1160,505" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="497" class="small">adapter call</text>
+<polyline points="1010,295 1080,295 1080,645 1160,645" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="637" class="small">outbox events</text>
+<polyline points="660,465 720,465 720,175 780,175" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="728" y="167" class="small">admin security actions</text>
+<rect x="90" y="760" width="1450" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="106" y="784" class="t">Boundary rule: domain/application logic never imports provider SDKs. Providers are infrastructure adapters behind ports.</text>
+</svg>

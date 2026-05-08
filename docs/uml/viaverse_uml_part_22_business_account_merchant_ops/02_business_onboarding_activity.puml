@@ -1,0 +1,27 @@
+@startuml
+title Viaverse Business Onboarding / Verification — Activity Diagram
+start
+:Owner chooses Operate Business;
+:Check account capability and eligibility;
+:Create business draft;
+:Complete profile\nname/category/about;
+:Upload verification docs\noptional/required by region;
+:Run verification\nmanual/automated;
+if (Approved?) then (yes)
+  :Create service catalog;
+  :Add branch/service area\nhours/capacity;
+  :Select plan/trial\nbilling config;
+  :Publish-ready check\nprofile/catalog/billing;
+  :Publish to search\nand lead routing;
+  :Emit BusinessPublished;
+else (no)
+  :Request changes or reject;
+  :Return to profile/docs fix;
+endif
+stop
+
+note bottom
+Business can be drafted before verification,
+but public search visibility and lead routing require publish-ready policy.
+end note
+@enduml

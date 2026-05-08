@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Payment / Wallet — Class Model</text>
+
+<rect x="80" y="150" width="390" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="275.0" y="191.0" text-anchor="middle" class="h">PaymentSession</text>
+<text x="275.0" y="211.0" text-anchor="middle" class="t">--</text>
+<text x="275.0" y="231.0" text-anchor="middle" class="t">id: PaymentSessionId</text>
+<text x="275.0" y="251.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="275.0" y="271.0" text-anchor="middle" class="t">requesterAccountId: AccountId</text>
+<text x="275.0" y="291.0" text-anchor="middle" class="t">provider: PaymentProviderType</text>
+<text x="275.0" y="311.0" text-anchor="middle" class="t">providerSessionId: String?</text>
+<text x="275.0" y="331.0" text-anchor="middle" class="t">amount: Money</text>
+<text x="275.0" y="351.0" text-anchor="middle" class="t">commissionAmount: Money</text>
+<text x="275.0" y="371.0" text-anchor="middle" class="t">status: PaymentStatus</text>
+<text x="275.0" y="391.0" text-anchor="middle" class="t">idempotencyKey: String</text>
+<text x="275.0" y="411.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="570" y="150" width="390" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="765.0" y="190.0" text-anchor="middle" class="h">StoredPaymentMethod</text>
+<text x="765.0" y="210.0" text-anchor="middle" class="t">--</text>
+<text x="765.0" y="230.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="765.0" y="250.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="765.0" y="270.0" text-anchor="middle" class="t">provider: PaymentProviderType</text>
+<text x="765.0" y="290.0" text-anchor="middle" class="t">providerToken: String</text>
+<text x="765.0" y="310.0" text-anchor="middle" class="t">cardBrand: String?</text>
+<text x="765.0" y="330.0" text-anchor="middle" class="t">last4: String?</text>
+<text x="765.0" y="350.0" text-anchor="middle" class="t">expiryMonth: Int?</text>
+<text x="765.0" y="370.0" text-anchor="middle" class="t">expiryYear: Int?</text>
+<text x="765.0" y="390.0" text-anchor="middle" class="t">status: MethodStatus</text>
+<rect x="1060" y="150" width="410" height="270" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1265.0" y="204.0" text-anchor="middle" class="h">ProviderCallbackRecord</text>
+<text x="1265.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="1265.0" y="244.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1265.0" y="264.0" text-anchor="middle" class="t">provider: PaymentProviderType</text>
+<text x="1265.0" y="284.0" text-anchor="middle" class="t">providerEventId: String?</text>
+<text x="1265.0" y="304.0" text-anchor="middle" class="t">paymentSessionId: UUID?</text>
+<text x="1265.0" y="324.0" text-anchor="middle" class="t">status: CallbackStatus</text>
+<text x="1265.0" y="344.0" text-anchor="middle" class="t">idempotencyKey: String</text>
+<text x="1265.0" y="364.0" text-anchor="middle" class="t">safePayloadHash: String?</text>
+<text x="1265.0" y="384.0" text-anchor="middle" class="t">receivedAt: Instant</text>
+<rect x="1570" y="150" width="360" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1750.0" y="188.0" text-anchor="middle" class="h">CommissionLedger</text>
+<text x="1750.0" y="208.0" text-anchor="middle" class="t">--</text>
+<text x="1750.0" y="228.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1750.0" y="248.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="1750.0" y="268.0" text-anchor="middle" class="t">paymentSessionId: UUID</text>
+<text x="1750.0" y="288.0" text-anchor="middle" class="t">rate: Decimal</text>
+<text x="1750.0" y="308.0" text-anchor="middle" class="t">amount: Money</text>
+<text x="1750.0" y="328.0" text-anchor="middle" class="t">status: CommissionStatus</text>
+<text x="1750.0" y="348.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="80" y="550" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="275.0" y="593.0" text-anchor="middle" class="h">RefundRequest</text>
+<text x="275.0" y="613.0" text-anchor="middle" class="t">--</text>
+<text x="275.0" y="633.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="275.0" y="653.0" text-anchor="middle" class="t">paymentSessionId: UUID</text>
+<text x="275.0" y="673.0" text-anchor="middle" class="t">amount: Money</text>
+<text x="275.0" y="693.0" text-anchor="middle" class="t">reason: String</text>
+<text x="275.0" y="713.0" text-anchor="middle" class="t">status: RefundStatus</text>
+<text x="275.0" y="733.0" text-anchor="middle" class="t">requestedBy: AccountId</text>
+<text x="275.0" y="753.0" text-anchor="middle" class="t">reviewedBy: AccountId?</text>
+<rect x="570" y="550" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="765.0" y="593.0" text-anchor="middle" class="h">PayoutHold</text>
+<text x="765.0" y="613.0" text-anchor="middle" class="t">--</text>
+<text x="765.0" y="633.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="765.0" y="653.0" text-anchor="middle" class="t">jobId: JobId</text>
+<text x="765.0" y="673.0" text-anchor="middle" class="t">receiverType: WORKER | BUSINESS</text>
+<text x="765.0" y="693.0" text-anchor="middle" class="t">receiverId: UUID</text>
+<text x="765.0" y="713.0" text-anchor="middle" class="t">amount: Money</text>
+<text x="765.0" y="733.0" text-anchor="middle" class="t">status: PayoutStatus</text>
+<text x="765.0" y="753.0" text-anchor="middle" class="t">blockedReason: String?</text>
+<rect x="1060" y="550" width="380" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1250.0" y="592.0" text-anchor="middle" class="h">PaymentPolicy</text>
+<text x="1250.0" y="612.0" text-anchor="middle" class="t">--</text>
+<text x="1250.0" y="632.0" text-anchor="middle" class="t">canCreateSession()</text>
+<text x="1250.0" y="652.0" text-anchor="middle" class="t">verifyCallback()</text>
+<text x="1250.0" y="672.0" text-anchor="middle" class="t">calculateCommission()</text>
+<text x="1250.0" y="692.0" text-anchor="middle" class="t">canRefund()</text>
+<text x="1250.0" y="712.0" text-anchor="middle" class="t">canReleasePayout()</text>
+<text x="1250.0" y="732.0" text-anchor="middle" class="t">validateNoDuplicate()</text>
+<rect x="1570" y="550" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1765.0" y="602.0" text-anchor="middle" class="h">Payment Events</text>
+<text x="1765.0" y="622.0" text-anchor="middle" class="t">--</text>
+<text x="1765.0" y="642.0" text-anchor="middle" class="t">PaymentSessionCreated</text>
+<text x="1765.0" y="662.0" text-anchor="middle" class="t">PaymentAuthorized</text>
+<text x="1765.0" y="682.0" text-anchor="middle" class="t">PaymentFailed</text>
+<text x="1765.0" y="702.0" text-anchor="middle" class="t">CommissionCalculated</text>
+<text x="1765.0" y="722.0" text-anchor="middle" class="t">RefundIssued</text>
+<text x="1765.0" y="742.0" text-anchor="middle" class="t">PayoutReleased</text>
+<polyline points="470,260 570,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="578" y="242" class="small">uses optional</text>
+<polyline points="470,300 1060,285" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1068" y="277" class="small">has callbacks</text>
+<polyline points="470,345 1570,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1578" y="252" class="small">calculates</text>
+<polyline points="275,430 275,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="283" y="542" class="small">may refund</text>
+<polyline points="470,390 765,390 765,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="773" y="382" class="small">creates hold</text>
+<polyline points="1060,620 900,620 900,450 275,450 275,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="908" y="442" class="small">validates</text>
+<polyline points="1250,550 1250,420" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1258" y="412" class="small">verifies</text>
+<polyline points="1060,650 470,650" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="478" y="642" class="small">authorizes</text>
+<polyline points="1060,700 960,685" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="968" y="677" class="small">authorizes</text>
+<polyline points="470,410 1765,410 1765,550" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1773" y="402" class="small">emits</text>
+<polyline points="470,665 1570,665" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1578" y="657" class="small">emits</text>
+<polyline points="960,665 1570,665" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1578" y="657" class="small">emits</text>
+<rect x="80" y="1000" width="1540" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1024" class="t">Data rule:</text>
+<text x="96" y="1042" class="t">providerToken is not PAN. Only safe display fields such as brand/last4 are stored. Callback payload storage must avoid sensitive secrets.</text>
+</svg>

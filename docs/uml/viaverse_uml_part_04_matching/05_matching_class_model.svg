@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1450" viewBox="0 0 2100 1450">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2020" height="60" rx="14" fill="#022C22"/>
+<text x="1050.0" y="69" text-anchor="middle" class="title">Viaverse Matching — Class Model</text>
+
+<rect x="80" y="150" width="330" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="245.0" y="187.0" text-anchor="middle" class="h">RequestSnapshot</text>
+<text x="245.0" y="207.0" text-anchor="middle" class="t">--</text>
+<text x="245.0" y="227.0" text-anchor="middle" class="t">requestId: RequestId</text>
+<text x="245.0" y="247.0" text-anchor="middle" class="t">categoryId: CategoryId</text>
+<text x="245.0" y="267.0" text-anchor="middle" class="t">budget: Budget</text>
+<text x="245.0" y="287.0" text-anchor="middle" class="t">areaId: AreaId</text>
+<text x="245.0" y="307.0" text-anchor="middle" class="t">urgency: Urgency</text>
+<text x="245.0" y="327.0" text-anchor="middle" class="t">publishedAt: Instant</text>
+<rect x="520" y="150" width="360" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="700.0" y="197.0" text-anchor="middle" class="h">CandidateProvider</text>
+<text x="700.0" y="217.0" text-anchor="middle" class="t">--</text>
+<text x="700.0" y="237.0" text-anchor="middle" class="t">targetType: WORKER | BUSINESS</text>
+<text x="700.0" y="257.0" text-anchor="middle" class="t">targetId: UUID</text>
+<text x="700.0" y="277.0" text-anchor="middle" class="t">accountId: AccountId?</text>
+<text x="700.0" y="297.0" text-anchor="middle" class="t">businessId: BusinessId?</text>
+<text x="700.0" y="317.0" text-anchor="middle" class="t">serviceArea: AreaId</text>
+<text x="700.0" y="337.0" text-anchor="middle" class="t">categories: Set&lt;CategoryId&gt;</text>
+<rect x="990" y="150" width="330" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1155.0" y="191.0" text-anchor="middle" class="h">EligibilityResult</text>
+<text x="1155.0" y="211.0" text-anchor="middle" class="t">--</text>
+<text x="1155.0" y="231.0" text-anchor="middle" class="t">eligible: Boolean</text>
+<text x="1155.0" y="251.0" text-anchor="middle" class="t">reasons: List&lt;ReasonCode&gt;</text>
+<text x="1155.0" y="271.0" text-anchor="middle" class="t">capabilityStatus</text>
+<text x="1155.0" y="291.0" text-anchor="middle" class="t">accountStatus</text>
+<text x="1155.0" y="311.0" text-anchor="middle" class="t">businessStatus</text>
+<rect x="1430" y="150" width="360" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1610.0" y="197.0" text-anchor="middle" class="h">TrustSummary</text>
+<text x="1610.0" y="217.0" text-anchor="middle" class="t">--</text>
+<text x="1610.0" y="237.0" text-anchor="middle" class="t">subjectId: UUID</text>
+<text x="1610.0" y="257.0" text-anchor="middle" class="t">rating: Decimal</text>
+<text x="1610.0" y="277.0" text-anchor="middle" class="t">completedJobs: Int</text>
+<text x="1610.0" y="297.0" text-anchor="middle" class="t">badges: List&lt;BadgeCode&gt;</text>
+<text x="1610.0" y="317.0" text-anchor="middle" class="t">riskLevel: RiskLevel</text>
+<text x="1610.0" y="337.0" text-anchor="middle" class="t">disputeRate: Decimal</text>
+<rect x="80" y="520" width="350" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="255.0" y="569.0" text-anchor="middle" class="h">MatchScore</text>
+<text x="255.0" y="589.0" text-anchor="middle" class="t">--</text>
+<text x="255.0" y="609.0" text-anchor="middle" class="t">score: Decimal</text>
+<text x="255.0" y="629.0" text-anchor="middle" class="t">categoryFit: Decimal</text>
+<text x="255.0" y="649.0" text-anchor="middle" class="t">distanceScore: Decimal</text>
+<text x="255.0" y="669.0" text-anchor="middle" class="t">budgetFit: Decimal</text>
+<text x="255.0" y="689.0" text-anchor="middle" class="t">trustScore: Decimal</text>
+<text x="255.0" y="709.0" text-anchor="middle" class="t">availabilityScore: Decimal</text>
+<text x="255.0" y="729.0" text-anchor="middle" class="t">boostSignal: Decimal</text>
+<text x="255.0" y="749.0" text-anchor="middle" class="t">riskPenalty: Decimal</text>
+<rect x="550" y="540" width="340" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="720.0" y="589.0" text-anchor="middle" class="h">MatchExplanation</text>
+<text x="720.0" y="609.0" text-anchor="middle" class="t">--</text>
+<text x="720.0" y="629.0" text-anchor="middle" class="t">reasonCodes: List&lt;ReasonCode&gt;</text>
+<text x="720.0" y="649.0" text-anchor="middle" class="t">visibleReasons: List&lt;String&gt;</text>
+<text x="720.0" y="669.0" text-anchor="middle" class="t">internalReasons: List&lt;String&gt;</text>
+<rect x="1030" y="520" width="350" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1205.0" y="563.0" text-anchor="middle" class="h">WorkerOpportunity</text>
+<text x="1205.0" y="583.0" text-anchor="middle" class="t">--</text>
+<text x="1205.0" y="603.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1205.0" y="623.0" text-anchor="middle" class="t">requestId: RequestId</text>
+<text x="1205.0" y="643.0" text-anchor="middle" class="t">targetType: TargetType</text>
+<text x="1205.0" y="663.0" text-anchor="middle" class="t">targetId: UUID</text>
+<text x="1205.0" y="683.0" text-anchor="middle" class="t">score: Decimal</text>
+<text x="1205.0" y="703.0" text-anchor="middle" class="t">status: OpportunityStatus</text>
+<text x="1205.0" y="723.0" text-anchor="middle" class="t">expiresAt: Instant</text>
+<rect x="1490" y="520" width="330" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1655.0" y="566.0" text-anchor="middle" class="h">MatchingPolicy</text>
+<text x="1655.0" y="586.0" text-anchor="middle" class="t">--</text>
+<text x="1655.0" y="606.0" text-anchor="middle" class="t">applyEligibility()</text>
+<text x="1655.0" y="626.0" text-anchor="middle" class="t">applySafetyGates()</text>
+<text x="1655.0" y="646.0" text-anchor="middle" class="t">applyFairnessWindow()</text>
+<text x="1655.0" y="666.0" text-anchor="middle" class="t">applyBoostAfterGates()</text>
+<text x="1655.0" y="686.0" text-anchor="middle" class="t">explain()</text>
+<rect x="800" y="900" width="400" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1000.0" y="940.0" text-anchor="middle" class="h">Matching Events</text>
+<text x="1000.0" y="960.0" text-anchor="middle" class="t">--</text>
+<text x="1000.0" y="980.0" text-anchor="middle" class="t">MatchingRequested</text>
+<text x="1000.0" y="1000.0" text-anchor="middle" class="t">MatchingCompleted</text>
+<text x="1000.0" y="1020.0" text-anchor="middle" class="t">WorkerOpportunityCreated</text>
+<text x="1000.0" y="1040.0" text-anchor="middle" class="t">WorkerOpportunityExpired</text>
+<polyline points="410,250 520,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="242" class="small">candidate query</text>
+<polyline points="880,250 990,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="998" y="237" class="small">checked as</text>
+<polyline points="880,210 1430,210" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1438" y="202" class="small">has summary</text>
+<polyline points="245,350 245,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="253" y="512" class="small">features</text>
+<polyline points="700,370 700,470 255,470 255,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="263" y="462" class="small">features</text>
+<polyline points="1160,340 1160,470 1655,470 1655,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1663" y="462" class="small">gates</text>
+<polyline points="1610,370 1610,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1618" y="512" class="small">risk/trust</text>
+<polyline points="430,650 550,625" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="558" y="617" class="small">reason codes</text>
+<polyline points="890,625 1030,635" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1038" y="627" class="small">stored with</text>
+<polyline points="1490,620 1380,620" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1388" y="612" class="small">decides eligibility</text>
+<polyline points="1205,750 1205,860 1000,860 1000,900" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1008" y="852" class="small">emits</text>
+<rect x="80" y="1160" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1184" class="t">Class rule:</text>
+<text x="96" y="1202" class="t">Visible reasons are safe user-facing explanations. Internal reasons may include risk/fraud signals and must not be exposed to normal users.</text>
+</svg>

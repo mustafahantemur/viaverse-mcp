@@ -1,0 +1,101 @@
+@startuml
+title Viaverse Admin / Moderation / Ops — Class Model
+
+class AdminCase {
+  id: AdminCaseId
+  caseType: MODERATION | SUPPORT | DISPUTE | CONFIG
+  status: CaseStatus
+  subjectType: SubjectType
+  subjectId: UUID
+  priority: Priority
+  assignedTo: AccountId?
+  createdAt: Instant
+  closedAt: Instant?
+}
+
+class AdminAction {
+  id: UUID
+  caseId: AdminCaseId
+  actorAccountId: AccountId
+  actionType: AdminActionType
+  reason: String
+  evidenceRefs: List<UUID>
+  resultStatus: ActionResultStatus
+  createdAt: Instant
+}
+
+class AdminPermission {
+  roleCode: String
+  resourceType: String
+  action: String
+  scopeRule: String
+  requiresMfa: Boolean
+  requiresReason: Boolean
+}
+
+class AuditRecord {
+  id: UUID
+  actorAccountId: AccountId
+  action: String
+  resourceType: String
+  resourceId: UUID
+  reason: String?
+  beforeHash: String?
+  afterHash: String?
+  createdAt: Instant
+}
+
+class Appeal {
+  id: UUID
+  caseId: AdminCaseId
+  submittedBy: AccountId
+  status: AppealStatus
+  message: String
+  resolvedBy: AccountId?
+  resolvedAt: Instant?
+}
+
+class PlatformConfigChange {
+  id: UUID
+  configKey: String
+  oldValueHash: String
+  newValueHash: String
+  changedBy: AccountId
+  reason: String
+  effectiveAt: Instant
+}
+
+class AdminPolicy {
+  canViewCase()
+  canApplyAction()
+  requiresReason()
+  requiresMfa()
+  canAccessPrivateContent()
+  canApproveMoneyAction()
+}
+
+class AdminEvents {
+  AdminCaseOpened
+  AdminActionApplied
+  AppealSubmitted
+  AppealResolved
+  ConfigChanged
+  AdminAccessDenied
+}
+
+AdminCase "1" o-- "*" AdminAction
+AdminAction --> AuditRecord : creates
+AdminPermission --> AdminPolicy : input
+AdminPolicy ..> AdminAction : validates
+AdminCase "1" o-- "*" Appeal
+PlatformConfigChange --> AuditRecord : creates
+AdminCase ..> AdminEvents : emits
+AdminAction ..> AdminEvents : emits
+Appeal ..> AdminEvents : emits
+PlatformConfigChange ..> AdminEvents : emits
+
+note bottom
+AdminAction without reason is invalid for destructive,
+privacy-sensitive, money or suspension actions.
+end note
+@enduml

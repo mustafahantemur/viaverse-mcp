@@ -1,0 +1,10 @@
+@startuml
+title Viaverse Cross-Cutting Governance Map
+rectangle Domain
+Domain ..> Security
+Domain ..> Privacy
+Domain ..> Observability
+Domain ..> Eventing
+Domain ..> Contracts
+Domain ..> Quality
+@enduml

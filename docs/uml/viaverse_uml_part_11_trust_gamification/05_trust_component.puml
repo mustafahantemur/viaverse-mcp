@@ -1,0 +1,31 @@
+@startuml
+title Viaverse Review / Trust / Badge / Gamification — Component Diagram
+
+component "KMP / Next.js Client\nReview prompt\nProfile trust view\nBadge UI" as Client
+component "API Gateway / App BFF\nReview API\nTrust profile API" as BFF
+component "TrustController\nReviewController" as Controller
+component "Trust Use Cases\nSubmitReview\nCalculateTrust\nEvaluateBadges\nModerateReview" as UseCases
+component "Trust Policies\neligibility\nduplicate prevention\nabuse checks\nscore/badge rules" as Policies
+component "Ports\nReviewRepo\nTrustScoreRepo\nBadgeRepo\nOutboxPort" as Ports
+component "marketplace-service\njob participant validation\njob completion signal" as Marketplace
+component "moderation-service\ntext abuse\nPII/spam/hate scan" as Moderation
+database "PostgreSQL\nreviews\ntrust_score\nbadge_awards\ngamification_account" as DB
+queue "Kafka / Outbox\nReviewSubmitted\nTrustScoreUpdated\nBadgeAwarded" as Kafka
+component "search/matching\nranking projection\nprofile badges" as Search
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate/calculate
+Policies --> Ports : ports
+Policies --> Marketplace : job validation
+UseCases --> Moderation : scan review
+Ports --> DB : persist
+UseCases --> Kafka : outbox events
+Kafka --> Search : projection update
+
+note bottom
+Matching consumes trust signals; matching must not own trust calculations.
+Trust score is produced by trust-gamification-service.
+end note
+@enduml

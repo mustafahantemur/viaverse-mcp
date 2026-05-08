@@ -1,0 +1,34 @@
+@startuml
+title Viaverse Chat / Messaging — Component Diagram
+
+component "KMP / Next.js Client\nChat list\nConversation screen\nContext card" as Client
+component "API Gateway / App BFF\nConversation API\nMessage API" as BFF
+component "MessagingController" as Controller
+component "Messaging Use Cases\nCreateConversation\nSendMessage\nMarkRead\nReportMessage" as UseCases
+component "Messaging Policies\nparticipants\ncontext state\ncontact sharing\nreporting" as Policy
+component "Ports\nConversationRepo\nMessageRepo\nOutboxPort" as Ports
+component "marketplace-service\nquote/job context\nallowed sharing state" as Marketplace
+component "media-service\nattachments\nmoderation status" as Media
+database "PostgreSQL + Cassandra\nconversation metadata\nmessages/read models" as DB
+component "notification-service\nrecipient alerts" as Notify
+component "Safety / Moderation\ncontact sharing\nreports\nrisk signals" as Safety
+queue "Kafka / Outbox\nMessageSent\nMessageReported\nSupportEscalationRequested" as Kafka
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policy : validate
+Policy --> Ports : ports
+Policy --> Marketplace : context check
+UseCases --> Media : attach refs
+Ports --> DB : persist/read model
+UseCases --> Safety : scan/report
+UseCases --> Notify : notify recipient
+UseCases --> Kafka : outbox events
+
+note bottom
+Future E2EE-ready boundary should be preserved,
+but initial implementation can use server-stored messages
+with strict policy, audit and report flows.
+end note
+@enduml

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Security / Privacy / KVKK — Class Model</text>
+
+<rect x="80" y="150" width="420" height="300" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="210.0" text-anchor="middle" class="h">AccountSession</text>
+<text x="290.0" y="230.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="250.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="290.0" y="270.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="290.0" y="290.0" text-anchor="middle" class="t">deviceId: UUID?</text>
+<text x="290.0" y="310.0" text-anchor="middle" class="t">refreshTokenHash: String</text>
+<text x="290.0" y="330.0" text-anchor="middle" class="t">ipHash: String</text>
+<text x="290.0" y="350.0" text-anchor="middle" class="t">userAgentHash: String</text>
+<text x="290.0" y="370.0" text-anchor="middle" class="t">status: SessionStatus</text>
+<text x="290.0" y="390.0" text-anchor="middle" class="t">expiresAt: Instant</text>
+<text x="290.0" y="410.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="600" y="150" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="211.0" text-anchor="middle" class="h">CapabilityGrant</text>
+<text x="795.0" y="231.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="251.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="795.0" y="271.0" text-anchor="middle" class="t">capability: REQUEST_WORK | DO_WORK | OPERATE_BUSINESS</text>
+<text x="795.0" y="291.0" text-anchor="middle" class="t">status: GrantStatus</text>
+<text x="795.0" y="311.0" text-anchor="middle" class="t">verifiedAt: Instant?</text>
+<text x="795.0" y="331.0" text-anchor="middle" class="t">revokedAt: Instant?</text>
+<rect x="1090" y="150" width="390" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1285.0" y="203.0" text-anchor="middle" class="h">ConsentRecord</text>
+<text x="1285.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="1285.0" y="243.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1285.0" y="263.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1285.0" y="283.0" text-anchor="middle" class="t">purpose: ConsentPurpose</text>
+<text x="1285.0" y="303.0" text-anchor="middle" class="t">status: GRANTED | DENIED | WITHDRAWN</text>
+<text x="1285.0" y="323.0" text-anchor="middle" class="t">version: String</text>
+<text x="1285.0" y="343.0" text-anchor="middle" class="t">source: String</text>
+<text x="1285.0" y="363.0" text-anchor="middle" class="t">changedAt: Instant</text>
+<rect x="1580" y="150" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1775.0" y="202.0" text-anchor="middle" class="h">DataSubjectRequest</text>
+<text x="1775.0" y="222.0" text-anchor="middle" class="t">--</text>
+<text x="1775.0" y="242.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1775.0" y="262.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="1775.0" y="282.0" text-anchor="middle" class="t">requestType: EXPORT | DELETE | CORRECT</text>
+<text x="1775.0" y="302.0" text-anchor="middle" class="t">status: DSARStatus</text>
+<text x="1775.0" y="322.0" text-anchor="middle" class="t">verifiedAt: Instant?</text>
+<text x="1775.0" y="342.0" text-anchor="middle" class="t">completedAt: Instant?</text>
+<rect x="80" y="560" width="420" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="617.0" text-anchor="middle" class="h">SecurityPolicy</text>
+<text x="290.0" y="637.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="657.0" text-anchor="middle" class="t">canAccessResource()</text>
+<text x="290.0" y="677.0" text-anchor="middle" class="t">canUseCapability()</text>
+<text x="290.0" y="697.0" text-anchor="middle" class="t">requiresAudit()</text>
+<text x="290.0" y="717.0" text-anchor="middle" class="t">requiresMfa()</text>
+<text x="290.0" y="737.0" text-anchor="middle" class="t">shouldRedactField()</text>
+<text x="290.0" y="757.0" text-anchor="middle" class="t">retentionForDataClass()</text>
+<rect x="600" y="560" width="390" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="622.0" text-anchor="middle" class="h">DataClassification</text>
+<text x="795.0" y="642.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="662.0" text-anchor="middle" class="t">dataClass: PUBLIC | INTERNAL | PERSONAL | SENSITIVE</text>
+<text x="795.0" y="682.0" text-anchor="middle" class="t">retentionClass: String</text>
+<text x="795.0" y="702.0" text-anchor="middle" class="t">encryptionRequired: Boolean</text>
+<text x="795.0" y="722.0" text-anchor="middle" class="t">auditRequired: Boolean</text>
+<text x="795.0" y="742.0" text-anchor="middle" class="t">exportable: Boolean</text>
+<text x="795.0" y="762.0" text-anchor="middle" class="t">deletable: Boolean</text>
+<rect x="1090" y="560" width="420" height="270" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1300.0" y="614.0" text-anchor="middle" class="h">SensitiveAccessAudit</text>
+<text x="1300.0" y="634.0" text-anchor="middle" class="t">--</text>
+<text x="1300.0" y="654.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1300.0" y="674.0" text-anchor="middle" class="t">actorAccountId: AccountId</text>
+<text x="1300.0" y="694.0" text-anchor="middle" class="t">resourceType: String</text>
+<text x="1300.0" y="714.0" text-anchor="middle" class="t">resourceId: UUID</text>
+<text x="1300.0" y="734.0" text-anchor="middle" class="t">action: String</text>
+<text x="1300.0" y="754.0" text-anchor="middle" class="t">reason: String?</text>
+<text x="1300.0" y="774.0" text-anchor="middle" class="t">correlationId: String</text>
+<text x="1300.0" y="794.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1600" y="560" width="390" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1795.0" y="618.0" text-anchor="middle" class="h">Security / Privacy Events</text>
+<text x="1795.0" y="638.0" text-anchor="middle" class="t">--</text>
+<text x="1795.0" y="658.0" text-anchor="middle" class="t">LoginSucceeded</text>
+<text x="1795.0" y="678.0" text-anchor="middle" class="t">LoginFailed</text>
+<text x="1795.0" y="698.0" text-anchor="middle" class="t">ConsentChanged</text>
+<text x="1795.0" y="718.0" text-anchor="middle" class="t">DataExportReady</text>
+<text x="1795.0" y="738.0" text-anchor="middle" class="t">DataDeleted</text>
+<text x="1795.0" y="758.0" text-anchor="middle" class="t">SensitiveAccessLogged</text>
+<text x="1795.0" y="778.0" text-anchor="middle" class="t">SecurityIncidentRaised</text>
+<polyline points="500,260 600,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="242" class="small">uses account</text>
+<polyline points="1480,250 1580,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="242" class="small">affects</text>
+<polyline points="290,560 290,480 795,480 795,380" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="803" y="472" class="small">checks</text>
+<polyline points="500,680 600,680" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="672" class="small">uses</text>
+<polyline points="500,700 1090,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1098" y="692" class="small">requires</text>
+<polyline points="1775,380 1775,490 1300,490 1300,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1308" y="482" class="small">audits</text>
+<polyline points="1480,280 1795,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1803" y="552" class="small">emits</text>
+<polyline points="1775,380 1795,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1803" y="552" class="small">emits</text>
+<polyline points="1510,700 1600,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="692" class="small">emits</text>
+<polyline points="500,420 1795,420 1795,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1803" y="412" class="small">emits</text>
+<rect x="80" y="1030" width="1620" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Model rule:</text>
+<text x="96" y="1072" class="t">Account identity, capability grants and consent records are separate concepts. Do not encode product capabilities as only string roles in JWT.</text>
+</svg>

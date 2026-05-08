@@ -1,0 +1,24 @@
+@startuml
+title Viaverse Matching — Activity Diagram
+start
+:Consume MatchingRequested;
+:Load request snapshot\ncategory / budget / area / urgency;
+:Check visibility and privacy rules;
+:Candidate generation\nOpenSearch geo + category query;
+:Eligibility filter\ncapability + account/business status;
+:Trust / risk filter\nratings + badges + reports + dispute rate;
+:Availability + distance + budget fit;
+:Rank candidates\nscore + reason codes;
+:Apply fairness window\nnew talent controlled exposure;
+:Apply eligible boost signal\nonly after safety gates;
+:Persist WorkerOpportunity\nand matching explanation;
+:Notify matched workers/businesses;
+stop
+
+note bottom
+Ranking rule:
+Boost/subscription signal is applied only after eligibility,
+trust, safety, risk and relevance gates.
+Recommendation must be explainable.
+end note
+@enduml

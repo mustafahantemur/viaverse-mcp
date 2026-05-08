@@ -1,0 +1,97 @@
+@startuml
+title Viaverse Business Account / Merchant Ops — Class Model
+
+class BusinessAccount {
+  id: BusinessId
+  ownerAccountId: AccountId
+  legalName: String?
+  displayName: String
+  status: BusinessStatus
+  verificationStatus: VerificationStatus
+  primaryCategoryId: CategoryId
+  createdAt: Instant
+}
+
+class BusinessBranch {
+  id: BranchId
+  businessId: BusinessId
+  name: String
+  serviceArea: GeoArea
+  addressRef: AddressRef?
+  workingHours: WeeklySchedule
+  status: BranchStatus
+}
+
+class BusinessStaffMember {
+  businessId: BusinessId
+  accountId: AccountId
+  role: OWNER | MANAGER | STAFF
+  permissions: Set<Permission>
+  status: StaffStatus
+  invitedAt: Instant?
+}
+
+class ServiceCatalogItem {
+  id: CatalogItemId
+  businessId: BusinessId
+  categoryId: CategoryId
+  title: String
+  basePrice: Money?
+  durationMinutes: Int?
+  status: CatalogStatus
+}
+
+class BusinessVerification {
+  id: UUID
+  businessId: BusinessId
+  documentMediaIds: List<MediaId>
+  region: CountryCode
+  status: VerificationStatus
+  reviewedBy: AccountId?
+  reviewedAt: Instant?
+}
+
+class BusinessSubscription {
+  id: UUID
+  businessId: BusinessId
+  planCode: String
+  trialEndsAt: Instant?
+  status: SubscriptionStatus
+  billingAccountId: UUID?
+}
+
+class BusinessPolicy {
+  canManageBusiness()
+  canPublish()
+  requiresVerification()
+  canReceiveLead()
+  canQuoteAsBusiness()
+  subscriptionAllowsFeature()
+}
+
+class BusinessEvents {
+  BusinessCreated
+  BusinessVerified
+  BusinessPublished
+  CatalogUpdated
+  StaffInvited
+  LeadReceived
+}
+
+BusinessAccount "1" o-- "*" BusinessBranch
+BusinessAccount "1" o-- "*" BusinessStaffMember
+BusinessAccount "1" o-- "*" ServiceCatalogItem
+BusinessAccount "1" o-- "*" BusinessVerification
+BusinessAccount "1" o-- "0..1" BusinessSubscription
+BusinessPolicy ..> BusinessAccount : validates
+BusinessPolicy --> BusinessSubscription : checks gates
+BusinessVerification ..> BusinessEvents : emits
+BusinessAccount ..> BusinessEvents : emits
+ServiceCatalogItem ..> BusinessEvents : emits
+
+note bottom
+BusinessAccount is not the same as Account.
+Account owns identity/login.
+BusinessAccount owns merchant profile, branches, catalog, staff and publish state.
+end note
+@enduml

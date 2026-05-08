@@ -1,0 +1,38 @@
+@startuml
+title Viaverse Auth — Activity Diagram
+start
+:Select language;
+:Choose login method;
+if (OTP or OAuth?) then (OTP)
+  :Create OTP challenge;
+  :Hash code + apply rate limit;
+  :Send SMS/email OTP;
+  :Verify OTP attempt and expiry;
+  if (OTP valid?) then (yes)
+    :Find or create Account;
+  else (no)
+    :Retry until max attempts or request new challenge;
+    stop
+  endif
+else (OAuth)
+  :Redirect to provider;
+  :Verify provider callback;
+  if (Provider verified?) then (yes)
+    :Find or create Account;
+  else (no)
+    :Return to method selection;
+    stop
+  endif
+endif
+if (Required consent accepted?) then (yes)
+  :Create session;
+else (no)
+  :Show Terms / Privacy / KVKK;
+  :Choose first intent if new account;
+  :Store consent version;
+  :Create session;
+endif
+:Issue access JWT and refresh token;
+:Enter app;
+stop
+@enduml

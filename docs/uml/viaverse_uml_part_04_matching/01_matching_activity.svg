@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1450" viewBox="0 0 2100 1450">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2020" height="60" rx="14" fill="#022C22"/>
+<text x="1050.0" y="69" text-anchor="middle" class="title">Viaverse Matching — Activity Diagram</text>
+
+<rect x="80" y="160" width="250" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="205.0" y="191.0" text-anchor="middle" class="h">ServiceRequestPublished</text>
+<text x="205.0" y="211.0" text-anchor="middle" class="t">MatchingRequested</text>
+<rect x="430" y="160" width="310" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="585.0" y="196.0" text-anchor="middle" class="h">Load request snapshot</text>
+<text x="585.0" y="216.0" text-anchor="middle" class="t">category / budget / area / urgency</text>
+<rect x="850" y="160" width="300" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1000.0" y="200.0" text-anchor="middle" class="h">Check visibility and privacy rules</text>
+<rect x="1260" y="150" width="330" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1425.0" y="191.0" text-anchor="middle" class="h">Candidate generation</text>
+<text x="1425.0" y="211.0" text-anchor="middle" class="t">OpenSearch geo + category query</text>
+<rect x="1260" y="340" width="330" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1425.0" y="381.0" text-anchor="middle" class="h">Eligibility filter</text>
+<text x="1425.0" y="401.0" text-anchor="middle" class="t">capability + account/business status</text>
+<rect x="850" y="340" width="330" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1015.0" y="381.0" text-anchor="middle" class="h">Trust / risk filter</text>
+<text x="1015.0" y="401.0" text-anchor="middle" class="t">ratings + badges + reports + dispute rate</text>
+<rect x="430" y="340" width="310" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="585.0" y="385.0" text-anchor="middle" class="h">Availability + distance + budget fit</text>
+<rect x="430" y="540" width="310" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="585.0" y="576.0" text-anchor="middle" class="h">Rank candidates</text>
+<text x="585.0" y="596.0" text-anchor="middle" class="t">score + reason codes</text>
+<rect x="850" y="540" width="330" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1015.0" y="576.0" text-anchor="middle" class="h">Apply fairness window</text>
+<text x="1015.0" y="596.0" text-anchor="middle" class="t">new talent controlled exposure</text>
+<rect x="1260" y="540" width="330" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1425.0" y="576.0" text-anchor="middle" class="h">Apply eligible boost signal</text>
+<text x="1425.0" y="596.0" text-anchor="middle" class="t">only after safety gates</text>
+<rect x="850" y="740" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1015.0" y="776.0" text-anchor="middle" class="h">Persist WorkerOpportunity</text>
+<text x="1015.0" y="796.0" text-anchor="middle" class="t">and matching explanation</text>
+<rect x="1260" y="740" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1425.0" y="785.0" text-anchor="middle" class="h">Notify matched workers/businesses</text>
+<rect x="1650" y="755" width="210" height="55" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="1755.0" y="782.5" text-anchor="middle" class="h">MATCHING READY</text>
+<polyline points="330,200 430,200" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="438" y="192" class="small">event</text>
+<polyline points="740,205 850,205" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1150,200 1260,200" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="192" class="small">allowed</text>
+<polyline points="1425,250 1425,340" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1433" y="332" class="small">candidates</text>
+<polyline points="1260,390 1180,390" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1188" y="382" class="small">eligible</text>
+<polyline points="850,390 740,390" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="748" y="382" class="small">safe</text>
+<polyline points="585,430 585,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="593" y="532" class="small">fit</text>
+<polyline points="740,585 850,585" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="858" y="577" class="small">ranked list</text>
+<polyline points="1180,585 1260,585" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="577" class="small">fair list</text>
+<polyline points="1260,585 1210,585 1210,785 1180,785" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1218" y="777" class="small">final list</text>
+<polyline points="1180,785 1260,785" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1590,785 1650,785" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="430" y="930" width="1180" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="446" y="954" class="t">Ranking rule:</text>
+<text x="446" y="972" class="t">Boost/subscription signal is applied only after eligibility, trust, safety, risk and relevance gates. Recommendation must be explainable.</text>
+</svg>

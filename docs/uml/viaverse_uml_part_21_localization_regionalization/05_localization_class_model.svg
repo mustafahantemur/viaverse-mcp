@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Localization / Regionalization — Class Model</text>
+
+<rect x="80" y="150" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="208.0" text-anchor="middle" class="h">LocaleProfile</text>
+<text x="290.0" y="228.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="248.0" text-anchor="middle" class="t">accountId: AccountId?</text>
+<text x="290.0" y="268.0" text-anchor="middle" class="t">preferredLocale: Locale</text>
+<text x="290.0" y="288.0" text-anchor="middle" class="t">fallbackLocale: Locale</text>
+<text x="290.0" y="308.0" text-anchor="middle" class="t">timezone: String</text>
+<text x="290.0" y="328.0" text-anchor="middle" class="t">countryCode: String</text>
+<text x="290.0" y="348.0" text-anchor="middle" class="t">currencyCode: String</text>
+<text x="290.0" y="368.0" text-anchor="middle" class="t">updatedAt: Instant</text>
+<rect x="600" y="150" width="390" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="201.0" text-anchor="middle" class="h">TranslationKey</text>
+<text x="795.0" y="221.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="241.0" text-anchor="middle" class="t">key: String</text>
+<text x="795.0" y="261.0" text-anchor="middle" class="t">namespace: String</text>
+<text x="795.0" y="281.0" text-anchor="middle" class="t">description: String</text>
+<text x="795.0" y="301.0" text-anchor="middle" class="t">ownerTeam: String</text>
+<text x="795.0" y="321.0" text-anchor="middle" class="t">status: ACTIVE | DEPRECATED</text>
+<rect x="1090" y="150" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1300.0" y="208.0" text-anchor="middle" class="h">TranslationValue</text>
+<text x="1300.0" y="228.0" text-anchor="middle" class="t">--</text>
+<text x="1300.0" y="248.0" text-anchor="middle" class="t">key: String</text>
+<text x="1300.0" y="268.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="1300.0" y="288.0" text-anchor="middle" class="t">value: String</text>
+<text x="1300.0" y="308.0" text-anchor="middle" class="t">version: Int</text>
+<text x="1300.0" y="328.0" text-anchor="middle" class="t">status: DRAFT | REVIEW | PUBLISHED</text>
+<text x="1300.0" y="348.0" text-anchor="middle" class="t">updatedBy: AccountId</text>
+<text x="1300.0" y="368.0" text-anchor="middle" class="t">updatedAt: Instant</text>
+<rect x="1600" y="150" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1810.0" y="212.0" text-anchor="middle" class="h">RegionalConfig</text>
+<text x="1810.0" y="232.0" text-anchor="middle" class="t">--</text>
+<text x="1810.0" y="252.0" text-anchor="middle" class="t">countryCode: String</text>
+<text x="1810.0" y="272.0" text-anchor="middle" class="t">currencyCode: String</text>
+<text x="1810.0" y="292.0" text-anchor="middle" class="t">defaultLocale: Locale</text>
+<text x="1810.0" y="312.0" text-anchor="middle" class="t">legalPolicyVersion: String</text>
+<text x="1810.0" y="332.0" text-anchor="middle" class="t">taxMode: TaxMode</text>
+<text x="1810.0" y="352.0" text-anchor="middle" class="t">serviceAvailability: Json</text>
+<rect x="80" y="560" width="420" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="617.0" text-anchor="middle" class="h">LocalizedSlug</text>
+<text x="290.0" y="637.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="657.0" text-anchor="middle" class="t">entityType: SEO_PAGE | CATEGORY | SERVICE</text>
+<text x="290.0" y="677.0" text-anchor="middle" class="t">entityId: UUID</text>
+<text x="290.0" y="697.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="290.0" y="717.0" text-anchor="middle" class="t">slug: String</text>
+<text x="290.0" y="737.0" text-anchor="middle" class="t">canonicalUrl: String</text>
+<text x="290.0" y="757.0" text-anchor="middle" class="t">hreflangGroupId: UUID</text>
+<rect x="600" y="560" width="390" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="617.0" text-anchor="middle" class="h">LocalizedTemplate</text>
+<text x="795.0" y="637.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="657.0" text-anchor="middle" class="t">templateType: NOTIFICATION | EMAIL | SMS | SEO</text>
+<text x="795.0" y="677.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="795.0" y="697.0" text-anchor="middle" class="t">subject: String?</text>
+<text x="795.0" y="717.0" text-anchor="middle" class="t">body: String</text>
+<text x="795.0" y="737.0" text-anchor="middle" class="t">version: Int</text>
+<text x="795.0" y="757.0" text-anchor="middle" class="t">status: TemplateStatus</text>
+<rect x="1090" y="560" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1300.0" y="622.0" text-anchor="middle" class="h">LocalizationPolicy</text>
+<text x="1300.0" y="642.0" text-anchor="middle" class="t">--</text>
+<text x="1300.0" y="662.0" text-anchor="middle" class="t">resolveLocale()</text>
+<text x="1300.0" y="682.0" text-anchor="middle" class="t">applyFallback()</text>
+<text x="1300.0" y="702.0" text-anchor="middle" class="t">formatMoney()</text>
+<text x="1300.0" y="722.0" text-anchor="middle" class="t">formatDateTime()</text>
+<text x="1300.0" y="742.0" text-anchor="middle" class="t">validateTranslationQuality()</text>
+<text x="1300.0" y="762.0" text-anchor="middle" class="t">canPublishTranslation()</text>
+<rect x="1600" y="560" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1810.0" y="631.0" text-anchor="middle" class="h">Localization Events</text>
+<text x="1810.0" y="651.0" text-anchor="middle" class="t">--</text>
+<text x="1810.0" y="671.0" text-anchor="middle" class="t">LocaleChanged</text>
+<text x="1810.0" y="691.0" text-anchor="middle" class="t">TranslationPublished</text>
+<text x="1810.0" y="711.0" text-anchor="middle" class="t">MissingTranslationDetected</text>
+<text x="1810.0" y="731.0" text-anchor="middle" class="t">RegionalConfigChanged</text>
+<text x="1810.0" y="751.0" text-anchor="middle" class="t">LocalizedSeoPageUpdated</text>
+<polyline points="990,250 1090,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1098" y="252" class="small">1 -&gt; many locales</text>
+<polyline points="500,260 1600,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="252" class="small">uses country</text>
+<polyline points="1810,400 1810,480 290,480 290,560" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="298" y="472" class="small">drives</text>
+<polyline points="1300,410 795,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="803" y="552" class="small">used by</text>
+<polyline points="1090,660 1010,660 1010,470 290,470 290,410" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1018" y="462" class="small">resolves</text>
+<polyline points="1300,560 1300,410" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1308" y="402" class="small">validates</text>
+<polyline points="1510,660 1810,400" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="392" class="small">applies</text>
+<polyline points="500,410 1810,410 1810,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="402" class="small">emits</text>
+<polyline points="1510,280 1810,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="552" class="small">emits</text>
+<polyline points="1810,400 1810,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="552" class="small">emits</text>
+<rect x="80" y="1030" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Model rule:</text>
+<text x="96" y="1072" class="t">Translation keys are stable code contracts. Text values are versioned content, not hardcoded business logic.</text>
+</svg>

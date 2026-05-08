@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse AI Assistant / Support — Class Model</text>
+
+<rect x="80" y="150" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="199.0" text-anchor="middle" class="h">AiSession</text>
+<text x="290.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="239.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="290.0" y="259.0" text-anchor="middle" class="t">accountId: AccountId?</text>
+<text x="290.0" y="279.0" text-anchor="middle" class="t">anonymousId: String?</text>
+<text x="290.0" y="299.0" text-anchor="middle" class="t">entryPoint: String</text>
+<text x="290.0" y="319.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="290.0" y="339.0" text-anchor="middle" class="t">status: AiSessionStatus</text>
+<text x="290.0" y="359.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<text x="290.0" y="379.0" text-anchor="middle" class="t">closedAt: Instant?</text>
+<rect x="600" y="150" width="420" height="280" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="810.0" y="218.0" text-anchor="middle" class="h">AiMessage</text>
+<text x="810.0" y="238.0" text-anchor="middle" class="t">--</text>
+<text x="810.0" y="258.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="810.0" y="278.0" text-anchor="middle" class="t">sessionId: UUID</text>
+<text x="810.0" y="298.0" text-anchor="middle" class="t">role: USER | ASSISTANT | SYSTEM</text>
+<text x="810.0" y="318.0" text-anchor="middle" class="t">type: TEXT | TOOL_RESULT | ESCALATION</text>
+<text x="810.0" y="338.0" text-anchor="middle" class="t">contentRedacted: String</text>
+<text x="810.0" y="358.0" text-anchor="middle" class="t">safetyLabels: List&lt;String&gt;</text>
+<text x="810.0" y="378.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1120" y="150" width="390" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1315.0" y="197.0" text-anchor="middle" class="h">RetrievalCitation</text>
+<text x="1315.0" y="217.0" text-anchor="middle" class="t">--</text>
+<text x="1315.0" y="237.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1315.0" y="257.0" text-anchor="middle" class="t">messageId: UUID</text>
+<text x="1315.0" y="277.0" text-anchor="middle" class="t">sourceType: FAQ | POLICY | DOC | DOMAIN</text>
+<text x="1315.0" y="297.0" text-anchor="middle" class="t">sourceId: String</text>
+<text x="1315.0" y="317.0" text-anchor="middle" class="t">score: Decimal</text>
+<text x="1315.0" y="337.0" text-anchor="middle" class="t">snippetHash: String</text>
+<rect x="1600" y="150" width="420" height="270" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1810.0" y="204.0" text-anchor="middle" class="h">SupportTicket</text>
+<text x="1810.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="1810.0" y="244.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1810.0" y="264.0" text-anchor="middle" class="t">accountId: AccountId?</text>
+<text x="1810.0" y="284.0" text-anchor="middle" class="t">sourceAiSessionId: UUID?</text>
+<text x="1810.0" y="304.0" text-anchor="middle" class="t">category: TicketCategory</text>
+<text x="1810.0" y="324.0" text-anchor="middle" class="t">priority: Priority</text>
+<text x="1810.0" y="344.0" text-anchor="middle" class="t">status: TicketStatus</text>
+<text x="1810.0" y="364.0" text-anchor="middle" class="t">assignedTo: AccountId?</text>
+<text x="1810.0" y="384.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="80" y="560" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="622.0" text-anchor="middle" class="h">AiPolicy</text>
+<text x="290.0" y="642.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="662.0" text-anchor="middle" class="t">canUseContext()</text>
+<text x="290.0" y="682.0" text-anchor="middle" class="t">redactInput()</text>
+<text x="290.0" y="702.0" text-anchor="middle" class="t">allowTool()</text>
+<text x="290.0" y="722.0" text-anchor="middle" class="t">requiresHumanHandoff()</text>
+<text x="290.0" y="742.0" text-anchor="middle" class="t">validateOutput()</text>
+<text x="290.0" y="762.0" text-anchor="middle" class="t">maxTokenBudget()</text>
+<rect x="600" y="560" width="420" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="810.0" y="607.0" text-anchor="middle" class="h">AiFeedback</text>
+<text x="810.0" y="627.0" text-anchor="middle" class="t">--</text>
+<text x="810.0" y="647.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="810.0" y="667.0" text-anchor="middle" class="t">messageId: UUID</text>
+<text x="810.0" y="687.0" text-anchor="middle" class="t">accountId: AccountId?</text>
+<text x="810.0" y="707.0" text-anchor="middle" class="t">rating: GOOD | BAD | UNSAFE</text>
+<text x="810.0" y="727.0" text-anchor="middle" class="t">comment: String?</text>
+<text x="810.0" y="747.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1120" y="560" width="390" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1315.0" y="613.0" text-anchor="middle" class="h">PromptConfig</text>
+<text x="1315.0" y="633.0" text-anchor="middle" class="t">--</text>
+<text x="1315.0" y="653.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1315.0" y="673.0" text-anchor="middle" class="t">name: String</text>
+<text x="1315.0" y="693.0" text-anchor="middle" class="t">version: Int</text>
+<text x="1315.0" y="713.0" text-anchor="middle" class="t">locale: Locale</text>
+<text x="1315.0" y="733.0" text-anchor="middle" class="t">modelProfile: String</text>
+<text x="1315.0" y="753.0" text-anchor="middle" class="t">status: ACTIVE | DRAFT | RETIRED</text>
+<text x="1315.0" y="773.0" text-anchor="middle" class="t">updatedAt: Instant</text>
+<rect x="1600" y="560" width="420" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1810.0" y="622.0" text-anchor="middle" class="h">AI / Support Events</text>
+<text x="1810.0" y="642.0" text-anchor="middle" class="t">--</text>
+<text x="1810.0" y="662.0" text-anchor="middle" class="t">AiSessionStarted</text>
+<text x="1810.0" y="682.0" text-anchor="middle" class="t">AiAnswered</text>
+<text x="1810.0" y="702.0" text-anchor="middle" class="t">AiEscalated</text>
+<text x="1810.0" y="722.0" text-anchor="middle" class="t">SupportTicketCreated</text>
+<text x="1810.0" y="742.0" text-anchor="middle" class="t">TicketResolved</text>
+<text x="1810.0" y="762.0" text-anchor="middle" class="t">AiFeedbackSubmitted</text>
+<polyline points="500,260 600,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="252" class="small">1 -&gt; many</text>
+<polyline points="1020,260 1120,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="242" class="small">0..many</text>
+<polyline points="500,380 1810,380 1810,420" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1818" y="372" class="small">may escalate</text>
+<polyline points="290,560 290,480 810,480 810,430" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="818" y="472" class="small">validates/redacts</text>
+<polyline points="1315,560 1315,470 810,470 810,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="818" y="462" class="small">shapes answer</text>
+<polyline points="810,430 810,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="818" y="552" class="small">rated by</text>
+<polyline points="500,410 1810,410 1810,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="402" class="small">emits</text>
+<polyline points="1810,420 1810,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1818" y="552" class="small">emits</text>
+<polyline points="1020,670 1600,670" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="662" class="small">emits</text>
+<rect x="80" y="1030" width="1680" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Data rule:</text>
+<text x="96" y="1072" class="t">Store redacted AI content and metadata. Raw prompt/context retention must be short, controlled and disabled for sensitive flows unless explicitly required.</text>
+</svg>

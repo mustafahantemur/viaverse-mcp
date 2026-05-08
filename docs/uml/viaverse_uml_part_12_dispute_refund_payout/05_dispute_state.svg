@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Dispute / Refund / Payout — State Diagram</text>
+
+<rect x="120" y="180" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="230.0" y="220.0" text-anchor="middle" class="h">OPENED</text>
+<rect x="500" y="180" width="240" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="620.0" y="220.0" text-anchor="middle" class="h">VALIDATING</text>
+<rect x="880" y="180" width="340" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1050.0" y="220.0" text-anchor="middle" class="h">EVIDENCE_COLLECTION</text>
+<rect x="1360" y="180" width="280" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1500.0" y="220.0" text-anchor="middle" class="h">ADMIN_REVIEW</text>
+<rect x="1360" y="500" width="320" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1520.0" y="540.0" text-anchor="middle" class="h">RESOLVED_REFUND</text>
+<rect x="880" y="500" width="320" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1040.0" y="540.0" text-anchor="middle" class="h">RESOLVED_PAYOUT</text>
+<rect x="500" y="500" width="300" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="650.0" y="540.0" text-anchor="middle" class="h">RESOLVED_SPLIT</text>
+<rect x="120" y="500" width="300" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="270.0" y="540.0" text-anchor="middle" class="h">REJECTED_INVALID</text>
+<rect x="880" y="820" width="220" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="990.0" y="860.0" text-anchor="middle" class="h">CLOSED</text>
+<rect x="1360" y="820" width="260" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1490.0" y="860.0" text-anchor="middle" class="h">ESCALATED</text>
+<polyline points="340,220 500,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="212" class="small">validate</text>
+<polyline points="740,220 880,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="888" y="212" class="small">valid</text>
+<polyline points="620,260 620,360 270,360 270,500" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="278" y="352" class="small">invalid</text>
+<polyline points="1220,220 1360,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="212" class="small">submitted / timeout</text>
+<polyline points="1500,260 1500,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1508" y="492" class="small">refund</text>
+<polyline points="1360,220 1200,220 1200,540" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1208" y="212" class="small">payout</text>
+<polyline points="1360,220 650,220 650,500" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="658" y="212" class="small">split</text>
+<polyline points="1360,540 1100,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1108" y="852" class="small">audit + events</text>
+<polyline points="1040,580 1040,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="812" class="small">audit + events</text>
+<polyline points="800,540 990,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="998" y="812" class="small">audit + events</text>
+<polyline points="1640,220 1490,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1498" y="812" class="small">legal/complex</text>
+<polyline points="1360,860 1300,860 1300,260 1360,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1308" y="252" class="small">return</text>
+<rect x="160" y="1080" width="1450" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1104" class="t">Money state coupling:</text>
+<text x="176" y="1122" class="t">When dispute is not closed, payout must remain blocked. Refund/release/split are terminal resolution actions with idempotency keys.</text>
+</svg>

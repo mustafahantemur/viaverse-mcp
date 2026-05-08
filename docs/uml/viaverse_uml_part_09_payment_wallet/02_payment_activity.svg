@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Payment / Wallet — Activity Diagram</text>
+
+<rect x="80" y="160" width="220" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="190.0" y="181.0" text-anchor="middle" class="h">START</text>
+<text x="190.0" y="201.0" text-anchor="middle" class="t">QuoteAccepted</text>
+<rect x="400" y="140" width="330" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="565.0" y="176.0" text-anchor="middle" class="h">Validate accepted quote</text>
+<text x="565.0" y="196.0" text-anchor="middle" class="t">request owner / amount / state</text>
+<rect x="850" y="140" width="300" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1000.0" y="176.0" text-anchor="middle" class="h">Create PaymentSession</text>
+<text x="1000.0" y="196.0" text-anchor="middle" class="t">idempotency key</text>
+<rect x="1260" y="140" width="260" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1390.0" y="185.0" text-anchor="middle" class="h">Saved card or checkout?</text>
+<rect x="1620" y="140" width="290" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1765.0" y="180.0" text-anchor="middle" class="h">Create provider checkout</text>
+<rect x="1260" y="330" width="300" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1410.0" y="370.0" text-anchor="middle" class="h">Use stored provider token</text>
+<rect x="1620" y="330" width="300" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1770.0" y="370.0" text-anchor="middle" class="h">Receive provider callback</text>
+<rect x="1260" y="520" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1425.0" y="556.0" text-anchor="middle" class="h">Verify signature</text>
+<text x="1425.0" y="576.0" text-anchor="middle" class="t">amount / currency / state</text>
+<rect x="850" y="520" width="280" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="990.0" y="565.0" text-anchor="middle" class="h">Valid + not duplicate?</text>
+<rect x="400" y="520" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="550.0" y="551.0" text-anchor="middle" class="h">Mark payment failed</text>
+<text x="550.0" y="571.0" text-anchor="middle" class="t">show retry path</text>
+<rect x="850" y="730" width="300" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1000.0" y="766.0" text-anchor="middle" class="h">Set PaymentAuthorized</text>
+<text x="1000.0" y="786.0" text-anchor="middle" class="t">or Captured</text>
+<rect x="1260" y="730" width="300" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1410.0" y="766.0" text-anchor="middle" class="h">Calculate commission</text>
+<text x="1410.0" y="786.0" text-anchor="middle" class="t">5% initial</text>
+<rect x="1620" y="730" width="260" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1750.0" y="770.0" text-anchor="middle" class="h">Create payout hold</text>
+<rect x="1260" y="940" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1425.0" y="967.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1425.0" y="987.0" text-anchor="middle" class="t">PaymentAuthorized</text>
+<text x="1425.0" y="1007.0" text-anchor="middle" class="t">CommissionCalculated</text>
+<rect x="850" y="940" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1015.0" y="976.0" text-anchor="middle" class="h">Notify marketplace</text>
+<text x="1015.0" y="996.0" text-anchor="middle" class="t">payment state update</text>
+<rect x="400" y="960" width="260" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="530.0" y="981.0" text-anchor="middle" class="h">PAYMENT READY</text>
+<text x="530.0" y="1001.0" text-anchor="middle" class="t">Job can continue</text>
+<polyline points="300,190 400,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="730,185 850,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1150,185 1260,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1520,185 1620,180" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1628" y="172" class="small">new checkout</text>
+<polyline points="1390,230 1390,330" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1398" y="322" class="small">saved token</text>
+<polyline points="1410,410 1410,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1418" y="512" class="small">direct provider auth</text>
+<polyline points="1765,220 1765,330" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1620,370 1590,370 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1590,565 1260,565" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1598" y="557" class="small">callback</text>
+<polyline points="1260,565 1130,565" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="850,565 700,565" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="708" y="557" class="small">no</text>
+<polyline points="990,610 990,730" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="998" y="722" class="small">yes</text>
+<polyline points="1150,775 1260,775" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1560,775 1620,770" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1410,820 1410,940" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1260,985 1180,985" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="850,985 660,990" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="400" y="1150" width="1400" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="416" y="1174" class="t">Idempotency rule:</text>
+<text x="416" y="1192" class="t">Create session, provider callback, capture, refund and payout release must be idempotent. Duplicate callbacks must not duplicate state changes.</text>
+</svg>

@@ -1,0 +1,88 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="media-component" name="04 Media Component">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Media Upload / CDN / Moderation — Component Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="KMP / Next.js Client&#xa;--&#xa;Image/video picker&#xa;Upload progress&#xa;Preview" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="320" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="API Gateway / App BFF&#xa;--&#xa;Media API facade" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="170" width="300" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="controller" value="MediaController&#xa;UploadSessionController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="140" width="330" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="usecases" value="Media Use Cases&#xa;--&#xa;CreateUploadSession&#xa;ConfirmUpload&#xa;AttachMedia&#xa;ReportMedia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="300" width="360" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="policy" value="Media Policies&#xa;--&#xa;context permission&#xa;mime/size limits&#xa;visibility&#xa;moderation status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="540" width="360" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="ports" value="Ports&#xa;ObjectStoragePort&#xa;CdnUrlPort&#xa;ModerationPort&#xa;MediaRepo&#xa;OutboxPort" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="800" width="360" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="S3 / Object Storage&#xa;--&#xa;originals&#xa;thumbnails&#xa;transcoded variants" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="200" width="360" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cdn" value="CloudFront CDN&#xa;--&#xa;public assets&#xa;signed URLs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="440" width="360" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="mod" value="moderation-service&#xa;--&#xa;NSFW&#xa;violence&#xa;abuse/spam" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="660" width="360" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL&#xa;--&#xa;media_asset&#xa;media_derivative&#xa;media_report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="220" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="worker" value="media-worker&#xa;--&#xa;EXIF strip&#xa;thumbnail&#xa;video transcode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="480" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Kafka / Outbox&#xa;--&#xa;MediaUploaded&#xa;MediaApproved&#xa;MediaRejected" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="760" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="HTTPS" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="client" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="400" y="235" as="point"/><mxPoint x="500" y="225" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="REST" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="controller">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="800" y="225" as="point"/><mxPoint x="850" y="225" as="point"/><mxPoint x="850" y="185" as="point"/><mxPoint x="900" y="185" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="command/query" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="controller" target="usecases">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1065" y="230" as="point"/><mxPoint x="1065" y="300" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="validate" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="usecases" target="policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1080" y="460" as="point"/><mxPoint x="1080" y="540" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="ports" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="policy" target="ports">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1080" y="710" as="point"/><mxPoint x="1080" y="800" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="presign/read/write" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="s3">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="870" as="point"/><mxPoint x="1320" y="870" as="point"/><mxPoint x="1320" y="275" as="point"/><mxPoint x="1380" y="275" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="delivery URL" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="cdn">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="870" as="point"/><mxPoint x="1320" y="870" as="point"/><mxPoint x="1320" y="500" as="point"/><mxPoint x="1380" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="scan" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="mod">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="870" as="point"/><mxPoint x="1320" y="870" as="point"/><mxPoint x="1320" y="725" as="point"/><mxPoint x="1380" y="725" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c9" value="metadata" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="870" as="point"/><mxPoint x="1710" y="870" as="point"/><mxPoint x="1710" y="295" as="point"/><mxPoint x="1780" y="295" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c10" value="async process" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="usecases" target="worker">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="380" as="point"/><mxPoint x="1720" y="380" as="point"/><mxPoint x="1720" y="555" as="point"/><mxPoint x="1780" y="555" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c11" value="process objects" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="worker" target="s3">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1780" y="555" as="point"/><mxPoint x="1720" y="555" as="point"/><mxPoint x="1720" y="275" as="point"/><mxPoint x="1740" y="275" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c12" value="result events" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="worker" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1950" y="630" as="point"/><mxPoint x="1950" y="760" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Component rule:&#xa;Domain services reference media by mediaId only. They do not own object keys, binary processing, CDN policy or moderation state." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1120" width="1660" height="65" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

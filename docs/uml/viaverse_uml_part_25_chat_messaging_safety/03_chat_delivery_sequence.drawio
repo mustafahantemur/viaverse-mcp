@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="chat-sequence" name="03 Chat Messaging Sequence">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Chat Message Delivery — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="clientA" value="Sender Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="clientA_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="179" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="API Gateway / Realtime BFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="449" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="chat" value="chat-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="chat_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="719" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="market" value="marketplace-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="market_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="989" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="safety" value="safety-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="safety_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1259" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="Cassandra / Message Store" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1529" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="notif" value="notification-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="notif_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1799" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="clientB" value="Recipient Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="clientB_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2069" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="send message / websocket or HTTPS" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="clientA" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="280" y="260" as="point"/><mxPoint x="350" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="SendMessage(command)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="chat">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="320" as="point"/><mxPoint x="620" y="320" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="validate job participants/state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="chat" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="410" as="point"/><mxPoint x="890" y="410" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="scan text/media refs" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="chat" target="safety">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="510" as="point"/><mxPoint x="1160" y="510" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="allow / warn / hold / block" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="safety" target="chat">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1160" y="600" as="point"/><mxPoint x="820" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="persist message + receipt state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="chat" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="700" as="point"/><mxPoint x="1430" y="700" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="notify if offline" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="chat" target="notif">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="800" as="point"/><mxPoint x="1700" y="800" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="delivery event" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="chat" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="620" y="910" as="point"/><mxPoint x="550" y="910" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="realtime delivery" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="clientB">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="350" y="1010" as="point"/><mxPoint x="250" y="1010" as="point"/><mxPoint x="250" y="1250" as="point"/><mxPoint x="2070" y="1250" as="point"/><mxPoint x="2070" y="1010" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="read receipt" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="clientB" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1970" y="1120" as="point"/><mxPoint x="550" y="1120" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="UpdateReceipt" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="chat">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="1180" as="point"/><mxPoint x="620" y="1180" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Sequence focus:&#xa;Realtime transport is adapter-level. Core chat-service should work with WebSocket, SSE or polling. Message persistence and safety policy stay independent from transport." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1320" width="1780" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

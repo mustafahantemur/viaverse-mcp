@@ -1,0 +1,40 @@
+@startuml
+title Viaverse Job Lifecycle / Delivery Approval — Sequence Diagram
+
+participant "Requester Client" as Requester
+participant "Worker Client" as Worker
+participant "API Gateway / App BFF" as BFF
+participant "marketplace-service" as Marketplace
+participant "payment-service" as Payment
+participant "messaging-service" as Messaging
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+
+Kafka -> Marketplace : QuoteAccepted
+Marketplace -> DB : create Job(WAITING_PAYMENT)
+Payment -> Marketplace : PaymentAuthorized event
+Marketplace -> DB : set READY_TO_START
+Marketplace -> Messaging : create job conversation/context
+
+Worker -> BFF : POST /jobs/{id}/start
+BFF -> Marketplace : startJob(command)
+Marketplace -> DB : set IN_PROGRESS
+Marketplace -> Kafka : JobStarted
+
+Worker -> BFF : POST /jobs/{id}/deliver
+BFF -> Marketplace : deliverJob(command)
+Marketplace -> DB : set DELIVERED + delivery refs
+Marketplace -> Kafka : JobDelivered
+
+Requester -> BFF : POST /jobs/{id}/approve-delivery
+BFF -> Marketplace : approveDelivery(command)
+Marketplace -> DB : set COMPLETED + payout eligible
+Marketplace -> Kafka : JobCompleted
+Marketplace -> Kafka : PayoutEligible
+
+note bottom
+Payment authorization unlocks job start.
+Delivery approval completes job and marks payout eligible;
+actual release belongs to payment/dispute policy.
+end note
+@enduml

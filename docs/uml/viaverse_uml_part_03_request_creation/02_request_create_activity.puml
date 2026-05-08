@@ -1,0 +1,36 @@
+@startuml
+title Viaverse Request Creation — Activity Diagram
+start
+:Tap central Create;
+:Select Request a service;
+:Enter title + description;
+:AI suggests category and budget guidance;
+:User confirms category/subcategory;
+:Choose budget mode/range;
+:Set approximate location and exact address if needed;
+:Set timing + urgency;
+if (Attach media?) then (yes)
+  :Request upload URL;
+  :Upload directly to S3;
+  :Confirm uploaded media refs;
+else (no)
+endif
+:Set visibility and matching rules;
+:Preview request;
+if (Publish now?) then (yes)
+  :Validate required fields and REQUEST_WORK capability;
+  :Persist PUBLISHED request;
+  :Write outbox events;
+  :Emit ServiceRequestPublished;
+  :Emit MatchingRequested;
+else (no)
+  :Save as DRAFT;
+endif
+stop
+
+note bottom
+Privacy rule:
+Public/matching data uses approximate area.
+Exact address becomes visible only after allowed job/payment state.
+end note
+@enduml

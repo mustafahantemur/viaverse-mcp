@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Auth / Authorization / Rate Limit — Activity Diagram</text>
+
+<rect x="80" y="160" width="220" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="190.0" y="181.0" text-anchor="middle" class="h">START</text>
+<text x="190.0" y="201.0" text-anchor="middle" class="t">API request</text>
+<rect x="400" y="140" width="300" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="550.0" y="180.0" text-anchor="middle" class="h">TLS + WAF / edge checks</text>
+<rect x="820" y="140" width="300" height="90" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="970.0" y="176.0" text-anchor="middle" class="h">Rate limit</text>
+<text x="970.0" y="196.0" text-anchor="middle" class="t">IP/device/account</text>
+<rect x="1240" y="140" width="330" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1405.0" y="176.0" text-anchor="middle" class="h">Validate token</text>
+<text x="1405.0" y="196.0" text-anchor="middle" class="t">signature/expiry/audience</text>
+<rect x="1660" y="140" width="220" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1770.0" y="185.0" text-anchor="middle" class="h">Valid token?</text>
+<rect x="1660" y="340" width="260" height="75" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1790.0" y="368.5" text-anchor="middle" class="h">Reject 401/429</text>
+<text x="1790.0" y="388.5" text-anchor="middle" class="t">safe error</text>
+<rect x="1240" y="340" width="320" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1400.0" y="377.5" text-anchor="middle" class="h">Load claims/capabilities</text>
+<rect x="820" y="340" width="350" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="995.0" y="376.0" text-anchor="middle" class="h">Evaluate RBAC/ABAC</text>
+<text x="995.0" y="396.0" text-anchor="middle" class="t">ownership + capability</text>
+<rect x="420" y="350" width="220" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="530.0" y="390.0" text-anchor="middle" class="h">Allowed?</text>
+<rect x="420" y="560" width="260" height="75" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="550.0" y="588.5" text-anchor="middle" class="h">Reject 403</text>
+<text x="550.0" y="608.5" text-anchor="middle" class="t">no data leak</text>
+<rect x="820" y="560" width="330" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="985.0" y="591.0" text-anchor="middle" class="h">Create security context</text>
+<text x="985.0" y="611.0" text-anchor="middle" class="t">correlationId</text>
+<rect x="1240" y="560" width="260" height="75" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1370.0" y="597.5" text-anchor="middle" class="h">Execute use case</text>
+<rect x="1240" y="780" width="260" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1370.0" y="817.5" text-anchor="middle" class="h">Audit if sensitive</text>
+<rect x="820" y="780" width="330" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="985.0" y="811.0" text-anchor="middle" class="h">Return response</text>
+<text x="985.0" y="831.0" text-anchor="middle" class="t">redacted fields only</text>
+<rect x="420" y="800" width="150" height="55" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="495.0" y="827.5" text-anchor="middle" class="h">END</text>
+<polyline points="300,190 400,180" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="700,180 820,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1120,185 1240,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1570,185 1660,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1770,230 1770,340" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1778" y="332" class="small">no</text>
+<polyline points="1660,185 1600,185 1600,377 1560,377" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="369" class="small">yes</text>
+<polyline points="1240,377 1170,385" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="820,385 640,390" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="530,430 530,560" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="538" y="552" class="small">no</text>
+<polyline points="640,390 760,390 760,600 820,600" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="768" y="592" class="small">yes</text>
+<polyline points="1150,600 1240,598" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1370,635 1370,780" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1240,817 1150,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="820,820 570,828" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="330" y="1060" width="1520" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="346" y="1084" class="t">Authorization rule:</text>
+<text x="346" y="1102" class="t">Never trust only UI state. Every backend use case checks capability, ownership, resource state and policy before changing data.</text>
+</svg>

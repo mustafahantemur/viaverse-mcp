@@ -1,0 +1,27 @@
+@startuml
+title Viaverse Taxonomy Admin / Publish — Activity Diagram
+start
+:Admin edits taxonomy;
+:Create taxonomy draft\ncategory/tag/form;
+:Define rules\nfields/risk/fees/visibility;
+:Add localized labels\nslugs/icons;
+:Validate tree\nno cycles/no duplicates;
+if (Valid?) then (yes)
+  :Run impact analysis\nsearch/forms/SEO;
+  :Review/approve\ncontent ops;
+  :Publish new version;
+  :Invalidate caches\nclient/search/SEO;
+  :Reindex affected entities;
+  :Emit TaxonomyPublished;
+  :Monitor quality\nmisclassification/no-result;
+else (no)
+  :Return to draft with errors;
+endif
+stop
+
+note bottom
+Taxonomy changes are versioned.
+A published version must be backward-compatible with existing requests,
+provider capabilities and SEO URLs or include explicit migration mapping.
+end note
+@enduml

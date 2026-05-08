@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Business Profile / Subscription — State Diagram
+
+state "Business Profile" as BP {
+  [*] --> BUSINESS_DRAFT
+  BUSINESS_DRAFT --> PENDING_VERIFICATION : submit docs
+  BUSINESS_DRAFT --> PUBLIC_ACTIVE : no review required
+  PENDING_VERIFICATION --> PUBLIC_ACTIVE : approved
+  PUBLIC_ACTIVE --> UNPUBLISHED : owner unpublishes
+  UNPUBLISHED --> PUBLIC_ACTIVE : publish again
+  PUBLIC_ACTIVE --> SUSPENDED : policy/admin
+  SUSPENDED --> PUBLIC_ACTIVE : appeal/fix
+  BUSINESS_DRAFT --> DELETED : delete
+  PUBLIC_ACTIVE --> DELETED : account/business deletion
+  DELETED --> [*]
+}
+
+state "Business Subscription" as BS {
+  [*] --> SUBSCRIPTION_TRIALING
+  SUBSCRIPTION_TRIALING --> SUBSCRIPTION_ACTIVE : payment method / trial converts
+  SUBSCRIPTION_ACTIVE --> SUBSCRIPTION_PAST_DUE : payment failed
+  SUBSCRIPTION_PAST_DUE --> SUBSCRIPTION_ACTIVE : paid
+  SUBSCRIPTION_PAST_DUE --> SUBSCRIPTION_CANCELLED : grace period ended
+  SUBSCRIPTION_ACTIVE --> SUBSCRIPTION_CANCELLED : owner cancels
+  SUBSCRIPTION_CANCELLED --> [*]
+}
+
+note bottom
+Profile state and subscription state are related but separate.
+Subscription status may reduce premium visibility/tools,
+but must not become pay-to-quote.
+end note
+@enduml

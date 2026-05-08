@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Matching — Component Diagram
+
+queue "Kafka / Spring Cloud Stream\nMatchingRequested\nProfileUpdated\nTrustScoreUpdated" as EventBus
+component "Matching Consumer\nConsumes request events\nCoordinates pipeline" as Consumer
+component "Candidate Generator\nOpenSearch geo/category\nsaved search support" as Candidate
+component "Eligibility Filter\ncapability\nstatus\nbusiness team\nvisibility" as Filter
+component "Ranking Engine\nscore\nreason codes\nfairness\nboost after gates" as Ranker
+component "marketplace-service\nrequest snapshot\nWorkerOpportunity store" as Marketplace
+component "identity-service\ncapability/status check" as Identity
+component "trust-gamification\ntrust/risk/badges" as Trust
+database "Valkey / Redis\navailability\nhot state\nrate/frequency caps" as Redis
+database "OpenSearch\nprovider/business/request indexes" as OpenSearch
+component "notification-service\nworker opportunity alerts" as Notify
+
+EventBus --> Consumer : consume
+Consumer --> Candidate : pipeline
+Candidate --> Filter : candidates
+Filter --> Ranker : eligible list
+Candidate --> OpenSearch : query
+Consumer --> Marketplace : request snapshot
+Filter --> Identity : batch check
+Ranker --> Trust : trust/risk
+Ranker --> Redis : availability/hot state
+Ranker --> Marketplace : persist opportunities
+Ranker --> Notify : alerts
+
+note bottom
+Matching pipeline may live initially in search-service or marketplace worker,
+but must stay a separable component with clear inputs/outputs.
+end note
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+title Viaverse Release / Rollback / Migration — State Diagram
+
+[*] --> DRAFT
+DRAFT --> CI_RUNNING : PR merge/tag
+CI_RUNNING --> BLOCKED : gate failed
+CI_RUNNING --> READY_TO_DEPLOY : gates passed
+BLOCKED --> CI_RUNNING : fix + rerun
+READY_TO_DEPLOY --> MIGRATING : predeploy migration
+MIGRATING --> DEPLOYING : migration ok
+DEPLOYING --> VERIFYING : rollout done
+VERIFYING --> RELEASED : healthy
+VERIFYING --> ROLLBACK_REQUIRED : bad health/SLO
+ROLLBACK_REQUIRED --> ROLLED_BACK : previous version
+
+RELEASED --> [*]
+ROLLED_BACK --> [*]
+
+note bottom
+Rollback must be tested, but DB migrations may not be trivially reversible.
+Prefer expand-contract migrations for safety.
+end note
+@enduml

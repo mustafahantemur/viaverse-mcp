@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Media Upload / CDN / Moderation — Component Diagram</text>
+
+<rect x="80" y="170" width="320" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="240.0" y="199.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<text x="240.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="239.0" text-anchor="middle" class="t">Image/video picker</text>
+<text x="240.0" y="259.0" text-anchor="middle" class="t">Upload progress</text>
+<text x="240.0" y="279.0" text-anchor="middle" class="t">Preview</text>
+<rect x="500" y="170" width="300" height="110" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="650.0" y="207.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<text x="650.0" y="227.0" text-anchor="middle" class="t">--</text>
+<text x="650.0" y="247.0" text-anchor="middle" class="t">Media API facade</text>
+<rect x="900" y="140" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1065.0" y="176.0" text-anchor="middle" class="h">MediaController</text>
+<text x="1065.0" y="196.0" text-anchor="middle" class="t">UploadSessionController</text>
+<rect x="900" y="300" width="360" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="335.0" text-anchor="middle" class="h">Media Use Cases</text>
+<text x="1080.0" y="355.0" text-anchor="middle" class="t">--</text>
+<text x="1080.0" y="375.0" text-anchor="middle" class="t">CreateUploadSession</text>
+<text x="1080.0" y="395.0" text-anchor="middle" class="t">ConfirmUpload</text>
+<text x="1080.0" y="415.0" text-anchor="middle" class="t">AttachMedia</text>
+<text x="1080.0" y="435.0" text-anchor="middle" class="t">ReportMedia</text>
+<rect x="900" y="540" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="580.0" text-anchor="middle" class="h">Media Policies</text>
+<text x="1080.0" y="600.0" text-anchor="middle" class="t">--</text>
+<text x="1080.0" y="620.0" text-anchor="middle" class="t">context permission</text>
+<text x="1080.0" y="640.0" text-anchor="middle" class="t">mime/size limits</text>
+<text x="1080.0" y="660.0" text-anchor="middle" class="t">visibility</text>
+<text x="1080.0" y="680.0" text-anchor="middle" class="t">moderation status</text>
+<rect x="900" y="800" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1080.0" y="840.0" text-anchor="middle" class="h">Ports</text>
+<text x="1080.0" y="860.0" text-anchor="middle" class="t">ObjectStoragePort</text>
+<text x="1080.0" y="880.0" text-anchor="middle" class="t">CdnUrlPort</text>
+<text x="1080.0" y="900.0" text-anchor="middle" class="t">ModerationPort</text>
+<text x="1080.0" y="920.0" text-anchor="middle" class="t">MediaRepo</text>
+<text x="1080.0" y="940.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1380" y="200" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1560.0" y="239.0" text-anchor="middle" class="h">S3 / Object Storage</text>
+<text x="1560.0" y="259.0" text-anchor="middle" class="t">--</text>
+<text x="1560.0" y="279.0" text-anchor="middle" class="t">originals</text>
+<text x="1560.0" y="299.0" text-anchor="middle" class="t">thumbnails</text>
+<text x="1560.0" y="319.0" text-anchor="middle" class="t">transcoded variants</text>
+<rect x="1380" y="440" width="360" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1560.0" y="473.0" text-anchor="middle" class="h">CloudFront CDN</text>
+<text x="1560.0" y="493.0" text-anchor="middle" class="t">--</text>
+<text x="1560.0" y="513.0" text-anchor="middle" class="t">public assets</text>
+<text x="1560.0" y="533.0" text-anchor="middle" class="t">signed URLs</text>
+<rect x="1380" y="660" width="360" height="130" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1560.0" y="689.0" text-anchor="middle" class="h">moderation-service</text>
+<text x="1560.0" y="709.0" text-anchor="middle" class="t">--</text>
+<text x="1560.0" y="729.0" text-anchor="middle" class="t">NSFW</text>
+<text x="1560.0" y="749.0" text-anchor="middle" class="t">violence</text>
+<text x="1560.0" y="769.0" text-anchor="middle" class="t">abuse/spam</text>
+<rect x="1780" y="220" width="340" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1950.0" y="259.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1950.0" y="279.0" text-anchor="middle" class="t">--</text>
+<text x="1950.0" y="299.0" text-anchor="middle" class="t">media_asset</text>
+<text x="1950.0" y="319.0" text-anchor="middle" class="t">media_derivative</text>
+<text x="1950.0" y="339.0" text-anchor="middle" class="t">media_report</text>
+<rect x="1780" y="480" width="340" height="150" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1950.0" y="519.0" text-anchor="middle" class="h">media-worker</text>
+<text x="1950.0" y="539.0" text-anchor="middle" class="t">--</text>
+<text x="1950.0" y="559.0" text-anchor="middle" class="t">EXIF strip</text>
+<text x="1950.0" y="579.0" text-anchor="middle" class="t">thumbnail</text>
+<text x="1950.0" y="599.0" text-anchor="middle" class="t">video transcode</text>
+<rect x="1780" y="760" width="340" height="150" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1950.0" y="799.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1950.0" y="819.0" text-anchor="middle" class="t">--</text>
+<text x="1950.0" y="839.0" text-anchor="middle" class="t">MediaUploaded</text>
+<text x="1950.0" y="859.0" text-anchor="middle" class="t">MediaApproved</text>
+<text x="1950.0" y="879.0" text-anchor="middle" class="t">MediaRejected</text>
+<polyline points="400,235 500,225" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="217" class="small">HTTPS</text>
+<polyline points="800,225 850,225 850,185 900,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="858" y="177" class="small">REST</text>
+<polyline points="1065,230 1065,300" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1073" y="292" class="small">command/query</text>
+<polyline points="1080,460 1080,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="532" class="small">validate</text>
+<polyline points="1080,710 1080,800" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1088" y="792" class="small">ports</text>
+<polyline points="1260,870 1320,870 1320,275 1380,275" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="267" class="small">presign/read/write</text>
+<polyline points="1260,870 1320,870 1320,500 1380,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="492" class="small">delivery URL</text>
+<polyline points="1260,870 1320,870 1320,725 1380,725" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="717" class="small">scan</text>
+<polyline points="1260,870 1710,870 1710,295 1780,295" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1718" y="287" class="small">metadata</text>
+<polyline points="1260,380 1720,380 1720,555 1780,555" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1728" y="547" class="small">async process</text>
+<polyline points="1780,555 1720,555 1720,275 1740,275" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1728" y="267" class="small">process objects</text>
+<polyline points="1950,630 1950,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1958" y="752" class="small">result events</text>
+<rect x="80" y="1120" width="1660" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1144" class="t">Component rule:</text>
+<text x="96" y="1162" class="t">Domain services reference media by mediaId only. They do not own object keys, binary processing, CDN policy or moderation state.</text>
+</svg>

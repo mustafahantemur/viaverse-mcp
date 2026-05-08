@@ -1,0 +1,99 @@
+@startuml
+title Viaverse Business Mode — Class Model
+
+class BusinessProfile {
+  id: BusinessId
+  ownerAccountId: AccountId
+  status: BusinessStatus
+  name: String
+  legalName: String?
+  publicSlug: String
+  intro: String?
+  verificationStatus: VerificationStatus
+  createdAt: Instant
+  publishedAt: Instant?
+}
+
+class BusinessService {
+  id: UUID
+  businessId: BusinessId
+  categoryId: CategoryId
+  name: String
+  description: String?
+  active: Boolean
+}
+
+class BusinessPackage {
+  id: UUID
+  businessId: BusinessId
+  serviceId: UUID?
+  title: String
+  priceFrom: Money?
+  durationEstimate: Duration?
+  active: Boolean
+}
+
+class BusinessHours {
+  businessId: BusinessId
+  timezone: String
+  weeklySchedule: List<TimeSlot>
+  holidayOverrides: List<Override>
+}
+
+class BusinessTeamMember {
+  businessId: BusinessId
+  accountId: AccountId
+  role: BusinessRole
+  status: MemberStatus
+  invitedAt: Instant?
+}
+
+class BusinessServiceArea {
+  businessId: BusinessId
+  areaType: RADIUS | DISTRICT
+  centerPoint: GeoPoint?
+  radiusKm: Decimal?
+  districtIds: Set<AreaId>
+}
+
+class BusinessSubscription {
+  id: UUID
+  businessId: BusinessId
+  planId: PlanId
+  status: TRIALING | ACTIVE | PAST_DUE | CANCELLED
+  trialEndsAt: Instant?
+  currentPeriodEndsAt: Instant?
+}
+
+class BusinessPolicy {
+  canCreateBusiness()
+  canEditBusiness()
+  canManageTeam()
+  canPublishProfile()
+  canSendBusinessOffer()
+}
+
+class BusinessEvents {
+  BusinessProfileCreated
+  BusinessVerificationSubmitted
+  BusinessProfilePublished
+  BusinessSubscriptionTrialStarted
+  BusinessTeamMemberAdded
+}
+
+BusinessProfile "1" o-- "*" BusinessService
+BusinessService "1" o-- "*" BusinessPackage
+BusinessProfile "1" o-- "1" BusinessHours
+BusinessProfile "1" o-- "*" BusinessTeamMember
+BusinessProfile "1" o-- "*" BusinessServiceArea
+BusinessProfile "1" o-- "0..1" BusinessSubscription
+BusinessPolicy ..> BusinessProfile : validates
+BusinessPolicy ..> BusinessTeamMember : role checks
+BusinessProfile ..> BusinessEvents : emits
+BusinessSubscription ..> BusinessEvents : emits
+
+note bottom
+BusinessProfile is not a separate login identity.
+It is operated by Account(s) through BusinessTeamMember roles.
+end note
+@enduml

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Localization / Multi-language / Regionalization — Use Case Diagram</text>
+
+<rect x="270" y="135" width="1560" height="1130" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="286" y="160" class="h">Localization / Regionalization Boundary</text>
+<rect x="60" y="280" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="311.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="331.0" text-anchor="middle" class="t">User</text>
+<rect x="60" y="760" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="791.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="811.0" text-anchor="middle" class="t">Guest / SEO Visitor</text>
+<rect x="60" y="1080" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="1111.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="1131.0" text-anchor="middle" class="t">Content / Ops Admin</text>
+<rect x="1900" y="240" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="271.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="291.0" text-anchor="middle" class="t">Client Apps</text>
+<rect x="1900" y="560" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="591.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="611.0" text-anchor="middle" class="t">SEO / Search</text>
+<rect x="1900" y="900" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="931.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="951.0" text-anchor="middle" class="t">Domain Services</text>
+<rect x="360" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="223.0" text-anchor="middle" class="h">Detect locale</text>
+<text x="500.0" y="243.0" text-anchor="middle" class="t">app/device/profile</text>
+<rect x="700" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="223.0" text-anchor="middle" class="h">Select language</text>
+<text x="840.0" y="243.0" text-anchor="middle" class="t">TR / EN first</text>
+<rect x="1040" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="223.0" text-anchor="middle" class="h">Format dates, numbers</text>
+<text x="1180.0" y="243.0" text-anchor="middle" class="t">currency, units</text>
+<rect x="1380" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="232.0" text-anchor="middle" class="h">Render localized UI/content</text>
+<rect x="360" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="483.0" text-anchor="middle" class="h">Localize categories</text>
+<text x="500.0" y="503.0" text-anchor="middle" class="t">service names/tags</text>
+<rect x="700" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="483.0" text-anchor="middle" class="h">Apply regional rules</text>
+<text x="840.0" y="503.0" text-anchor="middle" class="t">country/city/legal</text>
+<rect x="1040" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="483.0" text-anchor="middle" class="h">Localize pricing</text>
+<text x="1180.0" y="503.0" text-anchor="middle" class="t">currency/tax/fees</text>
+<rect x="1380" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="483.0" text-anchor="middle" class="h">Localize notifications</text>
+<text x="1520.0" y="503.0" text-anchor="middle" class="t">email/SMS/push</text>
+<rect x="360" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="762.0" text-anchor="middle" class="h">Generate localized SEO pages</text>
+<rect x="700" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="753.0" text-anchor="middle" class="h">Manage slugs/canonicals</text>
+<text x="840.0" y="773.0" text-anchor="middle" class="t">hreflang</text>
+<rect x="1040" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="753.0" text-anchor="middle" class="h">Manage translations</text>
+<text x="1180.0" y="773.0" text-anchor="middle" class="t">review/publish</text>
+<rect x="1380" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="753.0" text-anchor="middle" class="h">Apply fallback chain</text>
+<text x="1520.0" y="773.0" text-anchor="middle" class="t">tr-TR → tr → en</text>
+<rect x="700" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="1022.0" text-anchor="middle" class="h">Admin localization config</text>
+<rect x="1040" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="1022.0" text-anchor="middle" class="h">Check translation quality</text>
+<rect x="1380" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="1004.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1520.0" y="1024.0" text-anchor="middle" class="t">LocaleChanged</text>
+<text x="1520.0" y="1044.0" text-anchor="middle" class="t">TranslationPublished</text>
+<polyline points="245,320 270,320 270,232 360,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="640,232 700,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,232 1040,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,232 1380,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,940 1780,940 1780,492 640,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="484" class="small">catalog data</text>
+<polyline points="640,492 700,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,492 1040,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,492 1380,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,800 320,800 320,762 360,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="640,762 700,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,762 1040,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,762 1380,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1120 320,1120 320,1022 700,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,1022 1040,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,1022 1380,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,280 1780,280 1780,232 1660,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="224" class="small">render</text>
+<polyline points="1900,600 1780,600 1780,762 640,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="754" class="small">localized pages</text>
+<polyline points="1900,940 1780,940 1780,492 980,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="484" class="small">regional rules</text>
+<rect x="360" y="1210" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="376" y="1234" class="t">Rules:</text>
+<text x="376" y="1252" class="t">Localization is not only text translation. Locale affects UI, category names, search, SEO, notification templates, currency/tax formatting and legal/policy surfaces.</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Search / Recommendation — Activity Diagram</text>
+
+<rect x="80" y="160" width="250" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="205.0" y="181.0" text-anchor="middle" class="h">START</text>
+<text x="205.0" y="201.0" text-anchor="middle" class="t">query/feed request</text>
+<rect x="430" y="140" width="330" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="595.0" y="176.0" text-anchor="middle" class="h">Parse query + context</text>
+<text x="595.0" y="196.0" text-anchor="middle" class="t">locale / location / intent</text>
+<rect x="880" y="140" width="330" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1045.0" y="176.0" text-anchor="middle" class="h">AI intent/category suggestion</text>
+<text x="1045.0" y="196.0" text-anchor="middle" class="t">optional</text>
+<rect x="1320" y="140" width="340" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1490.0" y="176.0" text-anchor="middle" class="h">Apply privacy + visibility</text>
+<text x="1490.0" y="196.0" text-anchor="middle" class="t">approximate area only</text>
+<rect x="1320" y="350" width="360" height="95" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1500.0" y="388.5" text-anchor="middle" class="h">Search OpenSearch</text>
+<text x="1500.0" y="408.5" text-anchor="middle" class="t">geo/category/full-text/vector later</text>
+<rect x="880" y="350" width="340" height="95" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1050.0" y="388.5" text-anchor="middle" class="h">Filter availability</text>
+<text x="1050.0" y="408.5" text-anchor="middle" class="t">capability / trust / safety</text>
+<rect x="430" y="350" width="340" height="95" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="600.0" y="388.5" text-anchor="middle" class="h">Rank candidates</text>
+<text x="600.0" y="408.5" text-anchor="middle" class="t">relevance + trust + freshness</text>
+<rect x="430" y="580" width="320" height="85" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="590.0" y="613.5" text-anchor="middle" class="h">Apply sponsored/native</text>
+<text x="590.0" y="633.5" text-anchor="middle" class="t">only after gates</text>
+<rect x="880" y="580" width="300" height="85" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1030.0" y="613.5" text-anchor="middle" class="h">Apply personalization</text>
+<text x="1030.0" y="633.5" text-anchor="middle" class="t">privacy-safe</text>
+<rect x="1320" y="580" width="300" height="85" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1470.0" y="613.5" text-anchor="middle" class="h">Return result cards</text>
+<text x="1470.0" y="633.5" text-anchor="middle" class="t">reason hints</text>
+<rect x="880" y="800" width="330" height="85" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1045.0" y="833.5" text-anchor="middle" class="h">Track impression/click</text>
+<text x="1045.0" y="853.5" text-anchor="middle" class="t">aggregated analytics</text>
+<rect x="430" y="800" width="300" height="85" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="580.0" y="833.5" text-anchor="middle" class="h">Update search quality</text>
+<text x="580.0" y="853.5" text-anchor="middle" class="t">metrics</text>
+<rect x="430" y="1010" width="320" height="85" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="590.0" y="1052.5" text-anchor="middle" class="h">Emit search/growth events</text>
+<rect x="880" y="1030" width="150" height="55" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="955.0" y="1057.5" text-anchor="middle" class="h">END</text>
+<polyline points="330,190 430,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="760,185 880,185" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="888" y="177" class="small">optional</text>
+<polyline points="1210,185 1320,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="595,230 595,290 1490,290 1490,230" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1498" y="282" class="small">no AI</text>
+<polyline points="1490,230 1490,350" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,397 1220,397" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="880,397 770,397" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="590,445 590,580" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="750,622 880,622" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1180,622 1320,622" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1470,665 1470,740 1045,740 1045,800" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="880,842 730,842" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="580,885 580,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="750,1052 880,1058" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="330" y="1180" width="1520" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="346" y="1204" class="t">Privacy rule:</text>
+<text x="346" y="1222" class="t">Exact address/private data never enters public search. Public search uses service area, approximate geography and approved public profile fields.</text>
+</svg>

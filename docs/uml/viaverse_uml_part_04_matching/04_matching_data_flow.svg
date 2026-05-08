@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1450" viewBox="0 0 2100 1450">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2020" height="60" rx="14" fill="#022C22"/>
+<text x="1050.0" y="69" text-anchor="middle" class="title">Viaverse Matching — Data Flow Diagram</text>
+
+<rect x="80" y="180" width="300" height="120" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="230.0" y="231.0" text-anchor="middle" class="h">ServiceRequest Snapshot</text>
+<text x="230.0" y="251.0" text-anchor="middle" class="t">category / budget / area / urgency</text>
+<rect x="500" y="120" width="360" height="130" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="680.0" y="176.0" text-anchor="middle" class="h">OpenSearch Provider/Business Index</text>
+<text x="680.0" y="196.0" text-anchor="middle" class="t">category / geo / services / public profile</text>
+<rect x="500" y="320" width="360" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="680.0" y="371.0" text-anchor="middle" class="h">Identity Eligibility</text>
+<text x="680.0" y="391.0" text-anchor="middle" class="t">account status / capabilities / business team</text>
+<rect x="500" y="510" width="360" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="680.0" y="561.0" text-anchor="middle" class="h">Trust Data</text>
+<text x="680.0" y="581.0" text-anchor="middle" class="t">rating / badges / risk / disputes / reports</text>
+<rect x="500" y="700" width="360" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="680.0" y="751.0" text-anchor="middle" class="h">Valkey Hot State</text>
+<text x="680.0" y="771.0" text-anchor="middle" class="t">availability / rate limit / frequency cap</text>
+<rect x="1050" y="360" width="360" height="160" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1230.0" y="431.0" text-anchor="middle" class="h">Matching Ranker</text>
+<text x="1230.0" y="451.0" text-anchor="middle" class="t">candidate scoring + explanation</text>
+<rect x="1600" y="280" width="360" height="140" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1780.0" y="341.0" text-anchor="middle" class="h">WorkerOpportunity Projection</text>
+<text x="1780.0" y="361.0" text-anchor="middle" class="t">requestId / targetId / score / reason codes</text>
+<rect x="1600" y="540" width="360" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1780.0" y="591.0" text-anchor="middle" class="h">Notification Inbox / Push</text>
+<text x="1780.0" y="611.0" text-anchor="middle" class="t">new matching opportunity</text>
+<polyline points="380,240 980,240 980,420 1050,420" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="988" y="412" class="small">request features</text>
+<polyline points="860,185 980,185 980,420 1050,420" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="988" y="412" class="small">candidate docs</text>
+<polyline points="860,380 1050,420" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1058" y="412" class="small">eligibility</text>
+<polyline points="860,570 980,570 980,460 1050,460" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="988" y="452" class="small">trust/risk</text>
+<polyline points="860,760 980,760 980,500 1050,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="988" y="492" class="small">availability</text>
+<polyline points="1410,430 1600,350" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1608" y="342" class="small">ranked opportunities</text>
+<polyline points="1780,420 1780,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="532" class="small">notify</text>
+<rect x="120" y="980" width="1500" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1004" class="t">Data principle:</text>
+<text x="136" y="1022" class="t">OpenSearch, trust summaries and hot availability are read inputs. The request source-of-truth remains marketplace-service/PostgreSQL.</text>
+</svg>

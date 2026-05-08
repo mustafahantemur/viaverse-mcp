@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Business Onboarding / Verification — Activity Diagram</text>
+
+<rect x="80" y="160" width="260" height="70" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="210.0" y="177.0" text-anchor="middle" class="h">START</text>
+<text x="210.0" y="197.0" text-anchor="middle" class="t">owner chooses</text>
+<text x="210.0" y="217.0" text-anchor="middle" class="t">Operate Business</text>
+<rect x="430" y="140" width="320" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="590.0" y="176.0" text-anchor="middle" class="h">Check account capability</text>
+<text x="590.0" y="196.0" text-anchor="middle" class="t">and eligibility</text>
+<rect x="860" y="140" width="280" height="75" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1000.0" y="177.5" text-anchor="middle" class="h">Create business draft</text>
+<rect x="1240" y="140" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1405.0" y="176.0" text-anchor="middle" class="h">Complete profile</text>
+<text x="1405.0" y="196.0" text-anchor="middle" class="t">name/category/about</text>
+<rect x="1640" y="140" width="340" height="90" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1810.0" y="176.0" text-anchor="middle" class="h">Upload verification docs</text>
+<text x="1810.0" y="196.0" text-anchor="middle" class="t">optional/required by region</text>
+<rect x="1640" y="360" width="320" height="85" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1800.0" y="393.5" text-anchor="middle" class="h">Run verification</text>
+<text x="1800.0" y="413.5" text-anchor="middle" class="t">manual/automated</text>
+<rect x="1240" y="360" width="220" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1350.0" y="400.0" text-anchor="middle" class="h">Approved?</text>
+<rect x="860" y="360" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1010.0" y="391.0" text-anchor="middle" class="h">Request changes</text>
+<text x="1010.0" y="411.0" text-anchor="middle" class="t">or reject</text>
+<rect x="430" y="360" width="300" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="580.0" y="400.0" text-anchor="middle" class="h">Create service catalog</text>
+<rect x="430" y="580" width="340" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="600.0" y="616.0" text-anchor="middle" class="h">Add branch/service area</text>
+<text x="600.0" y="636.0" text-anchor="middle" class="t">hours/capacity</text>
+<rect x="860" y="580" width="300" height="85" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1010.0" y="613.5" text-anchor="middle" class="h">Select plan/trial</text>
+<text x="1010.0" y="633.5" text-anchor="middle" class="t">billing config</text>
+<rect x="1240" y="580" width="360" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1420.0" y="616.0" text-anchor="middle" class="h">Publish-ready check</text>
+<text x="1420.0" y="636.0" text-anchor="middle" class="t">profile/catalog/billing</text>
+<rect x="1640" y="580" width="320" height="85" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1800.0" y="613.5" text-anchor="middle" class="h">Publish to search</text>
+<text x="1800.0" y="633.5" text-anchor="middle" class="t">and lead routing</text>
+<rect x="1240" y="820" width="320" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1400.0" y="860.0" text-anchor="middle" class="h">Emit BusinessPublished</text>
+<rect x="860" y="840" width="150" height="55" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="935.0" y="867.5" text-anchor="middle" class="h">END</text>
+<polyline points="340,195 430,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="750,185 860,177" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1140,177 1240,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1570,185 1640,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1810,230 1810,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1640,402 1460,400" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1240,400 1160,400" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1168" y="392" class="small">no</text>
+<polyline points="1010,360 1010,285 1405,285 1405,230" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1413" y="277" class="small">fix</text>
+<polyline points="1240,400 730,400" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="738" y="392" class="small">yes</text>
+<polyline points="580,440 580,580" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="770,625 860,622" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1160,622 1240,625" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1600,625 1640,622" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1640,622 1600,622 1600,860 1560,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1240,860 1010,868" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="330" y="1060" width="1450" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="346" y="1084" class="t">Onboarding rule:</text>
+<text x="346" y="1102" class="t">Business can be drafted before verification, but public search visibility and lead routing require publish-ready policy.</text>
+</svg>

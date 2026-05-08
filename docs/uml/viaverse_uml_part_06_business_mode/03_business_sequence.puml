@@ -1,0 +1,45 @@
+@startuml
+title Viaverse Business Mode — Sequence Diagram
+
+actor "Business Owner" as Owner
+participant "KMP / Web Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "identity-service" as Identity
+participant "marketplace-service" as Marketplace
+participant "ads-monetization/payment-service" as Monetization
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+participant "search / SEO" as Search
+
+Owner -> Client : start Business Mode
+Client -> BFF : POST /businesses
+BFF -> Identity : check OPERATE_BUSINESS eligibility
+Identity -> DB : load AccountCapability
+Identity --> BFF : allowed / blocked
+
+BFF -> Marketplace : createBusinessProfile
+Marketplace -> DB : insert BusinessProfile(DRAFT)
+
+Owner -> Client : services / packages / hours / team
+Client -> BFF : PATCH business
+BFF -> Marketplace : updateBusinessProfile
+Marketplace -> DB : persist services/packages/team
+
+Owner -> Client : start trial
+Client -> BFF : POST /businesses/{id}/trial
+BFF -> Monetization : start trial/subscription state
+Monetization -> DB : insert BusinessSubscription(TRIALING)
+
+Owner -> Client : publish
+Client -> BFF : POST /businesses/{id}/publish
+BFF -> Marketplace : publishBusinessProfile
+Marketplace -> DB : set PUBLIC + insert outbox
+Marketplace -> Kafka : BusinessProfilePublished
+Kafka -> Search : index business public profile
+
+note bottom
+Business profile source-of-truth is marketplace/business boundary.
+Subscription state is monetization/payment-owned.
+Search/SEO consumes published events.
+end note
+@enduml

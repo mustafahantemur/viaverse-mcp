@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Consent / DSAR / Incident — State Diagram</text>
+
+<rect x="120" y="180" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="270.0" y="220.0" text-anchor="middle" class="h">CONSENT_UNKNOWN</text>
+<rect x="540" y="180" width="300" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="690.0" y="220.0" text-anchor="middle" class="h">CONSENT_GRANTED</text>
+<rect x="960" y="180" width="340" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1130.0" y="220.0" text-anchor="middle" class="h">CONSENT_WITHDRAWN</text>
+<rect x="120" y="520" width="260" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="250.0" y="560.0" text-anchor="middle" class="h">DSAR_OPENED</text>
+<rect x="540" y="520" width="320" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="700.0" y="560.0" text-anchor="middle" class="h">IDENTITY_VERIFIED</text>
+<rect x="960" y="520" width="260" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1090.0" y="560.0" text-anchor="middle" class="h">PROCESSING</text>
+<rect x="1340" y="520" width="240" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="1460.0" y="560.0" text-anchor="middle" class="h">COMPLETED</text>
+<rect x="540" y="820" width="240" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="660.0" y="860.0" text-anchor="middle" class="h">REJECTED</text>
+<rect x="960" y="820" width="320" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1120.0" y="860.0" text-anchor="middle" class="h">INCIDENT_RAISED</text>
+<rect x="1340" y="820" width="340" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1510.0" y="860.0" text-anchor="middle" class="h">INCIDENT_RESOLVED</text>
+<polyline points="420,220 540,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="548" y="212" class="small">accept</text>
+<polyline points="840,220 960,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="968" y="212" class="small">withdraw</text>
+<polyline points="960,260 900,320 690,320 690,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="698" y="312" class="small">re-grant</text>
+<polyline points="380,560 540,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="548" y="552" class="small">verify</text>
+<polyline points="860,560 960,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="968" y="552" class="small">accepted</text>
+<polyline points="700,600 700,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="708" y="812" class="small">cannot verify</text>
+<polyline points="1220,560 1340,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1348" y="552" class="small">all receipts received</text>
+<polyline points="1090,600 1090,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1098" y="812" class="small">breach/suspicious access</text>
+<polyline points="1280,860 1340,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1348" y="852" class="small">mitigated + reported if needed</text>
+<polyline points="1340,860 1300,760 1090,760 1090,600" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1098" y="752" class="small">resume DSAR</text>
+<rect x="160" y="1080" width="1600" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1104" class="t">State rule:</text>
+<text x="176" y="1122" class="t">Consent withdrawal stops future optional processing; it may not automatically delete legally required transactional records. DSAR uses retention/legal-basis policy.</text>
+</svg>

@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Payment / Wallet — Component Diagram
+
+component "KMP / Next.js Client\nPayment screen\nWallet UI\nResult screen" as Client
+component "API Gateway / App BFF\nPayment API\nWallet API" as BFF
+component "PaymentController\nProviderCallbackController" as Controller
+component "Payment Use Cases\nCreatePaymentSession\nHandleCallback\nRefund\nReleasePayout" as UseCases
+component "Payment Policies\namount/currency\njob state\nrefund/payout auth\nidempotency" as Policies
+component "Ports\nPaymentProvider\nWalletProvider\nPaymentRepo\nOutboxPort" as Ports
+component "Provider Adapters\niyzico\nStripe\nMasterpass" as Providers
+component "marketplace-service\njob/quote state\npayout block state" as Marketplace
+database "PostgreSQL\npayment_session\nstored_payment_method\ncallback_record\ncommission_ledger" as DB
+queue "Kafka / Outbox\nPaymentAuthorized\nRefundIssued\nPayoutReleased" as Kafka
+component "Admin BFF\nrefund/payout actions\nreason + audit" as Admin
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> Providers : adapter calls
+Policies --> Marketplace : job/quote checks
+Ports --> DB : persist
+UseCases --> Kafka : outbox events
+Admin --> UseCases : admin commands
+Providers ..> Controller : callbacks
+
+note bottom
+Payment domain never stores raw card data.
+Provider SDKs live only in provider adapters behind PaymentProvider/WalletProvider ports.
+end note
+@enduml

@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="release-gate-sequence" name="04 Release Gate Sequence">
+    <mxGraphModel dx="2400" dy="1650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1650" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Release Gate / Go-Live Decision — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2320" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pm" value="Product Lead" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pm_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="179" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="repo" value="GitHub / CI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="repo_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="449" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="qa" value="QA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="qa_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="719" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="sec" value="Security/Privacy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sec_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="989" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="ops" value="Platform/Ops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ops_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1259" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="obs" value="Observability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="obs_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1529" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="Admin/Support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1799" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="release" value="Release Owner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="release_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2069" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="tag release candidate" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="pm" target="repo">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="280" y="260" as="point"/><mxPoint x="350" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="build + test artifacts" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="repo" target="qa">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="330" as="point"/><mxPoint x="620" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="SAST/dependency/IaC scan" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="repo" target="sec">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="430" as="point"/><mxPoint x="890" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="deploy to staging" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="repo" target="ops">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="550" y="530" as="point"/><mxPoint x="1160" y="530" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="smoke + metrics" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ops" target="obs">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1360" y="620" as="point"/><mxPoint x="1430" y="620" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="QA signoff" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="qa" target="release">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="740" as="point"/><mxPoint x="1970" y="740" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="security/privacy signoff" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="sec" target="release">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1090" y="830" as="point"/><mxPoint x="1970" y="830" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="SLO/error budget signoff" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="obs" target="release">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1630" y="920" as="point"/><mxPoint x="1970" y="920" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="support/admin readiness" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="release">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="1010" as="point"/><mxPoint x="1970" y="1010" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="promote or block" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="release" target="repo">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1970" y="1120" as="point"/><mxPoint x="550" y="1120" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Gate focus:&#xa;Go-live requires product acceptance, QA evidence, security/privacy review, operational readiness, observability and rollback plan." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1320" width="1780" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

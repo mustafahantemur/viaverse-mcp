@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Analytics Event / Alert — State Diagram</text>
+
+<rect x="120" y="180" width="230" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="235.0" y="220.0" text-anchor="middle" class="h">CAPTURED</text>
+<rect x="500" y="180" width="300" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="650.0" y="220.0" text-anchor="middle" class="h">CONSENT_CHECKED</text>
+<rect x="920" y="180" width="240" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1040.0" y="220.0" text-anchor="middle" class="h">SANITIZED</text>
+<rect x="1280" y="180" width="320" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="1440.0" y="220.0" text-anchor="middle" class="h">SCHEMA_VALIDATED</text>
+<rect x="1280" y="500" width="340" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1450.0" y="540.0" text-anchor="middle" class="h">DLQ_SCHEMA_FAILED</text>
+<rect x="920" y="500" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1030.0" y="540.0" text-anchor="middle" class="h">STORED</text>
+<rect x="500" y="500" width="260" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="630.0" y="540.0" text-anchor="middle" class="h">AGGREGATED</text>
+<rect x="500" y="820" width="330" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="665.0" y="860.0" text-anchor="middle" class="h">RETENTION_EXPIRED</text>
+<rect x="920" y="820" width="280" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1060.0" y="860.0" text-anchor="middle" class="h">ALERT_RAISED</text>
+<rect x="1280" y="820" width="300" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="1430.0" y="860.0" text-anchor="middle" class="h">ALERT_RESOLVED</text>
+<polyline points="350,220 500,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="212" class="small">check</text>
+<polyline points="800,220 920,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="928" y="212" class="small">allowed</text>
+<polyline points="650,260 650,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="658" y="812" class="small">not allowed/drop</text>
+<polyline points="1160,220 1280,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="212" class="small">validate</text>
+<polyline points="1280,220 1140,540" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1148" y="532" class="small">valid</text>
+<polyline points="1440,260 1440,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="492" class="small">invalid</text>
+<polyline points="920,540 760,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="768" y="532" class="small">aggregate</text>
+<polyline points="630,580 630,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="638" y="812" class="small">retention policy</text>
+<polyline points="1280,540 1200,540 1200,860" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1208" y="532" class="small">quality alert</text>
+<polyline points="760,540 1060,820" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1068" y="812" class="small">SLO/anomaly</text>
+<polyline points="1200,860 1280,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="852" class="small">ack/resolved</text>
+<rect x="160" y="1060" width="1450" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1084" class="t">State rule:</text>
+<text x="176" y="1102" class="t">Dropped or consent-blocked events should not be recoverable as user-level analytics. Aggregates may remain only if privacy policy allows.</text>
+</svg>

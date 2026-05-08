@@ -1,0 +1,25 @@
+@startuml
+title Viaverse Quote / Offer — State Diagram
+
+[*] --> DRAFT
+DRAFT --> SENT : send
+SENT --> QUESTIONED : requester asks
+QUESTIONED --> REVISION_REQUESTED : needs change
+REVISION_REQUESTED --> REVISED : worker revises
+REVISED --> SENT : resend
+SENT --> ACCEPTED : requester accepts
+REVISED --> ACCEPTED : requester accepts
+SENT --> REJECTED : requester rejects
+SENT --> WITHDRAWN : sender withdraws
+SENT --> EXPIRED : expiresAt
+QUESTIONED --> EXPIRED : expiresAt
+
+ACCEPTED --> [*]
+REJECTED --> [*]
+WITHDRAWN --> [*]
+EXPIRED --> [*]
+
+note bottom
+ACCEPTED triggers JobCreated and payment flow in the next part.
+end note
+@enduml

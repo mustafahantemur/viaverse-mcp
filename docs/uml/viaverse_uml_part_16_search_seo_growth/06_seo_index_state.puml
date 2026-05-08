@@ -1,0 +1,22 @@
+@startuml
+title Viaverse Search Index / SEO Page — State Diagram
+
+[*] --> PENDING_INDEX
+PENDING_INDEX --> INDEXED_VISIBLE : public + approved
+PENDING_INDEX --> INDEXED_HIDDEN : private/not approved
+INDEXED_VISIBLE --> STALE_REBUILD_NEEDED : entity updated
+STALE_REBUILD_NEEDED --> INDEXED_VISIBLE : rebuilt
+INDEXED_VISIBLE --> REMOVED : deleted/suspended
+INDEXED_HIDDEN --> INDEXED_VISIBLE : visibility restored
+INDEXED_VISIBLE --> SEO_DRAFT : SEO candidate
+SEO_DRAFT --> SEO_PUBLISHED : quality ok
+SEO_DRAFT --> SEO_NOINDEX : thin/duplicate
+SEO_PUBLISHED --> SEO_NOINDEX : quality drop
+
+REMOVED --> [*]
+
+note bottom
+Noindex is safer than publishing thin/duplicate/private pages.
+Canonical and schema.org metadata belong to SEO projection, not domain entities.
+end note
+@enduml

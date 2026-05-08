@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Infrastructure / Deployment Config — Class Model</text>
+
+<rect x="80" y="150" width="420" height="260" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="208.0" text-anchor="middle" class="h">ServiceConfig</text>
+<text x="290.0" y="228.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="248.0" text-anchor="middle" class="t">serviceName: String</text>
+<text x="290.0" y="268.0" text-anchor="middle" class="t">imageTag: String</text>
+<text x="290.0" y="288.0" text-anchor="middle" class="t">replicas: Int</text>
+<text x="290.0" y="308.0" text-anchor="middle" class="t">resourceRequests: CpuMem</text>
+<text x="290.0" y="328.0" text-anchor="middle" class="t">resourceLimits: CpuMem</text>
+<text x="290.0" y="348.0" text-anchor="middle" class="t">healthCheckPath: String</text>
+<text x="290.0" y="368.0" text-anchor="middle" class="t">env: Environment</text>
+<rect x="600" y="150" width="390" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="201.0" text-anchor="middle" class="h">SecretRef</text>
+<text x="795.0" y="221.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="241.0" text-anchor="middle" class="t">name: String</text>
+<text x="795.0" y="261.0" text-anchor="middle" class="t">provider: SecretsManager | KMS</text>
+<text x="795.0" y="281.0" text-anchor="middle" class="t">externalSecretName: String</text>
+<text x="795.0" y="301.0" text-anchor="middle" class="t">rotationPolicy: RotationPolicy</text>
+<text x="795.0" y="321.0" text-anchor="middle" class="t">mountedAs: ENV | FILE</text>
+<rect x="1090" y="150" width="390" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1285.0" y="203.0" text-anchor="middle" class="h">Release</text>
+<text x="1285.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="1285.0" y="243.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1285.0" y="263.0" text-anchor="middle" class="t">version: String</text>
+<text x="1285.0" y="283.0" text-anchor="middle" class="t">gitSha: String</text>
+<text x="1285.0" y="303.0" text-anchor="middle" class="t">imageDigest: String</text>
+<text x="1285.0" y="323.0" text-anchor="middle" class="t">environment: DEV | STAGE | PROD</text>
+<text x="1285.0" y="343.0" text-anchor="middle" class="t">status: ReleaseStatus</text>
+<text x="1285.0" y="363.0" text-anchor="middle" class="t">deployedAt: Instant</text>
+<rect x="1580" y="150" width="390" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1775.0" y="202.0" text-anchor="middle" class="h">DbMigration</text>
+<text x="1775.0" y="222.0" text-anchor="middle" class="t">--</text>
+<text x="1775.0" y="242.0" text-anchor="middle" class="t">version: String</text>
+<text x="1775.0" y="262.0" text-anchor="middle" class="t">serviceName: String</text>
+<text x="1775.0" y="282.0" text-anchor="middle" class="t">scriptName: String</text>
+<text x="1775.0" y="302.0" text-anchor="middle" class="t">backwardCompatible: Boolean</text>
+<text x="1775.0" y="322.0" text-anchor="middle" class="t">status: MigrationStatus</text>
+<text x="1775.0" y="342.0" text-anchor="middle" class="t">appliedAt: Instant?</text>
+<rect x="80" y="560" width="420" height="230" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="290.0" y="621.0" text-anchor="middle" class="h">DeploymentPolicy</text>
+<text x="290.0" y="641.0" text-anchor="middle" class="t">--</text>
+<text x="290.0" y="661.0" text-anchor="middle" class="t">requiresApproval()</text>
+<text x="290.0" y="681.0" text-anchor="middle" class="t">allowsRollback()</text>
+<text x="290.0" y="701.0" text-anchor="middle" class="t">checksMigrationSafety()</text>
+<text x="290.0" y="721.0" text-anchor="middle" class="t">checksErrorBudget()</text>
+<text x="290.0" y="741.0" text-anchor="middle" class="t">checksSecurityScan()</text>
+<rect x="600" y="560" width="390" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="795.0" y="616.0" text-anchor="middle" class="h">ServiceSLO</text>
+<text x="795.0" y="636.0" text-anchor="middle" class="t">--</text>
+<text x="795.0" y="656.0" text-anchor="middle" class="t">serviceName: String</text>
+<text x="795.0" y="676.0" text-anchor="middle" class="t">availabilityTarget: Decimal</text>
+<text x="795.0" y="696.0" text-anchor="middle" class="t">latencyTargetMs: Int</text>
+<text x="795.0" y="716.0" text-anchor="middle" class="t">errorBudgetPolicy: String</text>
+<text x="795.0" y="736.0" text-anchor="middle" class="t">alertRuleIds: List&lt;UUID&gt;</text>
+<rect x="1090" y="560" width="390" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1285.0" y="617.0" text-anchor="middle" class="h">BackupPlan</text>
+<text x="1285.0" y="637.0" text-anchor="middle" class="t">--</text>
+<text x="1285.0" y="657.0" text-anchor="middle" class="t">resourceType: DB | BUCKET | INDEX</text>
+<text x="1285.0" y="677.0" text-anchor="middle" class="t">schedule: String</text>
+<text x="1285.0" y="697.0" text-anchor="middle" class="t">retentionDays: Int</text>
+<text x="1285.0" y="717.0" text-anchor="middle" class="t">rpoMinutes: Int</text>
+<text x="1285.0" y="737.0" text-anchor="middle" class="t">rtoMinutes: Int</text>
+<text x="1285.0" y="757.0" text-anchor="middle" class="t">restoreTestedAt: Instant?</text>
+<rect x="1580" y="560" width="400" height="250" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1780.0" y="613.0" text-anchor="middle" class="h">Infra Events</text>
+<text x="1780.0" y="633.0" text-anchor="middle" class="t">--</text>
+<text x="1780.0" y="653.0" text-anchor="middle" class="t">ReleaseStarted</text>
+<text x="1780.0" y="673.0" text-anchor="middle" class="t">ReleaseSucceeded</text>
+<text x="1780.0" y="693.0" text-anchor="middle" class="t">ReleaseRolledBack</text>
+<text x="1780.0" y="713.0" text-anchor="middle" class="t">MigrationApplied</text>
+<text x="1780.0" y="733.0" text-anchor="middle" class="t">SecretRotated</text>
+<text x="1780.0" y="753.0" text-anchor="middle" class="t">BackupFailed</text>
+<text x="1780.0" y="773.0" text-anchor="middle" class="t">SloBreached</text>
+<polyline points="500,260 600,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="242" class="small">uses</text>
+<polyline points="1090,260 500,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="508" y="252" class="small">deploys</text>
+<polyline points="1480,260 1580,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="252" class="small">includes</text>
+<polyline points="290,560 290,470 1285,470 1285,400" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1293" y="462" class="small">validates</text>
+<polyline points="500,680 1775,400" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1783" y="392" class="small">checks</text>
+<polyline points="600,670 500,670" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="662" class="small">gates</text>
+<polyline points="1480,680 1580,680" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="672" class="small">emits</text>
+<polyline points="1285,400 1780,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="552" class="small">emits</text>
+<polyline points="990,260 1780,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="552" class="small">rotation emits</text>
+<rect x="80" y="1030" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1054" class="t">Config rule:</text>
+<text x="96" y="1072" class="t">Environment differences must be declarative and versioned. Secrets are references, never committed values.</text>
+</svg>

@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="capability-class" name="04 Capability Class">
+    <mxGraphModel dx="1900" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Capability — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1820" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Account" value="Account&#xa;--&#xa;id: AccountId&#xa;status: AccountStatus&#xa;locale: Locale&#xa;activeMode: AppMode?&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="90" y="160" width="280" height="165" as="geometry"/>
+        </mxCell>
+        <mxCell id="Capability" value="AccountCapability&#xa;--&#xa;accountId: AccountId&#xa;type: CapabilityType&#xa;status: CapabilityStatus&#xa;reason: String?&#xa;enabledAt: Instant?&#xa;suspendedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="160" width="310" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Business" value="BusinessProfile&#xa;--&#xa;id: BusinessId&#xa;ownerAccountId: AccountId&#xa;status: BusinessStatus&#xa;verificationStatus: VerificationStatus&#xa;publicSlug: String?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="160" width="320" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="Team" value="BusinessTeamMember&#xa;--&#xa;businessId: BusinessId&#xa;accountId: AccountId&#xa;role: BusinessRole&#xa;status: MemberStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="160" width="320" height="155" as="geometry"/>
+        </mxCell>
+        <mxCell id="Mode" value="AppMode&#xa;--&#xa;PERSONAL&#xa;WORK&#xa;BUSINESS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="90" y="500" width="240" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="CapabilityPolicy&#xa;--&#xa;canEnterMode()&#xa;canEnableCapability()&#xa;canSuspendCapability()&#xa;requiresVerification()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="500" width="310" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="Audit" value="CapabilityAuditLog&#xa;--&#xa;id: UUID&#xa;accountId: AccountId&#xa;capabilityType: CapabilityType&#xa;action: String&#xa;reason: String?&#xa;actorId: AccountId?&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="500" width="330" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="Event" value="Capability Events&#xa;--&#xa;AccountCapabilityEnabled&#xa;AccountCapabilitySuspended&#xa;AccountCapabilityRevoked&#xa;ActiveModeChanged&#xa;BusinessProfileCreated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="500" width="340" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Account" target="Capability">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="370" y="240" as="point"/><mxPoint x="470" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="owner" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Account" target="Business">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="370" y="205" as="point"/><mxPoint x="900" y="205" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Business" target="Team">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1220" y="240" as="point"/><mxPoint x="1340" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="activeMode" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Account" target="Mode">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="230" y="325" as="point"/><mxPoint x="230" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="checks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Capability">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="500" as="point"/><mxPoint x="625" y="350" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="checks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Business">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="780" y="560" as="point"/><mxPoint x="1050" y="560" as="point"/><mxPoint x="1050" y="335" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="changes audited" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Capability" target="Audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="350" as="point"/><mxPoint x="625" y="450" as="point"/><mxPoint x="1065" y="450" as="point"/><mxPoint x="1065" y="500" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Audit" target="Event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1230" y="600" as="point"/><mxPoint x="1340" y="590" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Domain rule: Capability is not a role label in UI only. It is a persisted authorization input used by backend policies." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="870" width="1450" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

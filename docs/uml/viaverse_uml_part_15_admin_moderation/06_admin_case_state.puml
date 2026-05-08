@@ -1,0 +1,22 @@
+@startuml
+title Viaverse Admin Case / Appeal — State Diagram
+
+[*] --> OPENED
+OPENED --> TRIAGE : create
+TRIAGE --> ASSIGNED : assign
+ASSIGNED --> UNDER_REVIEW : start review
+UNDER_REVIEW --> ACTION_APPLIED : apply action
+ACTION_APPLIED --> CLOSED : audit + notify
+UNDER_REVIEW --> ESCALATED : complex
+ESCALATED --> UNDER_REVIEW : return
+CLOSED --> APPEAL_OPENED : appeal submitted
+APPEAL_OPENED --> APPEAL_REVIEW : assign appeal
+APPEAL_REVIEW --> APPEAL_RESOLVED : resolve
+APPEAL_RESOLVED --> CLOSED : final close
+CLOSED --> [*]
+
+note bottom
+Appeal resolution must not be performed by the same admin
+when policy requires separation of duties.
+end note
+@enduml

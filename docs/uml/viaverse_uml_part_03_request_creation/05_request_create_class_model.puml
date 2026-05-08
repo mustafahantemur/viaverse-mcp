@@ -1,0 +1,91 @@
+@startuml
+title Viaverse Request Creation — Class Model
+
+class ServiceRequest {
+  id: RequestId
+  requesterAccountId: AccountId
+  status: RequestStatus
+  title: String
+  description: String
+  categoryId: CategoryId
+  budget: Budget
+  location: RequestLocation
+  timing: RequestTiming
+  createdAt: Instant
+  publishedAt: Instant?
+}
+
+class Budget {
+  mode: BudgetMode
+  minAmount: Money?
+  maxAmount: Money?
+  currency: Currency
+}
+
+class RequestLocation {
+  approxAreaId: AreaId
+  exactAddress: Address?
+  geoPoint: GeoPoint?
+  visibility: LocationVisibility
+}
+
+class RequestTiming {
+  urgency: Urgency
+  preferredStart: Instant?
+  flexibility: TimeFlexibility
+}
+
+class RequestMediaRef {
+  requestId: RequestId
+  mediaId: MediaId
+  purpose: MediaPurpose
+  sortOrder: Int
+}
+
+class Category {
+  id: CategoryId
+  parentId: CategoryId?
+  nameKey: String
+  status: CategoryStatus
+}
+
+class RequestPolicy {
+  validateCanCreate()
+  validateRequiredFields()
+  validatePublishRules()
+  validatePrivacyRules()
+}
+
+class RequestEvents {
+  ServiceRequestDraftCreated
+  ServiceRequestUpdated
+  ServiceRequestPublished
+  MatchingRequested
+  MediaAttachedToRequest
+}
+
+class OutboxEvent {
+  id: UUID
+  aggregateType
+  aggregateId
+  eventType
+  payload
+  correlationId
+  causationId
+}
+
+ServiceRequest *-- Budget
+ServiceRequest *-- RequestLocation
+ServiceRequest *-- RequestTiming
+ServiceRequest "1" o-- "*" RequestMediaRef
+ServiceRequest --> Category
+RequestPolicy ..> ServiceRequest : validates
+ServiceRequest ..> RequestEvents : emits
+RequestEvents --> OutboxEvent : serialized as
+
+note bottom
+Status lifecycle for this part:
+DRAFT -> PUBLISHED.
+Later parts add quote/job conversion, cancellation, expiration and dispute states.
+end note
+@enduml

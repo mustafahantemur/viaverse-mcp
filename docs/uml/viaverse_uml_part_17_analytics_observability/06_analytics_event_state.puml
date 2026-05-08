@@ -1,0 +1,24 @@
+@startuml
+title Viaverse Analytics Event / Alert — State Diagram
+
+[*] --> CAPTURED
+CAPTURED --> CONSENT_CHECKED : check
+CONSENT_CHECKED --> SANITIZED : allowed
+CONSENT_CHECKED --> RETENTION_EXPIRED : not allowed/drop
+SANITIZED --> SCHEMA_VALIDATED : validate
+SCHEMA_VALIDATED --> STORED : valid
+SCHEMA_VALIDATED --> DLQ_SCHEMA_FAILED : invalid
+STORED --> AGGREGATED : aggregate
+AGGREGATED --> RETENTION_EXPIRED : retention policy
+DLQ_SCHEMA_FAILED --> ALERT_RAISED : quality alert
+AGGREGATED --> ALERT_RAISED : SLO/anomaly
+ALERT_RAISED --> ALERT_RESOLVED : ack/resolved
+
+RETENTION_EXPIRED --> [*]
+ALERT_RESOLVED --> [*]
+
+note bottom
+Dropped or consent-blocked events should not be recoverable as user-level analytics.
+Aggregates may remain only if privacy policy allows.
+end note
+@enduml

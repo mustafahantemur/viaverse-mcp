@@ -1,0 +1,29 @@
+@startuml
+title Viaverse Business Subscription / Billing — Activity Diagram
+start
+:Business selects plan;
+:Check eligibility\nbusiness publish state;
+if (Trial available?) then (yes)
+  :Start first-month trial;
+else (no)
+  :Collect payment method\nif required;
+endif
+:Create billing profile\nplan + invoice cycle;
+:Activate subscription;
+:Apply feature gates\nleads/ads/insights;
+:Renewal date reached;
+:Charge provider;
+if (Paid?) then (yes)
+  :Emit subscription events;
+else (no)
+  :Dunning / grace period;
+  :Limit business features;
+  :Emit subscription events;
+endif
+stop
+
+note bottom
+Plan, trial length, monthly price, free rights and feature gates must be admin-configurable;
+do not hardcode 500 TL or trial duration in business logic.
+end note
+@enduml

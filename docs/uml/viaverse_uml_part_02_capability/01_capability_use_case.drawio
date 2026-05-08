@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="capability-use-case" name="01 Capability Use Case">
+    <mxGraphModel dx="1900" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Capability — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1820" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Account Capability / Mode Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="135" width="1320" height="890" as="geometry"/>
+        </mxCell>
+        <mxCell id="account" value="«actor»&#xa;Authenticated Account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="155" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;Admin / Trust Ops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="500" width="155" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="businessAdmin" value="«actor»&#xa;Business Owner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="680" width="155" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_view" value="View available modes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="190" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_personal" value="Use Personal Mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="190" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_enable_work" value="Enable Work Mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_worker_onboard" value="Complete worker onboarding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="360" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_business_start" value="Start Business Mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="550" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_business_create" value="Create business profile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="550" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_business_team" value="Manage business team roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="550" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_switch" value="Switch active mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="260" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_check" value="Check capability eligibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="360" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_suspend" value="Suspend capability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="540" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_revoke" value="Revoke capability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="700" width="235" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="account" target="uc_view">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="215" y="338" as="point"/><mxPoint x="250" y="338" as="point"/><mxPoint x="250" y="228" as="point"/><mxPoint x="340" y="228" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="default" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_view" target="uc_personal">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="575" y="228" as="point"/><mxPoint x="640" y="228" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="account" target="uc_enable_work">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="215" y="338" as="point"/><mxPoint x="250" y="338" as="point"/><mxPoint x="250" y="398" as="point"/><mxPoint x="340" y="398" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="«include»" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_enable_work" target="uc_worker_onboard">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="575" y="398" as="point"/><mxPoint x="640" y="398" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="account" target="uc_business_start">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="215" y="338" as="point"/><mxPoint x="250" y="338" as="point"/><mxPoint x="250" y="588" as="point"/><mxPoint x="340" y="588" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="«include»" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_business_start" target="uc_business_create">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="575" y="588" as="point"/><mxPoint x="640" y="588" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="businessAdmin" target="uc_business_team">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="215" y="718" as="point"/><mxPoint x="260" y="718" as="point"/><mxPoint x="260" y="638" as="point"/><mxPoint x="940" y="638" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_personal" target="uc_switch">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="875" y="228" as="point"/><mxPoint x="940" y="298" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_worker_onboard" target="uc_switch">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="875" y="398" as="point"/><mxPoint x="940" y="298" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_business_create" target="uc_switch">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="875" y="588" as="point"/><mxPoint x="940" y="298" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_switch" target="uc_check">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1175" y="298" as="point"/><mxPoint x="1240" y="398" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="admin policy" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_suspend">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1660" y="538" as="point"/><mxPoint x="1540" y="538" as="point"/><mxPoint x="1540" y="578" as="point"/><mxPoint x="1475" y="578" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="admin policy" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_revoke">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1660" y="538" as="point"/><mxPoint x="1520" y="538" as="point"/><mxPoint x="1520" y="738" as="point"/><mxPoint x="1475" y="738" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="state affects eligibility" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_suspend" target="uc_check">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1240" y="578" as="point"/><mxPoint x="1190" y="578" as="point"/><mxPoint x="1190" y="398" as="point"/><mxPoint x="1240" y="398" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Core rule:&#xa;One Account can have multiple capabilities. Personal / Work / Business are modes over capabilities, not separate user identities." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="930" width="1080" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

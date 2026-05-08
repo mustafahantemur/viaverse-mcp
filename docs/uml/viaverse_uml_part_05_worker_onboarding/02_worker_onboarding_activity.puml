@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Worker Onboarding — Activity Diagram
+start
+:Tap Enable Work Mode;
+:Check account eligibility\nstatus + bans + required consent;
+if (Allowed?) then (yes)
+  :Create worker profile\nname / bio / service intro;
+  :Select categories\nskills / subcategories;
+  :Set service area\nradius / districts;
+  :Set availability\nworking days / hours;
+  if (Add portfolio media?) then (yes)
+    :Upload portfolio media\nvia media-service;
+  endif
+  if (Verification required?) then (yes)
+    :Submit verification\nidentity/docs if needed;
+    :Wait for approval;
+  endif
+  :Publish worker profile;
+  :Emit WorkerProfileActivated;
+  :Index worker profile;
+  :Opportunity queue ready;
+else (no)
+  :Show reason and support path;
+endif
+stop
+
+note bottom
+Onboarding should feel lightweight.
+Verification may be category/risk dependent,
+not mandatory for every low-risk category at launch.
+end note
+@enduml

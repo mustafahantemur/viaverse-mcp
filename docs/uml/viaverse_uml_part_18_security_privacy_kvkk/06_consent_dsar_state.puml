@@ -1,0 +1,26 @@
+@startuml
+title Viaverse Consent / DSAR / Incident — State Diagram
+
+[*] --> CONSENT_UNKNOWN
+CONSENT_UNKNOWN --> CONSENT_GRANTED : accept
+CONSENT_GRANTED --> CONSENT_WITHDRAWN : withdraw
+CONSENT_WITHDRAWN --> CONSENT_GRANTED : re-grant
+
+[*] --> DSAR_OPENED
+DSAR_OPENED --> IDENTITY_VERIFIED : verify
+IDENTITY_VERIFIED --> PROCESSING : accepted
+IDENTITY_VERIFIED --> REJECTED : cannot verify
+PROCESSING --> COMPLETED : all receipts received
+PROCESSING --> INCIDENT_RAISED : breach/suspicious access
+INCIDENT_RAISED --> INCIDENT_RESOLVED : mitigated + reported if needed
+INCIDENT_RESOLVED --> PROCESSING : resume DSAR
+
+COMPLETED --> [*]
+REJECTED --> [*]
+
+note bottom
+Consent withdrawal stops future optional processing;
+it may not automatically delete legally required transactional records.
+DSAR uses retention/legal-basis policy.
+end note
+@enduml

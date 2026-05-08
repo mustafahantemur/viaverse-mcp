@@ -1,0 +1,11 @@
+@startuml
+title Viaverse Branch / Environment / Release State
+[*] --> main
+main --> develop
+develop --> feature
+feature --> pull_request
+pull_request --> develop
+develop --> release
+release --> staging
+staging --> production
+@enduml

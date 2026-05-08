@@ -1,0 +1,30 @@
+@startuml
+title Viaverse Capability — Activity Diagram
+start
+:Open Profile / Mode Switcher;
+:Load Account capabilities;
+if (Target mode?) then (Personal)
+  :Enter Personal Mode;
+elseif (Work)
+  if (Has DO_WORK_INDIVIDUALLY?) then (yes)
+  else (no)
+    :Run worker onboarding;
+    :Enable DO_WORK_INDIVIDUALLY;
+  endif
+else (Business)
+  if (Has OPERATE_BUSINESS?) then (yes)
+  else (no)
+    :Create or select business profile;
+    :Enable OPERATE_BUSINESS;
+  endif
+endif
+:Eligibility / suspension check;
+if (Allowed?) then (yes)
+  :Set active mode in session;
+  :Mode ready;
+else (no)
+  :Block mode switch;
+  :Show reason + support path;
+endif
+stop
+@enduml

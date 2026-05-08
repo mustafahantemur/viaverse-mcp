@@ -1,0 +1,30 @@
+@startuml
+title Viaverse Notification / Delivery — Activity Diagram
+start
+:Domain event;
+:Consume event and deduplicate;
+:Evaluate policy\npriority / type / audience;
+if (Notify?) then (yes)
+  :Load preferences\nquiet hours / channel opt-in;
+  :Render localized template;
+  :Create inbox item;
+  if (Select channels) then (push)
+    :Push delivery;
+  else (email/sms)
+    :Email/SMS delivery;
+  endif
+  :Record delivery result;
+  if (Retry/backoff needed?) then (yes)
+    :Schedule retry / digest;
+  endif
+  :Emit delivery events;
+else (no)
+  :Drop / record suppressed;
+endif
+stop
+
+note bottom
+Every notification has deduplication key, delivery attempts and final state.
+High-priority transactional events should not be batched into digest.
+end note
+@enduml

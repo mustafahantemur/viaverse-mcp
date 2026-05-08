@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="matching-component" name="03 Matching Component">
+    <mxGraphModel dx="2100" dy="1450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1450" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Matching — Component Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2020" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="event" value="Kafka / Spring Cloud Stream&#xa;--&#xa;MatchingRequested&#xa;ProfileUpdated&#xa;TrustScoreUpdated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="320" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="consumer" value="Matching Consumer&#xa;--&#xa;Consumes request events&#xa;Coordinates pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="180" width="310" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="candidate" value="Candidate Generator&#xa;--&#xa;OpenSearch geo/category&#xa;saved search support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="910" y="150" width="320" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="filter" value="Eligibility Filter&#xa;--&#xa;capability&#xa;status&#xa;business team&#xa;visibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="910" y="330" width="320" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="ranker" value="Ranking Engine&#xa;--&#xa;score&#xa;reason codes&#xa;fairness&#xa;boost after gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="910" y="540" width="320" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="market" value="marketplace-service&#xa;--&#xa;request snapshot&#xa;WorkerOpportunity store" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="180" width="330" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="identity-service&#xa;--&#xa;capability/status check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="380" width="330" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="trust" value="trust-gamification&#xa;--&#xa;trust/risk/badges" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="540" width="330" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="redis" value="Valkey / Redis&#xa;--&#xa;availability&#xa;hot state&#xa;rate/frequency caps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="700" width="330" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="notify" value="notification-service&#xa;--&#xa;worker opportunity alerts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="700" width="310" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="os" value="OpenSearch&#xa;--&#xa;provider/business/request indexes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="420" width="310" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="consume" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="event" target="consumer">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="400" y="245" as="point"/><mxPoint x="500" y="245" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="pipeline" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="consumer" target="candidate">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="810" y="245" as="point"/><mxPoint x="910" y="215" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="candidates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="candidate" target="filter">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1070" y="280" as="point"/><mxPoint x="1070" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="eligible list" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="filter" target="ranker">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1070" y="480" as="point"/><mxPoint x="1070" y="540" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="query" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="candidate" target="os">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="910" y="215" as="point"/><mxPoint x="810" y="215" as="point"/><mxPoint x="810" y="480" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="request snapshot" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="consumer" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="810" y="245" as="point"/><mxPoint x="1320" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="batch check" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="filter" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1230" y="405" as="point"/><mxPoint x="1320" y="435" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="trust/risk" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ranker" target="trust">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1230" y="600" as="point"/><mxPoint x="1320" y="595" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c9" value="availability/hot state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ranker" target="redis">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1070" y="710" as="point"/><mxPoint x="1320" y="760" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c10" value="persist opportunities" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ranker" target="market">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1230" y="625" as="point"/><mxPoint x="1280" y="625" as="point"/><mxPoint x="1280" y="250" as="point"/><mxPoint x="1320" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c11" value="alerts" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ranker" target="notify">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="910" y="625" as="point"/><mxPoint x="810" y="625" as="point"/><mxPoint x="810" y="760" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Component boundary:&#xa;Matching pipeline may live initially in search-service or marketplace worker, but must stay a separable component with clear inputs/outputs." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="930" width="1550" height="70" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

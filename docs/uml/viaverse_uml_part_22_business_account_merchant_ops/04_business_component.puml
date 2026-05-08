@@ -1,0 +1,33 @@
+@startuml
+title Viaverse Business Account / Merchant Ops — Component Diagram
+
+component "KMP / Business UI\nprofile\ncatalog\nleads\ninsights" as Client
+component "API Gateway / BFF\nBusiness API facade" as BFF
+component "BusinessController\nCatalogController\nStaffController" as Controller
+component "Business Use Cases\nCreateBusiness\nVerifyBusiness\nManageCatalog\nManageStaff\nPublishBusiness" as UseCases
+component "Business Policies\nowner/staff permissions\npublish-ready\nregional verification\nsubscription gates" as Policies
+component "Ports\nBusinessRepo\nIdentityPort\nMediaPort\nBillingPort\nSearchPort\nOutboxPort" as Ports
+component "identity-service\naccount capability\nstaff users\nroles" as Identity
+component "media-service\nlogo/photos\ngallery moderation" as Media
+component "billing-service\ntrial/plan\ninvoice/payment state" as Billing
+database "PostgreSQL\nbusiness\nbranch\ncatalog\nstaff_role" as DB
+component "search/trust\npublic projection\nranking signals" as Search
+queue "Kafka / Outbox\nBusinessCreated\nCatalogUpdated\nBusinessPublished" as Kafka
+
+Client --> BFF : HTTPS
+BFF --> Controller : REST
+Controller --> UseCases : command/query
+UseCases --> Policies : validate
+Policies --> Ports : ports
+Ports --> Identity : capability/staff
+Ports --> Media : media refs
+Ports --> Billing : subscription gates
+Ports --> DB : persist
+Ports --> Search : publish projection
+UseCases --> Kafka : events
+
+note bottom
+Business UI may be one app flow today and a separate store app later.
+The backend business bounded context should not depend on that client packaging choice.
+end note
+@enduml

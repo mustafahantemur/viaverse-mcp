@@ -1,0 +1,25 @@
+@startuml
+title Viaverse Search / Recommendation — Activity Diagram
+start
+:Query/feed request;
+:Parse query + context\nlocale / location / intent;
+if (AI assist enabled?) then (yes)
+  :AI intent/category suggestion;
+endif
+:Apply privacy + visibility\napproximate area only;
+:Search OpenSearch\ngeo/category/full-text/vector later;
+:Filter availability\ncapability / trust / safety;
+:Rank candidates\nrelevance + trust + freshness;
+:Apply sponsored/native\nonly after gates;
+:Apply personalization\nprivacy-safe;
+:Return result cards\nreason hints;
+:Track impression/click\naggregated analytics;
+:Update search quality metrics;
+:Emit search/growth events;
+stop
+
+note bottom
+Exact address/private data never enters public search.
+Public search uses service area, approximate geography and approved public profile fields.
+end note
+@enduml

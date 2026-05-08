@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="monetization-class" name="05 Monetization Class Model">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Monetization / Subscription / Ads — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Plan" value="SubscriptionPlan&#xa;--&#xa;code: String&#xa;name: String&#xa;monthlyPrice: Money&#xa;trialDays: Int&#xa;features: Set&lt;FeatureCode&gt;&#xa;leadQuota: Int?&#xa;status: PlanStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="420" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="Sub" value="BusinessSubscription&#xa;--&#xa;id: UUID&#xa;businessId: BusinessId&#xa;planCode: String&#xa;status: SubscriptionStatus&#xa;trialEndsAt: Instant?&#xa;currentPeriodEnd: Instant&#xa;cancelAtPeriodEnd: Boolean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="420" height="270" as="geometry"/>
+        </mxCell>
+        <mxCell id="Rule" value="CommissionRule&#xa;--&#xa;id: UUID&#xa;scope: GLOBAL | CATEGORY | REGION | BUSINESS&#xa;ratePercent: Decimal&#xa;minFee: Money?&#xa;maxFee: Money?&#xa;effectiveFrom: Instant&#xa;status: RuleStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="150" width="420" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="Fee" value="PlatformFee&#xa;--&#xa;id: UUID&#xa;jobId: JobId&#xa;payerAccountId: AccountId&#xa;earnerAccountId: AccountId&#xa;grossAmount: Money&#xa;feeAmount: Money&#xa;netPayout: Money&#xa;ruleId: UUID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="150" width="420" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="Ad" value="SponsoredPlacement&#xa;--&#xa;id: UUID&#xa;businessId: BusinessId&#xa;campaignName: String&#xa;budget: Money&#xa;spent: Money&#xa;status: AdStatus&#xa;startsAt: Instant&#xa;endsAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="420" height="270" as="geometry"/>
+        </mxCell>
+        <mxCell id="Promo" value="Promotion&#xa;--&#xa;id: UUID&#xa;code: String&#xa;discountType: PERCENT | FIXED | FREE_TRIAL&#xa;value: Decimal&#xa;eligibilityRule: String&#xa;expiresAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="560" width="420" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="MonetizationPolicy&#xa;--&#xa;canStartTrial()&#xa;canUseFeature()&#xa;calculateCommission()&#xa;applyPromotion()&#xa;canShowSponsoredResult()&#xa;adRelevanceGate()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="560" width="420" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Monetization Events&#xa;--&#xa;SubscriptionStarted&#xa;SubscriptionRenewed&#xa;SubscriptionPastDue&#xa;CommissionCharged&#xa;PayoutCalculated&#xa;AdBudgetSpent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="560" width="420" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Plan" target="Sub">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="260" as="point"/><mxPoint x="600" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="creates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Rule" target="Fee">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1540" y="290" as="point"/><mxPoint x="1640" y="290" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="feature gate" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Sub" target="Policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="810" y="420" as="point"/><mxPoint x="1330" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="discounts" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Promo" target="Sub">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="810" y="560" as="point"/><mxPoint x="810" y="420" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="uses" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Rule">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1330" y="560" as="point"/><mxPoint x="1330" y="430" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="gates ads" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Policy" target="Ad">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1120" y="690" as="point"/><mxPoint x="500" y="690" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Sub" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1020" y="410" as="point"/><mxPoint x="1850" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Fee" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1850" y="440" as="point"/><mxPoint x="1850" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Ad" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="700" as="point"/><mxPoint x="1640" y="700" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Model rule:&#xa;All monetization values are versioned/effective-dated. Historic invoices and fee records must preserve the rule snapshot used at the time." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1030" width="1700" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

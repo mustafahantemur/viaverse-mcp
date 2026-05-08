@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="analytics-class" name="05 Analytics Observability Class Model">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Analytics / Observability — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ProductEvent" value="ProductEvent&#xa;--&#xa;id: UUID&#xa;eventName: String&#xa;schemaVersion: Int&#xa;anonymousId: String?&#xa;accountIdHash: String?&#xa;sessionId: String&#xa;properties: Json&#xa;sensitivity: Sensitivity&#xa;occurredAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="420" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="EventSchema" value="EventSchema&#xa;--&#xa;eventName: String&#xa;version: Int&#xa;ownerTeam: String&#xa;requiredFields: Set&lt;String&gt;&#xa;retentionClass: RetentionClass&#xa;status: ACTIVE | DEPRECATED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Consent" value="AnalyticsConsent&#xa;--&#xa;accountId: AccountId?&#xa;anonymousId: String&#xa;analyticsEnabled: Boolean&#xa;marketingEnabled: Boolean&#xa;updatedAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="150" width="380" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Metric" value="ServiceMetric&#xa;--&#xa;name: String&#xa;service: String&#xa;tags: Map&lt;String,String&gt;&#xa;value: Decimal&#xa;timestamp: Instant&#xa;sloName: String?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="150" width="380" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Trace" value="TraceContext&#xa;--&#xa;traceId: String&#xa;spanId: String&#xa;correlationId: String&#xa;serviceName: String&#xa;operationName: String&#xa;sampled: Boolean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="420" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Log" value="StructuredLog&#xa;--&#xa;timestamp: Instant&#xa;level: LogLevel&#xa;service: String&#xa;message: String&#xa;traceId: String?&#xa;correlationId: String?&#xa;redactionStatus: RedactionStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="560" width="390" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="Alert" value="AlertRule&#xa;--&#xa;id: UUID&#xa;name: String&#xa;source: METRIC | LOG | TRACE&#xa;condition: String&#xa;severity: Severity&#xa;runbookUrl: String&#xa;enabled: Boolean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="560" width="380" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Observability Events&#xa;--&#xa;ProductEventIngested&#xa;SchemaValidationFailed&#xa;SloBreached&#xa;AlertRaised&#xa;RetentionApplied" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="560" width="400" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="validated by" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ProductEvent" target="EventSchema">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="260" as="point"/><mxPoint x="600" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="controls" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Consent" target="ProductEvent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1090" y="250" as="point"/><mxPoint x="500" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="triggers" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Metric" target="Alert">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1770" y="370" as="point"/><mxPoint x="1280" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="correlates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Trace" target="Log">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="670" as="point"/><mxPoint x="600" y="675" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="exemplars" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Trace" target="Metric">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="290" y="560" as="point"/><mxPoint x="290" y="470" as="point"/><mxPoint x="1770" y="470" as="point"/><mxPoint x="1770" y="370" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="triggers" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Log" target="Alert">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="990" y="675" as="point"/><mxPoint x="1090" y="680" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ProductEvent" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="410" as="point"/><mxPoint x="1780" y="410" as="point"/><mxPoint x="1780" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="validation failures" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="EventSchema" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="990" y="260" as="point"/><mxPoint x="1780" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Alert" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1470" y="680" as="point"/><mxPoint x="1580" y="680" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Data rule:&#xa;Analytics properties must be allowlisted by schema. Free-form client payloads are not accepted into trusted metrics." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1030" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

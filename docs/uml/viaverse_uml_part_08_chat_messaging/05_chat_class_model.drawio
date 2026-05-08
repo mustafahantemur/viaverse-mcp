@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="chat-class" name="05 Chat Class Model">
+    <mxGraphModel dx="2150" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2150" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Chat / Messaging — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2070" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="Conversation" value="Conversation&#xa;--&#xa;id: ConversationId&#xa;contextType: QUOTE | JOB | SUPPORT&#xa;contextId: UUID&#xa;status: ConversationStatus&#xa;createdAt: Instant&#xa;lastMessageAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="360" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Participant" value="ConversationParticipant&#xa;--&#xa;conversationId: ConversationId&#xa;accountId: AccountId&#xa;role: REQUESTER | WORKER | BUSINESS | SUPPORT&#xa;status: ParticipantStatus&#xa;lastReadMessageId: MessageId?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="150" width="390" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Message" value="Message&#xa;--&#xa;id: MessageId&#xa;conversationId: ConversationId&#xa;senderAccountId: AccountId&#xa;type: TEXT | MEDIA | SYSTEM&#xa;body: String?&#xa;status: MessageStatus&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="150" width="370" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="Attachment" value="MessageAttachment&#xa;--&#xa;messageId: MessageId&#xa;mediaId: MediaId&#xa;kind: IMAGE | VIDEO | FILE&#xa;moderationStatus: MediaModerationStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="150" width="360" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="MessagingPolicy&#xa;--&#xa;canOpenConversation()&#xa;canSendMessage()&#xa;canAttachMedia()&#xa;canShareContactInfo()&#xa;canReport()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="360" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Detection" value="SafetyDetection&#xa;--&#xa;id: UUID&#xa;messageId: MessageId?&#xa;detectionType: PHONE | EMAIL | ADDRESS | PAYMENT_BYPASS&#xa;severity: Severity&#xa;action: WARN | BLOCK | RISK_SIGNAL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="520" width="420" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="Report" value="MessageReport&#xa;--&#xa;id: UUID&#xa;messageId: MessageId&#xa;reporterAccountId: AccountId&#xa;reason: ReportReason&#xa;status: ReportStatus&#xa;createdAt: Instant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="520" width="380" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Messaging Events&#xa;--&#xa;ConversationCreated&#xa;MessageSent&#xa;MessageRead&#xa;ContactSharingDetected&#xa;MessageReported&#xa;SupportEscalationRequested" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="520" width="390" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Conversation" target="Participant">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="240" as="point"/><mxPoint x="540" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl2" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Conversation" target="Message">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="280" as="point"/><mxPoint x="1030" y="270" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl3" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Message" target="Attachment">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1400" y="240" as="point"/><mxPoint x="1510" y="240" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl4" value="checks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Conversation">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="520" as="point"/><mxPoint x="260" y="360" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl5" value="checks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="Participant">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="600" as="point"/><mxPoint x="735" y="600" as="point"/><mxPoint x="735" y="360" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl6" value="scans" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Detection" target="Message">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="750" y="520" as="point"/><mxPoint x="750" y="430" as="point"/><mxPoint x="1215" y="430" as="point"/><mxPoint x="1215" y="390" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl7" value="reports" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Report" target="Message">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1260" y="520" as="point"/><mxPoint x="1260" y="390" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl8" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Message" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1400" y="350" as="point"/><mxPoint x="1745" y="350" as="point"/><mxPoint x="1745" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl9" value="emits risk/safety" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Detection" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="960" y="630" as="point"/><mxPoint x="1550" y="630" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="cl10" value="emits report" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Report" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1450" y="630" as="point"/><mxPoint x="1550" y="630" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Privacy rule:&#xa;Private chat content must not be used for ad targeting. Admin/support access is scoped, reasoned and audited." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="970" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

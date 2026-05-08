@@ -1,0 +1,56 @@
+@startuml
+title Viaverse Notification / Inbox / Push / Email / SMS — Use Case Diagram
+left to right direction
+
+actor User
+actor "Admin / Ops" as Admin
+actor "Domain Services" as Domain
+actor "Push Provider\nFCM/APNs" as Push
+actor "SMS / Email Provider\nNetgsm / SMTP" as SmsEmail
+
+rectangle "Notification Boundary" {
+  usecase "Consume domain event" as Event
+  usecase "Evaluate notification policy" as Policy
+  usecase "Apply user preferences\nchannel + quiet hours" as Pref
+  usecase "Render localized template" as Template
+  usecase "Create in-app inbox item" as Inbox
+  usecase "Send push notification" as PushSend
+  usecase "Send email" as Email
+  usecase "Send SMS / OTP-related alert" as SMS
+  usecase "Read notification" as Read
+  usecase "Mark as read / archive" as Mark
+  usecase "Create digest / summary" as Digest
+  usecase "Retry failed delivery" as Retry
+  usecase "Admin broadcast\nsegmented + rate limited" as Broadcast
+  usecase "Audit campaign/send result" as Audit
+  usecase "Emit delivery events\nNotificationSent / Failed" as Events
+}
+
+Domain --> Event
+Event --> Policy
+Policy --> Pref
+Pref --> Template
+Template --> Inbox
+Template --> PushSend
+Template --> Email
+Template --> SMS
+User --> Read
+Read --> Mark
+Policy ..> Digest : low priority
+PushSend ..> Retry : failure
+Email ..> Retry : failure
+SMS --> Retry : failure
+Admin --> Broadcast
+Broadcast --> Audit
+Retry --> Events
+Audit --> Events
+Push --> PushSend
+SmsEmail --> SMS
+SmsEmail --> Email
+
+note bottom
+In-app notification is the source user-visible log.
+Push/email/SMS are delivery channels with preference,
+consent, rate limit and retry policies.
+end note
+@enduml

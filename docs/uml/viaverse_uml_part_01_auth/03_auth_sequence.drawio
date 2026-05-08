@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="auth-sequence" name="03 Auth Sequence">
+    <mxGraphModel dx="1900" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Auth — Sequence Diagram — OTP Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1820" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="app" value="KMP / Web Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="140" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="179" y="210" width="2" height="870" as="geometry"/>
+        </mxCell>
+        <mxCell id="api" value="API Gateway / BFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="140" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="api_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="419" y="210" width="2" height="870" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="identity-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="140" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="679" y="210" width="2" height="870" as="geometry"/>
+        </mxCell>
+        <mxCell id="redis" value="Valkey / Redis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="140" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="redis_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="939" y="210" width="2" height="870" as="geometry"/>
+        </mxCell>
+        <mxCell id="provider" value="Netgsm / SES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="140" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="provider_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1199" y="210" width="2" height="870" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="140" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1459" y="210" width="2" height="870" as="geometry"/>
+        </mxCell>
+        <mxCell id="event" value="Kafka / Outbox" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="140" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="event_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1719" y="210" width="2" height="870" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="POST /auth/otp/request" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="app" target="api">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="270" y="250" as="point"/><mxPoint x="330" y="250" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="requestOtp()" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="api" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="510" y="290" as="point"/><mxPoint x="590" y="290" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="rate limit + challenge ttl" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="redis">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="330" as="point"/><mxPoint x="850" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="send OTP" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="provider">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="370" as="point"/><mxPoint x="1110" y="370" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="store challenge hash/ref" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="410" as="point"/><mxPoint x="1370" y="410" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="OtpRequested" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="450" as="point"/><mxPoint x="1630" y="450" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="POST /auth/otp/verify" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="app" target="api">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="270" y="560" as="point"/><mxPoint x="330" y="560" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="verifyOtp()" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="api" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="510" y="600" as="point"/><mxPoint x="590" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="check attempts/ttl" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="redis">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="640" as="point"/><mxPoint x="850" y="640" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="find/create Account" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="680" as="point"/><mxPoint x="1370" y="680" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="create Session + RefreshTokenFamily" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="720" as="point"/><mxPoint x="1370" y="720" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s12" value="OtpVerified / SessionCreated" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="event">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="760" as="point"/><mxPoint x="1630" y="760" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s13" value="access JWT + refresh token" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="api">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="590" y="840" as="point"/><mxPoint x="510" y="840" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s14" value="auth result" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="api" target="app">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="330" y="880" as="point"/><mxPoint x="270" y="880" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Sequence focus: OTP login. OAuth login follows the same account/session creation path after provider callback verification." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1110" width="1560" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

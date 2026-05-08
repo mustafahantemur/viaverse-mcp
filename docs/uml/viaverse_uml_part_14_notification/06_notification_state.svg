@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Notification / Delivery State — State Diagram</text>
+
+<rect x="120" y="180" width="220" height="80" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="230.0" y="220.0" text-anchor="middle" class="h">CREATED</text>
+<rect x="500" y="180" width="260" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="630.0" y="220.0" text-anchor="middle" class="h">SUPPRESSED</text>
+<rect x="900" y="180" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1010.0" y="220.0" text-anchor="middle" class="h">QUEUED</text>
+<rect x="1260" y="180" width="250" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1385.0" y="220.0" text-anchor="middle" class="h">SCHEDULED</text>
+<rect x="900" y="500" width="270" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1035.0" y="540.0" text-anchor="middle" class="h">DISPATCHING</text>
+<rect x="1260" y="500" width="220" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1370.0" y="540.0" text-anchor="middle" class="h">SENT</text>
+<rect x="500" y="500" width="220" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="610.0" y="540.0" text-anchor="middle" class="h">FAILED</text>
+<rect x="1260" y="820" width="220" height="80" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="1370.0" y="860.0" text-anchor="middle" class="h">READ</text>
+<rect x="900" y="820" width="260" height="80" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1030.0" y="860.0" text-anchor="middle" class="h">ARCHIVED</text>
+<polyline points="340,220 500,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="508" y="212" class="small">policy/no consent</text>
+<polyline points="340,220 900,220" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="908" y="212" class="small">notify</text>
+<polyline points="1120,220 1260,220" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1268" y="212" class="small">quiet hours/digest</text>
+<polyline points="1260,260 1200,320 1010,320 1010,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1018" y="312" class="small">time reached</text>
+<polyline points="1010,260 1010,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1018" y="492" class="small">send attempt</text>
+<polyline points="1170,540 1260,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1268" y="532" class="small">provider success</text>
+<polyline points="900,540 720,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="728" y="532" class="small">provider failure</text>
+<polyline points="610,500 610,380 1385,380 1385,260" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1393" y="372" class="small">retry/backoff</text>
+<polyline points="1370,580 1370,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1378" y="812" class="small">user opens</text>
+<polyline points="1260,540 1160,540 1160,860" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1168" y="532" class="small">user archives</text>
+<polyline points="1260,860 1160,860" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1168" y="852" class="small">archive</text>
+<rect x="160" y="1060" width="1450" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="176" y="1084" class="t">State rule:</text>
+<text x="176" y="1102" class="t">Inbox item and delivery attempts can have separate states. SENT means at least one selected delivery channel succeeded, not necessarily read.</text>
+</svg>

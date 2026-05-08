@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="admin-sequence" name="03 Admin Moderation Sequence">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Admin / Moderation Action — Sequence Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="adminui" value="Admin UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="adminui_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="171" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="Admin BFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="421" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="identity-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="691" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="adminsvc" value="admin-ops-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="adminsvc_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="961" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="domain" value="Domain Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="domain_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1231" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit" value="audit-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1501" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1771" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Outbox / Kafka" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1940" y="140" width="185" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_line" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#E5E7EB;fontSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2031" y="220" width="2" height="1030" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="POST /admin/actions" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="adminui" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="265" y="260" as="point"/><mxPoint x="330" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s2" value="validate admin session + MFA" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="515" y="310" as="point"/><mxPoint x="600" y="310" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="performAction(command)" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="adminsvc">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="515" y="390" as="point"/><mxPoint x="870" y="390" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s4" value="check permission/resource scope" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="adminsvc" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="870" y="450" as="point"/><mxPoint x="785" y="450" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="apply moderation/domain action" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="adminsvc" target="domain">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1055" y="540" as="point"/><mxPoint x="1140" y="540" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="update target state" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="domain" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1325" y="600" as="point"/><mxPoint x="1680" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="write audit log" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="adminsvc" target="audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1055" y="680" as="point"/><mxPoint x="1410" y="680" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="append immutable audit record" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="audit" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1595" y="740" as="point"/><mxPoint x="1680" y="740" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="store admin case/action" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="adminsvc" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1055" y="820" as="point"/><mxPoint x="1680" y="820" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="AdminActionApplied" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="adminsvc" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1055" y="900" as="point"/><mxPoint x="1940" y="900" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="case update / notification" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="kafka" target="adminui">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1940" y="980" as="point"/><mxPoint x="1840" y="980" as="point"/><mxPoint x="1840" y="1280" as="point"/><mxPoint x="170" y="1280" as="point"/><mxPoint x="170" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Sequence focus:&#xa;Admin BFF authenticates admin session. admin-ops-service orchestrates action. Domain service owns target state. Audit is mandatory." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1360" width="1700" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

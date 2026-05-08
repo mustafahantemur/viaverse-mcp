@@ -1,0 +1,31 @@
+@startuml
+title Viaverse AI Assistant / Human Escalation — Sequence Diagram
+
+actor User
+participant "Client" as Client
+participant "API Gateway / BFF" as BFF
+participant "ai-assistant-service" as AI
+participant "policy/privacy guard" as Policy
+database "Knowledge Base / Vector Index" as KB
+participant "LLM Adapter" as LLM
+participant "support-service" as Support
+queue "Outbox / Kafka" as Kafka
+
+User -> Client : ask AI
+Client -> BFF : POST /ai/ask
+BFF -> AI : ask(command)
+AI -> Policy : redact + authorize context
+AI -> KB : retrieve relevant docs
+AI -> LLM : generate with guarded prompt
+LLM --> AI : model response
+AI -> Policy : output safety check
+AI ..> Support : create ticket if uncertain/risky
+AI -> Kafka : AiAsked / AiAnswered / AiEscalated
+AI --> BFF : answer or escalation status
+BFF --> Client : render response
+
+note bottom
+ai-assistant-service owns prompt assembly, redaction,
+tool boundaries, model call, output checks and escalation decision.
+end note
+@enduml

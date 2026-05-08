@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Review / Trust / Badge / Gamification — Sequence Diagram</text>
+
+<rect x="80" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="172.5" y="170.0" text-anchor="middle" class="h">Client</text>
+<rect x="171" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="172.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="422.5" y="170.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="421" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="422.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="600" y="140" width="185" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="692.5" y="170.0" text-anchor="middle" class="h">trust-gamification-service</text>
+<rect x="691" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="692.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="900" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="992.5" y="170.0" text-anchor="middle" class="h">marketplace-service</text>
+<rect x="991" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="992.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1200" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1292.5" y="170.0" text-anchor="middle" class="h">moderation-service</text>
+<rect x="1291" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1292.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1500" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1592.5" y="170.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1591" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1592.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1770" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1862.5" y="170.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="1861" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1862.0" y="725.0" text-anchor="middle" class="h"></text>
+<rect x="1980" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2072.5" y="170.0" text-anchor="middle" class="h">search/matching</text>
+<rect x="2071" y="220" width="2" height="1010" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="2072.0" y="725.0" text-anchor="middle" class="h"></text>
+<polyline points="1770,260 785,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="793" y="252" class="small">JobCompleted</text>
+<polyline points="785,320 1500,320" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1508" y="312" class="small">create ReviewPrompt x2</text>
+<polyline points="265,460 330,460" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="452" class="small">POST /reviews</text>
+<polyline points="515,500 600,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="492" class="small">submitReview(command)</text>
+<polyline points="785,540 900,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="908" y="532" class="small">validate job participant</text>
+<polyline points="785,620 1200,620" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1208" y="612" class="small">scan text/tags</text>
+<polyline points="785,700 1500,700" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1508" y="692" class="small">insert Review + ReviewTag</text>
+<polyline points="690,780 800,780 800,840 690,840 690,780" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="808" y="832" class="small">calculate TrustScore + BadgeEligibility</text>
+<polyline points="785,910 1500,910" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1508" y="902" class="small">persist score/badge/points</text>
+<polyline points="785,990 1770,990" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1778" y="982" class="small">ReviewSubmitted / TrustScoreUpdated / BadgeAwarded</text>
+<polyline points="1955,990 1980,990" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1988" y="982" class="small">update ranking projection</text>
+<polyline points="1770,1080 1680,1080 1680,1280 170,1280 170,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="1272" class="small">notification / refresh profile</text>
+<rect x="80" y="1360" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1384" class="t">Sequence focus:</text>
+<text x="96" y="1402" class="t">Trust service validates job context but owns reviews, trust score, badge state and gamification points.</text>
+</svg>

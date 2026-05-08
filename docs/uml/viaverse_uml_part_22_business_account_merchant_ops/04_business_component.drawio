@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="business-component" name="04 Business Component">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Business Account / Merchant Ops — Component Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="KMP / Business UI&#xa;--&#xa;profile&#xa;catalog&#xa;leads&#xa;insights" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="340" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="bff" value="API Gateway / BFF&#xa;--&#xa;Business API facade" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="170" width="340" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="controller" value="BusinessController&#xa;CatalogController&#xa;StaffController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="960" y="140" width="360" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="usecases" value="Business Use Cases&#xa;--&#xa;CreateBusiness&#xa;VerifyBusiness&#xa;ManageCatalog&#xa;ManageStaff&#xa;PublishBusiness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="960" y="330" width="390" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="policy" value="Business Policies&#xa;--&#xa;owner/staff permissions&#xa;publish-ready&#xa;regional verification&#xa;subscription gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="960" y="620" width="390" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="ports" value="Ports&#xa;BusinessRepo&#xa;IdentityPort&#xa;MediaPort&#xa;BillingPort&#xa;SearchPort&#xa;OutboxPort" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="960" y="900" width="390" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="identity-service&#xa;--&#xa;account capability&#xa;staff users&#xa;roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="210" width="360" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="media" value="media-service&#xa;--&#xa;logo/photos&#xa;gallery moderation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="480" width="360" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="billing" value="billing-service&#xa;--&#xa;trial/plan&#xa;invoice/payment state" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="760" width="360" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL&#xa;--&#xa;business&#xa;branch&#xa;catalog&#xa;staff_role" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="210" width="360" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="search" value="search/trust&#xa;--&#xa;public projection&#xa;ranking signals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366F1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="520" width="360" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Kafka / Outbox&#xa;--&#xa;BusinessCreated&#xa;CatalogUpdated&#xa;BusinessPublished" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="830" width="360" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="HTTPS" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="client" target="bff">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="240" as="point"/><mxPoint x="520" y="230" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="REST" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="bff" target="controller">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="860" y="230" as="point"/><mxPoint x="910" y="230" as="point"/><mxPoint x="910" y="195" as="point"/><mxPoint x="960" y="195" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="command/query" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="controller" target="usecases">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="250" as="point"/><mxPoint x="1140" y="330" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="validate" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="usecases" target="policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1155" y="520" as="point"/><mxPoint x="1155" y="620" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="ports" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="policy" target="ports">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1155" y="810" as="point"/><mxPoint x="1155" y="900" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="capability/staff" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="identity">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1350" y="995" as="point"/><mxPoint x="1390" y="995" as="point"/><mxPoint x="1390" y="285" as="point"/><mxPoint x="1430" y="285" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="media refs" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="media">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1350" y="995" as="point"/><mxPoint x="1390" y="995" as="point"/><mxPoint x="1390" y="555" as="point"/><mxPoint x="1430" y="555" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="subscription gates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="billing">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1350" y="995" as="point"/><mxPoint x="1430" y="835" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c9" value="persist" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="db">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1350" y="995" as="point"/><mxPoint x="1750" y="995" as="point"/><mxPoint x="1750" y="295" as="point"/><mxPoint x="1810" y="295" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c10" value="publish projection" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="ports" target="search">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1350" y="995" as="point"/><mxPoint x="1750" y="995" as="point"/><mxPoint x="1750" y="600" as="point"/><mxPoint x="1810" y="600" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c11" value="events" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="usecases" target="kafka">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1350" y="425" as="point"/><mxPoint x="1810" y="910" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Component rule:&#xa;Business UI may be one app flow today and a separate store app later. The backend business bounded context should not depend on that client packaging choice." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1240" width="1780" height="65" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

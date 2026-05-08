@@ -1,0 +1,103 @@
+@startuml
+title Viaverse Auth — Class Model
+
+class Account {
+  id: AccountId
+  status: AccountStatus
+  displayName: String?
+  primaryEmail: Email?
+  primaryPhone: Phone?
+  locale: Locale
+  tokenVersion: Int
+  createdAt: Instant
+}
+
+class AccountCapability {
+  accountId: AccountId
+  capability: CapabilityType
+  status: CapabilityStatus
+  enabledAt: Instant
+  suspendedAt: Instant?
+}
+
+class LinkedIdentity {
+  accountId: AccountId
+  provider: OAuthProvider
+  providerSubject: String
+  email: Email?
+  linkedAt: Instant
+}
+
+class ConsentRecord {
+  accountId: AccountId
+  consentType: ConsentType
+  version: String
+  granted: Boolean
+  grantedAt: Instant
+  revokedAt: Instant?
+}
+
+class OtpChallenge {
+  id: OtpChallengeId
+  channel: OtpChannel
+  targetHash: String
+  codeHash: String
+  purpose: OtpPurpose
+  expiresAt: Instant
+  attemptCount: Int
+  status: OtpStatus
+}
+
+class Session {
+  id: SessionId
+  accountId: AccountId
+  deviceId: String?
+  createdAt: Instant
+  lastSeenAt: Instant
+  revokedAt: Instant?
+  platform: Platform
+}
+
+class RefreshTokenFamily {
+  id: RefreshTokenFamilyId
+  sessionId: SessionId
+  currentTokenHash: String
+  status: TokenFamilyStatus
+  rotatedAt: Instant
+  reusedAt: Instant?
+}
+
+class AuthPolicy {
+  validateAccountActive()
+  validateCapabilityEnabled()
+  validateConsentRequired()
+  validateRefreshReuse()
+}
+
+class AuthEvents {
+  AccountCreated
+  OtpRequested
+  OtpVerified
+  SessionCreated
+  SessionRevoked
+  ConsentGranted
+}
+
+Account "1" o-- "*" AccountCapability
+Account "1" o-- "*" LinkedIdentity
+Account "1" o-- "*" ConsentRecord
+Account "1" o-- "*" Session
+Session "1" o-- "1" RefreshTokenFamily
+OtpChallenge ..> Account : verified creates/finds
+AuthPolicy ..> Account : checks
+AuthPolicy ..> AccountCapability : checks
+Session ..> AuthEvents : emits
+ConsentRecord ..> AuthEvents : emits
+OtpChallenge ..> AuthEvents : emits
+
+note bottom
+Implementation rule:
+These are domain/application models.
+JPA entities live separately under infrastructure.persistence.entity and must be mapped explicitly.
+end note
+@enduml

@@ -1,0 +1,91 @@
+@startuml
+title Viaverse Localization / Regionalization — Class Model
+
+class LocaleProfile {
+  accountId: AccountId?
+  preferredLocale: Locale
+  fallbackLocale: Locale
+  timezone: String
+  countryCode: String
+  currencyCode: String
+  updatedAt: Instant
+}
+
+class TranslationKey {
+  key: String
+  namespace: String
+  description: String
+  ownerTeam: String
+  status: ACTIVE | DEPRECATED
+}
+
+class TranslationValue {
+  key: String
+  locale: Locale
+  value: String
+  version: Int
+  status: DRAFT | REVIEW | PUBLISHED
+  updatedBy: AccountId
+  updatedAt: Instant
+}
+
+class RegionalConfig {
+  countryCode: String
+  currencyCode: String
+  defaultLocale: Locale
+  legalPolicyVersion: String
+  taxMode: TaxMode
+  serviceAvailability: Json
+}
+
+class LocalizedSlug {
+  entityType: SEO_PAGE | CATEGORY | SERVICE
+  entityId: UUID
+  locale: Locale
+  slug: String
+  canonicalUrl: String
+  hreflangGroupId: UUID
+}
+
+class LocalizedTemplate {
+  templateType: NOTIFICATION | EMAIL | SMS | SEO
+  locale: Locale
+  subject: String?
+  body: String
+  version: Int
+  status: TemplateStatus
+}
+
+class LocalizationPolicy {
+  resolveLocale()
+  applyFallback()
+  formatMoney()
+  formatDateTime()
+  validateTranslationQuality()
+  canPublishTranslation()
+}
+
+class LocalizationEvents {
+  LocaleChanged
+  TranslationPublished
+  MissingTranslationDetected
+  RegionalConfigChanged
+  LocalizedSeoPageUpdated
+}
+
+TranslationKey "1" o-- "*" TranslationValue
+LocaleProfile --> RegionalConfig : uses country
+RegionalConfig ..> LocalizedSlug : drives
+TranslationValue --> LocalizedTemplate : used by
+LocalizationPolicy ..> LocaleProfile : resolves
+LocalizationPolicy ..> TranslationValue : validates
+LocalizationPolicy --> RegionalConfig : applies
+LocaleProfile ..> LocalizationEvents : emits
+TranslationValue ..> LocalizationEvents : emits
+RegionalConfig ..> LocalizationEvents : emits
+
+note bottom
+Translation keys are stable code contracts.
+Text values are versioned content, not hardcoded business logic.
+end note
+@enduml

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Analytics / Observability — Component Diagram</text>
+
+<rect x="80" y="170" width="320" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="240.0" y="199.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<text x="240.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="239.0" text-anchor="middle" class="t">product events</text>
+<text x="240.0" y="259.0" text-anchor="middle" class="t">crash/session</text>
+<text x="240.0" y="279.0" text-anchor="middle" class="t">web vitals</text>
+<rect x="500" y="170" width="330" height="130" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="665.0" y="199.0" text-anchor="middle" class="h">API Gateway</text>
+<text x="665.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="665.0" y="239.0" text-anchor="middle" class="t">correlationId</text>
+<text x="665.0" y="259.0" text-anchor="middle" class="t">traceparent</text>
+<text x="665.0" y="279.0" text-anchor="middle" class="t">rate limit</text>
+<rect x="930" y="170" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1110.0" y="209.0" text-anchor="middle" class="h">Spring Boot Services</text>
+<text x="1110.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="1110.0" y="249.0" text-anchor="middle" class="t">Micrometer</text>
+<text x="1110.0" y="269.0" text-anchor="middle" class="t">OpenTelemetry</text>
+<text x="1110.0" y="289.0" text-anchor="middle" class="t">structured logs</text>
+<rect x="930" y="470" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1110.0" y="519.0" text-anchor="middle" class="h">analytics-service</text>
+<text x="1110.0" y="539.0" text-anchor="middle" class="t">--</text>
+<text x="1110.0" y="559.0" text-anchor="middle" class="t">event ingestion</text>
+<text x="1110.0" y="579.0" text-anchor="middle" class="t">schema validation</text>
+<text x="1110.0" y="599.0" text-anchor="middle" class="t">funnel/cohort</text>
+<rect x="1400" y="220" width="360" height="150" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1580.0" y="259.0" text-anchor="middle" class="h">OpenTelemetry Collector</text>
+<text x="1580.0" y="279.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="299.0" text-anchor="middle" class="t">traces</text>
+<text x="1580.0" y="319.0" text-anchor="middle" class="t">metrics</text>
+<text x="1580.0" y="339.0" text-anchor="middle" class="t">logs routing</text>
+<rect x="1400" y="500" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1580.0" y="539.0" text-anchor="middle" class="h">Prometheus + Perses</text>
+<text x="1580.0" y="559.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="579.0" text-anchor="middle" class="t">metrics</text>
+<text x="1580.0" y="599.0" text-anchor="middle" class="t">SLO dashboards</text>
+<text x="1580.0" y="619.0" text-anchor="middle" class="t">alerts</text>
+<rect x="1400" y="760" width="360" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1580.0" y="802.0" text-anchor="middle" class="h">Jaeger</text>
+<text x="1580.0" y="822.0" text-anchor="middle" class="t">--</text>
+<text x="1580.0" y="842.0" text-anchor="middle" class="t">distributed traces</text>
+<rect x="1800" y="220" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1980.0" y="268.0" text-anchor="middle" class="h">OpenSearch</text>
+<text x="1980.0" y="288.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="308.0" text-anchor="middle" class="t">structured logs</text>
+<text x="1980.0" y="328.0" text-anchor="middle" class="t">analytics index</text>
+<rect x="1800" y="500" width="360" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1980.0" y="548.0" text-anchor="middle" class="h">Analytics Warehouse</text>
+<text x="1980.0" y="568.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="588.0" text-anchor="middle" class="t">privacy-safe events</text>
+<text x="1980.0" y="608.0" text-anchor="middle" class="t">funnels/cohorts</text>
+<rect x="1800" y="800" width="360" height="150" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1980.0" y="839.0" text-anchor="middle" class="h">Alertmanager / Ops</text>
+<text x="1980.0" y="859.0" text-anchor="middle" class="t">--</text>
+<text x="1980.0" y="879.0" text-anchor="middle" class="t">SLO breach</text>
+<text x="1980.0" y="899.0" text-anchor="middle" class="t">error budget</text>
+<text x="1980.0" y="919.0" text-anchor="middle" class="t">anomaly</text>
+<rect x="930" y="770" width="360" height="150" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1110.0" y="809.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1110.0" y="829.0" text-anchor="middle" class="t">--</text>
+<text x="1110.0" y="849.0" text-anchor="middle" class="t">ProductEvent</text>
+<text x="1110.0" y="869.0" text-anchor="middle" class="t">DataQualityFailed</text>
+<text x="1110.0" y="889.0" text-anchor="middle" class="t">AlertRaised</text>
+<polyline points="400,235 500,235" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="227" class="small">HTTPS + trace context</text>
+<polyline points="830,235 930,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="938" y="237" class="small">service calls</text>
+<polyline points="240,300 240,555 930,555" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="248" y="547" class="small">product events</text>
+<polyline points="1290,245 1400,295" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1408" y="287" class="small">OTel export</text>
+<polyline points="1580,370 1580,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="492" class="small">metrics</text>
+<polyline points="1580,370 1580,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1588" y="752" class="small">traces</text>
+<polyline points="1760,295 1800,295" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="287" class="small">logs</text>
+<polyline points="1290,555 1800,575" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="567" class="small">privacy-safe events</text>
+<polyline points="1110,640 1110,770" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1118" y="762" class="small">quality/events</text>
+<polyline points="1760,575 1800,875" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="867" class="small">SLO alerts</text>
+<polyline points="1980,370 1980,800" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1988" y="792" class="small">error anomalies</text>
+<rect x="80" y="1120" width="1750" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1144" class="t">Component rule:</text>
+<text x="96" y="1162" class="t">Operational observability and product analytics are related but separated. Product analytics requires consent/governance; observability requires redaction and secret filtering.</text>
+</svg>

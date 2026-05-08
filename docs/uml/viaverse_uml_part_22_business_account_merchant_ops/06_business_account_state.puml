@@ -1,0 +1,24 @@
+@startuml
+title Viaverse Business Account / Merchant State — State Diagram
+
+[*] --> DRAFT
+DRAFT --> PROFILE_INCOMPLETE : missing fields
+PROFILE_INCOMPLETE --> PENDING_VERIFICATION : profile complete
+PENDING_VERIFICATION --> VERIFIED : approved
+PENDING_VERIFICATION --> VERIFICATION_REJECTED : rejected
+VERIFICATION_REJECTED --> PROFILE_INCOMPLETE : fix
+VERIFIED --> PUBLISH_READY : catalog/billing/branch ready
+PUBLISH_READY --> PUBLISHED : publish
+PUBLISHED --> SUSPENDED : policy/admin
+SUSPENDED --> PUBLISHED : appeal/restored
+PUBLISHED --> ARCHIVED : owner closes
+SUSPENDED --> ARCHIVED : terminal closure
+
+ARCHIVED --> [*]
+
+note bottom
+PUBLISHED means visible/lead-routable.
+VERIFIED alone is not enough; catalog, branch/service area
+and billing/subscription gates must also pass.
+end note
+@enduml

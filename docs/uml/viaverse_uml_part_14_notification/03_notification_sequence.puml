@@ -1,0 +1,32 @@
+@startuml
+title Viaverse Notification / Delivery — Sequence Diagram
+
+queue "Kafka / Event Bus" as Kafka
+participant "notification-service" as Notification
+participant "identity/preferences" as Preferences
+participant "template/i18n" as Template
+database "PostgreSQL" as DB
+participant "FCM / APNs" as Push
+participant "SMTP / Netgsm" as EmailSms
+participant "Client" as Client
+
+Kafka -> Notification : DomainEvent
+Notification -> DB : dedup check
+Notification -> Preferences : load preferences/devices
+Preferences --> Notification : prefs + device tokens
+Notification -> Template : render localized content
+Template --> Notification : title/body/deeplink
+Notification -> DB : create Notification + Attempts
+Notification -> Push : send push
+Push --> Notification : delivery result
+Notification -> EmailSms : send email/SMS if selected
+EmailSms --> Notification : delivery result
+Notification -> DB : update final/attempt state
+Notification -> Kafka : NotificationSent/Failed
+Notification -> Client : in-app inbox sync / badge count
+
+note bottom
+Notification service consumes domain events and owns inbox + channel attempts.
+Domain services do not call push/SMS/email providers directly.
+end note
+@enduml

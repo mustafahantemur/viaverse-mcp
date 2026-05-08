@@ -1,0 +1,25 @@
+@startuml
+title Viaverse Phase / Task / Release State — State Diagram
+
+[*] --> IDEA
+IDEA --> PLANNED : accepted
+PLANNED --> READY : scope + acceptance
+READY --> IN_PROGRESS : start
+IN_PROGRESS --> BLOCKED : dependency/risk
+BLOCKED --> IN_PROGRESS : unblocked
+IN_PROGRESS --> IN_REVIEW : PR/test
+IN_REVIEW --> IN_PROGRESS : changes
+IN_REVIEW --> DONE : approved
+DONE --> RELEASED : release train
+RELEASED --> HOTFIX_REQUIRED : incident/regression
+HOTFIX_REQUIRED --> IN_PROGRESS : fix branch
+PLANNED --> SUPERSEDED : strategy changed
+
+RELEASED --> [*]
+SUPERSEDED --> [*]
+
+note bottom
+A task cannot move to DONE without tests/docs where applicable.
+A phase cannot move to RELEASED without release gate signoff and rollback path.
+end note
+@enduml

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1300" viewBox="0 0 1900 1300">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="1820" height="60" rx="14" fill="#022C22"/>
+<text x="950.0" y="69" text-anchor="middle" class="title">Viaverse Capability — Use Case Diagram</text>
+
+<rect x="250" y="135" width="1320" height="890" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="266" y="160" class="h">Account Capability / Mode Boundary</text>
+<rect x="60" y="300" width="155" height="76" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="137.5" y="329.0" text-anchor="middle" class="h">«actor»</text>
+<text x="137.5" y="349.0" text-anchor="middle" class="t">Authenticated Account</text>
+<rect x="1660" y="500" width="155" height="76" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1737.5" y="529.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1737.5" y="549.0" text-anchor="middle" class="t">Admin / Trust Ops</text>
+<rect x="60" y="680" width="155" height="76" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="137.5" y="709.0" text-anchor="middle" class="h">«actor»</text>
+<text x="137.5" y="729.0" text-anchor="middle" class="t">Business Owner</text>
+<rect x="340" y="190" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="457.5" y="228.0" text-anchor="middle" class="h">View available modes</text>
+<rect x="640" y="190" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="757.5" y="228.0" text-anchor="middle" class="h">Use Personal Mode</text>
+<rect x="340" y="360" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="457.5" y="398.0" text-anchor="middle" class="h">Enable Work Mode</text>
+<rect x="640" y="360" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="757.5" y="398.0" text-anchor="middle" class="h">Complete worker onboarding</text>
+<rect x="340" y="550" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="457.5" y="588.0" text-anchor="middle" class="h">Start Business Mode</text>
+<rect x="640" y="550" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="757.5" y="588.0" text-anchor="middle" class="h">Create business profile</text>
+<rect x="940" y="550" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1057.5" y="588.0" text-anchor="middle" class="h">Manage business team roles</text>
+<rect x="940" y="260" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1057.5" y="298.0" text-anchor="middle" class="h">Switch active mode</text>
+<rect x="1240" y="360" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1357.5" y="398.0" text-anchor="middle" class="h">Check capability eligibility</text>
+<rect x="1240" y="540" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1357.5" y="578.0" text-anchor="middle" class="h">Suspend capability</text>
+<rect x="1240" y="700" width="235" height="76" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1357.5" y="738.0" text-anchor="middle" class="h">Revoke capability</text>
+<polyline points="215,338 250,338 250,228 340,228" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="575,228 640,228" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="648" y="220" class="small">default</text>
+<polyline points="215,338 250,338 250,398 340,398" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="575,398 640,398" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="648" y="390" class="small">«include»</text>
+<polyline points="215,338 250,338 250,588 340,588" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="575,588 640,588" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="648" y="580" class="small">«include»</text>
+<polyline points="215,718 260,718 260,638 940,638" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="875,228 940,298" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="875,398 940,298" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="875,588 940,298" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1175,298 1240,398" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1660,538 1540,538 1540,578 1475,578" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1548" y="570" class="small">admin policy</text>
+<polyline points="1660,538 1520,538 1520,738 1475,738" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1528" y="730" class="small">admin policy</text>
+<polyline points="1240,578 1190,578 1190,398 1240,398" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1198" y="390" class="small">state affects eligibility</text>
+<rect x="340" y="930" width="1080" height="55" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="356" y="954" class="t">Core rule:</text>
+<text x="356" y="972" class="t">One Account can have multiple capabilities. Personal / Work / Business are modes over capabilities, not separate user identities.</text>
+</svg>

@@ -1,0 +1,4 @@
+@startuml
+title Viaverse Repository / Monorepo Structure
+package viaverse-platform { package apps; package backend; package infra; package docs; package tools; package quality }
+@enduml

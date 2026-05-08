@@ -1,0 +1,24 @@
+@startuml
+title Viaverse Dispute / Refund / Payout — State Diagram
+
+[*] --> OPENED
+OPENED --> VALIDATING : validate
+VALIDATING --> EVIDENCE_COLLECTION : valid
+VALIDATING --> REJECTED_INVALID : invalid
+EVIDENCE_COLLECTION --> ADMIN_REVIEW : submitted / timeout
+ADMIN_REVIEW --> RESOLVED_REFUND : refund
+ADMIN_REVIEW --> RESOLVED_PAYOUT : payout
+ADMIN_REVIEW --> RESOLVED_SPLIT : split
+ADMIN_REVIEW --> ESCALATED : legal/complex
+ESCALATED --> ADMIN_REVIEW : return
+RESOLVED_REFUND --> CLOSED : audit + events
+RESOLVED_PAYOUT --> CLOSED : audit + events
+RESOLVED_SPLIT --> CLOSED : audit + events
+REJECTED_INVALID --> [*]
+CLOSED --> [*]
+
+note bottom
+When dispute is not closed, payout must remain blocked.
+Refund/release/split are terminal resolution actions with idempotency keys.
+end note
+@enduml

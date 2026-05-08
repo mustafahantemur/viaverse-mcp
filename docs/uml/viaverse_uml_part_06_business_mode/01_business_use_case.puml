@@ -1,0 +1,55 @@
+@startuml
+title Viaverse Business Mode — Use Case Diagram
+left to right direction
+
+actor "Business Owner\nOPERATE_BUSINESS" as Owner
+actor "Business Manager" as Manager
+actor "Verification Admin" as Admin
+actor "Payment Provider" as Payment
+actor "Search / SEO" as Search
+
+rectangle "Business Account / Business Mode Boundary" {
+  usecase "Start Business Mode" as Start
+  usecase "Create business profile" as Create
+  usecase "Submit business verification" as Verify
+  usecase "Start subscription trial" as Trial
+  usecase "Manage services\nand categories" as Services
+  usecase "Manage packages\nand pricing" as Packages
+  usecase "Set operating hours\nand service area" as Hours
+  usecase "Manage team roles" as Team
+  usecase "Manage business portfolio" as Portfolio
+  usecase "Publish public business profile" as Publish
+  usecase "Receive matched requests" as Requests
+  usecase "Send free business offer" as Quote
+  usecase "View dashboard\nanalytics / leads / jobs" as Dashboard
+  usecase "Manage subscription" as Subscription
+  usecase "Pause / unpublish business" as Pause
+}
+
+Owner --> Start
+Start --> Create
+Create --> Verify
+Verify --> Trial
+Create --> Services
+Services --> Packages
+Packages --> Hours
+Hours --> Team
+Manager --> Team
+Team --> Portfolio
+Portfolio --> Publish
+Publish --> Requests
+Requests --> Quote
+Manager --> Dashboard
+Owner --> Subscription
+Owner --> Pause
+Admin --> Verify
+Payment --> Trial
+Payment --> Subscription
+Search --> Publish
+
+note bottom
+Subscription gives business tooling/visibility,
+but business offers remain free.
+Subscription/boost cannot bypass trust, safety or relevance gates.
+end note
+@enduml

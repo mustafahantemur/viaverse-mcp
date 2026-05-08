@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1450" viewBox="0 0 2100 1450">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2020" height="60" rx="14" fill="#022C22"/>
+<text x="1050.0" y="69" text-anchor="middle" class="title">Viaverse Worker Onboarding — Activity Diagram</text>
+
+<rect x="80" y="160" width="130" height="50" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="145.0" y="185.0" text-anchor="middle" class="h">START</text>
+<rect x="300" y="150" width="260" height="70" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="430.0" y="185.0" text-anchor="middle" class="h">Tap Enable Work Mode</text>
+<rect x="680" y="140" width="310" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="835.0" y="176.0" text-anchor="middle" class="h">Check account eligibility</text>
+<text x="835.0" y="196.0" text-anchor="middle" class="t">status + bans + required consent</text>
+<rect x="1110" y="140" width="210" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1215.0" y="185.0" text-anchor="middle" class="h">Allowed?</text>
+<rect x="1490" y="140" width="260" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1620.0" y="171.0" text-anchor="middle" class="h">Show reason</text>
+<text x="1620.0" y="191.0" text-anchor="middle" class="t">and support path</text>
+<rect x="1110" y="330" width="310" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1265.0" y="366.0" text-anchor="middle" class="h">Create worker profile</text>
+<text x="1265.0" y="386.0" text-anchor="middle" class="t">name / bio / service intro</text>
+<rect x="680" y="330" width="300" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="830.0" y="366.0" text-anchor="middle" class="h">Select categories</text>
+<text x="830.0" y="386.0" text-anchor="middle" class="t">skills / subcategories</text>
+<rect x="300" y="330" width="260" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="430.0" y="366.0" text-anchor="middle" class="h">Set service area</text>
+<text x="430.0" y="386.0" text-anchor="middle" class="t">radius / districts</text>
+<rect x="300" y="540" width="280" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="440.0" y="576.0" text-anchor="middle" class="h">Set availability</text>
+<text x="440.0" y="596.0" text-anchor="middle" class="t">working days / hours</text>
+<rect x="680" y="550" width="270" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="815.0" y="590.0" text-anchor="middle" class="h">Add portfolio media?</text>
+<rect x="1060" y="540" width="310" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1215.0" y="576.0" text-anchor="middle" class="h">Upload portfolio media</text>
+<text x="1215.0" y="596.0" text-anchor="middle" class="t">via media-service</text>
+<rect x="1480" y="540" width="270" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1615.0" y="585.0" text-anchor="middle" class="h">Verification required?</text>
+<rect x="1480" y="720" width="300" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1630.0" y="756.0" text-anchor="middle" class="h">Submit verification</text>
+<text x="1630.0" y="776.0" text-anchor="middle" class="t">identity/docs if needed</text>
+<rect x="1060" y="720" width="290" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1205.0" y="760.0" text-anchor="middle" class="h">Publish worker profile</text>
+<rect x="680" y="720" width="300" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="830.0" y="756.0" text-anchor="middle" class="h">Emit WorkerProfileActivated</text>
+<text x="830.0" y="776.0" text-anchor="middle" class="t">and index profile</text>
+<rect x="300" y="730" width="280" height="70" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="440.0" y="765.0" text-anchor="middle" class="h">Opportunity queue ready</text>
+<polyline points="210,185 300,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="560,185 680,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="990,185 1110,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,185 1490,185" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1498" y="177" class="small">no</text>
+<polyline points="1215,230 1215,330" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1223" y="322" class="small">yes</text>
+<polyline points="1110,375 980,375" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="680,375 560,375" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="430,420 430,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="580,585 680,590" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="950,590 1060,585" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1068" y="577" class="small">yes</text>
+<polyline points="815,630 815,670 1615,670 1615,540" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1623" y="662" class="small">no</text>
+<polyline points="1370,585 1480,585" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1615,630 1615,720" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1623" y="712" class="small">yes</text>
+<polyline points="1480,585 1410,585 1410,760 1350,760" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1418" y="752" class="small">no</text>
+<polyline points="1480,765 1350,765" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1358" y="757" class="small">approved</text>
+<polyline points="1060,765 980,765" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="680,765 580,765" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="300" y="980" width="1250" height="62" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="316" y="1004" class="t">UX rule:</text>
+<text x="316" y="1022" class="t">Onboarding should feel lightweight. Verification may be category/risk dependent, not mandatory for every low-risk category at launch.</text>
+</svg>

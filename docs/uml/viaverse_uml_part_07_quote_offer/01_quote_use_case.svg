@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Quote / Offer — Use Case Diagram</text>
+
+<rect x="260" y="135" width="1530" height="1060" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="276" y="160" class="h">Quote / Offer Boundary</text>
+<rect x="60" y="300" width="180" height="78" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="150.0" y="330.0" text-anchor="middle" class="h">«actor»</text>
+<text x="150.0" y="350.0" text-anchor="middle" class="t">Worker / Business</text>
+<rect x="60" y="760" width="180" height="78" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="150.0" y="790.0" text-anchor="middle" class="h">«actor»</text>
+<text x="150.0" y="810.0" text-anchor="middle" class="t">Requester</text>
+<rect x="1870" y="360" width="180" height="78" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1960.0" y="390.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1960.0" y="410.0" text-anchor="middle" class="t">marketplace-service</text>
+<rect x="1870" y="680" width="180" height="78" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1960.0" y="710.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1960.0" y="730.0" text-anchor="middle" class="t">notification-service</text>
+<rect x="350" y="190" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="477.5" y="229.0" text-anchor="middle" class="h">View matched request</text>
+<rect x="680" y="190" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="807.5" y="229.0" text-anchor="middle" class="h">Open request detail</text>
+<rect x="1010" y="190" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1137.5" y="220.0" text-anchor="middle" class="h">Ask clarification</text>
+<text x="1137.5" y="240.0" text-anchor="middle" class="t">optional</text>
+<rect x="350" y="420" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="477.5" y="459.0" text-anchor="middle" class="h">Create quote draft</text>
+<rect x="680" y="420" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="807.5" y="459.0" text-anchor="middle" class="h">Set price / estimate</text>
+<rect x="1010" y="420" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1137.5" y="459.0" text-anchor="middle" class="h">Write offer message</text>
+<rect x="1340" y="420" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1467.5" y="459.0" text-anchor="middle" class="h">Set start time / duration</text>
+<rect x="680" y="650" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="807.5" y="689.0" text-anchor="middle" class="h">Send quote</text>
+<rect x="1010" y="650" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1137.5" y="689.0" text-anchor="middle" class="h">Revise quote</text>
+<rect x="1340" y="650" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1467.5" y="689.0" text-anchor="middle" class="h">Withdraw quote</text>
+<rect x="350" y="850" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="477.5" y="889.0" text-anchor="middle" class="h">Receive quote</text>
+<rect x="680" y="850" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="807.5" y="889.0" text-anchor="middle" class="h">Compare offers</text>
+<rect x="1010" y="850" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1137.5" y="889.0" text-anchor="middle" class="h">Accept quote</text>
+<rect x="1340" y="850" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1467.5" y="889.0" text-anchor="middle" class="h">Reject quote</text>
+<rect x="1010" y="1040" width="255" height="78" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1137.5" y="1070.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1137.5" y="1090.0" text-anchor="middle" class="t">QuoteSent / QuoteAccepted</text>
+<polyline points="240,340 260,340 260,229 350,229" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="605,229 680,229" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="935,229 1010,229" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1018" y="221" class="small">optional</text>
+<polyline points="805,268 805,340 475,340 475,420" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="483" y="332" class="small">quote path</text>
+<polyline points="605,459 680,459" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="935,459 1010,459" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1265,459 1340,459" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1465,498 1465,580 805,580 805,650" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="813" y="572" class="small">send</text>
+<polyline points="935,689 1010,689" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1018" y="681" class="small">revision flow</text>
+<polyline points="1010,650 960,610 805,610 805,650" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="813" y="602" class="small">resend</text>
+<polyline points="240,340 280,340 280,689 1340,689" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="240,800 260,800 260,889 350,889" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="605,889 680,889" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="935,889 1010,889" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="935,889 1010,930 1465,930 1465,889" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<polyline points="1135,928 1135,1040" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1870,400 1740,400 1740,689 935,689" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1748" y="681" class="small">persist</text>
+<polyline points="1870,400 1760,400 1760,889 1265,889" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1768" y="881" class="small">state change</text>
+<polyline points="1870,720 1740,720 1740,889 605,889" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1748" y="881" class="small">notify requester</text>
+<rect x="350" y="1180" width="1320" height="58" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="366" y="1204" class="t">Rules:</text>
+<text x="366" y="1222" class="t">Sending quotes/offers is free. Requester sees quotes for own request only. Competitor quote details are not visible to other workers/businesses.</text>
+</svg>

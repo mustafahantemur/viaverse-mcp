@@ -1,0 +1,30 @@
+@startuml
+title Viaverse AI Assistant Request — Activity Diagram
+start
+:User asks AI;
+:Check session and capability;
+:Classify intent\nsupport/search/safety/action;
+:Build minimal context\nredacted + scoped;
+:Privacy guard\nPII/secret redaction;
+:Retrieve KB/domain docs\nif needed;
+if (Risky action?) then (yes)
+  :Escalate to human\ncreate ticket;
+else (no)
+  :Compose prompt\nwith policy boundaries;
+  :Call LLM/model\nwith timeout/budget;
+  :Output moderation\npolicy + hallucination checks;
+  if (Safe/confident?) then (yes)
+    :Return answer\nwith source hints;
+  else (no)
+    :Fallback answer\nor human handoff;
+  endif
+endif
+:Log privacy-safe event\nfeedback hook;
+stop
+
+note bottom
+Use minimal context and redaction before model call.
+Do not put full private chat, payment data,
+raw identity documents or secrets into prompts.
+end note
+@enduml

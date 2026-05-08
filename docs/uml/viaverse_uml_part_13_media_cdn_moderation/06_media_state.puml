@@ -1,0 +1,24 @@
+@startuml
+title Viaverse Media Asset — State Diagram
+
+[*] --> PENDING_UPLOAD
+PENDING_UPLOAD --> UPLOADED : confirm upload
+UPLOADED --> PROCESSING : enqueue
+PROCESSING --> PENDING_MODERATION : derivatives ready
+PENDING_MODERATION --> APPROVED : safe
+PENDING_MODERATION --> MANUAL_REVIEW : uncertain
+MANUAL_REVIEW --> APPROVED : admin approves
+MANUAL_REVIEW --> REJECTED : admin rejects
+PENDING_MODERATION --> REJECTED : unsafe
+APPROVED --> ATTACHED : attach to context
+APPROVED --> DELETED : owner/admin delete
+REJECTED --> DELETED : cleanup
+
+ATTACHED --> [*]
+DELETED --> [*]
+
+note bottom
+Only APPROVED media can become visible in public/profile/search surfaces.
+Chat/job private media can still require per-context authorization.
+end note
+@enduml

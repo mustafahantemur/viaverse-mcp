@@ -1,0 +1,106 @@
+@startuml
+title Viaverse Payment / Wallet — Class Model
+
+class PaymentSession {
+  id: PaymentSessionId
+  jobId: JobId
+  requesterAccountId: AccountId
+  provider: PaymentProviderType
+  providerSessionId: String?
+  amount: Money
+  commissionAmount: Money
+  status: PaymentStatus
+  idempotencyKey: String
+  createdAt: Instant
+}
+
+class StoredPaymentMethod {
+  id: UUID
+  accountId: AccountId
+  provider: PaymentProviderType
+  providerToken: String
+  cardBrand: String?
+  last4: String?
+  expiryMonth: Int?
+  expiryYear: Int?
+  status: MethodStatus
+}
+
+class ProviderCallbackRecord {
+  id: UUID
+  provider: PaymentProviderType
+  providerEventId: String?
+  paymentSessionId: UUID?
+  status: CallbackStatus
+  idempotencyKey: String
+  safePayloadHash: String?
+  receivedAt: Instant
+}
+
+class CommissionLedger {
+  id: UUID
+  jobId: JobId
+  paymentSessionId: UUID
+  rate: Decimal
+  amount: Money
+  status: CommissionStatus
+  createdAt: Instant
+}
+
+class RefundRequest {
+  id: UUID
+  paymentSessionId: UUID
+  amount: Money
+  reason: String
+  status: RefundStatus
+  requestedBy: AccountId
+  reviewedBy: AccountId?
+}
+
+class PayoutHold {
+  id: UUID
+  jobId: JobId
+  receiverType: WORKER | BUSINESS
+  receiverId: UUID
+  amount: Money
+  status: PayoutStatus
+  blockedReason: String?
+}
+
+class PaymentPolicy {
+  canCreateSession()
+  verifyCallback()
+  calculateCommission()
+  canRefund()
+  canReleasePayout()
+  validateNoDuplicate()
+}
+
+class PaymentEvents {
+  PaymentSessionCreated
+  PaymentAuthorized
+  PaymentFailed
+  CommissionCalculated
+  RefundIssued
+  PayoutReleased
+}
+
+PaymentSession --> StoredPaymentMethod : uses optional
+PaymentSession "1" o-- "*" ProviderCallbackRecord
+PaymentSession --> CommissionLedger : calculates
+PaymentSession --> RefundRequest : may refund
+PaymentSession --> PayoutHold : creates hold
+PaymentPolicy ..> PaymentSession : validates
+PaymentPolicy ..> ProviderCallbackRecord : verifies
+PaymentPolicy ..> RefundRequest : authorizes
+PaymentPolicy ..> PayoutHold : authorizes
+PaymentSession ..> PaymentEvents : emits
+RefundRequest ..> PaymentEvents : emits
+PayoutHold ..> PaymentEvents : emits
+
+note bottom
+providerToken is not PAN.
+Only safe display fields such as brand/last4 are stored.
+Callback payload storage must avoid sensitive secrets.
+end note
+@enduml

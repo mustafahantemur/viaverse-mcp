@@ -1,0 +1,34 @@
+@startuml
+title Viaverse Dispute / Refund / Payout — Activity Diagram
+start
+:Problem before payout;
+:Open dispute;
+:Validate job/payment state and participant;
+if (Valid dispute?) then (yes)
+  :Block payout;
+  :Create payout hold;
+  :Collect evidence\nmessages / media / notes;
+  :Notify other party;
+  :Wait for response or timeout;
+  :Admin reviews evidence;
+  if (Resolution decision?) then (refund)
+    :Refund full/partial;
+  elseif (payout)
+    :Release payout;
+  else (split)
+    :Partial refund + partial payout;
+  endif
+  :Write audit log\nreason + actor;
+  :Close dispute;
+  :Update trust/risk and job/payment refs;
+  :Emit resolution events;
+else (no)
+  :Reject / route to support;
+endif
+stop
+
+note bottom
+Dispute SLAs and timeouts should be configurable.
+Timeout can auto-escalate, but money movement still requires policy decision and audit.
+end note
+@enduml

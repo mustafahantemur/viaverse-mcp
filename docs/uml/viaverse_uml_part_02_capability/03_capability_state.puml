@@ -1,0 +1,22 @@
+@startuml
+title Viaverse Capability — State Diagram
+
+[*] --> NOT_ENABLED
+NOT_ENABLED --> PENDING_ONBOARDING : start onboarding
+PENDING_ONBOARDING --> PENDING_REVIEW : submit verification if required
+PENDING_REVIEW --> ENABLED : approved
+PENDING_ONBOARDING --> ENABLED : no review required
+ENABLED --> SUSPENDED : policy / risk / admin
+SUSPENDED --> ENABLED : appeal / fix issue
+SUSPENDED --> REVOKED : severe / final
+REVOKED --> PENDING_ONBOARDING : re-apply if policy allows
+ENABLED --> ACCOUNT_DELETED : account deletion
+SUSPENDED --> ACCOUNT_DELETED : account deletion
+ACCOUNT_DELETED --> [*]
+
+note bottom
+The same state machine applies per capability:
+REQUEST_WORK, DO_WORK_INDIVIDUALLY, OPERATE_BUSINESS,
+SOCIAL_PARTICIPATION, and admin capabilities.
+end note
+@enduml

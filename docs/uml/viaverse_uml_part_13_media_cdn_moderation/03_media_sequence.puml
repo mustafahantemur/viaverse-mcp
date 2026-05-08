@@ -1,0 +1,35 @@
+@startuml
+title Viaverse Media Upload / CDN / Moderation — Sequence Diagram
+
+actor User
+participant "Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "media-service" as Media
+database "S3 / Object Storage" as S3
+participant "media-worker" as Worker
+participant "moderation-service" as Moderation
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+
+User -> Client : select media
+Client -> BFF : POST /media/upload-sessions
+BFF -> Media : createUploadSession(command)
+Media -> DB : insert MediaAsset(PENDING_UPLOAD)
+Media -> S3 : create presigned PUT
+Media --> Client : upload URL + mediaId
+
+Client -> S3 : PUT binary directly
+Client -> BFF : POST /media/{id}/confirm
+BFF -> Media : confirmUpload
+Media -> Worker : enqueue processing job
+Worker -> S3 : read original / write derivatives
+Worker -> Moderation : scan media
+Moderation --> Worker : approved/rejected/review
+Worker -> DB : update APPROVED/REJECTED + derivatives
+Worker -> Kafka : MediaApproved / MediaRejected
+
+note bottom
+Client uploads binary directly to object storage.
+media-service manages session, metadata, processing, moderation and domain references.
+end note
+@enduml

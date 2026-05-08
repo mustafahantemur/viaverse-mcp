@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Message Send / Safety Check — Activity Diagram</text>
+
+<rect x="80" y="160" width="270" height="60" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="215.0" y="181.0" text-anchor="middle" class="h">START</text>
+<text x="215.0" y="201.0" text-anchor="middle" class="t">user sends message</text>
+<rect x="430" y="140" width="320" height="90" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="590.0" y="176.0" text-anchor="middle" class="h">Validate session</text>
+<text x="590.0" y="196.0" text-anchor="middle" class="t">and participant</text>
+<rect x="860" y="140" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1025.0" y="176.0" text-anchor="middle" class="h">Validate conversation</text>
+<text x="1025.0" y="196.0" text-anchor="middle" class="t">job/order state</text>
+<rect x="1300" y="140" width="300" height="90" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1450.0" y="176.0" text-anchor="middle" class="h">Rate limit</text>
+<text x="1450.0" y="196.0" text-anchor="middle" class="t">spam/abuse guard</text>
+<rect x="1700" y="140" width="300" height="90" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1850.0" y="176.0" text-anchor="middle" class="h">Classify content</text>
+<text x="1850.0" y="196.0" text-anchor="middle" class="t">text/media/ref</text>
+<rect x="1700" y="360" width="220" height="80" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="1810.0" y="400.0" text-anchor="middle" class="h">Unsafe?</text>
+<rect x="1300" y="360" width="330" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1465.0" y="400.0" text-anchor="middle" class="h">Warn/block/message hold</text>
+<rect x="860" y="360" width="300" height="80" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1010.0" y="391.0" text-anchor="middle" class="h">Queue moderation</text>
+<text x="1010.0" y="411.0" text-anchor="middle" class="t">if needed</text>
+<rect x="430" y="360" width="340" height="90" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="600.0" y="396.0" text-anchor="middle" class="h">Persist message</text>
+<text x="600.0" y="416.0" text-anchor="middle" class="t">Cassandra + metadata</text>
+<rect x="430" y="600" width="300" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="580.0" y="637.5" text-anchor="middle" class="h">Create delivery receipts</text>
+<rect x="860" y="600" width="280" height="75" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1000.0" y="637.5" text-anchor="middle" class="h">Notify participants</text>
+<rect x="1300" y="600" width="300" height="75" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1450.0" y="637.5" text-anchor="middle" class="h">Emit MessageSent</text>
+<rect x="1300" y="820" width="360" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1480.0" y="851.0" text-anchor="middle" class="h">Update conversation list</text>
+<text x="1480.0" y="871.0" text-anchor="middle" class="t">last message preview</text>
+<rect x="860" y="840" width="150" height="55" rx="14" fill="#022C22" stroke="#022C22" stroke-width="2"/>
+<text x="935.0" y="867.5" text-anchor="middle" class="h">END</text>
+<polyline points="350,190 430,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="750,185 860,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1190,185 1300,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1600,185 1700,185" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1850,230 1850,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1700,400 1630,400" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1638" y="392" class="small">yes</text>
+<polyline points="1300,400 1160,400" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1700,400 770,405" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="778" y="397" class="small">no</text>
+<polyline points="860,400 770,405" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="778" y="397" class="small">allowed/held</text>
+<polyline points="600,450 600,600" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="730,637 860,637" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1140,637 1300,637" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1450,675 1450,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1300,860 1010,868" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="330" y="1060" width="1550" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="346" y="1084" class="t">Safety rule:</text>
+<text x="346" y="1102" class="t">Unsafe message may be blocked, warned, held for review, or allowed with event/audit depending on policy severity. Never silently drop without user-visible state.</text>
+</svg>

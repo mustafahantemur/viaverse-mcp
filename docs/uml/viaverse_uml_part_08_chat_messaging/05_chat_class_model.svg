@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2150" height="1500" viewBox="0 0 2150 1500">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2070" height="60" rx="14" fill="#022C22"/>
+<text x="1075.0" y="69" text-anchor="middle" class="title">Viaverse Chat / Messaging — Class Model</text>
+
+<rect x="80" y="150" width="360" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="260.0" y="192.0" text-anchor="middle" class="h">Conversation</text>
+<text x="260.0" y="212.0" text-anchor="middle" class="t">--</text>
+<text x="260.0" y="232.0" text-anchor="middle" class="t">id: ConversationId</text>
+<text x="260.0" y="252.0" text-anchor="middle" class="t">contextType: QUOTE | JOB | SUPPORT</text>
+<text x="260.0" y="272.0" text-anchor="middle" class="t">contextId: UUID</text>
+<text x="260.0" y="292.0" text-anchor="middle" class="t">status: ConversationStatus</text>
+<text x="260.0" y="312.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<text x="260.0" y="332.0" text-anchor="middle" class="t">lastMessageAt: Instant?</text>
+<rect x="540" y="150" width="390" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="735.0" y="201.0" text-anchor="middle" class="h">ConversationParticipant</text>
+<text x="735.0" y="221.0" text-anchor="middle" class="t">--</text>
+<text x="735.0" y="241.0" text-anchor="middle" class="t">conversationId: ConversationId</text>
+<text x="735.0" y="261.0" text-anchor="middle" class="t">accountId: AccountId</text>
+<text x="735.0" y="281.0" text-anchor="middle" class="t">role: REQUESTER | WORKER | BUSINESS | SUPPORT</text>
+<text x="735.0" y="301.0" text-anchor="middle" class="t">status: ParticipantStatus</text>
+<text x="735.0" y="321.0" text-anchor="middle" class="t">lastReadMessageId: MessageId?</text>
+<rect x="1030" y="150" width="370" height="240" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1215.0" y="198.0" text-anchor="middle" class="h">Message</text>
+<text x="1215.0" y="218.0" text-anchor="middle" class="t">--</text>
+<text x="1215.0" y="238.0" text-anchor="middle" class="t">id: MessageId</text>
+<text x="1215.0" y="258.0" text-anchor="middle" class="t">conversationId: ConversationId</text>
+<text x="1215.0" y="278.0" text-anchor="middle" class="t">senderAccountId: AccountId</text>
+<text x="1215.0" y="298.0" text-anchor="middle" class="t">type: TEXT | MEDIA | SYSTEM</text>
+<text x="1215.0" y="318.0" text-anchor="middle" class="t">body: String?</text>
+<text x="1215.0" y="338.0" text-anchor="middle" class="t">status: MessageStatus</text>
+<text x="1215.0" y="358.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1510" y="150" width="360" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1690.0" y="195.0" text-anchor="middle" class="h">MessageAttachment</text>
+<text x="1690.0" y="215.0" text-anchor="middle" class="t">--</text>
+<text x="1690.0" y="235.0" text-anchor="middle" class="t">messageId: MessageId</text>
+<text x="1690.0" y="255.0" text-anchor="middle" class="t">mediaId: MediaId</text>
+<text x="1690.0" y="275.0" text-anchor="middle" class="t">kind: IMAGE | VIDEO | FILE</text>
+<text x="1690.0" y="295.0" text-anchor="middle" class="t">moderationStatus: MediaModerationStatus</text>
+<rect x="80" y="520" width="360" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="260.0" y="561.0" text-anchor="middle" class="h">MessagingPolicy</text>
+<text x="260.0" y="581.0" text-anchor="middle" class="t">--</text>
+<text x="260.0" y="601.0" text-anchor="middle" class="t">canOpenConversation()</text>
+<text x="260.0" y="621.0" text-anchor="middle" class="t">canSendMessage()</text>
+<text x="260.0" y="641.0" text-anchor="middle" class="t">canAttachMedia()</text>
+<text x="260.0" y="661.0" text-anchor="middle" class="t">canShareContactInfo()</text>
+<text x="260.0" y="681.0" text-anchor="middle" class="t">canReport()</text>
+<rect x="540" y="520" width="420" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="750.0" y="576.0" text-anchor="middle" class="h">SafetyDetection</text>
+<text x="750.0" y="596.0" text-anchor="middle" class="t">--</text>
+<text x="750.0" y="616.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="750.0" y="636.0" text-anchor="middle" class="t">messageId: MessageId?</text>
+<text x="750.0" y="656.0" text-anchor="middle" class="t">detectionType: PHONE | EMAIL | ADDRESS | PAYMENT_BYPASS</text>
+<text x="750.0" y="676.0" text-anchor="middle" class="t">severity: Severity</text>
+<text x="750.0" y="696.0" text-anchor="middle" class="t">action: WARN | BLOCK | RISK_SIGNAL</text>
+<rect x="1070" y="520" width="380" height="210" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1260.0" y="562.0" text-anchor="middle" class="h">MessageReport</text>
+<text x="1260.0" y="582.0" text-anchor="middle" class="t">--</text>
+<text x="1260.0" y="602.0" text-anchor="middle" class="t">id: UUID</text>
+<text x="1260.0" y="622.0" text-anchor="middle" class="t">messageId: MessageId</text>
+<text x="1260.0" y="642.0" text-anchor="middle" class="t">reporterAccountId: AccountId</text>
+<text x="1260.0" y="662.0" text-anchor="middle" class="t">reason: ReportReason</text>
+<text x="1260.0" y="682.0" text-anchor="middle" class="t">status: ReportStatus</text>
+<text x="1260.0" y="702.0" text-anchor="middle" class="t">createdAt: Instant</text>
+<rect x="1550" y="520" width="390" height="220" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1745.0" y="567.0" text-anchor="middle" class="h">Messaging Events</text>
+<text x="1745.0" y="587.0" text-anchor="middle" class="t">--</text>
+<text x="1745.0" y="607.0" text-anchor="middle" class="t">ConversationCreated</text>
+<text x="1745.0" y="627.0" text-anchor="middle" class="t">MessageSent</text>
+<text x="1745.0" y="647.0" text-anchor="middle" class="t">MessageRead</text>
+<text x="1745.0" y="667.0" text-anchor="middle" class="t">ContactSharingDetected</text>
+<text x="1745.0" y="687.0" text-anchor="middle" class="t">MessageReported</text>
+<text x="1745.0" y="707.0" text-anchor="middle" class="t">SupportEscalationRequested</text>
+<polyline points="440,240 540,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="548" y="232" class="small">1 -&gt; many</text>
+<polyline points="440,280 1030,270" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1038" y="262" class="small">1 -&gt; many</text>
+<polyline points="1400,240 1510,240" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1518" y="232" class="small">1 -&gt; many</text>
+<polyline points="260,520 260,360" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="268" y="352" class="small">checks</text>
+<polyline points="440,600 735,600 735,360" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="743" y="592" class="small">checks</text>
+<polyline points="750,520 750,430 1215,430 1215,390" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1223" y="422" class="small">scans</text>
+<polyline points="1260,520 1260,390" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1268" y="382" class="small">reports</text>
+<polyline points="1400,350 1745,350 1745,520" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1753" y="342" class="small">emits</text>
+<polyline points="960,630 1550,630" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1558" y="622" class="small">emits risk/safety</text>
+<polyline points="1450,630 1550,630" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1558" y="622" class="small">emits report</text>
+<rect x="80" y="970" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="994" class="t">Privacy rule:</text>
+<text x="96" y="1012" class="t">Private chat content must not be used for ad targeting. Admin/support access is scoped, reasoned and audited.</text>
+</svg>

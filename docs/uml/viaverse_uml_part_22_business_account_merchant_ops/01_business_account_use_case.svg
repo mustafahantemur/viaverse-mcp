@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Business Account / Merchant Operations — Use Case Diagram</text>
+
+<rect x="270" y="135" width="1560" height="1130" rx="10" fill="none" stroke="#022C22" stroke-width="2"/>
+<text x="286" y="160" class="h">Business Account / Merchant Operations Boundary</text>
+<rect x="60" y="250" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="281.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="301.0" text-anchor="middle" class="t">Business Owner</text>
+<rect x="60" y="610" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="641.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="661.0" text-anchor="middle" class="t">Business Staff</text>
+<rect x="60" y="970" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="152.5" y="1001.0" text-anchor="middle" class="h">«actor»</text>
+<text x="152.5" y="1021.0" text-anchor="middle" class="t">Customer</text>
+<rect x="1900" y="230" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="261.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="281.0" text-anchor="middle" class="t">Identity / Capability</text>
+<rect x="1900" y="560" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="591.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="611.0" text-anchor="middle" class="t">Payment / Billing</text>
+<rect x="1900" y="900" width="185" height="80" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1992.5" y="931.0" text-anchor="middle" class="h">«actor»</text>
+<text x="1992.5" y="951.0" text-anchor="middle" class="t">Search / Trust</text>
+<rect x="360" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="232.0" text-anchor="middle" class="h">Create business account</text>
+<rect x="700" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="223.0" text-anchor="middle" class="h">Verify business</text>
+<text x="840.0" y="243.0" text-anchor="middle" class="t">KYC/KYB documents</text>
+<rect x="1040" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="223.0" text-anchor="middle" class="h">Manage business profile</text>
+<text x="1180.0" y="243.0" text-anchor="middle" class="t">logo/photos/about</text>
+<rect x="1380" y="190" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="223.0" text-anchor="middle" class="h">Manage branches</text>
+<text x="1520.0" y="243.0" text-anchor="middle" class="t">service areas</text>
+<rect x="360" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="483.0" text-anchor="middle" class="h">Invite staff</text>
+<text x="500.0" y="503.0" text-anchor="middle" class="t">roles/permissions</text>
+<rect x="700" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="483.0" text-anchor="middle" class="h">Manage service catalog</text>
+<text x="840.0" y="503.0" text-anchor="middle" class="t">prices/duration/options</text>
+<rect x="1040" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="483.0" text-anchor="middle" class="h">Manage availability</text>
+<text x="1180.0" y="503.0" text-anchor="middle" class="t">working hours/capacity</text>
+<rect x="1380" y="450" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="492.0" text-anchor="middle" class="h">Receive leads/requests</text>
+<rect x="360" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="500.0" y="753.0" text-anchor="middle" class="h">Send quote/proposal</text>
+<text x="500.0" y="773.0" text-anchor="middle" class="t">as business</text>
+<rect x="700" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="762.0" text-anchor="middle" class="h">Manage jobs/orders</text>
+<rect x="1040" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="753.0" text-anchor="middle" class="h">Manage subscription</text>
+<text x="1180.0" y="773.0" text-anchor="middle" class="t">trial/plan/billing</text>
+<rect x="1380" y="720" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="753.0" text-anchor="middle" class="h">View business insights</text>
+<text x="1520.0" y="773.0" text-anchor="middle" class="t">leads/conversion/revenue</text>
+<rect x="700" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="840.0" y="1022.0" text-anchor="middle" class="h">Manage reviews/reputation</text>
+<rect x="1040" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1180.0" y="1022.0" text-anchor="middle" class="h">Publish business to search</text>
+<rect x="1380" y="980" width="280" height="84" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1520.0" y="1004.0" text-anchor="middle" class="h">Emit events</text>
+<text x="1520.0" y="1024.0" text-anchor="middle" class="t">BusinessVerified</text>
+<text x="1520.0" y="1044.0" text-anchor="middle" class="t">CatalogUpdated</text>
+<polyline points="245,290 270,290 270,232 360,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="640,232 700,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,232 1040,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,232 1380,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,290 300,290 300,492 360,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,650 300,650 300,492 360,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="640,492 700,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,492 1040,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1320,492 1380,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="245,1010 320,1010 320,492 1380,492" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="328" y="484" class="small">request/lead</text>
+<polyline points="245,650 315,650 315,762 360,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="640,762 700,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="980,762 1040,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="754" class="small">monetization gate</text>
+<polyline points="1320,762 1380,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="840,804 840,980" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="848" y="972" class="small">after completion</text>
+<polyline points="980,1022 1040,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="1014" class="small">trust signal</text>
+<polyline points="1320,1022 1380,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1900,270 1780,270 1780,232 980,232" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="224" class="small">business capability</text>
+<polyline points="1900,600 1780,600 1780,762 1320,762" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="754" class="small">billing</text>
+<polyline points="1900,940 1780,940 1780,1022 1320,1022" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1788" y="1014" class="small">ranking/index</text>
+<rect x="360" y="1210" width="1500" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="376" y="1234" class="t">Rules:</text>
+<text x="376" y="1252" class="t">A business account is a capability under the same Account model, not a separate identity island. Separate business app/store listing can exist later, but backend model remains unified.</text>
+</svg>

@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="business-class" name="04 Business Class Model">
+    <mxGraphModel dx="2150" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2150" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Business Mode — Class Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2070" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="BusinessProfile" value="BusinessProfile&#xa;--&#xa;id: BusinessId&#xa;ownerAccountId: AccountId&#xa;status: BusinessStatus&#xa;name: String&#xa;legalName: String?&#xa;publicSlug: String&#xa;intro: String?&#xa;verificationStatus: VerificationStatus&#xa;createdAt: Instant&#xa;publishedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="360" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="BusinessService" value="BusinessService&#xa;--&#xa;id: UUID&#xa;businessId: BusinessId&#xa;categoryId: CategoryId&#xa;name: String&#xa;description: String?&#xa;active: Boolean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="150" width="330" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="BusinessPackage" value="BusinessPackage&#xa;--&#xa;id: UUID&#xa;businessId: BusinessId&#xa;serviceId: UUID?&#xa;title: String&#xa;priceFrom: Money?&#xa;durationEstimate: Duration?&#xa;active: Boolean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="150" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="BusinessHours" value="BusinessHours&#xa;--&#xa;businessId: BusinessId&#xa;timezone: String&#xa;weeklySchedule: List&lt;TimeSlot&gt;&#xa;holidayOverrides: List&lt;Override&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="150" width="340" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="TeamMember" value="BusinessTeamMember&#xa;--&#xa;businessId: BusinessId&#xa;accountId: AccountId&#xa;role: BusinessRole&#xa;status: MemberStatus&#xa;invitedAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="350" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="ServiceArea" value="BusinessServiceArea&#xa;--&#xa;businessId: BusinessId&#xa;areaType: RADIUS | DISTRICT&#xa;centerPoint: GeoPoint?&#xa;radiusKm: Decimal?&#xa;districtIds: Set&lt;AreaId&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="520" width="340" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="Subscription" value="BusinessSubscription&#xa;--&#xa;id: UUID&#xa;businessId: BusinessId&#xa;planId: PlanId&#xa;status: TRIALING | ACTIVE | PAST_DUE | CANCELLED&#xa;trialEndsAt: Instant?&#xa;currentPeriodEndsAt: Instant?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="520" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="Policy" value="BusinessPolicy&#xa;--&#xa;canCreateBusiness()&#xa;canEditBusiness()&#xa;canManageTeam()&#xa;canPublishProfile()&#xa;canSendBusinessOffer()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="520" width="340" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="Events" value="Business Events&#xa;--&#xa;BusinessProfileCreated&#xa;BusinessVerificationSubmitted&#xa;BusinessProfilePublished&#xa;BusinessSubscriptionTrialStarted&#xa;BusinessTeamMemberAdded" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="760" y="910" width="520" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="BusinessProfile" target="BusinessService">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="250" as="point"/><mxPoint x="540" y="245" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="1 -&gt; many/optional" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="BusinessService" target="BusinessPackage">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="870" y="245" as="point"/><mxPoint x="980" y="260" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="1 -&gt; one" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="BusinessProfile" target="BusinessHours">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="220" as="point"/><mxPoint x="1430" y="235" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="1 -&gt; many" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="BusinessProfile" target="TeamMember">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="410" as="point"/><mxPoint x="260" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="1 -&gt; many/one" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="BusinessProfile" target="ServiceArea">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="330" as="point"/><mxPoint x="710" y="330" as="point"/><mxPoint x="710" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="1 -&gt; optional/current" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="BusinessProfile" target="Subscription">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="365" as="point"/><mxPoint x="1175" y="365" as="point"/><mxPoint x="1175" y="520" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="validates" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="BusinessProfile">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1490" y="600" as="point"/><mxPoint x="1390" y="600" as="point"/><mxPoint x="1390" y="450" as="point"/><mxPoint x="260" y="450" as="point"/><mxPoint x="260" y="410" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="role checks" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="Policy" target="TeamMember">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1490" y="640" as="point"/><mxPoint x="1320" y="640" as="point"/><mxPoint x="1320" y="770" as="point"/><mxPoint x="255" y="770" as="point"/><mxPoint x="255" y="710" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c9" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="BusinessProfile" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="410" as="point"/><mxPoint x="260" y="860" as="point"/><mxPoint x="1020" y="860" as="point"/><mxPoint x="1020" y="910" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="c10" value="emits" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="Subscription" target="Events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1175" y="750" as="point"/><mxPoint x="1175" y="910" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Ownership rule:&#xa;BusinessProfile is not a separate login identity. It is operated by Account(s) through BusinessTeamMember roles." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1190" width="1500" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

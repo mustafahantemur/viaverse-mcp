@@ -1,0 +1,12 @@
+@startuml
+title Business Merchant Master Flow
+Owner -> BusinessUI
+BusinessUI -> Gateway
+Gateway -> Identity
+Gateway -> Business
+Business -> Media
+Business -> Monetization
+Business -> Search
+Search -> Marketplace
+Admin -> Business
+@enduml

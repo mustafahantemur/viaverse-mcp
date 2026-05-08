@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Notification / Inbox / Channel Delivery — Component Diagram</text>
+
+<rect x="80" y="170" width="320" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="240.0" y="199.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<text x="240.0" y="219.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="239.0" text-anchor="middle" class="t">Inbox</text>
+<text x="240.0" y="259.0" text-anchor="middle" class="t">Badge count</text>
+<text x="240.0" y="279.0" text-anchor="middle" class="t">Notification settings</text>
+<rect x="500" y="170" width="320" height="120" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="660.0" y="203.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<text x="660.0" y="223.0" text-anchor="middle" class="t">--</text>
+<text x="660.0" y="243.0" text-anchor="middle" class="t">Inbox API</text>
+<text x="660.0" y="263.0" text-anchor="middle" class="t">Preferences API</text>
+<rect x="920" y="140" width="330" height="80" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1085.0" y="180.0" text-anchor="middle" class="h">Notification Event Consumer</text>
+<rect x="920" y="280" width="330" height="90" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1085.0" y="316.0" text-anchor="middle" class="h">NotificationController</text>
+<text x="1085.0" y="336.0" text-anchor="middle" class="t">PreferenceController</text>
+<rect x="920" y="450" width="370" height="160" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1105.0" y="485.0" text-anchor="middle" class="h">Notification Use Cases</text>
+<text x="1105.0" y="505.0" text-anchor="middle" class="t">--</text>
+<text x="1105.0" y="525.0" text-anchor="middle" class="t">CreateNotification</text>
+<text x="1105.0" y="545.0" text-anchor="middle" class="t">DispatchNotification</text>
+<text x="1105.0" y="565.0" text-anchor="middle" class="t">MarkRead</text>
+<text x="1105.0" y="585.0" text-anchor="middle" class="t">SendBroadcast</text>
+<rect x="920" y="690" width="370" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1105.0" y="730.0" text-anchor="middle" class="h">Notification Policies</text>
+<text x="1105.0" y="750.0" text-anchor="middle" class="t">--</text>
+<text x="1105.0" y="770.0" text-anchor="middle" class="t">preference</text>
+<text x="1105.0" y="790.0" text-anchor="middle" class="t">quiet hours</text>
+<text x="1105.0" y="810.0" text-anchor="middle" class="t">rate limits</text>
+<text x="1105.0" y="830.0" text-anchor="middle" class="t">priority/digest</text>
+<rect x="920" y="950" width="370" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1105.0" y="986.0" text-anchor="middle" class="h">Ports</text>
+<text x="1105.0" y="1006.0" text-anchor="middle" class="t">InboxRepo</text>
+<text x="1105.0" y="1026.0" text-anchor="middle" class="t">DeviceRepo</text>
+<text x="1105.0" y="1046.0" text-anchor="middle" class="t">TemplatePort</text>
+<text x="1105.0" y="1066.0" text-anchor="middle" class="t">PushPort</text>
+<text x="1105.0" y="1086.0" text-anchor="middle" class="t">EmailSmsPort</text>
+<text x="1105.0" y="1106.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1390" y="210" width="360" height="140" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1570.0" y="244.0" text-anchor="middle" class="h">identity-service</text>
+<text x="1570.0" y="264.0" text-anchor="middle" class="t">--</text>
+<text x="1570.0" y="284.0" text-anchor="middle" class="t">preferences</text>
+<text x="1570.0" y="304.0" text-anchor="middle" class="t">locale</text>
+<text x="1570.0" y="324.0" text-anchor="middle" class="t">device tokens</text>
+<rect x="1390" y="500" width="360" height="150" rx="14" fill="#F9FAFB" stroke="#4B5563" stroke-width="2"/>
+<text x="1570.0" y="530.0" text-anchor="middle" class="h">Provider Adapters</text>
+<text x="1570.0" y="550.0" text-anchor="middle" class="t">--</text>
+<text x="1570.0" y="570.0" text-anchor="middle" class="t">FCM</text>
+<text x="1570.0" y="590.0" text-anchor="middle" class="t">APNs</text>
+<text x="1570.0" y="610.0" text-anchor="middle" class="t">Netgsm</text>
+<text x="1570.0" y="630.0" text-anchor="middle" class="t">SMTP</text>
+<rect x="1790" y="210" width="360" height="170" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1970.0" y="250.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1970.0" y="270.0" text-anchor="middle" class="t">--</text>
+<text x="1970.0" y="290.0" text-anchor="middle" class="t">notification</text>
+<text x="1970.0" y="310.0" text-anchor="middle" class="t">notification_attempt</text>
+<text x="1970.0" y="330.0" text-anchor="middle" class="t">device_token</text>
+<text x="1970.0" y="350.0" text-anchor="middle" class="t">preference</text>
+<rect x="1790" y="520" width="360" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1970.0" y="569.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="1970.0" y="589.0" text-anchor="middle" class="t">--</text>
+<text x="1970.0" y="609.0" text-anchor="middle" class="t">Domain events</text>
+<text x="1970.0" y="629.0" text-anchor="middle" class="t">NotificationSent</text>
+<text x="1970.0" y="649.0" text-anchor="middle" class="t">NotificationFailed</text>
+<rect x="1790" y="850" width="360" height="150" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1970.0" y="889.0" text-anchor="middle" class="h">Scheduler / Retry Worker</text>
+<text x="1970.0" y="909.0" text-anchor="middle" class="t">--</text>
+<text x="1970.0" y="929.0" text-anchor="middle" class="t">backoff</text>
+<text x="1970.0" y="949.0" text-anchor="middle" class="t">digest</text>
+<text x="1970.0" y="969.0" text-anchor="middle" class="t">quiet-hour release</text>
+<polyline points="400,235 500,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="222" class="small">HTTPS</text>
+<polyline points="820,230 870,230 870,325 920,325" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="317" class="small">REST</text>
+<polyline points="1790,605 1700,605 1700,180 1250,180" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1708" y="172" class="small">consume</text>
+<polyline points="1085,220 1085,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1093" y="442" class="small">event command</text>
+<polyline points="1085,370 1085,450" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1093" y="442" class="small">command/query</text>
+<polyline points="1105,610 1105,690" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1113" y="682" class="small">validate</text>
+<polyline points="1105,860 1105,950" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1113" y="942" class="small">ports</text>
+<polyline points="1290,775 1340,775 1340,280 1390,280" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1348" y="272" class="small">prefs/locale/devices</text>
+<polyline points="1290,1040 1340,1040 1340,575 1390,575" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1348" y="567" class="small">send</text>
+<polyline points="1290,1040 1720,1040 1720,295 1790,295" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1728" y="287" class="small">persist</text>
+<polyline points="1290,530 1790,605" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1798" y="597" class="small">delivery events</text>
+<polyline points="1790,925 1710,925 1710,530 1290,530" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowDashed)" stroke-dasharray="6 5"/>
+<text x="1718" y="522" class="small">retry/digest command</text>
+<rect x="80" y="1240" width="1600" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1264" class="t">Component rule:</text>
+<text x="96" y="1282" class="t">Domain services publish business events only. Notification service decides who receives what, through which channel, and when.</text>
+</svg>

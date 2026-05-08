@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="security-use-case" name="01 Security Privacy Use Case">
+    <mxGraphModel dx="2200" dy="1550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Viaverse Security / Privacy / KVKK — Use Case Diagram" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#022C22;strokeColor=#022C22;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys" value="Security / Privacy / KVKK Boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=36;fillColor=none;strokeColor=#022C22;fontColor=#022C22;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="135" width="1560" height="1130" as="geometry"/>
+        </mxCell>
+        <mxCell id="user" value="«actor»&#xa;User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="«actor»&#xa;Admin / DPO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="620" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="service" value="«actor»&#xa;Backend Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="980" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="«actor»&#xa;identity-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="230" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="secrets" value="«actor»&#xa;Secrets / KMS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="560" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit" value="«actor»&#xa;Audit / Compliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F97316;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="900" width="185" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_login" value="Secure login&#xa;OTP / social / passkey later" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_token" value="Issue JWT / refresh token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_authz" value="Authorize capability&#xa;RBAC / ABAC / ownership" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_rate" value="Rate limit / abuse guard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="190" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_consent" value="Manage consent&#xa;KVKK/privacy/cookies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_dsar" value="Data subject request&#xa;export/delete/correct" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_min" value="Data minimization&#xa;purpose limitation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_retention" value="Retention / deletion policy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="450" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_encrypt" value="Encrypt sensitive data&#xa;at rest + in transit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_secret" value="Access secrets&#xa;External Secrets + KMS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_audit" value="Audit sensitive access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_incident" value="Security incident response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="720" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_policy" value="Manage privacy/security policy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_review" value="Review risk/compliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_events" value="Emit events&#xa;ConsentChanged&#xa;DataDeleted&#xa;IncidentRaised" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#064E3B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="980" width="265" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_login">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="300" as="point"/><mxPoint x="270" y="300" as="point"/><mxPoint x="270" y="231" as="point"/><mxPoint x="360" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_login" target="uc_token">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="231" as="point"/><mxPoint x="700" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_token" target="uc_authz">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="231" as="point"/><mxPoint x="1040" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_authz" target="uc_rate">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="231" as="point"/><mxPoint x="1380" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_consent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="300" as="point"/><mxPoint x="300" y="300" as="point"/><mxPoint x="300" y="491" as="point"/><mxPoint x="360" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="user" target="uc_dsar">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="300" as="point"/><mxPoint x="310" y="300" as="point"/><mxPoint x="310" y="491" as="point"/><mxPoint x="700" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_dsar" target="uc_min">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="491" as="point"/><mxPoint x="1040" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_min" target="uc_retention">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="491" as="point"/><mxPoint x="1380" y="491" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="service" target="uc_encrypt">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="1020" as="point"/><mxPoint x="300" y="1020" as="point"/><mxPoint x="300" y="761" as="point"/><mxPoint x="360" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="service" target="uc_secret">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="1020" as="point"/><mxPoint x="310" y="1020" as="point"/><mxPoint x="310" y="761" as="point"/><mxPoint x="700" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_encrypt" target="uc_audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="625" y="761" as="point"/><mxPoint x="1040" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_secret" target="uc_audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="965" y="761" as="point"/><mxPoint x="1040" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="if suspicious" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#F97316;fontSize=11;dashed=1;" edge="1" parent="1" source="uc_audit" target="uc_incident">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="761" as="point"/><mxPoint x="1380" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_policy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="660" as="point"/><mxPoint x="320" y="660" as="point"/><mxPoint x="320" y="1021" as="point"/><mxPoint x="700" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="admin" target="uc_review">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="245" y="660" as="point"/><mxPoint x="330" y="660" as="point"/><mxPoint x="330" y="1021" as="point"/><mxPoint x="1040" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_review" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1305" y="1021" as="point"/><mxPoint x="1380" y="1021" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="uc_retention" target="uc_events">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1512" y="532" as="point"/><mxPoint x="1512" y="980" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="tokens" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="uc_token">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="270" as="point"/><mxPoint x="1780" y="270" as="point"/><mxPoint x="1780" y="231" as="point"/><mxPoint x="965" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e19" value="claims/policies" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="identity" target="uc_authz">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="270" as="point"/><mxPoint x="1780" y="270" as="point"/><mxPoint x="1780" y="231" as="point"/><mxPoint x="1305" y="231" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e20" value="secret material" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="secrets" target="uc_secret">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="600" as="point"/><mxPoint x="1780" y="600" as="point"/><mxPoint x="1780" y="761" as="point"/><mxPoint x="965" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e21" value="immutable log" style="endArrow=block;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;orthogonal=1;strokeColor=#4B5563;fontSize=11;" edge="1" parent="1" source="audit" target="uc_audit">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1900" y="940" as="point"/><mxPoint x="1780" y="940" as="point"/><mxPoint x="1780" y="761" as="point"/><mxPoint x="1305" y="761" as="point"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Rules:&#xa;Authentication, authorization, consent, retention and audit are platform-level controls. Domain services must not bypass security policy or direct secret access." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1210" width="1400" height="58" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

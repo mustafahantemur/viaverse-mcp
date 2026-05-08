@@ -1,0 +1,17 @@
+{
+  "name": "viaverse-platform-docs-and-ai-dev",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Viaverse greenfield platform docs, UML and AI/MCP development bootstrap.",
+  "type": "module",
+  "scripts": {
+    "viaverse:bootstrap": "node tools/viaverse-local-dev/scripts/bootstrap.mjs",
+    "viaverse:verify": "node tools/viaverse-local-dev/scripts/verify.mjs",
+    "mcp:install": "npm install --prefix tools/viaverse-docs-mcp",
+    "mcp:build": "npm run build --prefix tools/viaverse-docs-mcp",
+    "mcp:index": "npm run docs:index --prefix tools/viaverse-docs-mcp",
+    "mcp:check": "npm run docs:check --prefix tools/viaverse-docs-mcp",
+    "mcp:smoke": "npm run smoke --prefix tools/viaverse-docs-mcp",
+    "mcp:dev": "npm run dev --prefix tools/viaverse-docs-mcp"
+  }
+}

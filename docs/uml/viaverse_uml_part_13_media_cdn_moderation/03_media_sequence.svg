@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1550" viewBox="0 0 2200 1550">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2120" height="60" rx="14" fill="#022C22"/>
+<text x="1100.0" y="69" text-anchor="middle" class="title">Viaverse Media Upload / CDN / Moderation — Sequence Diagram</text>
+
+<rect x="80" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="172.5" y="170.0" text-anchor="middle" class="h">Client</text>
+<rect x="171" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="172.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="330" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="422.5" y="170.0" text-anchor="middle" class="h">API Gateway / App BFF</text>
+<rect x="421" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="422.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="600" y="140" width="185" height="60" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="692.5" y="170.0" text-anchor="middle" class="h">media-service</text>
+<rect x="691" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="692.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="870" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="962.5" y="170.0" text-anchor="middle" class="h">S3 / Object Storage</text>
+<rect x="961" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="962.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1140" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1232.5" y="170.0" text-anchor="middle" class="h">media-worker</text>
+<rect x="1231" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1232.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1410" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1502.5" y="170.0" text-anchor="middle" class="h">moderation-service</text>
+<rect x="1501" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1502.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1680" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1772.5" y="170.0" text-anchor="middle" class="h">PostgreSQL</text>
+<rect x="1771" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1772.0" y="735.0" text-anchor="middle" class="h"></text>
+<rect x="1940" y="140" width="185" height="60" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2032.5" y="170.0" text-anchor="middle" class="h">Outbox / Kafka</text>
+<rect x="2031" y="220" width="2" height="1030" rx="14" fill="#E5E7EB" stroke="#E5E7EB" stroke-width="2"/>
+<text x="2032.0" y="735.0" text-anchor="middle" class="h"></text>
+<polyline points="265,260 330,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="252" class="small">POST /media/upload-sessions</text>
+<polyline points="515,310 600,310" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="302" class="small">createUploadSession(command)</text>
+<polyline points="785,360 1680,360" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="352" class="small">insert MediaAsset(PENDING_UPLOAD)</text>
+<polyline points="785,430 870,430" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="422" class="small">create presigned PUT</text>
+<polyline points="600,500 265,500" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="273" y="492" class="small">upload URL + mediaId</text>
+<polyline points="265,610 870,610" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="602" class="small">PUT binary directly</text>
+<polyline points="265,740 330,740" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="338" y="732" class="small">POST /media/{id}/confirm</text>
+<polyline points="515,780 600,780" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="608" y="772" class="small">confirmUpload</text>
+<polyline points="785,820 1140,820" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1148" y="812" class="small">enqueue processing job</text>
+<polyline points="1140,880 1050,880 1050,610 870,610" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1058" y="602" class="small">read original / write derivatives</text>
+<polyline points="1325,940 1410,940" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1418" y="932" class="small">scan media</text>
+<polyline points="1325,1010 1680,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="1002" class="small">update APPROVED/REJECTED + derivatives</text>
+<polyline points="1325,1080 1940,1080" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1948" y="1072" class="small">MediaApproved / MediaRejected</text>
+<rect x="80" y="1340" width="1700" height="60" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1364" class="t">Sequence focus:</text>
+<text x="96" y="1382" class="t">Client uploads binary directly to object storage; media-service manages session, metadata, processing, moderation and domain references.</text>
+</svg>

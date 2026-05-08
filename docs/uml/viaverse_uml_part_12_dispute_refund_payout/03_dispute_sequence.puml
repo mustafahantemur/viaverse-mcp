@@ -1,0 +1,39 @@
+@startuml
+title Viaverse Dispute / Refund / Payout — Sequence Diagram
+
+actor UserOrAdmin
+participant "Client" as Client
+participant "API Gateway / App BFF" as BFF
+participant "dispute-service" as Dispute
+participant "marketplace-service" as Marketplace
+participant "payment-service" as Payment
+participant "messaging-service" as Messaging
+database "PostgreSQL" as DB
+queue "Outbox / Kafka" as Kafka
+
+UserOrAdmin -> Client : open dispute
+Client -> BFF : POST /disputes
+BFF -> Dispute : openDispute(command)
+Dispute -> Marketplace : validate job participant/state
+Marketplace --> Dispute : valid/invalid
+Dispute -> Payment : block payout hold
+Payment --> Dispute : payout blocked
+Dispute -> Messaging : collect conversation refs
+Dispute -> DB : insert DisputeCase + Evidence
+Dispute -> Kafka : DisputeOpened
+
+UserOrAdmin -> Client : resolve dispute
+Client -> BFF : POST /admin/disputes/{id}/resolve
+BFF -> Dispute : resolveDispute(command)
+Dispute -> Payment : refund/release/split command
+Payment -> DB : idempotent money movement state
+Dispute -> DB : close dispute + audit log
+Dispute -> Marketplace : update job dispute ref/status
+Dispute -> Kafka : DisputeResolved
+Dispute -> Kafka : RefundIssued / PayoutReleased
+
+note bottom
+Dispute service owns the case and resolution audit.
+Payment service owns actual refund/payout movement and idempotency.
+end note
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+title Viaverse Dispute / Refund / Payout — Use Case Diagram
+left to right direction
+
+actor Requester
+actor "Worker / Business" as Provider
+actor "payment-service" as Payment
+actor "Support / Dispute Admin" as Support
+actor "Trust / Risk" as Trust
+
+rectangle "Dispute / Refund / Payout Boundary" {
+  usecase "Open dispute" as Open
+  usecase "Select dispute reason" as Reason
+  usecase "Submit evidence\nmessages / media / notes" as Evidence
+  usecase "Block payout" as BlockPayout
+  usecase "Notify parties" as Notify
+  usecase "Provider/requester response" as Response
+  usecase "Admin reviews case" as AdminReview
+  usecase "Make resolution decision" as Decision
+  usecase "Issue refund\nfull / partial" as Refund
+  usecase "Release payout" as Release
+  usecase "Split resolution\npartial refund + partial payout" as Split
+  usecase "Record audit trail\nreason required" as Audit
+  usecase "Close dispute" as Close
+  usecase "Update trust/risk signals" as Risk
+  usecase "Emit events\nDisputeOpened\nRefundIssued\nPayoutReleased" as Events
+}
+
+Requester --> Open
+Provider --> Open
+Open --> Reason
+Reason --> Evidence
+Evidence --> BlockPayout
+BlockPayout --> Notify
+Notify --> Response
+Response --> AdminReview
+AdminReview --> Decision
+Decision --> Refund : refund outcome
+Decision --> Release : payout outcome
+Decision --> Split : split outcome
+Refund --> Audit
+Release --> Audit
+Split --> Audit
+Audit --> Close
+Close --> Risk
+Risk --> Events
+Payment --> BlockPayout
+Payment --> Refund
+Payment --> Release
+Support --> AdminReview
+Trust --> Risk
+
+note bottom
+Dispute opens before payout release and blocks payout.
+Every refund/payout decision requires reason + audit.
+Trust/risk updates are side effects of resolution.
+end note
+@enduml

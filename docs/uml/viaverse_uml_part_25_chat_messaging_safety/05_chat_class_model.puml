@@ -1,0 +1,93 @@
+@startuml
+title Viaverse Chat / Messaging / Safety — Class Model
+
+class Conversation {
+  id: ConversationId
+  contextType: JOB | ORDER | SUPPORT
+  contextId: UUID
+  status: ConversationStatus
+  createdAt: Instant
+  closedAt: Instant?
+}
+
+class ConversationParticipant {
+  conversationId: ConversationId
+  accountId: AccountId
+  role: REQUESTER | PROVIDER | BUSINESS_STAFF | SUPPORT
+  lastReadMessageId: MessageId?
+  muted: Boolean
+}
+
+class Message {
+  id: MessageId
+  conversationId: ConversationId
+  senderAccountId: AccountId
+  type: TEXT | MEDIA | SYSTEM
+  bodyRedacted: String?
+  mediaIds: List<MediaId>
+  status: MessageStatus
+  sentAt: Instant
+}
+
+class MessageReceipt {
+  messageId: MessageId
+  accountId: AccountId
+  deliveredAt: Instant?
+  readAt: Instant?
+  status: ReceiptStatus
+}
+
+class MessageReport {
+  id: UUID
+  messageId: MessageId?
+  conversationId: ConversationId
+  reportedBy: AccountId
+  reason: ReportReason
+  status: ReportStatus
+  createdAt: Instant
+}
+
+class ChatSafetyPolicy {
+  canSendMessage()
+  canViewConversation()
+  scanContent()
+  requiresHold()
+  canExportForDispute()
+  retentionForContext()
+}
+
+class ChatExport {
+  id: UUID
+  conversationId: ConversationId
+  requestedBy: AccountId
+  purpose: DISPUTE | LEGAL | DSAR
+  status: ExportStatus
+  expiresAt: Instant
+}
+
+class ChatEvents {
+  ConversationOpened
+  MessageSent
+  MessageHeld
+  MessageReported
+  ChatExportReady
+  ConversationArchived
+}
+
+Conversation "1" o-- "*" ConversationParticipant
+Conversation "1" o-- "*" Message
+Message "1" o-- "*" MessageReceipt
+Message ..> MessageReport : reported
+Conversation ..> ChatExport : exported
+ChatSafetyPolicy ..> Message : validates
+ChatSafetyPolicy --> Conversation : access
+MessageReport ..> ChatEvents : emits
+Message ..> ChatEvents : emits
+ChatExport ..> ChatEvents : emits
+
+note bottom
+Store redacted body plus safety metadata.
+Original/raw content retention must be policy-controlled and minimized.
+Message attachments are media references.
+end note
+@enduml

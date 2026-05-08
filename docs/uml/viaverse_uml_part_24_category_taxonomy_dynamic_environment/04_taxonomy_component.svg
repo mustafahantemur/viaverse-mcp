@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1600" viewBox="0 0 2300 1600">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2220" height="60" rx="14" fill="#022C22"/>
+<text x="1150.0" y="69" text-anchor="middle" class="title">Viaverse Category / Taxonomy / Dynamic Environment — Component Diagram</text>
+
+<rect x="80" y="170" width="340" height="140" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="250.0" y="204.0" text-anchor="middle" class="h">KMP / Next.js Client</text>
+<text x="250.0" y="224.0" text-anchor="middle" class="t">--</text>
+<text x="250.0" y="244.0" text-anchor="middle" class="t">category picker</text>
+<text x="250.0" y="264.0" text-anchor="middle" class="t">filters</text>
+<text x="250.0" y="284.0" text-anchor="middle" class="t">request forms</text>
+<rect x="80" y="470" width="340" height="140" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="250.0" y="513.0" text-anchor="middle" class="h">Admin UI</text>
+<text x="250.0" y="533.0" text-anchor="middle" class="t">--</text>
+<text x="250.0" y="553.0" text-anchor="middle" class="t">taxonomy editor</text>
+<text x="250.0" y="573.0" text-anchor="middle" class="t">icons/forms/rules</text>
+<rect x="520" y="170" width="340" height="120" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="690.0" y="212.0" text-anchor="middle" class="h">API Gateway / BFF</text>
+<text x="690.0" y="232.0" text-anchor="middle" class="t">--</text>
+<text x="690.0" y="252.0" text-anchor="middle" class="t">Taxonomy API facade</text>
+<rect x="960" y="140" width="390" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1155.0" y="182.0" text-anchor="middle" class="h">TaxonomyController</text>
+<text x="1155.0" y="202.0" text-anchor="middle" class="t">DynamicEnvironmentController</text>
+<text x="1155.0" y="222.0" text-anchor="middle" class="t">AdminTaxonomyController</text>
+<rect x="960" y="340" width="410" height="200" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1165.0" y="395.0" text-anchor="middle" class="h">Taxonomy Use Cases</text>
+<text x="1165.0" y="415.0" text-anchor="middle" class="t">--</text>
+<text x="1165.0" y="435.0" text-anchor="middle" class="t">ResolveCategoryTree</text>
+<text x="1165.0" y="455.0" text-anchor="middle" class="t">PublishTaxonomy</text>
+<text x="1165.0" y="475.0" text-anchor="middle" class="t">MapRequestCategory</text>
+<text x="1165.0" y="495.0" text-anchor="middle" class="t">ConfigureDynamicEnvironment</text>
+<rect x="960" y="640" width="410" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1165.0" y="690.0" text-anchor="middle" class="h">Taxonomy Policies</text>
+<text x="1165.0" y="710.0" text-anchor="middle" class="t">--</text>
+<text x="1165.0" y="730.0" text-anchor="middle" class="t">version compatibility</text>
+<text x="1165.0" y="750.0" text-anchor="middle" class="t">category visibility</text>
+<text x="1165.0" y="770.0" text-anchor="middle" class="t">form validation</text>
+<text x="1165.0" y="790.0" text-anchor="middle" class="t">migration mapping</text>
+<rect x="960" y="920" width="410" height="180" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1165.0" y="965.0" text-anchor="middle" class="h">Ports</text>
+<text x="1165.0" y="985.0" text-anchor="middle" class="t">TaxonomyRepo</text>
+<text x="1165.0" y="1005.0" text-anchor="middle" class="t">LocalizationPort</text>
+<text x="1165.0" y="1025.0" text-anchor="middle" class="t">SearchIndexPort</text>
+<text x="1165.0" y="1045.0" text-anchor="middle" class="t">AnalyticsPort</text>
+<text x="1165.0" y="1065.0" text-anchor="middle" class="t">OutboxPort</text>
+<rect x="1440" y="210" width="380" height="190" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1630.0" y="251.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="1630.0" y="271.0" text-anchor="middle" class="t">--</text>
+<text x="1630.0" y="291.0" text-anchor="middle" class="t">category</text>
+<text x="1630.0" y="311.0" text-anchor="middle" class="t">tag</text>
+<text x="1630.0" y="331.0" text-anchor="middle" class="t">category_rule</text>
+<text x="1630.0" y="351.0" text-anchor="middle" class="t">form_schema</text>
+<text x="1630.0" y="371.0" text-anchor="middle" class="t">version</text>
+<rect x="1440" y="520" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1630.0" y="559.0" text-anchor="middle" class="h">localization-service</text>
+<text x="1630.0" y="579.0" text-anchor="middle" class="t">--</text>
+<text x="1630.0" y="599.0" text-anchor="middle" class="t">labels</text>
+<text x="1630.0" y="619.0" text-anchor="middle" class="t">slugs</text>
+<text x="1630.0" y="639.0" text-anchor="middle" class="t">icons metadata</text>
+<rect x="1440" y="800" width="380" height="160" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1630.0" y="844.0" text-anchor="middle" class="h">search-service</text>
+<text x="1630.0" y="864.0" text-anchor="middle" class="t">--</text>
+<text x="1630.0" y="884.0" text-anchor="middle" class="t">facets</text>
+<text x="1630.0" y="904.0" text-anchor="middle" class="t">filters</text>
+<text x="1630.0" y="924.0" text-anchor="middle" class="t">matching projection</text>
+<rect x="1840" y="210" width="380" height="160" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="2030.0" y="263.0" text-anchor="middle" class="h">analytics/AI</text>
+<text x="2030.0" y="283.0" text-anchor="middle" class="t">--</text>
+<text x="2030.0" y="303.0" text-anchor="middle" class="t">no-result quality</text>
+<text x="2030.0" y="323.0" text-anchor="middle" class="t">category suggestion</text>
+<rect x="1840" y="540" width="380" height="180" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2030.0" y="594.0" text-anchor="middle" class="h">Kafka / Outbox</text>
+<text x="2030.0" y="614.0" text-anchor="middle" class="t">--</text>
+<text x="2030.0" y="634.0" text-anchor="middle" class="t">TaxonomyPublished</text>
+<text x="2030.0" y="654.0" text-anchor="middle" class="t">CategoryRuleChanged</text>
+<text x="2030.0" y="674.0" text-anchor="middle" class="t">DynamicEnvUpdated</text>
+<polyline points="420,240 520,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="528" y="222" class="small">HTTPS</text>
+<polyline points="420,540 470,540 470,230 520,230" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="478" y="222" class="small">HTTPS admin</text>
+<polyline points="860,230 910,230 910,200 960,200" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="918" y="192" class="small">REST</text>
+<polyline points="1155,260 1155,340" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1163" y="332" class="small">command/query</text>
+<polyline points="1165,540 1165,640" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1173" y="632" class="small">validate</text>
+<polyline points="1165,830 1165,920" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1173" y="912" class="small">ports</text>
+<polyline points="1370,1010 1400,1010 1400,305 1440,305" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1408" y="297" class="small">persist/read</text>
+<polyline points="1370,1010 1400,1010 1400,595 1440,595" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1408" y="587" class="small">localized labels</text>
+<polyline points="1370,1010 1440,880" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1448" y="872" class="small">facets/index</text>
+<polyline points="1370,440 1840,290" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1848" y="282" class="small">quality/suggestions</text>
+<polyline points="1370,440 1840,630" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1848" y="622" class="small">events</text>
+<rect x="80" y="1240" width="1780" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="1264" class="t">Component rule:</text>
+<text x="96" y="1282" class="t">Taxonomy service owns canonical category/tag/rule/form-schema model. Search, localization and clients consume published taxonomy versions.</text>
+</svg>

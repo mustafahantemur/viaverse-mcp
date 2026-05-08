@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1800" viewBox="0 0 2600 1800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker><marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>.title{font:700 24px Arial;fill:white}.h{font:700 12px Arial;fill:#111827}.t{font:400 11px Arial;fill:#111827}.small{font:400 11px Arial;fill:#4B5563}</style></defs>
+<rect x="40" y="30" width="2520" height="60" rx="14" fill="#022C22"/><text x="1300.0" y="69" text-anchor="middle" class="title">Viaverse Final End-to-End System Context / Master Topology</text>
+<rect x="60" y="130" width="520" height="520" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="155" class="h">Users / Channels</text>
+<rect x="120" y="210" width="400" height="120" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="320.0" y="252.0" text-anchor="middle" class="h">KMP App</text>
+<text x="320.0" y="270.0" text-anchor="middle" class="t">Android / iOS-ready / Web</text>
+<text x="320.0" y="288.0" text-anchor="middle" class="t">request work + do work + business entry</text>
+<rect x="120" y="380" width="400" height="100" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="320.0" y="421.0" text-anchor="middle" class="h">Next.js Landing / SEO</text>
+<text x="320.0" y="439.0" text-anchor="middle" class="t">public pages / localized content</text>
+<rect x="120" y="530" width="400" height="100" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="320.0" y="571.0" text-anchor="middle" class="h">Admin Console</text>
+<text x="320.0" y="589.0" text-anchor="middle" class="t">ops / support / taxonomy / monetization</text>
+<rect x="660" y="130" width="420" height="520" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="676" y="155" class="h">Edge / Access</text>
+<rect x="720" y="210" width="300" height="100" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="870.0" y="251.0" text-anchor="middle" class="h">Route53 + CloudFront</text>
+<text x="870.0" y="269.0" text-anchor="middle" class="t">TLS / CDN / static delivery</text>
+<rect x="720" y="380" width="300" height="100" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="870.0" y="421.0" text-anchor="middle" class="h">AWS WAF</text>
+<text x="870.0" y="439.0" text-anchor="middle" class="t">rate limits / bot guard</text>
+<rect x="720" y="530" width="300" height="100" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="870.0" y="571.0" text-anchor="middle" class="h">API Gateway / BFF</text>
+<text x="870.0" y="589.0" text-anchor="middle" class="t">REST facade / realtime BFF / auth context</text>
+<rect x="1160" y="130" width="720" height="700" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="1176" y="155" class="h">Core Platform Services</text>
+<rect x="1220" y="210" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1360.0" y="251.0" text-anchor="middle" class="h">identity-service</text>
+<text x="1360.0" y="269.0" text-anchor="middle" class="t">OTP/social login / account capabilities</text>
+<rect x="1540" y="210" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1680.0" y="251.0" text-anchor="middle" class="h">profile-service</text>
+<text x="1680.0" y="269.0" text-anchor="middle" class="t">accounts / locale / settings / privacy</text>
+<rect x="1220" y="360" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1360.0" y="401.0" text-anchor="middle" class="h">taxonomy-service</text>
+<text x="1360.0" y="419.0" text-anchor="middle" class="t">categories / tags / dynamic environment</text>
+<rect x="1540" y="360" width="280" height="100" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1680.0" y="401.0" text-anchor="middle" class="h">marketplace-service</text>
+<text x="1680.0" y="419.0" text-anchor="middle" class="t">requests / offers / jobs / lifecycle</text>
+<rect x="1220" y="510" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1360.0" y="551.0" text-anchor="middle" class="h">business-service</text>
+<text x="1360.0" y="569.0" text-anchor="middle" class="t">merchant profile / branches / catalog / staff</text>
+<rect x="1540" y="510" width="280" height="100" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1680.0" y="551.0" text-anchor="middle" class="h">payment-service</text>
+<text x="1680.0" y="569.0" text-anchor="middle" class="t">Iyzico / Stripe-ready / ledger / payout</text>
+<rect x="1220" y="660" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1360.0" y="701.0" text-anchor="middle" class="h">chat-service</text>
+<text x="1360.0" y="719.0" text-anchor="middle" class="t">job scoped messaging / receipts / reports</text>
+<rect x="1540" y="660" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1680.0" y="701.0" text-anchor="middle" class="h">notification-service</text>
+<text x="1680.0" y="719.0" text-anchor="middle" class="t">push / email / SMS / templates</text>
+<rect x="1960" y="130" width="560" height="700" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="1976" y="155" class="h">Experience / Intelligence Services</text>
+<rect x="2020" y="210" width="420" height="100" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="2230.0" y="251.0" text-anchor="middle" class="h">search-service</text>
+<text x="2230.0" y="269.0" text-anchor="middle" class="t">OpenSearch projection / ranking / SEO feeds</text>
+<rect x="2020" y="360" width="420" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2230.0" y="401.0" text-anchor="middle" class="h">trust-service</text>
+<text x="2230.0" y="419.0" text-anchor="middle" class="t">reviews / ratings / badges / moderation signals</text>
+<rect x="2020" y="510" width="420" height="100" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="2230.0" y="551.0" text-anchor="middle" class="h">media-service</text>
+<text x="2230.0" y="569.0" text-anchor="middle" class="t">image/video upload / CDN refs / moderation</text>
+<rect x="2020" y="660" width="420" height="100" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="2230.0" y="701.0" text-anchor="middle" class="h">ai-assistant-service</text>
+<text x="2230.0" y="719.0" text-anchor="middle" class="t">support helper / RAG / safe context</text>
+<rect x="60" y="920" width="2460" height="620" rx="10" fill="none" stroke="#022C22" stroke-width="2"/><text x="76" y="945" class="h">Data / Event / Observability</text>
+<rect x="120" y="1010" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="280.0" y="1052.0" text-anchor="middle" class="h">PostgreSQL</text>
+<text x="280.0" y="1070.0" text-anchor="middle" class="t">transactional source of truth</text>
+<text x="280.0" y="1088.0" text-anchor="middle" class="t">Flyway migrations</text>
+<rect x="500" y="1010" width="320" height="120" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="660.0" y="1052.0" text-anchor="middle" class="h">Cassandra</text>
+<text x="660.0" y="1070.0" text-anchor="middle" class="t">chat/message timeline</text>
+<text x="660.0" y="1088.0" text-anchor="middle" class="t">high-volume read receipts</text>
+<rect x="880" y="1010" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1040.0" y="1061.0" text-anchor="middle" class="h">Redis / ElastiCache</text>
+<text x="1040.0" y="1079.0" text-anchor="middle" class="t">cache / sessions / rate limits</text>
+<rect x="1260" y="1010" width="320" height="120" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1420.0" y="1052.0" text-anchor="middle" class="h">Kafka</text>
+<text x="1420.0" y="1070.0" text-anchor="middle" class="t">Spring Cloud Stream abstraction</text>
+<text x="1420.0" y="1088.0" text-anchor="middle" class="t">outbox events</text>
+<rect x="1640" y="1010" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1800.0" y="1061.0" text-anchor="middle" class="h">S3 / MinIO local</text>
+<text x="1800.0" y="1079.0" text-anchor="middle" class="t">media / backups / archives</text>
+<rect x="2020" y="1010" width="320" height="120" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
+<text x="2180.0" y="1061.0" text-anchor="middle" class="h">OpenSearch</text>
+<text x="2180.0" y="1079.0" text-anchor="middle" class="t">search indexes / logs</text>
+<rect x="880" y="1230" width="700" height="120" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1230.0" y="1281.0" text-anchor="middle" class="h">OpenTelemetry + Prometheus + Jaeger + Perses</text>
+<text x="1230.0" y="1299.0" text-anchor="middle" class="t">metrics / traces / dashboards / alerts</text>
+<rect x="1640" y="1230" width="520" height="120" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1900.0" y="1281.0" text-anchor="middle" class="h">KMS + Secrets Manager + External Secrets</text>
+<text x="1900.0" y="1299.0" text-anchor="middle" class="t">key rotation / secret sync</text>
+<polyline points="520,270 720,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="728" y="252" class="small">HTTPS</text>
+<polyline points="520,430 720,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="728" y="252" class="small">HTTPS</text>
+<polyline points="520,580 720,580" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="728" y="572" class="small">admin API</text>
+<polyline points="870,310 870,380" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="372" class="small">edge checks</text>
+<polyline points="870,480 870,530" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="522" class="small">allowed</text>
+<polyline points="1020,580 1120,580 1120,260 1220,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="252" class="small">auth</text>
+<polyline points="1020,580 1120,580 1120,410 1540,410" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="402" class="small">API</text>
+<polyline points="1020,580 1120,580 1120,710 1220,710" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="702" class="small">realtime</text>
+<polyline points="1020,580 1120,580 1120,560 1220,560" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1128" y="552" class="small">merchant API</text>
+<polyline points="1680,460 1680,510" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="502" class="small">payment intent / payout</text>
+<polyline points="1540,410 1360,660" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1368" y="652" class="small">open conversation</text>
+<polyline points="1820,410 2020,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="2028" y="252" class="small">index public request</text>
+<polyline points="1500,560 2020,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="2028" y="252" class="small">business projection</text>
+<polyline points="1500,410 2020,260" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="2028" y="252" class="small">facets / category</text>
+<polyline points="1680,310 1680,660" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1688" y="652" class="small">preferences</text>
+<polyline points="2230,610 1800,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1808" y="1002" class="small">media object</text>
+<polyline points="1360,760 660,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="668" y="1002" class="small">messages</text>
+<polyline points="1360,310 280,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="288" y="1002" class="small">SQL</text>
+<polyline points="1680,460 280,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="288" y="1002" class="small">SQL</text>
+<polyline points="1360,610 280,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="288" y="1002" class="small">SQL</text>
+<polyline points="1680,610 280,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="288" y="1002" class="small">SQL/ledger</text>
+<polyline points="2230,310 2180,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="2188" y="1002" class="small">index</text>
+<polyline points="1680,760 1420,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1428" y="1002" class="small">consume events</text>
+<polyline points="1360,310 1420,1010" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1428" y="1002" class="small">domain events</text>
+<polyline points="1680,460 1420,1010" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1428" y="1002" class="small">domain events</text>
+<polyline points="1360,610 1420,1010" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1428" y="1002" class="small">domain events</text>
+<polyline points="1680,610 1420,1010" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1428" y="1002" class="small">domain events</text>
+<polyline points="2230,460 2230,660" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="2238" y="652" class="small">support/safety context</text>
+<polyline points="2230,760 2180,1010" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="2188" y="1002" class="small">RAG/search</text>
+<polyline points="870,630 1040,1010" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1048" y="1002" class="small">rate/session</text>
+<polyline points="870,630 1230,1230" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1238" y="1222" class="small">telemetry</text>
+<polyline points="1880,520 1640,1290" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowD)" stroke-dasharray="6 5"/>
+<text x="1648" y="1282" class="small">secret refs</text>
+<rect x="120" y="1580" width="1780" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="136" y="1604" class="t">Master rule:</text>
+<text x="136" y="1622" class="t">Every external request enters through edge/gateway. Domain services own source-of-truth. Search/AI/analytics consume projections, not raw authority.</text>
+<rect x="1940" y="1580" width="520" height="65" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="1956" y="1604" class="t">Technology rule:</text>
+<text x="1956" y="1622" class="t">One broker language: Kafka through Spring Cloud Stream. Redpanda can be local-compatible only if chosen as Kafka-compatible runtime, not a second broker concept.</text>
+</svg>

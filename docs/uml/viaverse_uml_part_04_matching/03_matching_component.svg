@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1450" viewBox="0 0 2100 1450">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#4B5563"/></marker>
+<marker id="arrowDashed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#F97316"/></marker>
+<style>
+.title { font: 700 24px Arial, sans-serif; fill: white; }
+.h { font: 700 13px Arial, sans-serif; fill: #111827; }
+.t { font: 400 12px Arial, sans-serif; fill: #111827; }
+.small { font: 400 11px Arial, sans-serif; fill: #4B5563; }
+</style>
+</defs>
+<rect x="40" y="30" width="2020" height="60" rx="14" fill="#022C22"/>
+<text x="1050.0" y="69" text-anchor="middle" class="title">Viaverse Matching — Component Diagram</text>
+
+<rect x="80" y="180" width="320" height="130" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="240.0" y="209.0" text-anchor="middle" class="h">Kafka / Spring Cloud Stream</text>
+<text x="240.0" y="229.0" text-anchor="middle" class="t">--</text>
+<text x="240.0" y="249.0" text-anchor="middle" class="t">MatchingRequested</text>
+<text x="240.0" y="269.0" text-anchor="middle" class="t">ProfileUpdated</text>
+<text x="240.0" y="289.0" text-anchor="middle" class="t">TrustScoreUpdated</text>
+<rect x="500" y="180" width="310" height="130" rx="14" fill="#ECFDF5" stroke="#064E3B" stroke-width="2"/>
+<text x="655.0" y="218.0" text-anchor="middle" class="h">Matching Consumer</text>
+<text x="655.0" y="238.0" text-anchor="middle" class="t">--</text>
+<text x="655.0" y="258.0" text-anchor="middle" class="t">Consumes request events</text>
+<text x="655.0" y="278.0" text-anchor="middle" class="t">Coordinates pipeline</text>
+<rect x="910" y="150" width="320" height="130" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1070.0" y="188.0" text-anchor="middle" class="h">Candidate Generator</text>
+<text x="1070.0" y="208.0" text-anchor="middle" class="t">--</text>
+<text x="1070.0" y="228.0" text-anchor="middle" class="t">OpenSearch geo/category</text>
+<text x="1070.0" y="248.0" text-anchor="middle" class="t">saved search support</text>
+<rect x="910" y="330" width="320" height="150" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1070.0" y="360.0" text-anchor="middle" class="h">Eligibility Filter</text>
+<text x="1070.0" y="380.0" text-anchor="middle" class="t">--</text>
+<text x="1070.0" y="400.0" text-anchor="middle" class="t">capability</text>
+<text x="1070.0" y="420.0" text-anchor="middle" class="t">status</text>
+<text x="1070.0" y="440.0" text-anchor="middle" class="t">business team</text>
+<text x="1070.0" y="460.0" text-anchor="middle" class="t">visibility</text>
+<rect x="910" y="540" width="320" height="170" rx="14" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="1070.0" y="580.0" text-anchor="middle" class="h">Ranking Engine</text>
+<text x="1070.0" y="600.0" text-anchor="middle" class="t">--</text>
+<text x="1070.0" y="620.0" text-anchor="middle" class="t">score</text>
+<text x="1070.0" y="640.0" text-anchor="middle" class="t">reason codes</text>
+<text x="1070.0" y="660.0" text-anchor="middle" class="t">fairness</text>
+<text x="1070.0" y="680.0" text-anchor="middle" class="t">boost after gates</text>
+<rect x="1320" y="180" width="330" height="140" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1485.0" y="223.0" text-anchor="middle" class="h">marketplace-service</text>
+<text x="1485.0" y="243.0" text-anchor="middle" class="t">--</text>
+<text x="1485.0" y="263.0" text-anchor="middle" class="t">request snapshot</text>
+<text x="1485.0" y="283.0" text-anchor="middle" class="t">WorkerOpportunity store</text>
+<rect x="1320" y="380" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1485.0" y="417.0" text-anchor="middle" class="h">identity-service</text>
+<text x="1485.0" y="437.0" text-anchor="middle" class="t">--</text>
+<text x="1485.0" y="457.0" text-anchor="middle" class="t">capability/status check</text>
+<rect x="1320" y="540" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1485.0" y="577.0" text-anchor="middle" class="h">trust-gamification</text>
+<text x="1485.0" y="597.0" text-anchor="middle" class="t">--</text>
+<text x="1485.0" y="617.0" text-anchor="middle" class="t">trust/risk/badges</text>
+<rect x="1320" y="700" width="330" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="1485.0" y="724.0" text-anchor="middle" class="h">Valkey / Redis</text>
+<text x="1485.0" y="744.0" text-anchor="middle" class="t">--</text>
+<text x="1485.0" y="764.0" text-anchor="middle" class="t">availability</text>
+<text x="1485.0" y="784.0" text-anchor="middle" class="t">hot state</text>
+<text x="1485.0" y="804.0" text-anchor="middle" class="t">rate/frequency caps</text>
+<rect x="500" y="700" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="655.0" y="742.0" text-anchor="middle" class="h">notification-service</text>
+<text x="655.0" y="762.0" text-anchor="middle" class="t">--</text>
+<text x="655.0" y="782.0" text-anchor="middle" class="t">worker opportunity alerts</text>
+<rect x="500" y="420" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
+<text x="655.0" y="462.0" text-anchor="middle" class="h">OpenSearch</text>
+<text x="655.0" y="482.0" text-anchor="middle" class="t">--</text>
+<text x="655.0" y="502.0" text-anchor="middle" class="t">provider/business/request indexes</text>
+<polyline points="400,245 500,245" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="508" y="237" class="small">consume</text>
+<polyline points="810,245 910,215" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="918" y="207" class="small">pipeline</text>
+<polyline points="1070,280 1070,330" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1078" y="322" class="small">candidates</text>
+<polyline points="1070,480 1070,540" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1078" y="532" class="small">eligible list</text>
+<polyline points="910,215 810,215 810,480" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="818" y="207" class="small">query</text>
+<polyline points="810,245 1320,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="242" class="small">request snapshot</text>
+<polyline points="1230,405 1320,435" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="427" class="small">batch check</text>
+<polyline points="1230,600 1320,595" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="587" class="small">trust/risk</text>
+<polyline points="1070,710 1320,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1328" y="752" class="small">availability/hot state</text>
+<polyline points="1230,625 1280,625 1280,250 1320,250" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1288" y="242" class="small">persist opportunities</text>
+<polyline points="910,625 810,625 810,760" fill="none" stroke="#4B5563" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="818" y="617" class="small">alerts</text>
+<rect x="80" y="930" width="1550" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+<text x="96" y="954" class="t">Component boundary:</text>
+<text x="96" y="972" class="t">Matching pipeline may live initially in search-service or marketplace worker, but must stay a separable component with clear inputs/outputs.</text>
+</svg>

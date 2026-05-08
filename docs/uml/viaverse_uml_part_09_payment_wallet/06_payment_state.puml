@@ -1,0 +1,28 @@
+@startuml
+title Viaverse Payment / Wallet — State Diagram
+
+[*] --> CREATED
+CREATED --> PENDING : provider session created
+PENDING --> AUTHORIZED : provider success
+AUTHORIZED --> CAPTURED : capture/settle
+PENDING --> FAILED : provider failure
+PENDING --> CANCELLED : expired/cancelled
+CAPTURED --> REFUND_REQUESTED : refund requested
+REFUND_REQUESTED --> REFUNDED : approved + provider refund
+
+CAPTURED --> PAYOUT_HELD : job not completed yet
+PAYOUT_HELD --> PAYOUT_ELIGIBLE : job completed/no dispute
+PAYOUT_ELIGIBLE --> PAYOUT_RELEASED : admin/system release
+PAYOUT_ELIGIBLE --> PAYOUT_BLOCKED : dispute/risk
+PAYOUT_BLOCKED --> PAYOUT_ELIGIBLE : resolved
+
+FAILED --> [*]
+CANCELLED --> [*]
+REFUNDED --> [*]
+PAYOUT_RELEASED --> [*]
+
+note bottom
+Payment status and payout status are related but separate.
+Disputes block payout without necessarily changing captured payment state.
+end note
+@enduml
