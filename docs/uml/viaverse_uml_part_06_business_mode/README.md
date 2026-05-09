@@ -2,6 +2,8 @@
 
 Bu part işletme hesabı / Business Mode akışını anlatır.
 
+Business Mode, Personal ↔ Work arasındaki hafif geçişten farklıdır. Aynı Account ve login kullanılır, ancak business işlemleri ayrı BusinessAccount/business profile kaynağına bağlıdır ve merchant onboarding, verification, staff/team roles, catalog, subscription ve publish-ready policy gerektirir.
+
 ## Diagramlar
 
 1. `01_business_use_case`
@@ -54,6 +56,8 @@ Her diagram için:
 
 - BusinessProfile ayrı login identity değildir.
 - Aynı Account, OPERATE_BUSINESS capability ile business profile yönetir.
+- Business Mode bireysel Work Mode'un genişletilmiş hali değildir; ayrı business onboarding ve business resource state'i vardır.
+- BusinessAccount/BusinessProfile seçilmeden business adına quote, catalog, staff veya publish işlemi yapılamaz.
 - BusinessTeamMember role-based access sağlar.
 - Business subscription tooling/visibility sağlar ama pay-to-quote değildir.
 - Business offers free kalır.

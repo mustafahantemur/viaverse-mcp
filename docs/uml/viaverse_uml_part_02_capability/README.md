@@ -1,6 +1,8 @@
 # Viaverse UML Part 02 — Account Capability / Mode Switching
 
-Bu part, tek Account altında Personal / Work / Business modlarına geçiş ve capability modelini anlatır.
+Bu part, tek Account altında capability modelini ve kullanıcı yüzeyleri arasındaki geçiş kurallarını anlatır.
+
+Personal Mode ile Work Mode arasındaki geçiş hafif olmalıdır: kullanıcı aynı Account ile, Airbnb'deki "become a host" benzeri bir onboarding sonrası bireysel hizmet verme yeteneğini açar. Business Mode ise aynı login altında erişilen ama ayrı BusinessAccount/business profile, merchant onboarding, verification, staff, catalog, subscription ve publish-ready policy gerektiren farklı bir akıştır.
 
 ## Diagramlar
 
@@ -43,6 +45,8 @@ Her diagram için:
 
 - Personal / Work / Business ayrı hesap değildir.
 - Account tek kalır, capability seti değişir.
-- UI mode switch sadece UX aksiyonudur; eligibility backend policy tarafından belirlenir.
+- Personal ↔ Work geçişi hafif UX akışıdır; DO_WORK_INDIVIDUALLY capability açılmadan teklif/opportunity yüzeyleri aktif olmaz.
+- Business'a geçiş hafif mode switch değildir; OPERATE_BUSINESS capability business onboarding ve BusinessAccount seçimi/oluşturma akışını başlatır.
+- UI mode switch sadece UX aksiyonudur; eligibility ve business/work gate'leri backend policy tarafından belirlenir.
 - Capability suspension/revoke ayrı ayrı uygulanabilir.
 - Admin action reason + audit gerektirir.

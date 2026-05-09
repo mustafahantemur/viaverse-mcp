@@ -1,6 +1,8 @@
 # Viaverse UML Part 05 — Worker Onboarding / Work Mode Flow
 
-Bu part bireysel olarak iş yapmak isteyen kullanıcının Work Mode onboarding akışını anlatır.
+Bu part bireysel olarak, işletme hesabı oluşturmadan iş yapmak isteyen kullanıcının Work Mode onboarding akışını anlatır.
+
+Bu akış Personal Mode'dan hafif bir "become a host" geçişi gibi hissedilmelidir: aynı Account korunur, kullanıcı bireysel hizmet verme yeteneğini açar, kategori/alan/uygunluk bilgilerini tamamlar ve policy izin verdiğinde fırsat/teklif yüzeyleri aktif olur.
 
 ## Diagramlar
 
@@ -58,6 +60,8 @@ Her diagram için:
 ## Kritik Kurallar
 
 - Worker ayrı hesap değildir; aynı Account üstünde DO_WORK capability açılır.
+- Worker business değildir; bireysel hizmet veren profilidir.
+- Personal Mode ile Work Mode arasında geçiş kolay olmalıdır, ancak onboarding/policy tamamlanmadan teklif gönderme ve opportunity routing açılmaz.
 - Sending offers is free.
 - Worker visibility eligibility + trust + service area + category + availability ile belirlenir.
 - Verification kategori/risk seviyesine göre zorunlu olabilir.

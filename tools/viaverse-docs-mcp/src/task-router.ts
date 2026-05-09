@@ -33,13 +33,17 @@ const rules: ContextRule[] = [
       "AGENTS.md",
       "CODING_RULES.md",
       "docs/blueprint/PRODUCT_MODEL.md",
+      "docs/blueprint/DATA_ARCHITECTURE.md",
       "docs/blueprint/SECURITY_MODEL.md",
       "docs/blueprint/BACKEND_ARCHITECTURE.md",
-      "docs/adr/ADR-0004-no-hardcoded-business-strings.md"
+      "docs/adr/ADR-0004-no-hardcoded-business-strings.md",
+      "docs/uml/viaverse_uml_part_02_capability/README.md",
+      "docs/uml/viaverse_uml_part_05_worker_onboarding/README.md",
+      "docs/uml/viaverse_uml_part_06_business_mode/README.md"
     ],
     taskTypes: {
       authentication: ["login", "otp", "session", "jwt", "auth"],
-      capability: ["capability", "request work", "do work", "operate business"]
+      capability: ["capability", "request work", "do work", "individual work", "work mode", "operate business", "business account"]
     }
   },
   {
@@ -69,6 +73,7 @@ const rules: ContextRule[] = [
       "docs/blueprint/PAYMENT_MODEL.md",
       "docs/blueprint/BACKEND_ARCHITECTURE.md",
       "docs/adr/ADR-0004-no-hardcoded-business-strings.md",
+      "docs/uml/viaverse_uml_part_06_business_mode/README.md",
       "docs/uml/viaverse_uml_part_22_business_account_merchant_ops/README.md",
       "docs/uml/viaverse_uml_part_23_monetization_subscription_ads_commission/README.md",
       "docs/uml/viaverse_uml_part_28_final_master_topology/README.md"

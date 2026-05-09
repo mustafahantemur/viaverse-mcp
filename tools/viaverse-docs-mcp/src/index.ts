@@ -36,6 +36,13 @@ server.tool(
             "docs/DOCS_INDEX.md",
             "docs/uml/UML_INDEX.md"
           ],
+          accountCapabilityRules: [
+            "One real Account can request work, do individual work, and operate business resources.",
+            "Personal/requester and individual Work Mode should feel like a lightweight Airbnb-style become-a-host transition after worker onboarding.",
+            "Business is a separate workspace/resource flow on the same Account: BusinessAccount/profile, merchant onboarding, verification, staff roles, catalog, subscription, and publish-ready policy.",
+            "Do not model customer, individual worker, and business as three separate login identities.",
+            "Do not treat Business Mode as the same lightweight switch as individual Work Mode."
+          ],
           stopConditions: [
             "new bounded context",
             "new datastore",

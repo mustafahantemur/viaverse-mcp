@@ -266,6 +266,8 @@ Contains:
 
 Enabled after worker onboarding.
 
+Work Mode is the lightweight individual-provider path from Personal Mode. It should feel like “become a host”: same login, same personal Account, additional individual work capability, and clear onboarding before opportunities/offers are enabled.
+
 Contains:
 
 - Matched requests
@@ -279,6 +281,8 @@ Contains:
 ### Business Mode
 
 Enabled after business profile setup.
+
+Business Mode is a separate business workspace attached to the same Account. It must use business onboarding, verification, staff/team permissions, catalog/subscription setup and publish-ready gates instead of the lightweight Work Mode transition.
 
 Contains:
 
@@ -294,6 +298,7 @@ Contains:
 - Promotions later
 
 Mode switching must not create duplicate accounts.
+Personal and Work surfaces can be switched ergonomically after capability enablement. Business surfaces may be entered from the same account, but business actions must be scoped to a selected BusinessAccount/business profile and authorized through business policy.
 
 ---
 
