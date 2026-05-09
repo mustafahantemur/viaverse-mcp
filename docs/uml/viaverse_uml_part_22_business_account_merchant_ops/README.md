@@ -2,6 +2,8 @@
 
 Bu part işletme hesabı, merchant onboarding, işletme doğrulama, şube/hizmet alanı, staff roles, hizmet kataloğu, lead alma, business quote, job/order yönetimi, abonelik ve search publish akışlarını anlatır.
 
+Business account akışı bireysel Work Mode onboarding'den ayrıdır. Work Mode, kişinin aynı Account ile bireysel hizmet vermeye başlamasıdır. Business account ise aynı Account'a bağlı ama ayrı merchant/business resource olarak yönetilen işletme varlığıdır.
+
 ## Diagramlar
 
 1. `01_business_account_use_case`
@@ -79,6 +81,7 @@ Her diagram için:
 
 - Business account aynı Account modelinin capability’sidir; ayrı identity island değildir.
 - BusinessAccount, Account ile aynı şey değildir: Account identity/login sahibidir; BusinessAccount merchant profile/branch/catalog/staff/publish state sahibidir.
+- Personal ↔ individual Work geçişi kolay olabilir; BusinessAccount oluşturma/yönetme business-specific onboarding, verification, catalog, staff ve billing/subscription gate'lerine bağlıdır.
 - Business UI bugün tek uygulama içinde akış olabilir, ileride ayrı store app olabilir; backend model bundan bağımsız kalır.
 - Business draft verification’dan önce oluşturulabilir.
 - Public search visibility ve lead routing için publish-ready policy gerekir.

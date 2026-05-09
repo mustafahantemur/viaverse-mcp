@@ -67,6 +67,13 @@ For users who want to request work, explore services, post locally, pay, review,
 
 For individuals who want to earn money without creating a formal business profile.
 
+Personal Mode and Work Mode should feel like a lightweight capability transition, similar to an Airbnb-style “become a host” path:
+
+- The user keeps the same Account and login.
+- The user enables individual work capability through onboarding.
+- The user can move between requesting work and doing individual work without creating a separate identity.
+- Eligibility, verification, category, service area and safety gates are still enforced by backend policy.
+
 Includes:
 
 - Worker onboarding
@@ -83,6 +90,15 @@ Includes:
 ### Business Mode
 
 For formal businesses or teams.
+
+Business Mode is not just another lightweight personal switch. It is an additional business workspace attached to the same Account, with a distinct BusinessAccount/profile, merchant onboarding, verification, staff/team roles, catalog, subscription and publish-ready policy.
+
+Rules:
+
+- The same person may request work, do individual work and operate a business, but these are separate capabilities.
+- BusinessAccount is not the same thing as Account.
+- Business setup follows a different flow from individual Work Mode.
+- Business visibility, lead routing and public profile publishing require business-specific gates.
 
 Includes:
 

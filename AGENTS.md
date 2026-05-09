@@ -18,6 +18,14 @@ Viaverse lets one real account enable multiple capabilities:
 - Participate in the local social/trust layer
 - Use wallet, chat, reviews, badges, support, and safe payments
 
+Account capability distinction:
+
+- Requesting work and doing individual work are capabilities on the same personal account.
+- Moving from requester/personal use to individual work should feel like a lightweight Airbnb-style "become a host" onboarding path.
+- Business operation is a separate business resource/workspace flow attached to the same account, not the same lightweight switch as individual work.
+- Business requires BusinessAccount/profile state, merchant onboarding, verification, staff/team roles, catalog, subscription/billing where applicable, and publish-ready policy before public visibility/lead routing.
+- Do not model customer, individual worker, and business as three separate login identities.
+
 The platform combines:
 
 - Local services marketplace

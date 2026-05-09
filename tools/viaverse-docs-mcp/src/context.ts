@@ -16,11 +16,11 @@ export type ContextPack = {
 };
 
 const umlMap: Record<string, string[]> = {
-  identity: ["Part 01", "Part 14", "Part 18", "Part 28"],
+  identity: ["Part 01", "Part 02", "Part 05", "Part 06", "Part 14", "Part 18", "Part 28"],
   profile: ["Part 02", "Part 18", "Part 21", "Part 28"],
   taxonomy: ["Part 21", "Part 24", "Part 28"],
   marketplace: ["Part 03", "Part 04", "Part 05", "Part 06", "Part 28"],
-  business: ["Part 22", "Part 23", "Part 28"],
+  business: ["Part 06", "Part 22", "Part 23", "Part 28"],
   payment: ["Part 08", "Part 15", "Part 18", "Part 23", "Part 28"],
   monetization: ["Part 22", "Part 23", "Part 28"],
   chat: ["Part 10", "Part 18", "Part 25", "Part 28"],

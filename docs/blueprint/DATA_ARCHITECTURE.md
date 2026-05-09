@@ -270,6 +270,8 @@ Rules:
 - Account ID is JWT subject.
 - Account is not equal to customer/provider.
 - Account can have multiple capabilities.
+- Requesting work and doing individual work are capabilities on the same personal Account.
+- Business operation is also enabled from the same Account, but business data lives in a separate BusinessAccount/business profile resource with its own state, staff roles and publish policy.
 
 ### 4.2 AccountCapability
 
@@ -298,6 +300,12 @@ ADMIN_CATEGORY
 ADMIN_ANALYTICS
 ADMIN_SUPER
 ```
+
+Capability meaning:
+
+- `REQUEST_WORK`: personal/requester marketplace capability.
+- `DO_WORK_INDIVIDUALLY`: individual non-business service provider capability.
+- `OPERATE_BUSINESS`: permission to create/manage one or more business resources; it does not make Account itself a BusinessAccount.
 
 ### 4.3 ServiceRequest
 

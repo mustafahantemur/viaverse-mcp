@@ -223,6 +223,16 @@ A person may:
 
 These are capabilities, not separate accounts.
 
+Important distinction:
+
+- `REQUEST_WORK` is the default personal marketplace capability.
+- `DO_WORK_INDIVIDUALLY` is a lightweight individual earning capability on the same Account.
+- `OPERATE_BUSINESS` enables a separate business workspace/profile attached to the same Account, not a third casual user mode.
+
+The transition between requesting work and doing individual work should feel like an Airbnb-style “become a host” path: the user keeps the same identity, completes worker onboarding, and can move between personal/requester and individual worker surfaces.
+
+Business is different. A business flow creates and manages a BusinessAccount/business profile with merchant onboarding, verification, catalog, team/staff roles, subscription/billing, and publish-ready checks. BusinessAccount is not a separate login identity, but it is a separate business resource with its own state and policies.
+
 ---
 
 ## 7. User-Facing Modes
@@ -242,6 +252,8 @@ Default experience for:
 
 For individuals who want to earn.
 
+Work Mode is for non-business individual service providers. It should be easy to discover from Personal Mode and easy to enter after required onboarding, while still enforcing eligibility, safety and category-specific verification.
+
 Features:
 
 - Worker onboarding
@@ -258,6 +270,8 @@ Features:
 ### 7.3 Business Mode
 
 Professional workspace for businesses.
+
+Business Mode must not be treated as the same flow as Work Mode. It is an operator workspace for a business profile and may require business verification, staff permissions, service catalog setup, subscription state and publish-ready policy before public visibility or lead routing.
 
 Features:
 
