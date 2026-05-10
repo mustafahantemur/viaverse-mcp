@@ -212,6 +212,7 @@ private fun ExploreDetailHero(item: ExploreItem) {
 @Composable
 internal fun ProviderOnboardingScreen(
     repository: WorkflowRepository,
+    onCompleted: () -> Unit,
     onBack: () -> Unit
 ) {
     var snapshot by remember { mutableStateOf(repository.providerOnboarding()) }
@@ -237,6 +238,7 @@ internal fun ProviderOnboardingScreen(
                 label = if (snapshot.steps.all { it.status == ProviderSetupStepStatus.DONE }) "Panele dön" else "Sıradaki adımı tamamla",
                 onClick = {
                     if (snapshot.steps.all { it.status == ProviderSetupStepStatus.DONE }) {
+                        onCompleted()
                         onBack()
                     } else {
                         snapshot = repository.progressProviderOnboarding(snapshot)

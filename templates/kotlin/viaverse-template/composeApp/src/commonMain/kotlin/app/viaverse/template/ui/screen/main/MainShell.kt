@@ -36,6 +36,7 @@ import app.viaverse.template.data.repository.DashboardRepository
 import app.viaverse.template.data.repository.DiscoveryRepository
 import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.domain.model.Account
+import app.viaverse.template.domain.model.AccountCapability
 import app.viaverse.template.platform.PlatformBackHandler
 import app.viaverse.template.ui.screen.explore.ExploreScreen
 import app.viaverse.template.ui.theme.ViaverseColors
@@ -76,6 +77,9 @@ fun MainShell(
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Explore) }
     var activePanel by remember { mutableStateOf<MainPanel?>(null) }
+    var providerModeUnlocked by remember(account) {
+        mutableStateOf(account?.capabilities?.contains(AccountCapability.DO_WORK_INDIVIDUALLY) == true)
+    }
     val dashboard = remember(account) { dashboardRepository.load(account) }
 
     PlatformBackHandler(enabled = activePanel != null) {
@@ -111,6 +115,7 @@ fun MainShell(
 
                     MainTab.Work -> WorkScreen(
                         snapshot = dashboard,
+                        providerModeUnlocked = providerModeUnlocked,
                         onOpenProviderSetup = { activePanel = MainPanel.ProviderSetup },
                         onOpenProviderDashboard = { activePanel = MainPanel.ProviderDashboard }
                     )
@@ -123,6 +128,7 @@ fun MainShell(
                     MainTab.Profile -> ProfileScreen(
                         account = account,
                         snapshot = dashboard,
+                        providerModeUnlocked = providerModeUnlocked,
                         onOpenBusiness = { activePanel = MainPanel.BusinessWorkspace },
                         onOpenSettings = { activePanel = MainPanel.ProfileSettings },
                         onOpenWallet = { activePanel = MainPanel.Wallet },
@@ -141,6 +147,7 @@ fun MainShell(
 
                     MainPanel.ProviderSetup -> ProviderOnboardingScreen(
                         repository = workflowRepository,
+                        onCompleted = { providerModeUnlocked = true },
                         onBack = { activePanel = null }
                     )
 

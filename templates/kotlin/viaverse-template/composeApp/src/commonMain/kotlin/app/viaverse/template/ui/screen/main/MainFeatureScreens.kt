@@ -29,6 +29,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.viaverse.template.domain.model.Account
+import app.viaverse.template.domain.model.AccountCapability
 import app.viaverse.template.domain.model.BusinessWorkspaceStatus
 import app.viaverse.template.domain.model.ConversationPreview
 import app.viaverse.template.domain.model.ConversationStatus
@@ -73,9 +74,11 @@ internal fun RequestsScreen(
 @Composable
 internal fun WorkScreen(
     snapshot: DashboardSnapshot,
+    providerModeUnlocked: Boolean,
     onOpenProviderSetup: () -> Unit,
     onOpenProviderDashboard: () -> Unit
 ) {
+    val setupRequired = !providerModeUnlocked && snapshot.work.any { it.status == WorkLifecycleStatus.ONBOARDING_REQUIRED }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -93,10 +96,15 @@ internal fun WorkScreen(
             WorkCard(work)
         }
         item {
-            PrimaryAction(label = "Hizmet veren panelini aç", onClick = onOpenProviderDashboard)
+            PrimaryAction(
+                label = if (setupRequired) "Bireysel hizmet verme kurulumunu aç" else "Hizmet veren panelini aç",
+                onClick = if (setupRequired) onOpenProviderSetup else onOpenProviderDashboard
+            )
         }
-        item {
-            SecondaryAction(label = "Bireysel hizmet verme kurulumunu aç", onClick = onOpenProviderSetup)
+        if (!setupRequired) {
+            item {
+                SecondaryAction(label = "Bireysel hizmet verme ayarlarını düzenle", onClick = onOpenProviderSetup)
+            }
         }
     }
 }
@@ -129,6 +137,7 @@ internal fun MessagesScreen(
 internal fun ProfileScreen(
     account: Account?,
     snapshot: DashboardSnapshot,
+    providerModeUnlocked: Boolean,
     onOpenBusiness: () -> Unit,
     onOpenSettings: () -> Unit,
     onOpenWallet: () -> Unit,
@@ -154,10 +163,12 @@ internal fun ProfileScreen(
             InsightCard(snapshot.insights.firstOrNull()?.summaryTr.orEmpty())
         }
         items(snapshot.capabilities, key = { it.capability.name }) { capability ->
+            val enabled = capability.enabled ||
+                (capability.capability == AccountCapability.DO_WORK_INDIVIDUALLY && providerModeUnlocked)
             StatusCard(
                 title = capability.titleTr,
                 body = capability.bodyTr,
-                status = if (capability.enabled) "Aktif" else "Hazır değil"
+                status = if (enabled) "Aktif" else "Hazır değil"
             )
         }
         item {
