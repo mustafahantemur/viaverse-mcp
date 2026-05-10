@@ -11,6 +11,7 @@ Use ADRs for decisions that affect architecture, technology, provider choices, d
 - `ADR-0003-java-spring-backend.md`
 - `ADR-0004-no-hardcoded-business-strings.md`
 - `ADR-0005-docs-mcp.md`
+- `ADR-0006-seaweedfs-local-object-storage.md`
 
 ## ADR Template
 

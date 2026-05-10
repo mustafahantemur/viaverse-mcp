@@ -315,16 +315,38 @@ Planned local dependencies:
 - OpenSearch
 - Valkey / Redis
 - Mailpit
-- LocalStack optional for S3-like testing
+- SeaweedFS for local S3-compatible object storage
 - Mock payment provider / iyzico sandbox adapter
 
-Example future command:
+Current core infra command:
 
 ```bash
-docker compose -f infra/docker-compose/docker-compose.local.yml up -d
+./scripts/dev/start-core-infra.ps1
 ```
 
-Exact commands will be finalized when the repo skeleton is created.
+Core local services:
+
+- PostgreSQL
+- Valkey
+- Kafka
+- Mailpit
+- SeaweedFS (S3 endpoint: `http://localhost:8333`)
+
+Application code must use a generic object-storage abstraction so provider details stay outside domain and application layers.
+
+Planned Spring Boot configuration shape:
+
+```yaml
+object-storage:
+  provider: ${OBJECT_STORAGE_PROVIDER:seaweedfs}
+  endpoint: ${OBJECT_STORAGE_ENDPOINT:http://localhost:8333}
+  region: ${OBJECT_STORAGE_REGION:local}
+  access-key: ${OBJECT_STORAGE_ACCESS_KEY:viaverse}
+  secret-key: ${OBJECT_STORAGE_SECRET_KEY:viaverse-local-secret}
+  path-style-access: ${OBJECT_STORAGE_PATH_STYLE_ACCESS:true}
+  buckets:
+    media: ${OBJECT_STORAGE_BUCKET_MEDIA:viaverse-media-local}
+```
 
 ---
 

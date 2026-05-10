@@ -41,6 +41,7 @@ Event broker: Kafka / Amazon MSK
 Event abstraction: Spring Cloud Stream
 Internal sync communication: gRPC
 Media/object storage: S3
+Local S3-compatible development storage: SeaweedFS
 Cloud: AWS
 Payments: iyzico primary, Stripe adapter included, Masterpass adapter-ready
 Maps: Google Maps first, abstracted

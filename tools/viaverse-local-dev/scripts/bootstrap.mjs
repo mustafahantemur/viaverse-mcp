@@ -50,10 +50,22 @@ VIAVERSE_POSTGRES_PORT=5432
 VIAVERSE_REDIS_PORT=6379
 VIAVERSE_KAFKA_PORT=9092
 VIAVERSE_OPENSEARCH_PORT=9200
-VIAVERSE_MINIO_PORT=9000
 VIAVERSE_MAILPIT_SMTP_PORT=1025
 VIAVERSE_MAILPIT_WEB_PORT=8025
 VIAVERSE_MCP_INSPECTOR_PORT=6274
+
+SEAWEEDFS_MASTER_PORT=9333
+SEAWEEDFS_VOLUME_PORT=8080
+SEAWEEDFS_FILER_PORT=8888
+SEAWEEDFS_S3_PORT=8333
+
+OBJECT_STORAGE_PROVIDER=seaweedfs
+OBJECT_STORAGE_ENDPOINT=http://localhost:8333
+OBJECT_STORAGE_REGION=local
+OBJECT_STORAGE_ACCESS_KEY=viaverse
+OBJECT_STORAGE_SECRET_KEY=viaverse-local-secret
+OBJECT_STORAGE_BUCKET_MEDIA=viaverse-media-local
+OBJECT_STORAGE_PATH_STYLE_ACCESS=true
 
 # Stable local-only development keys.
 # Never reuse in staging/production.
@@ -88,3 +100,4 @@ run("npm", ["run", "smoke"], mcpDir, { VIAVERSE_REPO_ROOT: repoRoot });
 log("done");
 log("Codex config generated at .codex/config.toml");
 log("Local dev env generated at .env.local");
+log("Core infra can be started with ./scripts/dev/start-core-infra.ps1");
