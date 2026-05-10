@@ -69,6 +69,15 @@ The MCP is optimized for greenfield implementation, not template completion.
 - Max snippet per doc: `1`
 - React/template references are included only for UI/screen tasks.
 - Foundation/auth/profile tasks must exclude marketplace, payment, chat, review, support, business workspace, and full social flows unless explicitly requested.
+- Default response format is a short `MCP Compact Context` block, not a long JSON dump.
+- Minimal rules should usually stay at `5` unless a task truly requires more.
+- Early implementation should defer detailed unit tests and favor `Gradle check` plus smoke/manual validation.
+
+## Product Balance
+
+- Preserve both `Dinamik Cevre` and `Hizmet Al`.
+- Do not let future context responses frame Viaverse as only a formal job marketplace.
+- For foundation/auth/profile tasks, keep this as a product assumption only; do not pull social feed implementation details.
 
 ## Expected First Real Task
 

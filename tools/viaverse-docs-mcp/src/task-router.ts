@@ -50,6 +50,7 @@ export type MinimalContextResponse = {
   preCodingBrief: PreCodingBrief;
   scopeGuard: ScopeGuard;
   proceedDecision: TaskResolution["proceedDecision"];
+  compactText: string;
 };
 
 type ContextRule = {
@@ -169,6 +170,8 @@ const FOUNDATION_SCOPE_EXCLUSIONS = [
   "React-to-Kotlin migration details"
 ];
 
+const EARLY_TEST_RULE = "Defer detailed unit tests; use Gradle check, manual smoke validation, and add focused tests only for critical auth/session/security behavior.";
+
 const GREENFIELD_RULES: RuleSummary[] = [
   { code: "greenfield", text: "Treat Viaverse as a greenfield implementation; prototypes are visual/product references only." },
   { code: "gradle-first", text: "Use Gradle Kotlin DSL for backend, mobile, and root orchestration." },
@@ -177,15 +180,30 @@ const GREENFIELD_RULES: RuleSummary[] = [
   { code: "small-context", text: "Default maximum is 3 canonical docs and 1 short snippet per doc." },
   { code: "react-guard", text: "React template is allowed only for UI/screen tasks; never as architecture or domain source of truth." },
   { code: "thin-scope", text: "For foundation/auth/profile tasks, exclude marketplace, payment, chat, review, support, business workspace, and full social flows." },
-  { code: "localize", text: "User-facing strings must be centralized/localized; business logic must not depend on display text." }
+  { code: "localize", text: "User-facing strings must be centralized/localized; business logic must not depend on display text." },
+  { code: "product-balance", text: "Preserve Dinamik Cevre and Hizmet Al as separate product surfaces; do not collapse Viaverse into only a formal job marketplace." },
+  { code: "test-budget", text: EARLY_TEST_RULE }
 ];
 
 function normalize(input: string): string {
   return input.toLowerCase();
 }
 
+function tokenize(text: string): string[] {
+  return normalize(text).split(/[^a-z0-9ğüşöçıİĞÜŞÖÇ_-]+/i).filter(Boolean);
+}
+
+function includesKeyword(text: string, keyword: string): boolean {
+  const lowerText = normalize(text);
+  const lowerKeyword = normalize(keyword);
+  if (lowerKeyword.includes(" ")) {
+    return lowerText.includes(lowerKeyword);
+  }
+  return tokenize(lowerText).includes(lowerKeyword);
+}
+
 function includesAny(text: string, needles: string[]): boolean {
-  return needles.some(needle => text.includes(needle));
+  return needles.some(needle => includesKeyword(text, needle));
 }
 
 function inferTaskType(rule: ContextRule | undefined, task: string): string {
@@ -217,7 +235,7 @@ function inferContexts(task: string) {
   const lower = normalize(task);
   return rules
     .map(rule => {
-      const matched = rule.keywords.filter(keyword => lower.includes(keyword));
+      const matched = rule.keywords.filter(keyword => includesKeyword(lower, keyword));
       return {
         boundedContext: rule.context,
         confidence: matched.length === 0 ? 0 : Math.min(0.95, 0.35 + matched.length * 0.12),
@@ -270,7 +288,7 @@ function buildRulesForTask(task: string): RuleSummary[] {
   if (includesAny(lower, ["ui", "screen", "compose", "visual", "ux"])) {
     selected.push({ code: "ui-reference", text: "For UI work, React/prototype references may guide screen intent and visual hierarchy only." });
   }
-  return selected.slice(0, 10);
+  return selected.slice(0, 5);
 }
 
 function buildReferences(canonicalDocs: string[]): SourceReference[] {
@@ -328,9 +346,9 @@ function buildPreCodingBrief(primary: string, secondary: string | undefined, tas
         "Typed transport error for mobile health check; no business validation yet."
       ],
       testsToAdd: [
-        "Backend health endpoint test.",
-        "Mobile repository/client test for success and unreachable backend case.",
-        "Gradle module wiring sanity check through build tasks."
+        "Defer detailed unit tests.",
+        "Run Gradle check.",
+        "Manual smoke validation for backend health endpoint and mobile health check."
       ],
       validationCommands: [
         "./gradlew check",
@@ -372,9 +390,9 @@ function buildPreCodingBrief(primary: string, secondary: string | undefined, tas
         "Central AppResult/AppError mapping, input validation, typed field errors."
       ],
       testsToAdd: [
-        "Backend controller/use-case tests.",
-        "Mobile repository/interceptor/session tests.",
-        "Session restore and invalid token path tests."
+        "Defer detailed unit tests.",
+        "Run Gradle check.",
+        "Add focused test only if this task changes critical auth/session/security behavior."
       ],
       validationCommands: [
         "./gradlew check",
@@ -414,7 +432,9 @@ function buildPreCodingBrief(primary: string, secondary: string | undefined, tas
       "Map transport/domain errors into typed application errors."
     ],
     testsToAdd: [
-      "Unit tests for use cases and adapters touched by this slice."
+      "Defer detailed unit tests.",
+      "Run Gradle check.",
+      "Use manual smoke validation unless the task is security-critical."
     ],
     validationCommands: [
       "./gradlew check"
@@ -441,6 +461,67 @@ function buildScopeGuard(task: string, resolution: TaskResolution): ScopeGuard {
   return {
     outOfScope: ["Unrequested adjacent flows and extra bounded contexts."]
   };
+}
+
+function buildCompactText(
+  resolvedContext: TaskResolution,
+  rules: RuleSummary[],
+  references: SourceReference[],
+  preCodingBrief: PreCodingBrief,
+  scopeGuard: ScopeGuard,
+  proceedDecision: TaskResolution["proceedDecision"]
+): string {
+  const lines: string[] = [
+    "## MCP Compact Context",
+    "",
+    "Primary context:",
+    `- ${resolvedContext.primaryBoundedContext}`,
+    "",
+    "Secondary context:",
+    `- ${resolvedContext.secondaryBoundedContext ?? "none"}`,
+    "",
+    "Task type:",
+    `- ${resolvedContext.taskType}`,
+    "",
+    "Phase:",
+    `- ${resolvedContext.implementationPhase}`,
+    "",
+    "Relevant docs:"
+  ];
+
+  references.forEach(reference => {
+    lines.push(`- ${reference.path} — ${reference.reason}`);
+  });
+
+  lines.push("", "Minimal rules:");
+  rules.forEach((rule, index) => {
+    lines.push(`${index + 1}. ${rule.text}`);
+  });
+
+  lines.push(
+    "",
+    "Pre-coding brief:",
+    `- affected files: ${preCodingBrief.affectedModulesFiles.join("; ")}`,
+    `- domain types: ${preCodingBrief.domainModelsEnumsValueObjects.join("; ")}`,
+    `- repositories: ${preCodingBrief.repositoryContracts.join("; ")}`,
+    `- API contracts: ${preCodingBrief.apiRestContracts.join("; ")}`,
+    `- storage/session: ${[...preCodingBrief.localStorageCacheImpact, ...preCodingBrief.interceptorsSessionTokenBehavior].join("; ")}`,
+    `- errors: ${[...preCodingBrief.errorsValidation, ...preCodingBrief.loggingObservabilityImpact].join("; ")}`,
+    `- tests: ${preCodingBrief.testsToAdd.join("; ")}`,
+    `- validation: ${preCodingBrief.validationCommands.join("; ")}`,
+    "",
+    "Out of scope:",
+    `- ${scopeGuard.outOfScope.join("; ")}`,
+    "",
+    "Decision:",
+    `- ${proceedDecision}`
+  );
+
+  if (scopeGuard.warning) {
+    lines.splice(lines.length - 3, 0, `- scope warning: ${scopeGuard.warning}`);
+  }
+
+  return lines.join("\n");
 }
 
 export function resolveTaskContext(task: string): TaskResolution {
@@ -479,21 +560,38 @@ export function buildContextBundle(docs: DocItem[], boundedContext: string, task
   const availablePaths = new Set(docs.map(doc => doc.path));
   const filteredCanonicalDocs = canonicalDocs.filter(path => availablePaths.has(path));
 
+  const minimalRelevantRules = buildRulesForTask(task).slice(0, 5);
+  const requiredSourceReferences = buildReferences(filteredCanonicalDocs);
+  const preCodingBrief = buildPreCodingBrief(
+    boundedContext.toLowerCase(),
+    resolution.secondaryBoundedContext,
+    task,
+    resolution.implementationPhase
+  );
+  const scopeGuard = buildScopeGuard(task, resolution);
+  const compactText = buildCompactText(
+    {
+      ...resolution,
+      primaryBoundedContext: boundedContext.toLowerCase()
+    },
+    minimalRelevantRules,
+    requiredSourceReferences,
+    preCodingBrief,
+    scopeGuard,
+    resolution.proceedDecision
+  );
+
   return {
     resolvedContext: {
       ...resolution,
       primaryBoundedContext: boundedContext.toLowerCase()
     },
-    minimalRelevantRules: buildRulesForTask(task).slice(0, 10),
-    requiredSourceReferences: buildReferences(filteredCanonicalDocs),
-    preCodingBrief: buildPreCodingBrief(
-      boundedContext.toLowerCase(),
-      resolution.secondaryBoundedContext,
-      task,
-      resolution.implementationPhase
-    ),
-    scopeGuard: buildScopeGuard(task, resolution),
-    proceedDecision: resolution.proceedDecision
+    minimalRelevantRules,
+    requiredSourceReferences,
+    preCodingBrief,
+    scopeGuard,
+    proceedDecision: resolution.proceedDecision,
+    compactText
   };
 }
 

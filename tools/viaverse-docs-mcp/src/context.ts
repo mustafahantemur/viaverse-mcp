@@ -33,8 +33,15 @@ export function getRelatedUmls(boundedContext: string): string[] {
 }
 
 export function createPreCodingBriefTemplate(boundedContext: string, task: string): string {
+  const resolution = resolveTaskContext(task);
+  const references = resolution.canonicalDocs
+    .slice(0, 3)
+    .map(path => `- ${path} — canonical reference for this slice`);
   const compact = buildContextBundle([], boundedContext, task);
-  return JSON.stringify(compact.preCodingBrief, null, 2);
+  return compact.compactText.replace(
+    "Relevant docs:",
+    `Relevant docs:\n${references.join("\n")}`
+  );
 }
 
 export function buildContextPack(docs: DocItem[], boundedContext: string, task: string, limit = 3): ContextPack {

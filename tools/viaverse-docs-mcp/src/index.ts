@@ -97,6 +97,14 @@ registerLoggedTool(
             "Do not continue Kotlin template completion unless explicitly requested.",
             "Recommend splitting tasks that need more than 2 bounded contexts."
           ],
+          productBalance: [
+            "Preserve Dinamik Cevre and Hizmet Al as separate product surfaces.",
+            "Do not let early implementation drift into only a formal job marketplace."
+          ],
+          testStrategy: [
+            "Do not generate exhaustive unit tests during early foundation work.",
+            "Prefer Gradle check, health verification, and focused later testing tasks."
+          ],
           stopConditions: [
             "new bounded context",
             "new datastore",
@@ -141,10 +149,10 @@ registerLoggedTool(
     return {
       content: [{
         type: "text",
-        text: JSON.stringify({
-          ...buildContextBundle(docs, boundedContext, task, Math.min(limit, 3)),
-          searchedDocs: buildCompactSearchDocs(docs, boundedContext, task, 2)
-        }, null, 2)
+        text: (() => {
+          const bundle = buildContextBundle(docs, boundedContext, task, Math.min(limit, 3));
+          return `${bundle.compactText}\n\nRelated compact docs:\n${buildCompactSearchDocs(docs, boundedContext, task, 2).map(doc => `- ${doc.path} — ${doc.snippet}`).join("\n")}`;
+        })()
       }]
     };
   }
