@@ -30,7 +30,9 @@ const umlMap: Record<string, string[]> = {
   infrastructure: ["Part 13", "Part 17", "Part 19", "Part 27", "Part 28"],
   ai: ["Part 20", "Part 25", "Part 28", "Part 29"],
   security: ["Part 14", "Part 18", "Part 25", "Part 28"],
-  api: ["Part 27", "Part 28", "Part 29"]
+  api: ["Part 27", "Part 28", "Part 29"],
+  client: ["Part 02", "Part 03", "Part 05", "Part 06", "Part 18", "Part 24", "Part 28"],
+  template: ["Part 02", "Part 03", "Part 05", "Part 06", "Part 24", "Part 28"]
 };
 
 export function getRelatedUmls(boundedContext: string): string[] {

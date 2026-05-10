@@ -23,6 +23,7 @@ server.tool(
           project: "Viaverse",
           implementation: "greenfield",
           rule: "Use MCP before coding. Do not load all docs manually.",
+          clientTemplateRule: "For Kotlin template work, resolve the client/template context and read the React-to-Kotlin migration guide before editing.",
           mandatoryFlow: [
             "resolve_task_context",
             "get_context_bundle",
@@ -33,6 +34,9 @@ server.tool(
             "README.md",
             "AGENTS.md",
             "CODING_RULES.md",
+            "docs/blueprint/CLIENT_ARCHITECTURE.md",
+            "docs/templates/react-to-kotlin-compose-migration.md",
+            "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md",
             "docs/DOCS_INDEX.md",
             "docs/uml/UML_INDEX.md"
           ],
@@ -143,7 +147,7 @@ server.tool(
   {
     query: z.string().min(2),
     boundedContext: z.string().optional(),
-    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "unknown"]).optional(),
+    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "template", "unknown"]).optional(),
     limit: z.number().int().min(1).max(20).default(8)
   },
   async ({ query, boundedContext, docType, limit }) => {
@@ -180,7 +184,7 @@ server.tool(
   "list_docs",
   {
     boundedContext: z.string().optional(),
-    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "unknown"]).optional()
+    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "template", "unknown"]).optional()
   },
   async ({ boundedContext, docType }) => {
     const docs = await loadDocs();

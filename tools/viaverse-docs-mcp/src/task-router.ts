@@ -27,6 +27,53 @@ type ContextRule = {
 
 const rules: ContextRule[] = [
   {
+    context: "client",
+    keywords: [
+      "kotlin",
+      "kmp",
+      "compose",
+      "mobile",
+      "ui",
+      "template",
+      "react",
+      "splash",
+      "auth",
+      "otp",
+      "theme",
+      "icon"
+    ],
+    canonicalDocs: [
+      "AGENTS.md",
+      "CODING_RULES.md",
+      "docs/blueprint/CLIENT_ARCHITECTURE.md",
+      "docs/blueprint/PRODUCT_MODEL.md",
+      "docs/adr/ADR-0004-no-hardcoded-business-strings.md",
+      "docs/templates/react-to-kotlin-compose-migration.md",
+      "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md"
+    ],
+    taskTypes: {
+      kotlinTemplate: ["kotlin", "compose", "kmp", "template"],
+      reactMigration: ["react", "migration", "convert", "port"],
+      authUi: ["auth", "login", "otp", "password", "signup"],
+      designSystem: ["theme", "style", "icon", "splash"]
+    }
+  },
+  {
+    context: "template",
+    keywords: ["template", "react template", "kotlin template", "compose template", "migration", "showcase"],
+    canonicalDocs: [
+      "AGENTS.md",
+      "CODING_RULES.md",
+      "docs/blueprint/CLIENT_ARCHITECTURE.md",
+      "docs/templates/react-to-kotlin-compose-migration.md",
+      "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md"
+    ],
+    taskTypes: {
+      migration: ["react", "kotlin", "compose", "migration", "port"],
+      guardrails: ["guardrail", "rules", "md", "review"]
+    }
+  },
+  {
     context: "identity",
     keywords: ["login", "auth", "otp", "account", "capability", "session", "jwt", "google", "apple"],
     canonicalDocs: [
