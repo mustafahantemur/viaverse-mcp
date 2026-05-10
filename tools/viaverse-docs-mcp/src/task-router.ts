@@ -2,20 +2,54 @@ import type { DocItem } from "./docs.js";
 import { scoreDoc, snippet } from "./docs.js";
 import { getRelatedUmls } from "./context.js";
 
+type RuleSummary = {
+  code: string;
+  text: string;
+};
+
+type SourceReference = {
+  path: string;
+  reason: string;
+};
+
+type PreCodingBrief = {
+  affectedModulesFiles: string[];
+  domainModelsEnumsValueObjects: string[];
+  repositoryContracts: string[];
+  apiRestContracts: string[];
+  localStorageCacheImpact: string[];
+  interceptorsSessionTokenBehavior: string[];
+  loggingObservabilityImpact: string[];
+  errorsValidation: string[];
+  testsToAdd: string[];
+  validationCommands: string[];
+  risksOpenQuestions: string[];
+};
+
+type ScopeGuard = {
+  outOfScope: string[];
+  warning?: string;
+};
+
 export type TaskResolution = {
   task: string;
-  inferredBoundedContexts: Array<{
-    boundedContext: string;
-    confidence: number;
-    reasons: string[];
-  }>;
   primaryBoundedContext: string;
+  secondaryBoundedContext?: string;
   taskType: string;
+  implementationPhase: string;
   canonicalDocs: string[];
   relatedUmlParts: string[];
-  searchQueries: string[];
   warnings: string[];
-  requiredNextTools: string[];
+  proceedDecision: "Proceed" | "Split task first" | "Missing information, ask for clarification";
+};
+
+export type MinimalContextResponse = {
+  resolvedContext: TaskResolution;
+  minimalRelevantRules: RuleSummary[];
+  requiredSourceReferences: SourceReference[];
+  preCodingBrief: PreCodingBrief;
+  scopeGuard: ScopeGuard;
+  proceedDecision: TaskResolution["proceedDecision"];
 };
 
 type ContextRule = {
@@ -25,193 +59,140 @@ type ContextRule = {
   taskTypes?: Record<string, string[]>;
 };
 
+const FOUNDATION_DOCS = [
+  "AGENTS.md",
+  "docs/blueprint/ARCHITECTURE.md",
+  "docs/blueprint/CLIENT_ARCHITECTURE.md",
+  "docs/blueprint/BACKEND_ARCHITECTURE.md",
+  "docs/blueprint/PRODUCT_MODEL.md",
+  "docs/adr/ADR-0002-kotlin-multiplatform-client.md",
+  "docs/adr/ADR-0004-no-hardcoded-business-strings.md"
+];
+
 const rules: ContextRule[] = [
   {
-    context: "client",
-    keywords: [
-      "kotlin",
-      "kmp",
-      "compose",
-      "mobile",
-      "ui",
-      "template",
-      "react",
-      "splash",
-      "auth",
-      "otp",
-      "theme",
-      "icon"
-    ],
+    context: "foundation",
+    keywords: ["greenfield", "foundation", "monorepo", "gradle", "skeleton", "platform-service", "health endpoint", "health check"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
-      "docs/blueprint/CLIENT_ARCHITECTURE.md",
-      "docs/blueprint/PRODUCT_MODEL.md",
-      "docs/adr/ADR-0004-no-hardcoded-business-strings.md",
-      "docs/templates/react-to-kotlin-compose-migration.md",
-      "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md"
+      "docs/blueprint/ARCHITECTURE.md",
+      "docs/blueprint/BACKEND_ARCHITECTURE.md"
     ],
     taskTypes: {
-      kotlinTemplate: ["kotlin", "compose", "kmp", "template"],
-      reactMigration: ["react", "migration", "convert", "port"],
-      authUi: ["auth", "login", "otp", "password", "signup"],
-      designSystem: ["theme", "style", "icon", "splash"]
+      monorepo: ["gradle", "monorepo", "skeleton", "module"],
+      verticalSlice: ["health", "endpoint", "check", "client"]
     }
   },
   {
-    context: "template",
-    keywords: ["template", "react template", "kotlin template", "compose template", "migration", "showcase"],
+    context: "client",
+    keywords: ["kotlin", "kmp", "compose", "mobile", "ui", "screen", "theme", "icon", "navigation"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
       "docs/blueprint/CLIENT_ARCHITECTURE.md",
-      "docs/templates/react-to-kotlin-compose-migration.md",
-      "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md"
+      "docs/adr/ADR-0002-kotlin-multiplatform-client.md"
     ],
     taskTypes: {
-      migration: ["react", "kotlin", "compose", "migration", "port"],
-      guardrails: ["guardrail", "rules", "md", "review"]
+      foundation: ["foundation", "app", "mobile", "ktor", "session", "storage"],
+      ui: ["screen", "ui", "compose", "theme", "navigation"]
     }
   },
   {
     context: "identity",
-    keywords: ["login", "auth", "otp", "account", "capability", "session", "jwt", "google", "apple"],
+    keywords: ["login", "auth", "otp", "account", "capability", "session", "jwt", "register", "logout", "me"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
-      "docs/blueprint/PRODUCT_MODEL.md",
-      "docs/blueprint/DATA_ARCHITECTURE.md",
       "docs/blueprint/SECURITY_MODEL.md",
-      "docs/blueprint/BACKEND_ARCHITECTURE.md",
-      "docs/adr/ADR-0004-no-hardcoded-business-strings.md",
-      "docs/uml/viaverse_uml_part_02_capability/README.md",
-      "docs/uml/viaverse_uml_part_05_worker_onboarding/README.md",
-      "docs/uml/viaverse_uml_part_06_business_mode/README.md"
+      "docs/adr/ADR-0004-no-hardcoded-business-strings.md"
     ],
     taskTypes: {
-      authentication: ["login", "otp", "session", "jwt", "auth"],
-      capability: ["capability", "request work", "do work", "individual work", "work mode", "operate business", "business account"]
+      authentication: ["login", "register", "otp", "session", "logout", "me"],
+      profile: ["profile", "settings", "account"]
     }
   },
   {
     context: "marketplace",
-    keywords: ["request", "job", "offer", "quote", "accept", "completion", "lifecycle", "feed"],
+    keywords: ["request", "job", "offer", "quote", "accept", "completion", "lifecycle"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
       "docs/blueprint/PRODUCT_MODEL.md",
-      "docs/blueprint/BACKEND_ARCHITECTURE.md",
-      "docs/blueprint/EVENT_ARCHITECTURE.md"
-    ],
-    taskTypes: {
-      request: ["request", "post", "budget", "category"],
-      offer: ["offer", "quote", "accept"],
-      lifecycle: ["job", "complete", "cancel", "dispute"]
-    }
+      "docs/blueprint/BACKEND_ARCHITECTURE.md"
+    ]
   },
   {
     context: "business",
-    keywords: ["business", "merchant", "publish", "branch", "catalog", "staff", "verification", "lead"],
+    keywords: ["business", "merchant", "publish", "branch", "catalog", "staff", "verification"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
       "docs/blueprint/PRODUCT_MODEL.md",
-      "docs/blueprint/MONETIZATION_MODEL.md",
-      "docs/blueprint/PAYMENT_MODEL.md",
-      "docs/blueprint/BACKEND_ARCHITECTURE.md",
-      "docs/adr/ADR-0004-no-hardcoded-business-strings.md",
-      "docs/uml/viaverse_uml_part_06_business_mode/README.md",
-      "docs/uml/viaverse_uml_part_22_business_account_merchant_ops/README.md",
-      "docs/uml/viaverse_uml_part_23_monetization_subscription_ads_commission/README.md",
-      "docs/uml/viaverse_uml_part_28_final_master_topology/README.md"
-    ],
-    taskTypes: {
-      publish: ["publish", "verification", "catalog", "branch", "subscription"],
-      catalog: ["catalog", "service", "package", "pricing"],
-      staff: ["staff", "role", "invite", "permission"],
-      leads: ["lead", "quote", "business quote"]
-    }
+      "docs/uml/viaverse_uml_part_22_business_account_merchant_ops/README.md"
+    ]
   },
   {
     context: "payment",
-    keywords: ["payment", "iyzico", "stripe", "masterpass", "card", "refund", "payout", "commission"],
+    keywords: ["payment", "iyzico", "stripe", "masterpass", "refund", "payout", "commission"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
       "docs/blueprint/PAYMENT_MODEL.md",
-      "docs/blueprint/MONETIZATION_MODEL.md",
-      "docs/blueprint/SECURITY_MODEL.md",
-      "docs/blueprint/PRIVACY_AND_KVKK.md",
-      "docs/contracts/providers/payment-providers.md"
-    ],
-    taskTypes: {
-      provider: ["iyzico", "stripe", "masterpass", "provider"],
-      refund: ["refund", "cancel"],
-      payout: ["payout", "commission", "settlement"]
-    }
+      "docs/blueprint/SECURITY_MODEL.md"
+    ]
   },
   {
     context: "chat",
-    keywords: ["chat", "message", "conversation", "receipt", "typing", "cassandra", "moderation"],
+    keywords: ["chat", "message", "conversation", "moderation"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
-      "docs/blueprint/DATA_ARCHITECTURE.md",
-      "docs/blueprint/SECURITY_MODEL.md",
-      "docs/blueprint/PRIVACY_AND_KVKK.md",
-      "docs/uml/viaverse_uml_part_25_chat_messaging_safety/README.md"
-    ],
-    taskTypes: {
-      messaging: ["message", "conversation", "receipt"],
-      safety: ["moderation", "report", "off-platform", "personal info"]
-    }
-  },
-  {
-    context: "taxonomy",
-    keywords: ["taxonomy", "category", "tag", "dynamic environment", "form schema", "category suggestion"],
-    canonicalDocs: [
-      "AGENTS.md",
-      "CODING_RULES.md",
-      "docs/blueprint/PRODUCT_MODEL.md",
-      "docs/blueprint/CLIENT_ARCHITECTURE.md",
-      "docs/uml/viaverse_uml_part_24_category_taxonomy_dynamic_environment/README.md"
+      "docs/uml/viaverse_uml_part_25_chat_messaging_safety/README.md",
+      "docs/blueprint/SECURITY_MODEL.md"
     ]
   },
   {
     context: "search",
-    keywords: ["search", "opensearch", "ranking", "matching", "seo", "discovery", "index"],
+    keywords: ["search", "opensearch", "matching", "seo", "discovery", "index"],
     canonicalDocs: [
       "AGENTS.md",
-      "CODING_RULES.md",
       "docs/blueprint/DATA_ARCHITECTURE.md",
-      "docs/blueprint/SEO_AND_GROWTH.md",
-      "docs/uml/viaverse_uml_part_05_search_discovery_matching/README.md"
-    ]
-  },
-  {
-    context: "infrastructure",
-    keywords: ["aws", "eks", "kubernetes", "deploy", "docker", "observability", "otel", "prometheus", "jaeger"],
-    canonicalDocs: [
-      "AGENTS.md",
-      "CODING_RULES.md",
-      "docs/blueprint/ARCHITECTURE.md",
-      "docs/blueprint/TECH_STACK_DECISIONS.md",
-      "docs/runbooks/one-command-bootstrap.md"
+      "docs/blueprint/SEO_AND_GROWTH.md"
     ]
   }
+];
+
+const FOUNDATION_SCOPE_EXCLUSIONS = [
+  "marketplace",
+  "payment",
+  "chat",
+  "review",
+  "support",
+  "business workspace",
+  "explore feed",
+  "social feed",
+  "full mocked workflows",
+  "React-to-Kotlin migration details"
+];
+
+const GREENFIELD_RULES: RuleSummary[] = [
+  { code: "greenfield", text: "Treat Viaverse as a greenfield implementation; prototypes are visual/product references only." },
+  { code: "gradle-first", text: "Use Gradle Kotlin DSL for backend, mobile, and root orchestration." },
+  { code: "typed-domain", text: "No hardcoded business role/status/type/capability/payment/request strings; use enums/value objects." },
+  { code: "bounded-context", text: "Default maximum is 2 bounded contexts per task; split broader work." },
+  { code: "small-context", text: "Default maximum is 3 canonical docs and 1 short snippet per doc." },
+  { code: "react-guard", text: "React template is allowed only for UI/screen tasks; never as architecture or domain source of truth." },
+  { code: "thin-scope", text: "For foundation/auth/profile tasks, exclude marketplace, payment, chat, review, support, business workspace, and full social flows." },
+  { code: "localize", text: "User-facing strings must be centralized/localized; business logic must not depend on display text." }
 ];
 
 function normalize(input: string): string {
   return input.toLowerCase();
 }
 
-function inferTaskType(rule: ContextRule, task: string): string {
-  if (!rule.taskTypes) return "general";
+function includesAny(text: string, needles: string[]): boolean {
+  return needles.some(needle => text.includes(needle));
+}
 
+function inferTaskType(rule: ContextRule | undefined, task: string): string {
+  if (!rule?.taskTypes) return "general";
   const lower = normalize(task);
   let best = "general";
   let bestScore = 0;
-
   for (const [type, keywords] of Object.entries(rule.taskTypes)) {
     const score = keywords.filter(keyword => lower.includes(keyword)).length;
     if (score > bestScore) {
@@ -219,102 +200,321 @@ function inferTaskType(rule: ContextRule, task: string): string {
       bestScore = score;
     }
   }
-
   return best;
 }
 
-export function resolveTaskContext(task: string): TaskResolution {
+function inferImplementationPhase(task: string): string {
   const lower = normalize(task);
+  if (includesAny(lower, ["monorepo", "gradle", "skeleton", "foundation"])) return "Repository / monorepo foundation";
+  if (includesAny(lower, ["platform-service", "spring boot", "health endpoint", "backend foundation"])) return "Backend platform-service foundation";
+  if (includesAny(lower, ["kmp", "compose", "mobile foundation", "health check", "ktor"])) return "Mobile foundation";
+  if (includesAny(lower, ["auth", "login", "register", "logout", "session", "me"])) return "Auth and session vertical slice";
+  if (includesAny(lower, ["profile", "settings"])) return "Profile and settings vertical slice";
+  return "Foundation-first implementation";
+}
 
-  const candidates = rules
+function inferContexts(task: string) {
+  const lower = normalize(task);
+  return rules
     .map(rule => {
       const matched = rule.keywords.filter(keyword => lower.includes(keyword));
-      const confidence = matched.length / Math.max(1, rule.keywords.length);
       return {
         boundedContext: rule.context,
         confidence: matched.length === 0 ? 0 : Math.min(0.95, 0.35 + matched.length * 0.12),
         reasons: matched
       };
     })
-    .filter(x => x.confidence > 0)
+    .filter(item => item.confidence > 0)
     .sort((a, b) => b.confidence - a.confidence);
+}
 
-  const primary = candidates[0]?.boundedContext ?? "architecture";
-  const primaryRule = rules.find(rule => rule.context === primary);
-
-  const canonicalDocs = primaryRule?.canonicalDocs ?? [
-    "AGENTS.md",
-    "CODING_RULES.md",
-    "docs/DOCS_INDEX.md",
-    "docs/blueprint/ARCHITECTURE.md"
-  ];
-
-  const warnings: string[] = [];
-  if (candidates.length === 0) {
-    warnings.push("No clear bounded context inferred. Start with architecture docs and ask for human clarification if implementation scope is unclear.");
+function inferProceedDecision(task: string, contexts: Array<{ boundedContext: string; confidence: number }>): TaskResolution["proceedDecision"] {
+  const lower = normalize(task);
+  if (includesAny(lower, ["everything", "all flows", "full app", "complete platform"])) {
+    return "Split task first";
   }
-  if (candidates.length > 1 && candidates[1].confidence > 0.5) {
-    warnings.push(`Task may involve multiple contexts: ${candidates.map(x => x.boundedContext).join(", ")}.`);
+  if (contexts.length > 2) {
+    return "Split task first";
+  }
+  if (includesAny(lower, ["unknown provider", "undecided provider", "pick any provider"])) {
+    return "Missing information, ask for clarification";
+  }
+  return "Proceed";
+}
+
+function selectCanonicalDocs(primary: string, secondary: string | undefined, task: string): string[] {
+  const lower = normalize(task);
+  const reactAllowed = includesAny(lower, ["ui", "screen", "visual", "ux", "compose", "theme"]);
+  const paths = new Set<string>();
+  for (const context of [primary, secondary].filter(Boolean) as string[]) {
+    const rule = rules.find(item => item.context === context);
+    for (const path of rule?.canonicalDocs ?? []) {
+      if (!reactAllowed && path.includes("react-to-kotlin")) continue;
+      paths.add(path);
+      if (paths.size >= 3) break;
+    }
+    if (paths.size >= 3) break;
+  }
+  if (paths.size === 0) {
+    for (const path of FOUNDATION_DOCS.slice(0, 3)) paths.add(path);
+  }
+  return Array.from(paths).slice(0, 3);
+}
+
+function buildRulesForTask(task: string): RuleSummary[] {
+  const lower = normalize(task);
+  const selected = [...GREENFIELD_RULES];
+  if (includesAny(lower, ["auth", "login", "register", "logout", "session", "me", "profile", "settings"])) {
+    selected.push({ code: "auth-scope", text: "Do not pull marketplace, payment, chat, support, business workspace, or social feed context into auth/profile tasks." });
+  }
+  if (includesAny(lower, ["ui", "screen", "compose", "visual", "ux"])) {
+    selected.push({ code: "ui-reference", text: "For UI work, React/prototype references may guide screen intent and visual hierarchy only." });
+  }
+  return selected.slice(0, 10);
+}
+
+function buildReferences(canonicalDocs: string[]): SourceReference[] {
+  return canonicalDocs.map(path => ({
+    path,
+    reason:
+      path === "AGENTS.md" ? "Highest-priority implementation rules and architectural guardrails." :
+      path.includes("CLIENT_ARCHITECTURE") ? "Client module and foundation expectations." :
+      path.includes("BACKEND_ARCHITECTURE") ? "Backend service structure and boundaries." :
+      path.includes("SECURITY_MODEL") ? "Auth, token, and security-sensitive behavior." :
+      path.includes("PRODUCT_MODEL") ? "Minimum product intent and flow ownership." :
+      path.includes("ADR-0002") ? "Chosen KMP/Compose client decision." :
+      path.includes("ADR-0004") ? "Typed domain and no hardcoded business strings." :
+      path.includes("react-to-kotlin") ? "Visual/product reference only for UI tasks." :
+      "Directly relevant canonical source for this task."
+  }));
+}
+
+function buildPreCodingBrief(primary: string, secondary: string | undefined, task: string, phase: string): PreCodingBrief {
+  const lower = normalize(task);
+  const isFoundation = includesAny(lower, ["monorepo", "gradle", "skeleton", "foundation", "health endpoint", "health check"]);
+  const isAuth = includesAny(lower, ["auth", "login", "register", "logout", "session", "me"]);
+  const isProfile = includesAny(lower, ["profile", "settings"]);
+
+  if (isFoundation) {
+    return {
+      affectedModulesFiles: [
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "gradle/libs.versions.toml",
+        "services/platform-service/build.gradle.kts",
+        "services/platform-service/src/main/java/.../HealthController.java",
+        "apps/mobile-kmp/build.gradle.kts",
+        "apps/mobile-kmp shared/network foundation files"
+      ],
+      domainModelsEnumsValueObjects: [
+        "Assumption: no business domain models yet; add only a tiny typed health response DTO."
+      ],
+      repositoryContracts: [
+        "Mobile health repository contract for calling backend health endpoint."
+      ],
+      apiRestContracts: [
+        "GET /api/v1/health -> 200 with minimal typed status payload."
+      ],
+      localStorageCacheImpact: [
+        "None for first foundation slice."
+      ],
+      interceptorsSessionTokenBehavior: [
+        "No auth token behavior yet; prepare Ktor client hook points only."
+      ],
+      loggingObservabilityImpact: [
+        "Backend request logging and app startup logging should be minimal and non-sensitive."
+      ],
+      errorsValidation: [
+        "Typed transport error for mobile health check; no business validation yet."
+      ],
+      testsToAdd: [
+        "Backend health endpoint test.",
+        "Mobile repository/client test for success and unreachable backend case.",
+        "Gradle module wiring sanity check through build tasks."
+      ],
+      validationCommands: [
+        "./gradlew check",
+        "./gradlew :services:platform-service:check",
+        "./gradlew :apps:mobile-kmp:check"
+      ],
+      risksOpenQuestions: [
+        `Implementation phase is '${phase}'.`,
+        "Confirm exact module paths if repo layout differs from services/apps assumption."
+      ]
+    };
+  }
+
+  if (isAuth || isProfile) {
+    return {
+      affectedModulesFiles: [
+        "Platform service auth/profile controller, application, domain, infrastructure packages",
+        "Mobile auth/profile feature module, repository, Ktor client, session/token storage abstractions"
+      ],
+      domainModelsEnumsValueObjects: [
+        "Typed account/session/profile DTOs and enums only; no display-text-driven logic."
+      ],
+      repositoryContracts: [
+        isAuth ? "AuthRepository, SessionRepository, CurrentAccountRepository." : "ProfileRepository, SettingsRepository, CurrentAccountRepository."
+      ],
+      apiRestContracts: [
+        isAuth ? "Register/login/logout/session restore/current account endpoints." : "Current account profile + settings read/update endpoints."
+      ],
+      localStorageCacheImpact: [
+        isAuth ? "Secure token storage abstraction and session restore cache." : "Small current-account cache if needed; no social/feed cache."
+      ],
+      interceptorsSessionTokenBehavior: [
+        "Bearer token injection, 401 handling, logout/clear on invalid session."
+      ],
+      loggingObservabilityImpact: [
+        "Structured auth/profile logs without sensitive data or tokens."
+      ],
+      errorsValidation: [
+        "Central AppResult/AppError mapping, input validation, typed field errors."
+      ],
+      testsToAdd: [
+        "Backend controller/use-case tests.",
+        "Mobile repository/interceptor/session tests.",
+        "Session restore and invalid token path tests."
+      ],
+      validationCommands: [
+        "./gradlew check",
+        "./gradlew :services:platform-service:check",
+        "./gradlew :apps:mobile-kmp:check"
+      ],
+      risksOpenQuestions: [
+        "Confirm token shape and refresh policy before implementing full auth persistence.",
+        "Out of scope domains must stay excluded from this slice."
+      ]
+    };
   }
 
   return {
-    task,
-    inferredBoundedContexts: candidates.length > 0 ? candidates : [{ boundedContext: primary, confidence: 0.2, reasons: ["fallback"] }],
-    primaryBoundedContext: primary,
-    taskType: primaryRule ? inferTaskType(primaryRule, task) : "general",
-    canonicalDocs,
-    relatedUmlParts: getRelatedUmls(primary),
-    searchQueries: [
-      task,
-      `${primary} ${task}`,
-      `${primary} policy state enum`,
-      `${primary} REST event contract`
+    affectedModulesFiles: [
+      `Assumption: start inside ${primary}${secondary ? ` and ${secondary}` : ""} modules only.`
     ],
-    warnings,
-    requiredNextTools: [
-      "get_context_bundle",
-      "pre_coding_brief"
+    domainModelsEnumsValueObjects: [
+      "Add only the minimal typed models directly required by the slice."
+    ],
+    repositoryContracts: [
+      "Introduce one repository boundary per external dependency or feature surface."
+    ],
+    apiRestContracts: [
+      "Define only the REST contracts strictly needed for this slice."
+    ],
+    localStorageCacheImpact: [
+      "Add cache/storage only if the slice cannot function without it."
+    ],
+    interceptorsSessionTokenBehavior: [
+      "Assumption: no new token behavior unless the task explicitly touches auth/session."
+    ],
+    loggingObservabilityImpact: [
+      "Add minimal structured logs around boundary crossings and failures."
+    ],
+    errorsValidation: [
+      "Map transport/domain errors into typed application errors."
+    ],
+    testsToAdd: [
+      "Unit tests for use cases and adapters touched by this slice."
+    ],
+    validationCommands: [
+      "./gradlew check"
+    ],
+    risksOpenQuestions: [
+      "Task may still be too broad if multiple business areas are required together."
     ]
   };
 }
 
-export function buildContextBundle(docs: DocItem[], boundedContext: string, task: string, limit = 10) {
+function buildScopeGuard(task: string, resolution: TaskResolution): ScopeGuard {
+  const lower = normalize(task);
+  if (includesAny(lower, ["auth", "login", "register", "logout", "session", "me", "profile", "settings", "foundation", "monorepo", "gradle", "health"])) {
+    return {
+      outOfScope: FOUNDATION_SCOPE_EXCLUSIONS
+    };
+  }
+  if (resolution.proceedDecision === "Split task first") {
+    return {
+      outOfScope: ["More than 2 bounded contexts in one pass."],
+      warning: "Task is broader than the compact MCP budget. Split into a smaller vertical slice first."
+    };
+  }
+  return {
+    outOfScope: ["Unrequested adjacent flows and extra bounded contexts."]
+  };
+}
+
+export function resolveTaskContext(task: string): TaskResolution {
+  const candidates = inferContexts(task);
+  const primary = candidates[0]?.boundedContext ?? "foundation";
+  const secondary = candidates[1]?.boundedContext;
+  const primaryRule = rules.find(rule => rule.context === primary);
+  const implementationPhase = inferImplementationPhase(task);
+  const proceedDecision = inferProceedDecision(task, candidates);
+  const canonicalDocs = selectCanonicalDocs(primary, secondary, task);
+  const warnings: string[] = [];
+
+  if (candidates.length > 2) {
+    warnings.push(`Compact budget exceeded: inferred contexts are ${candidates.map(x => x.boundedContext).join(", ")}.`);
+  }
+  if (secondary && candidates.length > 2) {
+    warnings.push("Recommend splitting the task instead of loading more than 2 bounded contexts.");
+  }
+
+  return {
+    task,
+    primaryBoundedContext: primary,
+    secondaryBoundedContext: secondary,
+    taskType: inferTaskType(primaryRule, task),
+    implementationPhase,
+    canonicalDocs,
+    relatedUmlParts: getRelatedUmls(primary).slice(0, 3),
+    warnings,
+    proceedDecision
+  };
+}
+
+export function buildContextBundle(docs: DocItem[], boundedContext: string, task: string, limit = 3): MinimalContextResponse {
   const resolution = resolveTaskContext(task);
-  const context = boundedContext.toLowerCase();
+  const canonicalDocs = resolution.canonicalDocs.slice(0, Math.min(3, limit));
+  const availablePaths = new Set(docs.map(doc => doc.path));
+  const filteredCanonicalDocs = canonicalDocs.filter(path => availablePaths.has(path));
 
-  const canonicalPaths = new Set(
-    (rules.find(rule => rule.context === context)?.canonicalDocs ?? resolution.canonicalDocs)
-  );
+  return {
+    resolvedContext: {
+      ...resolution,
+      primaryBoundedContext: boundedContext.toLowerCase()
+    },
+    minimalRelevantRules: buildRulesForTask(task).slice(0, 10),
+    requiredSourceReferences: buildReferences(filteredCanonicalDocs),
+    preCodingBrief: buildPreCodingBrief(
+      boundedContext.toLowerCase(),
+      resolution.secondaryBoundedContext,
+      task,
+      resolution.implementationPhase
+    ),
+    scopeGuard: buildScopeGuard(task, resolution),
+    proceedDecision: resolution.proceedDecision
+  };
+}
 
-  const canonicalDocs = docs
-    .filter(doc => canonicalPaths.has(doc.path))
-    .map(doc => ({
-      path: doc.path,
-      title: doc.title,
-      type: doc.type,
-      reason: "canonical",
-      snippet: snippet(doc.content, task)
-    }));
-
-  const searchedDocs = docs
+export function buildCompactSearchDocs(docs: DocItem[], boundedContext: string, task: string, limit = 3) {
+  const canonicalPaths = new Set(resolveTaskContext(task).canonicalDocs);
+  return docs
     .filter(doc => !canonicalPaths.has(doc.path))
     .map(doc => ({
       path: doc.path,
       title: doc.title,
       type: doc.type,
-      score: scoreDoc(doc, task, context),
+      score: scoreDoc(doc, task, boundedContext),
       snippet: snippet(doc.content, task)
     }))
-    .filter(x => x.score > 0)
+    .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, Math.max(0, limit - canonicalDocs.length));
-
-  return {
-    resolution,
-    boundedContext: context,
-    task,
-    canonicalDocs,
-    searchedDocs,
-    relatedUmlParts: getRelatedUmls(context)
-  };
+    .slice(0, limit)
+    .map(item => ({
+      path: item.path,
+      title: item.title,
+      type: item.type,
+      snippet: item.snippet.length > 280 ? `${item.snippet.slice(0, 277)}...` : item.snippet
+    }));
 }

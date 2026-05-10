@@ -1,6 +1,6 @@
 # viaverse-docs-mcp
 
-This MCP server searches and reads the Viaverse source-of-truth docs and template reference files.
+This MCP server searches the Viaverse source-of-truth docs and returns the smallest sufficient context for a task.
 
 ## Setup
 
@@ -59,13 +59,23 @@ pre_coding_brief
 check_forbidden_terms
 ```
 
-## Kotlin Template Usage
+## Current Mode
 
-For React-to-Kotlin template work, start with:
+The MCP is optimized for greenfield implementation, not template completion.
+
+- Default mode is compact.
+- Max bounded contexts per task: `2`
+- Max canonical docs per task: `3`
+- Max snippet per doc: `1`
+- React/template references are included only for UI/screen tasks.
+- Foundation/auth/profile tasks must exclude marketplace, payment, chat, review, support, business workspace, and full social flows unless explicitly requested.
+
+## Expected First Real Task
 
 ```text
-resolve_task_context(task="refactor Kotlin Compose template from React visual reference")
-get_context_bundle(boundedContext="client", task="refactor Kotlin Compose template from React visual reference")
-read_doc(filePath="docs/templates/react-to-kotlin-compose-migration.md")
-read_doc(filePath="templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md")
+Create Viaverse greenfield Gradle Kotlin DSL monorepo skeleton with:
+- backend Spring Boot platform-service
+- mobile KMP/CMP app foundation
+- backend health endpoint
+- mobile-to-backend health check
 ```

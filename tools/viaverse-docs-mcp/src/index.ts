@@ -6,7 +6,7 @@ import { z } from "zod";
 import { loadDocs, readDoc, scoreDoc, snippet } from "./docs.js";
 import { checkForbiddenTerms } from "./forbidden.js";
 import { buildContextPack, getRelatedUmls, createPreCodingBriefTemplate } from "./context.js";
-import { resolveTaskContext, buildContextBundle } from "./task-router.js";
+import { resolveTaskContext, buildContextBundle, buildCompactSearchDocs } from "./task-router.js";
 import { getDocOutline, findSections } from "./sections.js";
 import { logMcpToolExchange } from "./logger.js";
 
@@ -64,30 +64,38 @@ registerLoggedTool(
         text: JSON.stringify({
           project: "Viaverse",
           implementation: "greenfield",
-          rule: "Use MCP before coding. Do not load all docs manually.",
-          clientTemplateRule: "For Kotlin template work, resolve the client/template context and read the React-to-Kotlin migration guide before editing.",
+          rule: "Use MCP before coding. Return the smallest sufficient context, not the largest available context.",
+          compactMode: {
+            maxBoundedContextsPerTask: 2,
+            maxCanonicalDocsPerTask: 3,
+            maxSnippetsPerDoc: 1
+          },
+          implementationOrder: [
+            "Repository / Gradle monorepo skeleton",
+            "Backend Spring Boot platform-service foundation",
+            "Mobile KMP/CMP foundation",
+            "Backend health endpoint",
+            "Mobile-to-backend health check",
+            "Logging, env config, network client, interceptors",
+            "AppResult/AppError and centralized error handling",
+            "Token storage abstraction and session manager",
+            "Auth and current-account vertical slices"
+          ],
           mandatoryFlow: [
             "resolve_task_context",
             "get_context_bundle",
             "pre_coding_brief",
             "implement"
           ],
-          globalDocs: [
-            "README.md",
+          compactGlobalDocs: [
             "AGENTS.md",
-            "CODING_RULES.md",
             "docs/blueprint/CLIENT_ARCHITECTURE.md",
-            "docs/templates/react-to-kotlin-compose-migration.md",
-            "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md",
-            "docs/DOCS_INDEX.md",
-            "docs/uml/UML_INDEX.md"
+            "docs/blueprint/BACKEND_ARCHITECTURE.md"
           ],
-          accountCapabilityRules: [
-            "One real Account can request work, do individual work, and operate business resources.",
-            "Personal/requester and individual Work Mode should feel like a lightweight Airbnb-style become-a-host transition after worker onboarding.",
-            "Business is a separate workspace/resource flow on the same Account: BusinessAccount/profile, merchant onboarding, verification, staff roles, catalog, subscription, and publish-ready policy.",
-            "Do not model customer, individual worker, and business as three separate login identities.",
-            "Do not treat Business Mode as the same lightweight switch as individual Work Mode."
+          scopeGuards: [
+            "Do not include React template context for foundation, backend, auth, repository, logging, DB, domain, or infrastructure tasks unless explicitly requested.",
+            "Do not continue Kotlin template completion unless explicitly requested.",
+            "Recommend splitting tasks that need more than 2 bounded contexts."
           ],
           stopConditions: [
             "new bounded context",
@@ -133,7 +141,10 @@ registerLoggedTool(
     return {
       content: [{
         type: "text",
-        text: JSON.stringify(buildContextBundle(docs, boundedContext, task, limit), null, 2)
+        text: JSON.stringify({
+          ...buildContextBundle(docs, boundedContext, task, Math.min(limit, 3)),
+          searchedDocs: buildCompactSearchDocs(docs, boundedContext, task, 2)
+        }, null, 2)
       }]
     };
   }
