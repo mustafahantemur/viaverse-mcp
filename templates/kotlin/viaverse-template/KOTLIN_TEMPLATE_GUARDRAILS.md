@@ -38,6 +38,7 @@ Bu dosya Viaverse Kotlin/Compose template'inde tekrar edilmemesi gereken hatalar
 - Explore, dashboard, request draft, provider onboarding, business workspace, settings and chat data service/repository arkasından gelmeli.
 - Explore iki amaçlı kalmalı: `Çevre` yerel sosyal/trust akışı; `Hizmet al` servis keşfi ve kategori araması.
 - Çevre akışında paylaşım oluşturma, mock fotoğraf/video medya seçimi, beğeni, yorum ve küçük iş teklif bağlamı görünür olmalı.
+- Çevre akışında hashtag mantığı korunmalı: metinden `#etiket` çıkarılmalı, trend etiketler gösterilmeli, etiket tıklanınca akış filtrelenmeli ve servis/repository katmanında test edilmelidir.
 - Arama ve filtreler React referansındaki gibi akışı boğmamalı; filtreler sürekli üstte açık duran chip listesi yerine arama yanında açılıp kapanan kontrollü alanda tutulmalı.
 - Light temada ana vurgu turuncu kullanılmalı; koyu/gece tema çalışmasında ana vurgu yeşil token üzerinden ilerlemeli.
 - Business workspace kişisel hizmet verme geçişinden ayrı tutulmalı; doğrulama, merchant, ekip rolleri, katalog ve publish-readiness akışı göstermeli.

@@ -61,6 +61,7 @@ data class SearchCriteria(
     val mode: DiscoveryMode = DiscoveryMode.DO_WORK,
     val selectedCategoryId: ServiceCategoryId? = null,
     val selectedPostType: SocialPostType? = null,
+    val selectedHashtagKey: String? = null,
     val urgency: DiscoveryUrgency = DiscoveryUrgency.ANY,
     val maxDistanceKm: Int = 10,
     val sort: DiscoverySort = DiscoverySort.RECOMMENDED
@@ -93,6 +94,12 @@ data class SocialComment(
     val timeTr: String
 )
 
+data class SocialHashtag(
+    val key: String,
+    val labelTr: String,
+    val postCount: Int
+)
+
 data class SocialFeedPost(
     val id: String,
     val type: SocialPostType,
@@ -106,6 +113,7 @@ data class SocialFeedPost(
     val mediaKind: SocialMediaKind,
     val mediaLabelTr: String?,
     val priceHintTr: String?,
+    val hashtags: List<String>,
     val comments: List<SocialComment>
 )
 
@@ -114,5 +122,6 @@ data class DiscoverySnapshot(
     val categories: List<ServiceCategory>,
     val items: List<ExploreItem>,
     val socialPosts: List<SocialFeedPost>,
+    val trendingHashtags: List<SocialHashtag>,
     val insights: List<AiInsight>
 )

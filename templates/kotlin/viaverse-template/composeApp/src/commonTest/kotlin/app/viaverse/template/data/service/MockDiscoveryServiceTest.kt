@@ -34,4 +34,29 @@ class MockDiscoveryServiceTest {
 
         assertEquals(listOf(SocialPostType.ANNOUNCEMENT), snapshot.socialPosts.map { it.type })
     }
+
+    @Test
+    fun socialFeedSearchMatchesHashtags() {
+        val snapshot = service.loadDiscovery(
+            SearchCriteria(
+                mode = DiscoveryMode.DO_WORK,
+                query = "#köpekgezdirme"
+            )
+        )
+
+        assertEquals(listOf(SocialPostType.WORK), snapshot.socialPosts.map { it.type })
+    }
+
+    @Test
+    fun socialFeedCanBeFilteredBySelectedHashtag() {
+        val snapshot = service.loadDiscovery(
+            SearchCriteria(
+                mode = DiscoveryMode.DO_WORK,
+                selectedHashtagKey = "kayıpkedi"
+            )
+        )
+
+        assertEquals(listOf(SocialPostType.ANNOUNCEMENT), snapshot.socialPosts.map { it.type })
+        assertTrue(snapshot.trendingHashtags.any { it.key == "kayıpkedi" })
+    }
 }

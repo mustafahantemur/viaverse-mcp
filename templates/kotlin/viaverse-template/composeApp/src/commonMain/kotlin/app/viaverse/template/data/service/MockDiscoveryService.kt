@@ -12,6 +12,7 @@ import app.viaverse.template.domain.model.ServiceCategory
 import app.viaverse.template.domain.model.ServiceCategoryId
 import app.viaverse.template.domain.model.SocialComment
 import app.viaverse.template.domain.model.SocialFeedPost
+import app.viaverse.template.domain.model.SocialHashtag
 import app.viaverse.template.domain.model.SocialMediaKind
 import app.viaverse.template.domain.model.SocialPostType
 
@@ -24,6 +25,7 @@ class MockDiscoveryService {
             categories = categories,
             items = filtered,
             socialPosts = filteredPosts,
+            trendingHashtags = buildTrendingHashtags(filteredPosts),
             insights = buildInsights(criteria, filtered)
         )
     }
@@ -55,14 +57,27 @@ class MockDiscoveryService {
         return socialPosts
             .asSequence()
             .filter { criteria.selectedPostType == null || it.type == criteria.selectedPostType }
+            .filter { criteria.selectedHashtagKey == null || it.hashtags.any { tag -> tag == criteria.selectedHashtagKey } }
             .filter { post ->
                 query.isBlank() ||
                     post.titleTr.orEmpty().lowercase().contains(query) ||
                     post.bodyTr.lowercase().contains(query) ||
                     post.authorNameTr.lowercase().contains(query) ||
-                    post.type.labelTr().lowercase().contains(query)
+                    post.type.labelTr().lowercase().contains(query) ||
+                    post.hashtags.any { tag -> "#$tag".contains(query) || tag.contains(query.removePrefix("#")) }
             }
             .toList()
+    }
+
+    private fun buildTrendingHashtags(posts: List<SocialFeedPost>): List<SocialHashtag> {
+        return posts
+            .flatMap { it.hashtags }
+            .groupingBy { it }
+            .eachCount()
+            .entries
+            .sortedWith(compareByDescending<Map.Entry<String, Int>> { it.value }.thenBy { it.key })
+            .take(8)
+            .map { SocialHashtag(key = it.key, labelTr = "#${it.key}", postCount = it.value) }
     }
 
     private fun ExploreItem.matchesMode(mode: DiscoveryMode): Boolean {
@@ -230,6 +245,7 @@ class MockDiscoveryService {
             mediaKind = SocialMediaKind.NONE,
             mediaLabelTr = null,
             priceHintTr = null,
+            hashtags = listOf("montaj", "komşuyardımı", "alet"),
             comments = emptyList()
         ),
         SocialFeedPost(
@@ -245,6 +261,7 @@ class MockDiscoveryService {
             mediaKind = SocialMediaKind.IMAGE,
             mediaLabelTr = "Kedi fotoğrafı",
             priceHintTr = null,
+            hashtags = listOf("kayıpkedi", "mahalle", "yardım"),
             comments = listOf(
                 SocialComment("Fatma Y.", "Çok geçmiş olsun, gözümüz yollarda olur.", "10 dk"),
                 SocialComment("Murat C.", "Parkın köşesinde gördüm sanırım, birazdan bakacağım.", "5 dk")
@@ -263,6 +280,7 @@ class MockDiscoveryService {
             mediaKind = SocialMediaKind.VIDEO,
             mediaLabelTr = "Kısa tanıtım videosu",
             priceHintTr = "Teklif bekliyor",
+            hashtags = listOf("köpekgezdirme", "küçükiş", "evcilhayvan"),
             comments = listOf(
                 SocialComment("Selin G.", "Hangi parkta dolaştırılması gerekiyor?", "20 dk")
             )
@@ -280,6 +298,7 @@ class MockDiscoveryService {
             mediaKind = SocialMediaKind.NONE,
             mediaLabelTr = null,
             priceHintTr = null,
+            hashtags = listOf("bebek", "tavsiye", "güvenlik"),
             comments = emptyList()
         )
     )

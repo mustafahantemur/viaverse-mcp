@@ -49,6 +49,7 @@ import app.viaverse.template.domain.model.ServiceCategory
 import app.viaverse.template.domain.model.ServiceCategoryId
 import app.viaverse.template.domain.model.SocialComment
 import app.viaverse.template.domain.model.SocialFeedPost
+import app.viaverse.template.domain.model.SocialHashtag
 import app.viaverse.template.domain.model.SocialMediaKind
 import app.viaverse.template.domain.model.SocialPostType
 import app.viaverse.template.ui.theme.Dimensions
@@ -68,6 +69,9 @@ fun ExploreScreen(
     var composerOpen by remember { mutableStateOf(false) }
     var localPosts by remember { mutableStateOf(emptyList<SocialFeedPost>()) }
     val snapshot = remember(criteria) { repository.load(criteria) }
+    val trendingHashtags = remember(localPosts, snapshot.trendingHashtags) {
+        mergeTrendingHashtags(snapshot.trendingHashtags, localPosts)
+    }
 
     LazyColumn(
         modifier = Modifier
@@ -84,7 +88,7 @@ fun ExploreScreen(
                 onQueryChange = { queryDraft = it },
                 onSearch = { criteria = criteria.copy(query = queryDraft) },
                 onModeSelected = { mode ->
-                    criteria = criteria.copy(mode = mode, selectedCategoryId = null, selectedPostType = null, query = "")
+                    criteria = criteria.copy(mode = mode, selectedCategoryId = null, selectedPostType = null, selectedHashtagKey = null, query = "")
                     queryDraft = ""
                     filtersOpen = false
                 },
@@ -118,12 +122,33 @@ fun ExploreScreen(
                     }
                 )
             }
+            item {
+                HashtagStrip(
+                    hashtags = trendingHashtags,
+                    selectedHashtagKey = criteria.selectedHashtagKey,
+                    onSelected = { hashtagKey ->
+                        criteria = criteria.copy(
+                            selectedHashtagKey = if (criteria.selectedHashtagKey == hashtagKey) null else hashtagKey,
+                            query = ""
+                        )
+                        queryDraft = ""
+                    }
+                )
+            }
             item { InsightPanel(snapshot = snapshot) }
             val posts = (localPosts + snapshot.socialPosts).filter { it.matches(criteria) }
             if (posts.isEmpty()) {
                 item { EmptyResultCard("Çevrende paylaşım bulunamadı", "Aramayı temizle veya filtreyi genişlet.") }
             }
-            items(posts, key = { it.id }) { post -> SocialPostCard(post) }
+            items(posts, key = { it.id }) { post ->
+                SocialPostCard(
+                    post = post,
+                    onHashtagSelected = { hashtagKey ->
+                        criteria = criteria.copy(selectedHashtagKey = hashtagKey, query = "")
+                        queryDraft = ""
+                    }
+                )
+            }
         } else {
             item {
                 CategorySection(
@@ -300,6 +325,14 @@ private fun FilterSheet(criteria: SearchCriteria, onCriteriaChange: (SearchCrite
                 FilterChip("En yakın", criteria.sort == DiscoverySort.NEARBY) { onCriteriaChange(criteria.copy(sort = DiscoverySort.NEARBY)) }
             }
         }
+        if (criteria.selectedHashtagKey != null) {
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text("#${criteria.selectedHashtagKey}", color = ViaverseColors.BrandOrange, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+                FilterChip("Etiketi temizle", selected = false) {
+                    onCriteriaChange(criteria.copy(selectedHashtagKey = null))
+                }
+            }
+        }
     }
 }
 
@@ -339,6 +372,7 @@ private fun LocalComposerCard(expanded: Boolean, onToggle: () -> Unit, onPublish
             SocialTypeStrip(selectedPostType = type, onSelected = { type = it })
             OutlinedTextField(value = title, onValueChange = { title = it }, modifier = Modifier.fillMaxWidth(), label = { Text("Başlık") }, singleLine = true, shape = RoundedCornerShape(Dimensions.RadiusMd))
             OutlinedTextField(value = body, onValueChange = { body = it }, modifier = Modifier.fillMaxWidth(), label = { Text("Ne paylaşmak istiyorsun?") }, minLines = 3, shape = RoundedCornerShape(Dimensions.RadiusMd))
+            ComposerHashtagPreview(extractHashtags(title, body))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 FilterChip("Fotoğraf", mediaKind == SocialMediaKind.IMAGE) { mediaKind = SocialMediaKind.IMAGE }
                 FilterChip("Video", mediaKind == SocialMediaKind.VIDEO) { mediaKind = SocialMediaKind.VIDEO }
@@ -369,6 +403,7 @@ private fun LocalComposerCard(expanded: Boolean, onToggle: () -> Unit, onPublish
                                     mediaKind = mediaKind,
                                     mediaLabelTr = if (mediaKind == SocialMediaKind.NONE) null else mediaKind.labelTr(),
                                     priceHintTr = if (type == SocialPostType.WORK) "Teklif bekliyor" else null,
+                                    hashtags = extractHashtags(title, body),
                                     comments = emptyList()
                                 )
                             )
@@ -395,7 +430,34 @@ private fun SocialTypeStrip(selectedPostType: SocialPostType?, onSelected: (Soci
 }
 
 @Composable
-private fun SocialPostCard(post: SocialFeedPost) {
+private fun HashtagStrip(hashtags: List<SocialHashtag>, selectedHashtagKey: String?, onSelected: (String) -> Unit) {
+    if (hashtags.isEmpty()) return
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp), contentPadding = PaddingValues(horizontal = Dimensions.SpaceLg)) {
+        items(hashtags, key = { it.key }) { hashtag ->
+            HashtagChip(
+                label = "${hashtag.labelTr} ${hashtag.postCount}",
+                selected = selectedHashtagKey == hashtag.key,
+                onClick = { onSelected(hashtag.key) }
+            )
+        }
+    }
+}
+
+@Composable
+private fun ComposerHashtagPreview(hashtags: List<String>) {
+    if (hashtags.isEmpty()) {
+        Text("Metne #etiket ekleyerek çevrede bulunmasını kolaylaştır.", color = ViaverseColors.MutedText, style = MaterialTheme.typography.labelSmall)
+        return
+    }
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        items(hashtags, key = { it }) { tag ->
+            HashtagChip(label = "#$tag", selected = false, onClick = {})
+        }
+    }
+}
+
+@Composable
+private fun SocialPostCard(post: SocialFeedPost, onHashtagSelected: (String) -> Unit) {
     var liked by remember(post.id) { mutableStateOf(false) }
     var commentsOpen by remember(post.id) { mutableStateOf(post.comments.isNotEmpty()) }
     var commentDraft by remember(post.id) { mutableStateOf("") }
@@ -425,6 +487,13 @@ private fun SocialPostCard(post: SocialFeedPost) {
             Text(post.titleTr, color = ViaverseColors.Ink, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
         }
         Text(post.bodyTr, color = ViaverseColors.Ink, style = MaterialTheme.typography.bodyMedium)
+        if (post.hashtags.isNotEmpty()) {
+            LazyRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                items(post.hashtags, key = { it }) { tag ->
+                    HashtagChip(label = "#$tag", selected = false, onClick = { onHashtagSelected(tag) })
+                }
+            }
+        }
         if (post.mediaKind != SocialMediaKind.NONE) {
             MediaPreview(post.mediaKind, post.mediaLabelTr ?: post.mediaKind.labelTr())
         }
@@ -566,6 +635,27 @@ private fun FilterChip(label: String, selected: Boolean, onClick: () -> Unit) {
 }
 
 @Composable
+private fun HashtagChip(label: String, selected: Boolean, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .height(34.dp)
+            .clip(RoundedCornerShape(999.dp))
+            .background(if (selected) ViaverseColors.BrandOrange else ViaverseColors.WarmMuted)
+            .border(1.dp, if (selected) ViaverseColors.BrandOrange else ViaverseColors.BorderSubtle, RoundedCornerShape(999.dp))
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            label,
+            color = if (selected) ViaverseColors.OnBrand else ViaverseColors.BrandOrange,
+            style = MaterialTheme.typography.labelMedium,
+            fontWeight = FontWeight.Bold
+        )
+    }
+}
+
+@Composable
 private fun InsightPanel(snapshot: DiscoverySnapshot) {
     val insight = snapshot.insights.firstOrNull() ?: return
     Column(
@@ -638,6 +728,7 @@ private fun SectionTitle(title: String, action: String) {
 private fun SearchCriteria.hasActiveFilters(): Boolean {
     return selectedCategoryId != null ||
         selectedPostType != null ||
+        selectedHashtagKey != null ||
         urgency != DiscoveryUrgency.ANY ||
         maxDistanceKm <= 5 ||
         sort != DiscoverySort.RECOMMENDED
@@ -663,11 +754,39 @@ private fun SocialMediaKind.labelTr(): String {
 
 private fun SocialFeedPost.matches(criteria: SearchCriteria): Boolean {
     val query = criteria.query.trim().lowercase()
+    val hashtagQuery = query.removePrefix("#")
     val queryMatches = query.isBlank() ||
         titleTr.orEmpty().lowercase().contains(query) ||
         bodyTr.lowercase().contains(query) ||
         authorNameTr.lowercase().contains(query) ||
-        type.labelTr().lowercase().contains(query)
+        type.labelTr().lowercase().contains(query) ||
+        hashtags.any { tag -> tag.contains(hashtagQuery) || "#$tag".contains(query) }
     val typeMatches = criteria.selectedPostType == null || type == criteria.selectedPostType
-    return queryMatches && typeMatches
+    val hashtagMatches = criteria.selectedHashtagKey == null || hashtags.any { it == criteria.selectedHashtagKey }
+    return queryMatches && typeMatches && hashtagMatches
+}
+
+private fun extractHashtags(title: String, body: String): List<String> {
+    val text = "$title $body"
+    return Regex("""(^|\s)#([A-Za-z0-9_ğüşöçıİĞÜŞÖÇ]{2,30})""")
+        .findAll(text)
+        .mapNotNull { match -> normalizeHashtag(match.groupValues.getOrNull(2).orEmpty()) }
+        .distinct()
+        .take(8)
+        .toList()
+}
+
+private fun normalizeHashtag(raw: String): String? {
+    val normalized = raw.trim().removePrefix("#").lowercase()
+    return normalized.takeIf { it.length in 2..30 }
+}
+
+private fun mergeTrendingHashtags(base: List<SocialHashtag>, localPosts: List<SocialFeedPost>): List<SocialHashtag> {
+    val counts = linkedMapOf<String, Int>()
+    base.forEach { counts[it.key] = (counts[it.key] ?: 0) + it.postCount }
+    localPosts.flatMap { it.hashtags }.forEach { tag -> counts[tag] = (counts[tag] ?: 0) + 1 }
+    return counts.entries
+        .sortedWith(compareByDescending<Map.Entry<String, Int>> { it.value }.thenBy { it.key })
+        .take(10)
+        .map { SocialHashtag(key = it.key, labelTr = "#${it.key}", postCount = it.value) }
 }
