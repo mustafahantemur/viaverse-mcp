@@ -199,6 +199,8 @@ fun MainShell(
                     is MainPanel.ExploreItem -> ExploreItemDetailScreen(
                         repository = discoveryRepository,
                         itemId = panel.itemId,
+                        onCreateRequest = { activePanel = MainPanel.CreateRequest },
+                        onOpenChat = { activePanel = MainPanel.Chat(it) },
                         onBack = { activePanel = null }
                     )
 

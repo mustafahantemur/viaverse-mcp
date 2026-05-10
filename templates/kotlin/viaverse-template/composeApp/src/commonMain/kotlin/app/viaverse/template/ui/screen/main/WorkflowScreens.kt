@@ -66,6 +66,8 @@ import org.jetbrains.compose.resources.painterResource
 internal fun ExploreItemDetailScreen(
     repository: DiscoveryRepository,
     itemId: String,
+    onCreateRequest: () -> Unit,
+    onOpenChat: (String) -> Unit,
     onBack: () -> Unit
 ) {
     val item = remember(itemId) { repository.findItem(itemId) }
@@ -91,7 +93,13 @@ internal fun ExploreItemDetailScreen(
             item {
                 PrimaryOverlayAction(
                     label = if (item.type == DiscoveryItemType.PROVIDER) "Talep taslağı oluştur" else "Teklif akışını başlat",
-                    onClick = onBack
+                    onClick = {
+                        if (item.type == DiscoveryItemType.PROVIDER) {
+                            onCreateRequest()
+                        } else {
+                            onOpenChat("msg_001")
+                        }
+                    }
                 )
             }
         }
