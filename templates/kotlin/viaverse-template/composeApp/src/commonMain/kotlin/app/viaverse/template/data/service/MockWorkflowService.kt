@@ -1,15 +1,22 @@
 package app.viaverse.template.data.service
 
 import app.viaverse.template.domain.model.AiInsight
+import app.viaverse.template.domain.model.BusinessCatalogItem
 import app.viaverse.template.domain.model.BusinessSetupStep
+import app.viaverse.template.domain.model.BusinessSubscriptionSnapshot
+import app.viaverse.template.domain.model.BusinessTeamMember
+import app.viaverse.template.domain.model.BusinessTeamRole
 import app.viaverse.template.domain.model.BusinessWorkspaceStatus
 import app.viaverse.template.domain.model.BusinessWorkspaceDetail
 import app.viaverse.template.domain.model.BusinessWorkspaceSummary
+import app.viaverse.template.domain.model.CatalogItemStatus
 import app.viaverse.template.domain.model.ChatMessage
 import app.viaverse.template.domain.model.ChatPolicyState
 import app.viaverse.template.domain.model.ChatThread
 import app.viaverse.template.domain.model.CustomerJob
 import app.viaverse.template.domain.model.CustomerJobStatus
+import app.viaverse.template.domain.model.JobTimelineStep
+import app.viaverse.template.domain.model.JobTimelineStepStatus
 import app.viaverse.template.domain.model.OfferPreview
 import app.viaverse.template.domain.model.OfferStatus
 import app.viaverse.template.domain.model.ProfileSettingGroup
@@ -34,6 +41,7 @@ import app.viaverse.template.domain.model.ServiceCategoryId
 import app.viaverse.template.domain.model.SettingDetail
 import app.viaverse.template.domain.model.SupportTicket
 import app.viaverse.template.domain.model.SupportTicketStatus
+import app.viaverse.template.domain.model.SubscriptionState
 import app.viaverse.template.domain.model.WalletSnapshot
 import app.viaverse.template.domain.model.WalletTransaction
 import app.viaverse.template.domain.model.WorkLifecycleStatus
@@ -76,7 +84,13 @@ class MockWorkflowService {
                 descriptionTr = "Mutfak musluğu değişimi ve küçük tesisat kontrolü.",
                 offerCount = 2,
                 paymentStatus = SafePaymentStatus.NOT_STARTED,
-                aiSummaryTr = "İki teklif geldi; güven puanı, iptal geçmişi ve kapsam netliği karşılaştırılmalı."
+                aiSummaryTr = "İki teklif geldi; güven puanı, iptal geçmişi ve kapsam netliği karşılaştırılmalı.",
+                timelineSteps = requestTimeline(CustomerJobStatus.OFFER_RECEIVED),
+                safetyNotesTr = listOf(
+                    "Teklif kabul edilmeden telefon/adres paylaşımı kısıtlıdır.",
+                    "Güvenli ödeme kabul sonrası yetkilendirilir.",
+                    "Uyuşmazlık açılırsa payout bloklanır."
+                )
             ),
             CustomerJob(
                 id = "job_002",
@@ -88,7 +102,12 @@ class MockWorkflowService {
                 descriptionTr = "3+1 ev için düzenli temizlik planı.",
                 offerCount = 0,
                 paymentStatus = SafePaymentStatus.NOT_STARTED,
-                aiSummaryTr = "Talep yayında; uygun sağlayıcı havuzu genişletiliyor."
+                aiSummaryTr = "Talep yayında; uygun sağlayıcı havuzu genişletiliyor.",
+                timelineSteps = requestTimeline(CustomerJobStatus.MATCHING),
+                safetyNotesTr = listOf(
+                    "Eşleşme tamamlanana kadar sağlayıcıya özel bilgi gönderilmez.",
+                    "Filtreleri genişletmek teklif alma ihtimalini artırır."
+                )
             ),
             CustomerJob(
                 id = "job_003",
@@ -100,9 +119,41 @@ class MockWorkflowService {
                 descriptionTr = "Yeni marka için logo ve Instagram şablonları.",
                 offerCount = 1,
                 paymentStatus = SafePaymentStatus.HELD_IN_ESCROW,
-                aiSummaryTr = "Ödeme güvenli havuzda; teslim onayı sonrası payout serbest bırakılır."
+                aiSummaryTr = "Ödeme güvenli havuzda; teslim onayı sonrası payout serbest bırakılır.",
+                timelineSteps = requestTimeline(CustomerJobStatus.IN_PROGRESS),
+                safetyNotesTr = listOf(
+                    "Teslim dosyaları uygulama içinde tutulmalı.",
+                    "Tamamlanma onayı sonrası iki taraflı yorum açılır."
+                )
             )
         )
+    }
+
+    private fun requestTimeline(status: CustomerJobStatus): List<JobTimelineStep> {
+        val currentIndex = when (status) {
+            CustomerJobStatus.MATCHING -> 1
+            CustomerJobStatus.OFFER_RECEIVED -> 2
+            CustomerJobStatus.ACCEPTED -> 3
+            CustomerJobStatus.IN_PROGRESS -> 4
+            CustomerJobStatus.COMPLETED -> 5
+            CustomerJobStatus.DISPUTED -> 4
+        }
+        return listOf(
+            JobTimelineStep("Talep yazıldı", "Kategori, konum, bütçe ve kapsam hazır.", timelineStatus(0, currentIndex)),
+            JobTimelineStep("Eşleşme", "Uygun sağlayıcı havuzu taranır.", timelineStatus(1, currentIndex)),
+            JobTimelineStep("Teklifler", "Güven, fiyat ve kapsam karşılaştırılır.", timelineStatus(2, currentIndex)),
+            JobTimelineStep("Güvenli ödeme", "Tutar yetkilendirilir ve policy açılır.", timelineStatus(3, currentIndex)),
+            JobTimelineStep("İş yürütme", "Randevu, teslim ve chat job state'e bağlıdır.", timelineStatus(4, currentIndex)),
+            JobTimelineStep("Yorum", "İki taraflı yorum ve rozet sinyalleri tamamlanır.", timelineStatus(5, currentIndex))
+        )
+    }
+
+    private fun timelineStatus(index: Int, currentIndex: Int): JobTimelineStepStatus {
+        return when {
+            index < currentIndex -> JobTimelineStepStatus.COMPLETED
+            index == currentIndex -> JobTimelineStepStatus.CURRENT
+            else -> JobTimelineStepStatus.LOCKED
+        }
     }
 
     fun offersForJob(jobId: String): List<OfferPreview> {
@@ -161,6 +212,22 @@ class MockWorkflowService {
                 BusinessSetupStep("Merchant onboarding", "iyzico ödeme alma ve payout hazırlığı.", ProviderSetupStepStatus.TODO),
                 BusinessSetupStep("Ekip ve roller", "Personel erişimi, işletme yetkileri ve audit izi.", ProviderSetupStepStatus.TODO),
                 BusinessSetupStep("Katalog ve yayın", "Hizmet katalogları, bölge, fiyat ipuçları ve SEO görünümü.", ProviderSetupStepStatus.TODO)
+            ),
+            teamMembers = listOf(
+                BusinessTeamMember("tm_001", "Deniz Arslan", BusinessTeamRole.OWNER, "Yetkili kişi"),
+                BusinessTeamMember("tm_002", "Selin Kaya", BusinessTeamRole.MANAGER, "Katalog ve teklif yönetimi"),
+                BusinessTeamMember("tm_003", "Umut Can", BusinessTeamRole.STAFF, "Saha operasyonu")
+            ),
+            catalogItems = listOf(
+                BusinessCatalogItem("cat_001", "Kombi bakım paketi", ServiceCategoryId.HOME_REPAIR, "1.200 TL'den başlar", CatalogItemStatus.READY),
+                BusinessCatalogItem("cat_002", "Acil tesisat desteği", ServiceCategoryId.HOME_REPAIR, "Teklif ile", CatalogItemStatus.DRAFT),
+                BusinessCatalogItem("cat_003", "Kurumsal temizlik planı", ServiceCategoryId.CLEANING, "Haftalık plan", CatalogItemStatus.DRAFT)
+            ),
+            subscription = BusinessSubscriptionSnapshot(
+                state = SubscriptionState.TRIAL,
+                planNameTr = "Business Başlangıç",
+                renewalHintTr = "İlk ay ücretsiz, yayın sonrası abonelik aktifleşir.",
+                merchantStatusTr = "iyzico merchant bilgisi bekliyor"
             ),
             publishingChecksTr = listOf(
                 "Doğrulama tamamlanmadan public işletme profili yayınlanmaz.",
@@ -258,7 +325,26 @@ class MockWorkflowService {
                 detail.summary.subscriptionStateTr
             }
         )
-        return detail.copy(summary = nextSummary, steps = steps)
+        val nextSubscription = if (nextStatus == BusinessWorkspaceStatus.PUBLISHED) {
+            detail.subscription.copy(
+                state = SubscriptionState.ACTIVE,
+                renewalHintTr = "Business aboneliği aktif.",
+                merchantStatusTr = "iyzico merchant ve payout hazır"
+            )
+        } else {
+            detail.subscription
+        }
+        val nextCatalog = if (nextStatus == BusinessWorkspaceStatus.PUBLISHED) {
+            detail.catalogItems.map { item -> item.copy(status = CatalogItemStatus.PUBLISHED) }
+        } else {
+            detail.catalogItems
+        }
+        return detail.copy(
+            summary = nextSummary,
+            steps = steps,
+            subscription = nextSubscription,
+            catalogItems = nextCatalog
+        )
     }
 
     fun progressProviderOnboarding(snapshot: ProviderOnboardingSnapshot): ProviderOnboardingSnapshot {

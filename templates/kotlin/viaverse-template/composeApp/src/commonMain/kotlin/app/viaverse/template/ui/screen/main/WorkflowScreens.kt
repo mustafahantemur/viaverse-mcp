@@ -35,7 +35,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.viaverse.template.data.repository.DiscoveryRepository
 import app.viaverse.template.data.repository.WorkflowRepository
+import app.viaverse.template.domain.model.BusinessTeamRole
 import app.viaverse.template.domain.model.BusinessWorkspaceSummary
+import app.viaverse.template.domain.model.CatalogItemStatus
 import app.viaverse.template.domain.model.ChatMessage
 import app.viaverse.template.domain.model.ChatPolicyState
 import app.viaverse.template.domain.model.CustomerJobStatus
@@ -53,6 +55,7 @@ import app.viaverse.template.domain.model.SafePaymentStatus
 import app.viaverse.template.domain.model.SchedulePreference
 import app.viaverse.template.domain.model.ServiceCategoryId
 import app.viaverse.template.domain.model.SupportTicketStatus
+import app.viaverse.template.domain.model.SubscriptionState
 import app.viaverse.template.domain.model.WorkLifecycleStatus
 import app.viaverse.template.ui.screen.explore.categoryDrawable
 import app.viaverse.template.ui.theme.Dimensions
@@ -265,6 +268,27 @@ internal fun BusinessWorkspaceScreen(
         }
         items(detail.steps, key = { it.titleTr }) { step ->
             InfoCard(title = step.titleTr, body = step.bodyTr, status = step.status.labelTr())
+        }
+        item {
+            InfoCard(
+                title = "Abonelik ve merchant",
+                body = "${detail.subscription.planNameTr}\n${detail.subscription.renewalHintTr}\n${detail.subscription.merchantStatusTr}",
+                status = detail.subscription.state.labelTr()
+            )
+        }
+        items(detail.teamMembers, key = { it.id }) { member ->
+            InfoCard(
+                title = member.nameTr,
+                body = member.statusTr,
+                status = member.role.labelTr()
+            )
+        }
+        items(detail.catalogItems, key = { it.id }) { catalogItem ->
+            InfoCard(
+                title = catalogItem.titleTr,
+                body = "${catalogItem.categoryId.labelTr()} | ${catalogItem.priceHintTr}",
+                status = catalogItem.status.labelTr()
+            )
         }
         item {
             InsightList(title = "Yayın kontrolleri", items = detail.publishingChecksTr)
@@ -795,6 +819,30 @@ internal fun SupportTicketStatus.labelTr(): String {
         SupportTicketStatus.WAITING_FOR_USER -> "Yanıt bekliyor"
         SupportTicketStatus.ESCALATED -> "Eskalasyon"
         SupportTicketStatus.RESOLVED -> "Çözüldü"
+    }
+}
+
+private fun BusinessTeamRole.labelTr(): String {
+    return when (this) {
+        BusinessTeamRole.OWNER -> "Sahip"
+        BusinessTeamRole.MANAGER -> "Yönetici"
+        BusinessTeamRole.STAFF -> "Personel"
+    }
+}
+
+private fun CatalogItemStatus.labelTr(): String {
+    return when (this) {
+        CatalogItemStatus.DRAFT -> "Taslak"
+        CatalogItemStatus.READY -> "Hazır"
+        CatalogItemStatus.PUBLISHED -> "Yayında"
+    }
+}
+
+private fun SubscriptionState.labelTr(): String {
+    return when (this) {
+        SubscriptionState.TRIAL -> "Deneme"
+        SubscriptionState.ACTIVE -> "Aktif"
+        SubscriptionState.PAYMENT_REQUIRED -> "Ödeme gerekli"
     }
 }
 

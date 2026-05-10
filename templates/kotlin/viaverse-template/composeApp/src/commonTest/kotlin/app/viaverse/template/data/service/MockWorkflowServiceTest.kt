@@ -1,7 +1,9 @@
 package app.viaverse.template.data.service
 
 import app.viaverse.template.domain.model.BusinessWorkspaceStatus
+import app.viaverse.template.domain.model.CatalogItemStatus
 import app.viaverse.template.domain.model.ProviderSetupStepStatus
+import app.viaverse.template.domain.model.SubscriptionState
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -15,6 +17,8 @@ class MockWorkflowServiceTest {
 
         assertTrue(jobIds.contains("job_001"))
         assertTrue(jobIds.contains("job_002"))
+        assertTrue(service.customerJobs().all { it.timelineSteps.isNotEmpty() })
+        assertTrue(service.customerJobs().all { it.safetyNotesTr.isNotEmpty() })
     }
 
     @Test
@@ -40,5 +44,7 @@ class MockWorkflowServiceTest {
 
         assertEquals(BusinessWorkspaceStatus.PUBLISHED, detail.summary.status)
         assertTrue(detail.steps.all { it.status == ProviderSetupStepStatus.DONE })
+        assertEquals(SubscriptionState.ACTIVE, detail.subscription.state)
+        assertTrue(detail.catalogItems.all { it.status == CatalogItemStatus.PUBLISHED })
     }
 }

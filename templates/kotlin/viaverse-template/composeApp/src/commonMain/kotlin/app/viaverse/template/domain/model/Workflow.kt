@@ -78,6 +78,30 @@ enum class ProviderAvailability {
     PAUSED
 }
 
+enum class BusinessTeamRole {
+    OWNER,
+    MANAGER,
+    STAFF
+}
+
+enum class CatalogItemStatus {
+    DRAFT,
+    READY,
+    PUBLISHED
+}
+
+enum class SubscriptionState {
+    TRIAL,
+    ACTIVE,
+    PAYMENT_REQUIRED
+}
+
+enum class JobTimelineStepStatus {
+    COMPLETED,
+    CURRENT,
+    LOCKED
+}
+
 data class RequestDraft(
     val titleTr: String,
     val descriptionTr: String,
@@ -99,7 +123,15 @@ data class CustomerJob(
     val descriptionTr: String,
     val offerCount: Int,
     val paymentStatus: SafePaymentStatus,
-    val aiSummaryTr: String
+    val aiSummaryTr: String,
+    val timelineSteps: List<JobTimelineStep>,
+    val safetyNotesTr: List<String>
+)
+
+data class JobTimelineStep(
+    val titleTr: String,
+    val bodyTr: String,
+    val status: JobTimelineStepStatus
 )
 
 data class OfferPreview(
@@ -223,8 +255,33 @@ data class BusinessSetupStep(
 data class BusinessWorkspaceDetail(
     val summary: BusinessWorkspaceSummary,
     val steps: List<BusinessSetupStep>,
+    val teamMembers: List<BusinessTeamMember>,
+    val catalogItems: List<BusinessCatalogItem>,
+    val subscription: BusinessSubscriptionSnapshot,
     val publishingChecksTr: List<String>,
     val insights: List<AiInsight>
+)
+
+data class BusinessTeamMember(
+    val id: String,
+    val nameTr: String,
+    val role: BusinessTeamRole,
+    val statusTr: String
+)
+
+data class BusinessCatalogItem(
+    val id: String,
+    val titleTr: String,
+    val categoryId: ServiceCategoryId,
+    val priceHintTr: String,
+    val status: CatalogItemStatus
+)
+
+data class BusinessSubscriptionSnapshot(
+    val state: SubscriptionState,
+    val planNameTr: String,
+    val renewalHintTr: String,
+    val merchantStatusTr: String
 )
 
 data class ProfileSettingGroup(

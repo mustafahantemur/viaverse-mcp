@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.domain.model.CustomerJobStatus
+import app.viaverse.template.domain.model.JobTimelineStepStatus
 import app.viaverse.template.domain.model.OfferStatus
 import app.viaverse.template.domain.model.ReviewStatus
 import app.viaverse.template.domain.model.SafePaymentStatus
@@ -54,6 +55,13 @@ internal fun CustomerJobDetailScreen(
             item {
                 InsightList(title = "AI talep özeti", items = listOf(job.aiSummaryTr))
             }
+            items(job.timelineSteps, key = { it.titleTr }) { step ->
+                InfoCard(
+                    title = step.titleTr,
+                    body = step.bodyTr,
+                    status = step.status.labelTr()
+                )
+            }
             items(offers, key = { it.id }) { offer ->
                 val offerStatus = when {
                     acceptedOfferId == offer.id -> OfferStatus.ACCEPTED
@@ -93,6 +101,9 @@ internal fun CustomerJobDetailScreen(
                         )
                     )
                 }
+            }
+            item {
+                InsightList(title = "Güvenlik notları", items = job.safetyNotesTr)
             }
             item {
                 PrimaryOverlayAction(label = "Mesajlaşmaya geç", onClick = { onOpenChat("msg_001") })
@@ -190,6 +201,14 @@ private fun WorkLifecycleStatus.providerLabelTr(): String {
         WorkLifecycleStatus.OPEN -> "Açık"
         WorkLifecycleStatus.OFFER_SENT -> "Teklif verildi"
         WorkLifecycleStatus.IN_PROGRESS -> "Devam ediyor"
+    }
+}
+
+private fun JobTimelineStepStatus.labelTr(): String {
+    return when (this) {
+        JobTimelineStepStatus.COMPLETED -> "Tamam"
+        JobTimelineStepStatus.CURRENT -> "Şimdi"
+        JobTimelineStepStatus.LOCKED -> "Kilitli"
     }
 }
 
