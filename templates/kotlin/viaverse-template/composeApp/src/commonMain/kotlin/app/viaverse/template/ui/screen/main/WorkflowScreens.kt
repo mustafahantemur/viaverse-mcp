@@ -144,7 +144,14 @@ internal fun RequestDraftScreen(
                 item {
                     CategoryPicker(
                         selected = draft.categoryId,
-                        onSelected = { draft = draft.copy(categoryId = it, status = RequestDraftStatus.EDITING) }
+                        selectedSubcategory = draft.subcategoryTr,
+                        onSelected = { categoryId, subcategory ->
+                            draft = draft.copy(
+                                categoryId = categoryId,
+                                subcategoryTr = subcategory,
+                                status = RequestDraftStatus.EDITING
+                            )
+                        }
                     )
                 }
             }
@@ -185,7 +192,7 @@ internal fun RequestDraftScreen(
                 item {
                     InfoCard(
                         title = "Gözden geçir",
-                        body = "${draft.titleTr}\n${draft.descriptionTr}\n${draft.locationTr} | ${draft.budgetHintTr}",
+                        body = "${draft.categoryId.labelTr()} / ${draft.subcategoryTr}\n${draft.titleTr}\n${draft.descriptionTr}\n${draft.locationTr} | ${draft.budgetHintTr}",
                         status = draft.schedulePreference.labelTr()
                     )
                 }
@@ -405,12 +412,12 @@ internal fun ChatDetailScreen(
                 ) {
                     Text(
                         text = message.textTr,
-                        color = if (message.fromCurrentUser) ViaverseColors.OnBrand else ViaverseColors.Ink,
+                        color = ViaverseColors.Ink,
                         style = MaterialTheme.typography.bodyMedium
                     )
                     Text(
                         text = message.timeTr,
-                        color = if (message.fromCurrentUser) ViaverseColors.OnBrand.copy(alpha = 0.7f) else ViaverseColors.MutedText,
+                        color = if (message.fromCurrentUser) ViaverseColors.Ink.copy(alpha = 0.7f) else ViaverseColors.MutedText,
                         style = MaterialTheme.typography.labelSmall
                     )
                 }
@@ -496,7 +503,7 @@ internal fun OverlayScreen(
 private fun DraftStatusCard(draft: RequestDraft) {
     InfoCard(
         title = "Talep durumu",
-        body = "${draft.categoryId.labelTr()} | ${draft.locationTr} | ${draft.budgetHintTr}",
+        body = "${draft.categoryId.labelTr()} / ${draft.subcategoryTr} | ${draft.locationTr} | ${draft.budgetHintTr}",
         status = draft.status.labelTr()
     )
 }
@@ -526,7 +533,7 @@ private fun DraftStepStrip(selected: RequestDraftStep) {
             ) {
                 Text(
                     text = step.labelTr(),
-                    color = if (selected == step) ViaverseColors.OnBrand else ViaverseColors.Ink,
+                    color = ViaverseColors.Ink,
                     style = MaterialTheme.typography.labelSmall,
                     fontWeight = FontWeight.Bold
                 )
@@ -617,21 +624,31 @@ internal fun MetricGrid(metrics: List<app.viaverse.template.domain.model.Provide
 @Composable
 private fun CategoryPicker(
     selected: ServiceCategoryId,
-    onSelected: (ServiceCategoryId) -> Unit
+    selectedSubcategory: String,
+    onSelected: (ServiceCategoryId, String) -> Unit
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text("Kategori", color = ViaverseColors.Ink, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-        CategoryStrip(
-            categories = listOf(
-                ServiceCategoryId.HOME_REPAIR,
-                ServiceCategoryId.CLEANING,
-                ServiceCategoryId.LOCAL_HELP,
-                ServiceCategoryId.DIGITAL_SOFTWARE,
-                ServiceCategoryId.PROFESSIONAL_CONSULTING
-            ),
-            selected = selected,
-            onSelected = onSelected
-        )
+        Text("Kategori ve alt kategori", color = ViaverseColors.Ink, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+        CategoryStrip(categories = ServiceCategoryId.entries, selected = selected, onSelected = { category ->
+            onSelected(category, category.subcategoriesTr().first())
+        })
+        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(selected.subcategoriesTr(), key = { it }) { subcategory ->
+                val active = selectedSubcategory == subcategory
+                Box(
+                    modifier = Modifier
+                        .height(36.dp)
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(if (active) ViaverseColors.BrandOrange else ViaverseColors.CardSurface)
+                        .border(1.dp, if (active) ViaverseColors.BrandOrange else ViaverseColors.BorderSubtle, RoundedCornerShape(999.dp))
+                        .clickable { onSelected(selected, subcategory) }
+                        .padding(horizontal = 12.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(subcategory, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
     }
 }
 
@@ -707,7 +724,7 @@ private fun SchedulePicker(
                 ) {
                     Text(
                         text = preference.labelTr(),
-                        color = if (active) ViaverseColors.OnBrand else ViaverseColors.Ink,
+                        color = ViaverseColors.Ink,
                         style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.Bold
                     )
@@ -730,9 +747,9 @@ internal fun InsightList(
             .padding(14.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(title, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+        Text(title, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
         items.forEach { item ->
-            Text(item, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.bodySmall)
+            Text(item, color = ViaverseColors.Ink, style = MaterialTheme.typography.bodySmall)
         }
     }
 }
@@ -797,7 +814,7 @@ internal fun PrimaryOverlayAction(
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
-        Text(label, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+        Text(label, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -954,5 +971,23 @@ internal fun ServiceCategoryId.labelTr(): String {
         ServiceCategoryId.ANNOUNCEMENT -> "Duyuru"
         ServiceCategoryId.PETS -> "Evcil hayvan"
         ServiceCategoryId.WORK -> "Küçük iş"
+    }
+}
+
+private fun ServiceCategoryId.subcategoriesTr(): List<String> {
+    return when (this) {
+        ServiceCategoryId.HOME_REPAIR -> listOf("Tesisat", "Elektrik", "Boya", "Mobilya montaj", "Kombi bakım")
+        ServiceCategoryId.CLEANING -> listOf("Ev temizliği", "Ofis temizliği", "Taşınma temizliği", "Koltuk yıkama", "Cam temizliği")
+        ServiceCategoryId.EDUCATION -> listOf("Matematik", "İngilizce", "Sınav hazırlık", "Müzik", "Yazılım dersi")
+        ServiceCategoryId.CARE_HEALTH -> listOf("Çocuk bakımı", "Yaşlı refakat", "Evde destek", "Spor koçluğu", "Diyet danışma")
+        ServiceCategoryId.LOGISTICS -> listOf("Kurye", "Küçük taşıma", "Market teslim", "Evden eve destek", "Acil teslimat")
+        ServiceCategoryId.CREATIVE_MEDIA -> listOf("Logo", "Fotoğraf çekimi", "Video edit", "Sosyal medya tasarım", "Sunum tasarım")
+        ServiceCategoryId.DIGITAL_SOFTWARE -> listOf("Web sitesi", "Mobil uygulama", "Otomasyon", "Teknik destek", "Veri düzenleme")
+        ServiceCategoryId.PROFESSIONAL_CONSULTING -> listOf("Hukuk ön görüşme", "Muhasebe", "Kariyer", "Gayrimenkul", "İş danışmanlığı")
+        ServiceCategoryId.LOCAL_HELP -> listOf("Komşu yardımı", "Alet ödünç", "Kısa destek", "Dayanışma", "Mahalle işi")
+        ServiceCategoryId.EVENTS -> listOf("Doğum günü", "Atölye", "Topluluk buluşması", "Organizasyon", "Mekan destek")
+        ServiceCategoryId.ANNOUNCEMENT -> listOf("Kayıp eşya", "Mahalle uyarısı", "Duyuru", "Gönüllü çağrısı", "Bilgilendirme")
+        ServiceCategoryId.PETS -> listOf("Köpek gezdirme", "Evcil bakım", "Veteriner yönlendirme", "Kedi bakımı", "Mama desteği")
+        ServiceCategoryId.WORK -> listOf("Küçük iş", "Saatlik destek", "Teklifli iş", "Yakın çevre", "Hızlı görev")
     }
 }

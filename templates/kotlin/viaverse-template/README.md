@@ -15,9 +15,9 @@ This template is intentionally mock-backed, but the code is organized like a rea
 - Splash screen, login, OTP verification with `111111`, password verification and sign up.
 - Mock persistent storage boundary for locally created auth records.
 - Centralized theme, colors, dimensions and typography.
-- Main navigation with Explore, Requests, Work, Messages and Profile.
+- Main navigation with Explore, Requests, a central Viaverse publish action, Messages and Profile.
 - Explore discovery backed by `DiscoveryRepository` and `MockDiscoveryService`, with a local social feed, media-style mock posts, composer, hashtag-based topic discovery, hidden filter sheet and service discovery mode.
-- Step-based request draft creation with category, schedule, location, budget, review and matching states.
+- Step-based request draft creation with full category/subcategory selection, schedule, location, budget, review and matching states.
 - Individual service-provider onboarding as a lightweight personal capability flow gated before the provider dashboard.
 - Business workspace as a separate verification, merchant, staff/team, catalog, subscription and publish-readiness flow.
 - Customer job workspace with offer comparison, safe-payment transition, timeline and support/safety notes.

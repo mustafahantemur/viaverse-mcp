@@ -46,6 +46,15 @@ class MockDashboardService {
                 locationTr = "Beşiktaş, İstanbul",
                 budgetHintTr = "Saatlik 350 TL",
                 aiSummaryTr = "Tekrarlı iş olduğu için ekip puanı ve iptal geçmişi öne alınmalı."
+            ),
+            RequestSummary(
+                id = "job_003",
+                titleTr = "Logo düzenleme",
+                categoryId = ServiceCategoryId.CREATIVE_MEDIA,
+                status = RequestLifecycleStatus.COMPLETED,
+                locationTr = "Uzaktan",
+                budgetHintTr = "1.500 TL",
+                aiSummaryTr = "Tamamlandı; yorum ve rozet etkisi public profile güvenine yansır."
             )
         )
     }

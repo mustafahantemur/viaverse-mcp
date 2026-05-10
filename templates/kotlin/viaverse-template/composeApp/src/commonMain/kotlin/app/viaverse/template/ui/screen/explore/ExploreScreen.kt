@@ -60,6 +60,7 @@ import org.jetbrains.compose.resources.painterResource
 fun ExploreScreen(
     account: Account?,
     repository: DiscoveryRepository,
+    publishedPosts: List<SocialFeedPost> = emptyList(),
     onOpenItem: (String) -> Unit,
     onOpenProfile: () -> Unit
 ) {
@@ -69,8 +70,8 @@ fun ExploreScreen(
     var composerOpen by remember { mutableStateOf(false) }
     var localPosts by remember { mutableStateOf(emptyList<SocialFeedPost>()) }
     val snapshot = remember(criteria) { repository.load(criteria) }
-    val trendingHashtags = remember(localPosts, snapshot.trendingHashtags) {
-        mergeTrendingHashtags(snapshot.trendingHashtags, localPosts)
+    val trendingHashtags = remember(localPosts, publishedPosts, snapshot.trendingHashtags) {
+        mergeTrendingHashtags(snapshot.trendingHashtags, publishedPosts + localPosts)
     }
 
     LazyColumn(
@@ -136,7 +137,7 @@ fun ExploreScreen(
                 )
             }
             item { InsightPanel(snapshot = snapshot) }
-            val posts = (localPosts + snapshot.socialPosts).filter { it.matches(criteria) }
+            val posts = (publishedPosts + localPosts + snapshot.socialPosts).filter { it.matches(criteria) }
             if (posts.isEmpty()) {
                 item { EmptyResultCard("Çevrende paylaşım bulunamadı", "Aramayı temizle veya filtreyi genişlet.") }
             }
@@ -238,7 +239,7 @@ private fun ExploreHeader(
                         .padding(horizontal = 16.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("ara", color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+                    Text("ara", color = ViaverseColors.Ink, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
                 }
             }
             Box(
@@ -249,7 +250,7 @@ private fun ExploreHeader(
                     .clickable(onClick = onOpenProfile),
                 contentAlignment = Alignment.Center
             ) {
-                Text(account?.displayName?.firstOrNull()?.uppercase().orEmpty(), color = ViaverseColors.OnBrand, fontWeight = FontWeight.Bold)
+                Text(account?.displayName?.firstOrNull()?.uppercase().orEmpty(), color = ViaverseColors.Ink, fontWeight = FontWeight.Bold)
             }
         }
 
@@ -258,8 +259,8 @@ private fun ExploreHeader(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ModeTab("Çevre", mode == DiscoveryMode.DO_WORK, Modifier.weight(1f)) { onModeSelected(DiscoveryMode.DO_WORK) }
-            ModeTab("Hizmet al", mode == DiscoveryMode.REQUEST_WORK, Modifier.weight(1f)) { onModeSelected(DiscoveryMode.REQUEST_WORK) }
+            ModeTab("⌁", "Çevre", mode == DiscoveryMode.DO_WORK, Modifier.weight(1f)) { onModeSelected(DiscoveryMode.DO_WORK) }
+            ModeTab("◈", "Hizmet al", mode == DiscoveryMode.REQUEST_WORK, Modifier.weight(1f)) { onModeSelected(DiscoveryMode.REQUEST_WORK) }
             Box(
                 modifier = Modifier
                     .height(40.dp)
@@ -272,7 +273,7 @@ private fun ExploreHeader(
             ) {
                 Text(
                     text = if (activeCriteria.hasActiveFilters()) "Filtre •" else "Filtre",
-                    color = if (activeCriteria.hasActiveFilters()) ViaverseColors.OnBrand else ViaverseColors.Ink,
+                    color = ViaverseColors.Ink,
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.Bold
                 )
@@ -282,16 +283,19 @@ private fun ExploreHeader(
 }
 
 @Composable
-private fun ModeTab(label: String, selected: Boolean, modifier: Modifier, onClick: () -> Unit) {
-    Box(
+private fun ModeTab(icon: String, label: String, selected: Boolean, modifier: Modifier, onClick: () -> Unit) {
+    Row(
         modifier = modifier
             .height(40.dp)
             .clip(RoundedCornerShape(999.dp))
             .background(if (selected) ViaverseColors.BrandOrange else ViaverseColors.WarmMuted)
             .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(label, color = if (selected) ViaverseColors.OnBrand else ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+        Text(icon, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.size(6.dp))
+        Text(label, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -365,7 +369,7 @@ private fun LocalComposerCard(expanded: Boolean, onToggle: () -> Unit, onPublish
                     .clickable(onClick = onToggle)
                     .padding(horizontal = 14.dp, vertical = 8.dp)
             ) {
-                Text(if (expanded) "Kapat" else "Paylaş", color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+                Text(if (expanded) "Kapat" else "Paylaş", color = ViaverseColors.Ink, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
             }
         }
         if (expanded) {
@@ -414,7 +418,7 @@ private fun LocalComposerCard(expanded: Boolean, onToggle: () -> Unit, onPublish
                     },
                 contentAlignment = Alignment.Center
             ) {
-                Text("Yayınla", color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+                Text("Yayınla", color = ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -516,7 +520,7 @@ private fun SocialPostCard(post: SocialFeedPost, onHashtagSelected: (String) -> 
             }
             if (post.type == SocialPostType.WORK) {
                 Box(modifier = Modifier.clip(RoundedCornerShape(999.dp)).background(ViaverseColors.BrandOrange).padding(horizontal = 12.dp, vertical = 7.dp)) {
-                    Text("teklif ver", color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                    Text("teklif ver", color = ViaverseColors.Ink, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -630,7 +634,7 @@ private fun FilterChip(label: String, selected: Boolean, onClick: () -> Unit) {
             .padding(horizontal = 14.dp),
         contentAlignment = Alignment.Center
     ) {
-        Text(label, color = if (selected) ViaverseColors.OnBrand else ViaverseColors.Ink, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+        Text(label, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -648,7 +652,7 @@ private fun HashtagChip(label: String, selected: Boolean, onClick: () -> Unit) {
     ) {
         Text(
             label,
-            color = if (selected) ViaverseColors.OnBrand else ViaverseColors.BrandOrange,
+            color = if (selected) ViaverseColors.Ink else ViaverseColors.BrandOrange,
             style = MaterialTheme.typography.labelMedium,
             fontWeight = FontWeight.Bold
         )
@@ -666,9 +670,9 @@ private fun InsightPanel(snapshot: DiscoverySnapshot) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text("AI içgörü", color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
-        Text(insight.summaryTr, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
-        Text(insight.recommendedNextActionTr, color = ViaverseColors.OnBrand.copy(alpha = 0.78f), style = MaterialTheme.typography.bodySmall)
+        Text("AI içgörü", color = ViaverseColors.Ink, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+        Text(insight.summaryTr, color = ViaverseColors.Ink, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+        Text(insight.recommendedNextActionTr, color = ViaverseColors.Ink.copy(alpha = 0.78f), style = MaterialTheme.typography.bodySmall)
     }
 }
 

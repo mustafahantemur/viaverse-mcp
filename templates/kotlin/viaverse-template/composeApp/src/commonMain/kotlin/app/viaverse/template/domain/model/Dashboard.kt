@@ -4,7 +4,9 @@ enum class RequestLifecycleStatus {
     DRAFT,
     MATCHING,
     OFFER_RECEIVED,
-    SCHEDULED
+    SCHEDULED,
+    COMPLETED,
+    CANCELLED
 }
 
 enum class WorkLifecycleStatus {

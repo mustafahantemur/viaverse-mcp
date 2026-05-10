@@ -22,6 +22,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,6 +53,9 @@ internal fun RequestsScreen(
     onCreateRequest: () -> Unit,
     onOpenJob: (String) -> Unit
 ) {
+    var selectedTab by remember { mutableStateOf(RequestCenterTab.Active) }
+    val activeRequests = snapshot.requests.filter { it.status.isActiveRequest() }
+    val pastRequests = snapshot.requests.filterNot { it.status.isActiveRequest() }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -59,14 +66,61 @@ internal fun RequestsScreen(
         item {
             ScreenHeader(
                 title = "Talep merkezi",
-                body = "Açık talepler, teklifler ve güvenli ödemeye giden sonraki adımlar."
+                body = "Aktif talepler, geçmiş işler ve yeni talep oluşturma akışı."
             )
         }
-        items(snapshot.requests, key = { it.id }) { request ->
-            RequestCard(request, onClick = { onOpenJob(request.id) })
-        }
         item {
-            PrimaryAction(label = "Yeni talep taslağı oluştur", onClick = onCreateRequest)
+            RequestCenterTabs(selected = selectedTab, onSelected = { selectedTab = it })
+        }
+        when (selectedTab) {
+            RequestCenterTab.Active -> {
+                items(activeRequests, key = { it.id }) { request ->
+                    RequestCard(request, onClick = { onOpenJob(request.id) })
+                }
+            }
+            RequestCenterTab.History -> {
+                items(pastRequests, key = { it.id }) { request ->
+                    RequestCard(request, onClick = { onOpenJob(request.id) })
+                }
+            }
+            RequestCenterTab.Create -> {
+                item {
+                    StatusCard(
+                        title = "Talep oluştur",
+                        body = "Kategori, alt kategori, bütçe, zaman ve konumla detaylı talep taslağı aç.",
+                        status = "Yeni"
+                    )
+                }
+                item {
+                    PrimaryAction(label = "Talep oluşturma akışına geç", onClick = onCreateRequest)
+                }
+            }
+        }
+    }
+}
+
+private enum class RequestCenterTab(val labelTr: String) {
+    Active("Aktif talepler"),
+    History("Geçmiş"),
+    Create("Talep oluştur")
+}
+
+@Composable
+private fun RequestCenterTabs(selected: RequestCenterTab, onSelected: (RequestCenterTab) -> Unit) {
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        RequestCenterTab.entries.forEach { tab ->
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(40.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(if (selected == tab) ViaverseColors.BrandOrange else ViaverseColors.CardSurface)
+                    .border(1.dp, if (selected == tab) ViaverseColors.BrandOrange else ViaverseColors.BorderSubtle, RoundedCornerShape(999.dp))
+                    .clickable { onSelected(tab) },
+                contentAlignment = Alignment.Center
+            ) {
+                Text(tab.labelTr, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+            }
         }
     }
 }
@@ -338,7 +392,7 @@ private fun ProfileHero(account: Account?) {
         ) {
             Text(
                 text = account?.displayName?.firstOrNull()?.uppercase().orEmpty(),
-                color = ViaverseColors.OnBrand,
+                color = ViaverseColors.Ink,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
@@ -370,8 +424,8 @@ private fun InsightCard(body: String) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp)
     ) {
-        Text("AI içgörü", color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
-        Text(body, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.bodyMedium)
+        Text("AI içgörü", color = ViaverseColors.Ink, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+        Text(body, color = ViaverseColors.Ink, style = MaterialTheme.typography.bodyMedium)
     }
 }
 
@@ -404,7 +458,7 @@ private fun PrimaryAction(
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
-        Text(label, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+        Text(label, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
     }
     Spacer(Modifier.height(Dimensions.SpaceSm))
 }
@@ -434,6 +488,19 @@ private fun RequestLifecycleStatus.labelTr(): String {
         RequestLifecycleStatus.MATCHING -> "Eşleşiyor"
         RequestLifecycleStatus.OFFER_RECEIVED -> "Teklif var"
         RequestLifecycleStatus.SCHEDULED -> "Planlandı"
+        RequestLifecycleStatus.COMPLETED -> "Tamamlandı"
+        RequestLifecycleStatus.CANCELLED -> "İptal"
+    }
+}
+
+private fun RequestLifecycleStatus.isActiveRequest(): Boolean {
+    return when (this) {
+        RequestLifecycleStatus.DRAFT,
+        RequestLifecycleStatus.MATCHING,
+        RequestLifecycleStatus.OFFER_RECEIVED,
+        RequestLifecycleStatus.SCHEDULED -> true
+        RequestLifecycleStatus.COMPLETED,
+        RequestLifecycleStatus.CANCELLED -> false
     }
 }
 

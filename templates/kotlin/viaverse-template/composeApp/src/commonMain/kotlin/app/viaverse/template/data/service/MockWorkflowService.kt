@@ -52,6 +52,7 @@ class MockWorkflowService {
             titleTr = "Mutfak musluğu değişimi",
             descriptionTr = "Bugün veya bu hafta küçük bir tesisat işi için doğrulanmış sağlayıcılardan teklif almak istiyorum.",
             categoryId = ServiceCategoryId.HOME_REPAIR,
+            subcategoryTr = "Tesisat",
             locationTr = "Kadıköy, İstanbul",
             budgetHintTr = "750-1.200 TL",
             schedulePreference = SchedulePreference.THIS_WEEK,

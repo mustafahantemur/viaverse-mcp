@@ -1,5 +1,11 @@
 package app.viaverse.template.ui.screen.main
 
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -37,21 +44,26 @@ import app.viaverse.template.data.repository.DiscoveryRepository
 import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.domain.model.Account
 import app.viaverse.template.domain.model.AccountCapability
+import app.viaverse.template.domain.model.SocialFeedPost
+import app.viaverse.template.generated.resources.Res
+import app.viaverse.template.generated.resources.viaverse_v_orange_green
 import app.viaverse.template.platform.PlatformBackHandler
 import app.viaverse.template.ui.screen.explore.ExploreScreen
 import app.viaverse.template.ui.theme.ViaverseColors
+import org.jetbrains.compose.resources.painterResource
 
 private enum class MainTab(
     val labelTr: String
 ) {
     Explore("Keşfet"),
-    Requests("Talep"),
-    Work("İşler"),
+    Requests("Talepler"),
+    Publish("Yayınla"),
     Messages("Mesaj"),
     Profile("Profil")
 }
 
 private sealed class MainPanel {
+    data object Publish : MainPanel()
     data object CreateRequest : MainPanel()
     data object ProviderSetup : MainPanel()
     data object BusinessWorkspace : MainPanel()
@@ -77,6 +89,7 @@ fun MainShell(
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Explore) }
     var activePanel by remember { mutableStateOf<MainPanel?>(null) }
+    var publishedPosts by remember { mutableStateOf(emptyList<SocialFeedPost>()) }
     var providerModeUnlocked by remember(account) {
         mutableStateOf(account?.capabilities?.contains(AccountCapability.DO_WORK_INDIVIDUALLY) == true)
     }
@@ -103,6 +116,7 @@ fun MainShell(
                     MainTab.Explore -> ExploreScreen(
                         account = account,
                         repository = discoveryRepository,
+                        publishedPosts = publishedPosts,
                         onOpenItem = { activePanel = MainPanel.ExploreItem(it) },
                         onOpenProfile = { selectedTab = MainTab.Profile }
                     )
@@ -113,12 +127,7 @@ fun MainShell(
                         onOpenJob = { activePanel = MainPanel.CustomerJob(it) }
                     )
 
-                    MainTab.Work -> WorkScreen(
-                        snapshot = dashboard,
-                        providerModeUnlocked = providerModeUnlocked,
-                        onOpenProviderSetup = { activePanel = MainPanel.ProviderSetup },
-                        onOpenProviderDashboard = { activePanel = MainPanel.ProviderDashboard }
-                    )
+                    MainTab.Publish -> Unit
 
                     MainTab.Messages -> MessagesScreen(
                         snapshot = dashboard,
@@ -140,6 +149,15 @@ fun MainShell(
                 }
 
                 when (val panel = activePanel) {
+                    MainPanel.Publish -> PublishFlowScreen(
+                        onPublished = { post ->
+                            publishedPosts = listOf(post) + publishedPosts
+                            activePanel = null
+                            selectedTab = MainTab.Explore
+                        },
+                        onBack = { activePanel = null }
+                    )
+
                     MainPanel.CreateRequest -> RequestDraftScreen(
                         repository = workflowRepository,
                         onBack = { activePanel = null }
@@ -222,7 +240,13 @@ fun MainShell(
             }
             MainBottomBar(
                 selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it }
+                onTabSelected = { tab ->
+                    if (tab == MainTab.Publish) {
+                        activePanel = MainPanel.Publish
+                    } else {
+                        selectedTab = tab
+                    }
+                }
             )
         }
     }
@@ -243,21 +267,25 @@ private fun MainBottomBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         MainTab.entries.forEach { tab ->
-            val selected = tab == selectedTab
+            val selected = tab == selectedTab && tab != MainTab.Publish
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .height(56.dp)
+                    .height(if (tab == MainTab.Publish) 68.dp else 56.dp)
                     .clip(RoundedCornerShape(14.dp))
                     .background(if (selected) ViaverseColors.WarmMuted else ViaverseColors.WarmSurface)
                     .clickable { onTabSelected(tab) },
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                TabIcon(
-                    tab = tab,
-                    tint = if (selected) ViaverseColors.BrandOrange else ViaverseColors.MutedText
-                )
+                if (tab == MainTab.Publish) {
+                    PublishCenterIcon()
+                } else {
+                    TabIcon(
+                        tab = tab,
+                        tint = if (selected) ViaverseColors.BrandOrange else ViaverseColors.MutedText
+                    )
+                }
                 Text(
                     text = tab.labelTr,
                     color = if (selected) ViaverseColors.Ink else ViaverseColors.MutedText,
@@ -266,6 +294,35 @@ private fun MainBottomBar(
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun PublishCenterIcon() {
+    val transition = rememberInfiniteTransition(label = "publish-center-spin")
+    val rotation by transition.animateFloat(
+        initialValue = -12f,
+        targetValue = 12f,
+        animationSpec = infiniteRepeatable(tween(durationMillis = 1800), RepeatMode.Reverse),
+        label = "publish-center-rotation"
+    )
+    Box(
+        modifier = Modifier
+            .size(42.dp)
+            .clip(RoundedCornerShape(999.dp))
+            .background(ViaverseColors.BrandOrange),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(Res.drawable.viaverse_v_orange_green),
+            contentDescription = "Yayınla",
+            modifier = Modifier
+                .size(30.dp)
+                .graphicsLayer {
+                    rotationY = rotation
+                    cameraDistance = 12f * density
+                }
+        )
     }
 }
 
@@ -295,7 +352,7 @@ private fun TabIcon(
                 drawLine(tint, Offset(8f, 13f), Offset(size.width - 12f, 13f), 2.2f, StrokeCap.Round)
             }
 
-            MainTab.Work -> {
+            MainTab.Publish -> {
                 drawRoundRect(tint, topLeft = Offset(3f, 7f), size = Size(size.width - 6f, size.height - 9f), style = stroke)
                 drawLine(tint, Offset(8f, 7f), Offset(8f, 4f), 2.2f, StrokeCap.Round)
                 drawLine(tint, Offset(size.width - 8f, 7f), Offset(size.width - 8f, 4f), 2.2f, StrokeCap.Round)

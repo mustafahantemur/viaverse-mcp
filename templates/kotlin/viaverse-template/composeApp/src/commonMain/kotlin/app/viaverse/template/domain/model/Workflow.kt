@@ -106,6 +106,7 @@ data class RequestDraft(
     val titleTr: String,
     val descriptionTr: String,
     val categoryId: ServiceCategoryId,
+    val subcategoryTr: String,
     val locationTr: String,
     val budgetHintTr: String,
     val schedulePreference: SchedulePreference,
