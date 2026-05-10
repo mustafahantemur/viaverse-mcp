@@ -30,7 +30,7 @@ class MockDashboardService {
     private fun requestSummaries(): List<RequestSummary> {
         return listOf(
             RequestSummary(
-                id = "req_001",
+                id = "job_001",
                 titleTr = "Mutfak musluğu değişimi",
                 categoryId = ServiceCategoryId.HOME_REPAIR,
                 status = RequestLifecycleStatus.OFFER_RECEIVED,
@@ -39,7 +39,7 @@ class MockDashboardService {
                 aiSummaryTr = "Kapsam net; iki teklif fiyat ve doğrulama sinyaline göre karşılaştırılmalı."
             ),
             RequestSummary(
-                id = "req_002",
+                id = "job_002",
                 titleTr = "Haftalık ev temizliği",
                 categoryId = ServiceCategoryId.CLEANING,
                 status = RequestLifecycleStatus.MATCHING,

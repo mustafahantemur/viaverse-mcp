@@ -54,8 +54,15 @@ private sealed class MainPanel {
     data object ProviderSetup : MainPanel()
     data object BusinessWorkspace : MainPanel()
     data object ProfileSettings : MainPanel()
+    data object ProviderDashboard : MainPanel()
+    data object Wallet : MainPanel()
+    data object Reviews : MainPanel()
+    data object Support : MainPanel()
+    data object PublicProfile : MainPanel()
     data class Chat(val conversationId: String) : MainPanel()
     data class ExploreItem(val itemId: String) : MainPanel()
+    data class CustomerJob(val jobId: String) : MainPanel()
+    data class SettingDetail(val itemId: String) : MainPanel()
 }
 
 @Composable
@@ -90,12 +97,14 @@ fun MainShell(
 
                     MainTab.Requests -> RequestsScreen(
                         snapshot = dashboard,
-                        onCreateRequest = { activePanel = MainPanel.CreateRequest }
+                        onCreateRequest = { activePanel = MainPanel.CreateRequest },
+                        onOpenJob = { activePanel = MainPanel.CustomerJob(it) }
                     )
 
                     MainTab.Work -> WorkScreen(
                         snapshot = dashboard,
-                        onOpenProviderSetup = { activePanel = MainPanel.ProviderSetup }
+                        onOpenProviderSetup = { activePanel = MainPanel.ProviderSetup },
+                        onOpenProviderDashboard = { activePanel = MainPanel.ProviderDashboard }
                     )
 
                     MainTab.Messages -> MessagesScreen(
@@ -108,6 +117,10 @@ fun MainShell(
                         snapshot = dashboard,
                         onOpenBusiness = { activePanel = MainPanel.BusinessWorkspace },
                         onOpenSettings = { activePanel = MainPanel.ProfileSettings },
+                        onOpenWallet = { activePanel = MainPanel.Wallet },
+                        onOpenReviews = { activePanel = MainPanel.Reviews },
+                        onOpenSupport = { activePanel = MainPanel.Support },
+                        onOpenPublicProfile = { activePanel = MainPanel.PublicProfile },
                         onLogout = onLogout
                     )
                 }
@@ -131,6 +144,34 @@ fun MainShell(
 
                     MainPanel.ProfileSettings -> ProfileSettingsScreen(
                         repository = workflowRepository,
+                        onOpenSetting = { activePanel = MainPanel.SettingDetail(it) },
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.ProviderDashboard -> ProviderDashboardScreen(
+                        repository = workflowRepository,
+                        onOpenProviderSetup = { activePanel = MainPanel.ProviderSetup },
+                        onOpenChat = { activePanel = MainPanel.Chat(it) },
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.Wallet -> WalletScreen(
+                        repository = workflowRepository,
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.Reviews -> ReviewsScreen(
+                        repository = workflowRepository,
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.Support -> SupportCenterScreen(
+                        repository = workflowRepository,
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.PublicProfile -> PublicProfileScreen(
+                        repository = workflowRepository,
                         onBack = { activePanel = null }
                     )
 
@@ -144,6 +185,19 @@ fun MainShell(
                         repository = discoveryRepository,
                         itemId = panel.itemId,
                         onBack = { activePanel = null }
+                    )
+
+                    is MainPanel.CustomerJob -> CustomerJobDetailScreen(
+                        repository = workflowRepository,
+                        jobId = panel.jobId,
+                        onOpenChat = { activePanel = MainPanel.Chat(it) },
+                        onBack = { activePanel = null }
+                    )
+
+                    is MainPanel.SettingDetail -> SettingDetailScreen(
+                        repository = workflowRepository,
+                        itemId = panel.itemId,
+                        onBack = { activePanel = MainPanel.ProfileSettings }
                     )
 
                     null -> Unit

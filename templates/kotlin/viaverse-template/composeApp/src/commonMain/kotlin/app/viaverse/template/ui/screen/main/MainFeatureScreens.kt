@@ -45,7 +45,8 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 internal fun RequestsScreen(
     snapshot: DashboardSnapshot,
-    onCreateRequest: () -> Unit
+    onCreateRequest: () -> Unit,
+    onOpenJob: (String) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -61,7 +62,7 @@ internal fun RequestsScreen(
             )
         }
         items(snapshot.requests, key = { it.id }) { request ->
-            RequestCard(request)
+            RequestCard(request, onClick = { onOpenJob(request.id) })
         }
         item {
             PrimaryAction(label = "Yeni talep taslağı oluştur", onClick = onCreateRequest)
@@ -72,7 +73,8 @@ internal fun RequestsScreen(
 @Composable
 internal fun WorkScreen(
     snapshot: DashboardSnapshot,
-    onOpenProviderSetup: () -> Unit
+    onOpenProviderSetup: () -> Unit,
+    onOpenProviderDashboard: () -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -89,6 +91,9 @@ internal fun WorkScreen(
         }
         items(snapshot.work, key = { it.id }) { work ->
             WorkCard(work)
+        }
+        item {
+            PrimaryAction(label = "Hizmet veren panelini aç", onClick = onOpenProviderDashboard)
         }
         item {
             SecondaryAction(label = "Bireysel hizmet verme kurulumunu aç", onClick = onOpenProviderSetup)
@@ -126,6 +131,10 @@ internal fun ProfileScreen(
     snapshot: DashboardSnapshot,
     onOpenBusiness: () -> Unit,
     onOpenSettings: () -> Unit,
+    onOpenWallet: () -> Unit,
+    onOpenReviews: () -> Unit,
+    onOpenSupport: () -> Unit,
+    onOpenPublicProfile: () -> Unit,
     onLogout: () -> Unit
 ) {
     LazyColumn(
@@ -137,6 +146,9 @@ internal fun ProfileScreen(
     ) {
         item {
             ProfileHero(account)
+        }
+        item {
+            SecondaryAction(label = "Public profili görüntüle", onClick = onOpenPublicProfile)
         }
         item {
             InsightCard(snapshot.insights.firstOrNull()?.summaryTr.orEmpty())
@@ -158,6 +170,15 @@ internal fun ProfileScreen(
         }
         item {
             SecondaryAction(label = "Ayarlar ve güvenlik", onClick = onOpenSettings)
+        }
+        item {
+            SecondaryAction(label = "Cüzdan ve güvenli ödeme", onClick = onOpenWallet)
+        }
+        item {
+            SecondaryAction(label = "Yorumlar ve rozetler", onClick = onOpenReviews)
+        }
+        item {
+            SecondaryAction(label = "Destek ve güvenlik merkezi", onClick = onOpenSupport)
         }
         item {
             PrimaryAction(label = "Çıkış yap", onClick = onLogout)
@@ -186,12 +207,16 @@ private fun ScreenHeader(
 }
 
 @Composable
-private fun RequestCard(request: RequestSummary) {
+private fun RequestCard(
+    request: RequestSummary,
+    onClick: () -> Unit
+) {
     StatusCard(
         title = request.titleTr,
         body = "${request.locationTr} | ${request.budgetHintTr}\n${request.aiSummaryTr}",
         status = request.status.labelTr(),
-        categoryId = request.categoryId
+        categoryId = request.categoryId,
+        onClick = onClick
     )
 }
 

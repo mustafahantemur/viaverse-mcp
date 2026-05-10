@@ -7,16 +7,35 @@ import app.viaverse.template.domain.model.BusinessWorkspaceSummary
 import app.viaverse.template.domain.model.ChatMessage
 import app.viaverse.template.domain.model.ChatPolicyState
 import app.viaverse.template.domain.model.ChatThread
+import app.viaverse.template.domain.model.CustomerJob
+import app.viaverse.template.domain.model.CustomerJobStatus
+import app.viaverse.template.domain.model.OfferPreview
+import app.viaverse.template.domain.model.OfferStatus
 import app.viaverse.template.domain.model.ProfileSettingGroup
 import app.viaverse.template.domain.model.ProfileSettingItem
 import app.viaverse.template.domain.model.ProfileSettingKind
+import app.viaverse.template.domain.model.ProviderAvailability
+import app.viaverse.template.domain.model.ProviderDashboardSnapshot
+import app.viaverse.template.domain.model.ProviderJob
+import app.viaverse.template.domain.model.ProviderMetric
 import app.viaverse.template.domain.model.ProviderOnboardingSnapshot
+import app.viaverse.template.domain.model.ProviderOpportunity
 import app.viaverse.template.domain.model.ProviderSetupStep
 import app.viaverse.template.domain.model.ProviderSetupStepStatus
+import app.viaverse.template.domain.model.PublicProfileSnapshot
+import app.viaverse.template.domain.model.ReviewStatus
+import app.viaverse.template.domain.model.ReviewSummary
 import app.viaverse.template.domain.model.RequestDraft
 import app.viaverse.template.domain.model.RequestDraftStatus
+import app.viaverse.template.domain.model.SafePaymentStatus
 import app.viaverse.template.domain.model.SchedulePreference
 import app.viaverse.template.domain.model.ServiceCategoryId
+import app.viaverse.template.domain.model.SettingDetail
+import app.viaverse.template.domain.model.SupportTicket
+import app.viaverse.template.domain.model.SupportTicketStatus
+import app.viaverse.template.domain.model.WalletSnapshot
+import app.viaverse.template.domain.model.WalletTransaction
+import app.viaverse.template.domain.model.WorkLifecycleStatus
 
 class MockWorkflowService {
     fun newRequestDraft(): RequestDraft {
@@ -42,6 +61,72 @@ class MockWorkflowService {
 
     fun submitRequestDraft(draft: RequestDraft): RequestDraft {
         return draft.copy(status = RequestDraftStatus.SENT_TO_MATCHING)
+    }
+
+    fun customerJobs(): List<CustomerJob> {
+        return listOf(
+            CustomerJob(
+                id = "job_001",
+                titleTr = "Mutfak musluğu değişimi",
+                categoryId = ServiceCategoryId.HOME_REPAIR,
+                status = CustomerJobStatus.OFFER_RECEIVED,
+                locationTr = "Kadıköy, İstanbul",
+                scheduleTr = "Bugün veya bu hafta",
+                descriptionTr = "Mutfak musluğu değişimi ve küçük tesisat kontrolü.",
+                offerCount = 2,
+                paymentStatus = SafePaymentStatus.NOT_STARTED,
+                aiSummaryTr = "İki teklif geldi; güven puanı, iptal geçmişi ve kapsam netliği karşılaştırılmalı."
+            ),
+            CustomerJob(
+                id = "job_002",
+                titleTr = "Haftalık ev temizliği",
+                categoryId = ServiceCategoryId.CLEANING,
+                status = CustomerJobStatus.MATCHING,
+                locationTr = "Beşiktaş, İstanbul",
+                scheduleTr = "Haftalık tekrar",
+                descriptionTr = "3+1 ev için düzenli temizlik planı.",
+                offerCount = 0,
+                paymentStatus = SafePaymentStatus.NOT_STARTED,
+                aiSummaryTr = "Talep yayında; uygun sağlayıcı havuzu genişletiliyor."
+            ),
+            CustomerJob(
+                id = "job_003",
+                titleTr = "Logo ve sosyal medya şablonu",
+                categoryId = ServiceCategoryId.CREATIVE_MEDIA,
+                status = CustomerJobStatus.IN_PROGRESS,
+                locationTr = "Online",
+                scheduleTr = "Bu hafta",
+                descriptionTr = "Yeni marka için logo ve Instagram şablonları.",
+                offerCount = 1,
+                paymentStatus = SafePaymentStatus.HELD_IN_ESCROW,
+                aiSummaryTr = "Ödeme güvenli havuzda; teslim onayı sonrası payout serbest bırakılır."
+            )
+        )
+    }
+
+    fun offersForJob(jobId: String): List<OfferPreview> {
+        return listOf(
+            OfferPreview(
+                id = "offer_001",
+                jobId = jobId,
+                providerNameTr = "Temizeller Ekibi",
+                priceTr = "1.450 TL",
+                ratingTr = "4.9 / 124 iş",
+                status = OfferStatus.PENDING,
+                messageTr = "3 kişilik ekip, malzemeler dahil, aynı gün tamamlanır.",
+                trustSignalsTr = listOf("Kimlik doğrulandı", "İşletme profili yayın hazır", "Son 30 günde 18 iş")
+            ),
+            OfferPreview(
+                id = "offer_002",
+                jobId = jobId,
+                providerNameTr = "Ayşe Demir",
+                priceTr = "1.200 TL",
+                ratingTr = "4.8 / 67 iş",
+                status = OfferStatus.PENDING,
+                messageTr = "Detaylı temizlik ve cam temizliği için 5 saatlik plan öneriyorum.",
+                trustSignalsTr = listOf("Kimlik doğrulandı", "Hızlı yanıt", "Tekrarlı müşteri oranı yüksek")
+            )
+        )
     }
 
     fun providerOnboarding(): ProviderOnboardingSnapshot {
@@ -89,6 +174,142 @@ class MockWorkflowService {
                     riskSignalsTr = listOf("Admin veya işletme yetkisi gerektiren eylemler audit log ister.")
                 )
             )
+        )
+    }
+
+    fun providerDashboard(): ProviderDashboardSnapshot {
+        return ProviderDashboardSnapshot(
+            availability = ProviderAvailability.AVAILABLE,
+            metrics = listOf(
+                ProviderMetric("Yeni talep", "3", "Yakın çevrende yanıt bekleyen uygun işler."),
+                ProviderMetric("Bekleyen teklif", "2", "Müşteri kararını bekleyen teklifler."),
+                ProviderMetric("Aktif iş", "1", "Planlanmış ve güvenli ödeme adımında."),
+                ProviderMetric("Profil gücü", "%68", "Portföy ve hizmet açıklaması eklenirse artar.")
+            ),
+            todayTasksTr = listOf(
+                "2 yeni talebe yanıt ver.",
+                "1 teklif için müşteri sorusunu cevapla.",
+                "Portföy ekleyerek görünürlüğünü artır."
+            ),
+            opportunities = listOf(
+                ProviderOpportunity(
+                    id = "opp_001",
+                    titleTr = "Logo ve sosyal medya tasarımı",
+                    categoryId = ServiceCategoryId.CREATIVE_MEDIA,
+                    requesterTr = "Elif K.",
+                    locationTr = "Online",
+                    budgetTr = "Teklif bekliyor",
+                    descriptionTr = "Yeni marka için modern logo ve sosyal medya şablonları.",
+                    fitTr = "Portföy örneği olan sağlayıcılar için yüksek eşleşme."
+                ),
+                ProviderOpportunity(
+                    id = "opp_002",
+                    titleTr = "Detaylı ev temizliği",
+                    categoryId = ServiceCategoryId.CLEANING,
+                    requesterTr = "Murat A.",
+                    locationTr = "Kadıköy, 3 km",
+                    budgetTr = "1.500-2.000 TL",
+                    descriptionTr = "Taşınma öncesi 2+1 boş ev temizliği, camlar dahil.",
+                    fitTr = "Yakın konum ve net kapsam nedeniyle hızlı teklif önerilir."
+                )
+            ),
+            activeJobs = listOf(
+                ProviderJob(
+                    id = "pjob_001",
+                    titleTr = "Kombi bakım randevusu",
+                    status = WorkLifecycleStatus.IN_PROGRESS,
+                    requesterTr = "Ayşe Y.",
+                    payoutTr = "1.200 TL",
+                    nextStepTr = "Yarın 14:00 randevu; iş tamamlanınca müşteri onayı beklenir."
+                )
+            ),
+            insights = listOf(
+                AiInsight(
+                    screenId = "provider_dashboard",
+                    summaryTr = "Bugün hızlı teklif verilebilecek iki iş ve bir aktif randevu var.",
+                    recommendedNextActionTr = "Önce yakın konumdaki temizlik talebine fiyat ver.",
+                    riskSignalsTr = listOf("İletişim paylaşımı iş kabulünden önce kısıtlı.")
+                )
+            )
+        )
+    }
+
+    fun wallet(): WalletSnapshot {
+        return WalletSnapshot(
+            escrowBalanceTr = "1.200 TL",
+            payoutBalanceTr = "850 TL",
+            providerTokenInfoTr = "Kart bilgisi saklanmaz; ödeme sağlayıcı tokenı kullanılır.",
+            transactions = listOf(
+                WalletTransaction("txn_001", "Logo işi güvenli ödeme", "4.500 TL", SafePaymentStatus.HELD_IN_ESCROW, "Bugün"),
+                WalletTransaction("txn_002", "Kombi bakım payout", "850 TL", SafePaymentStatus.RELEASED, "Dün"),
+                WalletTransaction("txn_003", "Temizlik işi ödeme yetkisi", "1.450 TL", SafePaymentStatus.AUTHORIZED, "2 gün önce")
+            ),
+            safetyNotesTr = listOf(
+                "PAN/CVV uygulamada saklanmaz.",
+                "Payout uyuşmazlık süresinde bloklanabilir.",
+                "Komisyon tamamlanan ücretli iş sonrası uygulanır."
+            )
+        )
+    }
+
+    fun reviews(): List<ReviewSummary> {
+        return listOf(
+            ReviewSummary("rev_001", "Ev temizliği", "Temizeller Ekibi", ReviewStatus.WAITING_FOR_YOU, "4.9", "İş tamamlandı; iki taraflı yorum bekleniyor."),
+            ReviewSummary("rev_002", "Kombi bakım", "Ahmet Usta", ReviewStatus.PUBLISHED, "5.0", "Zamanında ve temiz çalışma."),
+            ReviewSummary("rev_003", "Logo tasarımı", "Elif K.", ReviewStatus.WAITING_FOR_COUNTERPARTY, "4.8", "Teslim onayı sonrası karşı taraf yorumu bekleniyor.")
+        )
+    }
+
+    fun supportTickets(): List<SupportTicket> {
+        return listOf(
+            SupportTicket("sup_001", "İletişim paylaşımı uyarısı", SupportTicketStatus.WAITING_FOR_USER, "Chat içinde telefon paylaşımı iş kabulünden önce engellendi.", "Uygulama içinden devam et."),
+            SupportTicket("sup_002", "Ödeme onayı sorusu", SupportTicketStatus.OPEN, "Güvenli ödeme havuzdaki tutarın serbest bırakma koşulu soruldu.", "Teslim/onay ekranı kontrol edilecek."),
+            SupportTicket("sup_003", "Geç teslim bildirimi", SupportTicketStatus.RESOLVED, "Randevu gecikmesi çözüldü.", "Kayıt kapandı.")
+        )
+    }
+
+    fun settingDetail(itemId: String): SettingDetail {
+        return when (itemId) {
+            "cards" -> SettingDetail(
+                id = itemId,
+                titleTr = "Kartlar ve ödeme tokenları",
+                bodyTr = "Kart bilgisi sağlayıcıda saklanır; uygulama yalnızca token referansı kullanır.",
+                fieldsTr = listOf("Varsayılan ödeme yöntemi", "Apple Pay / Google Pay hazırlığı", "iyzico token durumu"),
+                riskNotesTr = listOf("PAN/CVV saklama yok.", "Step-up auth ödeme ve kart değişiminde gerekir.")
+            )
+            "escrow" -> SettingDetail(
+                id = itemId,
+                titleTr = "Güvenli ödeme",
+                bodyTr = "Tutar iş tamamlanana kadar güvenli havuzda tutulur.",
+                fieldsTr = listOf("Bekleyen ödemeler", "Serbest bırakma", "Uyuşmazlık durumu"),
+                riskNotesTr = listOf("Uyuşmazlıkta payout bloklanır.", "Callback idempotent olmalı.")
+            )
+            "support" -> SettingDetail(
+                id = itemId,
+                titleTr = "Destek merkezi",
+                bodyTr = "Rapor, uyuşmazlık, güvenlik ve ödeme destek akışları.",
+                fieldsTr = listOf("Açık talepler", "Güvenlik raporları", "Canlı destek hazırlığı"),
+                riskNotesTr = listOf("Destek paketleri gereksiz PII içermemeli.")
+            )
+            else -> SettingDetail(
+                id = itemId,
+                titleTr = "Ayar detayı",
+                bodyTr = "Bu ayar template içinde gerçek uygulama davranışına yakın mock ekranla temsil edilir.",
+                fieldsTr = listOf("Durum", "Son güncelleme", "Güvenlik etkisi"),
+                riskNotesTr = listOf("Hassas değişikliklerde step-up auth gerekir.")
+            )
+        }
+    }
+
+    fun publicProfile(): PublicProfileSnapshot {
+        return PublicProfileSnapshot(
+            displayNameTr = "Ahmet Usta",
+            headlineTr = "Ev tamiri ve kombi bakımında doğrulanmış bireysel hizmet veren.",
+            ratingTr = "4.9",
+            completedJobsTr = "124 tamamlanan iş",
+            badgesTr = listOf("Kimlik doğrulandı", "Hızlı yanıt", "Rozetli sağlayıcı"),
+            reviewHighlightsTr = listOf("Zamanında geldi ve işi temiz tamamladı.", "Fiyat/kapsam netti.", "Güvenli ödeme süreci sorunsuzdu."),
+            portfolioTr = listOf("Kombi bakım öncesi/sonrası", "Musluk değişimi", "Küçük elektrik işleri")
         )
     }
 
