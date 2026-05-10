@@ -10,9 +10,11 @@ import app.viaverse.template.config.AppConfig
 import app.viaverse.template.data.repository.AuthRepository
 import app.viaverse.template.data.repository.DashboardRepository
 import app.viaverse.template.data.repository.DiscoveryRepository
+import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.data.service.MockAuthService
 import app.viaverse.template.data.service.MockDashboardService
 import app.viaverse.template.data.service.MockDiscoveryService
+import app.viaverse.template.data.service.MockWorkflowService
 import app.viaverse.template.data.storage.MemoryStorageService
 import app.viaverse.template.data.storage.StorageService
 import app.viaverse.template.domain.model.Account
@@ -44,6 +46,9 @@ fun ViaverseTemplateApp(
     }
     val dashboardRepository = remember {
         DashboardRepository(service = MockDashboardService())
+    }
+    val workflowRepository = remember {
+        WorkflowRepository(service = MockWorkflowService())
     }
 
     var route by remember { mutableStateOf(AppRoute.Splash) }
@@ -82,6 +87,7 @@ fun ViaverseTemplateApp(
                         account = account,
                         discoveryRepository = discoveryRepository,
                         dashboardRepository = dashboardRepository,
+                        workflowRepository = workflowRepository,
                         onLogout = {
                             repository.logout()
                             account = null
@@ -115,6 +121,7 @@ fun ViaverseTemplateApp(
                 account = account,
                 discoveryRepository = discoveryRepository,
                 dashboardRepository = dashboardRepository,
+                workflowRepository = workflowRepository,
                 onLogout = {
                     repository.logout()
                     account = null

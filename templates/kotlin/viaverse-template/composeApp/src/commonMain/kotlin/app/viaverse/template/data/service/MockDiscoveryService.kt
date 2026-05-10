@@ -22,6 +22,10 @@ class MockDiscoveryService {
         )
     }
 
+    fun findItem(itemId: String): ExploreItem? {
+        return items.firstOrNull { it.id == itemId }
+    }
+
     private fun applyCriteria(criteria: SearchCriteria): List<ExploreItem> {
         val query = criteria.query.trim().lowercase()
         return items

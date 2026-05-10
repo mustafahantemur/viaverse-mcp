@@ -43,7 +43,10 @@ import app.viaverse.template.ui.theme.ViaverseColors
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-internal fun RequestsScreen(snapshot: DashboardSnapshot) {
+internal fun RequestsScreen(
+    snapshot: DashboardSnapshot,
+    onCreateRequest: () -> Unit
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -61,13 +64,16 @@ internal fun RequestsScreen(snapshot: DashboardSnapshot) {
             RequestCard(request)
         }
         item {
-            PrimaryAction(label = "Yeni talep taslağı oluştur")
+            PrimaryAction(label = "Yeni talep taslağı oluştur", onClick = onCreateRequest)
         }
     }
 }
 
 @Composable
-internal fun WorkScreen(snapshot: DashboardSnapshot) {
+internal fun WorkScreen(
+    snapshot: DashboardSnapshot,
+    onOpenProviderSetup: () -> Unit
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -84,11 +90,17 @@ internal fun WorkScreen(snapshot: DashboardSnapshot) {
         items(snapshot.work, key = { it.id }) { work ->
             WorkCard(work)
         }
+        item {
+            SecondaryAction(label = "Bireysel hizmet verme kurulumunu aç", onClick = onOpenProviderSetup)
+        }
     }
 }
 
 @Composable
-internal fun MessagesScreen(snapshot: DashboardSnapshot) {
+internal fun MessagesScreen(
+    snapshot: DashboardSnapshot,
+    onOpenChat: (String) -> Unit
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -103,7 +115,7 @@ internal fun MessagesScreen(snapshot: DashboardSnapshot) {
             )
         }
         items(snapshot.conversations, key = { it.id }) { conversation ->
-            ConversationCard(conversation)
+            ConversationCard(conversation, onClick = { onOpenChat(conversation.id) })
         }
     }
 }
@@ -112,6 +124,8 @@ internal fun MessagesScreen(snapshot: DashboardSnapshot) {
 internal fun ProfileScreen(
     account: Account?,
     snapshot: DashboardSnapshot,
+    onOpenBusiness: () -> Unit,
+    onOpenSettings: () -> Unit,
     onLogout: () -> Unit
 ) {
     LazyColumn(
@@ -135,7 +149,15 @@ internal fun ProfileScreen(
             )
         }
         item {
-            BusinessWorkspaceCard(snapshot.businessWorkspace.statusLabel(), snapshot.businessWorkspace.titleTr, snapshot.businessWorkspace.verificationStepTr)
+            BusinessWorkspaceCard(
+                status = snapshot.businessWorkspace.statusLabel(),
+                title = snapshot.businessWorkspace.titleTr,
+                body = snapshot.businessWorkspace.verificationStepTr,
+                onClick = onOpenBusiness
+            )
+        }
+        item {
+            SecondaryAction(label = "Ayarlar ve güvenlik", onClick = onOpenSettings)
         }
         item {
             PrimaryAction(label = "Çıkış yap", onClick = onLogout)
@@ -189,11 +211,15 @@ private fun WorkCard(work: WorkSummary) {
 }
 
 @Composable
-private fun ConversationCard(conversation: ConversationPreview) {
+private fun ConversationCard(
+    conversation: ConversationPreview,
+    onClick: () -> Unit
+) {
     StatusCard(
         title = conversation.titleTr,
         body = "${conversation.contextTr} | ${conversation.lastMessageTr}",
-        status = conversation.status.labelTr()
+        status = conversation.status.labelTr(),
+        onClick = onClick
     )
 }
 
@@ -202,7 +228,8 @@ private fun StatusCard(
     title: String,
     body: String,
     status: String,
-    categoryId: app.viaverse.template.domain.model.ServiceCategoryId? = null
+    categoryId: app.viaverse.template.domain.model.ServiceCategoryId? = null,
+    onClick: (() -> Unit)? = null
 ) {
     Row(
         modifier = Modifier
@@ -210,6 +237,7 @@ private fun StatusCard(
             .clip(RoundedCornerShape(Dimensions.RadiusMd))
             .background(ViaverseColors.CardSurface)
             .border(1.dp, ViaverseColors.BorderSubtle, RoundedCornerShape(Dimensions.RadiusMd))
+            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
             .padding(14.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -315,12 +343,14 @@ private fun InsightCard(body: String) {
 private fun BusinessWorkspaceCard(
     status: String,
     title: String,
-    body: String
+    body: String,
+    onClick: () -> Unit
 ) {
     StatusCard(
         title = title,
         body = body,
-        status = status
+        status = status,
+        onClick = onClick
     )
 }
 
@@ -341,6 +371,25 @@ private fun PrimaryAction(
         Text(label, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
     }
     Spacer(Modifier.height(Dimensions.SpaceSm))
+}
+
+@Composable
+private fun SecondaryAction(
+    label: String,
+    onClick: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(Dimensions.ButtonHeight)
+            .clip(RoundedCornerShape(Dimensions.RadiusMd))
+            .background(ViaverseColors.CardSurface)
+            .border(1.dp, ViaverseColors.BorderSubtle, RoundedCornerShape(Dimensions.RadiusMd))
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(label, color = ViaverseColors.Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+    }
 }
 
 private fun RequestLifecycleStatus.labelTr(): String {

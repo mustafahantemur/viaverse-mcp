@@ -34,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.viaverse.template.data.repository.DashboardRepository
 import app.viaverse.template.data.repository.DiscoveryRepository
+import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.domain.model.Account
 import app.viaverse.template.ui.screen.explore.ExploreScreen
 import app.viaverse.template.ui.theme.ViaverseColors
@@ -48,14 +49,25 @@ private enum class MainTab(
     Profile("Profil")
 }
 
+private sealed class MainPanel {
+    data object CreateRequest : MainPanel()
+    data object ProviderSetup : MainPanel()
+    data object BusinessWorkspace : MainPanel()
+    data object ProfileSettings : MainPanel()
+    data class Chat(val conversationId: String) : MainPanel()
+    data class ExploreItem(val itemId: String) : MainPanel()
+}
+
 @Composable
 fun MainShell(
     account: Account?,
     discoveryRepository: DiscoveryRepository,
     dashboardRepository: DashboardRepository,
+    workflowRepository: WorkflowRepository,
     onLogout: () -> Unit
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Explore) }
+    var activePanel by remember { mutableStateOf<MainPanel?>(null) }
     val dashboard = remember(account) { dashboardRepository.load(account) }
 
     Surface(
@@ -72,17 +84,69 @@ fun MainShell(
                     MainTab.Explore -> ExploreScreen(
                         account = account,
                         repository = discoveryRepository,
+                        onOpenItem = { activePanel = MainPanel.ExploreItem(it) },
                         onOpenProfile = { selectedTab = MainTab.Profile }
                     )
 
-                    MainTab.Requests -> RequestsScreen(snapshot = dashboard)
-                    MainTab.Work -> WorkScreen(snapshot = dashboard)
-                    MainTab.Messages -> MessagesScreen(snapshot = dashboard)
+                    MainTab.Requests -> RequestsScreen(
+                        snapshot = dashboard,
+                        onCreateRequest = { activePanel = MainPanel.CreateRequest }
+                    )
+
+                    MainTab.Work -> WorkScreen(
+                        snapshot = dashboard,
+                        onOpenProviderSetup = { activePanel = MainPanel.ProviderSetup }
+                    )
+
+                    MainTab.Messages -> MessagesScreen(
+                        snapshot = dashboard,
+                        onOpenChat = { activePanel = MainPanel.Chat(it) }
+                    )
+
                     MainTab.Profile -> ProfileScreen(
                         account = account,
                         snapshot = dashboard,
+                        onOpenBusiness = { activePanel = MainPanel.BusinessWorkspace },
+                        onOpenSettings = { activePanel = MainPanel.ProfileSettings },
                         onLogout = onLogout
                     )
+                }
+
+                when (val panel = activePanel) {
+                    MainPanel.CreateRequest -> RequestDraftScreen(
+                        repository = workflowRepository,
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.ProviderSetup -> ProviderOnboardingScreen(
+                        repository = workflowRepository,
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.BusinessWorkspace -> BusinessWorkspaceScreen(
+                        repository = workflowRepository,
+                        summary = dashboard.businessWorkspace,
+                        onBack = { activePanel = null }
+                    )
+
+                    MainPanel.ProfileSettings -> ProfileSettingsScreen(
+                        repository = workflowRepository,
+                        onBack = { activePanel = null }
+                    )
+
+                    is MainPanel.Chat -> ChatDetailScreen(
+                        repository = workflowRepository,
+                        conversationId = panel.conversationId,
+                        onBack = { activePanel = null }
+                    )
+
+                    is MainPanel.ExploreItem -> ExploreItemDetailScreen(
+                        repository = discoveryRepository,
+                        itemId = panel.itemId,
+                        onBack = { activePanel = null }
+                    )
+
+                    null -> Unit
                 }
             }
             MainBottomBar(

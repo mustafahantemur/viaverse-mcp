@@ -52,6 +52,7 @@ import org.jetbrains.compose.resources.painterResource
 fun ExploreScreen(
     account: Account?,
     repository: DiscoveryRepository,
+    onOpenItem: (String) -> Unit,
     onOpenProfile: () -> Unit
 ) {
     var criteria by remember { mutableStateOf(SearchCriteria()) }
@@ -103,7 +104,7 @@ fun ExploreScreen(
             }
         }
         items(snapshot.items, key = { it.id }) { item ->
-            ExploreItemCard(item = item)
+            ExploreItemCard(item = item, onClick = { onOpenItem(item.id) })
         }
         item {
             Spacer(Modifier.height(16.dp))
@@ -409,7 +410,10 @@ private fun InsightPanel(snapshot: DiscoverySnapshot) {
 }
 
 @Composable
-private fun ExploreItemCard(item: ExploreItem) {
+private fun ExploreItemCard(
+    item: ExploreItem,
+    onClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .padding(horizontal = Dimensions.SpaceLg)
@@ -417,6 +421,7 @@ private fun ExploreItemCard(item: ExploreItem) {
             .clip(RoundedCornerShape(Dimensions.RadiusMd))
             .background(ViaverseColors.CardSurface)
             .border(1.dp, ViaverseColors.BorderSubtle, RoundedCornerShape(Dimensions.RadiusMd))
+            .clickable(onClick = onClick)
             .padding(14.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {

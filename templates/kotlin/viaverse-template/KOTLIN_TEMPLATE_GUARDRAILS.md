@@ -33,6 +33,14 @@ Bu dosya Viaverse Kotlin/Compose template'inde tekrar edilmemesi gereken hatalar
 - Büyük auth dosyası tekrar oluşmamalı; review edilebilirlik için dosyalar küçük ve tek sorumluluklu kalmalı.
 - UI dosyaları mock veri üretmemeli; veri/config/service çağrıları repository/service katmanından gelmeli.
 
+## Main Workflow Structure
+
+- Explore, dashboard, request draft, provider onboarding, business workspace, settings and chat data service/repository arkasından gelmeli.
+- Business workspace kişisel hizmet verme geçişinden ayrı tutulmalı; doğrulama, merchant, ekip rolleri, katalog ve publish-readiness akışı göstermeli.
+- Kişisel hizmet verme Airbnb tarzı hafif onboarding olarak kalmalı; işletme hesabı gibi davranmamalı.
+- UI içinde business state veya role string karşılaştırması yapılmamalı; enum/sealed state kullanılmalı.
+- AI insight metinleri Türkçe olmalı ve ekranın karar/riski anlatmalı.
+
 ## Validation
 
 - Her UI/resource değişiminden sonra:
