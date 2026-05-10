@@ -15,6 +15,14 @@ class AndroidStorageService(context: Context) : StorageService {
             .apply()
     }
 
+    override fun saveAuthRecord(record: LocalAuthRecord) {
+        preferences.edit()
+            .putString(accountKey(record.account.identifier), encode(record.account))
+            .putString(accountIdKey(record.account.id), record.account.identifier)
+            .putString(authRecordKey(record.account.identifier), encodeRecord(record))
+            .apply()
+    }
+
     override fun findAccount(identifier: String): Account? {
         return preferences.getString(accountKey(identifier), null)?.let(::decode)
     }
@@ -22,6 +30,10 @@ class AndroidStorageService(context: Context) : StorageService {
     override fun findAccountById(accountId: String): Account? {
         val identifier = preferences.getString(accountIdKey(accountId), null) ?: return null
         return findAccount(identifier)
+    }
+
+    override fun findAuthRecord(identifier: String): LocalAuthRecord? {
+        return preferences.getString(authRecordKey(identifier), null)?.let(::decodeRecord)
     }
 
     override fun saveSession(accountId: String) {
@@ -39,6 +51,8 @@ class AndroidStorageService(context: Context) : StorageService {
     private fun accountKey(identifier: String): String = "account:${identifier.lowercase()}"
 
     private fun accountIdKey(accountId: String): String = "account_id:$accountId"
+
+    private fun authRecordKey(identifier: String): String = "auth:${identifier.lowercase()}"
 
     private fun encode(account: Account): String {
         return listOf(
@@ -63,6 +77,25 @@ class AndroidStorageService(context: Context) : StorageService {
                 .filter { it.isNotBlank() }
                 .mapNotNull { runCatching { AccountCapability.valueOf(it) }.getOrNull() }
                 .toSet()
+        )
+    }
+
+    private fun encodeRecord(record: LocalAuthRecord): String {
+        return listOf(
+            encode(record.account),
+            record.password,
+            record.twoFactorEnabled.toString()
+        ).joinToString("||")
+    }
+
+    private fun decodeRecord(raw: String): LocalAuthRecord? {
+        val parts = raw.split("||")
+        if (parts.size != 3) return null
+        val account = decode(parts[0]) ?: return null
+        return LocalAuthRecord(
+            account = account,
+            password = parts[1],
+            twoFactorEnabled = parts[2].toBooleanStrictOrNull() ?: false
         )
     }
 

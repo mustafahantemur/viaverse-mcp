@@ -15,7 +15,7 @@ fun AuthScreen(
     onResolveIdentifier: (String) -> AuthDecision,
     onRequestOtp: (String) -> Boolean,
     onVerifyOtp: (String, String) -> Account?,
-    onSignUp: (String, String, String) -> Account?,
+    onSignUp: (String, String, String, String) -> Account?,
     onVerifyPassword: (String, String) -> Account?,
     onRequiresTwoFactor: (String) -> Boolean,
     onAuthenticated: (Account) -> Unit
@@ -25,6 +25,9 @@ fun AuthScreen(
     var password by remember { mutableStateOf("") }
     var otp by remember { mutableStateOf("") }
     var fullName by remember { mutableStateOf("") }
+    var signUpPassword by remember { mutableStateOf("") }
+    var signUpPasswordConfirm by remember { mutableStateOf("") }
+    var termsAccepted by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
 
     fun resetError() {
@@ -109,7 +112,19 @@ fun AuthScreen(
 
     fun continueFromSignUp() {
         resetError()
-        val account = onSignUp(fullName, identifier, config.mockOtp)
+        val validationError = validateSignUp(
+            fullName = fullName,
+            identifier = identifier,
+            password = signUpPassword,
+            passwordConfirm = signUpPasswordConfirm,
+            termsAccepted = termsAccepted
+        )
+        if (validationError != null) {
+            error = validationError
+            return
+        }
+
+        val account = onSignUp(fullName, identifier, signUpPassword, config.mockOtp)
 
         if (account == null) {
             error = "Hesap oluşturulamadı."
@@ -147,11 +162,32 @@ fun AuthScreen(
         AuthStep.SignUp -> SignUpAuthScreen(
             fullName = fullName,
             identifier = identifier,
+            password = signUpPassword,
+            passwordConfirm = signUpPasswordConfirm,
+            termsAccepted = termsAccepted,
             error = error,
             onFullNameChange = { fullName = it },
             onIdentifierChange = { identifier = it },
+            onPasswordChange = { signUpPassword = it },
+            onPasswordConfirmChange = { signUpPasswordConfirm = it },
+            onTermsAcceptedChange = { termsAccepted = it },
             onContinue = ::continueFromSignUp,
             onBack = ::returnToIdentifier
         )
     }
+}
+
+private fun validateSignUp(
+    fullName: String,
+    identifier: String,
+    password: String,
+    passwordConfirm: String,
+    termsAccepted: Boolean
+): String? {
+    if (fullName.trim().length < 3) return "Ad soyad gerekli."
+    if (identifier.isBlank()) return "E-posta veya telefon gerekli."
+    if (password.length < 6) return "Şifre en az 6 karakter olmalı."
+    if (password != passwordConfirm) return "Şifreler eşleşmiyor."
+    if (!termsAccepted) return "Devam etmek için onay gerekli."
+    return null
 }

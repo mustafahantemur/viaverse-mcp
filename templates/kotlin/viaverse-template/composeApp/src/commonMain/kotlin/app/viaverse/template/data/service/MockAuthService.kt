@@ -7,13 +7,19 @@ import app.viaverse.template.domain.model.AccountStatus
 
 class MockAuthService(initialUsers: List<Account>) {
     private val users = initialUsers.associateBy { normalize(it.identifier) }.toMutableMap()
+    private val localPasswords = AppConfig.auth.mockCredentials
+        .associate { normalize(it.identifier) to it.password }
+        .toMutableMap()
+    private val localTwoFactorFlags = AppConfig.auth.mockCredentials
+        .associate { normalize(it.identifier) to it.twoFactorEnabled }
+        .toMutableMap()
 
     fun findAccount(identifier: String): Account? {
         return users[normalize(identifier)]
     }
 
     fun requiresTwoFactor(identifier: String): Boolean {
-        return AppConfig.auth.isTwoFactorEnabled(identifier)
+        return localTwoFactorFlags[normalize(identifier)] == true
     }
 
     fun requestOtp(identifier: String): Boolean {
@@ -21,7 +27,7 @@ class MockAuthService(initialUsers: List<Account>) {
     }
 
     fun verifyPassword(identifier: String, password: String): Account? {
-        val expectedPassword = AppConfig.auth.passwordFor(identifier) ?: return null
+        val expectedPassword = localPasswords[normalize(identifier)] ?: return null
         if (password != expectedPassword) return null
         return users[normalize(identifier)]
     }
@@ -31,8 +37,9 @@ class MockAuthService(initialUsers: List<Account>) {
         return users[normalize(identifier)]
     }
 
-    fun signUp(name: String, identifier: String, otp: String): Account? {
+    fun signUp(name: String, identifier: String, password: String, otp: String): Account? {
         if (otp != AppConfig.auth.mockOtp) return null
+        if (password.length < 6) return null
         val account = Account(
             id = "acc_local_${normalize(identifier).hashCode().toString().replace("-", "n")}",
             displayName = name.ifBlank { "Yeni Viaverse Kullanıcısı" },
@@ -44,6 +51,8 @@ class MockAuthService(initialUsers: List<Account>) {
             )
         )
         users[normalize(identifier)] = account
+        localPasswords[normalize(identifier)] = password
+        localTwoFactorFlags[normalize(identifier)] = false
         return account
     }
 
