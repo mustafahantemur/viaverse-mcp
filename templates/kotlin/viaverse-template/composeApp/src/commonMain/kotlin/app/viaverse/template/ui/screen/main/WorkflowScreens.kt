@@ -112,72 +112,104 @@ internal fun RequestDraftScreen(
     onBack: () -> Unit
 ) {
     var draft by remember { mutableStateOf(repository.newRequestDraft()) }
+    var step by remember { mutableStateOf(RequestDraftStep.Scope) }
 
     OverlayScreen(title = "Talep oluştur", onBack = onBack) {
         item {
             DraftStatusCard(draft)
         }
-        item {
-            OutlinedTextField(
-                value = draft.titleTr,
-                onValueChange = { draft = draft.copy(titleTr = it, status = RequestDraftStatus.EDITING) },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("Başlık") },
-                singleLine = true,
-                shape = RoundedCornerShape(Dimensions.RadiusMd)
-            )
-        }
-        item {
-            OutlinedTextField(
-                value = draft.descriptionTr,
-                onValueChange = { draft = draft.copy(descriptionTr = it, status = RequestDraftStatus.EDITING) },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("İş detayı") },
-                minLines = 4,
-                shape = RoundedCornerShape(Dimensions.RadiusMd)
-            )
-        }
-        item {
-            CategoryPicker(
-                selected = draft.categoryId,
-                onSelected = { draft = draft.copy(categoryId = it, status = RequestDraftStatus.EDITING) }
-            )
-        }
-        item {
-            SchedulePicker(
-                selected = draft.schedulePreference,
-                onSelected = { draft = draft.copy(schedulePreference = it, status = RequestDraftStatus.EDITING) }
-            )
-        }
-        item {
-            OutlinedTextField(
-                value = draft.locationTr,
-                onValueChange = { draft = draft.copy(locationTr = it, status = RequestDraftStatus.EDITING) },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("Konum") },
-                singleLine = true,
-                shape = RoundedCornerShape(Dimensions.RadiusMd)
-            )
-        }
-        item {
-            OutlinedTextField(
-                value = draft.budgetHintTr,
-                onValueChange = { draft = draft.copy(budgetHintTr = it, status = RequestDraftStatus.EDITING) },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("Bütçe aralığı") },
-                singleLine = true,
-                shape = RoundedCornerShape(Dimensions.RadiusMd)
-            )
-        }
-        item {
-            InsightList(title = "AI önerileri", items = draft.aiSuggestionsTr)
+        item { DraftStepStrip(step) }
+        when (step) {
+            RequestDraftStep.Scope -> {
+                item {
+                    OutlinedTextField(
+                        value = draft.titleTr,
+                        onValueChange = { draft = draft.copy(titleTr = it, status = RequestDraftStatus.EDITING) },
+                        modifier = Modifier.fillMaxWidth(),
+                        label = { Text("Başlık") },
+                        singleLine = true,
+                        shape = RoundedCornerShape(Dimensions.RadiusMd)
+                    )
+                }
+                item {
+                    OutlinedTextField(
+                        value = draft.descriptionTr,
+                        onValueChange = { draft = draft.copy(descriptionTr = it, status = RequestDraftStatus.EDITING) },
+                        modifier = Modifier.fillMaxWidth(),
+                        label = { Text("İş detayı") },
+                        minLines = 4,
+                        shape = RoundedCornerShape(Dimensions.RadiusMd)
+                    )
+                }
+                item {
+                    CategoryPicker(
+                        selected = draft.categoryId,
+                        onSelected = { draft = draft.copy(categoryId = it, status = RequestDraftStatus.EDITING) }
+                    )
+                }
+            }
+
+            RequestDraftStep.Schedule -> {
+                item {
+                    SchedulePicker(
+                        selected = draft.schedulePreference,
+                        onSelected = { draft = draft.copy(schedulePreference = it, status = RequestDraftStatus.EDITING) }
+                    )
+                }
+                item {
+                    OutlinedTextField(
+                        value = draft.locationTr,
+                        onValueChange = { draft = draft.copy(locationTr = it, status = RequestDraftStatus.EDITING) },
+                        modifier = Modifier.fillMaxWidth(),
+                        label = { Text("Konum") },
+                        singleLine = true,
+                        shape = RoundedCornerShape(Dimensions.RadiusMd)
+                    )
+                }
+                item {
+                    OutlinedTextField(
+                        value = draft.budgetHintTr,
+                        onValueChange = { draft = draft.copy(budgetHintTr = it, status = RequestDraftStatus.EDITING) },
+                        modifier = Modifier.fillMaxWidth(),
+                        label = { Text("Bütçe aralığı") },
+                        singleLine = true,
+                        shape = RoundedCornerShape(Dimensions.RadiusMd)
+                    )
+                }
+            }
+
+            RequestDraftStep.Review -> {
+                item {
+                    InsightList(title = "AI önerileri", items = draft.aiSuggestionsTr)
+                }
+                item {
+                    InfoCard(
+                        title = "Gözden geçir",
+                        body = "${draft.titleTr}\n${draft.descriptionTr}\n${draft.locationTr} | ${draft.budgetHintTr}",
+                        status = draft.schedulePreference.labelTr()
+                    )
+                }
+            }
         }
         item {
             PrimaryOverlayAction(
-                label = if (draft.status == RequestDraftStatus.SENT_TO_MATCHING) "Eşleştirme başlatıldı" else "Eşleştirmeye gönder",
+                label = when {
+                    draft.status == RequestDraftStatus.SENT_TO_MATCHING -> "Eşleştirme başlatıldı"
+                    step == RequestDraftStep.Review -> "Eşleştirmeye gönder"
+                    else -> "Devam et"
+                },
                 onClick = {
-                    val ready = repository.readyRequestDraft(draft)
-                    draft = repository.submitRequestDraft(ready)
+                    when (step) {
+                        RequestDraftStep.Scope -> step = RequestDraftStep.Schedule
+                        RequestDraftStep.Schedule -> {
+                            draft = repository.readyRequestDraft(draft)
+                            step = RequestDraftStep.Review
+                        }
+                        RequestDraftStep.Review -> {
+                            val ready = repository.readyRequestDraft(draft)
+                            draft = repository.submitRequestDraft(ready)
+                        }
+                    }
                 }
             )
         }
@@ -469,6 +501,40 @@ private fun DraftStatusCard(draft: RequestDraft) {
     )
 }
 
+private enum class RequestDraftStep {
+    Scope,
+    Schedule,
+    Review
+}
+
+@Composable
+private fun DraftStepStrip(selected: RequestDraftStep) {
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        RequestDraftStep.entries.forEach { step ->
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(36.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(if (selected == step) ViaverseColors.DeepGreen else ViaverseColors.CardSurface)
+                    .border(
+                        1.dp,
+                        if (selected == step) ViaverseColors.DeepGreen else ViaverseColors.BorderSubtle,
+                        RoundedCornerShape(999.dp)
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = step.labelTr(),
+                    color = if (selected == step) ViaverseColors.OnBrand else ViaverseColors.Ink,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+    }
+}
+
 @Composable
 internal fun HeaderBlock(
     title: String,
@@ -748,6 +814,14 @@ private fun SchedulePreference.labelTr(): String {
         SchedulePreference.TODAY -> "Bugün"
         SchedulePreference.THIS_WEEK -> "Bu hafta"
         SchedulePreference.FLEXIBLE -> "Esnek"
+    }
+}
+
+private fun RequestDraftStep.labelTr(): String {
+    return when (this) {
+        RequestDraftStep.Scope -> "Kapsam"
+        RequestDraftStep.Schedule -> "Zaman"
+        RequestDraftStep.Review -> "Onay"
     }
 }
 
