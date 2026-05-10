@@ -1,18 +1,60 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { loadDocs, readDoc, scoreDoc, snippet } from "./docs.js";
 import { checkForbiddenTerms } from "./forbidden.js";
 import { buildContextPack, getRelatedUmls, createPreCodingBriefTemplate } from "./context.js";
 import { resolveTaskContext, buildContextBundle } from "./task-router.js";
 import { getDocOutline, findSections } from "./sections.js";
+import { logMcpToolExchange } from "./logger.js";
 
+type ToolHandler = (args: any) => Promise<CallToolResult>;
+
+function registerLoggedTool(
+  server: McpServer,
+  name: string,
+  inputSchema: Record<string, z.ZodTypeAny>,
+  handler: ToolHandler
+) {
+  (server.tool as unknown as (
+    toolName: string,
+    schema: Record<string, z.ZodTypeAny>,
+    callback: (args: any) => Promise<CallToolResult>
+  ) => void)(name, inputSchema, async (args) => {
+    const startedAt = Date.now();
+    try {
+      const result = await handler(args);
+      await logMcpToolExchange({
+        tool: name,
+        input: args,
+        output: result,
+        durationMs: Date.now() - startedAt
+      });
+      return result;
+    } catch (error) {
+      await logMcpToolExchange({
+        tool: name,
+        input: args,
+        error: error instanceof Error
+          ? { name: error.name, message: error.message, stack: error.stack }
+          : { message: String(error) },
+        durationMs: Date.now() - startedAt
+      });
+      throw error;
+    }
+  });
+}
+
+export function createViaverseDocsServer(): McpServer {
 const server = new McpServer({
   name: "viaverse-docs-mcp",
   version: "2.0.0"
 });
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_project_orientation",
   {},
   async () => {
@@ -62,7 +104,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "resolve_task_context",
   {
     task: z.string().min(3)
@@ -77,7 +120,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_context_bundle",
   {
     boundedContext: z.string().min(2),
@@ -95,7 +139,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_doc_outline",
   {
     filePath: z.string().min(1)
@@ -117,7 +162,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "read_doc_sections",
   {
     filePath: z.string().min(1),
@@ -142,7 +188,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "search_docs",
   {
     query: z.string().min(2),
@@ -169,7 +216,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "read_doc",
   {
     filePath: z.string().min(1)
@@ -180,7 +228,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "list_docs",
   {
     boundedContext: z.string().optional(),
@@ -208,7 +257,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_related_umls",
   {
     boundedContext: z.string().min(2)
@@ -223,7 +273,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_context_pack",
   {
     boundedContext: z.string().min(2),
@@ -237,7 +288,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "pre_coding_brief",
   {
     boundedContext: z.string().min(2),
@@ -253,7 +305,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "check_forbidden_terms",
   {
     boundedContext: z.string().optional()
@@ -277,5 +330,15 @@ server.tool(
   }
 );
 
-const transport = new StdioServerTransport();
-await server.connect(transport);
+return server;
+}
+
+export async function connectStdioServer() {
+  const server = createViaverseDocsServer();
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await connectStdioServer();
+}

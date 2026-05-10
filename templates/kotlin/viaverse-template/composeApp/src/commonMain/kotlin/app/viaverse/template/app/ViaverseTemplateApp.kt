@@ -8,13 +8,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import app.viaverse.template.config.AppConfig
 import app.viaverse.template.data.repository.AuthRepository
+import app.viaverse.template.data.repository.DashboardRepository
+import app.viaverse.template.data.repository.DiscoveryRepository
+import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.data.service.MockAuthService
+import app.viaverse.template.data.service.MockDashboardService
+import app.viaverse.template.data.service.MockDiscoveryService
+import app.viaverse.template.data.service.MockWorkflowService
 import app.viaverse.template.data.storage.MemoryStorageService
 import app.viaverse.template.data.storage.StorageService
 import app.viaverse.template.domain.model.Account
 import app.viaverse.template.platform.PlatformBackHandler
 import app.viaverse.template.ui.screen.auth.AuthScreen
-import app.viaverse.template.ui.screen.home.LockedHomePlaceholder
+import app.viaverse.template.ui.screen.main.MainShell
 import app.viaverse.template.ui.screen.splash.SplashScreen
 import app.viaverse.template.ui.theme.ViaverseTheme
 
@@ -34,6 +40,15 @@ fun ViaverseTemplateApp(
             service = MockAuthService(AppConfig.mockUsers),
             storage = storageService
         )
+    }
+    val discoveryRepository = remember {
+        DiscoveryRepository(service = MockDiscoveryService())
+    }
+    val dashboardRepository = remember {
+        DashboardRepository(service = MockDashboardService())
+    }
+    val workflowRepository = remember {
+        WorkflowRepository(service = MockWorkflowService())
     }
 
     var route by remember { mutableStateOf(AppRoute.Splash) }
@@ -68,11 +83,17 @@ fun ViaverseTemplateApp(
                         }
                     )
                 } else {
-                    LockedHomePlaceholder(account = account, onLogout = {
-                        repository.logout()
-                        account = null
-                        route = AppRoute.Auth
-                    })
+                    MainShell(
+                        account = account,
+                        discoveryRepository = discoveryRepository,
+                        dashboardRepository = dashboardRepository,
+                        workflowRepository = workflowRepository,
+                        onLogout = {
+                            repository.logout()
+                            account = null
+                            route = AppRoute.Auth
+                        }
+                    )
                 }
 
                 SplashScreen(
@@ -96,8 +117,11 @@ fun ViaverseTemplateApp(
                 }
             )
 
-            AppRoute.Home -> LockedHomePlaceholder(
+            AppRoute.Home -> MainShell(
                 account = account,
+                discoveryRepository = discoveryRepository,
+                dashboardRepository = dashboardRepository,
+                workflowRepository = workflowRepository,
                 onLogout = {
                     repository.logout()
                     account = null

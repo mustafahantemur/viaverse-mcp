@@ -17,6 +17,31 @@ $env:VIAVERSE_REPO_ROOT="C:\Projects\Viaverse\viaverse-platform"
 npm run dev
 ```
 
+## Localhost / Inspector Run
+
+```powershell
+$env:VIAVERSE_REPO_ROOT="C:\Projects\Viaverse\viaverse-platform"
+npm run start:http
+```
+
+Streamable HTTP endpoint:
+
+```text
+http://127.0.0.1:6275/mcp
+```
+
+Health endpoint:
+
+```text
+http://127.0.0.1:6275/health
+```
+
+Tool exchanges are logged as JSONL:
+
+```text
+tools/viaverse-docs-mcp/logs/mcp-exchanges.jsonl
+```
+
 ## Tools
 
 ```text
