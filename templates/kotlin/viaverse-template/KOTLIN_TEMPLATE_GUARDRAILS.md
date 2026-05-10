@@ -40,6 +40,9 @@ Bu dosya Viaverse Kotlin/Compose template'inde tekrar edilmemesi gereken hatalar
 - Kişisel hizmet verme Airbnb tarzı hafif onboarding olarak kalmalı; işletme hesabı gibi davranmamalı.
 - UI içinde business state veya role string karşılaştırması yapılmamalı; enum/sealed state kullanılmalı.
 - AI insight metinleri Türkçe olmalı ve ekranın karar/riski anlatmalı.
+- Overlay ekranlar sistem geri tuşuna bağlı olmalı; ayar detayı gibi alt paneller doğru parent panele dönmeli.
+- Chat, ödeme, yorum ve kurulum akışları statik metin değil, mock state transition gösterebilmeli.
+- Mock servis davranışları için en azından temel common testler bulunmalı; request id eşleşmesi ve kurulum state ilerlemesi korunmalı.
 
 ## Validation
 

@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import app.viaverse.template.config.AuthConfig
 import app.viaverse.template.domain.model.Account
 import app.viaverse.template.domain.model.AuthDecision
+import app.viaverse.template.platform.PlatformBackHandler
 
 @Composable
 fun AuthScreen(
@@ -131,6 +132,10 @@ fun AuthScreen(
         } else {
             onAuthenticated(account)
         }
+    }
+
+    PlatformBackHandler(enabled = step != AuthStep.Identifier) {
+        returnToIdentifier()
     }
 
     when (step) {

@@ -2,6 +2,7 @@ package app.viaverse.template.data.service
 
 import app.viaverse.template.domain.model.AiInsight
 import app.viaverse.template.domain.model.BusinessSetupStep
+import app.viaverse.template.domain.model.BusinessWorkspaceStatus
 import app.viaverse.template.domain.model.BusinessWorkspaceDetail
 import app.viaverse.template.domain.model.BusinessWorkspaceSummary
 import app.viaverse.template.domain.model.ChatMessage
@@ -234,6 +235,44 @@ class MockWorkflowService {
         )
     }
 
+    fun progressBusinessWorkspace(detail: BusinessWorkspaceDetail): BusinessWorkspaceDetail {
+        val steps = completeNextStep(detail.steps) { step, status -> step.copy(status = status) }
+        val doneCount = steps.count { it.status == ProviderSetupStepStatus.DONE }
+        val nextStatus = when {
+            doneCount == steps.size -> BusinessWorkspaceStatus.PUBLISHED
+            doneCount >= steps.size - 1 -> BusinessWorkspaceStatus.PUBLISH_READY
+            doneCount > 0 -> BusinessWorkspaceStatus.PENDING_VERIFICATION
+            else -> detail.summary.status
+        }
+        val nextSummary = detail.summary.copy(
+            status = nextStatus,
+            verificationStepTr = when (nextStatus) {
+                BusinessWorkspaceStatus.NOT_STARTED -> detail.summary.verificationStepTr
+                BusinessWorkspaceStatus.PENDING_VERIFICATION -> "İşletme doğrulaması ve merchant bilgileri ilerliyor."
+                BusinessWorkspaceStatus.PUBLISH_READY -> "Yayın öncesi son policy kontrolleri hazır."
+                BusinessWorkspaceStatus.PUBLISHED -> "İşletme profili yayınlandı."
+            },
+            subscriptionStateTr = if (nextStatus == BusinessWorkspaceStatus.PUBLISHED) {
+                "Abonelik aktif, merchant payout hazır"
+            } else {
+                detail.summary.subscriptionStateTr
+            }
+        )
+        return detail.copy(summary = nextSummary, steps = steps)
+    }
+
+    fun progressProviderOnboarding(snapshot: ProviderOnboardingSnapshot): ProviderOnboardingSnapshot {
+        val steps = completeNextStep(snapshot.steps) { step, status -> step.copy(status = status) }
+        return snapshot.copy(
+            steps = steps,
+            bodyTr = if (steps.all { it.status == ProviderSetupStepStatus.DONE }) {
+                "Bireysel hizmet verme modu hazır; artık uygun işlere teklif gönderebilirsin."
+            } else {
+                snapshot.bodyTr
+            }
+        )
+    }
+
     fun wallet(): WalletSnapshot {
         return WalletSnapshot(
             escrowBalanceTr = "1.200 TL",
@@ -371,5 +410,25 @@ class MockWorkflowService {
                 "Ödeme uygulama dışına taşarsa risk sinyali oluşturulur."
             )
         )
+    }
+
+    private fun <T> completeNextStep(
+        steps: List<T>,
+        copyWithStatus: (T, ProviderSetupStepStatus) -> T
+    ): List<T> {
+        var changed = false
+        return steps.map { step ->
+            val status = when (step) {
+                is ProviderSetupStep -> step.status
+                is BusinessSetupStep -> step.status
+                else -> ProviderSetupStepStatus.DONE
+            }
+            if (!changed && status != ProviderSetupStepStatus.DONE) {
+                changed = true
+                copyWithStatus(step, ProviderSetupStepStatus.DONE)
+            } else {
+                step
+            }
+        }
     }
 }

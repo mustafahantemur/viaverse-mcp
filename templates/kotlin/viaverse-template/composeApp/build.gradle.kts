@@ -19,6 +19,11 @@ kotlin {
                 implementation(compose.components.resources)
             }
         }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
         val androidMain by getting {
             dependencies {
                 implementation("androidx.activity:activity-compose:1.9.3")

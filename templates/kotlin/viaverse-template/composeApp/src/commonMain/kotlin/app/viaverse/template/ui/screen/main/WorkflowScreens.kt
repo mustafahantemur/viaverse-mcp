@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import app.viaverse.template.data.repository.DiscoveryRepository
 import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.domain.model.BusinessWorkspaceSummary
+import app.viaverse.template.domain.model.ChatMessage
 import app.viaverse.template.domain.model.ChatPolicyState
 import app.viaverse.template.domain.model.CustomerJobStatus
 import app.viaverse.template.domain.model.DiscoveryItemType
@@ -210,7 +211,7 @@ internal fun ProviderOnboardingScreen(
     repository: WorkflowRepository,
     onBack: () -> Unit
 ) {
-    val snapshot = remember { repository.providerOnboarding() }
+    var snapshot by remember { mutableStateOf(repository.providerOnboarding()) }
 
     OverlayScreen(title = "Hizmet verme", onBack = onBack) {
         item {
@@ -229,7 +230,16 @@ internal fun ProviderOnboardingScreen(
             InsightList(title = "AI yönlendirmesi", items = snapshot.insights.map { it.summaryTr })
         }
         item {
-            PrimaryOverlayAction(label = "Kurulumu tamamla", onClick = onBack)
+            PrimaryOverlayAction(
+                label = if (snapshot.steps.all { it.status == ProviderSetupStepStatus.DONE }) "Panele dön" else "Sıradaki adımı tamamla",
+                onClick = {
+                    if (snapshot.steps.all { it.status == ProviderSetupStepStatus.DONE }) {
+                        onBack()
+                    } else {
+                        snapshot = repository.progressProviderOnboarding(snapshot)
+                    }
+                }
+            )
         }
     }
 }
@@ -240,7 +250,7 @@ internal fun BusinessWorkspaceScreen(
     summary: BusinessWorkspaceSummary,
     onBack: () -> Unit
 ) {
-    val detail = remember(summary) { repository.businessWorkspace(summary) }
+    var detail by remember(summary) { mutableStateOf(repository.businessWorkspace(summary)) }
 
     OverlayScreen(title = "İşletme workspace", onBack = onBack) {
         item {
@@ -261,6 +271,16 @@ internal fun BusinessWorkspaceScreen(
         }
         item {
             InsightList(title = "AI yönlendirmesi", items = detail.insights.map { it.recommendedNextActionTr })
+        }
+        item {
+            PrimaryOverlayAction(
+                label = if (detail.steps.all { it.status == ProviderSetupStepStatus.DONE }) "Workspace yayında" else "Sıradaki workspace adımını tamamla",
+                onClick = {
+                    if (!detail.steps.all { it.status == ProviderSetupStepStatus.DONE }) {
+                        detail = repository.progressBusinessWorkspace(detail)
+                    }
+                }
+            )
         }
     }
 }
@@ -289,6 +309,8 @@ internal fun ChatDetailScreen(
     onBack: () -> Unit
 ) {
     val thread = remember(conversationId) { repository.chatThread(conversationId) }
+    var messageText by remember(conversationId) { mutableStateOf("") }
+    var messages by remember(conversationId) { mutableStateOf(thread.messages) }
 
     OverlayScreen(title = "Mesaj", onBack = onBack) {
         item {
@@ -297,7 +319,7 @@ internal fun ChatDetailScreen(
         item {
             PolicyCard(thread.policyState, thread.aiSafetyNotesTr)
         }
-        items(thread.messages, key = { it.id }) { message ->
+        items(messages, key = { it.id }) { message ->
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = if (message.fromCurrentUser) Arrangement.End else Arrangement.Start
@@ -329,10 +351,30 @@ internal fun ChatDetailScreen(
             }
         }
         item {
-            InfoCard(
-                title = "Yanıt alanı",
-                body = "Template akışında mesaj gönderimi mock servisle temsil edilir; policy uyarısı bu alanda görünür.",
-                status = "Mock"
+            OutlinedTextField(
+                value = messageText,
+                onValueChange = { messageText = it },
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text("Mesaj yaz") },
+                minLines = 2,
+                shape = RoundedCornerShape(Dimensions.RadiusMd)
+            )
+        }
+        item {
+            PrimaryOverlayAction(
+                label = "Gönder",
+                onClick = {
+                    val trimmed = messageText.trim()
+                    if (trimmed.isNotEmpty()) {
+                        messages = messages + ChatMessage(
+                            id = "local_${messages.size + 1}",
+                            fromCurrentUser = true,
+                            textTr = trimmed,
+                            timeTr = "Şimdi"
+                        )
+                        messageText = ""
+                    }
+                }
             )
         }
     }

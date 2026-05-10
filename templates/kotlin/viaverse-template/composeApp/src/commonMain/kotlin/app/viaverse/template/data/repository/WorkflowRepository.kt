@@ -43,12 +43,20 @@ class WorkflowRepository(
         return service.providerOnboarding()
     }
 
+    fun progressProviderOnboarding(snapshot: ProviderOnboardingSnapshot): ProviderOnboardingSnapshot {
+        return service.progressProviderOnboarding(snapshot)
+    }
+
     fun providerDashboard(): ProviderDashboardSnapshot {
         return service.providerDashboard()
     }
 
     fun businessWorkspace(detail: BusinessWorkspaceSummary): BusinessWorkspaceDetail {
         return service.businessWorkspace(detail)
+    }
+
+    fun progressBusinessWorkspace(detail: BusinessWorkspaceDetail): BusinessWorkspaceDetail {
+        return service.progressBusinessWorkspace(detail)
     }
 
     fun wallet(): WalletSnapshot {

@@ -36,6 +36,7 @@ import app.viaverse.template.data.repository.DashboardRepository
 import app.viaverse.template.data.repository.DiscoveryRepository
 import app.viaverse.template.data.repository.WorkflowRepository
 import app.viaverse.template.domain.model.Account
+import app.viaverse.template.platform.PlatformBackHandler
 import app.viaverse.template.ui.screen.explore.ExploreScreen
 import app.viaverse.template.ui.theme.ViaverseColors
 
@@ -76,6 +77,13 @@ fun MainShell(
     var selectedTab by remember { mutableStateOf(MainTab.Explore) }
     var activePanel by remember { mutableStateOf<MainPanel?>(null) }
     val dashboard = remember(account) { dashboardRepository.load(account) }
+
+    PlatformBackHandler(enabled = activePanel != null) {
+        activePanel = when (activePanel) {
+            is MainPanel.SettingDetail -> MainPanel.ProfileSettings
+            else -> null
+        }
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
