@@ -10,14 +10,20 @@ import app.viaverse.template.domain.model.ExploreItem
 import app.viaverse.template.domain.model.SearchCriteria
 import app.viaverse.template.domain.model.ServiceCategory
 import app.viaverse.template.domain.model.ServiceCategoryId
+import app.viaverse.template.domain.model.SocialComment
+import app.viaverse.template.domain.model.SocialFeedPost
+import app.viaverse.template.domain.model.SocialMediaKind
+import app.viaverse.template.domain.model.SocialPostType
 
 class MockDiscoveryService {
     fun loadDiscovery(criteria: SearchCriteria): DiscoverySnapshot {
         val filtered = applyCriteria(criteria)
+        val filteredPosts = applyPostCriteria(criteria)
         return DiscoverySnapshot(
             criteria = criteria,
             categories = categories,
             items = filtered,
+            socialPosts = filteredPosts,
             insights = buildInsights(criteria, filtered)
         )
     }
@@ -44,6 +50,21 @@ class MockDiscoveryService {
             .toList()
     }
 
+    private fun applyPostCriteria(criteria: SearchCriteria): List<SocialFeedPost> {
+        val query = criteria.query.trim().lowercase()
+        return socialPosts
+            .asSequence()
+            .filter { criteria.selectedPostType == null || it.type == criteria.selectedPostType }
+            .filter { post ->
+                query.isBlank() ||
+                    post.titleTr.orEmpty().lowercase().contains(query) ||
+                    post.bodyTr.lowercase().contains(query) ||
+                    post.authorNameTr.lowercase().contains(query) ||
+                    post.type.labelTr().lowercase().contains(query)
+            }
+            .toList()
+    }
+
     private fun ExploreItem.matchesMode(mode: DiscoveryMode): Boolean {
         return when (mode) {
             DiscoveryMode.REQUEST_WORK -> type == DiscoveryItemType.PROVIDER
@@ -62,8 +83,8 @@ class MockDiscoveryService {
 
     private fun buildInsights(criteria: SearchCriteria, filtered: List<ExploreItem>): List<AiInsight> {
         val modeText = when (criteria.mode) {
-            DiscoveryMode.REQUEST_WORK -> "talep oluşturmaya yakın"
-            DiscoveryMode.DO_WORK -> "iş fırsatı keşfine yakın"
+            DiscoveryMode.REQUEST_WORK -> "hizmet alma ve talep oluşturmaya yakın"
+            DiscoveryMode.DO_WORK -> "çevrenle etkileşim ve yerel güven akışına yakın"
         }
         return listOf(
             AiInsight(
@@ -73,6 +94,16 @@ class MockDiscoveryService {
                 riskSignalsTr = listOf("Ödeme ve iletişim uygulama dışına taşmamalı.")
             )
         )
+    }
+
+    private fun SocialPostType.labelTr(): String {
+        return when (this) {
+            SocialPostType.HELP -> "yardım"
+            SocialPostType.ANNOUNCEMENT -> "duyuru"
+            SocialPostType.ADVISORY -> "danışma"
+            SocialPostType.WORK -> "iş"
+            SocialPostType.EVENT -> "etkinlik"
+        }
     }
 
     private val categories = listOf(
@@ -182,6 +213,74 @@ class MockDiscoveryService {
             trustSignalTr = "Yakın çevre paylaşımı",
             urgency = DiscoveryUrgency.TODAY,
             aiSummaryTr = "Sosyal güven katmanı için düşük bütçeli ve hızlı tamamlanabilir yerel destek."
+        )
+    )
+
+    private val socialPosts = listOf(
+        SocialFeedPost(
+            id = "post_001",
+            type = SocialPostType.HELP,
+            authorNameTr = "Ayşe T.",
+            titleTr = "Yıldız tornavida",
+            bodyTr = "Ufak bir montaj işim var, 1 saatliğine yıldız tornavida ödünç verebilecek komşu var mı?",
+            publishTimeTr = "5 dk",
+            distanceTr = "150 m",
+            likes = 2,
+            commentsCount = 0,
+            mediaKind = SocialMediaKind.NONE,
+            mediaLabelTr = null,
+            priceHintTr = null,
+            comments = emptyList()
+        ),
+        SocialFeedPost(
+            id = "post_002",
+            type = SocialPostType.ANNOUNCEMENT,
+            authorNameTr = "Kemal S.",
+            titleTr = "Kayıp kedi",
+            bodyTr = "Dün akşam parkın orada kedimiz Tarçın kayboldu. Görenlerin haber vermesini rica ederiz.",
+            publishTimeTr = "27 dk",
+            distanceTr = "0.2 km",
+            likes = 12,
+            commentsCount = 5,
+            mediaKind = SocialMediaKind.IMAGE,
+            mediaLabelTr = "Kedi fotoğrafı",
+            priceHintTr = null,
+            comments = listOf(
+                SocialComment("Fatma Y.", "Çok geçmiş olsun, gözümüz yollarda olur.", "10 dk"),
+                SocialComment("Murat C.", "Parkın köşesinde gördüm sanırım, birazdan bakacağım.", "5 dk")
+            )
+        ),
+        SocialFeedPost(
+            id = "post_003",
+            type = SocialPostType.WORK,
+            authorNameTr = "Cansu B.",
+            titleTr = null,
+            bodyTr = "Yarın 14:00'da ufak ırk köpeğimi 45 dakika gezdirecek biri lazım.",
+            publishTimeTr = "1 sa",
+            distanceTr = "1.2 km",
+            likes = 4,
+            commentsCount = 1,
+            mediaKind = SocialMediaKind.VIDEO,
+            mediaLabelTr = "Kısa tanıtım videosu",
+            priceHintTr = "Teklif bekliyor",
+            comments = listOf(
+                SocialComment("Selin G.", "Hangi parkta dolaştırılması gerekiyor?", "20 dk")
+            )
+        ),
+        SocialFeedPost(
+            id = "post_004",
+            type = SocialPostType.ADVISORY,
+            authorNameTr = "Deniz K.",
+            titleTr = "Bebek koltuğu önerisi",
+            bodyTr = "Kısa mesafeli şehir içi kullanım için güvenli ve pratik bebek koltuğu öneriniz var mı?",
+            publishTimeTr = "2 sa",
+            distanceTr = "0.8 km",
+            likes = 7,
+            commentsCount = 3,
+            mediaKind = SocialMediaKind.NONE,
+            mediaLabelTr = null,
+            priceHintTr = null,
+            comments = emptyList()
         )
     )
 }

@@ -394,10 +394,10 @@ internal fun ChatDetailScreen(
                     modifier = Modifier
                         .fillMaxWidth(0.78f)
                         .clip(RoundedCornerShape(Dimensions.RadiusMd))
-                        .background(if (message.fromCurrentUser) ViaverseColors.DeepGreen else ViaverseColors.CardSurface)
+                        .background(if (message.fromCurrentUser) ViaverseColors.BrandOrange else ViaverseColors.CardSurface)
                         .border(
                             1.dp,
-                            if (message.fromCurrentUser) ViaverseColors.DeepGreen else ViaverseColors.BorderSubtle,
+                            if (message.fromCurrentUser) ViaverseColors.BrandOrange else ViaverseColors.BorderSubtle,
                             RoundedCornerShape(Dimensions.RadiusMd)
                         )
                         .padding(12.dp),
@@ -516,10 +516,10 @@ private fun DraftStepStrip(selected: RequestDraftStep) {
                     .weight(1f)
                     .height(36.dp)
                     .clip(RoundedCornerShape(999.dp))
-                    .background(if (selected == step) ViaverseColors.DeepGreen else ViaverseColors.CardSurface)
+                    .background(if (selected == step) ViaverseColors.BrandOrange else ViaverseColors.CardSurface)
                     .border(
                         1.dp,
-                        if (selected == step) ViaverseColors.DeepGreen else ViaverseColors.BorderSubtle,
+                        if (selected == step) ViaverseColors.BrandOrange else ViaverseColors.BorderSubtle,
                         RoundedCornerShape(999.dp)
                     ),
                 contentAlignment = Alignment.Center
@@ -696,10 +696,10 @@ private fun SchedulePicker(
                         .weight(1f)
                         .height(40.dp)
                         .clip(RoundedCornerShape(999.dp))
-                        .background(if (active) ViaverseColors.DeepGreen else ViaverseColors.CardSurface)
+                        .background(if (active) ViaverseColors.BrandOrange else ViaverseColors.CardSurface)
                         .border(
                             1.dp,
-                            if (active) ViaverseColors.DeepGreen else ViaverseColors.BorderSubtle,
+                            if (active) ViaverseColors.BrandOrange else ViaverseColors.BorderSubtle,
                             RoundedCornerShape(999.dp)
                         )
                         .clickable { onSelected(preference) },
@@ -726,11 +726,11 @@ internal fun InsightList(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(Dimensions.RadiusMd))
-            .background(ViaverseColors.DeepGreen)
+            .background(ViaverseColors.BrandOrange)
             .padding(14.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(title, color = ViaverseColors.BrandOrange, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
+        Text(title, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
         items.forEach { item ->
             Text(item, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.bodySmall)
         }

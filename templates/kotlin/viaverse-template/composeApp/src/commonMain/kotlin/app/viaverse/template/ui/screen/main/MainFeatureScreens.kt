@@ -314,7 +314,7 @@ private fun StatusPill(label: String) {
             .padding(horizontal = 10.dp, vertical = 6.dp),
         contentAlignment = Alignment.Center
     ) {
-        Text(label, color = ViaverseColors.DeepGreen, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+        Text(label, color = ViaverseColors.BrandOrange, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -333,7 +333,7 @@ private fun ProfileHero(account: Account?) {
             modifier = Modifier
                 .size(58.dp)
                 .clip(CircleShape)
-                .background(ViaverseColors.DeepGreen),
+                .background(ViaverseColors.BrandOrange),
             contentAlignment = Alignment.Center
         ) {
             Text(
@@ -366,11 +366,11 @@ private fun InsightCard(body: String) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(Dimensions.RadiusMd))
-            .background(ViaverseColors.DeepGreen)
+            .background(ViaverseColors.BrandOrange)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp)
     ) {
-        Text("AI içgörü", color = ViaverseColors.BrandOrange, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+        Text("AI içgörü", color = ViaverseColors.OnBrand, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
         Text(body, color = ViaverseColors.OnBrand, style = MaterialTheme.typography.bodyMedium)
     }
 }

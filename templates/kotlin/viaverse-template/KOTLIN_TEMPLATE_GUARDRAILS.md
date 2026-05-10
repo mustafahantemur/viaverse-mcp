@@ -36,6 +36,10 @@ Bu dosya Viaverse Kotlin/Compose template'inde tekrar edilmemesi gereken hatalar
 ## Main Workflow Structure
 
 - Explore, dashboard, request draft, provider onboarding, business workspace, settings and chat data service/repository arkasından gelmeli.
+- Explore iki amaçlı kalmalı: `Çevre` yerel sosyal/trust akışı; `Hizmet al` servis keşfi ve kategori araması.
+- Çevre akışında paylaşım oluşturma, mock fotoğraf/video medya seçimi, beğeni, yorum ve küçük iş teklif bağlamı görünür olmalı.
+- Arama ve filtreler React referansındaki gibi akışı boğmamalı; filtreler sürekli üstte açık duran chip listesi yerine arama yanında açılıp kapanan kontrollü alanda tutulmalı.
+- Light temada ana vurgu turuncu kullanılmalı; koyu/gece tema çalışmasında ana vurgu yeşil token üzerinden ilerlemeli.
 - Business workspace kişisel hizmet verme geçişinden ayrı tutulmalı; doğrulama, merchant, ekip rolleri, katalog ve publish-readiness akışı göstermeli.
 - Kişisel hizmet verme Airbnb tarzı hafif onboarding olarak kalmalı; işletme hesabı gibi davranmamalı.
 - UI içinde business state veya role string karşılaştırması yapılmamalı; enum/sealed state kullanılmalı.

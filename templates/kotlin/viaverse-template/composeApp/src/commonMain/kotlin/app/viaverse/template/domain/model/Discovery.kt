@@ -5,6 +5,20 @@ enum class DiscoveryMode {
     DO_WORK
 }
 
+enum class SocialPostType {
+    HELP,
+    ANNOUNCEMENT,
+    ADVISORY,
+    WORK,
+    EVENT
+}
+
+enum class SocialMediaKind {
+    NONE,
+    IMAGE,
+    VIDEO
+}
+
 enum class ServiceCategoryId {
     HOME_REPAIR,
     CLEANING,
@@ -44,8 +58,9 @@ enum class DiscoverySort {
 
 data class SearchCriteria(
     val query: String = "",
-    val mode: DiscoveryMode = DiscoveryMode.REQUEST_WORK,
+    val mode: DiscoveryMode = DiscoveryMode.DO_WORK,
     val selectedCategoryId: ServiceCategoryId? = null,
+    val selectedPostType: SocialPostType? = null,
     val urgency: DiscoveryUrgency = DiscoveryUrgency.ANY,
     val maxDistanceKm: Int = 10,
     val sort: DiscoverySort = DiscoverySort.RECOMMENDED
@@ -72,9 +87,32 @@ data class ExploreItem(
     val aiSummaryTr: String
 )
 
+data class SocialComment(
+    val authorNameTr: String,
+    val textTr: String,
+    val timeTr: String
+)
+
+data class SocialFeedPost(
+    val id: String,
+    val type: SocialPostType,
+    val authorNameTr: String,
+    val titleTr: String?,
+    val bodyTr: String,
+    val publishTimeTr: String,
+    val distanceTr: String,
+    val likes: Int,
+    val commentsCount: Int,
+    val mediaKind: SocialMediaKind,
+    val mediaLabelTr: String?,
+    val priceHintTr: String?,
+    val comments: List<SocialComment>
+)
+
 data class DiscoverySnapshot(
     val criteria: SearchCriteria,
     val categories: List<ServiceCategory>,
     val items: List<ExploreItem>,
+    val socialPosts: List<SocialFeedPost>,
     val insights: List<AiInsight>
 )
