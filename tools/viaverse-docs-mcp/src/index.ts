@@ -66,8 +66,8 @@ registerLoggedTool(
           implementation: "greenfield",
           rule: "Use MCP before coding. Return the smallest sufficient context, not the largest available context.",
           compactMode: {
-            maxBoundedContextsPerTask: 2,
-            maxCanonicalDocsPerTask: 3,
+            maxBoundedContextsPerTask: 3,
+            maxCanonicalDocsPerTask: 4,
             maxSnippetsPerDoc: 1
           },
           implementationOrder: [
@@ -85,6 +85,7 @@ registerLoggedTool(
             "resolve_task_context",
             "get_context_bundle",
             "pre_coding_brief",
+            "implementation plan",
             "implement"
           ],
           compactGlobalDocs: [
@@ -92,10 +93,27 @@ registerLoggedTool(
             "docs/blueprint/CLIENT_ARCHITECTURE.md",
             "docs/blueprint/BACKEND_ARCHITECTURE.md"
           ],
+          globalBackendServiceRules: [
+            "All backend services use Java 25, Spring Boot, and Gradle Kotlin DSL.",
+            "All JPA services include Spring Data JPA, PostgreSQL driver, Flyway core, Flyway PostgreSQL support, and ddl-auto=validate.",
+            "Every JPA entity change requires matching Flyway migrations checked before bootRun/debug.",
+            "Package by feature/use-case; controllers thin, use cases focused, errors typed, tests added."
+          ],
+          observabilityDefaults: [
+            "Structured ECS JSON logs to stdout/stderr.",
+            "audit_log is not application logging.",
+            "OpenSearch is the default log/search store; Graylog is not default because of SSPL licensing concerns.",
+            "No app.log, debug.log, local.txt, errors.txt, or similar file-based app logs."
+          ],
+          licenseDefaults: [
+            "Prefer MIT, Apache-2.0, BSD, ISC.",
+            "Avoid AGPL, GPL, LGPL, SSPL, strong copyleft, network copyleft, and source-available infrastructure unless ADR-approved.",
+            "MinIO must not be used; SeaweedFS is allowed for local S3-compatible storage through generic object-storage abstractions."
+          ],
           scopeGuards: [
             "Do not include React template context for foundation, backend, auth, repository, logging, DB, domain, or infrastructure tasks unless explicitly requested.",
             "Do not continue Kotlin template completion unless explicitly requested.",
-            "Recommend splitting tasks that need more than 2 bounded contexts."
+            "Recommend splitting tasks that need more than 3 bounded contexts or ask for all flows/full template completion."
           ],
           productBalance: [
             "Preserve Dinamik Cevre and Hizmet Al as separate product surfaces.",
@@ -112,7 +130,8 @@ registerLoggedTool(
             "breaking REST/event contract",
             "payment/security/privacy/moderation/identity impact",
             "unclear domain state",
-            "hardcoded business string appears necessary"
+            "hardcoded business string appears necessary",
+            "new non-permissive/copyleft infrastructure dependency"
           ]
         }, null, 2)
       }]

@@ -62,8 +62,9 @@ These decisions are already made. Do not change them unless an ADR explicitly up
 
 ### Backend
 
-- Backend language: **Java**
+- Backend language: **Java 25**
 - Framework: **Spring Boot**
+- Build system: **Gradle Kotlin DSL**
 - External APIs: **REST first**
 - Complex read aggregation: **GraphQL BFF allowed**, but not core domain contract
 - Internal service-to-service synchronous calls: **gRPC**
@@ -118,6 +119,10 @@ Do **not** introduce these patterns:
 - Private service requests indexed by SEO/search public pages
 - Sensitive data in logs/events
 - Custom cryptography for chat
+- MinIO
+- AGPL/GPL/LGPL/SSPL/copyleft infrastructure without ADR approval
+- Local text-file application logging such as `app.log`, `debug.log`, `local.txt`, `errors.txt`
+- Manual JWT construction/parsing/signing outside Spring Security
 
 ---
 
@@ -572,3 +577,100 @@ The codebase must include checks for:
 - DTOs do not leak into domain
 - forbidden hardcoded business string comparisons
 - enum ordinal persistence is not used
+
+---
+
+# Canonical Addendum — Global Backend Service / Observability / License / Auth Rules
+
+## Status
+
+Accepted and mandatory for every Viaverse backend service.
+
+These rules are global, not identity-service-specific. They apply to identity-service, marketplace-service, payment-service, messaging-service, media-service, notification-service, search-service, trust-gamification-service, ads-monetization-service, admin-bff, and future services.
+
+## Build and Persistence Baseline
+
+- Backend services use Java 25, Spring Boot, and Gradle Kotlin DSL.
+- PostgreSQL schema changes are managed by Flyway.
+- Hibernate `ddl-auto` remains `validate`.
+- Do not use Hibernate `update` or `create` for normal development.
+- Every service with JPA entities must include Spring Data JPA, PostgreSQL driver, Flyway core, Flyway PostgreSQL support, and Flyway Gradle plugin/convention where needed.
+- Migration files must create all tables expected by JPA entities.
+- Flyway migrations must be checked before `bootRun` or debug.
+
+## Package Structure
+
+Use feature/use-case based packages:
+
+```text
+app.viaverse.<service>.<feature>
+  api
+    dto
+  application
+    usecase
+    service
+  domain
+    model
+    enums
+    value
+    policy
+  infrastructure
+    persistence
+      entity
+      repository
+    external
+    messaging
+    security
+    ratelimit
+    adapter
+
+app.viaverse.<service>.shared
+  error
+  normalization
+  audit
+  config
+  mapper
+```
+
+Controllers stay thin. Use cases stay focused. Avoid giant services. DTOs, JPA entities, repositories, enums, normalizers, rate limiting, and audit helpers must live in clear packages.
+
+## License Policy
+
+Prefer MIT, Apache-2.0, BSD, and ISC.
+
+Avoid AGPL, GPL, LGPL, SSPL, strong copyleft, network copyleft, and source-available infrastructure dependencies unless an ADR explicitly approves them.
+
+MinIO must not be used. SeaweedFS is allowed for local S3-compatible object storage because it is Apache-2.0. Application code must use generic object-storage abstractions, not MinIO-specific or SeaweedFS-specific APIs.
+
+## Observability and Logging
+
+- Application logs go to stdout/stderr as structured JSON.
+- Spring Boot services should use ECS structured console logs unless ADR changes it.
+- Do not write app logs to local text files.
+- Do not write app logs to `audit_log`.
+- `audit_log` is for typed security, legal, and account-critical events only.
+- OpenSearch is the preferred central log/search store because it is Apache-2.0 aligned with Viaverse's permissive-license policy.
+- Graylog is not default because Graylog Open is SSPL.
+- Log collection should use OpenTelemetry Collector or Fluent Bit.
+- Services must be OpenTelemetry-ready and preserve correlationId/requestId plus traceId/spanId when available.
+
+Never log tokens, Authorization headers, passwords, OTP values, API keys, client secrets, raw phone numbers, raw emails without masking/clear reason, or KVKK/legal sensitive personal data.
+
+## Auth/JWT
+
+- Do not manually build/sign/parse JWT.
+- Use Spring Security OAuth2 Resource Server for Bearer authentication.
+- Use Spring Security `JwtEncoder`/`JwtDecoder` with Nimbus-backed implementation.
+- JWT claims include `iss`, `sub`, `sid`, `iat`, and `exp`.
+- `sub` is persisted `Account.id`.
+- Refresh tokens are opaque/random, hashed, rotated, and revocable.
+- OTP values are hashed; debug fixed OTP is local/test only and must not bypass rate limits, attempts, expiry, used-state, or session security.
+- Rate limiting belongs in focused abuse-protection classes, not giant auth services.
+
+## Errors
+
+Do not hardcode user-facing error messages inside service logic. Use typed `AppErrorCode` values. Exceptions carry code plus default message/parameters. `GlobalExceptionHandler` maps exceptions consistently to ProblemDetail. Field validation errors are structured and localizable.
+
+## Global Service Quality Gate
+
+Before any backend service implementation is accepted, verify package boundaries, thin controllers, focused use cases, typed errors, safe structured logs, audit separation, matching Flyway migrations, correct Gradle conventions, license compliance, and tests for the vertical slice.

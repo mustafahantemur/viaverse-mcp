@@ -39,8 +39,9 @@ The backend must be:
 
 ## 2. Backend Stack
 
-- Java
+- Java 25
 - Spring Boot
+- Gradle Kotlin DSL
 - Spring Web MVC
 - Spring Security
 - Spring Data JPA
@@ -53,6 +54,8 @@ The backend must be:
 - ProblemDetail + `@RestControllerAdvice`
 - Micrometer / OpenTelemetry
 - Testcontainers
+
+Every JPA service must declare Spring Data JPA, PostgreSQL driver, Flyway core, and Flyway PostgreSQL support. Hibernate schema mode is `validate`; `update` and `create` are not normal development modes.
 
 ---
 
@@ -700,6 +703,10 @@ Each service must expose:
 - Trace IDs
 - Correlation IDs
 
+Application logs must be structured ECS JSON logs to stdout/stderr. Do not write app logs to local text files or `audit_log`. `audit_log` is for typed security, legal, and account-critical events only.
+
+OpenSearch is the default central log/search store. Graylog is not default because Graylog Open is SSPL. Log collection should use OpenTelemetry Collector or Fluent Bit. Services must remain testable without a full observability stack unless the task explicitly targets observability.
+
 Important metrics:
 
 - HTTP latency
@@ -757,6 +764,15 @@ A backend task is complete only when:
 - No sensitive logs.
 - Migrations included.
 - CI passes.
+
+Additional global gate:
+
+- Clear feature/use-case package boundaries.
+- No giant service classes.
+- No hardcoded user-facing service errors without `AppErrorCode`.
+- No manual JWT implementation.
+- No MinIO or non-permissive/copyleft infrastructure unless ADR-approved.
+- Flyway migrations match all JPA entities before boot/debug.
 
 
 ---

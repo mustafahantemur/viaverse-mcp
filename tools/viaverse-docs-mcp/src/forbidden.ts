@@ -6,7 +6,12 @@ export const forbiddenPatterns: Array<{ name: string; pattern: RegExp; severity:
   { name: "hardcoded_customer_check", pattern: /userType\s*(==|===|\.equals\()\s*["']customer["']/gi, severity: "error" },
   { name: "hardcoded_provider_check", pattern: /role\s*(==|===|\.equals\()\s*["']provider["']/gi, severity: "error" },
   { name: "hardcoded_active_status", pattern: /status\s*(==|===|\.equals\()\s*["']ACTIVE["']/gi, severity: "error" },
-  { name: "provider_string_check", pattern: /paymentProvider\s*(==|===|\.equals\()\s*["']iyzico["']/gi, severity: "warn" }
+  { name: "provider_string_check", pattern: /paymentProvider\s*(==|===|\.equals\()\s*["']iyzico["']/gi, severity: "warn" },
+  { name: "minio_dependency", pattern: /\bminio\b/gi, severity: "error" },
+  { name: "non_permissive_infra_license", pattern: /\b(AGPL|GPL|LGPL|SSPL|network copyleft|strong copyleft|source-available)\b/gi, severity: "warn" },
+  { name: "file_based_app_log", pattern: /\b(app\.log|debug\.log|errors\.txt|local\.txt)\b/gi, severity: "error" },
+  { name: "manual_jwt_implementation", pattern: /\b(Base64\.getUrlEncoder|Base64\.getUrlDecoder|HmacSHA256|JWT header|JWT payload|manual(?:ly)? (?:sign|parse|verify|build).{0,40}JWT)\b/gi, severity: "warn" },
+  { name: "literal_service_exception", pattern: /\b(UnauthorizedException|ValidationException)\s*\(\s*["'][^"']+["']\s*\)/g, severity: "warn" }
 ];
 
 export type ForbiddenFinding = {
@@ -35,21 +40,55 @@ function getLine(content: string, index: number): string {
   return content.slice(start, end);
 }
 
+function getNearbyText(content: string, index: number): string {
+  const before = content.slice(0, Math.max(0, index)).split(/\r?\n/);
+  const after = content.slice(index).split(/\r?\n/);
+  return [...before.slice(-35), ...after.slice(0, 3)].join("\n").toLowerCase();
+}
+
 function isIntentionalDocumentationExample(doc: DocItem, index: number): boolean {
   if (!doc.path.endsWith(".md")) return false;
 
   if (isInsideMarkdownCodeFence(doc.content, index)) return true;
+  if (doc.path.includes("ADR-0006-seaweedfs-local-object-storage.md")) return true;
 
   const line = getLine(doc.content, index).toLowerCase();
+  const nearby = getNearbyText(doc.content, index);
 
   return (
     line.includes("forbidden") ||
+    line.includes("do not") ||
     line.includes("do not use") ||
-    line.includes("no old") ||
+    line.includes("no ") ||
     line.includes("must not") ||
+    line.includes("must be") ||
+    line.includes("must not be used") ||
+    line.includes("removed") ||
+    line.includes("not acceptable") ||
+    line.includes("not default") ||
+    line.includes("is not") ||
+    line.includes("avoid") ||
+    line.includes("prefer") ||
+    line.includes("allowed") ||
+    line.includes("approval") ||
+    line.includes("unless adr") ||
+    line.includes("requires explicit adr") ||
+    line.includes("recommend") ||
+    line.includes("guardrail") ||
+    line.includes("ban") ||
+    line.includes("risk") ||
     line.includes("yasak") ||
     line.includes("wrong:") ||
-    line.includes("bad:")
+    line.includes("bad:") ||
+    nearby.includes("forbidden patterns") ||
+    nearby.includes("never introduce") ||
+    nearby.includes("non-negotiable") ||
+    nearby.includes("avoid unless") ||
+    nearby.includes("avoid prompts") ||
+    nearby.includes("license policy") ||
+    nearby.includes("guardrails") ||
+    nearby.includes("do not introduce") ||
+    nearby.includes("must not be used")
   );
 }
 

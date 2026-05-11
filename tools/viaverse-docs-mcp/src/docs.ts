@@ -31,7 +31,7 @@ export type DocItem = {
 };
 
 const contextKeywords: Record<string, string[]> = {
-  identity: ["identity", "account", "auth", "otp", "login", "capability", "session"],
+  identity: ["identity", "identity-service", "account", "auth", "otp", "login", "capability", "session", "jwt", "refresh token"],
   profile: ["profile", "settings", "locale", "privacy"],
   taxonomy: ["taxonomy", "category", "tag", "dynamic environment"],
   marketplace: ["marketplace", "request", "offer", "quote", "job"],
@@ -39,11 +39,15 @@ const contextKeywords: Record<string, string[]> = {
   payment: ["payment", "iyzico", "stripe", "masterpass", "refund", "payout"],
   monetization: ["monetization", "subscription", "commission", "ads", "sponsored"],
   chat: ["chat", "message", "conversation", "receipt"],
-  media: ["media", "cdn", "image", "video", "s3"],
+  media: ["media", "cdn", "image", "video", "s3", "object storage", "object-storage", "seaweedfs"],
+  "media-storage": ["media-storage", "object storage", "object-storage", "s3", "seaweedfs", "minio", "bucket", "presigned"],
   trust: ["trust", "review", "rating", "badge"],
   search: ["search", "opensearch", "seo", "ranking"],
-  security: ["security", "kvkk", "privacy", "rate limit", "audit"],
-  infrastructure: ["infrastructure", "aws", "eks", "kubernetes", "deployment"],
+  observability: ["observability", "logging", "logs", "opentelemetry", "otel", "trace", "tracing", "micrometer", "actuator", "prometheus", "audit_log", "stdout", "ecs"],
+  security: ["security", "kvkk", "privacy", "rate limit", "audit", "jwt", "oauth2", "resource server", "nimbus", "abuse"],
+  compliance: ["compliance", "kvkk", "privacy", "audit", "license", "agpl", "gpl", "lgpl", "sspl", "sensitive"],
+  infrastructure: ["infrastructure", "aws", "eks", "kubernetes", "deployment", "docker compose", "local infra"],
+  "local-infra": ["local-infra", "local infra", "docker compose", "opensearch", "seaweedfs", "postgresql", "flyway", "bootrun", "debug"],
   ai: ["ai", "assistant", "mcp", "rag", "support"],
   api: ["api", "openapi", "bff", "rest", "contract"],
   client: ["client", "mobile", "kotlin", "kmp", "compose", "react", "template", "ui", "theme"],
