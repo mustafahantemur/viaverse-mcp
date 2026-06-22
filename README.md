@@ -188,8 +188,9 @@ Cloud
 
 ### Backend
 
-- Java
+- Java 25
 - Spring Boot
+- Gradle Kotlin DSL
 - Spring Web MVC
 - Spring Security
 - Spring Data JPA + Hibernate
@@ -265,33 +266,35 @@ The actual implementation may start smaller, but the boundaries must be designed
 
 ## 7. Backend Service Structure
 
-Each service should follow:
+Each service should follow a feature/use-case based structure:
 
 ```text
-app.viaverse.<context>
+app.viaverse.<service>.<feature>
   api
-    controller
     dto
   application
     usecase
-    command
-    query
-    port
+    service
   domain
     model
-    event
+    enums
+    value
     policy
-    error
   infrastructure
     persistence
       entity
       repository
-      adapter
-      mapper
     messaging
-    grpc
-    config
     security
+    ratelimit
+    adapter
+
+app.viaverse.<service>.shared
+  error
+  normalization
+  audit
+  config
+  mapper
 ```
 
 Rules:
@@ -302,6 +305,10 @@ Rules:
 - Use cases orchestrate.
 - Provider integrations are adapters.
 - No cross-service database joins.
+- No giant service classes.
+- Errors use typed `AppErrorCode`.
+- Application logs are structured JSON to stdout/stderr.
+- `audit_log` is separate from application logging.
 
 ---
 
@@ -315,16 +322,39 @@ Planned local dependencies:
 - OpenSearch
 - Valkey / Redis
 - Mailpit
-- LocalStack optional for S3-like testing
+- SeaweedFS for local S3-compatible object storage
+- OpenSearch for local search/observability profiles
 - Mock payment provider / iyzico sandbox adapter
 
-Example future command:
+Current core infra command:
 
 ```bash
-docker compose -f infra/docker-compose/docker-compose.local.yml up -d
+./scripts/dev/start-core-infra.ps1
 ```
 
-Exact commands will be finalized when the repo skeleton is created.
+Core local services:
+
+- PostgreSQL
+- Valkey
+- Kafka
+- Mailpit
+- SeaweedFS (S3 endpoint: `http://localhost:8333`)
+
+Application code must use a generic object-storage abstraction so provider details stay outside domain and application layers.
+
+Planned Spring Boot configuration shape:
+
+```yaml
+object-storage:
+  provider: ${OBJECT_STORAGE_PROVIDER:seaweedfs}
+  endpoint: ${OBJECT_STORAGE_ENDPOINT:http://localhost:8333}
+  region: ${OBJECT_STORAGE_REGION:local}
+  access-key: ${OBJECT_STORAGE_ACCESS_KEY:viaverse}
+  secret-key: ${OBJECT_STORAGE_SECRET_KEY:viaverse-local-secret}
+  path-style-access: ${OBJECT_STORAGE_PATH_STYLE_ACCESS:true}
+  buckets:
+    media: ${OBJECT_STORAGE_BUCKET_MEDIA:viaverse-media-local}
+```
 
 ---
 
@@ -398,6 +428,10 @@ docs/decisions/
 - No Hibernate `ddl-auto=update` in production
 - No sensitive data in logs/events
 - No admin sensitive action without audit log
+- No MinIO
+- No AGPL/GPL/LGPL/SSPL/copyleft infrastructure without ADR approval
+- No local text-file application logging
+- No manual JWT construction/parsing/signing
 
 ---
 

@@ -13,3 +13,4 @@ Use runbooks for repeatable operational procedures, support actions and incident
 - `payment-incident.md`
 - `privacy-dsar.md`
 - `mcp-usage.md`
+- `one-command-bootstrap.md`

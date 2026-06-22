@@ -78,6 +78,8 @@ VIAVERSE_REPO_ROOT = "C:\\Projects\\Viaverse\\viaverse-platform"
 ## Expected MCP Tools
 
 ```text
+resolve_task_context
+get_context_bundle
 search_docs
 read_doc
 list_docs
@@ -90,9 +92,13 @@ check_forbidden_terms
 ## Typical AI Flow
 
 ```text
+resolve_task_context("implement auth JWT")
+get_context_bundle("identity", "implement auth JWT")
 get_context_pack("business", "implement business publish flow")
 read_doc("docs/blueprint/PRODUCT_MODEL.md")
 read_doc("docs/blueprint/MONETIZATION_MODEL.md")
 get_related_umls("business")
 pre_coding_brief("business", "implement business publish flow")
 ```
+
+For coding tasks, use `resolve_task_context`, `get_context_bundle`, `pre_coding_brief`, then produce an implementation plan before changing code. The brief must not contain blank placeholders.

@@ -44,6 +44,12 @@ DOCS_INDEX.md
 | `docs/blueprint/SEO_AND_GROWTH.md` | SEO/growth/analytics |
 | `docs/blueprint/ROADMAP.md` | Delivery phases |
 | `docs/blueprint/WEB_FRONTEND_STRUCTURE.md` | Web/landing/admin structure |
+| `docs/standards/backend-service-template.md` | Global Java/Spring backend service template |
+| `docs/standards/identity-auth-rules.md` | JWT, OTP, refresh-token and auth abuse rules |
+| `docs/standards/observability-logging-rules.md` | Structured logs, audit separation, OpenTelemetry and OpenSearch rules |
+| `docs/standards/license-policy.md` | Permissive license policy, MinIO ban and SeaweedFS allowance |
+| `docs/standards/local-infra-rules.md` | Local env, Flyway, OpenSearch and SeaweedFS local infra rules |
+| `docs/standards/mcp-pre-coding-brief-template.md` | Required non-empty MCP brief fields and task sizing rules |
 
 ## Bounded Context to UML Map
 
@@ -59,5 +65,10 @@ DOCS_INDEX.md
 | media | 07, 10, 28 |
 | trust | 09, 10, 28 |
 | search | 05, 16, 24, 28 |
+| observability | 17, 28 |
+| media-storage | 13, 28 |
+| local-infra | 17, 28 |
+| security | 02, 17, 28 |
+| compliance | 17, 28 |
 | infrastructure | 13, 17, 19, 27, 28 |
 | AI/support | 20, 25, 28, 29 |

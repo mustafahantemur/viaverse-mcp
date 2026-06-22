@@ -1,6 +1,14 @@
 import path from "node:path";
 
-export const REPO_ROOT = path.resolve(process.env.VIAVERSE_REPO_ROOT ?? process.cwd());
+function defaultRepoRoot(): string {
+  const cwd = process.cwd();
+  if (cwd.replaceAll("\\", "/").endsWith("tools/viaverse-docs-mcp")) {
+    return path.resolve(cwd, "../..");
+  }
+  return cwd;
+}
+
+export const REPO_ROOT = path.resolve(process.env.VIAVERSE_REPO_ROOT ?? defaultRepoRoot());
 
 export const DOC_GLOBS = [
   "README.md",
@@ -10,12 +18,26 @@ export const DOC_GLOBS = [
   "MCP_SETUP_AND_USAGE.md",
   "docs/**/*.md",
   "docs/**/*.json",
-  "docs/**/*.csv"
+  "docs/**/*.csv",
+  "templates/**/*.md",
+  "templates/**/*.kt",
+  "templates/**/*.kts",
+  "templates/**/*.ts",
+  "templates/**/*.tsx",
+  "templates/**/*.css",
+  "templates/**/*.json",
+  "templates/**/*.toml"
 ];
 
 export const IGNORE_GLOBS = [
   "node_modules/**",
   "dist/**",
+  "**/build/**",
+  "**/.gradle/**",
+  "**/.kotlin/**",
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/.next/**",
   ".git/**",
   "**/.env",
   "**/.env.*",
@@ -30,6 +52,71 @@ export const MAX_DOC_CHARS = 120_000;
 // Canonical ranking fixes. These are not hardcoded business logic;
 // they are documentation retrieval priorities for AI context quality.
 export const CANONICAL_CONTEXT_DOC_PRIORITY: Record<string, string[]> = {
+  foundation: [
+    "AGENTS.md",
+    "CODING_RULES.md",
+    "docs/standards/backend-service-template.md",
+    "docs/blueprint/BACKEND_ARCHITECTURE.md",
+    "docs/blueprint/TECH_STACK_DECISIONS.md"
+  ],
+  identity: [
+    "AGENTS.md",
+    "docs/standards/identity-auth-rules.md",
+    "docs/standards/backend-service-template.md",
+    "docs/blueprint/SECURITY_MODEL.md",
+    "docs/adr/ADR-0004-no-hardcoded-business-strings.md"
+  ],
+  observability: [
+    "AGENTS.md",
+    "docs/standards/observability-logging-rules.md",
+    "docs/blueprint/TECH_STACK_DECISIONS.md",
+    "docs/blueprint/BACKEND_ARCHITECTURE.md"
+  ],
+  search: [
+    "AGENTS.md",
+    "docs/standards/observability-logging-rules.md",
+    "docs/blueprint/DATA_ARCHITECTURE.md",
+    "docs/blueprint/SEO_AND_GROWTH.md",
+    "docs/blueprint/TECH_STACK_DECISIONS.md"
+  ],
+  "media-storage": [
+    "AGENTS.md",
+    "docs/standards/license-policy.md",
+    "docs/standards/local-infra-rules.md",
+    "docs/adr/ADR-0006-seaweedfs-local-object-storage.md"
+  ],
+  "local-infra": [
+    "AGENTS.md",
+    "docs/standards/local-infra-rules.md",
+    "docs/standards/license-policy.md",
+    "docs/runbooks/local-development.md"
+  ],
+  security: [
+    "AGENTS.md",
+    "docs/blueprint/SECURITY_MODEL.md",
+    "docs/standards/identity-auth-rules.md",
+    "docs/standards/observability-logging-rules.md"
+  ],
+  compliance: [
+    "AGENTS.md",
+    "docs/standards/license-policy.md",
+    "docs/standards/observability-logging-rules.md",
+    "docs/blueprint/PRIVACY_AND_KVKK.md"
+  ],
+  client: [
+    "AGENTS.md",
+    "docs/blueprint/CLIENT_ARCHITECTURE.md",
+    "docs/blueprint/PRODUCT_MODEL.md",
+    "docs/adr/ADR-0004-no-hardcoded-business-strings.md",
+    "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md",
+    "docs/templates/react-to-kotlin-compose-migration.md"
+  ],
+  template: [
+    "AGENTS.md",
+    "docs/blueprint/CLIENT_ARCHITECTURE.md",
+    "templates/kotlin/viaverse-template/KOTLIN_TEMPLATE_GUARDRAILS.md",
+    "docs/templates/react-to-kotlin-compose-migration.md"
+  ],
   business: [
     "docs/blueprint/PRODUCT_MODEL.md",
     "docs/blueprint/MONETIZATION_MODEL.md",

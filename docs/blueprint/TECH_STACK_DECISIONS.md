@@ -32,7 +32,8 @@ Principle:
 ```text
 Mobile app: Kotlin Multiplatform + Compose Multiplatform
 Web / SEO / Admin: React + TypeScript + Next.js
-Backend: Java + Spring Boot
+Backend: Java 25 + Spring Boot
+Backend build: Gradle Kotlin DSL
 Transactional database: PostgreSQL
 High-volume read models: Cassandra
 Search/discovery: OpenSearch
@@ -41,6 +42,7 @@ Event broker: Kafka / Amazon MSK
 Event abstraction: Spring Cloud Stream
 Internal sync communication: gRPC
 Media/object storage: S3
+Local S3-compatible development storage: SeaweedFS
 Cloud: AWS
 Payments: iyzico primary, Stripe adapter included, Masterpass adapter-ready
 Maps: Google Maps first, abstracted
@@ -152,7 +154,7 @@ Rules:
 
 Decision:
 
-> Use Java for backend services.
+> Use Java 25 for backend services.
 
 Why:
 
@@ -241,6 +243,9 @@ Rules:
 
 - Every schema change uses Flyway.
 - Hibernate only validates schema.
+- Every service with JPA entities includes Spring Data JPA, PostgreSQL driver, Flyway core, and Flyway PostgreSQL support.
+- Migration files must create all tables expected by JPA entities before `bootRun` or debug.
+- Do not use Hibernate `ddl-auto=update` or `ddl-auto=create` for normal development.
 - Migrations reviewed like code.
 - Backward-compatible migrations preferred.
 - Each service owns its own migrations.
@@ -696,12 +701,10 @@ Planned stack:
 - Spring Boot Actuator
 - Micrometer
 - OpenTelemetry
-- Prometheus
-- Alertmanager
-- Jaeger
-- OpenSearch logs
-- Fluent Bit
-- Perses dashboards
+- Prometheus-compatible metrics endpoint
+- OpenSearch logs/search
+- OpenSearch Dashboards for local/dev visualization
+- OpenTelemetry Collector or Fluent Bit
 
 Required signals:
 
@@ -719,10 +722,14 @@ Required signals:
 
 Rules:
 
-- Structured JSON logs
+- Structured ECS JSON logs to stdout/stderr
 - Correlation ID on every request/event
 - No PII/secrets/card data in logs
-- Audit logs for sensitive actions
+- `audit_log` is not application logging; it is for typed security/legal/account-critical events
+- No local text-file application logs
+- OpenSearch is the default central log/search store
+- Graylog is not default because Graylog Open is SSPL
+- AGPL/GPL/LGPL/SSPL observability dependencies require ADR approval
 
 ---
 

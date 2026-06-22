@@ -1,0 +1,20 @@
+{
+  "identities": [
+    {
+      "name": "viaverse-local-admin",
+      "credentials": [
+        {
+          "accessKey": "viaverse",
+          "secretKey": "viaverse-local-secret"
+        }
+      ],
+      "actions": [
+        "Admin",
+        "Read",
+        "List",
+        "Tagging",
+        "Write"
+      ]
+    }
+  ]
+}

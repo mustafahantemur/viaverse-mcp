@@ -58,6 +58,10 @@ Never introduce:
 - Private service requests indexed in public SEO
 - Sensitive data in logs/events
 - Custom cryptography for chat
+- MinIO
+- AGPL/GPL/LGPL/SSPL/copyleft infrastructure without ADR approval
+- Local text-file application logging such as `app.log`, `debug.log`, `local.txt`, or `errors.txt`
+- Manual JWT construction/parsing/signing outside Spring Security
 
 ---
 
@@ -214,7 +218,7 @@ PR checklist:
 
 ## 7. Backend Coding Rules
 
-Backend services use Java + Spring Boot.
+Backend services use Java 25 + Spring Boot with Gradle Kotlin DSL.
 
 Each service follows:
 
@@ -346,7 +350,9 @@ PaymentCallbackHandler
 
 - Use Flyway for schema changes.
 - Use Hibernate validate.
-- No `ddl-auto=update` in production.
+- No `ddl-auto=update` or `ddl-auto=create` for normal development.
+- Every service with JPA entities declares Spring Data JPA, PostgreSQL driver, Flyway core, and Flyway PostgreSQL support.
+- Migration files must create all tables expected by JPA entities before `bootRun` or debug.
 - JPA entities are infrastructure only.
 - Domain models are not JPA entities.
 - Repositories exposed to application as ports.
@@ -458,6 +464,9 @@ BadgeAwarded
 ## 15. Security Coding Rules
 
 - JWT `sub` is persisted `Account.id`.
+- Use Spring Security OAuth2 Resource Server for Bearer token authentication.
+- Use Spring Security `JwtEncoder`/`JwtDecoder` with Nimbus-backed implementation.
+- Do not manually build, sign, parse, or verify JWT.
 - Validate account exists and is active.
 - Enforce capability checks.
 - Enforce resource ownership checks.
@@ -621,11 +630,17 @@ Admin verification/moderation/payment ops
 
 Every important flow should have:
 
-- Structured logs
+- Structured ECS JSON logs to stdout/stderr
 - Correlation ID
 - Metrics
 - Tracing where relevant
 - Safe error code
+
+Application logs must not be written to local text files or `audit_log`. Do not create `app.log`, `debug.log`, `local.txt`, `errors.txt`, or similar default logs.
+
+`audit_log` is for typed security, legal, and account-critical events only. Use typed `AuditAction` values or typed audit event factories; do not pass random action strings.
+
+OpenSearch is the default central log/search store. Graylog is not the default because Graylog Open is SSPL. Loki/Grafana AGPL concerns must be reviewed before adding them. Log collection should use OpenTelemetry Collector or Fluent Bit.
 
 Track:
 
@@ -777,6 +792,40 @@ Before release:
 If a shortcut touches identity, payment, privacy, security, trust, moderation, admin, or public SEO data, it is not a harmless shortcut.
 
 Stop and document the correct approach.
+
+---
+
+# Canonical Addendum — Corrected MCP/Service Guardrails
+
+## Global Service Rule
+
+These rules are not identity-only. They apply to all current and future Viaverse backend services.
+
+Every backend service must use Java 25, Spring Boot, Gradle Kotlin DSL, Flyway migrations, Hibernate `ddl-auto=validate`, clear feature/use-case package structure, thin controllers, focused use cases, centralized `AppErrorCode` errors, structured stdout/stderr logs, OpenTelemetry-ready observability, OpenSearch as the default log/search store, audit logging separate from application logging, permissive-license infrastructure unless ADR approves otherwise, and tests for each vertical slice.
+
+## Task Sizing
+
+Avoid prompts such as `finish full template`, `complete all flows`, `port all React screens`, or `build marketplace/payment/chat/business all at once`.
+
+Prefer vertical slices:
+
+- `identity-auth-backend`
+- `auth-abuse-protection`
+- `mobile-auth-client`
+- `mobile-auth-ui`
+- `profile-foundation`
+- `observability-foundation`
+- `search-foundation`
+
+## Error Codes
+
+Do not throw `UnauthorizedException("literal message")` or `ValidationException("literal message")` without an error code. Identity/auth flows must use canonical auth codes such as `AUTH_INVALID_ACCESS_TOKEN`, `AUTH_INVALID_OTP`, `AUTH_RATE_LIMITED`, `AUTH_INVALID_REFRESH_TOKEN`, `AUTH_SESSION_EXPIRED`, and `AUTH_ACCOUNT_NOT_ACTIVE`.
+
+## License and Local Infra
+
+MinIO must not be used. SeaweedFS is allowed for local S3-compatible storage because it is Apache-2.0. Application code uses generic object-storage abstractions.
+
+Local dummy env values may be committed only if explicitly local-only and not real secrets. Production/staging secrets are never committed.
 
 
 ---

@@ -72,6 +72,40 @@ const bundle = await client.callTool({
 console.log("\nget_context_bundle result:");
 console.log(JSON.stringify(bundle, null, 2));
 
+const kotlinTask = "convert React template auth and explore screens to Kotlin Compose template";
+
+const kotlinResolution = await client.callTool({
+  name: "resolve_task_context",
+  arguments: {
+    task: kotlinTask
+  }
+});
+
+console.log("\nresolve_task_context Kotlin template result:");
+console.log(JSON.stringify(kotlinResolution, null, 2));
+
+const kotlinBundle = await client.callTool({
+  name: "get_context_bundle",
+  arguments: {
+    boundedContext: "client",
+    task: kotlinTask,
+    limit: 10
+  }
+});
+
+console.log("\nget_context_bundle Kotlin template result:");
+console.log(JSON.stringify(kotlinBundle, null, 2));
+
+const migrationGuide = await client.callTool({
+  name: "read_doc",
+  arguments: {
+    filePath: "docs/templates/react-to-kotlin-compose-migration.md"
+  }
+});
+
+console.log("\nread_doc React-to-Kotlin migration guide result:");
+console.log(JSON.stringify(migrationGuide, null, 2));
+
 const forbidden = await client.callTool({
   name: "check_forbidden_terms",
   arguments: {}

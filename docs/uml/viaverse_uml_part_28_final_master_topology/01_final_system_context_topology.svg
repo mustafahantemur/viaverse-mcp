@@ -78,7 +78,7 @@
 <text x="1420.0" y="1070.0" text-anchor="middle" class="t">Spring Cloud Stream abstraction</text>
 <text x="1420.0" y="1088.0" text-anchor="middle" class="t">outbox events</text>
 <rect x="1640" y="1010" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#064E3B" stroke-width="2"/>
-<text x="1800.0" y="1061.0" text-anchor="middle" class="h">S3 / MinIO local</text>
+<text x="1800.0" y="1061.0" text-anchor="middle" class="h">S3 / SeaweedFS local</text>
 <text x="1800.0" y="1079.0" text-anchor="middle" class="t">media / backups / archives</text>
 <rect x="2020" y="1010" width="320" height="120" rx="14" fill="#EEF2FF" stroke="#6366F1" stroke-width="2"/>
 <text x="2180.0" y="1061.0" text-anchor="middle" class="h">OpenSearch</text>

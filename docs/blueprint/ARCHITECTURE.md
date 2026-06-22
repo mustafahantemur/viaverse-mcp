@@ -109,6 +109,8 @@ External Providers
   └── AI providers
 ```
 
+Local S3-compatible development storage should run through SeaweedFS behind a generic object-storage adapter. Domain and application layers must not depend on provider-specific APIs or raw S3 SDK details.
+
 ---
 
 ## 4. Communication Model

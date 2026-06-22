@@ -1,6 +1,7 @@
 # OS / editor
 .DS_Store
 Thumbs.db
+.vscode/
 .vscode/.history/
 
 # Node
@@ -13,6 +14,8 @@ coverage/
 build/
 out/
 target/
+.gradle/
+.kotlin/
 
 # Local env / secrets
 .env

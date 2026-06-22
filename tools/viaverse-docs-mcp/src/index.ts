@@ -1,18 +1,60 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { loadDocs, readDoc, scoreDoc, snippet } from "./docs.js";
 import { checkForbiddenTerms } from "./forbidden.js";
 import { buildContextPack, getRelatedUmls, createPreCodingBriefTemplate } from "./context.js";
-import { resolveTaskContext, buildContextBundle } from "./task-router.js";
+import { resolveTaskContext, buildContextBundle, buildCompactSearchDocs } from "./task-router.js";
 import { getDocOutline, findSections } from "./sections.js";
+import { logMcpToolExchange } from "./logger.js";
 
+type ToolHandler = (args: any) => Promise<CallToolResult>;
+
+function registerLoggedTool(
+  server: McpServer,
+  name: string,
+  inputSchema: Record<string, z.ZodTypeAny>,
+  handler: ToolHandler
+) {
+  (server.tool as unknown as (
+    toolName: string,
+    schema: Record<string, z.ZodTypeAny>,
+    callback: (args: any) => Promise<CallToolResult>
+  ) => void)(name, inputSchema, async (args) => {
+    const startedAt = Date.now();
+    try {
+      const result = await handler(args);
+      await logMcpToolExchange({
+        tool: name,
+        input: args,
+        output: result,
+        durationMs: Date.now() - startedAt
+      });
+      return result;
+    } catch (error) {
+      await logMcpToolExchange({
+        tool: name,
+        input: args,
+        error: error instanceof Error
+          ? { name: error.name, message: error.message, stack: error.stack }
+          : { message: String(error) },
+        durationMs: Date.now() - startedAt
+      });
+      throw error;
+    }
+  });
+}
+
+export function createViaverseDocsServer(): McpServer {
 const server = new McpServer({
   name: "viaverse-docs-mcp",
   version: "2.0.0"
 });
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_project_orientation",
   {},
   async () => {
@@ -22,26 +64,64 @@ server.tool(
         text: JSON.stringify({
           project: "Viaverse",
           implementation: "greenfield",
-          rule: "Use MCP before coding. Do not load all docs manually.",
+          rule: "Use MCP before coding. Return the smallest sufficient context, not the largest available context.",
+          compactMode: {
+            maxBoundedContextsPerTask: 3,
+            maxCanonicalDocsPerTask: 4,
+            maxSnippetsPerDoc: 1
+          },
+          implementationOrder: [
+            "Repository / Gradle monorepo skeleton",
+            "Backend Spring Boot platform-service foundation",
+            "Mobile KMP/CMP foundation",
+            "Backend health endpoint",
+            "Mobile-to-backend health check",
+            "Logging, env config, network client, interceptors",
+            "AppResult/AppError and centralized error handling",
+            "Token storage abstraction and session manager",
+            "Auth and current-account vertical slices"
+          ],
           mandatoryFlow: [
             "resolve_task_context",
             "get_context_bundle",
             "pre_coding_brief",
+            "implementation plan",
             "implement"
           ],
-          globalDocs: [
-            "README.md",
+          compactGlobalDocs: [
             "AGENTS.md",
-            "CODING_RULES.md",
-            "docs/DOCS_INDEX.md",
-            "docs/uml/UML_INDEX.md"
+            "docs/blueprint/CLIENT_ARCHITECTURE.md",
+            "docs/blueprint/BACKEND_ARCHITECTURE.md"
           ],
-          accountCapabilityRules: [
-            "One real Account can request work, do individual work, and operate business resources.",
-            "Personal/requester and individual Work Mode should feel like a lightweight Airbnb-style become-a-host transition after worker onboarding.",
-            "Business is a separate workspace/resource flow on the same Account: BusinessAccount/profile, merchant onboarding, verification, staff roles, catalog, subscription, and publish-ready policy.",
-            "Do not model customer, individual worker, and business as three separate login identities.",
-            "Do not treat Business Mode as the same lightweight switch as individual Work Mode."
+          globalBackendServiceRules: [
+            "All backend services use Java 25, Spring Boot, and Gradle Kotlin DSL.",
+            "All JPA services include Spring Data JPA, PostgreSQL driver, Flyway core, Flyway PostgreSQL support, and ddl-auto=validate.",
+            "Every JPA entity change requires matching Flyway migrations checked before bootRun/debug.",
+            "Package by feature/use-case; controllers thin, use cases focused, errors typed, tests added."
+          ],
+          observabilityDefaults: [
+            "Structured ECS JSON logs to stdout/stderr.",
+            "audit_log is not application logging.",
+            "OpenSearch is the default log/search store; Graylog is not default because of SSPL licensing concerns.",
+            "No app.log, debug.log, local.txt, errors.txt, or similar file-based app logs."
+          ],
+          licenseDefaults: [
+            "Prefer MIT, Apache-2.0, BSD, ISC.",
+            "Avoid AGPL, GPL, LGPL, SSPL, strong copyleft, network copyleft, and source-available infrastructure unless ADR-approved.",
+            "MinIO must not be used; SeaweedFS is allowed for local S3-compatible storage through generic object-storage abstractions."
+          ],
+          scopeGuards: [
+            "Do not include React template context for foundation, backend, auth, repository, logging, DB, domain, or infrastructure tasks unless explicitly requested.",
+            "Do not continue Kotlin template completion unless explicitly requested.",
+            "Recommend splitting tasks that need more than 3 bounded contexts or ask for all flows/full template completion."
+          ],
+          productBalance: [
+            "Preserve Dinamik Cevre and Hizmet Al as separate product surfaces.",
+            "Do not let early implementation drift into only a formal job marketplace."
+          ],
+          testStrategy: [
+            "Do not generate exhaustive unit tests during early foundation work.",
+            "Prefer Gradle check, health verification, and focused later testing tasks."
           ],
           stopConditions: [
             "new bounded context",
@@ -50,7 +130,8 @@ server.tool(
             "breaking REST/event contract",
             "payment/security/privacy/moderation/identity impact",
             "unclear domain state",
-            "hardcoded business string appears necessary"
+            "hardcoded business string appears necessary",
+            "new non-permissive/copyleft infrastructure dependency"
           ]
         }, null, 2)
       }]
@@ -58,7 +139,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "resolve_task_context",
   {
     task: z.string().min(3)
@@ -73,7 +155,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_context_bundle",
   {
     boundedContext: z.string().min(2),
@@ -85,13 +168,17 @@ server.tool(
     return {
       content: [{
         type: "text",
-        text: JSON.stringify(buildContextBundle(docs, boundedContext, task, limit), null, 2)
+        text: (() => {
+          const bundle = buildContextBundle(docs, boundedContext, task, Math.min(limit, 3));
+          return `${bundle.compactText}\n\nRelated compact docs:\n${buildCompactSearchDocs(docs, boundedContext, task, 2).map(doc => `- ${doc.path} — ${doc.snippet}`).join("\n")}`;
+        })()
       }]
     };
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_doc_outline",
   {
     filePath: z.string().min(1)
@@ -113,7 +200,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "read_doc_sections",
   {
     filePath: z.string().min(1),
@@ -138,12 +226,13 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "search_docs",
   {
     query: z.string().min(2),
     boundedContext: z.string().optional(),
-    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "unknown"]).optional(),
+    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "template", "unknown"]).optional(),
     limit: z.number().int().min(1).max(20).default(8)
   },
   async ({ query, boundedContext, docType, limit }) => {
@@ -165,7 +254,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "read_doc",
   {
     filePath: z.string().min(1)
@@ -176,11 +266,12 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "list_docs",
   {
     boundedContext: z.string().optional(),
-    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "unknown"]).optional()
+    docType: z.enum(["root", "blueprint", "adr", "uml", "api", "contract", "runbook", "template", "unknown"]).optional()
   },
   async ({ boundedContext, docType }) => {
     const docs = await loadDocs();
@@ -204,7 +295,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_related_umls",
   {
     boundedContext: z.string().min(2)
@@ -219,7 +311,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "get_context_pack",
   {
     boundedContext: z.string().min(2),
@@ -233,7 +326,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "pre_coding_brief",
   {
     boundedContext: z.string().min(2),
@@ -249,7 +343,8 @@ server.tool(
   }
 );
 
-server.tool(
+registerLoggedTool(
+  server,
   "check_forbidden_terms",
   {
     boundedContext: z.string().optional()
@@ -273,5 +368,15 @@ server.tool(
   }
 );
 
-const transport = new StdioServerTransport();
-await server.connect(transport);
+return server;
+}
+
+export async function connectStdioServer() {
+  const server = createViaverseDocsServer();
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await connectStdioServer();
+}
